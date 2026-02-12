@@ -18,7 +18,6 @@ document.addEventListener('mousemove', (e) => {
     cursor.style.top = mouseY + 'px';
 });
 
-// Smooth follow animation para el cursor follower
 function animateCursorFollower() {
     const distX = mouseX - followerX;
     const distY = mouseY - followerY;
@@ -34,7 +33,7 @@ function animateCursorFollower() {
 
 animateCursorFollower();
 
-// Expandir cursor en hover sobre elementos interactivos
+// Expandir cursor en hover
 const interactiveElements = document.querySelectorAll('a, button, .project-card');
 
 interactiveElements.forEach(el => {
@@ -57,7 +56,6 @@ const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section[id]');
 
-// Navbar scroll effect
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
@@ -69,7 +67,6 @@ window.addEventListener('scroll', () => {
         navbar.style.boxShadow = 'none';
     }
     
-    // Hide navbar on scroll down, show on scroll up
     if (currentScroll > lastScroll && currentScroll > 500) {
         navbar.style.transform = 'translateY(-100%)';
     } else {
@@ -77,19 +74,14 @@ window.addEventListener('scroll', () => {
     }
     
     lastScroll = currentScroll;
-    
-    // Update active nav link
     updateActiveNavLink();
 });
 
-// Actualizar link activo en la navegación
 function updateActiveNavLink() {
     let current = '';
     
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
         if (window.pageYOffset >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
@@ -103,14 +95,12 @@ function updateActiveNavLink() {
     });
 }
 
-// Smooth scroll para los links de navegación
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href');
         const targetSection = document.querySelector(targetId);
         
-        // Smooth scroll nativo mejorado
         targetSection.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
@@ -122,7 +112,6 @@ navLinks.forEach(link => {
 // ANIMACIONES DE ENTRADA
 // ==========================================
 
-// Intersection Observer para animaciones al hacer scroll
 const observerOptions = {
     threshold: 0.15,
     rootMargin: '0px 0px -50px 0px'
@@ -137,18 +126,16 @@ const fadeInObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Aplicar animaciones a elementos (más rápidas)
 const fadeInElements = document.querySelectorAll('.timeline-item, .project-card, .skill-item');
 
 fadeInElements.forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    // Animaciones más rápidas: reducido de 0.1s a 0.05s entre elementos
     el.style.transition = `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`;
     fadeInObserver.observe(el);
 });
 
-// Animación especial para Sobre Mí (desde los lados)
+// Animación Sobre Mí
 const aboutObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -168,6 +155,13 @@ const aboutObserver = new IntersectionObserver((entries) => {
 
 const aboutSection = document.querySelector('.about-content');
 if (aboutSection) {
+    // Agregar will-animate para ocultar antes de la animación
+    // (el default CSS es visible, así que si JS falla, el contenido se ve)
+    const aboutText = document.querySelector('.about-text');
+    const aboutSkills = document.querySelector('.about-skills');
+    if (aboutText) aboutText.classList.add('will-animate');
+    if (aboutSkills) aboutSkills.classList.add('will-animate');
+    
     aboutObserver.observe(aboutSection);
 }
 
@@ -186,7 +180,6 @@ if (scrollIndicator) {
         });
     });
     
-    // Ocultar el indicador después de hacer scroll
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 100) {
             scrollIndicator.style.opacity = '0';
@@ -215,24 +208,14 @@ if (contactForm) {
             message: document.getElementById('message').value
         };
         
-        // Aquí podrías integrar con un servicio de email como EmailJS o FormSubmit
         console.log('Formulario enviado:', formData);
-        
-        // Mostrar mensaje de éxito
         showNotification('¡Mensaje enviado con éxito! Te contactaré pronto.', 'success');
-        
-        // Limpiar formulario
         contactForm.reset();
     });
 }
 
-// ==========================================
-// NOTIFICACIONES
-// ==========================================
-
 function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
-    notification.className = 'notification';
     notification.style.cssText = `
         position: fixed;
         top: 100px;
@@ -253,13 +236,11 @@ function showNotification(message, type = 'success') {
     
     document.body.appendChild(notification);
     
-    // Animar entrada
     setTimeout(() => {
         notification.style.opacity = '1';
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Animar salida y eliminar
     setTimeout(() => {
         notification.style.opacity = '0';
         notification.style.transform = 'translateX(400px)';
@@ -270,7 +251,7 @@ function showNotification(message, type = 'success') {
 }
 
 // ==========================================
-// EFECTOS HOVER EN TARJETAS DE PROYECTO
+// EFECTOS EN TARJETAS
 // ==========================================
 
 const projectCards = document.querySelectorAll('.project-card');
@@ -307,7 +288,6 @@ if (menuToggle) {
         navLinksContainer.classList.toggle('active');
         menuToggle.classList.toggle('active');
         
-        // Animar hamburguesa
         const spans = menuToggle.querySelectorAll('span');
         if (menuToggle.classList.contains('active')) {
             spans[0].style.transform = 'rotate(45deg) translateY(10px)';
@@ -321,7 +301,6 @@ if (menuToggle) {
     });
 }
 
-// Cerrar menú al hacer click en un link (móvil)
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
@@ -337,7 +316,7 @@ navLinks.forEach(link => {
 });
 
 // ==========================================
-// PARALLAX SUAVE EN EL HERO
+// PARALLAX HERO
 // ==========================================
 
 const heroContent = document.querySelector('.hero-content');
@@ -356,30 +335,17 @@ window.addEventListener('scroll', () => {
 // CONSOLE MESSAGE
 // ==========================================
 
-console.log(
-    '%c¡Hola! 👋',
-    'font-size: 20px; font-weight: bold; color: #2B7DE9;'
-);
-
-console.log(
-    '%cGracias por visitar mi portfolio.',
-    'font-size: 14px; color: #647987;'
-);
-
-console.log(
-    '%c¿Interesado en el código? Encuéntralo en: https://github.com/Agustin1231',
-    'font-size: 12px; color: #2B7DE9;'
-);
+console.log('%c¡Hola! 👋', 'font-size: 20px; font-weight: bold; color: #2B7DE9;');
+console.log('%cGracias por visitar mi portfolio.', 'font-size: 14px; color: #647987;');
+console.log('%c¿Interesado en el código? Encuéntralo en: https://github.com/Agustin1231', 'font-size: 12px; color: #2B7DE9;');
 
 // ==========================================
 // INICIALIZACIÓN
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Iniciar todas las animaciones
     updateActiveNavLink();
     
-    // Añadir clase de 'loaded' al body para animaciones CSS
     setTimeout(() => {
         document.body.classList.add('loaded');
     }, 100);
