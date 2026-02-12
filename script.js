@@ -110,9 +110,10 @@ navLinks.forEach(link => {
         const targetId = link.getAttribute('href');
         const targetSection = document.querySelector(targetId);
         
-        window.scrollTo({
-            top: targetSection.offsetTop - 80,
-            behavior: 'smooth'
+        // Smooth scroll nativo mejorado
+        targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
         });
     });
 });
@@ -123,8 +124,8 @@ navLinks.forEach(link => {
 
 // Intersection Observer para animaciones al hacer scroll
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const fadeInObserver = new IntersectionObserver((entries) => {
@@ -136,15 +137,39 @@ const fadeInObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Aplicar animaciones a elementos
+// Aplicar animaciones a elementos (más rápidas)
 const fadeInElements = document.querySelectorAll('.timeline-item, .project-card, .skill-item');
 
 fadeInElements.forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    // Animaciones más rápidas: reducido de 0.1s a 0.05s entre elementos
+    el.style.transition = `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`;
     fadeInObserver.observe(el);
 });
+
+// Animación especial para Sobre Mí (desde los lados)
+const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const aboutText = document.querySelector('.about-text');
+            const aboutSkills = document.querySelector('.about-skills');
+            
+            if (aboutText) aboutText.classList.add('animate');
+            if (aboutSkills) aboutSkills.classList.add('animate');
+            
+            aboutObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px'
+});
+
+const aboutSection = document.querySelector('.about-content');
+if (aboutSection) {
+    aboutObserver.observe(aboutSection);
+}
 
 // ==========================================
 // SCROLL INDICATOR
@@ -155,9 +180,9 @@ const scrollIndicator = document.querySelector('.scroll-indicator');
 if (scrollIndicator) {
     scrollIndicator.addEventListener('click', () => {
         const aboutSection = document.getElementById('sobre-mi');
-        window.scrollTo({
-            top: aboutSection.offsetTop - 80,
-            behavior: 'smooth'
+        aboutSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
         });
     });
     
