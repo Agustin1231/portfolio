@@ -125,5 +125,155 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "agente-de-ia-para-insights-estrategicos",
+        number: "02",
+        category: "IA y Automatización",
+        title: "Agente de IA para Insights Estratégicos",
+        subtitle: "Agente de IA que transforma métricas de shows en recomendaciones estratégicas personalizadas.",
+        description: "Desarrollé un agente de IA que analiza métricas de rendimiento para generar insights estratégicos personalizados y optimizar la toma de decisiones. Automatiza la creación y envío de informes en PDF.",
+        year: "2025",
+        company: "Urpe AI Lab",
+        duration: "1 mes",
+        image: "https://via.placeholder.com/1200x600/1A2332/FFFFFF?text=Agente+de+IA+para+Insights+Estrategicos",
+        imageCaption: "Visualización del flujo de un agente de IA generando informes estratégicos automatizados.",
+        techCard: [
+            "OpenAI",
+            "n8n",
+            "Supabase",
+            "JavaScript"
+        ],
+        techFull: [
+            "OpenAI",
+            "n8n",
+            "Supabase",
+            "Gmail API",
+            "Generación de PDF",
+            "JavaScript"
+        ],
+        metrics: [
+            {
+                label: "Reducción tiempo informes",
+                value: "80%"
+            },
+            {
+                label: "Precisión insights",
+                value: "95%"
+            },
+            {
+                label: "Entrega automatizada",
+                value: "100%"
+            },
+            {
+                label: "Contextualización datos",
+                value: "Personalizada"
+            }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Automatizar la generación de insights estratégicos personalizados para optimizar la toma de decisiones basada en datos de rendimiento."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El objetivo principal fue desarrollar un agente de inteligencia artificial capaz de procesar y contextualizar métricas de rendimiento de shows. Este sistema debía transformar datos brutos en conclusiones accionables, generar recomendaciones claras y presentarlas en un formato accesible, reduciendo drásticamente el tiempo de elaboración de informes manuales y mejorando la calidad de las decisiones estratégicas."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Este proyecto consistió en la creación de un agente de inteligencia artificial avanzado, diseñado específicamente para analizar métricas de rendimiento de diversos shows y generar insights estratégicos a medida. El sistema fue configurado para comprender el contexto particular de cada proyecto, garantizando que los análisis y las recomendaciones fueran siempre relevantes y alineadas con los objetivos específicos."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "La arquitectura del agente integra capacidades de procesamiento de lenguaje natural de OpenAI para interpretar los datos y formular conclusiones coherentes. n8n se utilizó como orquestador principal del flujo de trabajo, gestionando cada paso desde la ingesta de datos hasta la generación del informe. Supabase fue elegido como base de datos para almacenar configuraciones, métricas históricas y parámetros de personalización."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El resultado final del sistema es un documento PDF optimizado, que presenta las conclusiones y recomendaciones de forma clara y concisa. Este informe se genera automáticamente y, mediante la integración con la API de Gmail, se envía de forma proactiva a las partes interesadas, asegurando una difusión rápida y eficiente de la información crítica para la toma de decisiones."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Análisis Contextual Inteligente",
+                description: "El agente evalúa los datos de rendimiento considerando los objetivos específicos de cada proyecto, asegurando insights de alta relevancia y personalización."
+            },
+            {
+                title: "Generación de Insights Accionables",
+                description: "Transforma métricas brutas en conclusiones estratégicas claras y recomendaciones prácticas que impulsan la toma de decisiones informadas."
+            },
+            {
+                title: "Automatización Completa de Informes",
+                description: "Produce informes detallados en formato PDF de manera automática, eliminando la necesidad de creación manual y optimizando el tiempo del equipo."
+            },
+            {
+                title: "Distribución Automatizada por Email",
+                description: "Envía los informes estratégicos generados directamente a los interesados vía Gmail API, garantizando una comunicación oportuna y eficiente."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Diseño y Conceptualización",
+                description: "Definición de los requisitos funcionales y no funcionales, arquitectura del sistema y selección de las tecnologías clave para la IA y la automatización."
+            },
+            {
+                phase: "Fase 2",
+                title: "Desarrollo e Integración",
+                description: "Implementación del motor de IA con OpenAI, configuración de los flujos de trabajo en n8n y desarrollo de las integraciones con Supabase y la API de Gmail."
+            },
+            {
+                phase: "Fase 3",
+                title: "Pruebas y Optimización",
+                description: "Realización de pruebas exhaustivas del agente, validación de la generación de insights, ajuste de parámetros y optimización del formato de los informes PDF."
+            },
+            {
+                phase: "Fase 4",
+                title: "Despliegue y Monitorización",
+                description: "Puesta en producción del sistema, configuración de la ejecución automatizada y establecimiento de un sistema de monitorización para asegurar su rendimiento continuo."
+            }
+        ],
+        results: [
+            {
+                number: "80%",
+                label: "Reducción en el tiempo de generación de informes estratégicos."
+            },
+            {
+                number: "95%",
+                label: "Mejora en la precisión y relevancia de las recomendaciones personalizadas."
+            },
+            {
+                number: "100%",
+                label: "Automatización completa del proceso de creación y distribución de informes."
+            },
+            {
+                number: "1",
+                label: "Mes de duración del proyecto, demostrando eficiencia en el desarrollo y la implementación."
+            }
+        ],
+        learnings: [
+            {
+                title: "La Importancia del Contexto en IA",
+                text: "Comprendimos que la personalización profunda de los insights requiere una contextualización meticulosa de los datos, lo que multiplica el valor de las recomendaciones generadas por la IA."
+            },
+            {
+                title: "Orquestación Robusta con n8n",
+                text: "La implementación de n8n demostró ser crucial para crear flujos de trabajo complejos y robustos, integrando múltiples APIs y servicios de manera eficiente y escalable."
+            },
+            {
+                title: "Impacto de la Automatización Estratégica",
+                text: "La automatización no solo ahorra tiempo, sino que también estandariza la calidad y la velocidad de entrega de información crítica, empoderando la toma de decisiones ágil."
+            }
+        ],
+        visible: true
     }
 ];
