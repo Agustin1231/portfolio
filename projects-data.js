@@ -229,5 +229,307 @@ var PROJECTS_DATA = [
             { title: "Monitorear el monitor", text: "El pipeline de datos también necesita su propio monitoreo. Si falla silenciosamente, las decisiones se toman con datos desactualizados." }
         ],
         visible: true
+    },
+    {
+        id: "sistema-de-notificaciones-inteligentes",
+        number: "13",
+        category: "Notificaciones e IA",
+        title: "Sistema de Notificaciones Inteligentes",
+        subtitle: "Orquestación y envío de alertas personalizadas para una respuesta rápida a incidentes.",
+        description: "Diseño e implementación de un sistema de notificaciones inteligentes para analizar eventos y enviar alertas personalizadas por múltiples canales. Reducción del tiempo de respuesta a incidentes en un 75% mediante orquestación avanzada y clasificación de urgencia.",
+        year: "2026",
+        company: "Urpe AI Lab",
+        duration: "2 meses",
+        image: "https://via.placeholder.com/1200x600/1A2332/FFFFFF?text=Sistema+de+Notificaciones+Inteligentes",
+        imageCaption: "Diagrama conceptual del flujo de notificaciones inteligentes.",
+        techCard: [
+            "n8n",
+            "OpenAI",
+            "PostgreSQL",
+            "Slack API"
+        ],
+        techFull: [
+            "n8n",
+            "OpenAI",
+            "PostgreSQL",
+            "Webhooks",
+            "Slack API",
+            "WhatsApp API",
+            "Python"
+        ],
+        metrics: [
+            {
+                label: "Reducción Tiempo Respuesta",
+                value: "75%"
+            },
+            {
+                label: "Canales de Notificación",
+                value: "3+"
+            },
+            {
+                label: "Fuentes de Eventos",
+                value: "Múltiples"
+            },
+            {
+                label: "Precisión Clasificación IA",
+                value: "Alta"
+            }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Optimizar la gestión de incidentes y la comunicación crítica mediante un sistema de alertas proactivo y adaptativo, garantizando la entrega oportuna de información esencial."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El proyecto se centró en construir una solución robusta capaz de procesar eventos de diversas fuentes, evaluarlos contextualmente y distribuir notificaciones personalizadas. Esto asegura que la información correcta llegue al destinatario adecuado en el momento oportuno, minimizando el impacto de potenciales incidencias operativas."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Este proyecto implicó el diseño y la implementación de un sistema de notificaciones inteligentes capaz de centralizar y analizar eventos procedentes de múltiples fuentes, incluyendo webhooks, bases de datos internas y APIs externas. La arquitectura se fundamenta en la orquestación eficiente de flujos de datos para una gestión integral de alertas."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Utilizando n8n como la columna vertebral para la automatización y el enrutamiento de flujos de trabajo, se integró OpenAI para la clasificación autónoma de la urgencia de los eventos, permitiendo una priorización dinámica y reduciendo la intervención manual. PostgreSQL se empleó para mantener un registro histórico completo y auditable de todos los eventos y notificaciones procesadas."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El sistema fue configurado para enviar alertas personalizadas a través de múltiples canales, como Slack, email y WhatsApp. La personalización se basó en la urgencia del incidente y las preferencias del destinatario, garantizando una comunicación efectiva y oportuna frente a cualquier eventualidad detectada."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Análisis Multifuente de Eventos",
+                description: "Capacidad para procesar y consolidar eventos de diversas procedencias (webhooks, bases de datos, APIs externas) en una plataforma unificada."
+            },
+            {
+                title: "Clasificación Inteligente de Urgencia",
+                description: "Implementación de modelos de IA (OpenAI) para analizar el contexto de cada evento y clasificar su nivel de urgencia de manera autónoma."
+            },
+            {
+                title: "Notificaciones Multicanal Adaptativas",
+                description: "Envío de alertas personalizadas por Slack, email y WhatsApp, adaptando el mensaje y el canal según la urgencia y el perfil del destinatario."
+            },
+            {
+                title: "Historial de Eventos y Auditoría",
+                description: "Almacenamiento persistente en PostgreSQL de todos los eventos y notificaciones para fines de trazabilidad, análisis y cumplimiento."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Análisis y Diseño Conceptual",
+                description: "Definición detallada de los requisitos del sistema, identificación de fuentes de datos, canales de comunicación y reglas iniciales de clasificación de urgencia."
+            },
+            {
+                phase: "Fase 2",
+                title: "Implementación de la Orquestación y Conectores",
+                description: "Configuración de n8n para la gestión de flujos de trabajo, integración de webhooks, bases de datos y APIs de canales de notificación (Slack, WhatsApp)."
+            },
+            {
+                phase: "Fase 3",
+                title: "Desarrollo del Módulo de Inteligencia Artificial",
+                description: "Integración con OpenAI para la clasificación contextual de la urgencia de los eventos, y desarrollo de lógica para la personalización de mensajes."
+            },
+            {
+                phase: "Fase 4",
+                title: "Pruebas, Despliegue y Optimización Continua",
+                description: "Realización de pruebas funcionales y de rendimiento, despliegue en un entorno productivo y monitoreo para mejoras iterativas."
+            }
+        ],
+        results: [
+            {
+                number: "75%",
+                label: "Reducción en el tiempo de respuesta a incidentes críticos, mejorando la operatividad."
+            },
+            {
+                number: "3+",
+                label: "Canales de comunicación críticos (Slack, WhatsApp, Email) integrados para notificaciones."
+            },
+            {
+                number: "Múltiples",
+                label: "Fuentes de datos heterogéneas procesadas y analizadas para la detección de eventos."
+            },
+            {
+                number: "Alta",
+                label: "Precisión en la clasificación automática de la urgencia de los incidentes por IA."
+            }
+        ],
+        learnings: [
+            {
+                title: "El Valor de la Orquestación de Flujos",
+                text: "La implementación de n8n demostró la capacidad de esta herramienta para integrar y automatizar flujos complejos de datos entre servicios dispares de manera eficiente, optimizando la gestión de eventos y notificaciones."
+            },
+            {
+                title: "Impacto de la IA en la Priorización de Alertas",
+                text: "La integración de OpenAI fue fundamental para clasificar dinámicamente la urgencia de los eventos, reduciendo significativamente la carga manual de triaje y mejorando la precisión y relevancia de las alertas enviadas a los equipos."
+            },
+            {
+                title: "Flexibilidad Multicanal para la Comunicación Crítica",
+                text: "Se aprendió la importancia de adaptar la estrategia de comunicación a diversos canales y niveles de urgencia. Esto garantiza que la información crítica llegue a las personas correctas en el formato más efectivo, mejorando la toma de decisiones y la coordinación."
+            }
+        ],
+        visible: true
+    },
+    {
+        id: "sistema-de-notificaciones-inteligentes",
+        number: "14",
+        category: "Notificaciones e IA",
+        title: "Sistema de Notificaciones Inteligentes",
+        subtitle: "Orquestación y envío de alertas personalizadas para una respuesta rápida a incidentes.",
+        description: "Diseño e implementación de un sistema de notificaciones inteligentes para analizar eventos y enviar alertas personalizadas por múltiples canales. Reducción del tiempo de respuesta a incidentes en un 75% mediante orquestación avanzada y clasificación de urgencia.",
+        year: "2026",
+        company: "Urpe AI Lab",
+        duration: "2 meses",
+        image: "https://via.placeholder.com/1200x600/1A2332/FFFFFF?text=Sistema+de+Notificaciones+Inteligentes",
+        imageCaption: "Diagrama conceptual del flujo de notificaciones inteligentes.",
+        techCard: [
+            "n8n",
+            "OpenAI",
+            "PostgreSQL",
+            "Slack API"
+        ],
+        techFull: [
+            "n8n",
+            "OpenAI",
+            "PostgreSQL",
+            "Webhooks",
+            "Slack API",
+            "WhatsApp API",
+            "Python"
+        ],
+        metrics: [
+            {
+                label: "Reducción Tiempo Respuesta",
+                value: "75%"
+            },
+            {
+                label: "Canales de Notificación",
+                value: "3+"
+            },
+            {
+                label: "Fuentes de Eventos",
+                value: "Múltiples"
+            },
+            {
+                label: "Precisión Clasificación IA",
+                value: "Alta"
+            }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Optimizar la gestión de incidentes y la comunicación crítica mediante un sistema de alertas proactivo y adaptativo, garantizando la entrega oportuna de información esencial."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El proyecto se centró en construir una solución robusta capaz de procesar eventos de diversas fuentes, evaluarlos contextualmente y distribuir notificaciones personalizadas. Esto asegura que la información correcta llegue al destinatario adecuado en el momento oportuno, minimizando el impacto de potenciales incidencias operativas."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Este proyecto implicó el diseño y la implementación de un sistema de notificaciones inteligentes capaz de centralizar y analizar eventos procedentes de múltiples fuentes, incluyendo webhooks, bases de datos internas y APIs externas. La arquitectura se fundamenta en la orquestación eficiente de flujos de datos para una gestión integral de alertas."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Utilizando n8n como la columna vertebral para la automatización y el enrutamiento de flujos de trabajo, se integró OpenAI para la clasificación autónoma de la urgencia de los eventos, permitiendo una priorización dinámica y reduciendo la intervención manual. PostgreSQL se empleó para mantener un registro histórico completo y auditable de todos los eventos y notificaciones procesadas."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El sistema fue configurado para enviar alertas personalizadas a través de múltiples canales, como Slack, email y WhatsApp. La personalización se basó en la urgencia del incidente y las preferencias del destinatario, garantizando una comunicación efectiva y oportuna frente a cualquier eventualidad detectada."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Análisis Multifuente de Eventos",
+                description: "Capacidad para procesar y consolidar eventos de diversas procedencias (webhooks, bases de datos, APIs externas) en una plataforma unificada."
+            },
+            {
+                title: "Clasificación Inteligente de Urgencia",
+                description: "Implementación de modelos de IA (OpenAI) para analizar el contexto de cada evento y clasificar su nivel de urgencia de manera autónoma."
+            },
+            {
+                title: "Notificaciones Multicanal Adaptativas",
+                description: "Envío de alertas personalizadas por Slack, email y WhatsApp, adaptando el mensaje y el canal según la urgencia y el perfil del destinatario."
+            },
+            {
+                title: "Historial de Eventos y Auditoría",
+                description: "Almacenamiento persistente en PostgreSQL de todos los eventos y notificaciones para fines de trazabilidad, análisis y cumplimiento."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Análisis y Diseño Conceptual",
+                description: "Definición detallada de los requisitos del sistema, identificación de fuentes de datos, canales de comunicación y reglas iniciales de clasificación de urgencia."
+            },
+            {
+                phase: "Fase 2",
+                title: "Implementación de la Orquestación y Conectores",
+                description: "Configuración de n8n para la gestión de flujos de trabajo, integración de webhooks, bases de datos y APIs de canales de notificación (Slack, WhatsApp)."
+            },
+            {
+                phase: "Fase 3",
+                title: "Desarrollo del Módulo de Inteligencia Artificial",
+                description: "Integración con OpenAI para la clasificación contextual de la urgencia de los eventos, y desarrollo de lógica para la personalización de mensajes."
+            },
+            {
+                phase: "Fase 4",
+                title: "Pruebas, Despliegue y Optimización Continua",
+                description: "Realización de pruebas funcionales y de rendimiento, despliegue en un entorno productivo y monitoreo para mejoras iterativas."
+            }
+        ],
+        results: [
+            {
+                number: "75%",
+                label: "Reducción en el tiempo de respuesta a incidentes críticos, mejorando la operatividad."
+            },
+            {
+                number: "3+",
+                label: "Canales de comunicación críticos (Slack, WhatsApp, Email) integrados para notificaciones."
+            },
+            {
+                number: "Múltiples",
+                label: "Fuentes de datos heterogéneas procesadas y analizadas para la detección de eventos."
+            },
+            {
+                number: "Alta",
+                label: "Precisión en la clasificación automática de la urgencia de los incidentes por IA."
+            }
+        ],
+        learnings: [
+            {
+                title: "El Valor de la Orquestación de Flujos",
+                text: "La implementación de n8n demostró la capacidad de esta herramienta para integrar y automatizar flujos complejos de datos entre servicios dispares de manera eficiente, optimizando la gestión de eventos y notificaciones."
+            },
+            {
+                title: "Impacto de la IA en la Priorización de Alertas",
+                text: "La integración de OpenAI fue fundamental para clasificar dinámicamente la urgencia de los eventos, reduciendo significativamente la carga manual de triaje y mejorando la precisión y relevancia de las alertas enviadas a los equipos."
+            },
+            {
+                title: "Flexibilidad Multicanal para la Comunicación Crítica",
+                text: "Se aprendió la importancia de adaptar la estrategia de comunicación a diversos canales y niveles de urgencia. Esto garantiza que la información crítica llegue a las personas correctas en el formato más efectivo, mejorando la toma de decisiones y la coordinación."
+            }
+        ],
+        visible: true
     }
 ];
