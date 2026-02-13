@@ -99,16 +99,28 @@ function updateActiveNavLink() {
     });
 }
 
+// FIX: Solo hacer smooth scroll si el enlace es a una sección de la MISMA página
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-        e.preventDefault();
         const targetId = link.getAttribute('href');
+        
+        // Si el enlace contiene "index.html" o ".html", dejar que navegue normalmente
+        if (targetId.includes('.html')) {
+            return; // No hacer preventDefault, dejar que navegue
+        }
+        
+        // Si es un hash (#algo), verificar si la sección existe en esta página
         const targetSection = document.querySelector(targetId);
         
-        targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        if (targetSection) {
+            // La sección existe en esta página, hacer smooth scroll
+            e.preventDefault();
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        // Si no existe, dejar que el navegador maneje el enlace normalmente
     });
 });
 
