@@ -232,7 +232,7 @@ var PROJECTS_DATA = [
     },
     {
         id: "sistema-de-notificaciones-inteligentes",
-        number: "13",
+        number: "05",
         category: "Notificaciones e IA",
         title: "Sistema de Notificaciones Inteligentes",
         subtitle: "Orquestación y envío de alertas personalizadas para una respuesta rápida a incidentes.",
@@ -383,7 +383,7 @@ var PROJECTS_DATA = [
     },
     {
         id: "sistema-de-notificaciones-inteligentes",
-        number: "14",
+        number: "06",
         category: "Notificaciones e IA",
         title: "Sistema de Notificaciones Inteligentes",
         subtitle: "Orquestación y envío de alertas personalizadas para una respuesta rápida a incidentes.",
