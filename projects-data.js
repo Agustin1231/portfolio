@@ -275,5 +275,155 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "automatizacion-inteligente-de-analisis-de-shows",
+        number: "03",
+        category: "Automatización y Datos",
+        title: "Automatización Inteligente de Análisis de Shows",
+        subtitle: "Sistema automatizado para el análisis de rendimiento de shows mediante IA y visualización de datos.",
+        description: "Flujo automatizado que procesa datos de shows con IA, almacenándolos para generar métricas y visualizaciones personalizadas. Permite un análisis de rendimiento centralizado y eficiente, eliminando tareas manuales.",
+        year: "2025",
+        company: "Urpe AI Lab",
+        duration: "1 mes",
+        image: "https://via.placeholder.com/1200x600/1A2332/FFFFFF?text=Automatizacion+Inteligente+de+Analisis+de+Shows",
+        imageCaption: "Dashboard de análisis de shows con métricas y visualizaciones clave.",
+        techCard: [
+            "n8n",
+            "OpenAI",
+            "Supabase",
+            "Análisis de Datos"
+        ],
+        techFull: [
+            "n8n",
+            "OpenAI",
+            "Supabase",
+            "Webhooks",
+            "Análisis de Datos",
+            "Visualización"
+        ],
+        metrics: [
+            {
+                label: "Reducción de Tiempo de Análisis",
+                value: "80%"
+            },
+            {
+                label: "Precisión en Métricas",
+                value: "95%+ "
+            },
+            {
+                label: "Fuentes de Datos Integradas",
+                value: "Múltiples"
+            },
+            {
+                label: "Informes Generados",
+                value: "Automatizados"
+            }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Optimizar el proceso de análisis de rendimiento de shows mediante la automatización e inteligencia artificial."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El proyecto busca eliminar la necesidad de cálculos manuales y consultas a diversas fuentes, centralizando la información y proporcionando una visión clara y accionable del desempeño de cada evento."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Desarrollé un flujo automatizado en n8n que ingiere datos de shows desde una página web a través de un webhook controlado, asegurando la captura eficiente y en tiempo real de la información relevante."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Implementé capacidades de inteligencia artificial, utilizando OpenAI, para procesar y analizar los datos recibidos, extrayendo métricas clave y patrones de rendimiento que serían difíciles de identificar manualmente."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Los datos procesados son almacenados en una base de datos centralizada (Supabase). Posteriormente, el sistema genera estadísticas, métricas y visualizaciones personalizadas, permitiendo a los clientes analizar su rendimiento desde un único panel, eliminando la necesidad de cálculos manuales y consultas a múltiples fuentes."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Ingesta Automatizada de Datos",
+                description: "Sistema de webhooks controlado para la captura automática y eficiente de información de shows desde la fuente web."
+            },
+            {
+                title: "Análisis Inteligente con IA",
+                description: "Utilización de OpenAI para procesar datos, extraer métricas relevantes y detectar patrones de rendimiento de manera autónoma."
+            },
+            {
+                title: "Base de Datos Centralizada",
+                description: "Almacenamiento robusto y escalable de todos los datos procesados en Supabase para una gestión y acceso unificados."
+            },
+            {
+                title: "Visualizaciones Personalizadas",
+                description: "Generación de dashboards y reportes adaptados para una comprensión rápida y profunda del desempeño de cada show."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Diseño y Planificación",
+                description: "Definición de los requisitos, diseño del flujo de datos y la arquitectura general del sistema automatizado."
+            },
+            {
+                phase: "Fase 2",
+                title: "Implementación del Flujo n8n",
+                description: "Desarrollo del webhook de ingesta, configuración de los nodos de n8n y la lógica de procesamiento de datos inicial."
+            },
+            {
+                phase: "Fase 3",
+                title: "Integración de IA y BD",
+                description: "Conexión con la API de OpenAI para el análisis inteligente y configuración de Supabase para el almacenamiento estructurado de los resultados."
+            },
+            {
+                phase: "Fase 4",
+                title: "Desarrollo de Visualizaciones",
+                description: "Creación del panel de control y las visualizaciones personalizadas para presentar las métricas de rendimiento a los usuarios finales."
+            }
+        ],
+        results: [
+            {
+                number: "80%",
+                label: "Reducción en el tiempo dedicado al análisis manual de shows."
+            },
+            {
+                number: "95%+",
+                label: "Mejora en la precisión de las métricas y los insights obtenidos gracias a la IA."
+            },
+            {
+                number: "1",
+                label: "Panel centralizado y unificado para el monitoreo de todos los shows."
+            },
+            {
+                number: "Múltiples",
+                label: "Fuentes de datos de shows integradas automáticamente en un solo sistema."
+            }
+        ],
+        learnings: [
+            {
+                title: "Optimización de Flujos de Trabajo",
+                text: "La implementación de herramientas de automatización como n8n es crucial para eliminar tareas repetitivas y liberar recursos, permitiendo un enfoque en análisis estratégicos."
+            },
+            {
+                title: "Potencial de la IA en Análisis de Datos",
+                text: "La inteligencia artificial, como OpenAI, transforma grandes volúmenes de datos brutos en insights accionables y relevantes de forma eficiente."
+            },
+            {
+                title: "Integración de Herramientas No-Code/Low-Code",
+                text: "La combinación de plataformas como n8n y Supabase demuestra la capacidad de crear soluciones robustas y escalables con un desarrollo ágil y eficiente."
+            }
+        ],
+        visible: true
     }
 ];
