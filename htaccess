@@ -1,0 +1,22 @@
+# ==========================================
+# CONTROL DE CACHÉ
+# ==========================================
+
+# Evitar caché en archivos JavaScript
+<FilesMatch "\.(js)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</FilesMatch>
+
+# Permitir caché en archivos estáticos (imágenes, fuentes, CSS)
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|woff|woff2|ttf|eot|css)$">
+    Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
+
+# Evitar caché en archivos HTML
+<FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</FilesMatch>
