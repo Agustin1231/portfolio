@@ -15,7 +15,7 @@ var PROJECTS_DATA = [
         year: "2025",
         company: "Plataforma de Podcasts",
         duration: "1 mes",
-        image: "https://via.placeholder.com/1200x600/1A2332/FFFFFF?text=Automatizacion+Podcasts",
+        image: "https://imagenes.agustinynatalia.site/automatizacion-analitica-podcasts",
         imageCaption: "Arquitectura general del sistema de monitoreo y análisis de podcasts",
         techCard: ["n8n", "OP3", "Supabase", "JavaScript"],
         techFull: [
@@ -136,7 +136,7 @@ var PROJECTS_DATA = [
         year: "2025",
         company: "Urpe AI Lab",
         duration: "1 mes",
-        image: "https://via.placeholder.com/1200x600/1A2332/FFFFFF?text=Agente+de+IA+para+Insights+Estrategicos",
+        image: "https://imagenes.agustinynatalia.site/agente-de-ia-para-insights-estrategicos",
         imageCaption: "Visualización del flujo de un agente de IA generando informes estratégicos automatizados.",
         techCard: [
             "OpenAI",
@@ -286,7 +286,7 @@ var PROJECTS_DATA = [
         year: "2025",
         company: "Urpe AI Lab",
         duration: "1 mes",
-        image: "https://via.placeholder.com/1200x600/1A2332/FFFFFF?text=Automatizacion+Inteligente+de+Analisis+de+Shows",
+        image: "https://imagenes.agustinynatalia.site/automatizacion-inteligente-de-analisis-de-shows",
         imageCaption: "Dashboard de análisis de shows con métricas y visualizaciones clave.",
         techCard: [
             "n8n",
