@@ -185,7 +185,18 @@
 
     function init() {
         const projects = getProjects();
-        if (!projects.length) return;
+        if (!projects.length) {
+            // Reintentar hasta 10 veces con intervalos de 100ms
+            // por si projects-data.js aún no terminó de cargar
+            if (typeof PROJECTS_DATA === 'undefined' && (!init._retries || init._retries < 10)) {
+                init._retries = (init._retries || 0) + 1;
+                console.warn('PROJECTS_DATA no disponible, reintentando... (' + init._retries + '/10)');
+                setTimeout(init, 100);
+                return;
+            }
+            console.error('No se pudieron cargar los proyectos después de múltiples intentos.');
+            return;
+        }
         const projectId = getProjectIdFromURL();
         if (projectId) {
             const project = projects.find(p => p.id === projectId);

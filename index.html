@@ -363,7 +363,7 @@
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                             <polyline points="22,6 12,13 2,6"/>
                         </svg>
-                        <a href="mailto:aperaltaguarin@gmail.com" class="__cf_email__" data-cfemail="4f2e3f2a3d2e233b2e283a2e3d26210f28222e2623612c2022">aperaltaguarin@gmail.com</a>
+                        <a href="/cdn-cgi/l/email-protection#b2d3c2d7c0d3dec6d3d5c7d3c0dbdcf2d5dfd3dbde9cd1dddf" class="__cf_email__" data-cfemail="4f2e3f2a3d2e233b2e283a2e3d26210f28222e2623612c2022"><span class="__cf_email__" data-cfemail="c6a7b6a3b4a7aab2a7a1b3a7b4afa886a1aba7afaae8a5a9ab">[email&#160;protected]</span></a>
                     </div>
                 </div>
 
@@ -383,7 +383,7 @@
                             </div>
                             <div>
                                 <h3>Email</h3>
-                                <a href="mailto:aperaltaguarin@gmail.com">aperaltaguarin@gmail.com</a>
+                                <a href="/cdn-cgi/l/email-protection#0e6f7e6b7c6f627a6f697b6f7c67604e69636f6762206d6163"><span class="__cf_email__" data-cfemail="4b2a3b2e392a273f2a2c3e2a3922250b2c262a222765282426">[email&#160;protected]</span></a>
                             </div>
                         </div>
                         <div class="contact-method">
@@ -431,20 +431,41 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Cache busting automático con timestamp
-        const timestamp = new Date().getTime();
-        const scripts = [
-            'script.js',
-            'projects-data.js',
-            'project-renderer.js'
-        ];
-        
-        scripts.forEach(script => {
-            const scriptElement = document.createElement('script');
-            scriptElement.src = `${script}?v=${timestamp}`;
-            document.body.appendChild(scriptElement);
-        });
+    <script>
+        // Carga secuencial garantizada de scripts
+        // Esto evita que project-renderer.js se ejecute antes de que PROJECTS_DATA esté disponible
+        (function() {
+            var timestamp = new Date().getTime();
+            var scripts = [
+                'script.js',
+                'projects-data.js',
+                'project-renderer.js'
+            ];
+            var index = 0;
+
+            function loadNext() {
+                if (index >= scripts.length) return;
+                var s = document.createElement('script');
+                s.src = scripts[index] + '?v=' + timestamp;
+                s.onload = function() {
+                    index++;
+                    loadNext();
+                };
+                s.onerror = function() {
+                    console.error('Error cargando: ' + scripts[index]);
+                    index++;
+                    loadNext();
+                };
+                document.body.appendChild(s);
+            }
+
+            // Esperar a que el DOM esté listo
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', loadNext);
+            } else {
+                loadNext();
+            }
+        })();
     </script>
 </body>
 </html>
