@@ -427,14 +427,14 @@ var PROJECTS_DATA = [
         visible: true
     },
     {
-        id: "plataforma-de-automatizacion-de-contenido-y-logos-con-ia-para-proyectos-web-de-nata",
+        id: "plataforma-de-automatizacion-de-contenido-y-logos-con-ia-para-proyectos-web",
         number: "04",
         category: "Automatización e IA",
-        title: "Plataforma de Automatización de Contenido y Logos con IA para Proyectos Web de Nata",
+        title: "Plataforma de Automatización de Contenido y Logos con IA para Proyectos Web",
         subtitle: "Optimización integral de la creación de contenido y logotipos web mediante inteligencia artificial.",
         description: "Workflow integral para la generación automatizada de contenido textual y diseño de logotipos de marca. El sistema agiliza la creación de activos web, los organiza eficientemente en la nube y proporciona acceso inmediato a los resultados.",
         year: "2025",
-        company: "Nata (Cliente / Proyecto)",
+        company: "Natalia (Cliente / Proyecto)",
         duration: "3 meses",
         image: "https://imagenes.agustinynatalia.site/plataforma-de-automatizacion-de-contenido-y-logos-con-ia-para-proyectos-web-de-nata",
         imageCaption: "Diagrama conceptual del flujo de trabajo de generación de contenido y logos con IA.",
