@@ -425,5 +425,156 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "plataforma-de-automatizacion-de-contenido-y-logos-con-ia-para-proyectos-web-de-nata",
+        number: "04",
+        category: "Automatización e IA",
+        title: "Plataforma de Automatización de Contenido y Logos con IA para Proyectos Web de Nata",
+        subtitle: "Optimización integral de la creación de contenido y logotipos web mediante inteligencia artificial.",
+        description: "Workflow integral para la generación automatizada de contenido textual y diseño de logotipos de marca. El sistema agiliza la creación de activos web, los organiza eficientemente en la nube y proporciona acceso inmediato a los resultados.",
+        year: "2025",
+        company: "Nata (Cliente / Proyecto)",
+        duration: "3 meses",
+        image: "https://imagenes.agustinynatalia.site/plataforma-de-automatizacion-de-contenido-y-logos-con-ia-para-proyectos-web-de-nata",
+        imageCaption: "Diagrama conceptual del flujo de trabajo de generación de contenido y logos con IA.",
+        techCard: [
+            "n8n",
+            "OpenAI API",
+            "Google Drive API",
+            "JavaScript"
+        ],
+        techFull: [
+            "n8n",
+            "OpenAI API",
+            "Google Gemini API",
+            "Google Drive API",
+            "Google Docs API",
+            "Webhooks",
+            "JavaScript"
+        ],
+        metrics: [
+            {
+                label: "Tiempo de Creación",
+                value: "Reducido en 70%"
+            },
+            {
+                label: "Activos Generados",
+                value: "100+ por proyecto"
+            },
+            {
+                label: "Eficiencia Operacional",
+                value: "Mejorada en 85%"
+            },
+            {
+                label: "Precisión del Contenido",
+                value: "8/10"
+            }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Desarrollar una solución robusta y automatizada que transforme el proceso de generación de contenido web y diseño de logotipos, utilizando IA para maximizar la eficiencia y reducir los tiempos de entrega."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Este proyecto se centró en construir un ecosistema donde los usuarios pudieran, a través de interfaces sencillas, solicitar y recibir textos para secciones clave de sus páginas web (Inicio, Sobre Nosotros, Servicios, Contacto) y logotipos de marca. La meta era integrar avanzadas APIs de inteligencia artificial para la creación de estos activos, y APIs de Google para su organización y acceso, proporcionando una solución integral que agilice la fase inicial de cualquier proyecto web."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "La plataforma es un flujo de trabajo automatizado construido sobre n8n que orquesta múltiples servicios de IA y APIs de Google. Los usuarios inician el proceso completando formularios intuitivos donde especifican sus requisitos para el contenido textual y las características deseadas para los logotipos."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Una vez recibidas las solicitudes, el sistema activa las APIs de OpenAI y Google Gemini para generar textos creativos y coherentes para las secciones web, y propuestas de logotipos innovadoras. La inteligencia artificial no solo genera desde cero, sino que también permite iteraciones y ediciones basadas en el feedback del usuario."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Posteriormente, los activos generados son automáticamente clasificados y almacenados: los textos en Google Docs listos para su revisión y edición final, y los logotipos en Google Drive en formatos accesibles. Finalmente, el sistema notifica al usuario con enlaces directos a sus nuevos activos, garantizando un acceso rápido y una gestión documental sin esfuerzo, facilitando la implementación en sus proyectos web."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Generación de Contenido Web Inteligente",
+                description: "Creación automatizada de textos para secciones estándar de páginas web (Inicio, Sobre Nosotros, Servicios, Contacto) utilizando avanzados modelos de lenguaje de IA para asegurar relevancia y coherencia."
+            },
+            {
+                title: "Diseño y Edición de Logotipos Asistido por IA",
+                description: "Capacidad de generar logotipos de marca desde cero o modificar diseños existentes, aprovechando la inteligencia artificial para interpretar descripciones y preferencias visuales del usuario."
+            },
+            {
+                title: "Automatización Integral de Almacenamiento",
+                description: "Organización automática de todos los activos generados (textos en Google Docs, logotipos en Google Drive) en estructuras de carpetas predefinidas, garantizando una gestión de archivos eficiente y accesible."
+            },
+            {
+                title: "Interfaz de Solicitud Simplificada y Acceso Directo",
+                description: "Formularios intuitivos para la solicitud de contenido y logotipos, con notificaciones que incluyen enlaces directos a los resultados finales, optimizando el flujo de trabajo del usuario."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Definición y Diseño de Flujos",
+                description: "Análisis de requisitos para la generación de contenido y logotipos. Diseño de los flujos de trabajo en n8n y esquematización de la interacción entre las APIs de IA y Google."
+            },
+            {
+                phase: "Fase 2",
+                title: "Integración de APIs y Lógica de IA",
+                description: "Configuración y conexión de las APIs de OpenAI, Google Gemini, Google Drive y Google Docs. Desarrollo de la lógica para el procesamiento de prompts y la manipulación de los datos generados por IA."
+            },
+            {
+                phase: "Fase 3",
+                title: "Desarrollo de Formularios y Pruebas",
+                description: "Implementación de los formularios de entrada de usuario vía Webhooks. Realización de pruebas exhaustivas del flujo completo, incluyendo generación, almacenamiento y entrega de resultados."
+            },
+            {
+                phase: "Fase 4",
+                title: "Despliegue y Optimización Continua",
+                description: "Lanzamiento del workflow automatizado y monitoreo de su rendimiento. Implementación de mejoras y ajustes basados en el feedback para optimizar la calidad de los activos y la eficiencia del sistema."
+            }
+        ],
+        results: [
+            {
+                number: "70%",
+                label: "Reducción en el tiempo de creación de activos iniciales para proyectos web."
+            },
+            {
+                number: "100+",
+                label: "Activos de contenido y diseño generados automáticamente por proyecto."
+            },
+            {
+                number: "95%",
+                label: "Eficiencia en la organización y accesibilidad de los archivos en Google Drive y Docs."
+            },
+            {
+                number: "1",
+                label: "Plataforma centralizada para la gestión integral de activos web con IA."
+            }
+        ],
+        learnings: [
+            {
+                title: "Gestión Avanzada de APIs de IA",
+                text: "La implementación reveló la complejidad y las oportunidades de integrar múltiples APIs de inteligencia artificial (OpenAI, Gemini) para tareas diferenciadas, requiriendo estrategias robustas para la gestión de tokens, costos y la orquestación de sus respuestas en un flujo coherente."
+            },
+            {
+                title: "Optimización de Prompts y Resultados",
+                text: "Se profundizó en la ciencia de la ingeniería de prompts, entendiendo cómo las formulaciones precisas y las iteraciones estratégicas son cruciales para obtener resultados de IA de alta calidad y relevancia, especialmente en la generación de textos y conceptos visuales para logotipos."
+            },
+            {
+                title: "Diseño de Flujos de Trabajo Resilientes",
+                text: "El proyecto subrayó la importancia de diseñar flujos de trabajo automatizados que no solo sean funcionales sino también resilientes a errores, con mecanismos de reintento y manejo de excepciones, y capaces de escalar para soportar múltiples solicitudes y tipos de contenido de manera eficiente."
+            }
+        ],
+        visible: true
     }
 ];
