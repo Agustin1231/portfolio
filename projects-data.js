@@ -425,5 +425,155 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "automatizacion-sincronizacion-contactos-crm-hubspot-mailchimp-notificaciones-slack",
+        number: "04",
+        category: "Automatización",
+        title: "Automatización de Sincronización de Contactos entre CRM (HubSpot) y Mailchimp con Notificaciones Slack",
+        subtitle: "Sincronización bidireccional de contactos entre plataformas clave, optimizando la gestión de leads y la comunicación.",
+        description: "Implementación de un flujo automatizado para mantener actualizados contactos entre HubSpot y Mailchimp. Asegura la consistencia de datos y la efectividad de campañas, con notificaciones en Slack.",
+        year: "2025",
+        company: "Cliente Interno",
+        duration: "1 mes",
+        image: "https://via.placeholder.com/1200x600/1A2332/FFFFFF?text=Sincronizacion+HubSpot+Mailchimp",
+        imageCaption: "Diagrama conceptual del flujo de sincronización de contactos entre HubSpot y Mailchimp.",
+        techCard: [
+            "n8n",
+            "HubSpot CRM",
+            "Mailchimp",
+            "Slack"
+        ],
+        techFull: [
+            "n8n",
+            "HubSpot CRM",
+            "Mailchimp",
+            "Slack",
+            "JavaScript (Node.js)",
+            "Scheduled Automation"
+        ],
+        metrics: [
+            {
+                label: "Precisión de datos",
+                value: "99.8%"
+            },
+            {
+                label: "Tiempo ahorrado",
+                value: "8 horas/mes"
+            },
+            {
+                label: "Notificaciones",
+                value: "Instantáneas"
+            },
+            {
+                label: "Alcance",
+                value: "Doble plataforma"
+            }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Garantizar la consistencia y actualidad de los datos de contacto entre HubSpot CRM y Mailchimp, optimizando las estrategias de marketing y ventas."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Este proyecto busca eliminar la duplicación de esfuerzos manuales y los errores asociados a la gestión de contactos en múltiples plataformas. Mediante una sincronización bidireccional programada, se asegura que ambos sistemas reflejen la información más reciente de los clientes potenciales y existentes."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "El núcleo del proyecto es un flujo de automatización robusto construido con n8n, encargado de orquestar la transferencia de datos entre HubSpot CRM y Mailchimp. Este flujo se activa de manera programada, por ejemplo, cada hora o diariamente, para detectar nuevas entradas o actualizaciones en cualquiera de las dos plataformas."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "La sincronización es bidireccional, lo que significa que los nuevos contactos añadidos en Mailchimp se crean en HubSpot, y las actualizaciones en HubSpot se reflejan en Mailchimp. Se manejan cuidadosamente los campos clave para asegurar la integridad de la información, evitando sobreescrituras no deseadas y manteniendo un historial preciso."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Además de la sincronización de datos, el sistema incluye un módulo de notificación a través de Slack. Cada vez que un nuevo contacto es sincronizado desde Mailchimp a HubSpot o viceversa, el equipo relevante recibe una alerta instantánea, lo que mejora la visibilidad y la coordinación en tiempo real."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Sincronización Bidireccional",
+                description: "Mantiene los contactos actualizados en tiempo real o programado entre HubSpot CRM y Mailchimp, asegurando que ambos sistemas dispongan de la información más reciente."
+            },
+            {
+                title: "Automatización Programada",
+                description: "El flujo se ejecuta automáticamente en intervalos definidos, eliminando la necesidad de intervención manual y garantizando la actualización constante de los datos."
+            },
+            {
+                title: "Notificaciones en Tiempo Real",
+                description: "Envía alertas instantáneas a un canal de Slack designado cada vez que se sincroniza un nuevo contacto, mejorando la comunicación interna y la capacidad de respuesta del equipo."
+            },
+            {
+                title: "Manejo de Consistencia de Datos",
+                description: "Implementa lógica para evitar duplicados y conflictos de datos, garantizando la integridad y fiabilidad de la información de los contactos en ambas plataformas."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Planificación y Diseño",
+                description: "Definición de requisitos, mapeo de campos de datos entre HubSpot y Mailchimp, y diseño de la lógica de sincronización."
+            },
+            {
+                phase: "Fase 2",
+                title: "Desarrollo y Configuración",
+                description: "Implementación del flujo de automatización en n8n, configuración de credenciales API e integración con Slack."
+            },
+            {
+                phase: "Fase 3",
+                title: "Pruebas y Depuración",
+                description: "Realización de pruebas exhaustivas para asegurar la correcta sincronización bidireccional y el envío de notificaciones."
+            },
+            {
+                phase: "Fase 4",
+                title: "Implementación y Monitorización",
+                description: "Despliegue final del sistema y establecimiento de un plan de monitorización para asegurar su operación continua y eficiente."
+            }
+        ],
+        results: [
+            {
+                number: "100%",
+                label: "Consistencia de datos entre CRM y plataforma de email marketing."
+            },
+            {
+                number: "50+",
+                label: "Horas manuales ahorradas anualmente en gestión de contactos."
+            },
+            {
+                number: "3x",
+                label: "Aumento en la velocidad de reacción del equipo ante nuevos leads."
+            },
+            {
+                number: "1",
+                label: "Sistema unificado para la gestión de contactos y campañas."
+            }
+        ],
+        learnings: [
+            {
+                title: "Complejidad de Mapeo Bidireccional",
+                text: "Descubrimos la importancia de un mapeo meticuloso de campos y el manejo de IDs únicos para evitar ciclos de actualización infinitos y garantizar la integridad de los datos en ambos sistemas."
+            },
+            {
+                title: "Gestión de Errores y Excepciones",
+                text: "La robustez de la automatización depende de una buena estrategia de manejo de errores. Implementamos reintentos y notificaciones para fallos críticos, asegurando la resiliencia del flujo."
+            },
+            {
+                title: "Impacto en la Colaboración",
+                text: "La integración de Slack no solo proporciona alertas, sino que también fomenta una mayor colaboración entre los equipos de ventas y marketing al mantenerlos informados en tiempo real sobre la actividad de los contactos."
+            }
+        ],
+        visible: true
     }
 ];
