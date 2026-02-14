@@ -208,25 +208,55 @@ if (scrollIndicator) {
 }
 
 // ==========================================
-// FORMULARIO DE CONTACTO
+// FORMULARIO DE CONTACTO - NUEVO
 // ==========================================
 
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Enviando...';
+        submitButton.disabled = true;
         
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
+            solicitud: document.getElementById('solicitud').value
         };
         
-        console.log('Formulario enviado:', formData);
-        showNotification('¡Mensaje enviado con éxito! Te contactaré pronto.', 'success');
-        contactForm.reset();
+        try {
+            const response = await fetch('https://n8n.agustinynatalia.site/webhook/bienvenida-portfolio', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (response.ok) {
+                // Ocultar el formulario con animación
+                const formWrapper = document.getElementById('contactFormWrapper');
+                const successMessage = document.getElementById('successMessage');
+                
+                formWrapper.classList.add('hide');
+                
+                // Mostrar mensaje de éxito después de que se oculte el formulario
+                setTimeout(() => {
+                    successMessage.classList.add('show');
+                }, 500);
+            } else {
+                throw new Error('Error al enviar el mensaje');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showNotification('Hubo un error al enviar el mensaje. Por favor, intenta de nuevo o contáctame directamente a aperaltaguarin@gmail.com', 'error');
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
     });
 }
 

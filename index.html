@@ -20,6 +20,133 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="scroll-fixes.css">
+    <style>
+        /* Mensaje de éxito después del envío */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 4rem 2rem;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .success-message.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #2B7DE9 0%, #1B5FCF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .success-icon svg {
+            width: 60px;
+            height: 60px;
+            stroke: white;
+            stroke-width: 3;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: drawCheck 0.8s ease-in-out 0.3s forwards;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0) rotate(-180deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .success-message h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-navy);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            color: var(--color-dark-gray);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .success-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background-color: var(--color-blue-50);
+            color: var(--color-blue-700);
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-form-wrapper {
+            transition: all 0.5s ease;
+        }
+
+        .contact-form-wrapper.hide {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .success-message h2 {
+                font-size: 1.8rem;
+            }
+
+            .success-message p {
+                font-size: 1rem;
+            }
+
+            .success-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .success-icon svg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -80,7 +207,7 @@
                             <circle cx="4" cy="4" r="2"/>
                         </svg>
                     </a>
-                    <a href="mailto:agustin@example.com" aria-label="Email">
+                    <a href="/cdn-cgi/l/email-protection#355445504754594154524054475c5b755258545c591b565a58" aria-label="Email">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                             <polyline points="22,6 12,13 2,6"/>
@@ -220,57 +347,76 @@
                 <h2 class="section-title">Trabajemos Juntos</h2>
             </div>
             <div class="contact-content">
-                <p class="contact-intro">
-                    ¿Necesitas automatizar procesos, integrar sistemas o escalar tu operación?<br>
-                    Conversemos sobre cómo puedo ayudarte.
-                </p>
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3>Email</h3>
-                            <a href="mailto:agustin@example.com">agustin@example.com</a>
-                        </div>
+                <!-- Mensaje de éxito (oculto por defecto) -->
+                <div id="successMessage" class="success-message">
+                    <div class="success-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                        </svg>
                     </div>
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3>Ubicación</h3>
-                            <p>Bogotá, Colombia</p>
-                        </div>
+                    <h2>¡Gracias por contactarme!</h2>
+                    <p>
+                        He recibido tu mensaje y me pondré en contacto contigo muy pronto.
+                    </p>
+                    <div class="success-email">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <a href="mailto:aperaltaguarin@gmail.com" class="__cf_email__" data-cfemail="4f2e3f2a3d2e233b2e283a2e3d26210f28222e2623612c2022">aperaltaguarin@gmail.com</a>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" name="name" required>
+
+                <!-- Formulario y contenido (se oculta después del envío) -->
+                <div id="contactFormWrapper" class="contact-form-wrapper">
+                    <p class="contact-intro">
+                        ¿Necesitas automatizar procesos, integrar sistemas o escalar tu operación?<br>
+                        Conversemos sobre cómo puedo ayudarte.
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <a href="mailto:aperaltaguarin@gmail.com">aperaltaguarin@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>Ubicación</h3>
+                                <p>Bogotá, Colombia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="solicitud">Solicitud</label>
+                            <textarea id="solicitud" name="solicitud" rows="6" required></textarea>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Asunto</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" rows="6" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                </form>
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -285,7 +431,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Cache busting automático con timestamp
         const timestamp = new Date().getTime();
         const scripts = [
