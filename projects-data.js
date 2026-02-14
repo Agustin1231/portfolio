@@ -425,5 +425,157 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",
+        number: "04",
+        category: "Automatización e IA",
+        title: "Automatización Integral de Contenido y Diseño con IA para Marketing Digital",
+        subtitle: "Flujo automatizado para la creación y gestión de contenido web y elementos visuales con inteligencia artificial.",
+        description: "Este proyecto automatiza la creación de contenido web persuasivo y elementos visuales (logos, imágenes) utilizando IA avanzada. Agiliza la producción de materiales de marketing digital y reduce significativamente el esfuerzo manual.",
+        year: "2025",
+        company: "Nata",
+        duration: "2-3 meses",
+        image: "https://imagenes.agustinynatalia.site/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",
+        imageCaption: "Diagrama de flujo de automatización de contenido y diseño con IA en n8n.",
+        techCard: [
+            "n8n",
+            "Google Gemini",
+            "OpenAI GPT-4o",
+            "Google Docs"
+        ],
+        techFull: [
+            "n8n",
+            "Google Gemini",
+            "OpenAI GPT-4o",
+            "Google Drive",
+            "Google Docs",
+            "Google Docs API",
+            "Webhooks",
+            "Extracción de PDF"
+        ],
+        metrics: [
+            {
+                label: "Reducción tiempo producción contenido",
+                value: "Hasta 70%"
+            },
+            {
+                label: "Incremento eficiencia equipos marketing",
+                value: "45%"
+            },
+            {
+                label: "Volumen de contenido generado/editado",
+                value: "50+ piezas/mes"
+            },
+            {
+                label: "Optimización costos operativos",
+                value: "25%"
+            }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Automatizar completamente la generación de contenido web persuasivo y elementos visuales de marketing digital, integrando IA avanzada para optimizar la eficiencia y reducir los tiempos de producción."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Este proyecto busca transformar el proceso manual de creación de materiales de marketing digital, desde la conceptualización hasta la entrega final, utilizando herramientas de automatización y modelos de lenguaje e imagen de última generación. El objetivo principal es ofrecer una solución escalable que permita a las empresas generar grandes volúmenes de contenido de alta calidad de manera rápida y consistente, minimizando la intervención manual y optimizando los recursos."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "El flujo de trabajo automatizado inicia con la recopilación de requisitos detallados del cliente mediante formularios interactivos. Estos datos, junto con la información clave extraída de documentos PDF, alimentan un sistema central que, a través de n8n, orquesta la interacción con modelos de IA líderes como Google Gemini y OpenAI GPT-4o."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "La inteligencia artificial se encarga de la generación de textos persuasivos optimizados para marketing digital, así como de la creación y edición de logos e imágenes, asegurando coherencia con la identidad de marca y los objetivos de la campaña. Este enfoque multimodal garantiza la producción de materiales completos y atractivos."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Todos los resultados, tanto el contenido textual como los elementos visuales, se almacenan y gestionan de forma estructurada en Google Drive y Google Docs, facilitando la revisión, edición y publicación. La integración con Google Docs API y el uso de Webhooks aseguran una comunicación fluida entre todas las plataformas, garantizando un proceso ágil, eficiente y transparente."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Generación de Contenido Multimodal con IA",
+                description: "Automatiza la creación de textos persuasivos y elementos visuales (logos, imágenes) utilizando Google Gemini y OpenAI GPT-4o, adaptándose a las necesidades específicas de marketing digital y optimización SEO."
+            },
+            {
+                title: "Gestión Integrada de Documentos y Activos",
+                description: "Almacenamiento y organización automática de todo el contenido generado en Google Drive y Google Docs, asegurando accesibilidad, control de versiones y colaboración eficiente para equipos de marketing."
+            },
+            {
+                title: "Flujo de Trabajo Personalizable y Escalable",
+                description: "Construido sobre n8n, permite la adaptación del proceso a diferentes tipos de clientes y campañas, escalando la producción de materiales sin esfuerzo manual adicional y optimizando los recursos operativos."
+            },
+            {
+                title: "Captura de Requisitos y Extracción Inteligente",
+                description: "Sistema robusto para la recopilación de información del cliente a través de formularios intuitivos y la extracción de datos clave de documentos PDF, alimentando directamente el motor de IA para generar contenido relevante."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Definición y Recopilación de Requisitos",
+                description: "Configuración de formularios personalizados y lógica de extracción de PDF para capturar de manera eficiente los requisitos específicos del cliente y la información base del proyecto."
+            },
+            {
+                phase: "Fase 2",
+                title: "Generación Inteligente de Contenido y Diseño",
+                description: "Orquestación en n8n para enviar prompts optimizados a Google Gemini y OpenAI GPT-4o, generando textos persuasivos y proponiendo/editando elementos gráficos basados en las directrices."
+            },
+            {
+                phase: "Fase 3",
+                title: "Almacenamiento y Organización Automática",
+                description: "Integración con Google Drive y Google Docs API para guardar, estructurar y categorizar automáticamente los resultados de la IA, asegurando un acceso y gestión eficiente de los activos."
+            },
+            {
+                phase: "Fase 4",
+                title: "Revisión Colaborativa y Entrega Final",
+                description: "Preparación de los materiales generados en Google Docs para una revisión eficiente por parte del cliente o equipo interno, y posterior entrega ágil o publicación directa."
+            }
+        ],
+        results: [
+            {
+                number: "70%",
+                label: "Reducción en el tiempo de generación y edición de contenido web y visual."
+            },
+            {
+                number: "50+",
+                label: "Piezas de contenido y diseño gráfico generadas mensualmente de forma automatizada."
+            },
+            {
+                number: "35%",
+                label: "Aumento en la consistencia y calidad de los materiales de marketing digital producidos."
+            },
+            {
+                number: "4",
+                label: "Herramientas de IA y automatización líderes integradas sin fisuras en un único flujo."
+            }
+        ],
+        learnings: [
+            {
+                title: "Optimización de Prompts y Modelos de IA",
+                text: "La iteración constante en la ingeniería de prompts fue crucial para maximizar la calidad y relevancia del contenido generado por Google Gemini y OpenAI GPT-4o. Comprendimos las fortalezas de cada modelo para tareas específicas, ajustando las instrucciones para obtener resultados óptimos tanto en texto como en elementos visuales."
+            },
+            {
+                title: "Gestión de Flujos de Trabajo Complejos con n8n",
+                text: "Dominar la orquestación de múltiples APIs y servicios externos dentro de n8n, incluyendo el manejo robusto de errores y la configuración de reintentos, fue esencial para asegurar la fiabilidad y escalabilidad de la automatización integral. La modularidad de n8n permitió un desarrollo ágil y mantenimiento eficiente."
+            },
+            {
+                title: "Integración Bidireccional con Google Workspace",
+                text: "Aprender a explotar a fondo la Google Docs API y Google Drive para no solo almacenar resultados, sino también para recuperar y actualizar contenido dinámicamente, lo que permitió un control de versiones sofisticado y una colaboración en tiempo real, optimizando el ciclo de revisión y aprobación de los materiales."
+            }
+        ],
+        visible: true
     }
 ];
