@@ -577,5 +577,159 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",
+        number: "05",
+        category: "Automatización e IA",
+        title: "Automatización Completa de Contenido y Publicación para Blog de Tecnología con IA",
+        subtitle: "Flujo integral para la curación, creación y publicación automatizada de contenido tecnológico.",
+        description: "Automatiza integralmente la curación, creación y publicación de contenido para blogs de tecnología.\nUtiliza IA avanzada para filtrar noticias, generar artículos y optimizar la distribución.",
+        year: "2026",
+        company: "Proyecto Personal",
+        duration: "3 meses",
+        image: "https://imagenes.agustinynatalia.site/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",
+        imageCaption: "Diagrama de flujo de automatización de contenido con IA para un blog de tecnología.",
+        techCard: [
+            "n8n",
+            "Google Gemini",
+            "OpenAI GPT-4",
+            "WordPress API"
+        ],
+        techFull: [
+            "n8n",
+            "WordPress API",
+            "Google Gemini",
+            "OpenAI GPT-4",
+            "PostgreSQL",
+            "Google Sheets",
+            "RSS",
+            "Scrape.do API",
+            "Telegram",
+            "JavaScript"
+        ],
+        metrics: [
+            {
+                label: "Reducción de Tiempo de Publicación",
+                value: "90%"
+            },
+            {
+                label: "Artículos Generados por Semana",
+                value: "15+"
+            },
+            {
+                label: "Relevancia del Contenido (AI Score)",
+                value: "95%"
+            },
+            {
+                label: "Horas de Trabajo Ahorradas por Mes",
+                value: "80+"
+            }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Automatizar completamente la curación, creación y publicación de contenido para un blog de tecnología, superando los desafíos de la producción manual y lenta."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Este proyecto busca establecer un flujo de trabajo integral que utilice inteligencia artificial y herramientas de automatización para generar artículos de alta calidad, mantener un calendario de publicación constante y asegurar la relevancia del contenido para la audiencia de noticias tecnológicas. La meta es transformar un proceso laborioso en una operación eficiente y escalable."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "El núcleo del proyecto es un flujo de automatización que gestiona todo el ciclo de vida del contenido. Inicia con la recolección de noticias de múltiples fuentes RSS, seguida de un proceso de filtrado y puntuación de relevancia impulsado por modelos de IA avanzados para identificar las historias más impactantes y pertinentes para la audiencia tecnológica."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Una vez seleccionadas, las noticias son procesadas para extraer su contenido principal de manera eficiente. Posteriormente, motores de IA generativa (Google Gemini y OpenAI GPT-4) se encargan de reescribir los artículos, adaptando el tono y estilo del blog, y generando imágenes contextuales que enriquecen visualmente el contenido, garantizando originalidad y atractivo."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Finalmente, el contenido optimizado es publicado automáticamente en WordPress a través de su API, manejando la subida de texto, imágenes y metadatos. La gestión y el seguimiento del contenido se realizan mediante bases de datos (PostgreSQL y Google Sheets) para mantener un control exhaustivo, y las notificaciones de estado y alertas son enviadas en tiempo real vía Telegram, garantizando una supervisión efectiva y proactiva del flujo completo."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Recolección y Filtrado Inteligente de Noticias",
+                description: "Automatiza la ingesta de noticias de múltiples feeds RSS, utilizando algoritmos de IA para filtrar y puntuar la relevancia del contenido, asegurando que solo las historias más importantes lleguen al proceso de creación."
+            },
+            {
+                title: "Generación y Reescritura de Contenido con IA",
+                description: "Emplea modelos de inteligencia artificial como Google Gemini y OpenAI GPT-4 para reescribir artículos originales, generar resúmenes coherentes y crear imágenes contextuales, optimizando la calidad y la originalidad del contenido sin intervención manual."
+            },
+            {
+                title: "Publicación Automatizada en WordPress",
+                description: "Integra la plataforma de blog WordPress mediante su API, permitiendo la publicación automática de artículos completos, incluyendo texto, imágenes, etiquetas y categorías, eliminando la necesidad de carga manual."
+            },
+            {
+                title: "Monitoreo y Notificaciones en Tiempo Real",
+                description: "Utiliza bases de datos (PostgreSQL, Google Sheets) para el seguimiento detallado del estado de cada artículo y el flujo. Envía notificaciones proactivas vía Telegram sobre publicaciones exitosas, errores o cualquier incidencia crítica, facilitando una supervisión ágil."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Ingesta y Curación de Contenido",
+                description: "Configuración de fuentes RSS para la recolección automática de noticias. Implementación de un modelo de IA para clasificar y puntuar la relevancia de cada noticia, seleccionando las más aptas."
+            },
+            {
+                phase: "Fase 2",
+                title: "Extracción y Generación con IA",
+                description: "Utilización de Scrape.do para extraer el contenido principal de las noticias seleccionadas. Procesamiento del texto con Google Gemini y OpenAI GPT-4 para reescritura, mejora de SEO y generación de imágenes."
+            },
+            {
+                phase: "Fase 3",
+                title: "Publicación y Optimización",
+                description: "Formateo del contenido generado para adaptarse a los estándares del blog. Publicación automatizada en WordPress a través de su API, incluyendo la subida de imágenes y metadatos."
+            },
+            {
+                phase: "Fase 4",
+                title: "Gestión y Notificaciones",
+                description: "Registro de todos los artículos y su estado en bases de datos (PostgreSQL, Google Sheets). Envío de notificaciones y alertas en tiempo real vía Telegram para el monitoreo del flujo y gestión de errores."
+            }
+        ],
+        results: [
+            {
+                number: "90%",
+                label: "Reducción en tiempo de publicación de artículos."
+            },
+            {
+                number: "15+",
+                label: "Artículos de tecnología de alta calidad publicados semanalmente."
+            },
+            {
+                number: "80",
+                label: "Horas de trabajo manual ahorradas por mes en producción de contenido."
+            },
+            {
+                number: "95%",
+                label: "Precisión en la selección y generación de contenido relevante por IA."
+            }
+        ],
+        learnings: [
+            {
+                title: "Integración Compleja de APIs y Modelos de IA",
+                text: "Dominar la interconexión de diversas APIs (WordPress, Scrape.do, Gemini, GPT-4) para construir un flujo robusto y sinérgico fue clave. Esto incluyó gestionar autenticaciones, límites de tasa y optimizar las llamadas para garantizar la eficiencia y estabilidad del sistema."
+            },
+            {
+                title: "Diseño de Lógica de Filtrado y Puntuación con IA",
+                text: "Desarrollar y refinar algoritmos de IA para evaluar la relevancia y calidad de las noticias fue un desafío fundamental. Implementar sistemas de puntuación que consideraran múltiples factores permitió optimizar la selección de contenido y minimizar la intervención manual."
+            },
+            {
+                title: "Escalabilidad y Resiliencia de Flujos Automatizados",
+                text: "Implementar estrategias para asegurar la estabilidad y escalabilidad del sistema se reveló esencial. Esto incluyó un manejo robusto de errores, lógica de reintentos y un sistema de monitoreo proactivo para mantener la continuidad operativa frente a fallos temporales de APIs o cambios en las fuentes de datos."
+            }
+        ],
+        visible: true
     }
 ];
