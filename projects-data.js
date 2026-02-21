@@ -577,5 +577,159 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",
+        number: "05",
+        category: "Automatización, IA, Contenido",
+        title: "Automatización Completa de Contenido y Publicación para Blog de Tecnología con IA",
+        subtitle: "Flujo integral para curación, creación y publicación de artículos en blogs de tecnología con IA.",
+        description: "Automatización end-to-end para blogs de tecnología, desde la recolección de noticias vía RSS hasta la publicación en WordPress. Incluye filtrado, reescritura de contenido y generación de imágenes con IA, optimizando la producción y relevancia.",
+        year: "2026",
+        company: "Proyecto Personal",
+        duration: "3 meses",
+        image: "https://imagenes.agustinynatalia.site/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",
+        imageCaption: "Diagrama conceptual del flujo de automatización de contenido con IA.",
+        techCard: [
+            "n8n",
+            "WordPress API",
+            "Google Gemini",
+            "OpenAI GPT-4"
+        ],
+        techFull: [
+            "n8n",
+            "WordPress API",
+            "Google Gemini",
+            "OpenAI GPT-4",
+            "PostgreSQL",
+            "Google Sheets",
+            "RSS",
+            "Scrape.do API",
+            "Telegram",
+            "JavaScript"
+        ],
+        metrics: [
+            {
+                label: "Tiempo de Producción Reducido",
+                value: "80%"
+            },
+            {
+                label: "Volumen de Contenido Aumentado",
+                value: "5x"
+            },
+            {
+                label: "Relevancia de Artículos",
+                value: "90%"
+            },
+            {
+                label: "Horas Ahorradas Mensuales",
+                value: "120+"
+            }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Diseñar e implementar un sistema de automatización integral que resuelva la problemática de la producción manual y lenta de contenido para un blog de tecnología, utilizando IA para la curación, creación y publicación."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El objetivo principal es transformar el proceso editorial de un blog de tecnología, pasando de una gestión manual intensiva a un flujo completamente automatizado. Esto permite escalar la publicación de contenido de alta calidad y relevancia, liberando recursos y garantizando una presencia constante y actualizada en el nicho tecnológico."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Este proyecto implementa un flujo de trabajo de automatización de contenido de extremo a extremo, diseñado para blogs de noticias de tecnología. El sistema inicia con la recolección de noticias y artículos relevantes a través de múltiples fuentes RSS, garantizando una amplia cobertura de temas de interés en el sector tecnológico."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Una vez recolectadas, las noticias son procesadas por modelos de Inteligencia Artificial (Google Gemini, OpenAI GPT-4) que filtran y puntúan su relevancia y originalidad. Los artículos seleccionados pasan por una etapa de extracción de contenido web detallada y son luego reescritos y enriquecidos con imágenes generadas por IA, adaptándolos al estilo y formato del blog."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Finalmente, el contenido transformado es publicado automáticamente en WordPress a través de su API. Todo el proceso es monitoreado y gestionado mediante bases de datos (PostgreSQL) para el seguimiento del contenido, y notificaciones en tiempo real vía Telegram informan sobre el estado de cada etapa, asegurando transparencia y control."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Recolección de Noticias Automatizada",
+                description: "Integración con feeds RSS y APIs de scraping para una captura continua y diversificada de las últimas noticias y tendencias tecnológicas."
+            },
+            {
+                title: "Curación Inteligente de Contenido",
+                description: "Modelos de IA avanzada para filtrar, puntuar y priorizar la relevancia de las noticias, asegurando que solo el contenido de mayor valor sea procesado."
+            },
+            {
+                title: "Generación y Reescritura con IA",
+                description: "Utilización de Google Gemini y OpenAI GPT-4 para reescribir artículos, generar resúmenes y crear imágenes contextuales, adaptando el contenido para el blog."
+            },
+            {
+                title: "Publicación Automática en WordPress",
+                description: "Integración directa con la API de WordPress para la publicación fluida y programada de artículos, incluyendo texto, imágenes y metadatos."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Recolección y Filtrado",
+                description: "Configuración de fuentes RSS y uso de Scrape.do para obtener noticias tecnológicas. La IA evalúa y selecciona el contenido más relevante."
+            },
+            {
+                phase: "Fase 2",
+                title: "Extracción y Procesamiento de Contenido",
+                description: "Extracción estructurada del contenido web completo de los artículos seleccionados. La IA reescribe el texto y genera imágenes pertinentes."
+            },
+            {
+                phase: "Fase 3",
+                title: "Gestión y Control",
+                description: "Almacenamiento y seguimiento del estado del contenido en PostgreSQL y Google Sheets. Notificaciones en tiempo real vía Telegram sobre el progreso y posibles incidencias."
+            },
+            {
+                phase: "Fase 4",
+                title: "Publicación y Optimización",
+                description: "Publicación automatizada del contenido reescrito y las imágenes en WordPress vía API. Iteración y ajuste del flujo para mejorar la calidad y eficiencia."
+            }
+        ],
+        results: [
+            {
+                number: "80%",
+                label: "Reducción en el tiempo de ciclo de producción de contenido."
+            },
+            {
+                number: "5x",
+                label: "Aumento en la frecuencia de publicación de artículos de calidad."
+            },
+            {
+                number: "90%",
+                label: "Precisión en la selección y relevancia de las noticias curadas por IA."
+            },
+            {
+                number: "120+",
+                label: "Horas de trabajo manual ahorradas mensualmente por el equipo editorial."
+            }
+        ],
+        learnings: [
+            {
+                title: "Orquestación de APIs Complejas",
+                text: "Dominio en la integración y orquestación de múltiples APIs (WordPress, Scrape.do, LLMs) para construir un flujo de trabajo cohesivo y robusto."
+            },
+            {
+                title: "Optimización de Prompts y Modelos de IA",
+                text: "Experiencia en el diseño de prompts efectivos para LLMs (Gemini, GPT-4) y en la evaluación de la calidad del contenido generado por IA, adaptándolo a las necesidades del proyecto."
+            },
+            {
+                title: "Gestión de Datos y Flujos Asíncronos",
+                text: "Aprendizaje en el manejo de bases de datos (PostgreSQL) para el seguimiento de estados y la implementación de lógica para flujos de trabajo asíncronos y resilientes con n8n."
+            }
+        ],
+        visible: true
     }
 ];
