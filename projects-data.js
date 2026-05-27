@@ -731,5 +731,131 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "pulso-app-salud-cardiovascular",
+        number: "06",
+        category: "Producto e IA",
+        title: "Pulso — App PWA de Salud Cardiovascular",
+        subtitle: "Aplicación instalable que monitorea métricas, genera recetas cardioprotectoras y rutinas personalizadas con IA, sin login ni datos personales",
+        description: "Diseño e implementación de una Progressive Web App de bienestar cardiovascular potenciada por Claude e Imagen 3, con dashboard de métricas, asistente de recetas con generación de imágenes en tiempo real y generador de rutinas progresivas — todo sin cuenta y con UUID anónimo en el dispositivo.",
+        year: "2025",
+        company: "Producto propio",
+        duration: "2 meses",
+        image: "https://via.placeholder.com/1200x600/0D1117/FF6B6B?text=Pulso",
+        imageCaption: "Dashboard de métricas cardiovasculares con análisis IA en streaming",
+        techCard: ["Next.js 15", "Claude", "Imagen 3", "Supabase"],
+        techFull: [
+            "Next.js 15 (App Router)",
+            "TypeScript",
+            "Tailwind CSS 4",
+            "shadcn/ui",
+            "Claude Sonnet 4.6",
+            "Imagen 3 (Google AI)",
+            "Vercel AI SDK",
+            "Supabase (PostgreSQL + Storage)",
+            "Recharts",
+            "next-pwa",
+            "Coolify (Hetzner VPS)"
+        ],
+        metrics: [
+            { label: "Módulos en producción", value: "3 / 6" },
+            { label: "Métricas trackeadas", value: "4" },
+            { label: "Modelos de IA integrados", value: "2" },
+            { label: "Login requerido", value: "0" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Construir una herramienta de bienestar y educación preventiva que ayude a las personas a entender y mejorar su salud cardiovascular, sin las fricciones típicas de las apps de salud: sin login, sin datos personales y sin App Store."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Las enfermedades cardiovasculares son la principal causa de muerte en el mundo, y la mayoría de las personas no monitorea sus hábitos hasta que ya es tarde. Pulso busca cerrar esa brecha combinando tracking de métricas, recetas inteligentes y rutinas personalizadas — todo potenciado por IA para entregar análisis y recomendaciones contextualizadas a cada usuario."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Pulso es una Progressive Web App construida con Next.js 15 y desplegada en Coolify self-hosted. Usa UUID anónimo generado en el dispositivo como identificador, eliminando completamente la necesidad de email, contraseña o datos personales."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El producto integra dos modelos de IA: Claude Sonnet 4.6 para texto en streaming (análisis de métricas, recetas, cuestionarios de rutinas) e Imagen 3 de Google para generar fotografías fotorrealistas de los platos sugeridos. La capa de datos vive en Supabase, con PostgreSQL para métricas y Storage para imágenes de recetas guardadas."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "El diseño es mobile-first con dark mode por defecto y una paleta propia (Obsidian + Coral Pulse) que evita los clichés visuales del sector salud. Es instalable como app nativa en iOS y Android directamente desde el browser."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Dashboard de Métricas con Análisis IA",
+                description: "Registro de frecuencia cardíaca, peso, sueño y estrés con tarjetas Normal/Atención/Riesgo, edición inline, tendencias de 30 días en Recharts y análisis personalizado de Claude en streaming."
+            },
+            {
+                title: "Asistente de Recetas con Imagen Generada",
+                description: "El usuario escribe sus ingredientes y Claude responde una receta cardioprotectora en streaming word-by-word; al terminar, Imagen 3 genera la foto fotorrealista del plato en ~5 segundos."
+            },
+            {
+                title: "Lista de Compras Inteligente",
+                description: "Extracción automática de ingredientes desde el texto de la receta con checklist interactivo y contexto histórico para evitar repetir compras."
+            },
+            {
+                title: "Generador de Rutinas Progresivas",
+                description: "Cuestionario conversacional con Claude que considera edad, condición física, equipamiento, lesiones y objetivos, generando una rutina semanal progresiva con guía paso a paso y timer de descanso."
+            }
+        ],
+        process: [
+            {
+                phase: "Fase 1",
+                title: "Definición de Producto",
+                description: "Identificación del público objetivo, decisión de PWA sin login con UUID anónimo, paleta visual propia y disclaimer médico obligatorio en onboarding."
+            },
+            {
+                phase: "Fase 2",
+                title: "Arquitectura y Stack",
+                description: "Setup de Next.js 15 con App Router, integración de Supabase como backend, configuración de Vercel AI SDK para streaming con Claude y Google AI SDK para Imagen 3."
+            },
+            {
+                phase: "Fase 3",
+                title: "Implementación de los 3 Módulos Core",
+                description: "Dashboard de métricas con upsert diario, asistente de recetas con streaming + imagen + guardado, y generador de rutinas con cuestionario conversacional."
+            },
+            {
+                phase: "Fase 4",
+                title: "Deploy y PWA",
+                description: "Despliegue continuo desde main en Coolify self-hosted sobre VPS Hetzner, configuración de Web App Manifest y next-pwa para instalación en iOS y Android."
+            }
+        ],
+        results: [
+            { number: "100%", label: "App sin login ni datos personales" },
+            { number: "2", label: "Modelos de IA integrados (texto + imagen)" },
+            { number: "~5s", label: "Tiempo de generación de imagen del plato" },
+            { number: "PWA", label: "Instalable en iOS y Android sin App Store" }
+        ],
+        learnings: [
+            {
+                title: "Streaming como UX, no solo como técnica",
+                text: "Mostrar la respuesta de Claude palabra por palabra y disparar la generación de imagen al finalizar el texto convierte una espera de 10 segundos en una experiencia que se siente instantánea."
+            },
+            {
+                title: "Producto sin login es posible",
+                text: "UUID anónimo en el dispositivo más Supabase como backend permite construir una app completa con persistencia sin tocar emails, contraseñas ni datos personales — reduciendo fricción y carga de cumplimiento."
+            },
+            {
+                title: "PWA como alternativa real a App Stores",
+                text: "next-pwa más un Web App Manifest bien hecho permiten distribuir una app instalable en iOS y Android sin pasar por los stores, acelerando iteración y eliminando fees."
+            }
+        ],
+        visible: true
     }
 ];
