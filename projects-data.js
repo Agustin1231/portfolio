@@ -870,6 +870,8 @@ var PROJECTS_DATA = [
         duration: "Proyecto activo",
         image: "https://imagenes.agustinynatalia.site/monica-brain-asistente-ia-omnicanal",
         imageCaption: "Atención conversacional automatizada con calificación de clientes.",
+        liveUrl: "https://brain.urpeailab.com/visual",
+        liveLabel: "Ver el visual en vivo",
         techCard: ["IA conversacional", "Automatización", "Integraciones"],
         techFull: [
             "Inteligencia Artificial (LLMs)",
@@ -1091,6 +1093,8 @@ var PROJECTS_DATA = [
         duration: "Proyecto activo",
         image: "https://imagenes.agustinynatalia.site/status-page-monitoreo-de-servicios",
         imageCaption: "Estado de los servicios de un vistazo, en tiempo real.",
+        liveUrl: "https://status.urpeailab.com/",
+        liveLabel: "Ver status en vivo",
         techCard: ["Monitoreo", "Desarrollo web", "Self-hosting"],
         techFull: [
             "Monitoreo de servicios en tiempo real",

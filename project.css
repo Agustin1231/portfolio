@@ -439,6 +439,15 @@
     color: white;
 }
 
+/* Botón "Ver en vivo": acento azul para diferenciarlo del CTA de contacto */
+.project-cta--live {
+    background-color: var(--color-blue-600);
+}
+
+.project-cta--live:hover {
+    background-color: var(--color-blue-700);
+}
+
 .project-cta svg {
     width: 18px;
     height: 18px;
