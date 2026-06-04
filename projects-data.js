@@ -742,7 +742,7 @@ var PROJECTS_DATA = [
         year: "2025",
         company: "Producto propio",
         duration: "2 meses",
-        image: "https://via.placeholder.com/1200x600/0D1117/FF6B6B?text=Pulso",
+        image: "https://imagenes.agustinynatalia.site/pulso-app-salud-cardiovascular",
         imageCaption: "Dashboard de métricas cardiovasculares con análisis IA en streaming",
         techCard: ["Next.js 15", "Claude", "Imagen 3", "Supabase"],
         techFull: [
@@ -854,6 +854,300 @@ var PROJECTS_DATA = [
             {
                 title: "PWA como alternativa real a App Stores",
                 text: "next-pwa más un Web App Manifest bien hecho permiten distribuir una app instalable en iOS y Android sin pasar por los stores, acelerando iteración y eliminando fees."
+            }
+        ],
+        visible: true
+    },
+    {
+        id: "monica-brain-asistente-ia-omnicanal",
+        number: "07",
+        category: "Agentes de IA",
+        title: "Monica Brain — Asistente de IA Omnicanal",
+        subtitle: "Asistente conversacional que atiende, califica y da seguimiento a clientes en los principales canales de mensajería, integrado a la operación comercial.",
+        description: "Asistente de IA que conversa con clientes en distintos canales de mensajería, responde consultas, identifica oportunidades de venta, agenda y hace seguimiento — liberando al equipo de las tareas repetitivas de atención.",
+        year: "2025",
+        company: "Urpe AI Lab",
+        duration: "Proyecto activo",
+        image: "https://imagenes.agustinynatalia.site/monica-brain-asistente-ia-omnicanal",
+        imageCaption: "Atención conversacional automatizada con calificación de clientes.",
+        techCard: ["IA conversacional", "Automatización", "Integraciones"],
+        techFull: [
+            "Inteligencia Artificial (LLMs)",
+            "Agentes conversacionales",
+            "Mensajería multicanal",
+            "Automatización de procesos",
+            "Integración con la operación comercial"
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Llevar la atención al cliente a un nivel en el que la primera respuesta sea inmediata, útil y consistente a cualquier hora, sin depender de que haya alguien disponible del otro lado."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Muchos equipos pierden oportunidades simplemente porque no alcanzan a responder a tiempo. La idea fue crear un asistente que acompañe la conversación de principio a fin: que entienda lo que pide la persona, resuelva lo que puede resolver y derive de forma ordenada lo que necesita una mano humana."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Es un asistente de inteligencia artificial que conversa de forma natural con los clientes en los canales de mensajería que ya usan a diario, manteniendo el contexto de cada conversación."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Más allá de responder preguntas, identifica el interés real de cada contacto, ayuda a coordinar próximos pasos y deja todo registrado para que el equipo retome la conversación con la información a mano. El foco estuvo siempre en una experiencia fluida para el cliente y en quitarle trabajo repetitivo al equipo."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Conversación en múltiples canales",
+                description: "Atiende a las personas en los canales de mensajería que ya utilizan, con un trato natural y coherente en todos ellos."
+            },
+            {
+                title: "Calificación de oportunidades",
+                description: "Reconoce el interés de cada contacto y prioriza las conversaciones que más valor pueden aportar al negocio."
+            },
+            {
+                title: "Agenda y seguimiento",
+                description: "Ayuda a coordinar citas y próximos pasos, y mantiene el hilo de cada conversación sin que nada se pierda."
+            }
+        ],
+        learnings: [
+            {
+                title: "La inmediatez cambia el resultado",
+                text: "Responder al instante y con contexto transforma la experiencia del cliente y aumenta las oportunidades que llegan a buen puerto."
+            },
+            {
+                title: "La IA como apoyo del equipo",
+                text: "El mayor valor aparece cuando la automatización se encarga de lo repetitivo y deja a las personas el criterio y el trato cercano."
+            }
+        ],
+        visible: true
+    },
+    {
+        id: "monica-developer-apps-por-prompts",
+        number: "08",
+        category: "Producto e IA",
+        title: "Monica Developer — Aplicaciones por Prompts",
+        subtitle: "Plataforma que permite crear aplicaciones web funcionales describiéndolas en lenguaje natural, pensada para profesionales de Latinoamérica.",
+        description: "Plataforma que convierte una descripción en lenguaje natural en una aplicación web funcional y lista para usar, con vista previa en vivo — para que cualquier profesional pueda tener su herramienta a medida sin escribir código.",
+        year: "2025",
+        company: "Urpe AI Lab",
+        duration: "Proyecto activo",
+        image: "https://imagenes.agustinynatalia.site/monica-developer-apps-por-prompts",
+        imageCaption: "De una idea descrita en palabras a una aplicación lista para usar.",
+        techCard: ["Inteligencia Artificial", "Desarrollo web", "Producto"],
+        techFull: [
+            "Inteligencia Artificial generativa",
+            "Desarrollo web",
+            "Vista previa en vivo",
+            "Publicación asistida",
+            "Enfoque en mercados de Latinoamérica"
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Acercar el desarrollo de software a personas que tienen una idea clara de lo que necesitan, pero no el tiempo ni el conocimiento técnico para construirla."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "La propuesta es simple: que alguien describa en su propio idioma la aplicación que quiere y obtenga, en cuestión de minutos, una versión funcional que pueda ver, ajustar y poner en marcha."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Es una plataforma donde el usuario explica en lenguaje natural qué necesita y la inteligencia artificial genera una aplicación web a su medida, con una vista previa en vivo para verla tomar forma."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Está pensada para profesionales de Latinoamérica, contemplando las particularidades de la región para que el resultado sea realmente utilizable en su día a día y no un punto de partida a medias."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "De la idea a la app",
+                description: "El usuario describe lo que quiere y la plataforma genera una aplicación web funcional lista para probar."
+            },
+            {
+                title: "Vista previa en vivo",
+                description: "Permite ver la aplicación a medida que se construye y ajustarla sobre la marcha."
+            },
+            {
+                title: "Pensada para la región",
+                description: "Contempla las necesidades de los profesionales latinoamericanos para que el resultado se pueda usar de verdad."
+            }
+        ],
+        learnings: [
+            {
+                title: "Bajar la barrera de entrada",
+                text: "Cuando crear software deja de requerir conocimientos técnicos, mucha gente puede resolver problemas que antes quedaban en la lista de pendientes."
+            },
+            {
+                title: "El contexto local importa",
+                text: "Adaptar el producto a la realidad de cada mercado es lo que hace la diferencia entre algo demostrativo y algo que se usa a diario."
+            }
+        ],
+        visible: true
+    },
+    {
+        id: "monica-designer-identidad-de-marca-ia",
+        number: "09",
+        category: "Producto e IA",
+        title: "Monica Designer — Identidad de Marca con IA",
+        subtitle: "Generador que crea una identidad visual completa a partir de un brief: marca, logos y piezas gráficas listas para usar.",
+        description: "A partir de un brief sencillo, genera con IA una identidad de marca completa: manual de marca, logos con sus variantes y piezas gráficas listas para usar — acelerando un proceso que antes llevaba semanas.",
+        year: "2025",
+        company: "Urpe AI Lab",
+        duration: "Proyecto activo",
+        image: "https://imagenes.agustinynatalia.site/monica-designer-identidad-de-marca-ia",
+        imageCaption: "De un brief breve a una identidad de marca completa.",
+        techCard: ["Inteligencia Artificial", "Diseño", "Producto"],
+        techFull: [
+            "Inteligencia Artificial generativa",
+            "Generación de identidad visual",
+            "Diseño de marca",
+            "Producto digital"
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Resolver uno de los primeros y mayores cuellos de botella de cualquier emprendimiento: tener una identidad de marca profesional sin esperar semanas ni manejar presupuestos altos."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "La meta fue que cualquier persona, partiendo de una idea de su negocio, pudiera obtener una base visual coherente y lista para usar desde el primer día."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "A partir de un brief breve sobre el negocio, la herramienta genera una identidad de marca completa con inteligencia artificial: el manual de marca, los logos con sus variantes y un conjunto de piezas gráficas listas para usar."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Todo queda disponible en un mismo lugar, de forma que el usuario pasa de la idea a tener material concreto para comunicar su marca en muy poco tiempo."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Identidad completa desde un brief",
+                description: "Con una descripción breve del negocio se obtiene una base de marca coherente y lista para usar."
+            },
+            {
+                title: "Logos y variantes",
+                description: "Genera el logo principal y sus variantes para distintos usos y formatos."
+            },
+            {
+                title: "Piezas listas para comunicar",
+                description: "Entrega material gráfico listo para empezar a comunicar la marca de inmediato."
+            }
+        ],
+        learnings: [
+            {
+                title: "Velocidad sin perder coherencia",
+                text: "Lo valioso no es solo generar piezas rápido, sino que todas mantengan una identidad consistente entre sí."
+            },
+            {
+                title: "Empoderar a quien recién arranca",
+                text: "Dar acceso a una identidad profesional desde el día uno nivela la cancha para quienes están empezando."
+            }
+        ],
+        visible: true
+    },
+    {
+        id: "status-page-monitoreo-de-servicios",
+        number: "10",
+        category: "Herramienta interna",
+        title: "Status Page — Monitor de Estado de Servicios",
+        subtitle: "Página de estado autoalojada que vigila la disponibilidad de los servicios en tiempo real y la comunica de forma clara.",
+        description: "Página de estado autoalojada que monitorea la disponibilidad de servicios en tiempo real, muestra su salud de un vistazo y avisa ante caídas — para mantener la operación bajo control y comunicar el estado con transparencia.",
+        year: "2025",
+        company: "Urpe AI Lab",
+        duration: "Proyecto activo",
+        image: "https://imagenes.agustinynatalia.site/status-page-monitoreo-de-servicios",
+        imageCaption: "Estado de los servicios de un vistazo, en tiempo real.",
+        techCard: ["Monitoreo", "Desarrollo web", "Self-hosting"],
+        techFull: [
+            "Monitoreo de servicios en tiempo real",
+            "Desarrollo web",
+            "Chequeos de disponibilidad automáticos",
+            "Despliegue autoalojado"
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Saber en todo momento si los servicios están funcionando y poder comunicarlo con transparencia, sin depender de que un usuario sea el primero en avisar que algo dejó de andar."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "La idea fue contar con una herramienta propia, simple y confiable, que diera visibilidad del estado de la operación tanto al equipo como, llegado el caso, a los usuarios."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Es una página de estado autoalojada que revisa de forma continua la disponibilidad de los distintos servicios y muestra su salud de manera clara y a simple vista."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Permite seguir el estado de servicios y sus componentes, detectar caídas a tiempo y dar una imagen ordenada y honesta de cómo está funcionando todo."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Monitoreo en tiempo real",
+                description: "Revisa de forma continua la disponibilidad de los servicios y refleja su estado al instante."
+            },
+            {
+                title: "Servicios y componentes",
+                description: "Organiza el seguimiento por servicios y sus partes, para entender qué funciona y qué no."
+            },
+            {
+                title: "Autoalojado y bajo control",
+                description: "Funciona como una herramienta propia, sin depender de servicios externos para conocer el estado de la operación."
+            }
+        ],
+        learnings: [
+            {
+                title: "Detectar antes que reaccionar",
+                text: "Tener visibilidad continua del estado permite adelantarse a los problemas en lugar de enterarse por los usuarios."
+            },
+            {
+                title: "La transparencia genera confianza",
+                text: "Comunicar el estado de forma clara y honesta refuerza la confianza, incluso cuando algo no está funcionando."
             }
         ],
         visible: true

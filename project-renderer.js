@@ -32,24 +32,25 @@
     function renderProjectCards(projects) {
         const grid = document.querySelector('.projects-grid');
         if (!grid) return;
-        const visibleProjects = projects.filter(p => p.visible !== false);
+        // Mostramos los proyectos más nuevos primero (número más alto arriba).
+        const visibleProjects = projects
+            .filter(p => p.visible !== false)
+            .sort((a, b) => parseInt(b.number, 10) - parseInt(a.number, 10));
         grid.innerHTML = visibleProjects.map(project => `
-            <article class="project-card">
-                <div class="project-number">${escapeHTML(project.number)}</div>
-                <div class="project-content">
-                    <h3>${escapeHTML(project.title)}</h3>
-                    <p>${escapeHTML(project.description)}</p>
-                    <div class="project-tech">
-                        ${project.techCard.map(t => `<span>${escapeHTML(t)}</span>`).join('')}
-                    </div>
-                    <div class="project-links">
-                        <a href="proyecto.html?id=${encodeURIComponent(project.id)}" class="project-link">Ver proyecto →</a>
+            <a class="project-card" href="proyecto.html?id=${encodeURIComponent(project.id)}" aria-label="${escapeHTML(project.title)}">
+                <div class="project-card-media">
+                    <img src="${escapeHTML(project.image)}" alt="${escapeHTML(project.title)}" loading="lazy" onerror="this.style.display='none'">
+                </div>
+                <div class="project-card-overlay">
+                    <div class="project-card-body">
+                        <h3>${escapeHTML(project.title)}</h3>
+                        <p>${escapeHTML(project.description)}</p>
+                        <span class="project-link">Ver proyecto →</span>
                     </div>
                 </div>
-            </article>
+            </a>
         `).join('');
         initCardAnimations();
-        initCardEffects();
     }
 
     // ==========================================
@@ -93,7 +94,7 @@
             <section class="project-image">
                 <div class="container">
                     <div class="image-wrapper">
-                        <img src="${escapeHTML(project.image)}" alt="${escapeHTML(project.title)}">
+                        <img src="${escapeHTML(project.image)}" alt="${escapeHTML(project.title)}" onerror="this.closest('.project-image').style.display='none'">
                         ${project.imageCaption ? `<div class="image-caption">${escapeHTML(project.imageCaption)}</div>` : ''}
                     </div>
                 </div>
@@ -167,16 +168,14 @@
     function initCardAnimations() {
         const cards = document.querySelectorAll('.project-card');
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
-        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-        cards.forEach((el, i) => { el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; el.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s ease ${i * 0.05}s`; observer.observe(el); });
-    }
-
-    function initCardEffects() {
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => { const r = card.getBoundingClientRect(); card.style.transform = `perspective(1000px) rotateX(${(e.clientY - r.top - r.height / 2) / 20}deg) rotateY(${(r.width / 2 - (e.clientX - r.left)) / 20}deg) translateY(-5px)`; });
-            card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)'; });
-        });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        cards.forEach((el, i) => { el.style.transitionDelay = `${i * 0.06}s`; observer.observe(el); });
     }
 
     // ==========================================

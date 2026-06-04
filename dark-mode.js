@@ -6,7 +6,7 @@
 (function () {
     'use strict';
 
-    var STORAGE_KEY = 'portfolio-theme';
+    var STORAGE_KEY = 'portfolio-theme-v2';
 
     // SVG icons
     var moonIcon = '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
@@ -14,15 +14,13 @@
 
     function getPreference() {
         var saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) return saved;
-        // Respetar preferencia del sistema
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return 'dark';
-        }
+        if (saved === 'dark' || saved === 'light') return saved;
+        // Por defecto: modo claro (blanco). El modo oscuro solo se activa si el
+        // usuario lo elige manualmente con el toggle (y queda guardado).
         return 'light';
     }
 
-    function applyTheme(theme, withTransition) {
+    function applyTheme(theme, withTransition, persist) {
         if (withTransition) {
             document.documentElement.setAttribute('data-theme-transition', '');
             setTimeout(function () {
@@ -36,7 +34,11 @@
             document.documentElement.removeAttribute('data-theme');
         }
 
-        localStorage.setItem(STORAGE_KEY, theme);
+        // Solo guardamos cuando es una elección explícita del usuario, para que
+        // el valor por defecto (claro) no quede "pegado" en localStorage.
+        if (persist) {
+            localStorage.setItem(STORAGE_KEY, theme);
+        }
     }
 
     function createToggle() {
@@ -49,7 +51,7 @@
         btn.addEventListener('click', function () {
             var current = document.documentElement.getAttribute('data-theme');
             var next = current === 'dark' ? 'light' : 'dark';
-            applyTheme(next, true);
+            applyTheme(next, true, true);
         });
 
         // Insertar antes del lang-selector o del menu-toggle
@@ -69,7 +71,7 @@
     }
 
     // Aplicar tema inmediatamente (sin transición) para evitar flash
-    applyTheme(getPreference(), false);
+    applyTheme(getPreference(), false, false);
 
     // Crear botón cuando el DOM esté listo
     function init() {
@@ -80,15 +82,6 @@
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
-    }
-
-    // Escuchar cambios de preferencia del sistema
-    if (window.matchMedia) {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-            if (!localStorage.getItem(STORAGE_KEY)) {
-                applyTheme(e.matches ? 'dark' : 'light', true);
-            }
-        });
     }
 
 })();

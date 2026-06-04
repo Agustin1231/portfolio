@@ -68,15 +68,8 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('scrolled');
     }
     
-    // Ocultar navbar al hacer scroll hacia abajo (solo en desktop)
-    if (window.innerWidth > 768) {
-        if (currentScroll > lastScroll && currentScroll > 500) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-    }
-    
+    // El navbar permanece siempre visible (fixed) para poder navegar a
+    // Proyectos y demás secciones en cualquier momento del scroll.
     lastScroll = currentScroll;
     updateActiveNavLink();
 });
