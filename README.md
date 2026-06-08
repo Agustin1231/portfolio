@@ -7,7 +7,7 @@ Sitio web personal — live en https://agustin.agustinynatalia.site
 - HTML / CSS / JavaScript vanilla — zero build step
 - Modo oscuro con persistencia en `localStorage`
 - Multi-idioma (ES / EN) vía `translate.js`
-- Renderizado dinámico de proyectos desde `projects.json`
+- Renderizado dinámico de proyectos desde `projects-data.js`
 - Email obfuscation para evitar scraping de bots
 
 ## Stack
@@ -20,9 +20,8 @@ Sitio web personal — live en https://agustin.agustinynatalia.site
 ```
 index.html              landing
 proyecto.html           template detalle de proyecto
-projects.json           datos de proyectos
+projects-data.js        datos de proyectos (array PROJECTS_DATA, fuente única)
 project-renderer.js     render dinámico de cards y detalle
-projects-data.js        helpers
 style.css               tema base
 dark-mode.css           tema oscuro
 dark-mode.js            toggle persistente
