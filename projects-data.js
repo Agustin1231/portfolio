@@ -1155,5 +1155,94 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "flowdeck-gestor-n8n",
+        number: "11",
+        category: "Producto · Automatización",
+        title: "FlowDeck — Gestor Multi-instancia de n8n",
+        subtitle: "Aplicación instalable (PWA) con login para administrar varias instancias de n8n desde un solo lugar.",
+        description: "Panel instalable (PWA) que centraliza la gestión de múltiples instancias de n8n: lista y busca workflows, los activa o desactiva, muestra sus ejecuciones y un resumen por instancia, con las API keys cifradas en el servidor.",
+        year: "2026",
+        company: "Proyecto propio",
+        duration: "Proyecto activo",
+        image: "https://imagenes.agustinynatalia.site/flowdeck-gestor-n8n",
+        imageCaption: "Un solo panel para administrar todas tus instancias de n8n.",
+        liveUrl: "https://github.com/Agustin1231/flowdeck",
+        liveLabel: "Ver en GitHub",
+        techCard: ["n8n", "React", "Node.js", "PWA"],
+        techFull: [
+            "React",
+            "TypeScript",
+            "Vite (PWA)",
+            "Node.js",
+            "Express",
+            "Autenticación con JWT",
+            "Cifrado AES-256-GCM",
+            "Docker",
+            "API de n8n"
+        ],
+        metrics: [
+            { label: "Instancias gestionadas", value: "Múltiples" },
+            { label: "Cifrado de API keys", value: "AES-256-GCM" },
+            { label: "Instalable como app", value: "PWA" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Resolver el problema de tener que entrar a cada instancia de n8n por separado para saber qué está corriendo, qué falló y qué hay que prender o apagar."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Cuando las automatizaciones crecen y se reparten en varios servidores, perder de vista el conjunto es cuestión de tiempo. FlowDeck nació para tener todo bajo un mismo techo: un panel único desde el cual ver y operar todas las instancias, sin saltar entre pestañas ni recordar URLs y claves."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "FlowDeck es una aplicación web instalable como app (PWA) con inicio de sesión, que conecta varias instancias de n8n y las administra desde una sola interfaz. Cada instancia se agrega desde la propia app indicando su dirección y su clave de acceso."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Desde el panel se pueden listar y buscar los workflows, ver su detalle, activarlos o desactivarlos con un switch, revisar sus ejecuciones con estado y duración, y consultar un resumen por instancia. Las claves de acceso se guardan cifradas en el servidor y nunca llegan al navegador: todas las llamadas pasan por el backend, que actúa de intermediario seguro."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Todas las instancias en un lugar",
+                description: "Conecta múltiples instancias de n8n y las administra desde un único panel, agregándolas o quitándolas desde la propia interfaz."
+            },
+            {
+                title: "Control de workflows",
+                description: "Lista y busca los workflows, ve su detalle y los activa o desactiva con un switch, sin entrar a cada n8n por separado."
+            },
+            {
+                title: "Ejecuciones y resumen",
+                description: "Muestra las ejecuciones con su estado y duración, más un resumen por instancia con los workflows activos y la actividad reciente."
+            },
+            {
+                title: "Seguridad por diseño",
+                description: "Las claves de acceso se guardan cifradas en el servidor y nunca llegan al navegador; todas las llamadas pasan por un backend que actúa de intermediario."
+            }
+        ],
+        learnings: [
+            {
+                title: "La visibilidad ahorra tiempo",
+                text: "Centralizar el estado de varias instancias en un solo panel reduce drásticamente el tiempo de saber qué está pasando y de reaccionar ante un problema."
+            },
+            {
+                title: "Seguridad sin fricción",
+                text: "Guardar las credenciales cifradas en el servidor y usar el backend como proxy permite operar con comodidad sin exponer secretos en el navegador."
+            }
+        ],
+        visible: true
     }
 ];
