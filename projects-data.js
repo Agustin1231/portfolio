@@ -1255,7 +1255,7 @@ var PROJECTS_DATA = [
         year: "2026",
         company: "Urpe AI Lab",
         duration: "1 día",
-        image: "https://multiagentes.agustinynatalia.site/preview.png?v=1",
+        image: "https://multiagentes.agustinynatalia.site/preview.png?v=2",
         imageCaption: "El orquestador delegando una tarea al subagente de diagramas, con la actividad registrada en vivo",
         techCard: ["JavaScript", "SVG", "Docker", "Coolify"],
         techFull: [
