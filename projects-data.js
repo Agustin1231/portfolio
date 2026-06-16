@@ -1244,5 +1244,94 @@ var PROJECTS_DATA = [
             }
         ],
         visible: true
+    },
+    {
+        id: "visor-de-orquestacion-de-subagentes",
+        number: "12",
+        category: "Agentes de IA",
+        title: "Visor de Orquestación de Subagentes",
+        subtitle: "Visualización en tiempo real de un agente orquestador que delega tareas a subagentes especialistas",
+        description: "Página web que muestra en vivo cómo un agente principal recibe una solicitud y la delega al subagente especialista adecuado, animando cada paso y registrándolo en un panel de actividad. Pensada para entender de un vistazo cómo trabaja un sistema multiagente.",
+        year: "2026",
+        company: "Urpe AI Lab",
+        duration: "1 día",
+        image: "https://multiagentes.agustinynatalia.site/preview.png",
+        imageCaption: "El orquestador delegando una tarea al subagente de diagramas, con la actividad registrada en vivo",
+        techCard: ["JavaScript", "SVG", "Docker", "Coolify"],
+        techFull: [
+            "HTML5",
+            "CSS3",
+            "JavaScript (sin frameworks)",
+            "SVG animado",
+            "nginx",
+            "Docker",
+            "Coolify",
+            "Cloudflare DNS"
+        ],
+        metrics: [
+            { label: "Subagentes visualizados", value: "10" },
+            { label: "Render", value: "SVG en vivo" },
+            { label: "Temas", value: "Claro y oscuro" },
+            { label: "Build", value: "Sin frameworks" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    {
+                        type: "lead",
+                        text: "Mostrar de forma visual e inmediata cómo funciona un sistema de subagentes: quién pide, quién delega y quién ejecuta cada tarea."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "Cuando un agente principal coordina a varios especialistas, el proceso queda oculto entre logs y llamadas internas. El objetivo fue darle una cara visible a esa coordinación, para que cualquiera entienda en segundos cómo se reparte y se resuelve el trabajo."
+                    }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "El orquestador aparece en el centro y los subagentes especialistas alrededor. Al llegar una solicitud, se anima la conexión hacia el especialista elegido, su nodo cambia de estado mientras trabaja y se marca como listo al terminar, y cada paso queda registrado con su hora en un panel de actividad."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "La página corre sin frameworks, con un grafo en SVG animado y un control para reproducir la secuencia cuantas veces se quiera. El panel de actividad enmascara automáticamente cualquier dato sensible (correos, rutas, tokens, identificadores) para poder mostrarlo sin exponer información."
+                    }
+                ]
+            }
+        ],
+        features: [
+            {
+                title: "Orquestación en tiempo real",
+                description: "Muestra al agente principal delegando a cada subagente, con la conexión animada y los cambios de estado: trabajando y listo."
+            },
+            {
+                title: "Tema claro y oscuro",
+                description: "Alterna entre modo claro y oscuro con un clic y recuerda la preferencia en el navegador."
+            },
+            {
+                title: "Datos sensibles enmascarados",
+                description: "El panel de actividad oculta automáticamente correos, rutas, tokens e identificadores con asteriscos antes de mostrarlos."
+            },
+            {
+                title: "Reproducción a un clic",
+                description: "La animación corre sola al abrir y se puede repetir desde un botón o haciendo clic sobre la actividad."
+            }
+        ],
+        learnings: [
+            {
+                title: "Lo visual explica mejor",
+                text: "Ver la orquestación en movimiento comunica el funcionamiento de un sistema multiagente mucho más rápido que describirlo con texto."
+            },
+            {
+                title: "Mostrar sin exponer",
+                text: "Enmascarar los datos sensibles en la interfaz permite enseñar el sistema en vivo sin filtrar información privada."
+            }
+        ],
+        liveUrl: "https://multiagentes.agustinynatalia.site",
+        liveLabel: "Ver en vivo",
+        visible: true
     }
 ];
