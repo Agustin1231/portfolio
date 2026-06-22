@@ -39,7 +39,7 @@
     }
 
     function initCardAnimations() {
-        const cards = document.querySelectorAll('.guides-grid .project-card');
+        const cards = document.querySelectorAll('.guides-grid .guide-card');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -67,17 +67,15 @@
         grid.innerHTML = guides.map(guide => {
             const ext = !!guide.externalUrl;
             const target = ext ? ' target="_blank" rel="noopener"' : '';
+            const meta = guide.readingTime ? escapeHTML(guide.readingTime) : (guide.date ? escapeHTML(guide.date) : '');
             return `
-            <a class="project-card" href="${escapeHTML(guideHref(guide))}"${target} aria-label="${escapeHTML(guide.title)}">
-                <div class="project-card-media">
-                    <img src="${escapeHTML(guide.image)}" alt="${escapeHTML(guide.title)}" loading="lazy" onerror="this.style.display='none'">
-                </div>
-                <div class="project-card-overlay">
-                    <div class="project-card-body">
-                        <h3>${escapeHTML(guide.title)}</h3>
-                        <p>${escapeHTML(guide.description)}</p>
-                        <span class="project-link">${escapeHTML(guide.urlLabel || 'Leer guía')} →</span>
-                    </div>
+            <a class="guide-card" href="${escapeHTML(guideHref(guide))}"${target} aria-label="${escapeHTML(guide.title)}">
+                <span class="guide-card-num">${escapeHTML(guide.number || '')}</span>
+                <h3>${escapeHTML(guide.title)}</h3>
+                <p>${escapeHTML(guide.description)}</p>
+                <div class="guide-card-foot">
+                    <span class="guide-card-meta">${meta}</span>
+                    <span class="guide-card-link">${escapeHTML(guide.urlLabel || 'Leer')} →</span>
                 </div>
             </a>`;
         }).join('');
