@@ -170,6 +170,7 @@
                 <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
                 <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
                 <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                <li><a href="#guias" class="nav-link">Guías</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu">
@@ -342,11 +343,24 @@
         </div>
     </section>
 
+    <!-- Guías -->
+    <section id="guias" class="guides">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04.</span>
+                <h2 class="section-title">Guías</h2>
+                <div class="section-line"></div>
+            </div>
+            <!-- Las cards se generan dinámicamente desde guides-data.js -->
+            <div class="guides-grid"></div>
+        </div>
+    </section>
+
     <!-- Contacto -->
     <section id="contacto" class="contact">
         <div class="container">
             <div class="section-header centered">
-                <span class="section-number">04.</span>
+                <span class="section-number">05.</span>
                 <h2 class="section-title">Trabajemos Juntos</h2>
             </div>
             <div class="contact-content">
@@ -442,7 +456,9 @@
             var scripts = [
                 'script.js',
                 'projects-data.js',
-                'project-renderer.js'
+                'project-renderer.js',
+                'guides-data.js',
+                'guides-renderer.js'
             ];
             var index = 0;
 
