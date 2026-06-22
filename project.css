@@ -274,6 +274,56 @@
 }
 
 /* Resultados */
+/* Beneficios y contras (guías) */
+.proscons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.proscons-col {
+    padding: 1.75rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-light-gray);
+    background-color: var(--color-off-white);
+}
+
+.proscons-col h3 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    margin: 0 0 1rem;
+    color: var(--color-charcoal);
+}
+
+.proscons-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.proscons-col li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-dark-gray);
+    font-size: 0.95rem;
+}
+
+.proscons-col li::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+}
+
+.proscons-col--pro li::before { content: "+"; color: #1F8A5B; }
+.proscons-col--con li::before { content: "–"; color: #C0563B; }
+
+@media (max-width: 640px) {
+    .proscons-grid { grid-template-columns: 1fr; }
+}
+
 .results-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

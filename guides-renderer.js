@@ -1,8 +1,7 @@
 // ==========================================
 // GUIDES RENDERER
-// Lee GUIDES_DATA (de guides-data.js) y renderiza las cards de #guias.
-// Si no hay guías visibles, oculta la sección y su link del menú para que
-// la web en producción no muestre un hueco vacío.
+// - En index.html: renderiza las cards de #guias (o estado "Próximamente").
+// - En guia.html: renderiza la página de detalle de una guía (?id=...).
 // ==========================================
 
 (function () {
@@ -14,9 +13,21 @@
         return div.innerHTML;
     }
 
-    function isExternal(url) {
-        return /^https?:\/\//i.test(url) || /\.pdf($|\?)/i.test(url);
+    function getGuides() {
+        return (typeof GUIDES_DATA !== 'undefined' && Array.isArray(GUIDES_DATA)) ? GUIDES_DATA : [];
     }
+
+    function getGuideIdFromURL() {
+        return new URLSearchParams(window.location.search).get('id');
+    }
+
+    function guideHref(guide) {
+        return guide.externalUrl ? guide.externalUrl : `guia.html?id=${encodeURIComponent(guide.id)}`;
+    }
+
+    // ==========================================
+    // CARDS EN INDEX.HTML
+    // ==========================================
 
     function renderEmptyState(grid) {
         grid.classList.add('guides-grid--empty');
@@ -44,10 +55,7 @@
         const grid = document.querySelector('.guides-grid');
         if (!grid) return;
 
-        const guides = (typeof GUIDES_DATA !== 'undefined' && Array.isArray(GUIDES_DATA))
-            ? GUIDES_DATA.filter(g => g.visible !== false)
-            : [];
-
+        const guides = getGuides().filter(g => g.visible !== false);
         if (!guides.length) {
             renderEmptyState(grid);
             return;
@@ -57,10 +65,10 @@
         guides.sort((a, b) => parseInt(a.number, 10) - parseInt(b.number, 10));
 
         grid.innerHTML = guides.map(guide => {
-            const ext = isExternal(guide.url);
+            const ext = !!guide.externalUrl;
             const target = ext ? ' target="_blank" rel="noopener"' : '';
             return `
-            <a class="project-card" href="${escapeHTML(guide.url || '#')}"${target} aria-label="${escapeHTML(guide.title)}">
+            <a class="project-card" href="${escapeHTML(guideHref(guide))}"${target} aria-label="${escapeHTML(guide.title)}">
                 <div class="project-card-media">
                     <img src="${escapeHTML(guide.image)}" alt="${escapeHTML(guide.title)}" loading="lazy" onerror="this.style.display='none'">
                 </div>
@@ -77,13 +85,114 @@
         initCardAnimations();
     }
 
+    // ==========================================
+    // PÁGINA DE GUÍA (guia.html)
+    // ==========================================
+
+    const SVG_CAL = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+    const SVG_CLOCK = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+
+    function renderGuideSections(guide) {
+        if (!guide.sections || !guide.sections.length) return '';
+        let n = 1;
+        return guide.sections.map(s => {
+            const num = String(n++).padStart(2, '0');
+            const html = s.content.map(b => b.type === 'lead'
+                ? `<p class="lead">${escapeHTML(b.text)}</p>`
+                : `<p>${escapeHTML(b.text)}</p>`).join('');
+            return `<div class="content-block"><div class="block-header"><span class="block-number">${num}.</span><h2>${escapeHTML(s.title)}</h2><div class="block-line"></div></div>${html}</div>`;
+        }).join('');
+    }
+
+    function renderProsCons(guide) {
+        const hasPros = guide.pros && guide.pros.length;
+        const hasCons = guide.cons && guide.cons.length;
+        if (!hasPros && !hasCons) return '';
+        const num = String((guide.sections ? guide.sections.length : 0) + 1).padStart(2, '0');
+        const prosCol = hasPros ? `<div class="proscons-col proscons-col--pro"><h3>Beneficios</h3><ul>${guide.pros.map(p => `<li>${escapeHTML(p)}</li>`).join('')}</ul></div>` : '';
+        const consCol = hasCons ? `<div class="proscons-col proscons-col--con"><h3>A tener en cuenta</h3><ul>${guide.cons.map(c => `<li>${escapeHTML(c)}</li>`).join('')}</ul></div>` : '';
+        return `<div class="content-block"><div class="block-header"><span class="block-number">${num}.</span><h2>Beneficios y contras</h2><div class="block-line"></div></div><div class="proscons-grid">${prosCol}${consCol}</div></div>`;
+    }
+
+    function renderGuideSidebar(guide) {
+        const tools = (guide.tools && guide.tools.length)
+            ? `<div class="sidebar-block"><h3>Qué se usó</h3><div class="tech-tags">${guide.tools.map(t => `<span class="tech-tag">${escapeHTML(t)}</span>`).join('')}</div></div>`
+            : '';
+        const cta = `<div class="sidebar-block"><h3>Enlaces</h3><div class="project-links">${guide.externalUrl ? `<a href="${escapeHTML(guide.externalUrl)}" target="_blank" rel="noopener" class="project-cta project-cta--live"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>${escapeHTML(guide.urlLabel || 'Ver recurso')}</a>` : ''}<a href="index.html#contacto" class="project-cta"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Consultar sobre esta guía</a></div></div>`;
+        return tools + cta;
+    }
+
+    function renderGuidePage(guide) {
+        const root = document.getElementById('guide-root');
+        if (!root) return;
+        document.title = `${guide.title} | Agustín Peralta`;
+        const meta = [
+            guide.date ? `<span class="meta-item">${SVG_CAL}${escapeHTML(guide.date)}</span>` : '',
+            guide.readingTime ? `<span class="meta-item">${SVG_CLOCK}${escapeHTML(guide.readingTime)}</span>` : ''
+        ].join('');
+        const imageSection = guide.image ? `
+            <section class="project-image">
+                <div class="container">
+                    <div class="image-wrapper">
+                        <img src="${escapeHTML(guide.image)}" alt="${escapeHTML(guide.title)}" onerror="this.closest('.project-image').style.display='none'">
+                        ${guide.imageCaption ? `<div class="image-caption">${escapeHTML(guide.imageCaption)}</div>` : ''}
+                    </div>
+                </div>
+            </section>` : '';
+
+        root.innerHTML = `
+            <section class="project-hero">
+                <div class="container">
+                    <a href="index.html#guias" class="back-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Volver a Guías
+                    </a>
+                    <div class="project-header">
+                        ${guide.category ? `<span class="project-category">${escapeHTML(guide.category)}</span>` : ''}
+                        <h1 class="project-title">${escapeHTML(guide.title)}</h1>
+                        ${guide.subtitle ? `<p class="project-subtitle">${escapeHTML(guide.subtitle)}</p>` : ''}
+                        ${meta ? `<div class="project-meta">${meta}</div>` : ''}
+                    </div>
+                </div>
+            </section>
+            ${imageSection}
+            <section class="project-content">
+                <div class="container">
+                    <div class="content-grid">
+                        <div class="main-content">
+                            ${renderGuideSections(guide)}
+                            ${renderProsCons(guide)}
+                        </div>
+                        <aside class="sidebar">${renderGuideSidebar(guide)}</aside>
+                    </div>
+                </div>
+            </section>`;
+    }
+
+    function renderGuideNotFound() {
+        const root = document.getElementById('guide-root');
+        if (!root) return;
+        root.innerHTML = `<section class="project-hero"><div class="container"><a href="index.html#guias" class="back-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Volver a Guías</a><div class="project-header"><h1 class="project-title">Guía no encontrada</h1><p class="project-subtitle">La guía que buscas no existe o todavía no fue publicada.</p></div></div></section>`;
+    }
+
+    // ==========================================
+    // INIT
+    // ==========================================
+
     function init() {
         if (typeof GUIDES_DATA === 'undefined' && (!init._retries || init._retries < 10)) {
             init._retries = (init._retries || 0) + 1;
             setTimeout(init, 100);
             return;
         }
-        renderGuideCards();
+
+        if (document.getElementById('guide-root')) {
+            const id = getGuideIdFromURL();
+            const guide = getGuides().find(g => g.id === id);
+            guide ? renderGuidePage(guide) : renderGuideNotFound();
+        } else {
+            renderGuideCards();
+        }
     }
 
     if (document.readyState === 'loading') {
