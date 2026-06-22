@@ -324,6 +324,40 @@
     .proscons-grid { grid-template-columns: 1fr; }
 }
 
+/* Requisitos (guías) */
+.req-list {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+}
+
+.req-list li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-dark-gray);
+    font-size: 0.95rem;
+}
+
+.req-list li::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: var(--color-gold, #C9A227);
+}
+
+/* Botón de descarga del .md */
+.project-cta--download {
+    background-color: #1F8A5B;
+}
+
+.project-cta--download:hover {
+    background-color: #176E48;
+}
+
 .results-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

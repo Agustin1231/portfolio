@@ -5,8 +5,9 @@
 //   externalUrl  (opcional) si la guía vive fuera del sitio (PDF/artículo). Si
 //                no está, la card lleva a la página de detalle guia.html?id=...
 // Página de detalle (guia.html): category, subtitle, date, readingTime,
-//   imageCaption, sections[{title, content:[{type:"lead"|"paragraph", text}]}],
-//   pros[], cons[], tools[]
+//   imageCaption, requirements[] (lista "Requisitos"), sections[{title,
+//   content:[{type:"lead"|"paragraph", text}]}], pros[], cons[], tools[]
+//   downloadFile + downloadLabel (opcional): archivo .md descargable
 //   visible: true para mostrar. Si NINGUNA está visible, #guias muestra
 //   un estado "Próximamente".
 // Para publicar: editar este archivo, validar JS, push a main y redeploy Coolify.
@@ -25,6 +26,17 @@ var GUIDES_DATA = [
         date: "Junio 2026",
         readingTime: "5 min de lectura",
         urlLabel: "Leer guía",
+        downloadFile: "guia-sistema-conocimiento.md",
+        downloadLabel: "Descargar guía técnica (.md)",
+        requirements: [
+            "Un servidor o VPS propio donde correr contenedores (1 vCPU y 2 GB de RAM alcanzan para empezar).",
+            "Docker y Docker Compose instalados en ese servidor.",
+            "Un dominio o subdominio apuntando al servidor (ej: notas.tudominio.com).",
+            "Un certificado HTTPS (lo más fácil: un proxy inverso como Caddy, Traefik o Nginx + Let's Encrypt).",
+            "Un proveedor de autenticación (Google, Microsoft, OIDC genérico o correo) con sus credenciales.",
+            "Almacenamiento para archivos: local en el servidor o un bucket compatible con S3 (R2, MinIO, AWS S3).",
+            "Un agente de IA con capacidad de hacer peticiones HTTP, para conectarlo a la API de Outline."
+        ],
         sections: [
             {
                 title: "Qué monté",
