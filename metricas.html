@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WX2VZNGM');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Métricas de Automatización | Agustín Peralta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="scroll-fixes.css">
+    <link rel="stylesheet" href="dark-mode.css">
+    <style>
+        .metrics-hero {
+            padding-top: 9rem;
+            padding-bottom: 2rem;
+            background-color: var(--color-off-white);
+        }
+        .metrics-hero .section-title { font-size: 3rem; }
+        .metrics-intro {
+            max-width: 720px;
+            margin-top: 1.25rem;
+            font-size: 1.1rem;
+            color: var(--color-dark-gray);
+            line-height: 1.8;
+        }
+        .metrics-updated {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            font-size: 0.85rem;
+            color: var(--color-dark-gray);
+        }
+        .metrics-updated .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.18);
+        }
+
+        .metrics-section { padding-top: 2rem; padding-bottom: 5rem; }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+        .stat-card {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-light-gray);
+            border-radius: 16px;
+            padding: 2rem 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px -18px rgba(27,95,207,0.35);
+        }
+        .stat-card::before {
+            content: "";
+            position: absolute; top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(180deg, var(--color-blue-500), var(--color-blue-700));
+        }
+        .stat-value {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+        .stat-value .unit { font-size: 1.1rem; color: var(--color-dark-gray); font-weight: 600; margin-left: 0.35rem; }
+        .stat-label {
+            margin-top: 0.85rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-dark-gray);
+            font-weight: 600;
+        }
+        .stat-sub { margin-top: 0.4rem; font-size: 0.85rem; color: var(--color-blue-600); }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+        }
+        .chart-card {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-light-gray);
+            border-radius: 16px;
+            padding: 1.75rem;
+        }
+        .chart-card.wide { grid-column: 1 / -1; }
+        .chart-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--color-navy);
+            margin-bottom: 0.35rem;
+        }
+        .chart-card .chart-sub { font-size: 0.85rem; color: var(--color-dark-gray); margin-bottom: 1.25rem; }
+        .chart-wrap { position: relative; height: 300px; }
+        .chart-wrap.tall { height: 360px; }
+
+        .metrics-empty {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--color-white);
+            border: 1px dashed var(--color-gray);
+            border-radius: 16px;
+        }
+        .metrics-empty h3 { font-family: var(--font-serif); font-size: 1.5rem; color: var(--color-navy); margin-bottom: 0.75rem; }
+        .metrics-empty p { color: var(--color-dark-gray); max-width: 520px; margin: 0 auto; }
+
+        .metrics-error { text-align: center; color: #b91c1c; padding: 3rem; }
+
+        @media (max-width: 980px) {
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+            .charts-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 560px) {
+            .stat-grid { grid-template-columns: 1fr; }
+            .metrics-hero .section-title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WX2VZNGM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Cursor personalizado -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">Agustín Peralta</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="index.html#sobre-mi" class="nav-link">Sobre Mí</a></li>
+                <li><a href="index.html#experiencia" class="nav-link">Experiencia</a></li>
+                <li><a href="index.html#proyectos" class="nav-link">Proyectos</a></li>
+                <li><a href="index.html#guias" class="nav-link">Guías</a></li>
+                <li><a href="metricas.html" class="nav-link">Métricas</a></li>
+                <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="metrics-hero">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">//</span>
+                <h2 class="section-title">Métricas de Automatización</h2>
+                <div class="section-line"></div>
+            </div>
+            <p class="metrics-intro">
+                El impacto real de las automatizaciones que he construido, medido en tiempo recuperado.
+                Cada ejecución suma minutos que dejan de hacerse a mano y se convierten en horas para
+                lo que de verdad importa.
+            </p>
+            <div class="metrics-updated" id="updated" style="display:none;">
+                <span class="dot"></span><span id="updated-text"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="metrics-section">
+        <div class="container">
+            <div id="loading" class="metrics-empty">
+                <h3>Cargando métricas...</h3>
+                <p>Estamos consultando los datos en vivo.</p>
+            </div>
+
+            <div id="empty" class="metrics-empty" style="display:none;">
+                <h3>Aún no hay automatizaciones registradas</h3>
+                <p>En cuanto las automatizaciones empiecen a ejecutarse, este panel mostrará el tiempo ahorrado, las áreas impactadas y la evolución en el tiempo.</p>
+            </div>
+
+            <div id="error" class="metrics-error" style="display:none;">
+                No se pudieron cargar las métricas en este momento. Intenta de nuevo en unos minutos.
+            </div>
+
+            <div id="dashboard" style="display:none;">
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-horas">0<span class="unit">h</span></div>
+                        <div class="stat-label">Tiempo ahorrado</div>
+                        <div class="stat-sub" id="stat-minutos">0 minutos en total</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-ejecuciones">0</div>
+                        <div class="stat-label">Ejecuciones</div>
+                        <div class="stat-sub">veces que corrieron sin intervención</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-automatizaciones">0</div>
+                        <div class="stat-label">Automatizaciones</div>
+                        <div class="stat-sub">procesos distintos automatizados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-dias">0<span class="unit">días</span></div>
+                        <div class="stat-label">Equivale a</div>
+                        <div class="stat-sub">jornadas de 8h liberadas</div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card wide">
+                        <h3>Horas ahorradas en el tiempo</h3>
+                        <p class="chart-sub">Acumulado de horas a medida que las automatizaciones se ejecutan</p>
+                        <div class="chart-wrap"><canvas id="chartTiempo"></canvas></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Por área</h3>
+                        <p class="chart-sub">Dónde se concentra el ahorro de tiempo</p>
+                        <div class="chart-wrap"><canvas id="chartArea"></canvas></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Por recurso</h3>
+                        <p class="chart-sub">Tecnología que ejecuta cada automatización</p>
+                        <div class="chart-wrap"><canvas id="chartRecurso"></canvas></div>
+                    </div>
+                    <div class="chart-card wide">
+                        <h3>Top automatizaciones por horas ahorradas</h3>
+                        <p class="chart-sub">Las que más tiempo recuperan</p>
+                        <div class="chart-wrap tall"><canvas id="chartTop"></canvas></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Por organización</h3>
+                        <p class="chart-sub">Personal vs. Urpe AI Lab</p>
+                        <div class="chart-wrap"><canvas id="chartOrg"></canvas></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Ejecuciones por área</h3>
+                        <p class="chart-sub">Cuántas veces corren, no solo cuánto ahorran</p>
+                        <div class="chart-wrap"><canvas id="chartEjecArea"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Diseñado y desarrollado por Agustín Peralta</p>
+                <p class="footer-year">© 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        window.addEventListener('load', function () { window.scrollTo(0, 0); });
+        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+
+        var API = 'https://n8n.agustinynatalia.site/webhook/metricas-automatizaciones';
+
+        var PALETTE = ['#2B7DE9', '#1B5FCF', '#154AB5', '#6FA8F0', '#0E2E73', '#9CC4F6', '#2C3E50', '#B8C5D0'];
+        var NAVY = '#1A2332';
+        var GRID = 'rgba(184,197,208,0.25)';
+
+        function cap(s) { return (s || '').charAt(0).toUpperCase() + (s || '').slice(1); }
+        function fmt(n) { return (n || 0).toLocaleString('es-CO'); }
+
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#647987';
+
+        function el(id) { return document.getElementById(id); }
+        function show(id) { el(id).style.display = (id === 'dashboard' ? 'block' : (id === 'updated' ? 'inline-flex' : 'block')); }
+        function hide(id) { el(id).style.display = 'none'; }
+
+        function animateValue(node, end, suffix) {
+            var start = 0, dur = 900, t0 = performance.now();
+            function step(now) {
+                var p = Math.min((now - t0) / dur, 1);
+                var v = Math.round((0.5 - Math.cos(p * Math.PI) / 2) * end);
+                node.firstChild ? (node.childNodes[0].nodeValue = fmt(v)) : (node.textContent = fmt(v));
+                if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        function render(d) {
+            hide('loading');
+            if (!d || Number(d.total_ejecuciones) === 0) { show('empty'); return; }
+            show('dashboard');
+
+            if (d.actualizado_en) { el('updated-text').textContent = 'Actualizado: ' + d.actualizado_en + ' (hora Colombia)'; show('updated'); }
+
+            animateValue(el('stat-horas'), Math.round(d.total_horas), '');
+            el('stat-minutos').textContent = fmt(d.total_minutos) + ' minutos en total';
+            animateValue(el('stat-ejecuciones'), d.total_ejecuciones, '');
+            animateValue(el('stat-automatizaciones'), d.total_automatizaciones, '');
+            animateValue(el('stat-dias'), Math.round(d.total_horas / 8), '');
+
+            // Línea de tiempo (horas acumuladas)
+            var tl = d.linea_tiempo || [];
+            var labels = tl.map(function (x) { return x.dia; });
+            var acc = 0; var cum = tl.map(function (x) { acc += Number(x.horas); return Math.round(acc * 100) / 100; });
+            var ctxT = el('chartTiempo').getContext('2d');
+            var grad = ctxT.createLinearGradient(0, 0, 0, 300);
+            grad.addColorStop(0, 'rgba(43,125,233,0.35)'); grad.addColorStop(1, 'rgba(43,125,233,0.02)');
+            new Chart(ctxT, {
+                type: 'line',
+                data: { labels: labels, datasets: [{ label: 'Horas acumuladas', data: cum, borderColor: '#1B5FCF', backgroundColor: grad, fill: true, tension: 0.35, pointRadius: 3, pointBackgroundColor: '#1B5FCF', borderWidth: 2.5 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: GRID } }, x: { grid: { display: false } } } }
+            });
+
+            function doughnut(canvasId, arr, valueKey) {
+                new Chart(el(canvasId).getContext('2d'), {
+                    type: 'doughnut',
+                    data: { labels: arr.map(function (x) { return cap(x[Object.keys(x)[0]]); }), datasets: [{ data: arr.map(function (x) { return Number(x[valueKey]); }), backgroundColor: PALETTE, borderColor: '#fff', borderWidth: 2 }] },
+                    options: { responsive: true, maintainAspectRatio: false, cutout: '62%', plugins: { legend: { position: 'bottom', labels: { padding: 14, usePointStyle: true, pointStyle: 'circle' } } } }
+                });
+            }
+
+            doughnut('chartArea', d.por_area || [], 'horas');
+            doughnut('chartRecurso', d.por_recurso || [], 'horas');
+            doughnut('chartOrg', d.por_organizacion || [], 'horas');
+
+            // Top automatizaciones (barra horizontal)
+            var top = d.top_automatizaciones || [];
+            new Chart(el('chartTop').getContext('2d'), {
+                type: 'bar',
+                data: { labels: top.map(function (x) { return cap(x.nombre); }), datasets: [{ label: 'Horas ahorradas', data: top.map(function (x) { return Number(x.horas); }), backgroundColor: '#2B7DE9', borderRadius: 6, maxBarThickness: 26 }] },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, grid: { color: GRID } }, y: { grid: { display: false } } } }
+            });
+
+            // Ejecuciones por área (barra)
+            var pa = d.por_area || [];
+            new Chart(el('chartEjecArea').getContext('2d'), {
+                type: 'bar',
+                data: { labels: pa.map(function (x) { return cap(x.area); }), datasets: [{ label: 'Ejecuciones', data: pa.map(function (x) { return Number(x.ejecuciones); }), backgroundColor: '#154AB5', borderRadius: 6, maxBarThickness: 48 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: GRID }, ticks: { precision: 0 } }, x: { grid: { display: false } } } }
+            });
+        }
+
+        fetch(API, { cache: 'no-store' })
+            .then(function (r) { if (!r.ok) throw new Error('http'); return r.json(); })
+            .then(render)
+            .catch(function () { hide('loading'); show('error'); });
+    </script>
+    <script src="translate.js"></script>
+    <script src="dark-mode.js"></script>
+</body>
+</html>
