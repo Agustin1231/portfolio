@@ -404,6 +404,35 @@
         var retry = el('retry-btn');
         if (retry) retry.addEventListener('click', load);
     </script>
+    <script>
+        // Menu hamburguesa mobile (script.js no se carga en esta pagina).
+        (function () {
+            var toggle = document.querySelector('.menu-toggle');
+            var links = document.querySelector('.nav-links');
+            if (!toggle || !links) return;
+            var spans = toggle.querySelectorAll('span');
+            function setIcon(open) {
+                if (spans.length < 3) return;
+                spans[0].style.transform = open ? 'rotate(45deg) translateY(10px)' : 'none';
+                spans[1].style.opacity = open ? '0' : '1';
+                spans[2].style.transform = open ? 'rotate(-45deg) translateY(-10px)' : 'none';
+            }
+            toggle.addEventListener('click', function () {
+                var open = links.classList.toggle('active');
+                toggle.classList.toggle('active', open);
+                setIcon(open);
+            });
+            links.querySelectorAll('.nav-link').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        links.classList.remove('active');
+                        toggle.classList.remove('active');
+                        setIcon(false);
+                    }
+                });
+            });
+        })();
+    </script>
     <script src="translate.js"></script>
     <script src="dark-mode.js"></script>
 </body>
