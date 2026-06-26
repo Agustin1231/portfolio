@@ -288,12 +288,14 @@
         function show(id) { el(id).style.display = (id === 'dashboard' ? 'block' : (id === 'updated' ? 'inline-flex' : 'block')); }
         function hide(id) { el(id).style.display = 'none'; }
 
-        function animateValue(node, end, suffix) {
-            var start = 0, dur = 900, t0 = performance.now();
+        function animateValue(node, end, dec) {
+            dec = dec || 0;
+            var dur = 900, t0 = performance.now();
             function step(now) {
                 var p = Math.min((now - t0) / dur, 1);
-                var v = Math.round((0.5 - Math.cos(p * Math.PI) / 2) * end);
-                node.firstChild ? (node.childNodes[0].nodeValue = fmt(v)) : (node.textContent = fmt(v));
+                var v = (0.5 - Math.cos(p * Math.PI) / 2) * end;
+                var txt = dec > 0 ? (Math.round(v * 10) / 10).toLocaleString('es-CO', { minimumFractionDigits: dec, maximumFractionDigits: dec }) : fmt(Math.round(v));
+                node.firstChild ? (node.childNodes[0].nodeValue = txt) : (node.textContent = txt);
                 if (p < 1) requestAnimationFrame(step);
             }
             requestAnimationFrame(step);
@@ -314,11 +316,12 @@
 
             if (d.actualizado_en) { el('updated-text').textContent = 'Actualizado: ' + d.actualizado_en + ' (hora Colombia)'; show('updated'); }
 
-            animateValue(el('stat-horas'), Math.round(d.total_horas), '');
+            var horas = Number(d.total_horas) || 0;
+            animateValue(el('stat-horas'), horas, horas < 10 ? 1 : 0);
             el('stat-minutos').textContent = fmt(d.total_minutos) + ' minutos en total';
-            animateValue(el('stat-ejecuciones'), d.total_ejecuciones, '');
-            animateValue(el('stat-automatizaciones'), d.total_automatizaciones, '');
-            animateValue(el('stat-dias'), Math.round(d.total_horas / 8), '');
+            animateValue(el('stat-ejecuciones'), d.total_ejecuciones, 0);
+            animateValue(el('stat-automatizaciones'), d.total_automatizaciones, 0);
+            animateValue(el('stat-dias'), Math.round(horas / 8), 0);
 
             // Línea de tiempo (horas acumuladas)
             var tl = d.linea_tiempo || [];
@@ -347,8 +350,8 @@
             var pa = d.por_area || [];
             makeChart('chartEjecArea', {
                 type: 'bar',
-                data: { labels: pa.map(function (x) { return cap(x.area); }), datasets: [{ label: 'Ejecuciones', data: pa.map(function (x) { return Number(x.ejecuciones); }), backgroundColor: '#154AB5', borderRadius: 6, maxBarThickness: 48 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: GRID }, ticks: { precision: 0 } }, x: { grid: { display: false } } } }
+                data: { labels: pa.map(function (x) { return cap(x.area); }), datasets: [{ label: 'Ejecuciones', data: pa.map(function (x) { return Number(x.ejecuciones); }), backgroundColor: '#154AB5', borderRadius: 6, maxBarThickness: 34 }] },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, grid: { color: GRID }, ticks: { precision: 0 } }, y: { grid: { display: false } } } }
             });
         }
 
