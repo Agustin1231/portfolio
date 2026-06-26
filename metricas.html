@@ -237,11 +237,6 @@
                 </div>
 
                 <div class="charts-grid">
-                    <div class="chart-card wide">
-                        <h3>Horas ahorradas en el tiempo</h3>
-                        <p class="chart-sub">Acumulado de horas a medida que las automatizaciones se ejecutan</p>
-                        <div class="chart-wrap"><canvas id="chartTiempo"></canvas></div>
-                    </div>
                     <div class="chart-card">
                         <h3>Por área</h3>
                         <p class="chart-sub">Dónde se concentra el ahorro de tiempo</p>
@@ -322,19 +317,6 @@
             animateValue(el('stat-ejecuciones'), d.total_ejecuciones, 0);
             animateValue(el('stat-automatizaciones'), d.total_automatizaciones, 0);
             animateValue(el('stat-dias'), Math.round(horas / 8), 0);
-
-            // Línea de tiempo (horas acumuladas)
-            var tl = d.linea_tiempo || [];
-            var labels = tl.map(function (x) { return x.dia; });
-            var acc = 0; var cum = tl.map(function (x) { acc += Number(x.horas); return Math.round(acc * 100) / 100; });
-            var ctxT = el('chartTiempo').getContext('2d');
-            var grad = ctxT.createLinearGradient(0, 0, 0, 300);
-            grad.addColorStop(0, 'rgba(43,125,233,0.35)'); grad.addColorStop(1, 'rgba(43,125,233,0.02)');
-            makeChart('chartTiempo', {
-                type: 'line',
-                data: { labels: labels, datasets: [{ label: 'Horas acumuladas', data: cum, borderColor: '#1B5FCF', backgroundColor: grad, fill: true, tension: 0.35, pointRadius: 3, pointBackgroundColor: '#1B5FCF', borderWidth: 2.5 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: GRID } }, x: { grid: { display: false } } } }
-            });
 
             function doughnut(canvasId, arr, valueKey) {
                 makeChart(canvasId, {
