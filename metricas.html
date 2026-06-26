@@ -243,7 +243,7 @@
                     <div class="stat-card">
                         <div class="stat-value" id="stat-dias">0<span class="unit">días</span></div>
                         <div class="stat-label">Equivale a</div>
-                        <div class="stat-sub">jornadas de 8h liberadas</div>
+                        <div class="stat-sub" id="stat-dias-sub">jornadas de 8h liberadas</div>
                     </div>
                 </div>
 
@@ -330,7 +330,12 @@
             el('stat-minutos').textContent = fmt(d.total_minutos) + ' minutos en total';
             animateValue(el('stat-ejecuciones'), d.total_ejecuciones, 0);
             animateValue(el('stat-automatizaciones'), d.total_automatizaciones, 0);
-            animateValue(el('stat-dias'), Math.round(horas / 8), 0);
+            var jornadas = Math.round(horas / 8);
+            animateValue(el('stat-dias'), jornadas, 0);
+            var anios = jornadas / 240;
+            if (el('stat-dias-sub')) {
+                el('stat-dias-sub').textContent = 'jornadas de 8h liberadas · ≈ ' + anios.toLocaleString('es-CO', { maximumFractionDigits: 1 }) + ' años de trabajo';
+            }
 
             function doughnut(canvasId, arr, valueKey) {
                 makeChart(canvasId, {
