@@ -14,7 +14,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Métricas de Automatización | Agustín Peralta</title>
+    <title>Métricas de Automatización | Agustin Peralta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -137,6 +137,9 @@
             .stat-grid { grid-template-columns: 1fr; }
             .metrics-hero .section-title { font-size: 2.2rem; }
         }
+
+        body { display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
+        .footer { margin-top: auto; }
     </style>
 </head>
 <body>
@@ -153,7 +156,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="index.html" class="logo">Agustín Peralta</a>
+                <a href="index.html" class="logo">Agustin Peralta</a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
@@ -244,21 +247,6 @@
                         <div class="chart-wrap"><canvas id="chartArea"></canvas></div>
                     </div>
                     <div class="chart-card">
-                        <h3>Por recurso</h3>
-                        <p class="chart-sub">Tecnología que ejecuta cada automatización</p>
-                        <div class="chart-wrap"><canvas id="chartRecurso"></canvas></div>
-                    </div>
-                    <div class="chart-card wide">
-                        <h3>Top automatizaciones por horas ahorradas</h3>
-                        <p class="chart-sub">Las que más tiempo recuperan</p>
-                        <div class="chart-wrap tall"><canvas id="chartTop"></canvas></div>
-                    </div>
-                    <div class="chart-card">
-                        <h3>Por organización</h3>
-                        <p class="chart-sub">Personal vs. Urpe AI Lab</p>
-                        <div class="chart-wrap"><canvas id="chartOrg"></canvas></div>
-                    </div>
-                    <div class="chart-card">
                         <h3>Ejecuciones por área</h3>
                         <p class="chart-sub">Cuántas veces corren, no solo cuánto ahorran</p>
                         <div class="chart-wrap"><canvas id="chartEjecArea"></canvas></div>
@@ -272,8 +260,8 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>Diseñado y desarrollado por Agustín Peralta</p>
-                <p class="footer-year">© 2026</p>
+                <p>Diseñado y desarrollado por Agustin Peralta</p>
+                <p class="footer-year">© 2025</p>
             </div>
         </div>
     </footer>
@@ -345,16 +333,6 @@
             }
 
             doughnut('chartArea', d.por_area || [], 'horas');
-            doughnut('chartRecurso', d.por_recurso || [], 'horas');
-            doughnut('chartOrg', d.por_organizacion || [], 'horas');
-
-            // Top automatizaciones (barra horizontal)
-            var top = d.top_automatizaciones || [];
-            new Chart(el('chartTop').getContext('2d'), {
-                type: 'bar',
-                data: { labels: top.map(function (x) { return cap(x.nombre); }), datasets: [{ label: 'Horas ahorradas', data: top.map(function (x) { return Number(x.horas); }), backgroundColor: '#2B7DE9', borderRadius: 6, maxBarThickness: 26 }] },
-                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, grid: { color: GRID } }, y: { grid: { display: false } } } }
-            });
 
             // Ejecuciones por área (barra)
             var pa = d.por_area || [];

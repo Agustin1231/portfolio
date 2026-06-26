@@ -134,7 +134,7 @@
     function renderGuidePage(guide) {
         const root = document.getElementById('guide-root');
         if (!root) return;
-        document.title = `${guide.title} | Agustín Peralta`;
+        document.title = `${guide.title} | Agustin Peralta`;
         const meta = [
             guide.date ? `<span class="meta-item">${SVG_CAL}${escapeHTML(guide.date)}</span>` : '',
             guide.readingTime ? `<span class="meta-item">${SVG_CLOCK}${escapeHTML(guide.readingTime)}</span>` : ''

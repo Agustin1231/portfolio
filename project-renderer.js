@@ -60,7 +60,7 @@
     function renderProjectPage(project, allProjects) {
         const root = document.getElementById('project-root');
         if (!root) return;
-        document.title = `${project.title} | Agustín Peralta`;
+        document.title = `${project.title} | Agustin Peralta`;
         const related = allProjects.filter(p => p.id !== project.id && p.visible !== false).slice(0, 3);
 
         root.innerHTML = `
