@@ -330,11 +330,12 @@
             el('stat-minutos').textContent = fmt(d.total_minutos) + ' minutos en total';
             animateValue(el('stat-ejecuciones'), d.total_ejecuciones, 0);
             animateValue(el('stat-automatizaciones'), d.total_automatizaciones, 0);
-            var jornadas = Math.round(horas / 8);
-            animateValue(el('stat-dias'), jornadas, 0);
-            var anios = jornadas / 240;
+            var dias = Math.round(horas / 8);
+            animateValue(el('stat-dias'), dias, 0);
             if (el('stat-dias-sub')) {
-                el('stat-dias-sub').textContent = 'jornadas de 8h liberadas · ≈ ' + anios.toLocaleString('es-CO', { maximumFractionDigits: 1 }) + ' años de trabajo';
+                var jornadas8 = dias / 8;
+                var aniosLib = dias / 365;
+                el('stat-dias-sub').innerHTML = jornadas8.toLocaleString('es-CO', { maximumFractionDigits: 2 }) + ' jornadas de 8h liberadas<br>' + aniosLib.toLocaleString('es-CO', { maximumFractionDigits: 2 }) + ' años liberados';
             }
 
             function doughnut(canvasId, arr, valueKey) {
