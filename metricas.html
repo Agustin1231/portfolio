@@ -116,29 +116,16 @@
         }
         .chart-card .chart-sub { font-size: 0.85rem; color: var(--color-dark-gray); margin-bottom: 1.25rem; }
 
-        .rank-list { display: flex; flex-direction: column; gap: 0.6rem; }
-        .rank-row {
-            display: grid;
-            grid-template-columns: 2rem 1fr auto;
-            align-items: center;
-            column-gap: 0.85rem;
-            row-gap: 0.5rem;
-            padding: 0.75rem 0.9rem;
-            border-radius: 10px;
-            background: var(--color-off-white);
-            border: 1px solid var(--color-light-gray);
-        }
-        .rank-row .rank-num { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem; color: var(--color-blue-600); text-align: center; }
-        .rank-row .rank-area { font-weight: 600; color: var(--color-navy); }
-        .rank-row .rank-val { font-family: var(--font-serif); font-weight: 700; font-size: 1.1rem; color: var(--color-navy); text-align: right; font-variant-numeric: tabular-nums; }
-        .rank-row .rank-val small { display: block; font-size: 0.68rem; font-weight: 500; color: var(--color-dark-gray); letter-spacing: 0.02em; }
-        .rank-row .rank-bar { grid-column: 1 / -1; height: 6px; border-radius: 4px; background: var(--color-light-gray); overflow: hidden; }
-        .rank-row .rank-bar > span { display: block; height: 100%; background: var(--color-blue-500); border-radius: 4px; }
-        .rank-row.top { background: linear-gradient(180deg, var(--color-blue-500), var(--color-blue-700)); border-color: transparent; }
-        .rank-row.top .rank-num, .rank-row.top .rank-area, .rank-row.top .rank-val { color: #fff; }
-        .rank-row.top .rank-val small { color: rgba(255,255,255,0.8); }
-        .rank-row.top .rank-bar { background: rgba(255,255,255,0.25); }
-        .rank-row.top .rank-bar > span { background: #fff; }
+        .rank-table { width: 100%; border-collapse: collapse; }
+        .rank-table th { text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-dark-gray); font-weight: 600; padding: 0.5rem 0.6rem; border-bottom: 2px solid var(--color-light-gray); }
+        .rank-table th.r, .rank-table td.r { text-align: right; }
+        .rank-table td { padding: 0.7rem 0.6rem; border-bottom: 1px solid var(--color-light-gray); font-size: 0.95rem; color: var(--color-navy); }
+        .rank-table tbody tr:last-child td { border-bottom: none; }
+        .rank-table .rk { font-family: var(--font-serif); font-weight: 700; color: var(--color-blue-600); width: 2rem; }
+        .rank-table .num { font-family: var(--font-serif); font-weight: 700; font-variant-numeric: tabular-nums; }
+        .rank-table .pct { color: var(--color-dark-gray); font-size: 0.82rem; }
+        .rank-table tr.lead td { background: rgba(43,125,233,0.08); font-weight: 700; }
+        .rank-table tr.lead .rk { color: var(--color-blue-700); }
         .chart-wrap { position: relative; height: 300px; }
         .chart-wrap.tall { height: 360px; }
 
@@ -269,7 +256,10 @@
                     <div class="chart-card">
                         <h3>Ejecuciones por área</h3>
                         <p class="chart-sub">Cuántas veces corren, no solo cuánto ahorran</p>
-                        <div id="ejecAreaRank" class="rank-list"></div>
+                        <table class="rank-table">
+                            <thead><tr><th>#</th><th>Área</th><th class="r">Ejecuciones</th><th class="r">% del total</th></tr></thead>
+                            <tbody id="ejecAreaRank"></tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -352,23 +342,23 @@
 
             doughnut('chartArea', d.por_area || [], 'horas');
 
-            // Ejecuciones por área (ranking)
+            // Ejecuciones por área (tabla ranking)
             var pa = (d.por_area || []).slice().sort(function (a, b) { return Number(b.ejecuciones) - Number(a.ejecuciones); });
-            var maxEjec = pa.length ? Number(pa[0].ejecuciones) : 0;
+            var totalEjec = pa.reduce(function (s, x) { return s + (Number(x.ejecuciones) || 0); }, 0);
             var host = el('ejecAreaRank');
             if (host) {
                 host.innerHTML = '';
                 pa.forEach(function (x, i) {
                     var ejec = Number(x.ejecuciones) || 0;
-                    var pct = maxEjec > 0 ? Math.round(ejec / maxEjec * 100) : 0;
-                    var row = document.createElement('div');
-                    row.className = 'rank-row' + (i === 0 ? ' top' : '');
-                    row.innerHTML =
-                        '<div class="rank-num">' + (i + 1) + '</div>' +
-                        '<div class="rank-area">' + cap(x.area) + '</div>' +
-                        '<div class="rank-val">' + fmt(ejec) + '<small>ejecuciones</small></div>' +
-                        '<div class="rank-bar"><span style="width:' + pct + '%"></span></div>';
-                    host.appendChild(row);
+                    var share = totalEjec > 0 ? (ejec / totalEjec * 100) : 0;
+                    var tr = document.createElement('tr');
+                    if (i === 0) tr.className = 'lead';
+                    tr.innerHTML =
+                        '<td class="rk">' + (i + 1) + '</td>' +
+                        '<td>' + cap(x.area) + '</td>' +
+                        '<td class="r num">' + fmt(ejec) + '</td>' +
+                        '<td class="r pct">' + share.toFixed(1) + '%</td>';
+                    host.appendChild(tr);
                 });
             }
         }
