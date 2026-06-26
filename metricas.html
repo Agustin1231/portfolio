@@ -115,6 +115,30 @@
             margin-bottom: 0.35rem;
         }
         .chart-card .chart-sub { font-size: 0.85rem; color: var(--color-dark-gray); margin-bottom: 1.25rem; }
+
+        .rank-list { display: flex; flex-direction: column; gap: 0.6rem; }
+        .rank-row {
+            display: grid;
+            grid-template-columns: 2rem 1fr auto;
+            align-items: center;
+            column-gap: 0.85rem;
+            row-gap: 0.5rem;
+            padding: 0.75rem 0.9rem;
+            border-radius: 10px;
+            background: var(--color-off-white);
+            border: 1px solid var(--color-light-gray);
+        }
+        .rank-row .rank-num { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem; color: var(--color-blue-600); text-align: center; }
+        .rank-row .rank-area { font-weight: 600; color: var(--color-navy); }
+        .rank-row .rank-val { font-family: var(--font-serif); font-weight: 700; font-size: 1.1rem; color: var(--color-navy); text-align: right; font-variant-numeric: tabular-nums; }
+        .rank-row .rank-val small { display: block; font-size: 0.68rem; font-weight: 500; color: var(--color-dark-gray); letter-spacing: 0.02em; }
+        .rank-row .rank-bar { grid-column: 1 / -1; height: 6px; border-radius: 4px; background: var(--color-light-gray); overflow: hidden; }
+        .rank-row .rank-bar > span { display: block; height: 100%; background: var(--color-blue-500); border-radius: 4px; }
+        .rank-row.top { background: linear-gradient(180deg, var(--color-blue-500), var(--color-blue-700)); border-color: transparent; }
+        .rank-row.top .rank-num, .rank-row.top .rank-area, .rank-row.top .rank-val { color: #fff; }
+        .rank-row.top .rank-val small { color: rgba(255,255,255,0.8); }
+        .rank-row.top .rank-bar { background: rgba(255,255,255,0.25); }
+        .rank-row.top .rank-bar > span { background: #fff; }
         .chart-wrap { position: relative; height: 300px; }
         .chart-wrap.tall { height: 360px; }
 
@@ -245,7 +269,7 @@
                     <div class="chart-card">
                         <h3>Ejecuciones por área</h3>
                         <p class="chart-sub">Cuántas veces corren, no solo cuánto ahorran</p>
-                        <div class="chart-wrap"><canvas id="chartEjecArea"></canvas></div>
+                        <div id="ejecAreaRank" class="rank-list"></div>
                     </div>
                 </div>
             </div>
@@ -328,13 +352,25 @@
 
             doughnut('chartArea', d.por_area || [], 'horas');
 
-            // Ejecuciones por área (barra)
-            var pa = d.por_area || [];
-            makeChart('chartEjecArea', {
-                type: 'bar',
-                data: { labels: pa.map(function (x) { return cap(x.area); }), datasets: [{ label: 'Ejecuciones', data: pa.map(function (x) { return Number(x.ejecuciones); }), backgroundColor: '#154AB5', borderRadius: 6, maxBarThickness: 34 }] },
-                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, grid: { color: GRID }, ticks: { precision: 0 } }, y: { grid: { display: false } } } }
-            });
+            // Ejecuciones por área (ranking)
+            var pa = (d.por_area || []).slice().sort(function (a, b) { return Number(b.ejecuciones) - Number(a.ejecuciones); });
+            var maxEjec = pa.length ? Number(pa[0].ejecuciones) : 0;
+            var host = el('ejecAreaRank');
+            if (host) {
+                host.innerHTML = '';
+                pa.forEach(function (x, i) {
+                    var ejec = Number(x.ejecuciones) || 0;
+                    var pct = maxEjec > 0 ? Math.round(ejec / maxEjec * 100) : 0;
+                    var row = document.createElement('div');
+                    row.className = 'rank-row' + (i === 0 ? ' top' : '');
+                    row.innerHTML =
+                        '<div class="rank-num">' + (i + 1) + '</div>' +
+                        '<div class="rank-area">' + cap(x.area) + '</div>' +
+                        '<div class="rank-val">' + fmt(ejec) + '<small>ejecuciones</small></div>' +
+                        '<div class="rank-bar"><span style="width:' + pct + '%"></span></div>';
+                    host.appendChild(row);
+                });
+            }
         }
 
         var CACHE_KEY = 'metricas_cache_v1';
