@@ -208,7 +208,8 @@
             </div>
 
             <div id="error" class="metrics-error" style="display:none;">
-                No se pudieron cargar las métricas en este momento. Intenta de nuevo en unos minutos.
+                <p>No se pudieron cargar las métricas en este momento.</p>
+                <button type="button" id="retry-btn" style="margin-top:14px;padding:10px 24px;border:none;border-radius:8px;background:#1B5FCF;color:#fff;font-family:inherit;font-size:0.95rem;cursor:pointer;">Reintentar</button>
             </div>
 
             <div id="dashboard" style="display:none;">
@@ -298,9 +299,17 @@
             requestAnimationFrame(step);
         }
 
+        var CHARTS = {};
+        function makeChart(id, cfg) {
+            if (CHARTS[id]) CHARTS[id].destroy();
+            CHARTS[id] = new Chart(el(id).getContext('2d'), cfg);
+        }
+
         function render(d) {
             hide('loading');
-            if (!d || Number(d.total_ejecuciones) === 0) { show('empty'); return; }
+            hide('error');
+            if (!d || Number(d.total_ejecuciones) === 0) { hide('dashboard'); show('empty'); return; }
+            hide('empty');
             show('dashboard');
 
             if (d.actualizado_en) { el('updated-text').textContent = 'Actualizado: ' + d.actualizado_en + ' (hora Colombia)'; show('updated'); }
@@ -318,14 +327,14 @@
             var ctxT = el('chartTiempo').getContext('2d');
             var grad = ctxT.createLinearGradient(0, 0, 0, 300);
             grad.addColorStop(0, 'rgba(43,125,233,0.35)'); grad.addColorStop(1, 'rgba(43,125,233,0.02)');
-            new Chart(ctxT, {
+            makeChart('chartTiempo', {
                 type: 'line',
                 data: { labels: labels, datasets: [{ label: 'Horas acumuladas', data: cum, borderColor: '#1B5FCF', backgroundColor: grad, fill: true, tension: 0.35, pointRadius: 3, pointBackgroundColor: '#1B5FCF', borderWidth: 2.5 }] },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: GRID } }, x: { grid: { display: false } } } }
             });
 
             function doughnut(canvasId, arr, valueKey) {
-                new Chart(el(canvasId).getContext('2d'), {
+                makeChart(canvasId, {
                     type: 'doughnut',
                     data: { labels: arr.map(function (x) { return cap(x[Object.keys(x)[0]]); }), datasets: [{ data: arr.map(function (x) { return Number(x[valueKey]); }), backgroundColor: PALETTE, borderColor: '#fff', borderWidth: 2 }] },
                     options: { responsive: true, maintainAspectRatio: false, cutout: '62%', plugins: { legend: { position: 'bottom', labels: { padding: 14, usePointStyle: true, pointStyle: 'circle' } } } }
@@ -336,17 +345,47 @@
 
             // Ejecuciones por área (barra)
             var pa = d.por_area || [];
-            new Chart(el('chartEjecArea').getContext('2d'), {
+            makeChart('chartEjecArea', {
                 type: 'bar',
                 data: { labels: pa.map(function (x) { return cap(x.area); }), datasets: [{ label: 'Ejecuciones', data: pa.map(function (x) { return Number(x.ejecuciones); }), backgroundColor: '#154AB5', borderRadius: 6, maxBarThickness: 48 }] },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: GRID }, ticks: { precision: 0 } }, x: { grid: { display: false } } } }
             });
         }
 
-        fetch(API, { cache: 'no-store' })
-            .then(function (r) { if (!r.ok) throw new Error('http'); return r.json(); })
-            .then(render)
-            .catch(function () { hide('loading'); show('error'); });
+        var CACHE_KEY = 'metricas_cache_v1';
+        var hasData = false;
+
+        function paintFromCache() {
+            try {
+                var raw = localStorage.getItem(CACHE_KEY);
+                if (!raw) return;
+                render(JSON.parse(raw));
+                hasData = true;
+            } catch (e) { }
+        }
+
+        function load() {
+            if (!hasData) { hide('empty'); hide('error'); show('loading'); }
+            var ctrl = new AbortController();
+            var timer = setTimeout(function () { ctrl.abort(); }, 10000);
+            fetch(API, { cache: 'no-store', signal: ctrl.signal })
+                .then(function (r) { clearTimeout(timer); if (!r.ok) throw new Error('http'); return r.json(); })
+                .then(function (d) {
+                    try { localStorage.setItem(CACHE_KEY, JSON.stringify(d)); } catch (e) { }
+                    render(d);
+                    hasData = true;
+                })
+                .catch(function () {
+                    clearTimeout(timer);
+                    if (!hasData) { hide('loading'); hide('dashboard'); hide('empty'); show('error'); }
+                });
+        }
+
+        paintFromCache();
+        load();
+
+        var retry = el('retry-btn');
+        if (retry) retry.addEventListener('click', load);
     </script>
     <script src="translate.js"></script>
     <script src="dark-mode.js"></script>
