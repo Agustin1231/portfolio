@@ -466,7 +466,21 @@
             var index = 0;
 
             function loadNext() {
-                if (index >= scripts.length) return;
+                if (index >= scripts.length) {
+                    // Todo el contenido dinámico (cards de proyectos y guías) ya se
+                    // inyectó. Si llegamos con un #hash (ej: "Consultar sobre esta
+                    // guía" -> index.html#contacto), rehacer el scroll: el salto
+                    // nativo ocurrió antes de inyectar las cards y quedaba mal ubicado.
+                    if (window.location.hash) {
+                        var target = document.querySelector(window.location.hash);
+                        if (target) {
+                            setTimeout(function() {
+                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }, 150);
+                        }
+                    }
+                    return;
+                }
                 var s = document.createElement('script');
                 s.src = scripts[index] + '?v=' + timestamp;
                 s.onload = function() {
