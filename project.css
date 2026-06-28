@@ -144,7 +144,8 @@
     color: var(--color-navy);
     margin-bottom: 0;
     letter-spacing: -0.5px;
-    flex-shrink: 0;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .block-line {
