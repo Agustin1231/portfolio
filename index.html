@@ -468,9 +468,23 @@
             function loadNext() {
                 if (index >= scripts.length) {
                     // Todo el contenido dinámico (cards de proyectos y guías) ya se
-                    // inyectó. Si llegamos con un #hash (ej: "Consultar sobre esta
-                    // guía" -> index.html#contacto), rehacer el scroll: el salto
-                    // nativo ocurrió antes de inyectar las cards y quedaba mal ubicado.
+                    // inyectó. Si llegamos con ?consulta=<id-guía> (botón "Consultar
+                    // sobre esta guía"), precargar el formulario de contacto con el
+                    // contexto de esa guía.
+                    var consulta = new URLSearchParams(window.location.search).get('consulta');
+                    if (consulta && typeof GUIDES_DATA !== 'undefined') {
+                        var guia = GUIDES_DATA.filter(function(g) { return g.id === consulta; })[0];
+                        var textarea = document.getElementById('solicitud');
+                        var intro = document.querySelector('.contact-intro');
+                        if (guia && textarea && !textarea.value) {
+                            textarea.value = 'Hola Agustin, quiero más información sobre tu guía "' + guia.title + '".';
+                        }
+                        if (guia && intro) {
+                            intro.textContent = 'Sobre la guía "' + guia.title + '". Déjame tus datos y te amplío la información.';
+                        }
+                    }
+                    // Si llegamos con un #hash, rehacer el scroll: el salto nativo
+                    // ocurrió antes de inyectar las cards y quedaba mal ubicado.
                     if (window.location.hash) {
                         var target = document.querySelector(window.location.hash);
                         if (target) {
