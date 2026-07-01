@@ -253,6 +253,20 @@
                         Me mueve crear soluciones que resuelven problemas reales y generan impacto directo en las personas,
                         combinando pensamiento sistémico, automatización inteligente y una cultura de ingeniería rigurosa.
                     </p>
+                    <div class="about-stats" id="about-stats">
+                        <div class="about-stat">
+                            <span class="about-stat-value" data-metric="total_horas" data-round="1000" data-suffix=" h">+7.000 h</span>
+                            <span class="about-stat-label">Horas de trabajo ahorradas</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="about-stat-value" data-metric="total_ejecuciones" data-round="10000">+70.000</span>
+                            <span class="about-stat-label">Ejecuciones automatizadas</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="about-stat-value" data-metric="total_automatizaciones" data-round="100">+300</span>
+                            <span class="about-stat-label">Automatizaciones en producción</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-skills">
                     <h3>Tecnologías principales</h3>
@@ -520,6 +534,23 @@
     <script src="translate.js"></script>
     <script src="dark-mode.js"></script>
     <script src="email-decode.js"></script>
+    <script>
+        (function () {
+            var API = 'https://n8n.agustinynatalia.site/webhook/metricas-automatizaciones';
+            var box = document.getElementById('about-stats');
+            if (!box) return;
+            fetch(API).then(function (r) { return r.json(); }).then(function (d) {
+                box.querySelectorAll('.about-stat-value').forEach(function (node) {
+                    var raw = Number(d[node.dataset.metric]);
+                    if (!isFinite(raw) || raw <= 0) return;
+                    var step = Number(node.dataset.round) || 1;
+                    var floored = Math.floor(raw / step) * step;
+                    if (floored <= 0) return;
+                    node.textContent = '+' + floored.toLocaleString('es-CO') + (node.dataset.suffix || '');
+                });
+            }).catch(function () { /* deja los valores por defecto */ });
+        })();
+    </script>
 </body>
 
 </html>
