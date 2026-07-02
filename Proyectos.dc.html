@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:#0b0b0d}
+html{overflow-x:hidden}
+.site{--bg:#0b0b0d;--bg2:#131316;--panel:#141417;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.055);--fg:#eceae4;--dim:#9b9a91;--faint:#585851;--btnfg:#0b0b0d;font-family:'Space Grotesk',system-ui,sans-serif;background-color:var(--bg);color:var(--fg);min-height:100vh}
+.site.light{--bg:#f1efe9;--bg2:#ffffff;--panel:#ffffff;--line:rgba(20,18,15,.15);--line2:rgba(20,18,15,.07);--fg:#191712;--dim:#6b675e;--faint:#a7a397;--btnfg:#ffffff}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1220px;margin:0 auto;padding:0 2.2rem}
+a{color:inherit;text-decoration:none}
+.acc{color:var(--accent)}
+::selection{background:var(--accent);color:var(--btnfg)}
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.98rem;letter-spacing:-.3px;display:flex;align-items:center}
+.curs{color:var(--accent);animation:bl 1.1s steps(1) infinite;margin-left:1px}
+@keyframes bl{50%{opacity:0}}
+.navlinks{display:flex;gap:2rem;list-style:none}
+.navlinks a{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim);letter-spacing:.2px;transition:color .25s;position:relative}
+.navlinks a:hover{color:var(--fg)}
+.navlinks a::before{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--accent);transition:right .3s}
+.navlinks a:hover::before{right:0}
+.navtools{display:flex;align-items:center;gap:.5rem}
+.lang{display:flex;font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.lang button{font:inherit;background:none;border:none;color:var(--dim);padding:.42rem .6rem;cursor:pointer;transition:all .2s}
+.lang button.on{background:var(--accent);color:var(--btnfg)}
+.tgl{width:38px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:none;color:var(--fg);cursor:pointer;font-size:1rem;transition:all .2s}
+.tgl:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:34px;align-items:center;justify-content:center}
+.burger span{width:20px;height:2px;background:var(--fg);transition:.3s}
+.bg3d{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:.6}
+.btn{font-family:'JetBrains Mono',monospace;font-size:.85rem;padding:.85rem 1.5rem;border-radius:8px;border:1px solid var(--line);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px}
+.btnO{color:var(--fg);background:none}
+.btnO:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+/* page header */
+.phead{position:relative;z-index:1;padding:9rem 0 3.5rem}
+.back{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim);margin-bottom:1.8rem;transition:color .22s}
+.back:hover{color:var(--accent)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.5px;color:var(--dim);display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+.eyebrow b{color:var(--accent);font-weight:500}
+.ptitle{font-size:clamp(2.4rem,5.5vw,3.6rem);font-weight:600;letter-spacing:-.03em;line-height:1.02}
+.psub{font-size:1.08rem;color:var(--dim);margin-top:1rem;max-width:600px;line-height:1.6}
+/* year sections */
+.yearWrap{position:relative;z-index:1;padding-bottom:6rem}
+.yearSec{padding-top:1rem;margin-bottom:3.5rem}
+.yearHead{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.yearNum{font-size:clamp(2rem,5vw,3rem);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--fg)}
+.yearCount{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--faint);letter-spacing:.3px}
+.yearLine{flex:1;height:1px;background:var(--line2)}
+.pGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.pCard{border:1px solid var(--line);border-radius:16px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column;transition:transform .28s,border-color .28s;opacity:0;transform:translateY(26px)}
+.pCard.in{opacity:1;transform:none}
+.pCard:hover{transform:translateY(-5px);border-color:var(--accent)}
+.pCardImg{aspect-ratio:16/10;background:var(--bg);position:relative;overflow:hidden}
+.pCardImg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.pCard:hover .pCardImg img{transform:scale(1.05)}
+.pCardGrid{position:absolute;inset:0;background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
+.pCardBody{padding:1.5rem;display:flex;flex-direction:column;flex:1}
+.pCardCat{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.7rem}
+.pCardTitle{font-size:1.22rem;font-weight:600;letter-spacing:-.01em;line-height:1.25;margin-bottom:.6rem;transition:color .2s}
+.pCard:hover .pCardTitle{color:var(--accent)}
+.pCardDesc{color:var(--dim);line-height:1.6;font-size:.96rem;flex:1;margin-bottom:1.3rem}
+.pCardTech{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.3rem}
+.pTag{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.28rem .55rem;border:1px solid var(--line);border-radius:6px;color:var(--dim)}
+.pCardFoot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line2);padding-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.76rem;margin-top:auto}
+.pCardCo{color:var(--faint)}
+.pCardLink{color:var(--accent);display:inline-flex;align-items:center;gap:.4rem}
+.pCard:hover .pCardLink{gap:.6rem}
+/* footer */
+.footer{border-top:1px solid var(--line);padding:2.6rem 0;position:relative;z-index:1}
+.footIn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim)}
+.footIn .y{color:var(--faint)}
+@media(max-width:980px){.pGrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){
+.navlinks{position:fixed;top:0;right:0;width:270px;height:100vh;flex-direction:column;background:var(--bg2);border-left:1px solid var(--line);padding:5.5rem 2rem;gap:1.4rem;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:-20px 0 50px rgba(0,0,0,.3)}
+.navlinks.open{transform:none}
+.burger{display:flex}
+.wrap{padding:0 1.4rem}
+.phead{padding:7rem 0 2.5rem}
+.pGrid{grid-template-columns:1fr}
+}
+</style>
+</helmet>
+<div class="site {{themeClass}}" id="top" style="{{rootStyle}}">
+<canvas class="bg3d"></canvas>
+<nav class="nav"><div class="wrap navbar">
+<a class="brand" href="Portafolio.dc.html#top">agustin.peralta<span class="curs">▮</span></a>
+<ul class="navlinks {{menuClass}}">
+<li><a href="Portafolio.dc.html#sobre" onClick="{{closeMenu}}">{{t.navAbout}}</a></li>
+<li><a href="Portafolio.dc.html#experiencia" onClick="{{closeMenu}}">{{t.navExp}}</a></li>
+<li><a href="Portafolio.dc.html#proyectos" onClick="{{closeMenu}}">{{t.navWork}}</a></li>
+<li><a href="Portafolio.dc.html#guias" onClick="{{closeMenu}}">{{t.navGuides}}</a></li>
+<li><a href="Metricas.dc.html">{{t.navMetrics}}</a></li>
+<li><a href="Portafolio.dc.html#contacto" onClick="{{closeMenu}}">{{t.navContact}}</a></li>
+</ul>
+<div class="navtools">
+<div class="lang mono"><button class="{{esCls}}" onClick="{{setEs}}">ES</button><button class="{{enCls}}" onClick="{{setEn}}">EN</button></div>
+<button class="tgl" onClick="{{toggleTheme}}" aria-label="theme">{{themeIcon}}</button>
+<button class="burger" onClick="{{toggleMenu}}" aria-label="menu"><span></span><span></span><span></span></button>
+</div>
+</div></nav>
+
+<header class="phead"><div class="wrap">
+<a class="back mono" href="Portafolio.dc.html#proyectos"><span>←</span> {{t.back}}</a>
+<div class="eyebrow mono"><b>[ * ]</b> // {{t.eyebrow}}</div>
+<h1 class="ptitle">{{t.title}}</h1>
+<p class="psub">{{t.sub}}</p>
+</div></header>
+
+<div class="yearWrap"><div class="wrap">
+<sc-for list="{{years}}" as="yr" hint-placeholder-count="2">
+<section class="yearSec">
+<div class="yearHead"><span class="yearNum">{{yr.year}}</span><span class="yearCount mono">{{yr.count}}</span><span class="yearLine"></span></div>
+<div class="pGrid">
+<sc-for list="{{yr.projects}}" as="p" hint-placeholder-count="6">
+<a class="pCard reveal" href="{{p.url}}">
+<div class="pCardImg"><img src="{{p.img}}" alt="{{p.title}}" loading="lazy"><div class="pCardGrid"></div></div>
+<div class="pCardBody">
+<div class="pCardCat mono">{{p.cat}}</div>
+<h3 class="pCardTitle">{{p.title}}</h3>
+<p class="pCardDesc">{{p.sub}}</p>
+<div class="pCardTech"><sc-for list="{{p.tech}}" as="tt" hint-placeholder-count="3"><span class="pTag mono">{{tt}}</span></sc-for></div>
+<div class="pCardFoot"><span class="pCardCo">{{p.company}}</span><span class="pCardLink">{{t.viewProject}} →</span></div>
+</div>
+</a>
+</sc-for>
+</div>
+</section>
+</sc-for>
+</div></div>
+
+<footer class="footer"><div class="wrap footIn">
+<span>{{t.footerText}}</span>
+<span class="mono" style="font-size:.78rem"><a href="terminos.html" style="color:var(--dim)">Términos</a> · <a href="privacidad.html" style="color:var(--dim)">Privacidad</a></span>
+<span class="y">© 2026 · <span class="acc">Bogotá</span></span>
+</div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ff5c35&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;scene3d&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
+class Component extends DCLogic {
+  PROJECTS = [
+    {id:"automatizacion-analitica-podcasts",tag:"auto",year:"2025",company:"Plataforma de Podcasts",img:"https://imagenes.agustinynatalia.site/automatizacion-analitica-podcasts",tech:["n8n","PostgreSQL","APIs"],es:{t:"Automatización Analítica de Podcasts",s:"Extracción, validación y análisis diario de métricas de podcasts para decisiones"},en:{t:"Podcast Analytics Automation",s:"Daily extraction, validation and analysis of podcast metrics for decision-making"}},
+    {id:"agente-de-ia-para-insights-estrategicos",tag:"ai",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/agente-de-ia-para-insights-estrategicos",tech:["LangGraph","LLMs","Python"],es:{t:"Agente de IA para Insights Estratégicos",s:"Transforma métricas de shows en recomendaciones estratégicas personalizadas"},en:{t:"AI Agent for Strategic Insights",s:"Turns show metrics into personalized strategic recommendations"}},
+    {id:"automatizacion-inteligente-de-analisis-de-shows",tag:"auto",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/automatizacion-inteligente-de-analisis-de-shows",tech:["n8n","LLMs","Data Viz"],es:{t:"Automatización Inteligente de Análisis de Shows",s:"Análisis de rendimiento de shows mediante IA y visualización de datos"},en:{t:"Intelligent Show Analytics Automation",s:"Show performance analysis with AI and data visualization"}},
+    {id:"automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",tag:"auto",year:"2025",company:"Nata",img:"https://imagenes.agustinynatalia.site/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",tech:["n8n","IA Generativa","APIs"],es:{t:"Automatización de Contenido y Diseño con IA",s:"Flujo automatizado para crear contenido web y piezas visuales con IA"},en:{t:"AI Content & Design Automation",s:"Automated flow to create web content and visual assets with AI"}},
+    {id:"automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",tag:"auto",year:"2026",company:"Proyecto Personal",img:"https://imagenes.agustinynatalia.site/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",tech:["n8n","LLMs","APIs"],es:{t:"Publicación Automatizada para Blog de Tecnología",s:"Curación, creación y publicación automática de contenido tecnológico"},en:{t:"Automated Publishing for a Tech Blog",s:"Curating, creating and auto-publishing tech content end to end"}},
+    {id:"pulso-app-salud-cardiovascular",tag:"prod",year:"2025",company:"Producto propio",img:"https://imagenes.agustinynatalia.site/pulso-app-salud-cardiovascular",tech:["Next.js","PWA","IA"],es:{t:"Pulso — App PWA de Salud Cardiovascular",s:"App instalable con métricas, recetas y rutinas con IA, sin login"},en:{t:"Pulso — Cardiovascular Health PWA",s:"Installable app with AI metrics, recipes and routines, no login"}},
+    {id:"monica-brain-asistente-ia-omnicanal",tag:"ai",year:"2025",company:"Urpe AI Lab",live:"https://brain.urpeailab.com/visual",img:"https://imagenes.agustinynatalia.site/monica-brain-asistente-ia-omnicanal",tech:["LangGraph","LLMs","n8n"],es:{t:"Monica Brain — Asistente de IA Omnicanal",s:"Atiende, califica y da seguimiento a clientes en canales de mensajería"},en:{t:"Monica Brain — Omnichannel AI Assistant",s:"Answers, qualifies and follows up with customers across messaging channels"}},
+    {id:"monica-developer-apps-por-prompts",tag:"prod",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/monica-developer-apps-por-prompts",tech:["LLMs","Next.js","Docker"],es:{t:"Monica Developer — Aplicaciones por Prompts",s:"Crea apps web funcionales describiéndolas en lenguaje natural"},en:{t:"Monica Developer — Apps from Prompts",s:"Build working web apps by describing them in natural language"}},
+    {id:"monica-designer-identidad-de-marca-ia",tag:"prod",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/monica-designer-identidad-de-marca-ia",tech:["IA Generativa","APIs","Next.js"],es:{t:"Monica Designer — Identidad de Marca con IA",s:"Genera una identidad visual completa a partir de un brief"},en:{t:"Monica Designer — AI Brand Identity",s:"Generates a complete visual identity from a brief"}},
+    {id:"status-page-monitoreo-de-servicios",tag:"tools",year:"2025",company:"Urpe AI Lab",live:"https://status.urpeailab.com/",img:"https://imagenes.agustinynatalia.site/status-page-monitoreo-de-servicios",tech:["Docker","Traefik","Self-hosted"],es:{t:"Status Page — Monitor de Estado de Servicios",s:"Página de estado autoalojada que vigila la disponibilidad en tiempo real"},en:{t:"Status Page — Service Status Monitor",s:"Self-hosted status page monitoring availability in real time"}},
+    {id:"flowdeck-gestor-n8n",tag:"tools",year:"2026",company:"Proyecto propio",live:"https://github.com/Agustin1231/flowdeck",img:"https://imagenes.agustinynatalia.site/flowdeck-gestor-n8n",tech:["Next.js","n8n API","Docker"],es:{t:"FlowDeck — Gestor Multi-instancia de n8n",s:"App instalable con login para administrar varias instancias de n8n"},en:{t:"FlowDeck — Multi-instance n8n Manager",s:"Installable app with login to manage multiple n8n instances"}},
+    {id:"visor-de-orquestacion-de-subagentes",tag:"ai",year:"2026",company:"Urpe AI Lab",live:"https://multiagentes.agustinynatalia.site",img:"https://multiagentes.agustinynatalia.site/preview.png?v=3",tech:["LLMs","Node.js","WebSockets"],es:{t:"Visor de Orquestación de Subagentes",s:"Visualización en vivo de un orquestador delegando a subagentes"},en:{t:"Subagent Orchestration Viewer",s:"Real-time view of an orchestrator delegating to subagents"}}
+  ];
+  FILTERDEF = [
+    {v:"auto",es:"Automatización",en:"Automation"},{v:"ai",es:"IA & Agentes",en:"AI & Agents"},{v:"prod",es:"Producto",en:"Product"},{v:"tools",es:"Herramientas",en:"Tools"}
+  ];
+  I18N = {
+    es:{navAbout:"sobre-mí",navExp:"experiencia",navWork:"proyectos",navGuides:"guías",navMetrics:"métricas",navContact:"contacto",
+      back:"volver al inicio",eyebrow:"todos los proyectos",title:"Todos los proyectos",sub:"El archivo completo de mi trabajo en IA, automatización y producto, organizado por año.",
+      viewProject:"ver proyecto",countLabel:"proyectos",countLabel1:"proyecto",footerText:"Diseñado y desarrollado por Agustin Peralta"},
+    en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
+      back:"back to home",eyebrow:"all projects",title:"All projects",sub:"The full archive of my work across AI, automation and product, organized by year.",
+      viewProject:"view project",countLabel:"projects",countLabel1:"project",footerText:"Designed & built by Agustin Peralta"}
+  };
+
+  state = {theme:"light",lang:"es",menu:false};
+
+  componentDidMount(){
+    try{
+      var th=localStorage.getItem("ap-theme");if(th==="dark"||th==="light")this.setState({theme:th});
+      var lg=localStorage.getItem("ap-lang");if(lg==="es"||lg==="en")this.setState({lang:lg});
+    }catch(e){}
+    this.startBg3d();
+    this.observe();
+  }
+  componentWillUnmount(){cancelAnimationFrame(this._raf3);if(this._io)this._io.disconnect();window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);}
+
+  hexToRgba(hex,a){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return "rgba("+((n>>16)&255)+","+((n>>8)&255)+","+(n&255)+","+a+")";}
+  hexToRgb(hex){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return [(n>>16)&255,(n>>8)&255,n&255];}
+  startBg3d(){
+    if(this.props.scene3d===false)return;
+    var cv=document.querySelector(".bg3d");if(!cv)return;var ctx=cv.getContext("2d");var self=this;
+    var dpr=Math.min(2,window.devicePixelRatio||1);var w=0,h=0;
+    function resize(){w=window.innerWidth;h=window.innerHeight;cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+"px";cv.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);}
+    this._rz3=resize;window.addEventListener("resize",resize);resize();
+    var mx=0,my=0;this._pm3=function(e){mx=e.clientX/window.innerWidth-0.5;my=e.clientY/window.innerHeight-0.5;};window.addEventListener("pointermove",this._pm3);
+    var DEPTH=15,NEAR=0.25,FAR=7,TRAVEL=24;
+    var pts=[];for(var i=0;i<300;i++)pts.push({x:(Math.random()*2-1)*1.9,y:(Math.random()*2-1)*1.9,z:Math.random()*DEPTH,r:0.55+Math.random()*0.9});
+    var t=0,smoothP=0;
+    function draw(){
+      var acc=self.hexToRgb((getComputedStyle(cv).getPropertyValue("--accent")||"#ff5c35").trim());
+      var light=self.state.theme==="light";
+      ctx.clearRect(0,0,w,h);
+      var docH=document.body.scrollHeight-window.innerHeight;var p=docH>0?Math.min(1,Math.max(0,window.scrollY/docH)):0;
+      smoothP+=(p-smoothP)*0.08;
+      var camZ=smoothP*TRAVEL+t*0.05;
+      var twist=smoothP*1.5+t*0.02+mx*0.35;
+      var R=Math.min(w,h)*0.78,f=1.35,cx=w*0.5+mx*42,cy=h*0.5+my*30,ct=Math.cos(twist),st=Math.sin(twist);
+      var scr=[];
+      for(var i=0;i<pts.length;i++){var pt=pts[i];var pz=pt.z-camZ;while(pz<NEAR){pt.z+=DEPTH;pz=pt.z-camZ;}while(pz>DEPTH+NEAR){pt.z-=DEPTH;pz=pt.z-camZ;}if(pz<NEAR||pz>FAR){scr.push(null);continue;}var rx=pt.x*ct-pt.y*st,ry=pt.x*st+pt.y*ct,s=f/pz;var depthT=1-(pz-NEAR)/(FAR-NEAR);var a=depthT;if(pz<0.8)a*=Math.max(0,pz/0.8);scr.push({x:cx+rx*s*R,y:cy+ry*s*R,z:pz,a:a,d:depthT,r:pt.r});}
+      var thr=R*0.17;ctx.lineWidth=1;
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;for(var j=i+1;j<scr.length;j++){var B=scr[j];if(!B)continue;if(Math.abs(A.z-B.z)>1.6)continue;var dx=A.x-B.x,dy=A.y-B.y,dd=dx*dx+dy*dy;if(dd>thr*thr)continue;var prox=1-Math.sqrt(dd)/thr;var al=prox*Math.min(A.a,B.a)*(light?0.34:0.52);if(al<0.012)continue;ctx.strokeStyle="rgba("+acc[0]+","+acc[1]+","+acc[2]+","+al.toFixed(3)+")";ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}}
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;ctx.fillStyle="rgba("+acc[0]+","+acc[1]+","+acc[2]+","+(A.a*(light?0.55:0.85)).toFixed(3)+")";var sz=A.r*(0.5+A.d*2.6);ctx.beginPath();ctx.arc(A.x,A.y,sz,0,6.2832);ctx.fill();}
+      t+=0.016;self._raf3=requestAnimationFrame(draw);
+    }
+    draw();
+  }
+  observe(){
+    var self=this;
+    this._io=new IntersectionObserver(function(ents){ents.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add("in");self._io.unobserve(en.target);}
+    });},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+    var root=document.querySelector(".site");if(!root)return;
+    root.querySelectorAll(".reveal").forEach(function(el){self._io.observe(el);});
+  }
+
+  toggleTheme(){var n=this.state.theme==="dark"?"light":"dark";this.setState({theme:n});try{localStorage.setItem("ap-theme",n);}catch(e){}}
+  setLang(l){this.setState({lang:l});try{localStorage.setItem("ap-lang",l);}catch(e){}}
+  toggleMenu(){this.setState({menu:!this.state.menu});}
+
+  renderVals(){
+    var self=this;var lang=this.state.lang;var L=this.I18N[lang];var accent=this.props.accent||"#ff5c35";
+    var catOf=function(tag){var m=self.FILTERDEF.filter(function(f){return f.v===tag;});return m.length?m[0][lang]:"";};
+    var yearList=[];this.PROJECTS.forEach(function(p){if(yearList.indexOf(p.year)<0)yearList.push(p.year);});
+    yearList.sort(function(a,b){return Number(b)-Number(a);});
+    var years=yearList.map(function(y){
+      var ps=self.PROJECTS.filter(function(p){return p.year===y;}).map(function(p){
+        return {title:p[lang].t,sub:p[lang].s,img:p.img,tech:p.tech||[],company:p.company,cat:catOf(p.tag),url:"Proyecto.dc.html?id="+p.id};
+      });
+      var n=ps.length;
+      return {year:y,count:n+" "+(n===1?L.countLabel1:L.countLabel),projects:ps};
+    });
+    return {
+      themeClass:this.state.theme==="light"?"light":"",
+      rootStyle:"--accent:"+accent+";--accent-soft:"+this.hexToRgba(accent,0.13),
+      menuClass:this.state.menu?"open":"",
+      themeIcon:this.state.theme==="dark"?"☀":"☾",
+      esCls:lang==="es"?"on":"",enCls:lang==="en"?"on":"",
+      toggleTheme:function(){self.toggleTheme();},setEs:function(){self.setLang("es");},setEn:function(){self.setLang("en");},
+      toggleMenu:function(){self.toggleMenu();},closeMenu:function(){self.setState({menu:false});},
+      t:L,years:years
+    };
+  }
+}
+</script>
+</body>
+</html>
