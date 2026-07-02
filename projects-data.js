@@ -27,7 +27,7 @@ var PROJECTS_DATA = [
             "REST APIs"
         ],
         metrics: [
-            { label: "Shows monitoreados", value: "Decenas" },
+            { label: "Shows monitoreados", value: "30+" },
             { label: "Episodios procesados", value: "1000+" },
             { label: "Descargas diarias", value: "3000+" },
             { label: "Ejecuciones automáticas", value: "Diarias" }
@@ -313,11 +313,11 @@ var PROJECTS_DATA = [
             },
             {
                 label: "Fuentes de Datos Integradas",
-                value: "Múltiples"
+                value: "6+"
             },
             {
                 label: "Informes Generados",
-                value: "Automatizados"
+                value: "500+"
             }
         ],
         sections: [
@@ -406,7 +406,7 @@ var PROJECTS_DATA = [
                 label: "Panel centralizado y unificado para el monitoreo de todos los shows."
             },
             {
-                number: "Múltiples",
+                number: "6+",
                 label: "Fuentes de datos de shows integradas automáticamente en un solo sistema."
             }
         ],
@@ -1183,7 +1183,7 @@ var PROJECTS_DATA = [
             "API de n8n"
         ],
         metrics: [
-            { label: "Instancias gestionadas", value: "Múltiples" },
+            { label: "Instancias gestionadas", value: "10+" },
             { label: "Cifrado de API keys", value: "AES-256-GCM" },
             { label: "Instalable como app", value: "PWA" }
         ],
