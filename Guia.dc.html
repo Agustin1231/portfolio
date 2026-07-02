@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>Guía — Agustin Peralta</title>
+<meta name="description" content="Guías y notas de Agustin Peralta sobre IA, automatización y self-hosting.">
+<meta property="og:title" content="Guía — Agustin Peralta">
+<meta property="og:description" content="Guías y notas sobre IA, automatización y self-hosting.">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#f1efe9">
+<style>x-dc{display:none!important}html{background:#f1efe9}</style>
+<script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script defer src="guides-data.js"></script>
+<script defer src="vendor/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z"></script>
+<script defer src="vendor/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1"></script>
+<script defer src="./support.js"></script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 </head>
 <body>
@@ -13,7 +27,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="guides-data.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
@@ -99,14 +112,14 @@ a{color:inherit;text-decoration:none}
 <div class="site {{themeClass}}" id="top" style="{{rootStyle}}">
 <canvas class="bg3d"></canvas>
 <nav class="nav"><div class="wrap navbar">
-<a class="brand" href="Portafolio.dc.html">agustin.peralta<span class="curs">▮</span></a>
+<a class="brand" href="index.html">agustin.peralta<span class="curs">▮</span></a>
 <ul class="navlinks {{menuClass}}">
-<li><a href="Portafolio.dc.html#sobre" onClick="{{closeMenu}}">{{t.navAbout}}</a></li>
-<li><a href="Portafolio.dc.html#experiencia" onClick="{{closeMenu}}">{{t.navExp}}</a></li>
-<li><a href="Portafolio.dc.html#proyectos" onClick="{{closeMenu}}">{{t.navWork}}</a></li>
-<li><a class="on" href="Portafolio.dc.html#guias" onClick="{{closeMenu}}">{{t.navGuides}}</a></li>
+<li><a href="index.html#sobre" onClick="{{closeMenu}}">{{t.navAbout}}</a></li>
+<li><a href="index.html#experiencia" onClick="{{closeMenu}}">{{t.navExp}}</a></li>
+<li><a href="index.html#proyectos" onClick="{{closeMenu}}">{{t.navWork}}</a></li>
+<li><a class="on" href="index.html#guias" onClick="{{closeMenu}}">{{t.navGuides}}</a></li>
 <li><a href="Metricas.dc.html">{{t.navMetrics}}</a></li>
-<li><a href="Portafolio.dc.html#contacto" onClick="{{closeMenu}}">{{t.navContact}}</a></li>
+<li><a href="index.html#contacto" onClick="{{closeMenu}}">{{t.navContact}}</a></li>
 </ul>
 <div class="navtools">
 <div class="lang mono"><button class="{{esCls}}" onClick="{{setEs}}">ES</button><button class="{{enCls}}" onClick="{{setEn}}">EN</button></div>
@@ -116,12 +129,12 @@ a{color:inherit;text-decoration:none}
 </div></nav>
 
 <sc-if value="{{notFound}}" hint-placeholder-val="{{false}}">
-<div class="notfound"><div class="wrap"><div class="dcat mono">// 404</div><h1 class="dtitle">{{t.notFound}}</h1><a class="btn btnO" href="Portafolio.dc.html#guias">← {{t.back}}</a></div></div>
+<div class="notfound"><div class="wrap"><div class="dcat mono">// 404</div><h1 class="dtitle">{{t.notFound}}</h1><a class="btn btnO" href="index.html#guias">← {{t.back}}</a></div></div>
 </sc-if>
 
 <sc-if value="{{show}}" hint-placeholder-val="{{false}}">
 <header class="dhero"><div class="rd">
-<a class="back mono" href="Portafolio.dc.html#guias">← {{t.back}}</a>
+<a class="back mono" href="index.html#guias">← {{t.back}}</a>
 <div class="dcat mono">{{g.category}}</div>
 <h1 class="dtitle">{{g.title}}</h1>
 <p class="dsub">{{g.subtitle}}</p>
@@ -143,7 +156,7 @@ a{color:inherit;text-decoration:none}
 
 <sc-if value="{{g.hasTools}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="rd"><div class="dsech mono">{{t.secTools}}</div><div class="stackTags"><sc-for list="{{g.tools}}" as="tl" hint-placeholder-count="5"><span class="tag mono">{{tl}}</span></sc-for></div></div></section></sc-if>
 
-<section class="dsec"><div class="rd"><div class="dcta"><h3>{{t.ctaTitle}}</h3><div class="dctaRow"><a class="btn btnP" href="Portafolio.dc.html#contacto">{{t.ctaBtn}} →</a><a class="btn btnO" href="Portafolio.dc.html#guias">{{t.back}}</a></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>{{t.ctaTitle}}</h3><div class="dctaRow"><a class="btn btnP" href="index.html#contacto">{{t.ctaBtn}} →</a><a class="btn btnO" href="index.html#guias">{{t.back}}</a></div></div></div></section>
 </sc-if>
 
 <footer class="footer"><div class="wrap footIn">
@@ -187,6 +200,7 @@ class Component extends DCLogic {
         var list=window.GUIDES_DATA;
         var g=id?list.filter(function(x){return x.id===id;})[0]:list[0];
         self.setState({guide:g||null,loaded:true});
+        if(g&&g.title)document.title=g.title+" — Agustin Peralta";
         window.scrollTo(0,0);
       }else if(tries++<50){setTimeout(attempt,40);}
       else{self.setState({guide:null,loaded:true});}

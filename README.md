@@ -4,27 +4,33 @@ Sitio web personal — live en https://agustin.agustinynatalia.site
 
 ## Features
 
-- HTML / CSS / JavaScript vanilla — zero build step
-- Modo oscuro con persistencia en `localStorage`
-- Multi-idioma (ES / EN) vía `translate.js`
-- Renderizado dinámico de proyectos desde `projects-data.js`
-- Email obfuscation para evitar scraping de bots
-
-## Stack
-
-- HTML5 / CSS3 / JavaScript (sin frameworks)
-- Apache (`.htaccess` para rewrites y redirecciones)
+- Sitio estático sin build step — se sirve tal cual desde el repo
+- Páginas `.dc.html`: template `<x-dc>` + componente React renderizado en cliente por `support.js`
+- React/ReactDOM self-hosteados en `vendor/` (sin dependencia de CDN, con SRI)
+- Modo oscuro y multi-idioma (ES / EN) con persistencia en `localStorage`
+- Datos de proyectos y guías como fuente única editable (`projects-data.js`, `guides-data.js`)
+- Métricas en vivo vía webhook de n8n; analytics con Umami
 
 ## Estructura
 
 ```
-index.html              landing
-proyecto.html           template detalle de proyecto
+index.html              landing (página canónica)
+Portafolio.dc.html      redirect → index.html (compatibilidad con links viejos)
+Proyectos.dc.html       todos los proyectos agrupados por año
+Proyecto.dc.html        detalle de proyecto (?id=..., datos de projects-data.js)
+Guia.dc.html            detalle de guía (?id=..., datos de guides-data.js)
+Metricas.dc.html        métricas en vivo (webhook n8n)
+privacidad.html         política de privacidad
+terminos.html           términos de servicio
 projects-data.js        datos de proyectos (array PROJECTS_DATA, fuente única)
-project-renderer.js     render dinámico de cards y detalle
-style.css               tema base
-dark-mode.css           tema oscuro
-dark-mode.js            toggle persistente
-translate.js            switcher i18n
-email-decode.js         obfuscation de correo
+guides-data.js          datos de guías (array GUIDES_DATA, fuente única)
+support.js              runtime dc (generado y minificado — no editar a mano)
+vendor/                 React 18.3.1 + ReactDOM UMD (self-hosted, pineados)
 ```
+
+## Notas
+
+- `support.js` está minificado; se genera desde `dc-runtime/src/*.ts` (fuera de este repo).
+- El `<head>` real de cada página lleva title/meta/preconnects y carga `vendor/react*.js`
+  + `support.js` con `defer`; el runtime detecta `window.React` y no vuelve a pedirlo a unpkg.
+- Para publicar cambios de contenido: editar `projects-data.js` / `guides-data.js`, push a main y redeploy en Coolify.
