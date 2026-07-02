@@ -245,21 +245,23 @@ class Component extends DCLogic {
     var mx=0,my=0;this._pm3=function(e){mx=e.clientX/window.innerWidth-0.5;my=e.clientY/window.innerHeight-0.5;};window.addEventListener("pointermove",this._pm3);
     var DEPTH=15,NEAR=0.25,FAR=7,TRAVEL=24;
     var pts=[];for(var i=0;i<300;i++)pts.push({x:(Math.random()*2-1)*1.9,y:(Math.random()*2-1)*1.9,z:Math.random()*DEPTH,r:0.55+Math.random()*0.9});
-    var t=0,smoothP=0;
+    var t=0,smoothP=0,fr=0,docH=0;
+    var acc=self.hexToRgb(self.props.accent||"#ff5c35");var accCss="rgb("+acc[0]+","+acc[1]+","+acc[2]+")";
     function draw(){
-      var acc=self.hexToRgb((getComputedStyle(cv).getPropertyValue("--accent")||"#ff5c35").trim());
       var light=self.state.theme==="light";
       ctx.clearRect(0,0,w,h);
-      var docH=document.body.scrollHeight-window.innerHeight;var p=docH>0?Math.min(1,Math.max(0,window.scrollY/docH)):0;
+      if((fr++&31)===0)docH=document.body.scrollHeight-window.innerHeight;
+      var p=docH>0?Math.min(1,Math.max(0,window.scrollY/docH)):0;
       smoothP+=(p-smoothP)*0.08;
       var camZ=smoothP*TRAVEL+t*0.05;
       var twist=smoothP*1.5+t*0.02+mx*0.35;
       var R=Math.min(w,h)*0.78,f=1.35,cx=w*0.5+mx*42,cy=h*0.5+my*30,ct=Math.cos(twist),st=Math.sin(twist);
       var scr=[];
       for(var i=0;i<pts.length;i++){var pt=pts[i];var pz=pt.z-camZ;while(pz<NEAR){pt.z+=DEPTH;pz=pt.z-camZ;}while(pz>DEPTH+NEAR){pt.z-=DEPTH;pz=pt.z-camZ;}if(pz<NEAR||pz>FAR){scr.push(null);continue;}var rx=pt.x*ct-pt.y*st,ry=pt.x*st+pt.y*ct,s=f/pz;var depthT=1-(pz-NEAR)/(FAR-NEAR);var a=depthT;if(pz<0.8)a*=Math.max(0,pz/0.8);scr.push({x:cx+rx*s*R,y:cy+ry*s*R,z:pz,a:a,d:depthT,r:pt.r});}
-      var thr=R*0.17;ctx.lineWidth=1;
-      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;for(var j=i+1;j<scr.length;j++){var B=scr[j];if(!B)continue;if(Math.abs(A.z-B.z)>1.6)continue;var dx=A.x-B.x,dy=A.y-B.y,dd=dx*dx+dy*dy;if(dd>thr*thr)continue;var prox=1-Math.sqrt(dd)/thr;var al=prox*Math.min(A.a,B.a)*(light?0.34:0.52);if(al<0.012)continue;ctx.strokeStyle="rgba("+acc[0]+","+acc[1]+","+acc[2]+","+al.toFixed(3)+")";ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}}
-      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;ctx.fillStyle="rgba("+acc[0]+","+acc[1]+","+acc[2]+","+(A.a*(light?0.55:0.85)).toFixed(3)+")";var sz=A.r*(0.5+A.d*2.6);ctx.beginPath();ctx.arc(A.x,A.y,sz,0,6.2832);ctx.fill();}
+      var thr=R*0.17;ctx.lineWidth=1;ctx.strokeStyle=accCss;ctx.fillStyle=accCss;
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;for(var j=i+1;j<scr.length;j++){var B=scr[j];if(!B)continue;if(Math.abs(A.z-B.z)>1.6)continue;var dx=A.x-B.x,dy=A.y-B.y,dd=dx*dx+dy*dy;if(dd>thr*thr)continue;var prox=1-Math.sqrt(dd)/thr;var al=prox*Math.min(A.a,B.a)*(light?0.34:0.52);if(al<0.012)continue;ctx.globalAlpha=al;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}}
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;ctx.globalAlpha=A.a*(light?0.55:0.85);var sz=A.r*(0.5+A.d*2.6);ctx.beginPath();ctx.arc(A.x,A.y,sz,0,6.2832);ctx.fill();}
+      ctx.globalAlpha=1;
       t+=0.016;self._raf3=requestAnimationFrame(draw);
     }
     draw();

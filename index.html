@@ -161,7 +161,7 @@ a{color:inherit;text-decoration:none}
 .previewMeta{display:flex;gap:1.2rem;margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line2);font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--faint)}
 .previewLinks{display:flex;gap:.8rem;margin-top:1.2rem}
 .plink{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);display:inline-flex;align-items:center;gap:.4rem}
-.plink.sec{color:var(--dim)}
+.plink.plive{color:var(--dim)}
 .plink:hover{text-decoration:underline}
 /* guides */
 .guideGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
@@ -292,7 +292,7 @@ a{color:inherit;text-decoration:none}
 <div class="filters"><sc-for list="{{filters}}" as="f" hint-placeholder-count="5"><button class="chip {{f.cls}}" onClick="{{f.onClick}}">{{f.label}}</button></sc-for></div>
 <div class="projGrid">
 <div class="projList {{projListClass}}"><sc-for list="{{projects}}" as="p" hint-placeholder-count="8"><a class="projRow" href="{{p.url}}" onMouseEnter="{{p.onEnter}}"><span class="projNum mono">{{p.num}}</span><div class="projMain"><div class="projTitle">{{p.title}}</div><div class="projSub mono">{{p.sub}}</div><div class="projTech"><sc-for list="{{p.tech}}" as="tt" hint-placeholder-count="3"><span class="projTag mono">{{tt}}</span></sc-for></div><div class="projThumb"><img src="{{p.img}}" alt="{{p.title}}" loading="lazy"></div></div><span class="projYear mono">{{p.year}}</span><span class="projArrow">→</span></a></sc-for></div>
-<aside class="preview"><div class="previewImg"><img src="{{active.img}}" alt="{{active.title}}" loading="lazy"><div class="previewGrid"></div></div><div class="previewBody"><div class="previewCat mono">{{active.cat}}</div><h3 class="previewTitle">{{active.title}}</h3><p class="previewSub">{{active.sub}}</p><div class="previewMeta mono"><span>{{active.company}}</span><span>{{active.year}}</span></div><div class="previewLinks"><a class="plink" href="{{active.url}}">{{t.viewProject}} →</a><sc-if value="{{active.live}}" hint-placeholder-val="{{true}}"><a class="plink sec" href="{{active.live}}" target="_blank">{{t.liveTag}} ↗</a></sc-if></div></div></aside>
+<aside class="preview"><div class="previewImg"><img src="{{active.img}}" alt="{{active.title}}" loading="lazy"><div class="previewGrid"></div></div><div class="previewBody"><div class="previewCat mono">{{active.cat}}</div><h3 class="previewTitle">{{active.title}}</h3><p class="previewSub">{{active.sub}}</p><div class="previewMeta mono"><span>{{active.company}}</span><span>{{active.year}}</span></div><div class="previewLinks"><a class="plink" href="{{active.url}}">{{t.viewProject}} →</a><sc-if value="{{active.live}}" hint-placeholder-val="{{true}}"><a class="plink plive" href="{{active.live}}" target="_blank">{{t.liveTag}} ↗</a></sc-if></div></div></aside>
 </div>
 <sc-if value="{{showMore}}" hint-placeholder-val="{{true}}"><div class="moreWrap"><a class="btn btnO seeMore" href="Proyectos.dc.html">{{t.seeMore}} <span>→</span></a></div></sc-if>
 </div></section>
@@ -391,7 +391,7 @@ class Component extends DCLogic {
     this.observe();
     this.fetchMetrics();
   }
-  componentWillUnmount(){cancelAnimationFrame(this._raf);cancelAnimationFrame(this._raf3);if(this._io)this._io.disconnect();window.removeEventListener("resize",this._rz);window.removeEventListener("pointermove",this._pm);window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);}
+  componentWillUnmount(){cancelAnimationFrame(this._raf);cancelAnimationFrame(this._raf3);if(this._io)this._io.disconnect();if(this._ioA)this._ioA.disconnect();window.removeEventListener("resize",this._rz);window.removeEventListener("pointermove",this._pm);window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);}
 
   hexToRgba(hex,a){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return "rgba("+((n>>16)&255)+","+((n>>8)&255)+","+(n&255)+","+a+")";}
   hexToRgb(hex){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return [(n>>16)&255,(n>>8)&255,n&255];}
@@ -405,21 +405,23 @@ class Component extends DCLogic {
     var mx=0,my=0;this._pm3=function(e){mx=e.clientX/window.innerWidth-0.5;my=e.clientY/window.innerHeight-0.5;};window.addEventListener("pointermove",this._pm3);
     var DEPTH=15,NEAR=0.25,FAR=7,TRAVEL=24;
     var pts=[];for(var i=0;i<300;i++)pts.push({x:(Math.random()*2-1)*1.9,y:(Math.random()*2-1)*1.9,z:Math.random()*DEPTH,r:0.55+Math.random()*0.9});
-    var t=0,smoothP=0;
+    var t=0,smoothP=0,fr=0,docH=0;
+    var acc=self.hexToRgb(self.props.accent||"#ff5c35");var accCss="rgb("+acc[0]+","+acc[1]+","+acc[2]+")";
     function draw(){
-      var acc=self.hexToRgb((getComputedStyle(cv).getPropertyValue("--accent")||"#ff5c35").trim());
       var light=self.state.theme==="light";
       ctx.clearRect(0,0,w,h);
-      var docH=document.body.scrollHeight-window.innerHeight;var p=docH>0?Math.min(1,Math.max(0,window.scrollY/docH)):0;
+      if((fr++&31)===0)docH=document.body.scrollHeight-window.innerHeight;
+      var p=docH>0?Math.min(1,Math.max(0,window.scrollY/docH)):0;
       smoothP+=(p-smoothP)*0.08;
       var camZ=smoothP*TRAVEL+t*0.05;
       var twist=smoothP*1.5+t*0.02+mx*0.35;
       var R=Math.min(w,h)*0.78,f=1.35,cx=w*0.5+mx*42,cy=h*0.5+my*30,ct=Math.cos(twist),st=Math.sin(twist);
       var scr=[];
       for(var i=0;i<pts.length;i++){var pt=pts[i];var pz=pt.z-camZ;while(pz<NEAR){pt.z+=DEPTH;pz=pt.z-camZ;}while(pz>DEPTH+NEAR){pt.z-=DEPTH;pz=pt.z-camZ;}if(pz<NEAR||pz>FAR){scr.push(null);continue;}var rx=pt.x*ct-pt.y*st,ry=pt.x*st+pt.y*ct,s=f/pz;var depthT=1-(pz-NEAR)/(FAR-NEAR);var a=depthT;if(pz<0.8)a*=Math.max(0,pz/0.8);scr.push({x:cx+rx*s*R,y:cy+ry*s*R,z:pz,a:a,d:depthT,r:pt.r});}
-      var thr=R*0.17;ctx.lineWidth=1;
-      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;for(var j=i+1;j<scr.length;j++){var B=scr[j];if(!B)continue;if(Math.abs(A.z-B.z)>1.6)continue;var dx=A.x-B.x,dy=A.y-B.y,dd=dx*dx+dy*dy;if(dd>thr*thr)continue;var prox=1-Math.sqrt(dd)/thr;var al=prox*Math.min(A.a,B.a)*(light?0.34:0.52);if(al<0.012)continue;ctx.strokeStyle="rgba("+acc[0]+","+acc[1]+","+acc[2]+","+al.toFixed(3)+")";ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}}
-      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;ctx.fillStyle="rgba("+acc[0]+","+acc[1]+","+acc[2]+","+(A.a*(light?0.55:0.85)).toFixed(3)+")";var sz=A.r*(0.5+A.d*2.6);ctx.beginPath();ctx.arc(A.x,A.y,sz,0,6.2832);ctx.fill();}
+      var thr=R*0.17;ctx.lineWidth=1;ctx.strokeStyle=accCss;ctx.fillStyle=accCss;
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;for(var j=i+1;j<scr.length;j++){var B=scr[j];if(!B)continue;if(Math.abs(A.z-B.z)>1.6)continue;var dx=A.x-B.x,dy=A.y-B.y,dd=dx*dx+dy*dy;if(dd>thr*thr)continue;var prox=1-Math.sqrt(dd)/thr;var al=prox*Math.min(A.a,B.a)*(light?0.34:0.52);if(al<0.012)continue;ctx.globalAlpha=al;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}}
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;ctx.globalAlpha=A.a*(light?0.55:0.85);var sz=A.r*(0.5+A.d*2.6);ctx.beginPath();ctx.arc(A.x,A.y,sz,0,6.2832);ctx.fill();}
+      ctx.globalAlpha=1;
       t+=0.016;self._raf3=requestAnimationFrame(draw);
     }
     draw();
@@ -457,11 +459,17 @@ class Component extends DCLogic {
     function resize(){var host=cv.parentElement;w=host.clientWidth;h=host.clientHeight;cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+"px";cv.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(w/cell);rows=Math.ceil(h/cell);ctx.font=cell+"px 'JetBrains Mono',monospace";ctx.textBaseline="top";}
     this._rz=resize;window.addEventListener("resize",resize);resize();
     this._pm=function(e){var r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;};window.addEventListener("pointermove",this._pm);
+    var accRgb=self.hexToRgb(self.props.accent||"#ff5c35");var accCss="rgb("+accRgb[0]+","+accRgb[1]+","+accRgb[2]+")";
+    var vis=true;
+    this._ioA=new IntersectionObserver(function(en){var was=vis;vis=en[0].isIntersecting;if(vis&&!was)self._raf=requestAnimationFrame(draw);});
+    this._ioA.observe(cv);
     function draw(){
-      var acc=getComputedStyle(cv).getPropertyValue("--accent")||"#ff5c35";
+      if(!vis)return;
       var light=self.state.theme==="light";
-      var baseR=light?20:236,baseG=light?18:234,baseB=light?15:228;
+      var baseCss=light?"rgb(20,18,15)":"rgb(236,234,228)";
+      var baseA=light?0.06:0.09,baseM=light?0.14:0.20;
       ctx.clearRect(0,0,w,h);
+      var mode=0;ctx.fillStyle=baseCss;
       for(var cy=0;cy<rows;cy++){for(var cx=0;cx<cols;cx++){
         var x=cx*cell,y=cy*cell;
         var v=Math.sin(x*0.018+t*0.6)+Math.sin(y*0.026-t*0.45)+Math.sin((x+y)*0.013+t*0.9);
@@ -471,10 +479,11 @@ class Component extends DCLogic {
         var val=Math.min(1,v*(0.7+infl*0.9)+infl*0.35);
         var idx=Math.floor(val*(ramp.length-1));var ch=ramp[idx];
         if(ch===" ")continue;
-        if(infl>0.12){ctx.fillStyle=self.hexToRgba(acc.trim(),Math.min(0.95,0.25+infl*0.75));}
-        else{var a=(light?0.06:0.09)+val*(light?0.14:0.20);ctx.fillStyle="rgba("+baseR+","+baseG+","+baseB+","+a.toFixed(3)+")";}
+        if(infl>0.12){if(mode!==1){ctx.fillStyle=accCss;mode=1;}ctx.globalAlpha=Math.min(0.95,0.25+infl*0.75);}
+        else{if(mode!==0){ctx.fillStyle=baseCss;mode=0;}ctx.globalAlpha=baseA+val*baseM;}
         ctx.fillText(ch,x,y);
       }}
+      ctx.globalAlpha=1;
       t+=0.008;self._raf=requestAnimationFrame(draw);
     }
     draw();
