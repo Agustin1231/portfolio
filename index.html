@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 </head>
 <body>
 <x-dc>
@@ -129,6 +130,10 @@ a{color:inherit;text-decoration:none}
 .projThumb{display:none}
 .projTech{display:none;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
 .projTag{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.28rem .55rem;border:1px solid var(--line);border-radius:6px;color:var(--dim)}
+.moreWrap{display:flex;justify-content:center;margin-top:2.2rem}
+.seeMore span{transition:transform .2s}
+.seeMore:hover span{transform:translateY(2px)}
+@media(min-width:761px){.projList.collapsed .projRow:nth-child(n+4){display:none}}
 .preview{position:sticky;top:100px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
 .previewImg{aspect-ratio:4/3;background:var(--bg);position:relative;overflow:hidden}
 .previewImg img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s}
@@ -204,6 +209,7 @@ a{color:inherit;text-decoration:none}
 .guideGrid::-webkit-scrollbar{display:none}
 .guideCard{flex:0 0 86%;scroll-snap-align:center;padding:1.5rem}
 .guideNum{font-size:2rem;margin-bottom:.7rem}
+.moreWrap{display:none}
 .scrollcue{display:none}
 }
 </style>
@@ -269,9 +275,10 @@ a{color:inherit;text-decoration:none}
 <div class="sechead reveal"><div class="eyebrow mono"><b>[ 03 ]</b> // {{t.s03}}</div><h2 class="sectitle">{{t.titleWork}}</h2><p class="secsub">{{t.workSub}}</p></div>
 <div class="filters"><sc-for list="{{filters}}" as="f" hint-placeholder-count="5"><button class="chip {{f.cls}}" onClick="{{f.onClick}}">{{f.label}}</button></sc-for></div>
 <div class="projGrid">
-<div class="projList"><sc-for list="{{projects}}" as="p" hint-placeholder-count="8"><a class="projRow" href="{{p.url}}" onMouseEnter="{{p.onEnter}}"><span class="projNum mono">{{p.num}}</span><div class="projMain"><div class="projTitle">{{p.title}}</div><div class="projSub mono">{{p.sub}}</div><div class="projTech"><sc-for list="{{p.tech}}" as="tt" hint-placeholder-count="3"><span class="projTag mono">{{tt}}</span></sc-for></div><div class="projThumb"><img src="{{p.img}}" alt="{{p.title}}" loading="lazy"></div></div><span class="projYear mono">{{p.year}}</span><span class="projArrow">→</span></a></sc-for></div>
+<div class="projList {{projListClass}}"><sc-for list="{{projects}}" as="p" hint-placeholder-count="8"><a class="projRow" href="{{p.url}}" onMouseEnter="{{p.onEnter}}"><span class="projNum mono">{{p.num}}</span><div class="projMain"><div class="projTitle">{{p.title}}</div><div class="projSub mono">{{p.sub}}</div><div class="projTech"><sc-for list="{{p.tech}}" as="tt" hint-placeholder-count="3"><span class="projTag mono">{{tt}}</span></sc-for></div><div class="projThumb"><img src="{{p.img}}" alt="{{p.title}}" loading="lazy"></div></div><span class="projYear mono">{{p.year}}</span><span class="projArrow">→</span></a></sc-for></div>
 <aside class="preview"><div class="previewImg"><img src="{{active.img}}" alt="{{active.title}}" loading="lazy"><div class="previewGrid"></div></div><div class="previewBody"><div class="previewCat mono">{{active.cat}}</div><h3 class="previewTitle">{{active.title}}</h3><p class="previewSub">{{active.sub}}</p><div class="previewMeta mono"><span>{{active.company}}</span><span>{{active.year}}</span></div><div class="previewLinks"><a class="plink" href="{{active.url}}">{{t.viewProject}} →</a><sc-if value="{{active.live}}" hint-placeholder-val="{{true}}"><a class="plink sec" href="{{active.live}}" target="_blank">{{t.liveTag}} ↗</a></sc-if></div></div></aside>
 </div>
+<sc-if value="{{showMore}}" hint-placeholder-val="{{true}}"><div class="moreWrap"><button class="btn btnO seeMore" onClick="{{expandProjects}}">{{t.seeMore}} <span>↓</span></button></div></sc-if>
 </div></section>
 
 <section class="sec guides" id="guias"><div class="wrap">
@@ -308,18 +315,18 @@ a{color:inherit;text-decoration:none}
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ff5c35&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;asciiField&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;scene3d&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
 class Component extends DCLogic {
   PROJECTS = [
-    {id:"automatizacion-analitica-podcasts",num:"01",tag:"auto",year:"2025",company:"Plataforma de Podcasts",img:"https://imagenes.agustinynatalia.site/automatizacion-analitica-podcasts",tech:["n8n","PostgreSQL","APIs"],es:{t:"Automatización Analítica de Podcasts",s:"Extracción, validación y análisis diario de métricas de podcasts para decisiones"},en:{t:"Podcast Analytics Automation",s:"Daily extraction, validation and analysis of podcast metrics for decision-making"}},
+    {id:"automatizacion-analitica-podcasts",num:"01",tag:"auto",featured:true,year:"2025",company:"Plataforma de Podcasts",img:"https://imagenes.agustinynatalia.site/automatizacion-analitica-podcasts",tech:["n8n","PostgreSQL","APIs"],es:{t:"Automatización Analítica de Podcasts",s:"Extracción, validación y análisis diario de métricas de podcasts para decisiones"},en:{t:"Podcast Analytics Automation",s:"Daily extraction, validation and analysis of podcast metrics for decision-making"}},
     {id:"agente-de-ia-para-insights-estrategicos",num:"02",tag:"ai",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/agente-de-ia-para-insights-estrategicos",tech:["LangGraph","LLMs","Python"],es:{t:"Agente de IA para Insights Estratégicos",s:"Transforma métricas de shows en recomendaciones estratégicas personalizadas"},en:{t:"AI Agent for Strategic Insights",s:"Turns show metrics into personalized strategic recommendations"}},
     {id:"automatizacion-inteligente-de-analisis-de-shows",num:"03",tag:"auto",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/automatizacion-inteligente-de-analisis-de-shows",tech:["n8n","LLMs","Data Viz"],es:{t:"Automatización Inteligente de Análisis de Shows",s:"Análisis de rendimiento de shows mediante IA y visualización de datos"},en:{t:"Intelligent Show Analytics Automation",s:"Show performance analysis with AI and data visualization"}},
     {id:"automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",num:"04",tag:"auto",year:"2025",company:"Nata",img:"https://imagenes.agustinynatalia.site/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",tech:["n8n","IA Generativa","APIs"],es:{t:"Automatización de Contenido y Diseño con IA",s:"Flujo automatizado para crear contenido web y piezas visuales con IA"},en:{t:"AI Content & Design Automation",s:"Automated flow to create web content and visual assets with AI"}},
     {id:"automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",num:"05",tag:"auto",year:"2026",company:"Proyecto Personal",img:"https://imagenes.agustinynatalia.site/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",tech:["n8n","LLMs","APIs"],es:{t:"Publicación Automatizada para Blog de Tecnología",s:"Curación, creación y publicación automática de contenido tecnológico"},en:{t:"Automated Publishing for a Tech Blog",s:"Curating, creating and auto-publishing tech content end to end"}},
     {id:"pulso-app-salud-cardiovascular",num:"06",tag:"prod",year:"2025",company:"Producto propio",img:"https://imagenes.agustinynatalia.site/pulso-app-salud-cardiovascular",tech:["Next.js","PWA","IA"],es:{t:"Pulso — App PWA de Salud Cardiovascular",s:"App instalable con métricas, recetas y rutinas con IA, sin login"},en:{t:"Pulso — Cardiovascular Health PWA",s:"Installable app with AI metrics, recipes and routines, no login"}},
-    {id:"monica-brain-asistente-ia-omnicanal",num:"07",tag:"ai",year:"2025",company:"Urpe AI Lab",live:"https://brain.urpeailab.com/visual",img:"https://imagenes.agustinynatalia.site/monica-brain-asistente-ia-omnicanal",tech:["LangGraph","LLMs","n8n"],es:{t:"Monica Brain — Asistente de IA Omnicanal",s:"Atiende, califica y da seguimiento a clientes en canales de mensajería"},en:{t:"Monica Brain — Omnichannel AI Assistant",s:"Answers, qualifies and follows up with customers across messaging channels"}},
+    {id:"monica-brain-asistente-ia-omnicanal",num:"07",tag:"ai",featured:true,year:"2025",company:"Urpe AI Lab",live:"https://brain.urpeailab.com/visual",img:"https://imagenes.agustinynatalia.site/monica-brain-asistente-ia-omnicanal",tech:["LangGraph","LLMs","n8n"],es:{t:"Monica Brain — Asistente de IA Omnicanal",s:"Atiende, califica y da seguimiento a clientes en canales de mensajería"},en:{t:"Monica Brain — Omnichannel AI Assistant",s:"Answers, qualifies and follows up with customers across messaging channels"}},
     {id:"monica-developer-apps-por-prompts",num:"08",tag:"prod",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/monica-developer-apps-por-prompts",tech:["LLMs","Next.js","Docker"],es:{t:"Monica Developer — Aplicaciones por Prompts",s:"Crea apps web funcionales describiéndolas en lenguaje natural"},en:{t:"Monica Developer — Apps from Prompts",s:"Build working web apps by describing them in natural language"}},
     {id:"monica-designer-identidad-de-marca-ia",num:"09",tag:"prod",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/monica-designer-identidad-de-marca-ia",tech:["IA Generativa","APIs","Next.js"],es:{t:"Monica Designer — Identidad de Marca con IA",s:"Genera una identidad visual completa a partir de un brief"},en:{t:"Monica Designer — AI Brand Identity",s:"Generates a complete visual identity from a brief"}},
     {id:"status-page-monitoreo-de-servicios",num:"10",tag:"tools",year:"2025",company:"Urpe AI Lab",live:"https://status.urpeailab.com/",img:"https://imagenes.agustinynatalia.site/status-page-monitoreo-de-servicios",tech:["Docker","Traefik","Self-hosted"],es:{t:"Status Page — Monitor de Estado de Servicios",s:"Página de estado autoalojada que vigila la disponibilidad en tiempo real"},en:{t:"Status Page — Service Status Monitor",s:"Self-hosted status page monitoring availability in real time"}},
     {id:"flowdeck-gestor-n8n",num:"11",tag:"tools",year:"2026",company:"Proyecto propio",live:"https://github.com/Agustin1231/flowdeck",img:"https://imagenes.agustinynatalia.site/flowdeck-gestor-n8n",tech:["Next.js","n8n API","Docker"],es:{t:"FlowDeck — Gestor Multi-instancia de n8n",s:"App instalable con login para administrar varias instancias de n8n"},en:{t:"FlowDeck — Multi-instance n8n Manager",s:"Installable app with login to manage multiple n8n instances"}},
-    {id:"visor-de-orquestacion-de-subagentes",num:"12",tag:"ai",year:"2026",company:"Urpe AI Lab",live:"https://multiagentes.agustinynatalia.site",img:"https://multiagentes.agustinynatalia.site/preview.png?v=3",tech:["LLMs","Node.js","WebSockets"],es:{t:"Visor de Orquestación de Subagentes",s:"Visualización en vivo de un orquestador delegando a subagentes"},en:{t:"Subagent Orchestration Viewer",s:"Real-time view of an orchestrator delegating to subagents"}}
+    {id:"visor-de-orquestacion-de-subagentes",num:"12",tag:"ai",featured:true,year:"2026",company:"Urpe AI Lab",live:"https://multiagentes.agustinynatalia.site",img:"https://multiagentes.agustinynatalia.site/preview.png?v=3",tech:["LLMs","Node.js","WebSockets"],es:{t:"Visor de Orquestación de Subagentes",s:"Visualización en vivo de un orquestador delegando a subagentes"},en:{t:"Subagent Orchestration Viewer",s:"Real-time view of an orchestrator delegating to subagents"}}
   ];
   GUIDES = [
     {id:"sistema-conocimiento-outline",num:"01",es:{cat:"Sistema de conocimiento + IA",t:"Cómo monté mi propio sistema de conocimiento conectado a IA",d:"Un segundo cerebro self-hosted con Outline donde mis agentes de IA capturan, organizan y responden por mí. Qué es, cómo funciona y sus pros y contras.",meta:"Jun 2026 · 5 min"},en:{cat:"Knowledge system + AI",t:"How I built my own AI-connected knowledge system",d:"A self-hosted second brain with Outline where my AI agents capture, organize and answer for me. What it is, how it works and its pros and cons.",meta:"Jun 2026 · 5 min"}},
@@ -341,7 +348,7 @@ class Component extends DCLogic {
       heroStatus:"Disponible para nuevos proyectos",heroHi:"// hola, soy",heroRole:"Ingeniero de IA & Automatización",heroDescA:"Especializado en inteligencia artificial aplicada y automatización de procesos: integro sistemas, desarrollo agentes y optimizo flujos de trabajo. Transformo operaciones manuales en sistemas que ya han eliminado ",heroStat:"más de 7.000 horas",heroDescB:" de trabajo manual.",ctaWork:"Ver proyectos",ctaMetrics:"Mis métricas",ctaContact:"Contactar",
       s01:"sobre mí",s02:"experiencia",s03:"proyectos",s04:"guías",s05:"contacto",titleAbout:"Construyo sistemas que automatizan, razonan y escalan",titleExp:"Trayectoria",titleWork:"Trabajo seleccionado",titleGuides:"Guías",titleContact:"Trabajemos juntos",
       aboutLead:"Ingeniero de sistemas especializado en inteligencia artificial aplicada y automatización de procesos, enfocado en construir soluciones que razonan, automatizan y escalan.",aboutP1:"Diseño y despliego agentes de IA y automatizaciones de extremo a extremo sobre un stack en Python, TypeScript y SQL, apoyándome en n8n, LangGraph y la orquestación de LLMs para resolver problemas reales de negocio.",aboutP2a:"Como líder técnico he llevado a producción sistemas con ",aboutP2s1:"300+ automatizaciones activas",aboutP2b:", ",aboutP2s2:"70.000+ ejecuciones",aboutP2c:" y ",aboutP2s3:"~99% de uptime",aboutP2d:", integrando APIs, bases de datos y arquitecturas pensadas para crecer sin fricción.",aboutP3:"También self-hosteo mi propia infraestructura y desarrollo aplicaciones a medida, combinando pensamiento sistémico con una cultura de ingeniería rigurosa para generar impacto directo y medible.",skillsHead:"cat stack.txt",
-      workSub:"Una selección de trabajos en IA, automatización y producto. Pasa el cursor para previsualizar.",guidesSub:"Notas sobre lo que construyo, automatizo y self-hosteo.",contactIntro:"¿Necesitas automatizar procesos, integrar sistemas o escalar tu operación? Conversemos sobre cómo puedo ayudarte.",
+      workSub:"Una selección de trabajos en IA, automatización y producto. Pasa el cursor para previsualizar.",seeMore:"Ver más proyectos",guidesSub:"Notas sobre lo que construyo, automatizo y self-hosteo.",contactIntro:"¿Necesitas automatizar procesos, integrar sistemas o escalar tu operación? Conversemos sobre cómo puedo ayudarte.",
       fName:"Nombre",fEmail:"Correo",fMsg:"Solicitud",fSend:"Enviar mensaje",successTitle:"¡Gracias por contactarme!",successMsg:"He recibido tu mensaje y me pondré en contacto contigo muy pronto.",locLabel:"Ubicación",
       liveLabel:"en vivo",liveTag:"ver en vivo",viewProject:"ver proyecto",guideRead:"leer guía",footerText:"Diseñado y desarrollado por Agustin Peralta",
       metrics:["Horas de trabajo ahorradas","Ejecuciones automatizadas","Automatizaciones en producción"]},
@@ -349,14 +356,14 @@ class Component extends DCLogic {
       heroStatus:"Available for new projects",heroHi:"// hi, I'm",heroRole:"AI & Automation Engineer",heroDescA:"Specialized in applied artificial intelligence and process automation: I integrate systems, build agents and optimize workflows. I turn manual operations into systems that have already eliminated ",heroStat:"7,000+ hours",heroDescB:" of manual work.",ctaWork:"View work",ctaMetrics:"My metrics",ctaContact:"Get in touch",
       s01:"about",s02:"experience",s03:"work",s04:"guides",s05:"contact",titleAbout:"I build systems that automate, reason and scale",titleExp:"Track record",titleWork:"Selected work",titleGuides:"Guides",titleContact:"Let's work together",
       aboutLead:"Systems engineer specialized in applied artificial intelligence and process automation, focused on building solutions that reason, automate and scale.",aboutP1:"I design and deploy AI agents and end-to-end automations on a stack of Python, TypeScript and SQL, leaning on n8n, LangGraph and LLM orchestration to solve real business problems.",aboutP2a:"As a technical lead I've shipped production systems with ",aboutP2s1:"300+ active automations",aboutP2b:", ",aboutP2s2:"70,000+ executions",aboutP2c:" and ",aboutP2s3:"~99% uptime",aboutP2d:", integrating APIs, databases and architectures built to grow without friction.",aboutP3:"I also self-host my own infrastructure and build custom applications end to end, combining systems thinking with a rigorous engineering culture to create direct, measurable impact.",skillsHead:"cat stack.txt",
-      workSub:"A selection of work across AI, automation and product. Hover to preview.",guidesSub:"Notes on what I build, automate and self-host.",contactIntro:"Need to automate processes, integrate systems or scale your operation? Let's talk about how I can help.",
+      workSub:"A selection of work across AI, automation and product. Hover to preview.",seeMore:"View more projects",guidesSub:"Notes on what I build, automate and self-host.",contactIntro:"Need to automate processes, integrate systems or scale your operation? Let's talk about how I can help.",
       fName:"Name",fEmail:"Email",fMsg:"Message",fSend:"Send message",successTitle:"Thanks for reaching out!",successMsg:"I've received your message and will get back to you very soon.",locLabel:"Location",
       liveLabel:"live",liveTag:"view live",viewProject:"view project",guideRead:"read guide",footerText:"Designed & built by Agustin Peralta",
       metrics:["Hours of work saved","Automated executions","Automations in production"]}
   };
   METRICDEF = [{key:"total_horas",target:7000,round:1000,suffix:" h"},{key:"total_ejecuciones",target:70000,round:10000,suffix:""},{key:"total_automatizaciones",target:300,round:100,suffix:""}];
 
-  state = {theme:"light",lang:"es",menu:false,filter:"all",active:0,sent:false,metv:[0,0,0]};
+  state = {theme:"light",lang:"es",menu:false,filter:"all",active:0,sent:false,showAll:false,metv:[0,0,0]};
 
   componentDidMount(){
     try{
@@ -460,15 +467,18 @@ class Component extends DCLogic {
   toggleTheme(){var n=this.state.theme==="dark"?"light":"dark";this.setState({theme:n});try{localStorage.setItem("ap-theme",n);}catch(e){}}
   setLang(l){this.setState({lang:l});try{localStorage.setItem("ap-lang",l);}catch(e){}}
   toggleMenu(){this.setState({menu:!this.state.menu});}
-  setFilter(v){this.setState({filter:v,active:0});}
+  setFilter(v){this.setState({filter:v,active:0,showAll:false});}
   setActive(i){this.setState({active:i});}
+  expandProjects(){this.setState({showAll:true});}
   submit(e){if(e&&e.preventDefault)e.preventDefault();var self=this;var f=e&&e.target;var name="",email="",solicitud="";if(f&&f.querySelectorAll){var inp=f.querySelectorAll("input");var ta=f.querySelector("textarea");if(inp[0])name=inp[0].value;if(inp[1])email=inp[1].value;if(ta)solicitud=ta.value;}fetch("https://n8n.agustinynatalia.site/webhook/bienvenida-portfolio",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:name,email:email,solicitud:solicitud})}).then(function(){self.setState({sent:true});}).catch(function(){self.setState({sent:true});});}
 
   renderVals(){
     var self=this;var lang=this.state.lang;var L=this.I18N[lang];var accent=this.props.accent||"#ff5c35";
     var vis=this.PROJECTS.filter(function(p){return self.state.filter==="all"||p.tag===self.state.filter;});
+    vis=vis.slice().sort(function(a,b){return (b.featured?1:0)-(a.featured?1:0);});
     var ai=Math.min(this.state.active,vis.length-1);if(ai<0)ai=0;
-    var projects=vis.map(function(p,i){return {num:p.num,title:p[lang].t,sub:p[lang].s,year:p.year,img:p.img,tech:p.tech||[],url:"Proyecto.dc.html?id="+p.id,onEnter:function(){self.setActive(i);}};});
+    var collapsed=this.state.filter==="all"&&!this.state.showAll;
+    var projects=vis.map(function(p,i){return {num:("0"+(i+1)).slice(-2),title:p[lang].t,sub:p[lang].s,year:p.year,img:p.img,tech:p.tech||[],url:"Proyecto.dc.html?id="+p.id,onEnter:function(){self.setActive(i);}};});
     var ap=vis[ai]||this.PROJECTS[0];
     var active={img:ap.img,title:ap[lang].t,sub:ap[lang].s,cat:this.FILTERDEF.filter(function(f){return f.v===ap.tag;})[0][lang],company:ap.company,year:ap.year,url:"Proyecto.dc.html?id="+ap.id,live:ap.live||""};
     var filters=this.FILTERDEF.map(function(f){return {label:f[lang],cls:self.state.filter===f.v?"on":"",onClick:function(){self.setFilter(f.v);}};});
@@ -486,6 +496,7 @@ class Component extends DCLogic {
       toggleMenu:function(){self.toggleMenu();},closeMenu:function(){self.setState({menu:false});},
       submitContact:function(e){self.submit(e);},
       t:L,skills:this.SKILLS,metrics:metrics,experience:experience,filters:filters,projects:projects,active:active,guides:guides,
+      projListClass:collapsed?"collapsed":"",showMore:collapsed&&vis.length>3,expandProjects:function(){self.expandProjects();},
       contactSent:this.state.sent,showForm:!this.state.sent,
       email:email,mailto:"mailto:"+email
     };
