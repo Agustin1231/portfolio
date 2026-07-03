@@ -391,6 +391,18 @@ class Component extends DCLogic {
     this.startBg3d();
     this.observe();
     this.fetchMetrics();
+    this.scrollToHash();
+  }
+  scrollToHash(){
+    var h=window.location.hash;
+    if(!h||h.length<2||h==="#top")return;
+    var tries=0;
+    function go(){
+      var el=null;try{el=document.querySelector(h);}catch(e){return;}
+      if(el){el.scrollIntoView({behavior:"smooth",block:"start"});return;}
+      if(tries++<40)setTimeout(go,50);
+    }
+    setTimeout(go,0);
   }
   componentWillUnmount(){cancelAnimationFrame(this._raf);cancelAnimationFrame(this._raf3);if(this._io)this._io.disconnect();if(this._ioA)this._ioA.disconnect();window.removeEventListener("resize",this._rz);window.removeEventListener("pointermove",this._pm);window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);}
 
