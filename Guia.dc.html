@@ -199,7 +199,7 @@ class Component extends DCLogic {
       try{
         var id=new URLSearchParams(window.location.search).get("id")||"";
         var body=JSON.stringify({type:"event",payload:{website:"1edc5673-c0ea-4380-9e9a-1c5dce95f938",hostname:window.location.hostname,url:window.location.pathname+window.location.search,title:document.title,name:"hablemos-guia",data:{guia:id}}});
-        navigator.sendBeacon("https://umami.agustinynatalia.site/api/send",new Blob([body],{type:"application/json"}));
+        fetch("https://umami.agustinynatalia.site/api/send",{method:"POST",headers:{"Content-Type":"application/json"},body:body,keepalive:true,mode:"cors"}).catch(function(){});
       }catch(_){}
     },true);
   }
