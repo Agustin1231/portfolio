@@ -173,5 +173,86 @@ var GUIDES_DATA = [
             "Solo vale la pena si vas a usar varias herramientas; para una sola, a veces es más barato pagar."
         ],
         tools: ["Umami", "n8n", "Coolify", "PostgreSQL", "Outline", "Self-hosted (Docker)", "Servidor propio"]
+    },
+    {
+        id: "buscadores-ia-cual-elegir",
+        number: "03",
+        visible: true,
+        category: "Buscadores con IA",
+        title: "¿Cuál buscador con IA vale tu plata? Perplexity, ChatGPT y Google comparados",
+        subtitle: "Probé los buscadores con IA que todo el mundo recomienda. No hay un ganador único: hay uno mejor para cada tipo de búsqueda.",
+        description: "Perplexity, ChatGPT Search y Google AI Mode cuestan casi lo mismo (unos 20 USD al mes). Te cuento en qué es mejor cada uno, cuánto cuestan de verdad y cuál elegir según lo que hagas.",
+        image: "",
+        imageCaption: "",
+        date: "Julio 2026",
+        readingTime: "5 min de lectura",
+        urlLabel: "Leer guía",
+        requirements: [
+            "Tener claro qué tipo de búsquedas haces más: investigar con fuentes, redactar y razonar, o datos locales y recientes.",
+            "Estar dispuesto a probar las versiones gratis antes de sacar la tarjeta.",
+            "Un medio de pago si vas a pasar al plan de pago (rondan los 20 USD al mes, unos 80 mil COP).",
+            "Nada técnico: todos responden bien en español y funcionan desde el navegador o el celular."
+        ],
+        sections: [
+            {
+                title: "Por qué probé varios en vez de casarme con uno",
+                content: [
+                    { type: "lead", text: "Como me la paso investigando para construir automatizaciones, un buen buscador con IA me ahorra horas. Así que probé los tres que todo el mundo nombra, esperando encontrar el mejor." },
+                    { type: "paragraph", text: "La conclusión me sorprendió: en 2026 ya no hay un ganador absoluto. Cada uno es el mejor en algo distinto, y elegir por moda es la forma más fácil de pagar de más." },
+                    { type: "paragraph", text: "Para que te hagas una idea del mercado: en búsqueda con IA, ChatGPT se lleva cerca del 60 por ciento, Google (Gemini) ronda el 15 y Perplexity anda por el 6. Popularidad no es lo mismo que ser el mejor para ti." }
+                ]
+            },
+            {
+                title: "Perplexity: el mejor para investigar con fuentes",
+                content: [
+                    { type: "paragraph", text: "Perplexity es un motor de investigación. Su gracia es que cada afirmación viene con una cita numerada y su enlace, así que puedes verificar de dónde salió cada dato. Además, en su modo Pro te hace preguntas antes de buscar para afinar la respuesta." },
+                    { type: "paragraph", text: "Es rápido (te responde en 2 a 5 segundos) y es mi opción por defecto cuando necesito datos confiables y poder comprobarlos. Si te importa la fuente, este gana." }
+                ]
+            },
+            {
+                title: "ChatGPT Search: el todoterreno que razona",
+                content: [
+                    { type: "paragraph", text: "ChatGPT con búsqueda no solo lista resultados: lee, sintetiza y estructura. Para preguntas de \"explícame los pros y contras\" o para trabajos de varios pasos, la profundidad de sus respuestas se nota." },
+                    { type: "paragraph", text: "El precio a pagar es velocidad: suele tardar más (de 5 a 15 segundos). Pero si ya vives dentro de ChatGPT y quieres investigar y redactar en el mismo lugar, es el más cómodo." }
+                ]
+            },
+            {
+                title: "Google AI Mode: el de la información más fresca",
+                content: [
+                    { type: "paragraph", text: "Google metió la IA dentro de su buscador de siempre. Su ventaja es el índice: nadie tiene información tan fresca ni tan buena para consultas locales, comercios, horarios o cosas de última hora." },
+                    { type: "paragraph", text: "Si tu búsqueda es \"qué pasó hoy\" o \"dónde queda\", aquí es difícil ganarle a Google." }
+                ]
+            },
+            {
+                title: "Cuánto cuestan de verdad",
+                content: [
+                    { type: "lead", text: "Aquí está el dato que a nadie le dicen: en su plan medio, todos cuestan casi lo mismo." },
+                    { type: "paragraph", text: "Perplexity Pro: 20 USD al mes (o 200 al año, que baja a unos 16,7 al mes). Tiene un plan Max de 200 al mes para power users y descuento a 10 para estudiantes. ChatGPT Plus: 20. Google AI Pro: 19,99. Copilot (Microsoft 365 Premium): 19,99. Claude Pro: 20." },
+                    { type: "paragraph", text: "En pesos, casi todos son unos 80 a 85 mil COP al mes. Los planes premium para uso intensivo se van a entre 200 y 250 USD, pero para la mayoría de personas no valen la pena. Y ojo: todos tienen versión gratis que alcanza para probar y hasta para un uso liviano." }
+                ]
+            },
+            {
+                title: "Cuál elegir según lo que hagas",
+                content: [
+                    { type: "lead", text: "Como cuestan casi igual, la pregunta no es el precio: es para qué lo vas a usar." },
+                    { type: "paragraph", text: "Si investigas y necesitas fuentes verificables, Perplexity. Si quieres un todoterreno que razone y redacte a fondo, ChatGPT. Si buscas cosas locales, comerciales o recientes, Google AI Mode." },
+                    { type: "paragraph", text: "Mi consejo honesto: no pagues cinco suscripciones. Empieza por la versión gratis del que mejor calce con tu caso, úsalo una semana de verdad, y solo si te quedas corto pasas al plan de pago. La mejor herramienta no es la más famosa, es la que resuelve tu tipo de búsqueda." }
+                ]
+            }
+        ],
+        pros: [
+            "Respondes preguntas complejas en segundos, sin abrir diez pestañas.",
+            "Con el buscador correcto (Perplexity) verificas cada dato por su fuente.",
+            "Todos tienen versión gratis suficiente para probar antes de pagar.",
+            "En su plan medio cuestan casi lo mismo, así que eliges por utilidad, no por precio.",
+            "Funcionan en español y desde cualquier dispositivo."
+        ],
+        cons: [
+            "Pueden equivocarse o inventar: si el dato importa, hay que verificar la fuente.",
+            "El plan de pago (unos 20 USD al mes) se siente si sumas varias suscripciones.",
+            "Ninguno es el mejor en todo: para aprovecharlos toca saber cuál usar para qué.",
+            "Los planes premium (200 a 250 USD) rara vez valen la pena para uso normal."
+        ],
+        tools: ["Perplexity", "ChatGPT Search", "Google AI Mode", "Gemini", "Claude"]
     }
 ];
