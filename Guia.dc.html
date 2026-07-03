@@ -8,6 +8,13 @@
 <meta property="og:title" content="Guía — Agustin Peralta">
 <meta property="og:description" content="Guías y notas sobre IA, automatización y self-hosting.">
 <meta property="og:type" content="article">
+<meta property="og:image" content="https://agustin.agustinynatalia.site/og-image.png">
+<meta property="og:site_name" content="Agustin Peralta">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://agustin.agustinynatalia.site/og-image.png">
+<meta name="author" content="Agustin Peralta">
+<link rel="canonical" href="https://agustin.agustinynatalia.site/Guia.dc.html">
 <meta name="theme-color" content="#f1efe9">
 <style>x-dc{display:none!important}html{background:#f1efe9}</style>
 <script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
@@ -19,6 +26,59 @@
 <script defer src="vendor/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1"></script>
 <script defer src="./support.js"></script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
+<script>
+// SEO por guía: al cargar, toma el ?id, busca la guía en GUIDES_DATA e inyecta
+// title/description/canonical/OpenGraph + JSON-LD BlogPosting específicos.
+document.addEventListener("DOMContentLoaded", function () {
+  try {
+    var id = new URLSearchParams(location.search).get("id");
+    var data = (typeof GUIDES_DATA !== "undefined" && GUIDES_DATA) || window.GUIDES_DATA || [];
+    var g = data.filter(function (x) { return x.id === id; })[0];
+    if (!g) return;
+    var base = "https://agustin.agustinynatalia.site/";
+    var url = base + "Guia.dc.html?id=" + encodeURIComponent(id);
+    var title = g.title + " — Agustin Peralta";
+    var desc = g.description || g.subtitle || "";
+    document.title = title;
+    var setMeta = function (sel, attr, val) {
+      var el = document.head.querySelector(sel);
+      if (!el) { el = document.createElement("meta"); document.head.appendChild(el); var p = sel.match(/\[(name|property)="(.+?)"\]/); if (p) el.setAttribute(p[1], p[2]); }
+      el.setAttribute(attr, val);
+    };
+    setMeta('meta[name="description"]', "content", desc);
+    setMeta('meta[property="og:title"]', "content", title);
+    setMeta('meta[property="og:description"]', "content", desc);
+    setMeta('meta[property="og:url"]', "content", url);
+    var can = document.head.querySelector('link[rel="canonical"]');
+    if (!can) { can = document.createElement("link"); can.rel = "canonical"; document.head.appendChild(can); }
+    can.href = url;
+    var months = { enero: "01", febrero: "02", marzo: "03", abril: "04", mayo: "05", junio: "06", julio: "07", agosto: "08", septiembre: "09", octubre: "10", noviembre: "11", diciembre: "12" };
+    var published;
+    if (g.date) {
+      var m = String(g.date).toLowerCase().match(/([a-záéíóú]+)\s+(\d{4})/);
+      if (m && months[m[1]]) published = m[2] + "-" + months[m[1]] + "-01";
+    }
+    var ld = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": g.title,
+      "description": desc,
+      "inLanguage": "es",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": url },
+      "url": url,
+      "author": { "@type": "Person", "name": "Agustin Peralta", "url": base, "@id": base + "#person" },
+      "publisher": { "@type": "Person", "name": "Agustin Peralta", "@id": base + "#person" },
+      "image": g.image || (base + "og-image.png")
+    };
+    if (g.category) ld.articleSection = g.category;
+    if (published) { ld.datePublished = published; ld.dateModified = published; }
+    var s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.textContent = JSON.stringify(ld);
+    document.head.appendChild(s);
+  } catch (e) {}
+});
+</script>
 </head>
 <body>
 <x-dc>
