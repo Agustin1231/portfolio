@@ -262,5 +262,118 @@ var GUIDES_DATA = [
             "Los planes premium (200 a 250 USD) rara vez valen la pena para uso normal."
         ],
         tools: ["Perplexity", "ChatGPT Search", "Google AI Mode", "Gemini", "Claude"]
+    },
+    {
+        id: "senales-proceso-automatizar",
+        number: "04",
+        visible: true,
+        category: "Automatización de procesos",
+        title: "Cómo saber si un proceso de tu empresa necesita automatizarse",
+        subtitle: "Las 6 señales que reviso antes de escribir una sola línea. Automatizar lo que no debería existir solo te deja un desastre más rápido.",
+        description: "Antes de automatizar, la pregunta no es cómo, es si vale la pena. Te doy las 6 señales que reviso, una regla para puntuarlas y el orden correcto para no automatizar un proceso roto.",
+        image: "",
+        imageCaption: "",
+        date: "Julio 2026",
+        readingTime: "6 min de lectura",
+        urlLabel: "Leer guía",
+        requirements: [
+            "Un proceso concreto de tu operación en mente para evaluarlo, no una idea general de \"automatizar la empresa\".",
+            "Una idea, aunque sea aproximada, de cuánto vale la hora de quien hoy hace ese trabajo.",
+            "Cuántas veces por semana o mes se ejecuta el proceso y cuánto tiempo toma cada vez.",
+            "Honestidad para reconocer los errores o reprocesos que ese trabajo manual ya te ha costado.",
+            "Disposición a repensar el proceso antes de automatizarlo, no solo a calcarlo tal como está hoy."
+        ],
+        sections: [
+            {
+                title: "La pregunta que casi nadie hace",
+                content: [
+                    { type: "lead", text: "La primera pregunta nunca es \"cómo lo automatizo\". Es \"este proceso siquiera merece que lo automaticen\"." },
+                    { type: "paragraph", text: "Casi nadie calcula cuánto le cuesta al mes un proceso que sigue haciendo a mano, y ahí está el problema. El costo no aparece en una factura: se esconde en horas de gente cara, en errores que toca perseguir y en oportunidades que se van sin que las veas." },
+                    { type: "paragraph", text: "Llevo años rediseñando procesos con IA, y antes de tocar una sola línea reviso seis señales. Piensa en un proceso real de tu operación y marca las que reconozcas. Al final te doy una regla para leer el resultado." }
+                ]
+            },
+            {
+                title: "Señal 1. Es repetitivo",
+                content: [
+                    { type: "paragraph", text: "Se hace igual una y otra vez, todos los días o todas las semanas. Mientras más se repite, más rinde automatizarlo, porque el trabajo de montarlo una vez se paga con cada ejecución que ya no toca hacer a mano." },
+                    { type: "paragraph", text: "Qué mirar: ¿lo haces tú, o alguien de tu equipo, más de una vez por semana siguiendo los mismos pasos? Si la respuesta es sí, ya tienes la primera señal." }
+                ]
+            },
+            {
+                title: "Señal 2. Tiene reglas claras",
+                content: [
+                    { type: "paragraph", text: "Si pasa X, haces Y. Casi no hay criterio humano de por medio, solo pasos que se pueden escribir sin ambigüedad. Los procesos con reglas claras son los más fáciles y seguros de automatizar." },
+                    { type: "paragraph", text: "Qué mirar: ¿podrías explicárselo a alguien que entra hoy en una sola hoja, sin llenarlo de \"depende\"? Si necesitas mucho criterio caso a caso, todavía no es candidato limpio." }
+                ]
+            },
+            {
+                title: "Señal 3. Se come horas de gente cara",
+                content: [
+                    { type: "paragraph", text: "Alguien que debería estar pensando, vendiendo o decidiendo está copiando datos de un lado a otro. Ese es el costo más caro y el más invisible, porque no lo ves en ninguna cuenta, lo ves en lo que esa persona dejó de hacer." },
+                    { type: "paragraph", text: "Qué mirar: multiplica cuánto vale la hora de quien lo hace por las horas que se le van al mes. Ese número suele ser la mejor razón para actuar." }
+                ]
+            },
+            {
+                title: "Señal 4. Es propenso a errores a mano",
+                content: [
+                    { type: "paragraph", text: "Copiar, pegar, transcribir de un sistema a otro. Ahí es donde entran los fallos, y no por descuido: es lo que le pasa a cualquiera repitiendo una tarea mecánica a las seis de la tarde." },
+                    { type: "paragraph", text: "Qué mirar: ¿ya te ha costado plata, tiempo o un cliente un error de dedo en este proceso? Si un fallo aquí se paga caro, automatizarlo también es reducir riesgo, no solo ahorrar tiempo." }
+                ]
+            },
+            {
+                title: "Señal 5. Genera cuellos de botella",
+                content: [
+                    { type: "paragraph", text: "Todo se frena esperando a que una persona haga su parte. El proceso avanza al ritmo de la persona más ocupada, y cuando esa persona falta, se detiene." },
+                    { type: "paragraph", text: "Qué mirar: ¿algo importante queda en pausa cuando esa persona está saturada o de vacaciones? Si el negocio depende de un solo cuello, automatizar ese paso libera todo lo que venía detrás." }
+                ]
+            },
+            {
+                title: "Señal 6. Crece con el negocio",
+                content: [
+                    { type: "paragraph", text: "A más clientes, más volumen, y ese trabajo manual escala contigo. Lo que hoy son dos horas a la semana, en seis meses son dos personas dedicadas a lo mismo." },
+                    { type: "paragraph", text: "Qué mirar: ¿si duplicas ventas, este trabajo también se duplica? Automatizar lo que crece con el negocio es lo que te deja escalar sin contratar por cada aumento de volumen." }
+                ]
+            },
+            {
+                title: "Cómo puntuar tus señales",
+                content: [
+                    { type: "lead", text: "Cuenta cuántas marcaste. La regla es simple y sirve para decidir sin darle mil vueltas." },
+                    { type: "paragraph", text: "0 a 2 señales: probablemente no vale la pena todavía. Automatizarlo sería más esfuerzo del que ahorra. Déjalo en la lista y revísalo cuando crezca el volumen." },
+                    { type: "paragraph", text: "3 a 4 señales: ese proceso ya te está costando más de lo que crees. No en una factura, sino en horas, errores y oportunidades que se te van sin que las veas. Vale la pena repensarlo en serio." },
+                    { type: "paragraph", text: "5 a 6 señales: candidato claro. Pero ojo, marcar todas no significa \"automatiza ya\": significa repensar el proceso primero y después automatizar la versión buena." }
+                ]
+            },
+            {
+                title: "El orden que separa una solución de un parche",
+                content: [
+                    { type: "lead", text: "Marcar las señales te dice que hay algo que atacar. El orden con que lo atacas decide si te dura años o se cae en tres meses." },
+                    { type: "paragraph", text: "Primero repiensa, no automatices de una. Quita pasos que sobran, unifica formatos, elimina aprobaciones que nadie mira. Muchas veces el proceso mejora tanto solo con limpiarlo que la automatización se vuelve mínima." },
+                    { type: "paragraph", text: "Después automatiza la versión buena, sobre el proceso ya limpio y no sobre el desorden actual. Ese es exactamente el paso que la mayoría se salta, y por eso terminan con un flujo que automatiza el caos más rápido." },
+                    { type: "paragraph", text: "Al final, mide el antes y el después: horas ahorradas, errores evitados, tiempo de respuesta. Si no lo mides, no sabes si valió la pena ni puedes defender la inversión." }
+                ]
+            },
+            {
+                title: "La trampa más común",
+                content: [
+                    { type: "lead", text: "Automatizar un proceso roto no lo arregla: lo hace fallar más rápido y a mayor escala." },
+                    { type: "paragraph", text: "Es la razón por la que muchos proyectos de automatización decepcionan. No fallan por la herramienta, fallan porque se automatizó tal cual estaba, con sus errores y sus vueltas incluidas. Primero se arregla el proceso, después se automatiza. Ese orden es casi todo el resultado." }
+                ]
+            }
+        ],
+        pros: [
+            "Recuperas horas de gente cara para trabajo que sí exige criterio y no se puede delegar a una máquina.",
+            "Menos errores: un flujo bien montado no se equivoca copiando y pegando a las seis de la tarde.",
+            "El proceso deja de frenarse esperando a que una sola persona haga su parte.",
+            "Escala con el negocio sin que tengas que contratar por cada aumento de volumen.",
+            "Queda documentado: las reglas viven en el flujo, no en la cabeza de una sola persona."
+        ],
+        cons: [
+            "Si el proceso todavía cambia cada semana, automatizas algo que mañana ya no sirve.",
+            "Si se ejecuta muy pocas veces, el esfuerzo de montarlo supera lo que ahorra.",
+            "Si depende de criterio humano real en cada caso, no de reglas claras, no es buen candidato.",
+            "Si el proceso está roto, automatizarlo primero solo acelera el desorden: se arregla y luego se automatiza.",
+            "Si nadie es dueño del resultado, el flujo se rompe y nadie se entera hasta que ya costó caro."
+        ],
+        tools: ["n8n", "Automatización con IA", "Rediseño de procesos", "IA"]
     }
 ];
