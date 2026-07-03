@@ -203,6 +203,14 @@ var GUIDES_DATA = [
                 ]
             },
             {
+                title: "Cómo hice la prueba",
+                content: [
+                    { type: "lead", text: "Para que no sea opinión al aire, les hice a los tres exactamente la misma pregunta: una de las que de verdad me toca resolver en mi trabajo." },
+                    { type: "paragraph", text: "La pregunta fue: \"¿Cuál es la mejor forma de conectar n8n con una base de datos vectorial para un agente de IA en 2026 y qué alternativas hay?\". Es específica, técnica y actual, justo el tipo de consulta donde se nota la diferencia entre un buscador y otro." },
+                    { type: "paragraph", text: "Medí cuatro cosas en cada respuesta: si citaba fuentes verificables, qué tan rápido respondía, qué tan a fondo sintetizaba el tema y qué tan fresca o local era la información. Con esos cuatro criterios armé la comparación que viene a continuación." }
+                ]
+            },
+            {
                 title: "Perplexity: el mejor para investigar con fuentes",
                 content: [
                     { type: "paragraph", text: "Perplexity es un motor de investigación. Su gracia es que cada afirmación viene con una cita numerada y su enlace, así que puedes verificar de dónde salió cada dato. Además, en su modo Pro te hace preguntas antes de buscar para afinar la respuesta." },
