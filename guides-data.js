@@ -18,9 +18,9 @@ var GUIDES_DATA = [
         number: "01",
         visible: true,
         category: "Sistema de conocimiento + IA",
-        title: "Cómo monté mi propio sistema de conocimiento conectado a IA",
+        title: "Cómo conecté un agente de IA a mi base de conocimiento (segundo cerebro self-hosted)",
         subtitle: "Un segundo cerebro self-hosted donde mis agentes de IA capturan, organizan y responden por mí.",
-        description: "Monté un sistema de conocimiento propio con Outline (open source, en mi servidor) y lo conecté a mis agentes. Te explico qué es, cómo funciona y sus pros y contras.",
+        description: "Conecté un agente de IA a mi propia base de conocimiento self-hosted (Outline, open source, en mi servidor). Te explico qué es, cómo funciona y sus pros y contras.",
         image: "",
         imageCaption: "",
         date: "Junio 2026",
@@ -90,9 +90,9 @@ var GUIDES_DATA = [
         number: "02",
         visible: true,
         category: "Self-hosting + ahorro",
-        title: "5 cosas que dejé de pagar self-hosteando en mi propio servidor",
-        subtitle: "Cambié cinco suscripciones mensuales por software open source corriendo en un servidor que ya tenía.",
-        description: "Suscripciones SaaS que pagaba todos los meses y reemplacé por herramientas open source en mi propio servidor. Te cuento qué usaba antes, con qué lo cambié y qué gano y qué pierdo.",
+        title: "5 herramientas open source gratis para reemplazar tus suscripciones (Zapier, Notion y más)",
+        subtitle: "Cambié cinco suscripciones mensuales por herramientas open source gratis corriendo en un servidor que ya tenía.",
+        description: "Herramientas open source gratis para reemplazar suscripciones SaaS como Zapier, Notion y Vercel en tu propio servidor. Te cuento qué usaba antes, con qué lo cambié y qué gano y qué pierdo.",
         image: "",
         imageCaption: "",
         date: "Junio 2026",
@@ -110,7 +110,7 @@ var GUIDES_DATA = [
             {
                 title: "Por qué dejé de pagar suscripciones",
                 content: [
-                    { type: "lead", text: "Un día sumé lo que pagaba en herramientas mensuales y me di cuenta de que casi todas tenían una versión open source que podía correr yo mismo." },
+                    { type: "lead", text: "Un día sumé lo que pagaba en herramientas mensuales y me di cuenta de que casi todas tenían una alternativa open source y gratis que podía correr yo mismo." },
                     { type: "paragraph", text: "No lo hice por ahorrar unos dólares y ya. Lo hice porque cada suscripción es un candado: tus datos viven en la nube de otro, con su límite de plan y su precio subiendo cada año." },
                     { type: "paragraph", text: "Tengo un servidor donde ya corren mis proyectos. Meterle estas herramientas no me cuesta un peso más: aprovecho recursos que ya estaban ahí. Estas son las cinco que reemplacé." }
                 ]
@@ -179,9 +179,9 @@ var GUIDES_DATA = [
         number: "03",
         visible: true,
         category: "Buscadores con IA",
-        title: "¿Cuál buscador con IA vale tu plata? Perplexity, ChatGPT y Google comparados",
-        subtitle: "Probé los buscadores con IA que todo el mundo recomienda. No hay un ganador único: hay uno mejor para cada tipo de búsqueda.",
-        description: "Perplexity, ChatGPT Search y Google AI Mode cuestan casi lo mismo (unos 20 USD al mes). Te cuento en qué es mejor cada uno, cuánto cuestan de verdad y cuál elegir según lo que hagas.",
+        title: "Los mejores buscadores con IA en 2026: Perplexity vs ChatGPT vs Google",
+        subtitle: "Probé los mejores buscadores con IA que todo el mundo recomienda. No hay un ganador único: hay uno mejor para cada tipo de búsqueda.",
+        description: "¿Cuáles son los mejores buscadores con IA? Perplexity, ChatGPT Search y Google AI Mode cuestan casi lo mismo (unos 20 USD al mes). Te cuento en qué es mejor cada uno, cuánto cuestan de verdad y cuál elegir según lo que hagas.",
         image: "",
         imageCaption: "",
         date: "Julio 2026",
@@ -197,7 +197,7 @@ var GUIDES_DATA = [
             {
                 title: "Por qué probé varios en vez de casarme con uno",
                 content: [
-                    { type: "lead", text: "Como me la paso investigando para construir automatizaciones, un buen buscador con IA me ahorra horas. Así que probé los tres que todo el mundo nombra, esperando encontrar el mejor." },
+                    { type: "lead", text: "Como me la paso investigando para construir automatizaciones, un buen buscador con IA me ahorra horas. Así que probé los mejores buscadores con IA que todo el mundo nombra, esperando encontrar el mejor." },
                     { type: "paragraph", text: "La conclusión me sorprendió: en 2026 ya no hay un ganador absoluto. Cada uno es el mejor en algo distinto, y elegir por moda es la forma más fácil de pagar de más." },
                     { type: "paragraph", text: "Para que te hagas una idea del mercado: en búsqueda con IA, ChatGPT se lleva cerca del 60 por ciento, Google (Gemini) ronda el 15 y Perplexity anda por el 6. Popularidad no es lo mismo que ser el mejor para ti." }
                 ]
@@ -268,9 +268,9 @@ var GUIDES_DATA = [
         number: "04",
         visible: true,
         category: "Automatización de procesos",
-        title: "Cómo saber si un proceso de tu empresa necesita automatizarse",
-        subtitle: "Las 6 señales que reviso antes de escribir una sola línea. Automatizar lo que no debería existir solo te deja un desastre más rápido.",
-        description: "Antes de automatizar, la pregunta no es cómo, es si vale la pena. Te doy las 6 señales que reviso, una regla para puntuarlas y el orden correcto para no automatizar un proceso roto.",
+        title: "Cómo automatizar los procesos de tu empresa con IA: 6 señales para saber cuáles",
+        subtitle: "Antes de automatizar un proceso de tu empresa con IA reviso 6 señales. Automatizar lo que no debería existir solo te deja un desastre más rápido.",
+        description: "¿Cómo automatizar los procesos de tu empresa con IA sin equivocarte? Te doy las 6 señales que reviso para saber qué proceso automatizar, una regla para puntuarlas y el orden correcto para no automatizar un proceso roto.",
         image: "",
         imageCaption: "",
         date: "Julio 2026",
@@ -289,7 +289,7 @@ var GUIDES_DATA = [
                 content: [
                     { type: "lead", text: "La primera pregunta nunca es \"cómo lo automatizo\". Es \"este proceso siquiera merece que lo automaticen\"." },
                     { type: "paragraph", text: "Casi nadie calcula cuánto le cuesta al mes un proceso que sigue haciendo a mano, y ahí está el problema. El costo no aparece en una factura: se esconde en horas de gente cara, en errores que toca perseguir y en oportunidades que se van sin que las veas." },
-                    { type: "paragraph", text: "Llevo años rediseñando procesos con IA, y antes de tocar una sola línea reviso seis señales. Piensa en un proceso real de tu operación y marca las que reconozcas. Al final te doy una regla para leer el resultado." }
+                    { type: "paragraph", text: "Llevo años ayudando a empresas a automatizar sus procesos con IA, y antes de tocar una sola línea reviso seis señales. Piensa en un proceso real de tu operación y marca las que reconozcas. Al final te doy una regla para leer el resultado." }
                 ]
             },
             {
