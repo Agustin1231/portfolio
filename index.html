@@ -600,7 +600,7 @@ class Component extends DCLogic {
     var filters=this.FILTERDEF.map(function(f){return {label:f[lang],cls:self.state.filter===f.v?"on":"",onClick:function(){self.setFilter(f.v);}};});
     var metrics=this.METRICDEF.map(function(m,i){var v=self.state.metv[i];return {display:"+"+Math.floor(v).toLocaleString("es-CO")+m.suffix,label:L.metrics[i]};});
     var experience=this.EXPERIENCE.map(function(e){return {date:e[lang].date,role:e[lang].role,company:e.company,desc:e[lang].desc};});
-    var guides=this.GUIDES.map(function(g){return {num:g.num,cat:g[lang].cat,title:g[lang].t,desc:g[lang].d,meta:g[lang].meta,url:"Guia.dc.html?id="+g.id};});
+    var guides=this.GUIDES.map(function(g){return {num:g.num,cat:g[lang].cat,title:g[lang].t,desc:g[lang].d,meta:g[lang].meta,url:g.externalUrl||("guias/"+g.id+".html")};});
     var email="agustin@agustinynatalia.site";
     return {
       themeClass:this.state.theme==="light"?"light":"",
