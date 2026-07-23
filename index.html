@@ -607,7 +607,18 @@ class Component extends DCLogic {
   renderVals(){
     var self=this;var lang=this.state.lang;var L=this.I18N[lang];var accent=this.props.accent||"#ff5c35";
     var vis=this.PROJECTS.filter(function(p){return self.state.filter==="all"||p.tag===self.state.filter;});
-    vis=vis.slice().sort(function(a,b){return (b.featured?1:0)-(a.featured?1:0);});
+    // Orden: el proyecto de mayor impacto (mas horas ahorradas) va primero para
+    // dar punch; luego los destacados; y dentro de cada grupo, los mas recientes
+    // arriba. La numeracion visible se recalcula despues de forma secuencial.
+    var maxHs=0;vis.forEach(function(p){var h=(typeof p.hoursSaved==="number")?p.hoursSaved:0;if(h>maxHs)maxHs=h;});
+    vis=vis.slice().sort(function(a,b){
+      var ah=(typeof a.hoursSaved==="number")?a.hoursSaved:0,bh=(typeof b.hoursSaved==="number")?b.hoursSaved:0;
+      var am=(maxHs>0&&ah===maxHs)?1:0,bm=(maxHs>0&&bh===maxHs)?1:0;
+      if(am!==bm)return bm-am;
+      var af=a.featured?1:0,bf=b.featured?1:0;
+      if(af!==bf)return bf-af;
+      return (parseInt(b.year,10)||0)-(parseInt(a.year,10)||0);
+    });
     var ai=Math.min(this.state.active,vis.length-1);if(ai<0)ai=0;
     var collapsed=this.state.filter==="all"&&!this.state.showAll;
     var projects=vis.map(function(p,i){var phs=(typeof p.hoursSaved==="number"&&p.hoursSaved>0)?p.hoursSaved:0;var psaved=phs?(L.saveLabel+" $"+(phs*8).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+" USD"):"";return {num:("0"+(i+1)).slice(-2),title:p[lang].t,sub:p[lang].s,year:p.year,img:p.img,tech:p.tech||[],saved:psaved,url:"/proyecto?id="+p.id,onEnter:function(){self.setActive(i);}};});
