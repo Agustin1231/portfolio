@@ -148,6 +148,9 @@ a{color:inherit;text-decoration:none}
 .heroRole{font-size:clamp(1.3rem,3.2vw,2.1rem);font-weight:400;color:var(--dim);letter-spacing:-.01em;margin-bottom:1.8rem}
 .heroDesc{max-width:620px;font-size:1.08rem;line-height:1.62;color:var(--dim);margin-bottom:2.6rem}
 .hl{color:var(--accent);font-weight:600}
+/* legibilidad sobre el ASCII: al pasar el mouse, borde blanco + halo del fondo que despeja los caracteres naranjas alrededor del texto */
+.heroName,.heroRole,.heroDesc{transition:text-shadow .28s ease}
+.heroName:hover,.heroRole:hover,.heroDesc:hover{text-shadow:-1px -1px 0 var(--bg),1px -1px 0 var(--bg),-1px 1px 0 var(--bg),1px 1px 0 var(--bg),0 0 5px var(--bg),0 0 8px var(--bg),0 0 12px var(--bg),0 0 16px var(--bg)}
 .heroCtas{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.6rem}
 .btn{font-family:'JetBrains Mono',monospace;font-size:.85rem;padding:.85rem 1.5rem;border-radius:8px;border:1px solid var(--line);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px}
 .btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:500}
