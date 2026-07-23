@@ -15,6 +15,7 @@ var PROJECTS_DATA = [
         year: "2025",
         company: "Plataforma de Podcasts",
         duration: "1 mes",
+        hoursSaved: 600,
         image: "https://imagenes.agustinynatalia.site/automatizacion-analitica-podcasts",
         imageCaption: "Arquitectura general del sistema de monitoreo y análisis de podcasts",
         techCard: ["n8n", "OP3", "Supabase", "JavaScript"],
@@ -123,6 +124,141 @@ var PROJECTS_DATA = [
                 title: "Datos como activo",
                 text: "Contar con datos confiables y actualizados transforma la forma en que los equipos toman decisiones."
             }
+        ],
+        visible: true
+    },
+    {
+        id: "recontacto-automatizado-de-leads-crm",
+        number: "13",
+        category: "Automatización y CRM",
+        title: "Recontacto Automatizado de Leads",
+        subtitle: "Reactivación masiva y automática de oportunidades dormidas del CRM mediante campañas multicanal por WhatsApp y email",
+        description: "Diseño e implementación de un flujo en n8n que identifica oportunidades dormidas en el CRM y ejecuta, sin intervención manual, campañas de recontacto de varios pasos por WhatsApp y email, orquestadas desde GoHighLevel.",
+        year: "2025",
+        company: "Cliente B2B",
+        duration: "En operación",
+        hoursSaved: 316,
+        image: "https://imagenes.agustinynatalia.site/recontacto-automatizado-de-leads-crm",
+        imageCaption: "Arquitectura del flujo: del CRM a la campaña multicanal de recontacto",
+        techCard: ["n8n", "Odoo", "GoHighLevel"],
+        techFull: ["n8n", "Odoo API", "XML-RPC", "GoHighLevel", "WhatsApp API", "Email / SMTP"],
+        metrics: [
+            { label: "Leads reactivados", value: "1.500+" },
+            { label: "Campaña", value: "3 pasos (WhatsApp + Email)" },
+            { label: "Horas ahorradas", value: "315+" },
+            { label: "Ejecución", value: "Automática" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Reactivar de forma masiva y automática las oportunidades comerciales que quedaron sin seguimiento en el CRM, sin trabajo manual del equipo de ventas." },
+                    { type: "paragraph", text: "El equipo comercial acumulaba cientos de oportunidades marcadas para reagendar que nunca se retomaban por falta de tiempo. Retomarlas una por una era inviable y se perdían negocios que ya habían mostrado interés. El objetivo fue construir un flujo que hiciera ese recontacto de forma confiable y a escala." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Desarrollé un flujo en n8n que consulta el CRM (Odoo) vía API, filtra las oportunidades que cumplen los criterios de recontacto y las carga en una campaña multicanal orquestada desde GoHighLevel." },
+                    { type: "paragraph", text: "La campaña ejecuta una secuencia de tres pasos combinando WhatsApp y email, con tiempos y condiciones definidos, de modo que cada lead recibe un seguimiento consistente sin que nadie tenga que enviarlo a mano." },
+                    { type: "paragraph", text: "El flujo se diseñó para ser repetible: puede relanzarse sobre nuevos segmentos de oportunidades a medida que el CRM se actualiza." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Lectura directa del CRM", description: "Extracción de oportunidades desde Odoo por API, con filtros por estado y fecha para atacar solo los leads correctos." },
+            { title: "Campaña multicanal", description: "Secuencia de tres pasos por WhatsApp y email orquestada en GoHighLevel, sin envíos manuales." },
+            { title: "Ejecución a escala", description: "Recontacto de más de 1.500 oportunidades en una sola corrida, con seguimiento consistente para cada una." }
+        ],
+        visible: true
+    },
+    {
+        id: "prospeccion-automatizada-de-leads-b2b",
+        number: "14",
+        category: "Automatización y Ventas",
+        title: "Prospección Automatizada de Leads B2B",
+        subtitle: "Búsqueda, enriquecimiento y carga de prospectos en cadencias de outbound sin trabajo manual",
+        description: "Diseño e implementación de un flujo en n8n que construye listas de prospectos B2B desde Apollo, enriquece cada contacto con su email verificado y los carga automáticamente en cadencias de outbound en Klenty.",
+        year: "2025",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "https://imagenes.agustinynatalia.site/prospeccion-automatizada-de-leads-b2b",
+        imageCaption: "Del filtro de búsqueda al prospecto listo en cadencia de outbound",
+        techCard: ["n8n", "Apollo", "Klenty"],
+        techFull: ["n8n", "Apollo API", "Klenty API", "Google Sheets", "IA (agente de resiliencia)"],
+        metrics: [
+            { label: "Fuente", value: "Apollo B2B" },
+            { label: "Enriquecimiento", value: "Email verificado" },
+            { label: "Destino", value: "Cadencia Klenty" },
+            { label: "Ejecución", value: "Por filtros" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Alimentar de forma continua las cadencias de outbound con prospectos B2B reales y contactables, sin que nadie tenga que buscarlos ni cargarlos a mano." },
+                    { type: "paragraph", text: "Armar listas de prospectos, verificar sus correos y cargarlos uno por uno en la herramienta de cadencias consumía horas y frenaba el ritmo comercial. El objetivo fue automatizar todo el camino, desde la búsqueda hasta la cadencia, con datos confiables." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Desarrollé un flujo en n8n que recibe los filtros de búsqueda, consulta Apollo para encontrar contactos que encajan con el perfil objetivo y descarta los que no tienen email." },
+                    { type: "paragraph", text: "Cada contacto válido se enriquece para obtener su email verificado, se registra en una hoja de control y se crea como prospecto en Klenty, agregándolo directamente a la cadencia de outbound correspondiente." },
+                    { type: "paragraph", text: "El flujo incorpora una capa de resiliencia con un agente de IA y reintentos con backoff, de modo que los límites de las APIs no interrumpen la carga de prospectos." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Búsqueda por perfil objetivo", description: "Consulta a Apollo con filtros configurables para traer solo los contactos que encajan con el cliente ideal." },
+            { title: "Email verificado", description: "Enriquecimiento de cada contacto para cargar únicamente prospectos con correo verificado y contactable." },
+            { title: "Carga directa en cadencia", description: "Alta automática del prospecto en Klenty y su ingreso a la cadencia de outbound, sin pasos manuales." },
+            { title: "Resiliencia ante límites de API", description: "Agente de IA con reintentos y backoff que evita cortes cuando las APIs devuelven límites de uso." }
+        ],
+        visible: true
+    },
+    {
+        id: "recordatorio-automatizado-de-reuniones-whatsapp",
+        number: "15",
+        category: "Automatización y Agendamiento",
+        title: "Recordatorio Automático de Reuniones",
+        subtitle: "Mensajes de WhatsApp que recuerdan cada reunión agendada y reducen las ausencias",
+        description: "Diseño e implementación de un flujo en n8n que cada día consulta las reuniones agendadas para el día siguiente y envía un recordatorio automático por WhatsApp a cada persona, reduciendo las ausencias sin ningún trabajo manual.",
+        year: "2025",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "https://imagenes.agustinynatalia.site/recordatorio-automatizado-de-reuniones-whatsapp",
+        imageCaption: "De la agenda del día siguiente al recordatorio en WhatsApp, en automático",
+        techCard: ["n8n", "WhatsApp", "AiSensy"],
+        techFull: ["n8n", "AiSensy (WhatsApp API)", "Plataforma de agendamiento", "Schedule Trigger"],
+        metrics: [
+            { label: "Disparo", value: "Diario automático" },
+            { label: "Canal", value: "WhatsApp" },
+            { label: "Objetivo", value: "Menos ausencias" },
+            { label: "Ejecución", value: "Sin intervención" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Recordarle a cada persona su reunión agendada por WhatsApp, de forma automática, para que menos citas se pierdan por olvido." },
+                    { type: "paragraph", text: "Las reuniones agendadas que nadie recordaba terminaban en ausencias, tiempo perdido y agendas vacías. El objetivo fue enviar un recordatorio confiable a cada persona el día antes de su cita, sin que el equipo tuviera que revisar la agenda ni escribir mensajes a mano." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Desarrollé un flujo en n8n que corre todos los días a una hora fija, consulta las reuniones agendadas para el día siguiente y arma los datos de cada persona: nombre, teléfono y hora de la cita." },
+                    { type: "paragraph", text: "Con esos datos, el flujo envía un recordatorio por WhatsApp a través de AiSensy a cada contacto con teléfono válido, y separa para revisión manual los casos sin un número utilizable." },
+                    { type: "paragraph", text: "Todo el proceso ocurre sin intervención humana: el equipo ya no revisa la agenda ni redacta recordatorios, y cada persona recibe su aviso a tiempo." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Consulta diaria de la agenda", description: "Un disparador programado revisa cada día las reuniones agendadas para la jornada siguiente." },
+            { title: "Recordatorio por WhatsApp", description: "Envío automático del recordatorio a cada persona a través de AiSensy, con nombre y hora de su cita." },
+            { title: "Filtro de teléfonos válidos", description: "Separa los contactos sin número utilizable para revisión manual y evita envíos fallidos." },
+            { title: "Sin trabajo manual", description: "El equipo deja de revisar agendas y escribir mensajes uno por uno; el flujo lo hace solo cada día." }
         ],
         visible: true
     },
@@ -286,6 +422,7 @@ var PROJECTS_DATA = [
         year: "2025",
         company: "Urpe AI Lab",
         duration: "1 mes",
+        hoursSaved: 515,
         image: "https://imagenes.agustinynatalia.site/automatizacion-inteligente-de-analisis-de-shows",
         imageCaption: "Dashboard de análisis de shows con métricas y visualizaciones clave.",
         techCard: [
@@ -868,6 +1005,7 @@ var PROJECTS_DATA = [
         year: "2025",
         company: "Urpe AI Lab",
         duration: "Proyecto activo",
+        hoursSaved: 9258,
         image: "https://imagenes.agustinynatalia.site/monica-brain-asistente-ia-omnicanal",
         imageCaption: "Atención conversacional automatizada con calificación de clientes.",
         liveUrl: "https://brain.urpeailab.com/visual",
@@ -1018,6 +1156,7 @@ var PROJECTS_DATA = [
         year: "2025",
         company: "Urpe AI Lab",
         duration: "Proyecto activo",
+        hoursSaved: 248,
         image: "https://imagenes.agustinynatalia.site/monica-designer-identidad-de-marca-ia",
         imageCaption: "De un brief breve a una identidad de marca completa.",
         techCard: ["Inteligencia Artificial", "Diseño", "Producto"],
@@ -1249,12 +1388,13 @@ var PROJECTS_DATA = [
         id: "visor-de-orquestacion-de-subagentes",
         number: "12",
         category: "Agentes de IA",
-        title: "Visor de Orquestación de Subagentes",
-        subtitle: "Visualización en tiempo real de un agente orquestador que delega tareas a subagentes especialistas",
-        description: "Página web que muestra en vivo cómo un agente principal recibe una solicitud y la delega al subagente especialista adecuado, animando cada paso y registrándolo en un panel de actividad. Pensada para entender de un vistazo cómo trabaja un sistema multiagente.",
+        title: "Sistema de Orquestación de Agentes de IA",
+        subtitle: "Un orquestador central que delega en subagentes especialistas y ejecuta las automatizaciones internas de la operación",
+        description: "Sistema donde un agente orquestador recibe cada solicitud, decide qué subagente especialista la resuelve y coordina además un conjunto de automatizaciones internas que sostienen la operación día a día: publicación de contenido, reportería, monitoreo de errores, transcripción de reuniones y finanzas. Incluye un visor en vivo que muestra la orquestación en tiempo real.",
         year: "2026",
         company: "Urpe AI Lab",
-        duration: "1 día",
+        duration: "Operación continua",
+        hoursSaved: 264,
         image: "https://multiagentes.agustinynatalia.site/preview.png?v=3",
         imageCaption: "El orquestador delegando una tarea al subagente de diagramas, con la actividad registrada en vivo",
         techCard: ["JavaScript", "SVG", "Docker", "Coolify"],
@@ -1269,10 +1409,10 @@ var PROJECTS_DATA = [
             "Cloudflare DNS"
         ],
         metrics: [
-            { label: "Subagentes visualizados", value: "10" },
-            { label: "Render", value: "SVG en vivo" },
-            { label: "Temas", value: "Claro y oscuro" },
-            { label: "Build", value: "Sin frameworks" }
+            { label: "Subagentes especialistas", value: "10" },
+            { label: "Automatizaciones internas", value: "20+" },
+            { label: "Ejecución", value: "24/7" },
+            { label: "Visor", value: "SVG en vivo" }
         ],
         sections: [
             {
@@ -1298,6 +1438,19 @@ var PROJECTS_DATA = [
                     {
                         type: "paragraph",
                         text: "La página corre sin frameworks, con un grafo en SVG animado y un control para reproducir la secuencia cuantas veces se quiera. El panel de actividad enmascara automáticamente cualquier dato sensible (correos, rutas, tokens, identificadores) para poder mostrarlo sin exponer información."
+                    }
+                ]
+            },
+            {
+                title: "Automatizaciones internas que coordina",
+                content: [
+                    {
+                        type: "paragraph",
+                        text: "Más allá del visor, el orquestador ejecuta y coordina las automatizaciones que sostienen la operación diaria: publicación de contenido en redes, generación y programación de posts, reportería automática (tareas, Trello, finanzas), monitoreo y diagnóstico de errores de los flujos de n8n, transcripción de reuniones y seguimiento de la meta de ingresos."
+                    },
+                    {
+                        type: "paragraph",
+                        text: "En conjunto, estas automatizaciones internas suman cientos de horas de trabajo manual ahorradas, ejecutándose sin intervención y liberando tiempo para el trabajo con clientes."
                     }
                 ]
             }

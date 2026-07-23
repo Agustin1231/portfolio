@@ -85,18 +85,19 @@ a{color:inherit;text-decoration:none}
 .dcat{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
 .dtitle{font-size:clamp(2.3rem,5.2vw,4rem);font-weight:600;letter-spacing:-.04em;line-height:1.02;margin-bottom:1.2rem;max-width:18ch}
 .dsub{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--dim);line-height:1.5;max-width:62ch;margin-bottom:2.2rem}
-.dmeta{display:flex;flex-wrap:wrap;gap:2.6rem;padding:1.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:2rem}
+.dmeta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem 2.6rem;padding:1.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:2rem}
 .dmeta .k{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.4rem}
 .dmeta .v{font-size:1rem;color:var(--fg)}
+.dmeta .vacc{color:var(--accent);font-weight:600}
 .dcover{position:relative;z-index:1;aspect-ratio:16/9;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel);margin-bottom:1rem}
 .dcover img{width:100%;height:100%;object-fit:cover;display:block}
 .dgridbg{position:absolute;inset:0;background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:26px 26px;pointer-events:none}
 .dcap{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--faint);text-align:center;margin-bottom:1rem}
-.dsec{padding:3.3rem 0;position:relative;z-index:1}
-.dsech{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.7rem;display:flex;align-items:center;gap:.7rem}
+.dsec{padding:1.9rem 0;position:relative;z-index:1}
+.dsech{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.15rem;display:flex;align-items:center;gap:.7rem}
 .dsech::before{content:'';width:24px;height:1px;background:var(--accent)}
-.dlead{font-size:1.45rem;font-weight:500;line-height:1.42;letter-spacing:-.01em;margin-bottom:1.3rem;max-width:44ch;color:var(--fg)}
-.dp{color:var(--dim);line-height:1.75;font-size:1.05rem;margin-bottom:1.1rem;max-width:72ch}
+.dlead{font-size:1.45rem;font-weight:500;line-height:1.42;letter-spacing:-.01em;margin-bottom:1.3rem;max-width:none;color:var(--fg)}
+.dp{color:var(--dim);line-height:1.75;font-size:1.05rem;margin-bottom:1.1rem;max-width:none}
 .dmetrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
 .dmcell{border:1px solid var(--line);border-radius:14px;padding:1.6rem;background:color-mix(in srgb,var(--panel) 65%,transparent)}
 .dmval{font-family:'JetBrains Mono',monospace;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:600;color:var(--accent);line-height:1.05;letter-spacing:-.02em}
@@ -157,24 +158,22 @@ a{color:inherit;text-decoration:none}
 </div></nav>
 
 <sc-if value="{{notFound}}" hint-placeholder-val="{{false}}">
-<div class="notfound"><div class="wrap"><div class="dcat mono">// 404</div><h1 class="dtitle">{{t.notFound}}</h1><a class="btn btnO" href="index.html#proyectos">← {{t.back}}</a></div></div>
+<div class="notfound"><div class="wrap"><div class="dcat mono">// 404</div><h1 class="dtitle">{{t.notFound}}</h1><a class="btn btnO" href="Proyectos.dc.html">← {{t.back}}</a></div></div>
 </sc-if>
 
 <sc-if value="{{show}}" hint-placeholder-val="{{false}}">
 <header class="dhero"><div class="wrap">
-<a class="back mono" href="index.html#proyectos">← {{t.back}}</a>
+<a class="back mono" href="Proyectos.dc.html">← {{t.back}}</a>
 <div class="dcat mono">{{proj.category}}</div>
 <h1 class="dtitle">{{proj.title}}</h1>
 <p class="dsub">{{proj.subtitle}}</p>
 <div class="dmeta">
 <div><div class="k mono">{{t.mYear}}</div><div class="v">{{proj.year}}</div></div>
-<div><div class="k mono">{{t.mClient}}</div><div class="v">{{proj.company}}</div></div>
 <div><div class="k mono">{{t.mDuration}}</div><div class="v">{{proj.duration}}</div></div>
+<sc-if value="{{proj.hasSaved}}" hint-placeholder-val="{{false}}"><div><div class="k mono">{{t.mSaved}}</div><div class="v">{{proj.savedHours}}</div></div><div><div class="k mono">{{t.mMoney}}</div><div class="v vacc">{{proj.savedMoney}}</div></div></sc-if>
 </div>
 <sc-if value="{{proj.live}}" hint-placeholder-val="{{false}}"><a class="btn btnP" href="{{proj.live}}" target="_blank">{{proj.liveLabel}} ↗</a></sc-if>
 </div></header>
-
-<sc-if value="{{proj.image}}" hint-placeholder-val="{{false}}"><div class="wrap"><div class="dcover"><img src="{{proj.image}}" alt="{{proj.title}}" loading="lazy"><div class="dgridbg"></div></div><sc-if value="{{proj.imageCaption}}" hint-placeholder-val="{{false}}"><p class="dcap mono">{{proj.imageCaption}}</p></sc-if></div></sc-if>
 
 <sc-if value="{{proj.hasMetrics}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secMetrics}}</div><div class="dmetrics"><sc-for list="{{proj.metrics}}" as="m" hint-placeholder-count="4"><div class="dmcell"><div class="dmval mono">{{m.value}}</div><div class="dmlbl mono">{{m.label}}</div></div></sc-for></div></div></section></sc-if>
 
@@ -190,7 +189,7 @@ a{color:inherit;text-decoration:none}
 
 <section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secStack}}</div><div class="stackTags"><sc-for list="{{proj.techFull}}" as="tf" hint-placeholder-count="6"><span class="tag mono">{{tf}}</span></sc-for></div></div></section>
 
-<section class="dsec"><div class="wrap"><div class="dcta"><h3>{{t.ctaTitle}}</h3><div class="dctaRow"><a class="btn btnP" href="index.html#contacto">{{t.ctaBtn}} →</a><a class="btn btnO" href="index.html#proyectos">{{t.back}}</a></div></div></div></section>
+<section class="dsec"><div class="wrap"><div class="dcta"><h3>{{t.ctaTitle}}</h3><div class="dctaRow"><a class="btn btnP" href="index.html#contacto">{{t.ctaBtn}} →</a><a class="btn btnO" href="Proyectos.dc.html">{{t.back}}</a></div></div></div></section>
 </sc-if>
 
 <footer class="footer"><div class="wrap footIn">
@@ -203,12 +202,12 @@ a{color:inherit;text-decoration:none}
 class Component extends DCLogic {
   I18N = {
     es:{navAbout:"sobre-mí",navExp:"experiencia",navWork:"proyectos",navGuides:"guías",navMetrics:"métricas",navContact:"contacto",
-      back:"volver a proyectos",mYear:"Año",mClient:"Cliente",mDuration:"Duración",
+      back:"volver a proyectos",mYear:"Año",mClient:"Cliente",mDuration:"Duración",mSaved:"Tiempo ahorrado",mMoney:"Ahorro estimado",
       secMetrics:"En números",secFeatures:"Qué hace",secProcess:"Proceso",secResults:"Resultados",secLearnings:"Aprendizajes",secStack:"Stack técnico",
       ctaTitle:"¿Tienes un proyecto en mente?",ctaBtn:"Hablemos",notFound:"Proyecto no encontrado",liveDefault:"Ver en vivo",
       footerText:"Diseñado y desarrollado por Agustin Peralta"},
     en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
-      back:"back to work",mYear:"Year",mClient:"Client",mDuration:"Duration",
+      back:"back to work",mYear:"Year",mClient:"Client",mDuration:"Duration",mSaved:"Time saved",mMoney:"Estimated savings",
       secMetrics:"By the numbers",secFeatures:"What it does",secProcess:"Process",secResults:"Results",secLearnings:"Learnings",secStack:"Tech stack",
       ctaTitle:"Have a project in mind?",ctaBtn:"Let's talk",notFound:"Project not found",liveDefault:"View live",
       footerText:"Designed & built by Agustin Peralta"}
@@ -294,6 +293,10 @@ class Component extends DCLogic {
     var pr=this.state.proj;
     if(!pr){base.proj=null;base.show=false;base.notFound=this.state.loaded;return base;}
     var sections=(pr.sections||[]).map(function(s){return {title:s.title,items:(s.content||[]).map(function(c){return {text:c.text,cls:c.type==="lead"?"dlead":"dp"};})};});
+    var HOUR_USD=8;
+    var fmtNum=function(n){return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");};
+    var hasSaved=(typeof pr.hoursSaved==="number"&&pr.hoursSaved>0);
+    var savedH=hasSaved?pr.hoursSaved:0;
     base.proj={
       category:pr.category,title:pr.title,subtitle:pr.subtitle,year:pr.year,company:pr.company,duration:pr.duration||"—",
       image:pr.image||"",imageCaption:pr.imageCaption||"",live:pr.liveUrl||"",liveLabel:pr.liveLabel||L.liveDefault,
@@ -301,7 +304,10 @@ class Component extends DCLogic {
       techFull:pr.techFull||pr.techCard||[],sections:sections,
       hasMetrics:!!(pr.metrics&&pr.metrics.length),hasFeatures:!!(pr.features&&pr.features.length),
       hasProcess:!!(pr.process&&pr.process.length),hasResults:!!(pr.results&&pr.results.length),
-      hasLearnings:!!(pr.learnings&&pr.learnings.length)
+      hasLearnings:!!(pr.learnings&&pr.learnings.length),
+      hasSaved:hasSaved,
+      savedHours:hasSaved?(fmtNum(savedH)+" h"):"",
+      savedMoney:hasSaved?("$"+fmtNum(savedH*HOUR_USD)+" USD"):""
     };
     base.show=true;base.notFound=false;
     return base;

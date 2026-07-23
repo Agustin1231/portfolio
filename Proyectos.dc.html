@@ -12,10 +12,10 @@ gtag('config', 'G-VTYVQM2HSF');
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Proyectos — Agustin Peralta</title>
-<meta name="description" content="Todos los proyectos de IA, automatización y producto de Agustin Peralta, agrupados por año.">
+<meta name="description" content="Todos los proyectos de IA, automatización y producto de Agustin Peralta, agrupados por tipo de solución.">
 <link rel="canonical" href="https://agustin.agustinynatalia.site/Proyectos.dc.html">
 <meta property="og:title" content="Proyectos — Agustin Peralta">
-<meta property="og:description" content="Todos los proyectos de IA, automatización y producto, agrupados por año.">
+<meta property="og:description" content="Todos los proyectos de IA, automatización y producto, agrupados por tipo de solución.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://agustin.agustinynatalia.site/Proyectos.dc.html">
 <meta property="og:image" content="https://agustin.agustinynatalia.site/og-image.png">
@@ -85,11 +85,16 @@ a{color:inherit;text-decoration:none}
 .eyebrow b{color:var(--accent);font-weight:500}
 .ptitle{font-size:clamp(2.4rem,5.5vw,3.6rem);font-weight:600;letter-spacing:-.03em;line-height:1.02}
 .psub{font-size:1.08rem;color:var(--dim);margin-top:1rem;max-width:600px;line-height:1.6}
+/* filter pills */
+.filterBar{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:.6rem;padding-bottom:2.6rem}
+.fpill{font-family:'JetBrains Mono',monospace;font-size:.82rem;padding:.62rem 1.15rem;border-radius:100px;border:1px solid var(--line);background:none;color:var(--dim);cursor:pointer;transition:all .22s;letter-spacing:.2px;white-space:nowrap}
+.fpill:hover{border-color:var(--accent);color:var(--fg);transform:translateY(-1px)}
+.fpill.on{background:var(--accent);color:var(--btnfg);border-color:var(--accent)}
 /* year sections */
 .yearWrap{position:relative;z-index:1;padding-bottom:6rem}
 .yearSec{padding-top:1rem;margin-bottom:3.5rem}
 .yearHead{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
-.yearNum{font-size:clamp(2rem,5vw,3rem);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--fg)}
+.yearNum{font-size:clamp(1.5rem,3.8vw,2.4rem);font-weight:600;letter-spacing:-.02em;line-height:1.05;color:var(--fg)}
 .yearCount{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--faint);letter-spacing:.3px}
 .yearLine{flex:1;height:1px;background:var(--line2)}
 .pGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
@@ -108,7 +113,7 @@ a{color:inherit;text-decoration:none}
 .pCardTech{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.3rem}
 .pTag{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.28rem .55rem;border:1px solid var(--line);border-radius:6px;color:var(--dim)}
 .pCardFoot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line2);padding-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.76rem;margin-top:auto}
-.pCardCo{color:var(--faint)}
+.pCardSave{color:var(--accent);font-weight:600}
 .pCardLink{color:var(--accent);display:inline-flex;align-items:center;gap:.4rem}
 .pCard:hover .pCardLink{gap:.6rem}
 /* footer */
@@ -152,6 +157,12 @@ a{color:inherit;text-decoration:none}
 <p class="psub">{{t.sub}}</p>
 </div></header>
 
+<div class="wrap"><div class="filterBar">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="6">
+<button class="{{f.cls}}" onClick="{{f.click}}">{{f.label}}</button>
+</sc-for>
+</div></div>
+
 <div class="yearWrap"><div class="wrap">
 <sc-for list="{{years}}" as="yr" hint-placeholder-count="2">
 <section class="yearSec">
@@ -165,7 +176,7 @@ a{color:inherit;text-decoration:none}
 <h3 class="pCardTitle">{{p.title}}</h3>
 <p class="pCardDesc">{{p.sub}}</p>
 <div class="pCardTech"><sc-for list="{{p.tech}}" as="tt" hint-placeholder-count="3"><span class="pTag mono">{{tt}}</span></sc-for></div>
-<div class="pCardFoot"><span class="pCardCo">{{p.company}}</span><span class="pCardLink">{{t.viewProject}} →</span></div>
+<div class="pCardFoot"><span class="pCardSave">{{p.saved}}</span><span class="pCardLink">{{t.viewProject}} →</span></div>
 </div>
 </a>
 </sc-for>
@@ -184,32 +195,43 @@ a{color:inherit;text-decoration:none}
 <script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ff5c35&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;scene3d&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
 class Component extends DCLogic {
   PROJECTS = [
-    {id:"automatizacion-analitica-podcasts",tag:"auto",year:"2025",company:"Plataforma de Podcasts",img:"https://imagenes.agustinynatalia.site/automatizacion-analitica-podcasts",tech:["n8n","PostgreSQL","APIs"],es:{t:"Automatización Analítica de Podcasts",s:"Extracción, validación y análisis diario de métricas de podcasts para decisiones"},en:{t:"Podcast Analytics Automation",s:"Daily extraction, validation and analysis of podcast metrics for decision-making"}},
-    {id:"agente-de-ia-para-insights-estrategicos",tag:"ai",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/agente-de-ia-para-insights-estrategicos",tech:["LangGraph","LLMs","Python"],es:{t:"Agente de IA para Insights Estratégicos",s:"Transforma métricas de shows en recomendaciones estratégicas personalizadas"},en:{t:"AI Agent for Strategic Insights",s:"Turns show metrics into personalized strategic recommendations"}},
-    {id:"automatizacion-inteligente-de-analisis-de-shows",tag:"auto",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/automatizacion-inteligente-de-analisis-de-shows",tech:["n8n","LLMs","Data Viz"],es:{t:"Automatización Inteligente de Análisis de Shows",s:"Análisis de rendimiento de shows mediante IA y visualización de datos"},en:{t:"Intelligent Show Analytics Automation",s:"Show performance analysis with AI and data visualization"}},
-    {id:"automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",tag:"auto",year:"2025",company:"Nata",img:"https://imagenes.agustinynatalia.site/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",tech:["n8n","IA Generativa","APIs"],es:{t:"Automatización de Contenido y Diseño con IA",s:"Flujo automatizado para crear contenido web y piezas visuales con IA"},en:{t:"AI Content & Design Automation",s:"Automated flow to create web content and visual assets with AI"}},
-    {id:"automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",tag:"auto",year:"2026",company:"Proyecto Personal",img:"https://imagenes.agustinynatalia.site/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",tech:["n8n","LLMs","APIs"],es:{t:"Publicación Automatizada para Blog de Tecnología",s:"Curación, creación y publicación automática de contenido tecnológico"},en:{t:"Automated Publishing for a Tech Blog",s:"Curating, creating and auto-publishing tech content end to end"}},
-    {id:"pulso-app-salud-cardiovascular",tag:"prod",year:"2025",company:"Producto propio",img:"https://imagenes.agustinynatalia.site/pulso-app-salud-cardiovascular",tech:["Next.js","PWA","IA"],es:{t:"Pulso — App PWA de Salud Cardiovascular",s:"App instalable con métricas, recetas y rutinas con IA, sin login"},en:{t:"Pulso — Cardiovascular Health PWA",s:"Installable app with AI metrics, recipes and routines, no login"}},
-    {id:"monica-brain-asistente-ia-omnicanal",tag:"ai",year:"2025",company:"Urpe AI Lab",live:"https://brain.urpeailab.com/visual",img:"https://imagenes.agustinynatalia.site/monica-brain-asistente-ia-omnicanal",tech:["LangGraph","LLMs","n8n"],es:{t:"Monica Brain — Asistente de IA Omnicanal",s:"Atiende, califica y da seguimiento a clientes en canales de mensajería"},en:{t:"Monica Brain — Omnichannel AI Assistant",s:"Answers, qualifies and follows up with customers across messaging channels"}},
-    {id:"monica-developer-apps-por-prompts",tag:"prod",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/monica-developer-apps-por-prompts",tech:["LLMs","Next.js","Docker"],es:{t:"Monica Developer — Aplicaciones por Prompts",s:"Crea apps web funcionales describiéndolas en lenguaje natural"},en:{t:"Monica Developer — Apps from Prompts",s:"Build working web apps by describing them in natural language"}},
-    {id:"monica-designer-identidad-de-marca-ia",tag:"prod",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/monica-designer-identidad-de-marca-ia",tech:["IA Generativa","APIs","Next.js"],es:{t:"Monica Designer — Identidad de Marca con IA",s:"Genera una identidad visual completa a partir de un brief"},en:{t:"Monica Designer — AI Brand Identity",s:"Generates a complete visual identity from a brief"}},
-    {id:"status-page-monitoreo-de-servicios",tag:"tools",year:"2025",company:"Urpe AI Lab",live:"https://status.urpeailab.com/",img:"https://imagenes.agustinynatalia.site/status-page-monitoreo-de-servicios",tech:["Docker","Traefik","Self-hosted"],es:{t:"Status Page — Monitor de Estado de Servicios",s:"Página de estado autoalojada que vigila la disponibilidad en tiempo real"},en:{t:"Status Page — Service Status Monitor",s:"Self-hosted status page monitoring availability in real time"}},
-    {id:"flowdeck-gestor-n8n",tag:"tools",year:"2026",company:"Proyecto propio",live:"https://github.com/Agustin1231/flowdeck",img:"https://imagenes.agustinynatalia.site/flowdeck-gestor-n8n",tech:["Next.js","n8n API","Docker"],es:{t:"FlowDeck — Gestor Multi-instancia de n8n",s:"App instalable con login para administrar varias instancias de n8n"},en:{t:"FlowDeck — Multi-instance n8n Manager",s:"Installable app with login to manage multiple n8n instances"}},
-    {id:"visor-de-orquestacion-de-subagentes",tag:"ai",year:"2026",company:"Urpe AI Lab",live:"https://multiagentes.agustinynatalia.site",img:"https://multiagentes.agustinynatalia.site/preview.png?v=3",tech:["LLMs","Node.js","WebSockets"],es:{t:"Visor de Orquestación de Subagentes",s:"Visualización en vivo de un orquestador delegando a subagentes"},en:{t:"Subagent Orchestration Viewer",s:"Real-time view of an orchestrator delegating to subagents"}}
+    {id:"automatizacion-analitica-podcasts",tag:"auto",area:"datos",year:"2025",company:"Plataforma de Podcasts",hoursSaved:600,img:"https://imagenes.agustinynatalia.site/automatizacion-analitica-podcasts",tech:["n8n","PostgreSQL","APIs"],es:{t:"Automatización Analítica de Podcasts",s:"Extracción, validación y análisis diario de métricas de podcasts para decisiones"},en:{t:"Podcast Analytics Automation",s:"Daily extraction, validation and analysis of podcast metrics for decision-making"}},
+    {id:"recontacto-automatizado-de-leads-crm",tag:"auto",area:"ventas",year:"2025",company:"Cliente B2B",hoursSaved:316,img:"https://imagenes.agustinynatalia.site/recontacto-automatizado-de-leads-crm",tech:["n8n","Odoo","GoHighLevel"],es:{t:"Recontacto Automatizado de Leads",s:"Reactivación masiva de oportunidades del CRM con campañas multicanal por WhatsApp y email"},en:{t:"Automated Lead Re-engagement",s:"Mass reactivation of CRM opportunities with multichannel WhatsApp and email campaigns"}},
+    {id:"prospeccion-automatizada-de-leads-b2b",tag:"auto",area:"ventas",year:"2025",company:"Cliente B2B",img:"https://imagenes.agustinynatalia.site/prospeccion-automatizada-de-leads-b2b",tech:["n8n","Apollo","Klenty"],es:{t:"Prospección Automatizada de Leads B2B",s:"Búsqueda, enriquecimiento y carga de prospectos en cadencias de outbound"},en:{t:"Automated B2B Lead Prospecting",s:"Search, enrichment and loading of prospects into outbound cadences"}},
+    {id:"recordatorio-automatizado-de-reuniones-whatsapp",tag:"auto",area:"ventas",year:"2025",company:"Cliente B2B",img:"https://imagenes.agustinynatalia.site/recordatorio-automatizado-de-reuniones-whatsapp",tech:["n8n","WhatsApp","AiSensy"],es:{t:"Recordatorio Automático de Reuniones",s:"Mensajes de WhatsApp que reducen las ausencias a las reuniones agendadas"},en:{t:"Automated Meeting Reminders",s:"WhatsApp messages that reduce no-shows to scheduled meetings"}},
+    {id:"agente-de-ia-para-insights-estrategicos",tag:"ai",area:"datos",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/agente-de-ia-para-insights-estrategicos",tech:["LangGraph","LLMs","Python"],es:{t:"Agente de IA para Insights Estratégicos",s:"Transforma métricas de shows en recomendaciones estratégicas personalizadas"},en:{t:"AI Agent for Strategic Insights",s:"Turns show metrics into personalized strategic recommendations"}},
+    {id:"automatizacion-inteligente-de-analisis-de-shows",tag:"auto",area:"datos",year:"2025",company:"Urpe AI Lab",hoursSaved:515,img:"https://imagenes.agustinynatalia.site/automatizacion-inteligente-de-analisis-de-shows",tech:["n8n","LLMs","Data Viz"],es:{t:"Automatización Inteligente de Análisis de Shows",s:"Análisis de rendimiento de shows mediante IA y visualización de datos"},en:{t:"Intelligent Show Analytics Automation",s:"Show performance analysis with AI and data visualization"}},
+    {id:"automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",tag:"auto",area:"contenido",year:"2025",company:"Nata",img:"https://imagenes.agustinynatalia.site/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",tech:["n8n","IA Generativa","APIs"],es:{t:"Automatización de Contenido y Diseño con IA",s:"Flujo automatizado para crear contenido web y piezas visuales con IA"},en:{t:"AI Content & Design Automation",s:"Automated flow to create web content and visual assets with AI"}},
+    {id:"automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",tag:"auto",area:"contenido",year:"2026",company:"Proyecto Personal",img:"https://imagenes.agustinynatalia.site/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",tech:["n8n","LLMs","APIs"],es:{t:"Publicación Automatizada para Blog de Tecnología",s:"Curación, creación y publicación automática de contenido tecnológico"},en:{t:"Automated Publishing for a Tech Blog",s:"Curating, creating and auto-publishing tech content end to end"}},
+    {id:"pulso-app-salud-cardiovascular",tag:"prod",area:"producto",year:"2025",company:"Producto propio",img:"https://imagenes.agustinynatalia.site/pulso-app-salud-cardiovascular",tech:["Next.js","PWA","IA"],es:{t:"Pulso — App PWA de Salud Cardiovascular",s:"App instalable con métricas, recetas y rutinas con IA, sin login"},en:{t:"Pulso — Cardiovascular Health PWA",s:"Installable app with AI metrics, recipes and routines, no login"}},
+    {id:"monica-brain-asistente-ia-omnicanal",tag:"ai",area:"atencion",year:"2025",company:"Urpe AI Lab",hoursSaved:9258,live:"https://brain.urpeailab.com/visual",img:"https://imagenes.agustinynatalia.site/monica-brain-asistente-ia-omnicanal",tech:["LangGraph","LLMs","n8n"],es:{t:"Monica Brain — Asistente de IA Omnicanal",s:"Atiende, califica y da seguimiento a clientes en canales de mensajería"},en:{t:"Monica Brain — Omnichannel AI Assistant",s:"Answers, qualifies and follows up with customers across messaging channels"}},
+    {id:"monica-developer-apps-por-prompts",tag:"prod",area:"producto",year:"2025",company:"Urpe AI Lab",img:"https://imagenes.agustinynatalia.site/monica-developer-apps-por-prompts",tech:["LLMs","Next.js","Docker"],es:{t:"Monica Developer — Aplicaciones por Prompts",s:"Crea apps web funcionales describiéndolas en lenguaje natural"},en:{t:"Monica Developer — Apps from Prompts",s:"Build working web apps by describing them in natural language"}},
+    {id:"monica-designer-identidad-de-marca-ia",tag:"prod",area:"contenido",year:"2025",company:"Urpe AI Lab",hoursSaved:248,img:"https://imagenes.agustinynatalia.site/monica-designer-identidad-de-marca-ia",tech:["IA Generativa","APIs","Next.js"],es:{t:"Monica Designer — Identidad de Marca con IA",s:"Genera una identidad visual completa a partir de un brief"},en:{t:"Monica Designer — AI Brand Identity",s:"Generates a complete visual identity from a brief"}},
+    {id:"status-page-monitoreo-de-servicios",tag:"tools",area:"infra",year:"2025",company:"Urpe AI Lab",live:"https://status.urpeailab.com/",img:"https://imagenes.agustinynatalia.site/status-page-monitoreo-de-servicios",tech:["Docker","Traefik","Self-hosted"],es:{t:"Status Page — Monitor de Estado de Servicios",s:"Página de estado autoalojada que vigila la disponibilidad en tiempo real"},en:{t:"Status Page — Service Status Monitor",s:"Self-hosted status page monitoring availability in real time"}},
+    {id:"flowdeck-gestor-n8n",tag:"tools",area:"infra",year:"2026",company:"Proyecto propio",live:"https://github.com/Agustin1231/flowdeck",img:"https://imagenes.agustinynatalia.site/flowdeck-gestor-n8n",tech:["Next.js","n8n API","Docker"],es:{t:"FlowDeck — Gestor Multi-instancia de n8n",s:"App instalable con login para administrar varias instancias de n8n"},en:{t:"FlowDeck — Multi-instance n8n Manager",s:"Installable app with login to manage multiple n8n instances"}},
+    {id:"visor-de-orquestacion-de-subagentes",tag:"ai",area:"infra",year:"2026",company:"Urpe AI Lab",hoursSaved:264,live:"https://multiagentes.agustinynatalia.site",img:"https://multiagentes.agustinynatalia.site/preview.png?v=3",tech:["LLMs","Node.js","WebSockets"],es:{t:"Sistema de Orquestación de Agentes de IA",s:"Un orquestador que delega en subagentes y corre las automatizaciones internas de la operación"},en:{t:"AI Agent Orchestration System",s:"An orchestrator that delegates to subagents and runs the internal ops automations"}}
   ];
   FILTERDEF = [
     {v:"auto",es:"Automatización",en:"Automation"},{v:"ai",es:"IA & Agentes",en:"AI & Agents"},{v:"prod",es:"Producto",en:"Product"},{v:"tools",es:"Herramientas",en:"Tools"}
   ];
+  AREADEF = [
+    {v:"datos",es:"Datos & Analítica",en:"Data & Analytics"},
+    {v:"ventas",es:"Ventas & CRM",en:"Sales & CRM"},
+    {v:"contenido",es:"Marketing & Contenido",en:"Marketing & Content"},
+    {v:"atencion",es:"Atención al Cliente",en:"Customer Support"},
+    {v:"producto",es:"Producto & Apps",en:"Product & Apps"},
+    {v:"infra",es:"Infraestructura & Herramientas",en:"Infrastructure & Tools"}
+  ];
   I18N = {
     es:{navAbout:"sobre-mí",navExp:"experiencia",navWork:"proyectos",navGuides:"guías",navMetrics:"métricas",navContact:"contacto",
-      back:"volver al inicio",eyebrow:"todos los proyectos",title:"Todos los proyectos",sub:"El archivo completo de mi trabajo en IA, automatización y producto, organizado por año.",
-      viewProject:"ver proyecto",countLabel:"proyectos",countLabel1:"proyecto",footerText:"Diseñado y desarrollado por Agustin Peralta"},
+      back:"volver al inicio",eyebrow:"todos los proyectos",title:"Todos los proyectos",sub:"El archivo completo de mi trabajo en IA, automatización y producto, organizado por tipo de solución.",
+      viewProject:"ver proyecto",countLabel:"proyectos",countLabel1:"proyecto",allLabel:"Todos",saveLabel:"Ahorro",footerText:"Diseñado y desarrollado por Agustin Peralta"},
     en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
-      back:"back to home",eyebrow:"all projects",title:"All projects",sub:"The full archive of my work across AI, automation and product, organized by year.",
-      viewProject:"view project",countLabel:"projects",countLabel1:"project",footerText:"Designed & built by Agustin Peralta"}
+      back:"back to home",eyebrow:"all projects",title:"All projects",sub:"The full archive of my work across AI, automation and product, organized by solution type.",
+      viewProject:"view project",countLabel:"projects",countLabel1:"project",allLabel:"All",saveLabel:"Savings",footerText:"Designed & built by Agustin Peralta"}
   };
 
-  state = {theme:"light",lang:"es",menu:false};
+  state = {theme:"light",lang:"es",menu:false,filter:"all"};
 
   componentDidMount(){
     try{
@@ -219,7 +241,9 @@ class Component extends DCLogic {
     this.startBg3d();
     this.observe();
   }
+  componentDidUpdate(){this.revealAll();}
   componentWillUnmount(){cancelAnimationFrame(this._raf3);if(this._io)this._io.disconnect();window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);}
+  revealAll(){var root=document.querySelector(".site");if(!root)return;root.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in");});}
 
   hexToRgba(hex,a){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return "rgba("+((n>>16)&255)+","+((n>>8)&255)+","+(n&255)+","+a+")";}
   hexToRgb(hex){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return [(n>>16)&255,(n>>8)&255,n&255];}
@@ -265,19 +289,27 @@ class Component extends DCLogic {
   toggleTheme(){var n=this.state.theme==="dark"?"light":"dark";this.setState({theme:n});try{localStorage.setItem("ap-theme",n);}catch(e){}}
   setLang(l){this.setState({lang:l});try{localStorage.setItem("ap-lang",l);}catch(e){}}
   toggleMenu(){this.setState({menu:!this.state.menu});}
+  setFilter(v){this.setState({filter:v});}
 
   renderVals(){
     var self=this;var lang=this.state.lang;var L=this.I18N[lang];var accent=this.props.accent||"#ff5c35";
     var catOf=function(tag){var m=self.FILTERDEF.filter(function(f){return f.v===tag;});return m.length?m[0][lang]:"";};
-    var yearList=[];this.PROJECTS.forEach(function(p){if(yearList.indexOf(p.year)<0)yearList.push(p.year);});
-    yearList.sort(function(a,b){return Number(b)-Number(a);});
-    var years=yearList.map(function(y){
-      var ps=self.PROJECTS.filter(function(p){return p.year===y;}).map(function(p){
-        return {title:p[lang].t,sub:p[lang].s,img:p.img,tech:p.tech||[],company:p.company,cat:catOf(p.tag),url:"Proyecto.dc.html?id="+p.id};
+    var cur=this.state.filter;
+    var areasWithProjects=this.AREADEF.filter(function(a){return self.PROJECTS.some(function(p){return p.area===a.v;});});
+    var filters=[{v:"all",label:L.allLabel}].concat(
+      areasWithProjects.map(function(a){return {v:a.v,label:a[lang]};})
+    ).map(function(f){
+      return {label:f.label,cls:cur===f.v?"fpill on":"fpill",click:(function(v){return function(){self.setFilter(v);};})(f.v)};
+    });
+    var years=areasWithProjects.filter(function(a){return cur==="all"||a.v===cur;}).map(function(a){
+      var ps=self.PROJECTS.filter(function(p){return p.area===a.v;}).map(function(p){
+        var hs=(typeof p.hoursSaved==="number"&&p.hoursSaved>0)?p.hoursSaved:0;
+        var saved=hs?(L.saveLabel+" $"+(hs*8).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+" USD"):"";
+        return {title:p[lang].t,sub:p[lang].s,img:p.img,tech:p.tech||[],company:p.company,saved:saved,cat:catOf(p.tag),url:"Proyecto.dc.html?id="+p.id};
       });
       var n=ps.length;
-      return {year:y,count:n+" "+(n===1?L.countLabel1:L.countLabel),projects:ps};
-    });
+      return {year:a[lang],count:n+" "+(n===1?L.countLabel1:L.countLabel),projects:ps};
+    }).filter(function(g){return g.projects.length>0;});
     return {
       themeClass:this.state.theme==="light"?"light":"",
       rootStyle:"--accent:"+accent+";--accent-soft:"+this.hexToRgba(accent,0.13),
@@ -286,7 +318,7 @@ class Component extends DCLogic {
       esCls:lang==="es"?"on":"",enCls:lang==="en"?"on":"",
       toggleTheme:function(){self.toggleTheme();},setEs:function(){self.setLang("es");},setEn:function(){self.setLang("en");},
       toggleMenu:function(){self.toggleMenu();},closeMenu:function(){self.setState({menu:false});},
-      t:L,years:years
+      t:L,years:years,filters:filters
     };
   }
 }
