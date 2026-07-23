@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTYVQM2HSF"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VTYVQM2HSF');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proyecto — Agustin Peralta</title>
+<meta name="description" content="Detalle de proyecto de Agustin Peralta: contexto, solución, stack tecnológico y resultados.">
+<meta property="og:title" content="Proyecto — Agustin Peralta">
+<meta property="og:description" content="Detalle de proyecto: contexto, solución, stack tecnológico y resultados.">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#f1efe9">
+<style>x-dc{display:none!important}html{background:#f1efe9}</style>
+<script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://imagenes.agustinynatalia.site">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script defer src="projects-data.js"></script>
+<script defer src="vendor/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z"></script>
+<script defer src="vendor/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1"></script>
+<script defer src="./support.js"></script>
+<script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:#0b0b0d}
+html{overflow-x:hidden}
+.site{--bg:#0b0b0d;--bg2:#131316;--panel:#141417;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.055);--fg:#eceae4;--dim:#9b9a91;--faint:#585851;--btnfg:#0b0b0d;font-family:'Space Grotesk',system-ui,sans-serif;background-color:var(--bg);color:var(--fg);min-height:100vh}
+.site.light{--bg:#f1efe9;--bg2:#ffffff;--panel:#ffffff;--line:rgba(20,18,15,.15);--line2:rgba(20,18,15,.07);--fg:#191712;--dim:#6b675e;--faint:#a7a397;--btnfg:#ffffff}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1220px;margin:0 auto;padding:0 2.2rem}
+a{color:inherit;text-decoration:none}
+.acc{color:var(--accent)}
+::selection{background:var(--accent);color:var(--btnfg)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.98rem;letter-spacing:-.3px;display:flex;align-items:center}
+.curs{color:var(--accent);animation:bl 1.1s steps(1) infinite;margin-left:1px}
+@keyframes bl{50%{opacity:0}}
+.navlinks{display:flex;gap:2rem;list-style:none}
+.navlinks a{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim);letter-spacing:.2px;transition:color .25s;position:relative}
+.navlinks a:hover{color:var(--fg)}
+.navlinks a::before{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--accent);transition:right .3s}
+.navlinks a:hover::before{right:0}
+.navtools{display:flex;align-items:center;gap:.5rem}
+.lang{display:flex;font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.lang button{font:inherit;background:none;border:none;color:var(--dim);padding:.42rem .6rem;cursor:pointer;transition:all .2s}
+.lang button.on{background:var(--accent);color:var(--btnfg)}
+.tgl{width:38px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:none;color:var(--fg);cursor:pointer;font-size:1rem;transition:all .2s}
+.tgl:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:34px;align-items:center;justify-content:center}
+.burger span{width:20px;height:2px;background:var(--fg);transition:.3s}
+.bg3d{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:.6}
+.btn{font-family:'JetBrains Mono',monospace;font-size:.85rem;padding:.85rem 1.5rem;border-radius:8px;border:1px solid var(--line);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:500}
+.btnP:hover{transform:translateY(-2px);box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 35%,transparent)}
+.btnO{color:var(--fg);background:none}
+.btnO:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.stackTags{display:flex;flex-wrap:wrap;gap:.55rem}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.82rem;padding:.42rem .8rem;border:1px solid var(--line);border-radius:7px;color:var(--fg);transition:all .22s}
+.tag:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.footer{border-top:1px solid var(--line);padding:2.6rem 0;position:relative;z-index:1;background-color:var(--bg)}
+.footIn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim)}
+.footIn .y{color:var(--faint)}
+/* detail */
+.dhero{padding:8.5rem 0 2.5rem;position:relative;z-index:1}
+.back{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--dim);margin-bottom:2.2rem;transition:color .2s}
+.back:hover{color:var(--accent)}
+.dcat{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.dtitle{font-size:clamp(2.3rem,5.2vw,4rem);font-weight:600;letter-spacing:-.04em;line-height:1.02;margin-bottom:1.2rem;max-width:18ch}
+.dsub{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--dim);line-height:1.5;max-width:62ch;margin-bottom:2.2rem}
+.dmeta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem 2.6rem;padding:1.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:2rem}
+.dmeta .k{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.4rem}
+.dmeta .v{font-size:1rem;color:var(--fg)}
+.dmeta .vacc{color:var(--accent);font-weight:600}
+.dcover{position:relative;z-index:1;aspect-ratio:16/9;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel);margin-bottom:1rem}
+.dcover img{width:100%;height:100%;object-fit:cover;display:block}
+.dgridbg{position:absolute;inset:0;background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:26px 26px;pointer-events:none}
+.dcap{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--faint);text-align:center;margin-bottom:1rem}
+.dsec{padding:1.9rem 0;position:relative;z-index:1}
+.dsech{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.15rem;display:flex;align-items:center;gap:.7rem}
+.dsech::before{content:'';width:24px;height:1px;background:var(--accent)}
+.dlead{font-size:1.45rem;font-weight:500;line-height:1.42;letter-spacing:-.01em;margin-bottom:1.3rem;max-width:none;color:var(--fg)}
+.dp{color:var(--dim);line-height:1.75;font-size:1.05rem;margin-bottom:1.1rem;max-width:none}
+.dmetrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.dmcell{border:1px solid var(--line);border-radius:14px;padding:1.6rem;background:color-mix(in srgb,var(--panel) 65%,transparent)}
+.dmval{font-family:'JetBrains Mono',monospace;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:600;color:var(--accent);line-height:1.05;letter-spacing:-.02em}
+.dmlbl{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--dim);margin-top:.7rem;line-height:1.4}
+.fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.fcard{border:1px solid var(--line);border-radius:14px;padding:1.7rem;background:color-mix(in srgb,var(--panel) 65%,transparent);transition:border-color .25s}
+.fcard:hover{border-color:var(--accent)}
+.fcard h4{font-size:1.15rem;font-weight:600;margin-bottom:.6rem;letter-spacing:-.01em}
+.fcard p{color:var(--dim);line-height:1.6;font-size:.96rem}
+.psteps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pstep{padding:1.6rem;border-right:1px solid var(--line2)}
+.pstep:last-child{border-right:none}
+.pphase{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);margin-bottom:.7rem}
+.pstep h4{font-size:1.02rem;font-weight:600;margin-bottom:.5rem;line-height:1.25}
+.pstep p{color:var(--dim);font-size:.9rem;line-height:1.55}
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.rnum{font-family:'JetBrains Mono',monospace;font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:600;color:var(--fg);line-height:1;letter-spacing:-.02em}
+.rlbl{color:var(--dim);font-size:.92rem;line-height:1.5;margin-top:.7rem;max-width:26ch}
+.lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.lcard{border-left:2px solid var(--accent);padding:.2rem 0 .2rem 1.3rem}
+.lcard h4{font-size:1.08rem;font-weight:600;margin-bottom:.55rem;letter-spacing:-.01em}
+.lcard p{color:var(--dim);line-height:1.65;font-size:.95rem}
+.dcta{border:1px solid var(--line);border-radius:20px;padding:3.4rem 2rem;text-align:center;background:color-mix(in srgb,var(--panel) 65%,transparent);position:relative;z-index:1}
+.dcta h3{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.7rem}
+.dctaRow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.notfound{padding:11rem 0 8rem;text-align:center;position:relative;z-index:1}
+.notfound .dtitle{max-width:none;margin-bottom:2rem}
+@media(max-width:920px){
+.navlinks{position:fixed;top:0;right:0;width:270px;height:100vh;flex-direction:column;background:var(--bg2);border-left:1px solid var(--line);padding:5.5rem 2rem;gap:1.4rem;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:-20px 0 50px rgba(0,0,0,.3)}
+.navlinks.open{transform:none}
+.burger{display:flex}
+.wrap{padding:0 1.4rem}
+.dmetrics,.psteps,.rgrid{grid-template-columns:repeat(2,1fr)}
+.fgrid,.lgrid{grid-template-columns:1fr}
+.pstep{border-right:none;border-bottom:1px solid var(--line2)}
+.pstep:last-child{border-bottom:none}
+}
+@media(max-width:560px){.dmetrics,.rgrid,.psteps{grid-template-columns:1fr}.pstep{border-right:none;border-bottom:1px solid var(--line2)}.pstep:last-child{border-bottom:none}.dmeta{gap:1.6rem}.dhero{padding-top:7.5rem}}
+</style>
+</helmet>
+<div class="site {{themeClass}}" id="top" style="{{rootStyle}}">
+<canvas class="bg3d"></canvas>
+<nav class="nav"><div class="wrap navbar">
+<a class="brand" href="index.html">agustin.peralta<span class="curs">▮</span></a>
+<ul class="navlinks {{menuClass}}">
+<li><a href="index.html#sobre" onClick="{{closeMenu}}">{{t.navAbout}}</a></li>
+<li><a href="index.html#experiencia" onClick="{{closeMenu}}">{{t.navExp}}</a></li>
+<li><a href="index.html#proyectos" onClick="{{closeMenu}}">{{t.navWork}}</a></li>
+<li><a href="index.html#guias" onClick="{{closeMenu}}">{{t.navGuides}}</a></li>
+<li><a href="/metricas">{{t.navMetrics}}</a></li>
+<li><a href="index.html#contacto" onClick="{{closeMenu}}">{{t.navContact}}</a></li>
+</ul>
+<div class="navtools">
+<div class="lang mono"><button class="{{esCls}}" onClick="{{setEs}}">ES</button><button class="{{enCls}}" onClick="{{setEn}}">EN</button></div>
+<button class="tgl" onClick="{{toggleTheme}}" aria-label="theme">{{themeIcon}}</button>
+<button class="burger" onClick="{{toggleMenu}}" aria-label="menu"><span></span><span></span><span></span></button>
+</div>
+</div></nav>
+
+<sc-if value="{{notFound}}" hint-placeholder-val="{{false}}">
+<div class="notfound"><div class="wrap"><div class="dcat mono">// 404</div><h1 class="dtitle">{{t.notFound}}</h1><a class="btn btnO" href="/proyectos">← {{t.back}}</a></div></div>
+</sc-if>
+
+<sc-if value="{{show}}" hint-placeholder-val="{{false}}">
+<header class="dhero"><div class="wrap">
+<a class="back mono" href="/proyectos">← {{t.back}}</a>
+<div class="dcat mono">{{proj.category}}</div>
+<h1 class="dtitle">{{proj.title}}</h1>
+<p class="dsub">{{proj.subtitle}}</p>
+<div class="dmeta">
+<div><div class="k mono">{{t.mYear}}</div><div class="v">{{proj.year}}</div></div>
+<div><div class="k mono">{{t.mDuration}}</div><div class="v">{{proj.duration}}</div></div>
+<sc-if value="{{proj.hasSaved}}" hint-placeholder-val="{{false}}"><div><div class="k mono">{{t.mSaved}}</div><div class="v">{{proj.savedHours}}</div></div><div><div class="k mono">{{t.mMoney}}</div><div class="v vacc">{{proj.savedMoney}}</div></div></sc-if>
+</div>
+<sc-if value="{{proj.live}}" hint-placeholder-val="{{false}}"><a class="btn btnP" href="{{proj.live}}" target="_blank">{{proj.liveLabel}} ↗</a></sc-if>
+</div></header>
+
+<sc-if value="{{proj.hasMetrics}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secMetrics}}</div><div class="dmetrics"><sc-for list="{{proj.metrics}}" as="m" hint-placeholder-count="4"><div class="dmcell"><div class="dmval mono">{{m.value}}</div><div class="dmlbl mono">{{m.label}}</div></div></sc-for></div></div></section></sc-if>
+
+<sc-for list="{{proj.sections}}" as="s" hint-placeholder-count="2"><section class="dsec"><div class="wrap"><div class="dsech mono">{{s.title}}</div><sc-for list="{{s.items}}" as="c" hint-placeholder-count="2"><p class="{{c.cls}}">{{c.text}}</p></sc-for></div></section></sc-for>
+
+<sc-if value="{{proj.hasFeatures}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secFeatures}}</div><div class="fgrid"><sc-for list="{{proj.features}}" as="f" hint-placeholder-count="4"><div class="fcard"><h4>{{f.title}}</h4><p>{{f.description}}</p></div></sc-for></div></div></section></sc-if>
+
+<sc-if value="{{proj.hasProcess}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secProcess}}</div><div class="psteps"><sc-for list="{{proj.process}}" as="pr" hint-placeholder-count="4"><div class="pstep"><div class="pphase mono">{{pr.phase}}</div><h4>{{pr.title}}</h4><p>{{pr.description}}</p></div></sc-for></div></div></section></sc-if>
+
+<sc-if value="{{proj.hasResults}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secResults}}</div><div class="rgrid"><sc-for list="{{proj.results}}" as="r" hint-placeholder-count="4"><div><div class="rnum mono">{{r.number}}</div><div class="rlbl">{{r.label}}</div></div></sc-for></div></div></section></sc-if>
+
+<sc-if value="{{proj.hasLearnings}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secLearnings}}</div><div class="lgrid"><sc-for list="{{proj.learnings}}" as="l" hint-placeholder-count="3"><div class="lcard"><h4>{{l.title}}</h4><p>{{l.text}}</p></div></sc-for></div></div></section></sc-if>
+
+<section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secStack}}</div><div class="stackTags"><sc-for list="{{proj.techFull}}" as="tf" hint-placeholder-count="6"><span class="tag mono">{{tf}}</span></sc-for></div></div></section>
+
+<section class="dsec"><div class="wrap"><div class="dcta"><h3>{{t.ctaTitle}}</h3><div class="dctaRow"><a class="btn btnP" href="index.html#contacto">{{t.ctaBtn}} →</a><a class="btn btnO" href="/proyectos">{{t.back}}</a></div></div></div></section>
+</sc-if>
+
+<footer class="footer"><div class="wrap footIn">
+<span>{{t.footerText}}</span>
+<span class="y">© 2026 · <span class="acc">Bogotá</span></span>
+</div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ff5c35&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;scene3d&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
+class Component extends DCLogic {
+  I18N = {
+    es:{navAbout:"sobre-mí",navExp:"experiencia",navWork:"proyectos",navGuides:"guías",navMetrics:"métricas",navContact:"contacto",
+      back:"volver a proyectos",mYear:"Año",mClient:"Cliente",mDuration:"Duración",mSaved:"Tiempo ahorrado",mMoney:"Ahorro estimado",
+      secMetrics:"En números",secFeatures:"Qué hace",secProcess:"Proceso",secResults:"Resultados",secLearnings:"Aprendizajes",secStack:"Stack técnico",
+      ctaTitle:"¿Tienes un proyecto en mente?",ctaBtn:"Hablemos",notFound:"Proyecto no encontrado",liveDefault:"Ver en vivo",
+      footerText:"Diseñado y desarrollado por Agustin Peralta"},
+    en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
+      back:"back to work",mYear:"Year",mClient:"Client",mDuration:"Duration",mSaved:"Time saved",mMoney:"Estimated savings",
+      secMetrics:"By the numbers",secFeatures:"What it does",secProcess:"Process",secResults:"Results",secLearnings:"Learnings",secStack:"Tech stack",
+      ctaTitle:"Have a project in mind?",ctaBtn:"Let's talk",notFound:"Project not found",liveDefault:"View live",
+      footerText:"Designed & built by Agustin Peralta"}
+  };
+
+  state = {theme:"light",lang:"es",menu:false,proj:null,loaded:false};
+
+  componentDidMount(){
+    try{
+      var th=localStorage.getItem("ap-theme");if(th==="dark"||th==="light")this.setState({theme:th});
+      var lg=localStorage.getItem("ap-lang");if(lg==="es"||lg==="en")this.setState({lang:lg});
+    }catch(e){}
+    this.startBg3d();
+    this.loadProject();
+  }
+  componentWillUnmount(){cancelAnimationFrame(this._raf3);window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);}
+
+  loadProject(){
+    var self=this,tries=0;
+    function attempt(){
+      if(typeof window.PROJECTS_DATA!=="undefined"&&window.PROJECTS_DATA){
+        var id=new URLSearchParams(window.location.search).get("id");
+        var list=window.PROJECTS_DATA;
+        var pr=id?list.filter(function(x){return x.id===id;})[0]:list[0];
+        self.setState({proj:pr||null,loaded:true});
+        if(pr&&pr.title)document.title=pr.title+" — Agustin Peralta";
+        window.scrollTo(0,0);
+      }else if(tries++<50){setTimeout(attempt,40);}
+      else{self.setState({proj:null,loaded:true});}
+    }
+    attempt();
+  }
+
+  hexToRgba(hex,a){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return "rgba("+((n>>16)&255)+","+((n>>8)&255)+","+(n&255)+","+a+")";}
+  hexToRgb(hex){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return [(n>>16)&255,(n>>8)&255,n&255];}
+  startBg3d(){
+    if(this.props.scene3d===false)return;
+    var cv=document.querySelector(".bg3d");if(!cv)return;var ctx=cv.getContext("2d");var self=this;
+    var dpr=Math.min(2,window.devicePixelRatio||1);var w=0,h=0;
+    function resize(){w=window.innerWidth;h=window.innerHeight;cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+"px";cv.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);}
+    this._rz3=resize;window.addEventListener("resize",resize);resize();
+    var mx=0,my=0;this._pm3=function(e){mx=e.clientX/window.innerWidth-0.5;my=e.clientY/window.innerHeight-0.5;};window.addEventListener("pointermove",this._pm3);
+    var DEPTH=15,NEAR=0.25,FAR=7,TRAVEL=24;
+    var pts=[];for(var i=0;i<300;i++)pts.push({x:(Math.random()*2-1)*1.9,y:(Math.random()*2-1)*1.9,z:Math.random()*DEPTH,r:0.55+Math.random()*0.9});
+    var t=0,smoothP=0,fr=0,docH=0;
+    var acc=self.hexToRgb(self.props.accent||"#ff5c35");var accCss="rgb("+acc[0]+","+acc[1]+","+acc[2]+")";
+    function draw(){
+      var light=self.state.theme==="light";
+      ctx.clearRect(0,0,w,h);
+      if((fr++&31)===0)docH=document.body.scrollHeight-window.innerHeight;
+      var p=docH>0?Math.min(1,Math.max(0,window.scrollY/docH)):0;
+      smoothP+=(p-smoothP)*0.08;
+      var camZ=smoothP*TRAVEL+t*0.05;
+      var twist=smoothP*1.5+t*0.02+mx*0.35;
+      var R=Math.min(w,h)*0.78,f=1.35,cx=w*0.5+mx*42,cy=h*0.5+my*30,ct=Math.cos(twist),st=Math.sin(twist);
+      var scr=[];
+      for(var i=0;i<pts.length;i++){var pt=pts[i];var pz=pt.z-camZ;while(pz<NEAR){pt.z+=DEPTH;pz=pt.z-camZ;}while(pz>DEPTH+NEAR){pt.z-=DEPTH;pz=pt.z-camZ;}if(pz<NEAR||pz>FAR){scr.push(null);continue;}var rx=pt.x*ct-pt.y*st,ry=pt.x*st+pt.y*ct,s=f/pz;var depthT=1-(pz-NEAR)/(FAR-NEAR);var a=depthT;if(pz<0.8)a*=Math.max(0,pz/0.8);scr.push({x:cx+rx*s*R,y:cy+ry*s*R,z:pz,a:a,d:depthT,r:pt.r});}
+      var thr=R*0.17;ctx.lineWidth=1;ctx.strokeStyle=accCss;ctx.fillStyle=accCss;
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;for(var j=i+1;j<scr.length;j++){var B=scr[j];if(!B)continue;if(Math.abs(A.z-B.z)>1.6)continue;var dx=A.x-B.x,dy=A.y-B.y,dd=dx*dx+dy*dy;if(dd>thr*thr)continue;var prox=1-Math.sqrt(dd)/thr;var al=prox*Math.min(A.a,B.a)*(light?0.34:0.52);if(al<0.012)continue;ctx.globalAlpha=al;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}}
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;ctx.globalAlpha=A.a*(light?0.55:0.85);var sz=A.r*(0.5+A.d*2.6);ctx.beginPath();ctx.arc(A.x,A.y,sz,0,6.2832);ctx.fill();}
+      ctx.globalAlpha=1;
+      t+=0.016;self._raf3=requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  toggleTheme(){var n=this.state.theme==="dark"?"light":"dark";this.setState({theme:n});try{localStorage.setItem("ap-theme",n);}catch(e){}}
+  setLang(l){this.setState({lang:l});try{localStorage.setItem("ap-lang",l);}catch(e){}}
+  toggleMenu(){this.setState({menu:!this.state.menu});}
+
+  renderVals(){
+    var self=this;var lang=this.state.lang;var L=this.I18N[lang];var accent=this.props.accent||"#ff5c35";
+    var base={
+      themeClass:this.state.theme==="light"?"light":"",
+      rootStyle:"--accent:"+accent+";--accent-soft:"+this.hexToRgba(accent,0.13),
+      menuClass:this.state.menu?"open":"",
+      themeIcon:this.state.theme==="dark"?"☀":"☾",
+      esCls:lang==="es"?"on":"",enCls:lang==="en"?"on":"",
+      toggleTheme:function(){self.toggleTheme();},setEs:function(){self.setLang("es");},setEn:function(){self.setLang("en");},
+      toggleMenu:function(){self.toggleMenu();},closeMenu:function(){self.setState({menu:false});},
+      t:L
+    };
+    var pr=this.state.proj;
+    if(!pr){base.proj=null;base.show=false;base.notFound=this.state.loaded;return base;}
+    var sections=(pr.sections||[]).map(function(s){return {title:s.title,items:(s.content||[]).map(function(c){return {text:c.text,cls:c.type==="lead"?"dlead":"dp"};})};});
+    var HOUR_USD=8;
+    var fmtNum=function(n){return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");};
+    var hasSaved=(typeof pr.hoursSaved==="number"&&pr.hoursSaved>0);
+    var savedH=hasSaved?pr.hoursSaved:0;
+    base.proj={
+      category:pr.category,title:pr.title,subtitle:pr.subtitle,year:pr.year,company:pr.company,duration:pr.duration||"—",
+      image:pr.image||"",imageCaption:pr.imageCaption||"",live:pr.liveUrl||"",liveLabel:pr.liveLabel||L.liveDefault,
+      metrics:pr.metrics||[],features:pr.features||[],process:pr.process||[],results:pr.results||[],learnings:pr.learnings||[],
+      techFull:pr.techFull||pr.techCard||[],sections:sections,
+      hasMetrics:!!(pr.metrics&&pr.metrics.length),hasFeatures:!!(pr.features&&pr.features.length),
+      hasProcess:!!(pr.process&&pr.process.length),hasResults:!!(pr.results&&pr.results.length),
+      hasLearnings:!!(pr.learnings&&pr.learnings.length),
+      hasSaved:hasSaved,
+      savedHours:hasSaved?(fmtNum(savedH)+" h"):"",
+      savedMoney:hasSaved?("$"+fmtNum(savedH*HOUR_USD)+" USD"):""
+    };
+    base.show=true;base.notFound=false;
+    return base;
+  }
+}
+</script>
+</body>
+</html>

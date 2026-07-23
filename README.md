@@ -14,12 +14,12 @@ Sitio web personal — live en https://agustin.agustinynatalia.site
 ## Estructura
 
 ```
-index.html              landing (página canónica)
-Portafolio.dc.html      redirect → index.html (compatibilidad con links viejos)
-Proyectos.dc.html       todos los proyectos agrupados por año
-Proyecto.dc.html        detalle de proyecto (?id=..., datos de projects-data.js)
-Guia.dc.html            detalle de guía (?id=..., datos de guides-data.js)
-Metricas.dc.html        métricas en vivo (webhook n8n)
+index.html              landing (página canónica, /)
+proyectos.html          todos los proyectos agrupados por año (/proyectos)
+proyecto.html           detalle de proyecto (/proyecto?id=..., datos de projects-data.js)
+guia.html               detalle de guía (/guia?id=..., datos de guides-data.js)
+metricas.html           métricas en vivo (/metricas, webhook n8n)
+*.dc.html               stubs de redirect 301 de las URLs viejas a las limpias
 privacidad.html         política de privacidad
 terminos.html           términos de servicio
 projects-data.js        datos de proyectos (array PROJECTS_DATA, fuente única)
@@ -34,3 +34,4 @@ vendor/                 React 18.3.1 + ReactDOM UMD (self-hosted, pineados)
 - El `<head>` real de cada página lleva title/meta/preconnects y carga `vendor/react*.js`
   + `support.js` con `defer`; el runtime detecta `window.React` y no vuelve a pedirlo a unpkg.
 - Para publicar cambios de contenido: editar `projects-data.js` / `guides-data.js`, push a main y redeploy en Coolify.
+- URLs limpias (`/proyectos`, `/metricas`, ...): dependen del `try_files $uri $uri.html ...` del nginx de Coolify, que sirve `proyectos.html` en `/proyectos`. Los `*.dc.html` viejos quedan como stubs de redirect para no perder SEO.

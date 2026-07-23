@@ -19,7 +19,7 @@ eval(fs.readFileSync(path.join(__dirname, "guides-data.js"), "utf8"));
 const guides = GUIDES_DATA.filter(g => g.visible && !g.externalUrl);
 
 // ---- extraer el bloque <style> del shell para conservar el diseño ----
-const shell = fs.readFileSync(path.join(__dirname, "Guia.dc.html"), "utf8");
+const shell = fs.readFileSync(path.join(__dirname, "guia.html"), "utf8");
 const styleMatch = shell.match(/<helmet>[\s\S]*?<style>([\s\S]*?)<\/style>/);
 const CSS = styleMatch ? styleMatch[1].trim() : "";
 
@@ -145,7 +145,7 @@ ${CSS}
 <li><a href="../index.html#experiencia">experiencia</a></li>
 <li><a href="../index.html#proyectos">proyectos</a></li>
 <li><a class="on" href="../index.html#guias">guías</a></li>
-<li><a href="../Metricas.dc.html">métricas</a></li>
+<li><a href="/metricas">métricas</a></li>
 <li><a href="../index.html#contacto">contacto</a></li>
 </ul>
 <div class="navtools">
@@ -206,8 +206,8 @@ guides.forEach(g => {
 const today = new Date().toISOString().slice(0, 10);
 const staticUrls = [
   { loc: BASE, changefreq: "weekly", priority: "1.0", lastmod: today },
-  { loc: BASE + "Proyectos.dc.html", changefreq: "weekly", priority: "0.8", lastmod: today },
-  { loc: BASE + "Metricas.dc.html", changefreq: "daily", priority: "0.6", lastmod: today }
+  { loc: BASE + "proyectos", changefreq: "weekly", priority: "0.8", lastmod: today },
+  { loc: BASE + "metricas", changefreq: "daily", priority: "0.6", lastmod: today }
 ];
 const guideUrls = guides.map(g => ({
   loc: BASE + "guias/" + g.id + ".html", changefreq: "monthly", priority: "0.9",

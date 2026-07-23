@@ -315,7 +315,7 @@ a{color:inherit;text-decoration:none}
 <li><a href="#experiencia" onClick="{{closeMenu}}">{{t.navExp}}</a></li>
 <li><a href="#proyectos" onClick="{{closeMenu}}">{{t.navWork}}</a></li>
 <li><a href="#guias" onClick="{{closeMenu}}">{{t.navGuides}}</a></li>
-<li><a href="Metricas.dc.html">{{t.navMetrics}}</a></li>
+<li><a href="/metricas">{{t.navMetrics}}</a></li>
 <li><a href="#contacto" onClick="{{closeMenu}}">{{t.navContact}}</a></li>
 </ul>
 <div class="navtools">
@@ -334,7 +334,7 @@ a{color:inherit;text-decoration:none}
 <p class="heroDesc">{{t.heroDescA}}<b class="hl">{{t.heroStat}}</b>{{t.heroDescB}}<b class="hl">{{t.heroStat2}}</b>{{t.heroDescC}}</p>
 <div class="heroCtas">
 <a class="btn btnP" href="#proyectos">{{t.ctaWork}} <span>→</span></a>
-<a class="btn btnO" href="Metricas.dc.html">{{t.ctaMetrics}}</a>
+<a class="btn btnO" href="/metricas">{{t.ctaMetrics}}</a>
 <a class="btn btnO" href="#contacto">{{t.ctaContact}}</a>
 </div>
 <div class="socials">
@@ -370,7 +370,7 @@ a{color:inherit;text-decoration:none}
 <div class="projList {{projListClass}}"><sc-for list="{{projects}}" as="p" hint-placeholder-count="8"><a class="projRow" href="{{p.url}}" onMouseEnter="{{p.onEnter}}"><span class="projNum mono">{{p.num}}</span><div class="projMain"><div class="projTitle">{{p.title}}</div><div class="projSub mono">{{p.sub}}</div><div class="projTech"><sc-for list="{{p.tech}}" as="tt" hint-placeholder-count="3"><span class="projTag mono">{{tt}}</span></sc-for></div><div class="projSave mono">{{p.saved}}</div><div class="projThumb"><img src="{{p.img}}" alt="{{p.title}}" loading="lazy"></div></div><span class="projYear mono">{{p.year}}</span><span class="projArrow">→</span></a></sc-for></div>
 <aside class="preview"><div class="previewImg"><img src="{{active.img}}" alt="{{active.title}}" loading="lazy"><div class="previewGrid"></div></div><div class="previewBody"><div class="previewCat mono">{{active.cat}}</div><h3 class="previewTitle">{{active.title}}</h3><p class="previewSub">{{active.sub}}</p><div class="previewMeta mono"><span>{{active.company}}</span><span>{{active.year}}</span><sc-if value="{{active.saved}}" hint-placeholder-val="{{true}}"><span class="previewSave">{{active.saved}}</span></sc-if></div><div class="previewLinks"><a class="plink" href="{{active.url}}">{{t.viewProject}} →</a><sc-if value="{{active.live}}" hint-placeholder-val="{{true}}"><a class="plink plive" href="{{active.live}}" target="_blank">{{t.liveTag}} ↗</a></sc-if></div></div></aside>
 </div>
-<sc-if value="{{showMore}}" hint-placeholder-val="{{true}}"><div class="moreWrap"><a class="btn btnO seeMore" href="Proyectos.dc.html">{{t.seeMore}} <span>→</span></a></div></sc-if>
+<sc-if value="{{showMore}}" hint-placeholder-val="{{true}}"><div class="moreWrap"><a class="btn btnO seeMore" href="/proyectos">{{t.seeMore}} <span>→</span></a></div></sc-if>
 </div></section>
 
 <section class="sec guides" id="guias"><div class="wrap">
@@ -607,11 +607,11 @@ class Component extends DCLogic {
     vis=vis.slice().sort(function(a,b){return (b.featured?1:0)-(a.featured?1:0);});
     var ai=Math.min(this.state.active,vis.length-1);if(ai<0)ai=0;
     var collapsed=this.state.filter==="all"&&!this.state.showAll;
-    var projects=vis.map(function(p,i){var phs=(typeof p.hoursSaved==="number"&&p.hoursSaved>0)?p.hoursSaved:0;var psaved=phs?(L.saveLabel+" $"+(phs*8).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+" USD"):"";return {num:("0"+(i+1)).slice(-2),title:p[lang].t,sub:p[lang].s,year:p.year,img:p.img,tech:p.tech||[],saved:psaved,url:"Proyecto.dc.html?id="+p.id,onEnter:function(){self.setActive(i);}};});
+    var projects=vis.map(function(p,i){var phs=(typeof p.hoursSaved==="number"&&p.hoursSaved>0)?p.hoursSaved:0;var psaved=phs?(L.saveLabel+" $"+(phs*8).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+" USD"):"";return {num:("0"+(i+1)).slice(-2),title:p[lang].t,sub:p[lang].s,year:p.year,img:p.img,tech:p.tech||[],saved:psaved,url:"/proyecto?id="+p.id,onEnter:function(){self.setActive(i);}};});
     var ap=vis[ai]||this.PROJECTS[0];
     var apHs=(typeof ap.hoursSaved==="number"&&ap.hoursSaved>0)?ap.hoursSaved:0;
     var apSaved=apHs?(L.saveLabel+" $"+(apHs*8).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+" USD"):"";
-    var active={img:ap.img,title:ap[lang].t,sub:ap[lang].s,cat:this.FILTERDEF.filter(function(f){return f.v===ap.tag;})[0][lang],company:ap.company,year:ap.year,saved:apSaved,url:"Proyecto.dc.html?id="+ap.id,live:ap.live||""};
+    var active={img:ap.img,title:ap[lang].t,sub:ap[lang].s,cat:this.FILTERDEF.filter(function(f){return f.v===ap.tag;})[0][lang],company:ap.company,year:ap.year,saved:apSaved,url:"/proyecto?id="+ap.id,live:ap.live||""};
     var filters=this.FILTERDEF.map(function(f){return {label:f[lang],cls:self.state.filter===f.v?"on":"",onClick:function(){self.setFilter(f.v);}};});
     var metrics=this.METRICDEF.map(function(m,i){var v=self.state.metv[i];return {display:"+"+Math.floor(v).toLocaleString("es-CO")+m.suffix,label:L.metrics[i]};});
     var experience=this.EXPERIENCE.map(function(e){return {date:e[lang].date,role:e[lang].role,company:e.company,desc:e[lang].desc};});

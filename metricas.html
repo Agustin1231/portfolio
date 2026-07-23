@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTYVQM2HSF"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VTYVQM2HSF');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Métricas — Agustin Peralta</title>
+<meta name="description" content="Métricas en vivo de automatizaciones en producción: ejecuciones, horas ahorradas y flujos activos.">
+<link rel="canonical" href="https://agustin.agustinynatalia.site/metricas">
+<meta property="og:title" content="Métricas — Agustin Peralta">
+<meta property="og:description" content="Métricas en vivo de automatizaciones en producción: ejecuciones, horas ahorradas y flujos activos.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://agustin.agustinynatalia.site/metricas">
+<meta property="og:image" content="https://agustin.agustinynatalia.site/og-image.png">
+<meta property="og:site_name" content="Agustin Peralta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://agustin.agustinynatalia.site/og-image.png">
+<meta name="author" content="Agustin Peralta">
+<meta name="theme-color" content="#f1efe9">
+<style>x-dc{display:none!important}html{background:#f1efe9}</style>
+<script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://n8n.agustinynatalia.site">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script defer src="vendor/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z"></script>
+<script defer src="vendor/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1"></script>
+<script defer src="./support.js"></script>
+<script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0b0b0d}
+html{overflow-x:hidden}
+.site{--bg:#0b0b0d;--bg2:#131316;--panel:#141417;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.055);--fg:#eceae4;--dim:#9b9a91;--faint:#585851;--btnfg:#0b0b0d;font-family:'Space Grotesk',system-ui,sans-serif;background-color:var(--bg);color:var(--fg);min-height:100vh;display:flex;flex-direction:column}
+.site.light{--bg:#f1efe9;--bg2:#ffffff;--panel:#ffffff;--line:rgba(20,18,15,.15);--line2:rgba(20,18,15,.07);--fg:#191712;--dim:#6b675e;--faint:#a7a397;--btnfg:#ffffff}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1220px;margin:0 auto;padding:0 2.2rem;width:100%}
+a{color:inherit;text-decoration:none}
+.acc{color:var(--accent)}
+::selection{background:var(--accent);color:var(--btnfg)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.98rem;letter-spacing:-.3px;display:flex;align-items:center}
+.curs{color:var(--accent);animation:bl 1.1s steps(1) infinite;margin-left:1px}
+@keyframes bl{50%{opacity:0}}
+.navlinks{display:flex;gap:2rem;list-style:none}
+.navlinks a{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim);letter-spacing:.2px;transition:color .25s;position:relative}
+.navlinks a:hover,.navlinks a.on{color:var(--fg)}
+.navlinks a::before{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--accent);transition:right .3s}
+.navlinks a:hover::before,.navlinks a.on::before{right:0}
+.navtools{display:flex;align-items:center;gap:.5rem}
+.lang{display:flex;font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.lang button{font:inherit;background:none;border:none;color:var(--dim);padding:.42rem .6rem;cursor:pointer;transition:all .2s}
+.lang button.on{background:var(--accent);color:var(--btnfg)}
+.tgl{width:38px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:none;color:var(--fg);cursor:pointer;font-size:1rem;transition:all .2s}
+.tgl:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:34px;align-items:center;justify-content:center}
+.burger span{width:20px;height:2px;background:var(--fg);transition:.3s}
+.bg3d{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:.6}
+.btn{font-family:'JetBrains Mono',monospace;font-size:.85rem;padding:.85rem 1.5rem;border-radius:8px;border:1px solid var(--line);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px;color:var(--fg);background:none}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:500}
+.footer{border-top:1px solid var(--line);padding:2.6rem 0;position:relative;z-index:1;background-color:var(--bg);margin-top:auto}
+.footIn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim)}
+.footIn .y{color:var(--faint)}
+/* metrics */
+.mhero{padding:8.5rem 0 1.5rem;text-align:center;position:relative;z-index:1}
+.meyebrow{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);letter-spacing:.5px;margin-bottom:1rem}
+.mtitle{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:600;letter-spacing:-.03em;line-height:1.02}
+.mintro{max-width:660px;margin:1.2rem auto 0;color:var(--dim);font-size:1.06rem;line-height:1.7}
+.mupdated{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--faint)}
+.mupdated .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.msec{padding:1.5rem 0 4rem;position:relative;z-index:1}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.2rem}
+.statcard{border:1px solid var(--line);border-radius:16px;padding:1.9rem 1.7rem;background:color-mix(in srgb,var(--panel) 62%,transparent);position:relative;overflow:hidden}
+.statcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.statval{font-family:'JetBrains Mono',monospace;font-size:clamp(2rem,3.8vw,2.7rem);font-weight:600;color:var(--fg);line-height:1;letter-spacing:-.02em}
+.statval .u{font-size:1rem;color:var(--dim);margin-left:.3rem;font-weight:400}
+.statlbl{font-family:'JetBrains Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--dim);margin-top:1rem}
+.statsub{font-size:.82rem;color:var(--accent);margin-top:.45rem;line-height:1.4}
+.mpanels{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.mpanel{border:1px solid var(--line);border-radius:16px;padding:1.8rem;background:color-mix(in srgb,var(--panel) 62%,transparent)}
+.mpanel h3{font-size:1.18rem;font-weight:600;margin-bottom:.3rem;letter-spacing:-.01em}
+.mpanel .psub{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--faint);margin-bottom:1.5rem}
+.bar{margin-bottom:1.1rem}
+.barTop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.45rem;gap:1rem}
+.barTop .n{color:var(--fg);font-size:.92rem}
+.barTop .v{font-family:'JetBrains Mono',monospace;color:var(--dim);font-size:.8rem;flex-shrink:0}
+.barTrack{height:8px;border-radius:6px;background:var(--line2);overflow:hidden}
+.barFill{height:100%;border-radius:6px;background:var(--accent);transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.rtable{width:100%;border-collapse:collapse}
+.rtable th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);padding:.5rem .5rem;border-bottom:1px solid var(--line)}
+.rtable th.r,.rtable td.r{text-align:right}
+.rtable td{padding:.72rem .5rem;border-bottom:1px solid var(--line2);font-size:.92rem;color:var(--fg)}
+.rtable tbody tr:last-child td{border-bottom:none}
+.rtable .rk{font-family:'JetBrains Mono',monospace;color:var(--accent);width:2rem}
+.rtable .num{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+.rtable .pct{font-family:'JetBrains Mono',monospace;color:var(--faint);font-size:.8rem}
+.rtable tr.lead td{color:var(--fg);font-weight:600}
+.mstate{text-align:center;padding:4.5rem 2rem;border:1px dashed var(--line);border-radius:16px;position:relative;z-index:1;background:color-mix(in srgb,var(--panel) 40%,transparent)}
+.mstate h3{font-size:1.4rem;font-weight:600;margin-bottom:.7rem}
+.mstate p{color:var(--dim);max-width:480px;margin:0 auto;line-height:1.6}
+@media(max-width:920px){
+.navlinks{position:fixed;top:0;right:0;width:270px;height:100vh;flex-direction:column;background:var(--bg2);border-left:1px solid var(--line);padding:5.5rem 2rem;gap:1.4rem;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.navlinks.open{transform:none}
+.burger{display:flex}
+.wrap{padding:0 1.4rem}
+.statgrid{grid-template-columns:repeat(2,1fr)}
+.mpanels{grid-template-columns:1fr}
+}
+@media(max-width:560px){.statgrid{grid-template-columns:1fr}.mpanel{padding:1.3rem;min-width:0}.rtable th,.rtable td{padding:.55rem .3rem;font-size:.82rem}.rtable th{font-size:.6rem}.rtable .pct{font-size:.72rem}.mhero{padding-top:7.5rem}}
+</style>
+</helmet>
+<div class="site {{themeClass}}" id="top" style="{{rootStyle}}">
+<canvas class="bg3d"></canvas>
+<nav class="nav"><div class="wrap navbar">
+<a class="brand" href="index.html">agustin.peralta<span class="curs">▮</span></a>
+<ul class="navlinks {{menuClass}}">
+<li><a href="index.html#sobre" onClick="{{closeMenu}}">{{t.navAbout}}</a></li>
+<li><a href="index.html#experiencia" onClick="{{closeMenu}}">{{t.navExp}}</a></li>
+<li><a href="index.html#proyectos" onClick="{{closeMenu}}">{{t.navWork}}</a></li>
+<li><a href="index.html#guias" onClick="{{closeMenu}}">{{t.navGuides}}</a></li>
+<li><a class="on" href="/metricas">{{t.navMetrics}}</a></li>
+<li><a href="index.html#contacto" onClick="{{closeMenu}}">{{t.navContact}}</a></li>
+</ul>
+<div class="navtools">
+<div class="lang mono"><button class="{{esCls}}" onClick="{{setEs}}">ES</button><button class="{{enCls}}" onClick="{{setEn}}">EN</button></div>
+<button class="tgl" onClick="{{toggleTheme}}" aria-label="theme">{{themeIcon}}</button>
+<button class="burger" onClick="{{toggleMenu}}" aria-label="menu"><span></span><span></span><span></span></button>
+</div>
+</div></nav>
+
+<header class="mhero"><div class="wrap">
+<div class="meyebrow mono">// {{t.eyebrow}}</div>
+<h1 class="mtitle">{{t.title}}</h1>
+<p class="mintro">{{t.intro}}</p>
+<sc-if value="{{updated}}" hint-placeholder-val="{{false}}"><div class="mupdated mono"><span class="dot"></span>{{updated}}</div></sc-if>
+</div></header>
+
+<section class="msec"><div class="wrap">
+<sc-if value="{{isLoading}}" hint-placeholder-val="{{true}}"><div class="mstate"><h3>{{t.loadingTitle}}</h3><p>{{t.loadingText}}</p></div></sc-if>
+<sc-if value="{{isEmpty}}" hint-placeholder-val="{{false}}"><div class="mstate"><h3>{{t.emptyTitle}}</h3><p>{{t.emptyText}}</p></div></sc-if>
+<sc-if value="{{isError}}" hint-placeholder-val="{{false}}"><div class="mstate"><h3>{{t.errorTitle}}</h3><p>{{t.errorText}}</p><button class="btn btnP" style="margin-top:1.4rem" onClick="{{retry}}">{{t.retry}}</button></div></sc-if>
+
+<sc-if value="{{isOk}}" hint-placeholder-val="{{false}}">
+<div class="statgrid">
+<div class="statcard"><div class="statval mono">{{s.horas}}<span class="u">h</span></div><div class="statlbl mono">{{t.lHoras}}</div><div class="statsub">{{s.minutosSub}}</div></div>
+<div class="statcard"><div class="statval mono">{{s.ejec}}</div><div class="statlbl mono">{{t.lEjec}}</div><div class="statsub">{{t.subEjec}}</div></div>
+<div class="statcard"><div class="statval mono">{{s.autos}}</div><div class="statlbl mono">{{t.lAutos}}</div><div class="statsub">{{t.subAutos}}</div></div>
+<div class="statcard"><div class="statval mono">{{s.dias}}<span class="u">{{t.uDias}}</span></div><div class="statlbl mono">{{t.lDias}}</div><div class="statsub">{{s.diasSub}}</div></div>
+</div>
+<div class="mpanels">
+<div class="mpanel"><h3>{{t.pArea}}</h3><p class="psub mono">{{t.pAreaSub}}</p>
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="4"><div class="bar"><div class="barTop"><span class="n">{{b.name}}</span><span class="v mono">{{b.val}}</span></div><div class="barTrack"><div class="barFill" style="width: {{b.width}}"></div></div></div></sc-for>
+</div>
+<div class="mpanel"><h3>{{t.pEjec}}</h3><p class="psub mono">{{t.pEjecSub}}</p>
+<table class="rtable"><thead><tr><th>#</th><th>{{t.thArea}}</th><th class="r">{{t.thEjec}}</th><th class="r">{{t.thPct}}</th></tr></thead>
+<tbody><sc-for list="{{rows}}" as="r" hint-placeholder-count="4"><tr class="{{r.cls}}"><td class="rk mono">{{r.rk}}</td><td>{{r.name}}</td><td class="r num">{{r.ejec}}</td><td class="r pct">{{r.pct}}</td></tr></sc-for></tbody></table>
+</div>
+</div>
+</sc-if>
+</div></section>
+
+<footer class="footer"><div class="wrap footIn">
+<span>{{t.footerText}}</span>
+<span class="y">© 2026 · <span class="acc">Bogotá</span></span>
+</div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ff5c35&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;scene3d&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
+class Component extends DCLogic {
+  API = "https://n8n.agustinynatalia.site/webhook/metricas-automatizaciones";
+  CACHE = "metricas_cache_v1";
+  I18N = {
+    es:{navAbout:"sobre-mí",navExp:"experiencia",navWork:"proyectos",navGuides:"guías",navMetrics:"métricas",navContact:"contacto",
+      eyebrow:"métricas",title:"Métricas de Automatización",intro:"El impacto real de las automatizaciones que he construido, medido en tiempo recuperado. Cada ejecución suma minutos que dejan de hacerse a mano y se convierten en horas para lo que de verdad importa.",
+      loadingTitle:"Cargando métricas…",loadingText:"Estamos consultando los datos en vivo.",
+      emptyTitle:"Aún no hay automatizaciones registradas",emptyText:"En cuanto las automatizaciones empiecen a ejecutarse, este panel mostrará el tiempo ahorrado, las áreas impactadas y la evolución en el tiempo.",
+      errorTitle:"No se pudieron cargar las métricas",errorText:"Hubo un problema al consultar los datos en vivo. Intenta de nuevo en un momento.",retry:"Reintentar",
+      lHoras:"Tiempo ahorrado",subEjec:"veces que corrieron sin intervención",lEjec:"Ejecuciones",lAutos:"Automatizaciones",subAutos:"procesos distintos automatizados",lDias:"Equivale a",uDias:"días",
+      pArea:"Ahorro por área",pAreaSub:"Dónde se concentra el tiempo recuperado",pEjec:"Ejecuciones por área",pEjecSub:"Cuántas veces corren, no solo cuánto ahorran",
+      thArea:"Área",thEjec:"Ejecuciones",thPct:"% del total",footerText:"Diseñado y desarrollado por Agustin Peralta",
+      updatedPre:"Actualizado:",updatedPost:"(hora Colombia)"},
+    en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
+      eyebrow:"metrics",title:"Automation Metrics",intro:"The real impact of the automations I've built, measured in time recovered. Every run adds minutes that no longer happen by hand and turn into hours for what truly matters.",
+      loadingTitle:"Loading metrics…",loadingText:"Fetching the live data.",
+      emptyTitle:"No automations recorded yet",emptyText:"As soon as the automations start running, this panel will show the time saved, the areas impacted and how it evolves over time.",
+      errorTitle:"Couldn't load the metrics",errorText:"There was a problem fetching the live data. Please try again in a moment.",retry:"Retry",
+      lHoras:"Time saved",subEjec:"hands-free runs",lEjec:"Executions",lAutos:"Automations",subAutos:"distinct automated processes",lDias:"Equivalent to",uDias:"days",
+      pArea:"Savings by area",pAreaSub:"Where the recovered time is concentrated",pEjec:"Executions by area",pEjecSub:"How often they run, not just how much they save",
+      thArea:"Area",thEjec:"Executions",thPct:"% of total",footerText:"Designed & built by Agustin Peralta",
+      updatedPre:"Updated:",updatedPost:"(Colombia time)"}
+  };
+
+  state = {theme:"light",lang:"es",menu:false,data:null,status:"loading",anim:0};
+
+  componentDidMount(){
+    try{
+      var th=localStorage.getItem("ap-theme");if(th==="dark"||th==="light")this.setState({theme:th});
+      var lg=localStorage.getItem("ap-lang");if(lg==="es"||lg==="en")this.setState({lang:lg});
+    }catch(e){}
+    this.startBg3d();
+    this.paintCache();
+    this.load();
+  }
+  componentWillUnmount(){cancelAnimationFrame(this._raf3);cancelAnimationFrame(this._rafA);window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);}
+
+  paintCache(){try{var raw=localStorage.getItem(this.CACHE);if(raw){var d=JSON.parse(raw);if(d&&Number(d.total_ejecuciones)>0){this.setState({data:d,status:"ok"});this.animate();}}}catch(e){}}
+  load(){
+    var self=this;var ctrl=new AbortController();var timer=setTimeout(function(){ctrl.abort();},10000);
+    fetch(this.API,{cache:"no-store",signal:ctrl.signal}).then(function(r){clearTimeout(timer);if(!r.ok)throw new Error("http");return r.json();}).then(function(d){
+      try{localStorage.setItem(self.CACHE,JSON.stringify(d));}catch(e){}
+      if(!d||Number(d.total_ejecuciones)===0){self.setState({status:"empty"});return;}
+      self.setState({data:d,status:"ok"});self.animate();
+    }).catch(function(){clearTimeout(timer);if(!self.state.data)self.setState({status:"error"});});
+  }
+  animate(){cancelAnimationFrame(this._rafA);var self=this;var t0=performance.now(),dur=1200;
+    function step(now){var p=Math.min(1,(now-t0)/dur);var e=1-Math.pow(1-p,3);self.setState({anim:e});if(p<1)self._rafA=requestAnimationFrame(step);}
+    this._rafA=requestAnimationFrame(step);}
+
+  hexToRgba(hex,a){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return "rgba("+((n>>16)&255)+","+((n>>8)&255)+","+(n&255)+","+a+")";}
+  hexToRgb(hex){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return [(n>>16)&255,(n>>8)&255,n&255];}
+  startBg3d(){
+    if(this.props.scene3d===false)return;
+    var cv=document.querySelector(".bg3d");if(!cv)return;var ctx=cv.getContext("2d");var self=this;
+    var dpr=Math.min(2,window.devicePixelRatio||1);var w=0,h=0;
+    function resize(){w=window.innerWidth;h=window.innerHeight;cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+"px";cv.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);}
+    this._rz3=resize;window.addEventListener("resize",resize);resize();
+    var mx=0,my=0;this._pm3=function(e){mx=e.clientX/window.innerWidth-0.5;my=e.clientY/window.innerHeight-0.5;};window.addEventListener("pointermove",this._pm3);
+    var DEPTH=15,NEAR=0.25,FAR=7,TRAVEL=24;
+    var pts=[];for(var i=0;i<300;i++)pts.push({x:(Math.random()*2-1)*1.9,y:(Math.random()*2-1)*1.9,z:Math.random()*DEPTH,r:0.55+Math.random()*0.9});
+    var t=0,smoothP=0,fr=0,docH=0;
+    var acc=self.hexToRgb(self.props.accent||"#ff5c35");var accCss="rgb("+acc[0]+","+acc[1]+","+acc[2]+")";
+    function draw(){
+      var light=self.state.theme==="light";
+      ctx.clearRect(0,0,w,h);
+      if((fr++&31)===0)docH=document.body.scrollHeight-window.innerHeight;
+      var p=docH>0?Math.min(1,Math.max(0,window.scrollY/docH)):0;
+      smoothP+=(p-smoothP)*0.08;
+      var camZ=smoothP*TRAVEL+t*0.05;
+      var twist=smoothP*1.5+t*0.02+mx*0.35;
+      var R=Math.min(w,h)*0.78,f=1.35,cx=w*0.5+mx*42,cy=h*0.5+my*30,ct=Math.cos(twist),st=Math.sin(twist);
+      var scr=[];
+      for(var i=0;i<pts.length;i++){var pt=pts[i];var pz=pt.z-camZ;while(pz<NEAR){pt.z+=DEPTH;pz=pt.z-camZ;}while(pz>DEPTH+NEAR){pt.z-=DEPTH;pz=pt.z-camZ;}if(pz<NEAR||pz>FAR){scr.push(null);continue;}var rx=pt.x*ct-pt.y*st,ry=pt.x*st+pt.y*ct,s=f/pz;var depthT=1-(pz-NEAR)/(FAR-NEAR);var a=depthT;if(pz<0.8)a*=Math.max(0,pz/0.8);scr.push({x:cx+rx*s*R,y:cy+ry*s*R,z:pz,a:a,d:depthT,r:pt.r});}
+      var thr=R*0.17;ctx.lineWidth=1;ctx.strokeStyle=accCss;ctx.fillStyle=accCss;
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;for(var j=i+1;j<scr.length;j++){var B=scr[j];if(!B)continue;if(Math.abs(A.z-B.z)>1.6)continue;var dx=A.x-B.x,dy=A.y-B.y,dd=dx*dx+dy*dy;if(dd>thr*thr)continue;var prox=1-Math.sqrt(dd)/thr;var al=prox*Math.min(A.a,B.a)*(light?0.34:0.52);if(al<0.012)continue;ctx.globalAlpha=al;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}}
+      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;ctx.globalAlpha=A.a*(light?0.55:0.85);var sz=A.r*(0.5+A.d*2.6);ctx.beginPath();ctx.arc(A.x,A.y,sz,0,6.2832);ctx.fill();}
+      ctx.globalAlpha=1;
+      t+=0.016;self._raf3=requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  toggleTheme(){var n=this.state.theme==="dark"?"light":"dark";this.setState({theme:n});try{localStorage.setItem("ap-theme",n);}catch(e){}}
+  setLang(l){this.setState({lang:l});try{localStorage.setItem("ap-lang",l);}catch(e){}}
+  toggleMenu(){this.setState({menu:!this.state.menu});}
+
+  cap(s){return (s||"").charAt(0).toUpperCase()+(s||"").slice(1);}
+  fmt(n){return (Number(n)||0).toLocaleString("es-CO");}
+
+  renderVals(){
+    var self=this;var lang=this.state.lang;var L=this.I18N[lang];var accent=this.props.accent||"#ff5c35";var d=this.state.data;var an=this.state.anim;
+    var base={
+      themeClass:this.state.theme==="light"?"light":"",
+      rootStyle:"--accent:"+accent+";--accent-soft:"+this.hexToRgba(accent,0.13),
+      menuClass:this.state.menu?"open":"",
+      themeIcon:this.state.theme==="dark"?"☀":"☾",
+      esCls:lang==="es"?"on":"",enCls:lang==="en"?"on":"",
+      toggleTheme:function(){self.toggleTheme();},setEs:function(){self.setLang("es");},setEn:function(){self.setLang("en");},
+      toggleMenu:function(){self.toggleMenu();},closeMenu:function(){self.setState({menu:false});},
+      retry:function(){self.setState({status:"loading"});self.load();},
+      t:L,
+      isLoading:this.state.status==="loading",isEmpty:this.state.status==="empty",isError:this.state.status==="error",isOk:this.state.status==="ok"&&!!d,
+      updated:""
+    };
+    if(!d)return base;
+    if(d.actualizado_en)base.updated=L.updatedPre+" "+d.actualizado_en+" "+L.updatedPost;
+    var horas=Number(d.total_horas)||0,minutos=Number(d.total_minutos)||0,ejec=Number(d.total_ejecuciones)||0,autos=Number(d.total_automatizaciones)||0,dias=Math.round(horas/8);
+    var horasA=horas*an,diasA=Math.round(dias*an);
+    base.s={
+      horas:(horasA>=10?this.fmt(Math.round(horasA)):(Math.round(horasA*10)/10).toLocaleString("es-CO",{minimumFractionDigits:1,maximumFractionDigits:1})),
+      minutosSub:this.fmt(minutos)+(lang==="es"?" minutos en total":" minutes total"),
+      ejec:this.fmt(Math.round(ejec*an)),
+      autos:this.fmt(Math.round(autos*an)),
+      dias:this.fmt(diasA),
+      diasSub:(dias/8).toLocaleString("es-CO",{maximumFractionDigits:1})+(lang==="es"?" jornadas de 8 h liberadas":" 8h workdays freed")
+    };
+    var areas=(d.por_area||[]).slice();
+    var byHoras=areas.slice().sort(function(a,b){return Number(b.horas)-Number(a.horas);});
+    var maxH=byHoras.length?Number(byHoras[0].horas)||1:1;
+    base.bars=byHoras.map(function(x){var hv=Number(x.horas)||0;return {name:self.cap(x.area),val:self.fmt(Math.round(hv))+" h",width:((hv/maxH*100)*an).toFixed(1)+"%"};});
+    var byEjec=areas.slice().sort(function(a,b){return Number(b.ejecuciones)-Number(a.ejecuciones);});
+    var totalE=byEjec.reduce(function(s,x){return s+(Number(x.ejecuciones)||0);},0)||1;
+    base.rows=byEjec.map(function(x,i){var ev=Number(x.ejecuciones)||0;return {rk:i+1,name:self.cap(x.area),ejec:self.fmt(ev),pct:(ev/totalE*100).toFixed(1)+"%",cls:i===0?"lead":""};});
+    return base;
+  }
+}
+</script>
+</body>
+</html>
