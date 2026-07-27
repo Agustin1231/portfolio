@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    font-family:'Space Grotesk',sans-serif;
+    background:#100f0e;
+    color:#f4f1ec;
+    overflow:hidden;
+    position:relative;
+  }
+  .bg1 { position:absolute; top:-260px; right:-160px; width:720px; height:720px;
+    background:radial-gradient(circle, rgba(255,92,53,0.22) 0%, rgba(255,92,53,0) 62%); }
+  .bg2 { position:absolute; bottom:-320px; left:-200px; width:760px; height:760px;
+    background:radial-gradient(circle, rgba(255,92,53,0.10) 0%, rgba(255,92,53,0) 60%); }
+  .wrap { position:relative; padding:58px 62px; height:100%; display:flex; flex-direction:column; }
+  .eyebrow { font-family:'JetBrains Mono',monospace; font-size:16px; font-weight:600;
+    letter-spacing:3px; text-transform:uppercase; color:#c9c3ba; display:flex; align-items:center; gap:12px; }
+  .dot { width:12px; height:12px; background:#ff5c35; border-radius:2px; display:inline-block; }
+  .name { font-size:78px; font-weight:700; line-height:1.02; margin-top:26px; letter-spacing:-1px; }
+  .role { font-size:31px; font-weight:700; color:#ff5c35; margin-top:12px; }
+  .desc { font-size:22px; font-weight:400; color:#b6b0a7; margin-top:16px; max-width:900px; }
+  .stats { display:flex; gap:66px; margin-top:auto; }
+  .stat .num { font-size:56px; font-weight:700; color:#ff5c35; line-height:1; letter-spacing:-1px; }
+  .stat .lbl { font-family:'JetBrains Mono',monospace; font-size:15px; font-weight:400;
+    color:#9c968d; margin-top:12px; line-height:1.35; }
+  .site { position:absolute; right:62px; bottom:44px; font-family:'JetBrains Mono',monospace;
+    font-size:16px; color:#6f6a62; }
+</style>
+</head>
+<body>
+  <div class="bg1"></div>
+  <div class="bg2"></div>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>Automatización con IA · Self-hosted</div>
+    <div class="name">Agustin Peralta</div>
+    <div class="role">Ingeniero de IA &amp; Automatización</div>
+    <div class="desc">Agentes de IA, automatización de procesos e infraestructura self-hosted.</div>
+    <div class="stats">
+      <div class="stat"><div class="num">+__PROCESOS__</div><div class="lbl">procesos<br>automatizados</div></div>
+      <div class="stat"><div class="num">+__EJECUCIONES__</div><div class="lbl">ejecuciones</div></div>
+      <div class="stat"><div class="num">+__HORAS__</div><div class="lbl">horas ahorradas</div></div>
+    </div>
+  </div>
+  <div class="site">agustin.agustinynatalia.site</div>
+</body>
+</html>
