@@ -375,5 +375,90 @@ var GUIDES_DATA = [
             "Si nadie es dueño del resultado, el flujo se rompe y nadie se entera hasta que ya costó caro."
         ],
         tools: ["n8n", "Automatización con IA", "Rediseño de procesos", "IA"]
+    },
+    {
+        id: "agente-ia-demo-a-produccion",
+        number: "05",
+        visible: true,
+        category: "Agentes de IA en producción",
+        title: "Cómo llevar un agente de IA de la demo a producción",
+        subtitle: "En la demo todo agente de IA se ve espectacular. Ponerlo a ejecutar acciones reales, con datos reales y sin que nadie lo esté mirando, es otra historia.",
+        description: "Una demo de un agente de IA impresiona en cinco minutos. Producción es que ejecute acciones reales, sin supervisión, sin romper nada y pudiendo explicar qué hizo. Te cuento cómo hago ese salto: permisos graduales, reversibilidad, human-in-the-loop, trazabilidad y qué pasa cuando el agente se equivoca.",
+        image: "",
+        imageCaption: "",
+        date: "Julio 2026",
+        readingTime: "6 min de lectura",
+        urlLabel: "Leer guía",
+        requirements: [
+            "Un agente que ya funciona en demo: recibe una instrucción y devuelve algo coherente.",
+            "Claridad sobre qué acciones reales va a ejecutar (mandar correos, escribir en una base de datos, mover plata, responderle a un cliente).",
+            "Un lugar donde guardar registro de todo lo que el agente decide y hace, no solo de lo que responde.",
+            "Alguien que sea dueño del resultado y se entere cuando algo se salga de lo normal.",
+            "Disposición a soltarle permisos de a poco, no todo el poder desde el primer día."
+        ],
+        sections: [
+            {
+                title: "Por qué la demo miente un poco",
+                content: [
+                    { type: "lead", text: "En una demo el agente hace una cosa, la haces tú, la miras funcionar y aplaudes. En producción hace esa misma cosa mil veces, con datos que no controlas y sin nadie mirando la pantalla." },
+                    { type: "paragraph", text: "La demo se arma para el caso bonito: la instrucción clara, el dato limpio, el camino feliz. Producción es el correo raro, el cliente que escribe a medias, el sistema que no responde y el dato que llega con un formato que nadie previó." },
+                    { type: "paragraph", text: "El salto no es hacerlo más inteligente. Es hacerlo confiable: que cuando algo salga distinto a la demo, no rompa nada que no se pueda arreglar. Este es el orden con el que yo hago ese paso." }
+                ]
+            },
+            {
+                title: "Primero decide hasta dónde lo dejas actuar solo",
+                content: [
+                    { type: "lead", text: "Lo más difícil de un agente que ejecuta acciones de verdad no es que las ejecute. Es decidir hasta dónde lo dejas hacerlo sin preguntar." },
+                    { type: "paragraph", text: "Antes de soltarlo, separo lo que hace en dos montones. Lo reversible, que si se equivoca se arregla sin drama: guardar una nota, preparar un borrador, clasificar un mensaje. Y lo que no se devuelve fácil: mandarle un correo a un cliente, borrar registros, mover dinero." },
+                    { type: "paragraph", text: "Lo reversible lo dejo actuar solo desde el principio. Lo que no se devuelve pasa por una confirmación humana antes de ejecutarse, al menos hasta que confíe en él. La pregunta no es si el agente puede hacer la acción, es qué pasa si la hace mal." }
+                ]
+            },
+            {
+                title: "Suéltale los permisos de a poco",
+                content: [
+                    { type: "paragraph", text: "Un agente nuevo en producción arranca con las manos casi atadas. Puede leer, puede proponer, puede dejar todo listo, pero el paso final que toca el mundo real lo apruebo yo. Así veo cómo se comporta con datos reales sin arriesgar nada." },
+                    { type: "paragraph", text: "A medida que gana partidos (cuando lo que propone es lo que yo habría hecho, día tras día) le voy soltando permisos. Primero deja de pedir permiso para lo más inofensivo, después para lo mediano, y así. La confianza se gana con historial, no se asume el primer día." }
+                ]
+            },
+            {
+                title: "Todo lo que decide tiene que quedar escrito",
+                content: [
+                    { type: "lead", text: "En la demo te basta con ver la respuesta. En producción necesitas poder responder \"por qué hizo eso\" tres días después, cuando ya nadie se acuerda." },
+                    { type: "paragraph", text: "Por eso registro no solo lo que el agente respondió, sino qué recibió, qué decidió y qué acción disparó. Cuando algo sale raro, no adivino: entro al registro y sigo el rastro paso a paso hasta el punto donde se torció." },
+                    { type: "paragraph", text: "Sin ese rastro, un agente en producción es una caja negra que a veces se equivoca y nunca sabes por qué. Con él, cada error es una lección concreta que te dice qué ajustar." }
+                ]
+            },
+            {
+                title: "Decide qué hace cuando se equivoca",
+                content: [
+                    { type: "paragraph", text: "Un agente en producción se va a topar con lo que no previste: un dato vacío, un sistema caído, una instrucción que no entiende. La pregunta clave no es si va a pasar, es qué hace cuando pasa." },
+                    { type: "paragraph", text: "La regla que uso es simple: ante la duda, que se frene y avise, no que improvise. Prefiero un agente que levante la mano y diga \"esto no lo sé resolver\" antes que uno que invente una acción con tal de no quedarse quieto. Un error que avisa se arregla; uno silencioso se descubre cuando ya costó caro." },
+                    { type: "paragraph", text: "Y siempre hay un humano que recibe ese aviso. No para vigilar cada paso, sino para que cuando el agente se salga de lo normal, alguien se entere a tiempo." }
+                ]
+            },
+            {
+                title: "El salto, en orden",
+                content: [
+                    { type: "lead", text: "Si tuviera que resumir el paso de demo a producción en una secuencia, sería esta." },
+                    { type: "paragraph", text: "Separa lo reversible de lo que no se devuelve. Lo peligroso pásalo por confirmación humana. Suéltale permisos de a poco, según el historial que va construyendo. Registra cada decisión, no solo la respuesta. Y define qué hace cuando no sabe: que se frene y avise, nunca que improvise." },
+                    { type: "paragraph", text: "Ninguno de esos pasos hace al agente más listo. Todos lo hacen más confiable, que es lo único que importa cuando deja de ser una demo y empieza a tocar cosas de verdad." }
+                ]
+            }
+        ],
+        pros: [
+            "El agente ejecuta acciones reales sin que tengas que estar mirando la pantalla.",
+            "Los errores se frenan y avisan a tiempo, en vez de descubrirse cuando ya costaron caro.",
+            "Cada decisión queda registrada: puedes explicar qué hizo y por qué, días después.",
+            "Le sueltas poder de a poco, así que el riesgo crece despacio y bajo control.",
+            "Lo que no se puede devolver pasa por un humano hasta que el agente se lo gane."
+        ],
+        cons: [
+            "Montarlo bien toma más trabajo que la demo: permisos, registro y avisos no se arman en una tarde.",
+            "Necesitas alguien dueño del resultado que reciba los avisos, no se administra solo.",
+            "Si le das todos los permisos desde el día uno, un error se vuelve caro rápido.",
+            "Sin registro de decisiones, cada fallo es una caja negra imposible de diagnosticar.",
+            "Un agente demasiado autónomo con tareas irreversibles es un riesgo, no un ahorro."
+        ],
+        tools: ["Agentes de IA", "IA en producción", "n8n", "Human-in-the-loop", "Trazabilidad"]
     }
 ];
