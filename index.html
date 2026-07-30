@@ -204,12 +204,14 @@ a{color:inherit;text-decoration:none}
 .certsHead{font-size:.82rem;color:var(--accent);letter-spacing:.2px;margin-bottom:1.1rem}
 .certGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.4rem}
 .certCard{display:flex;flex-direction:column;gap:1.1rem;padding:1.2rem;border:1px solid var(--line);background:var(--bg2);transition:border-color .25s,background .25s,transform .25s}
+.certTop{display:flex;flex-direction:column;gap:1.1rem}
 .certCard:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 5%,transparent);transform:translateY(-2px)}
 .certImg{border:1px solid var(--line2);overflow:hidden;line-height:0}
 .certImg img{width:100%;height:auto;display:block}
 .certBody{flex:1}
 .certTitle{font-size:1.22rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.5rem}
 .certMeta{display:flex;flex-wrap:wrap;gap:.7rem;font-size:.82rem;color:var(--dim)}
+.certDesc{margin-top:.8rem;font-size:.9rem;line-height:1.6;color:var(--dim)}
 .certLink{display:inline-block;margin-top:.9rem;font-size:.82rem;color:var(--accent)}
 .expDate{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);padding-top:.3rem;letter-spacing:.1px}
 .expRole{font-size:1.32rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.25rem}
@@ -304,10 +306,13 @@ a{color:inherit;text-decoration:none}
 .sec{padding:5rem 0}
 .expRow{grid-template-columns:1fr;gap:.7rem}
 .certGrid{grid-template-columns:1fr}
-.certCard{flex-direction:row;align-items:center;gap:1rem;padding:.9rem}
+.certCard{gap:.9rem;padding:.9rem}
+.certTop{flex-direction:row;align-items:center;gap:1rem}
 .certImg{flex:0 0 44%}
+.certHead{flex:1}
 .certTitle{font-size:1rem;margin-bottom:.4rem}
 .certMeta{flex-direction:column;gap:.25rem;font-size:.76rem}
+.certDesc{margin-top:0;font-size:.85rem}
 .certLink{margin-top:.7rem;font-size:.76rem}
 .frow{grid-template-columns:1fr}
 .projList{display:flex;gap:1rem;overflow-x:auto;border-top:none;padding-bottom:1.1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -384,7 +389,7 @@ a{color:inherit;text-decoration:none}
 <div><sc-for list="{{experience}}" as="e" hint-placeholder-count="5"><div class="expRow reveal"><div class="expDate mono">{{e.date}}</div><div><h3 class="expRole">{{e.role}}</h3><div class="expCo mono">{{e.company}}</div><p class="expDesc">{{e.desc}}</p></div></div></sc-for></div>
 <div class="certsWrap reveal">
 <div class="certsHead mono">// {{t.titleCerts}}</div>
-<div class="certGrid"><sc-for list="{{certs}}" as="c" hint-placeholder-count="1"><a class="certCard" href="{{c.url}}" target="_blank" rel="noopener"><div class="certImg"><img src="{{c.img}}" alt="{{c.title}}" loading="lazy"></div><div class="certBody"><div class="certTitle">{{c.title}}</div><div class="certMeta mono"><span>{{c.issuer}}</span><span>{{c.date}}</span></div><span class="certLink mono">{{t.certVerify}} ↗</span></div></a></sc-for></div>
+<div class="certGrid"><sc-for list="{{certs}}" as="c" hint-placeholder-count="1"><a class="certCard" href="{{c.url}}" target="_blank" rel="noopener"><div class="certTop"><div class="certImg"><img src="{{c.img}}" alt="{{c.title}}" loading="lazy"></div><div class="certHead"><div class="certTitle">{{c.title}}</div><div class="certMeta mono"><span>{{c.issuer}}</span><span>{{c.date}}</span></div></div></div><div class="certBody"><p class="certDesc">{{c.desc}}</p><span class="certLink mono">{{t.certVerify}} ↗</span></div></a></sc-for></div>
 </div>
 </div></section>
 
@@ -464,7 +469,8 @@ class Component extends DCLogic {
   SKILLS = ["Python","LangGraph","LLMs","n8n","FastAPI","Next.js","TypeScript","PostgreSQL","Docker","Supabase"];
   CERTS = [
     {img:"/certs/n8n-qs101.png",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/fda37efe7ffa4cce966746391e86d89f",
-      es:{title:"n8n Quickstart (QS101)",date:"Julio 2026"},en:{title:"n8n Quickstart (QS101)",date:"July 2026"}}
+      es:{title:"n8n Quickstart (QS101)",date:"Julio 2026",desc:"Certificación oficial de n8n: construcción de workflows, transformación de datos entre APIs y bases de datos, manejo de errores en producción y agentes de IA con herramientas y memoria."},
+      en:{title:"n8n Quickstart (QS101)",date:"July 2026",desc:"Official n8n certification: workflow building, data transformation across APIs and databases, production error handling, and AI agents with tools and memory."}}
   ];
   FILTERDEF = [
     {v:"all",es:"Todos",en:"All"},{v:"auto",es:"Automatización",en:"Automation"},{v:"ai",es:"IA & Agentes",en:"AI & Agents"},{v:"prod",es:"Producto",en:"Product"},{v:"tools",es:"Herramientas",en:"Tools"}
@@ -655,7 +661,7 @@ class Component extends DCLogic {
     var filters=this.FILTERDEF.map(function(f){return {label:f[lang],cls:self.state.filter===f.v?"on":"",onClick:function(){self.setFilter(f.v);}};});
     var metrics=this.METRICDEF.map(function(m,i){var v=self.state.metv[i];return {display:"+"+Math.floor(v).toLocaleString("es-CO")+m.suffix,label:L.metrics[i]};});
     var experience=this.EXPERIENCE.map(function(e){return {date:e[lang].date,role:e[lang].role,company:e.company,desc:e[lang].desc};});
-    var certs=this.CERTS.map(function(c){return {img:c.img,issuer:c.issuer,url:c.url,title:c[lang].title,date:c[lang].date};});
+    var certs=this.CERTS.map(function(c){return {img:c.img,issuer:c.issuer,url:c.url,title:c[lang].title,date:c[lang].date,desc:c[lang].desc};});
     var guides=this.GUIDES.map(function(g){return {num:g.num,cat:g[lang].cat,title:g[lang].t,desc:g[lang].d,meta:g[lang].meta,url:g.externalUrl||("guias/"+g.id+".html")};});
     var email="aperaltaguarin@gmail.com";
     return {
