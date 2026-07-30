@@ -199,6 +199,17 @@ a{color:inherit;text-decoration:none}
 .expRow{display:grid;grid-template-columns:210px 1fr;gap:2rem;padding:2rem 0;border-top:1px solid var(--line);transition:background .25s}
 .expRow:last-child{border-bottom:1px solid var(--line)}
 .expRow:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+/* certificaciones */
+.certsWrap{margin-top:3.2rem}
+.certsHead{font-size:.82rem;color:var(--accent);letter-spacing:.2px;margin-bottom:1.1rem}
+.certGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.2rem}
+.certCard{display:flex;gap:1.1rem;align-items:center;padding:1rem;border:1px solid var(--line);background:var(--bg2);transition:border-color .25s,background .25s,transform .25s}
+.certCard:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 5%,transparent);transform:translateY(-2px)}
+.certImg{flex:0 0 128px;border:1px solid var(--line2);overflow:hidden;line-height:0}
+.certImg img{width:100%;height:auto;display:block}
+.certTitle{font-size:.98rem;font-weight:600;margin-bottom:.35rem}
+.certMeta{display:flex;flex-wrap:wrap;gap:.6rem;font-size:.76rem;color:var(--dim)}
+.certLink{display:inline-block;margin-top:.6rem;font-size:.76rem;color:var(--accent)}
 .expDate{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);padding-top:.3rem;letter-spacing:.1px}
 .expRole{font-size:1.32rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.25rem}
 .expCo{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--dim);margin-bottom:.9rem}
@@ -291,6 +302,8 @@ a{color:inherit;text-decoration:none}
 .wrap{padding:0 1.4rem}
 .sec{padding:5rem 0}
 .expRow{grid-template-columns:1fr;gap:.7rem}
+.certGrid{grid-template-columns:1fr}
+.certImg{flex-basis:104px}
 .frow{grid-template-columns:1fr}
 .projList{display:flex;gap:1rem;overflow-x:auto;border-top:none;padding-bottom:1.1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .projList::-webkit-scrollbar{display:none}
@@ -364,6 +377,10 @@ a{color:inherit;text-decoration:none}
 <section class="sec" id="experiencia"><div class="wrap">
 <div class="sechead reveal"><div class="eyebrow mono"><b>[ 02 ]</b> // {{t.s02}}</div><h2 class="sectitle">{{t.titleExp}}</h2></div>
 <div><sc-for list="{{experience}}" as="e" hint-placeholder-count="5"><div class="expRow reveal"><div class="expDate mono">{{e.date}}</div><div><h3 class="expRole">{{e.role}}</h3><div class="expCo mono">{{e.company}}</div><p class="expDesc">{{e.desc}}</p></div></div></sc-for></div>
+<div class="certsWrap reveal">
+<div class="certsHead mono">// {{t.titleCerts}}</div>
+<div class="certGrid"><sc-for list="{{certs}}" as="c" hint-placeholder-count="1"><a class="certCard" href="{{c.url}}" target="_blank" rel="noopener"><div class="certImg"><img src="{{c.img}}" alt="{{c.title}}" loading="lazy"></div><div class="certBody"><div class="certTitle">{{c.title}}</div><div class="certMeta mono"><span>{{c.issuer}}</span><span>{{c.date}}</span></div><span class="certLink mono">{{t.certVerify}} ↗</span></div></a></sc-for></div>
+</div>
 </div></section>
 
 <section class="sec" id="proyectos"><div class="wrap">
@@ -440,13 +457,17 @@ class Component extends DCLogic {
     {company:"U. Sergio Arboleda · Talento TECH",es:{date:"Oct 2024 — Dic 2024",role:"Ejecutor Técnico",desc:"Oriento y capacito a los campistas en inteligencia artificial, analítica y programación, fomentando tanto el desarrollo de sus habilidades como su entusiasmo, con una enseñanza práctica y dinámica. A través del análisis de datos impulso a los estudiantes a explorar nuevas posibilidades y transformar el conocimiento en acción."},en:{date:"Oct 2024 — Dec 2024",role:"Technical Instructor",desc:"I mentor and train students in artificial intelligence, analytics and programming, fostering both their skills and their enthusiasm through hands-on, dynamic teaching. Through data analysis I push students to explore new possibilities and turn knowledge into action."}}
   ];
   SKILLS = ["Python","LangGraph","LLMs","n8n","FastAPI","Next.js","TypeScript","PostgreSQL","Docker","Supabase"];
+  CERTS = [
+    {img:"/certs/n8n-qs101.png",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/fda37efe7ffa4cce966746391e86d89f",
+      es:{title:"n8n Quickstart (QS101)",date:"Julio 2026"},en:{title:"n8n Quickstart (QS101)",date:"July 2026"}}
+  ];
   FILTERDEF = [
     {v:"all",es:"Todos",en:"All"},{v:"auto",es:"Automatización",en:"Automation"},{v:"ai",es:"IA & Agentes",en:"AI & Agents"},{v:"prod",es:"Producto",en:"Product"},{v:"tools",es:"Herramientas",en:"Tools"}
   ];
   I18N = {
     es:{navAbout:"sobre-mí",navExp:"experiencia",navWork:"proyectos",navGuides:"guías",navMetrics:"métricas",navContact:"contacto",
       heroStatus:"Disponible para nuevos proyectos",heroHi:"// hola, soy",heroRole:"Ingeniero de IA & Automatización",heroDescA:"Especializado en inteligencia artificial aplicada y automatización de procesos: integro sistemas, desarrollo agentes y optimizo flujos de trabajo. Transformo operaciones manuales en sistemas que ya han eliminado ",heroStat:"más de 12.000 horas",heroDescB:" de trabajo manual, más de ",heroStat2:"$80.000 USD",heroDescC:" ahorrados a las empresas.",ctaWork:"Ver proyectos",ctaMetrics:"Mis métricas",ctaContact:"Contactar",
-      s01:"sobre mí",s02:"experiencia",s03:"proyectos",s04:"guías",s05:"contacto",titleAbout:"Construyo sistemas que automatizan, razonan y escalan",titleExp:"Trayectoria",titleWork:"Trabajo seleccionado",titleGuides:"Guías",titleContact:"Trabajemos juntos",
+      s01:"sobre mí",s02:"experiencia",s03:"proyectos",s04:"guías",s05:"contacto",titleAbout:"Construyo sistemas que automatizan, razonan y escalan",titleExp:"Trayectoria",titleCerts:"Certificaciones",certVerify:"Verificar",titleWork:"Trabajo seleccionado",titleGuides:"Guías",titleContact:"Trabajemos juntos",
       aboutLead:"Ingeniero de sistemas especializado en inteligencia artificial aplicada y automatización de procesos, enfocado en construir soluciones que razonan, automatizan y escalan.",aboutP1:"Diseño y despliego agentes de IA y automatizaciones de extremo a extremo sobre un stack en Python, TypeScript y SQL, apoyándome en n8n, LangGraph y la orquestación de LLMs para resolver problemas reales de negocio.",aboutP2a:"Como líder técnico he llevado a producción sistemas con ",aboutP2s1:"330+ automatizaciones activas",aboutP2b:", ",aboutP2s2:"113.000+ ejecuciones",aboutP2c:" y ",aboutP2s3:"~99% de uptime",aboutP2d:", integrando APIs, bases de datos y arquitecturas pensadas para crecer sin fricción.",aboutP3:"También self-hosteo mi propia infraestructura y desarrollo aplicaciones a medida, combinando pensamiento sistémico con una cultura de ingeniería rigurosa para generar impacto directo y medible.",skillsHead:"cat stack.txt",
       workSub:"Una selección de trabajos en IA, automatización y producto. Pasa el cursor para previsualizar.",seeMore:"Ver más proyectos",guidesSub:"Notas sobre lo que construyo, automatizo y self-hosteo.",contactIntro:"¿Necesitas automatizar procesos, integrar sistemas o escalar tu operación? Conversemos sobre cómo puedo ayudarte.",
       fName:"Nombre",fEmail:"Correo",fMsg:"Solicitud",fSend:"Enviar mensaje",successTitle:"¡Gracias por contactarme!",successMsg:"He recibido tu mensaje y me pondré en contacto contigo muy pronto.",locLabel:"Ubicación",
@@ -454,7 +475,7 @@ class Component extends DCLogic {
       metrics:["Horas de trabajo ahorradas","Ejecuciones automatizadas","Automatizaciones en producción"]},
     en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
       heroStatus:"Available for new projects",heroHi:"// hi, I'm",heroRole:"AI & Automation Engineer",heroDescA:"Specialized in applied artificial intelligence and process automation: I integrate systems, build agents and optimize workflows. I turn manual operations into systems that have already eliminated ",heroStat:"12,000+ hours",heroDescB:" of manual work and over ",heroStat2:"$80,000 USD",heroDescC:" saved for companies.",ctaWork:"View work",ctaMetrics:"My metrics",ctaContact:"Get in touch",
-      s01:"about",s02:"experience",s03:"work",s04:"guides",s05:"contact",titleAbout:"I build systems that automate, reason and scale",titleExp:"Track record",titleWork:"Selected work",titleGuides:"Guides",titleContact:"Let's work together",
+      s01:"about",s02:"experience",s03:"work",s04:"guides",s05:"contact",titleAbout:"I build systems that automate, reason and scale",titleExp:"Track record",titleCerts:"Certifications",certVerify:"Verify",titleWork:"Selected work",titleGuides:"Guides",titleContact:"Let's work together",
       aboutLead:"Systems engineer specialized in applied artificial intelligence and process automation, focused on building solutions that reason, automate and scale.",aboutP1:"I design and deploy AI agents and end-to-end automations on a stack of Python, TypeScript and SQL, leaning on n8n, LangGraph and LLM orchestration to solve real business problems.",aboutP2a:"As a technical lead I've shipped production systems with ",aboutP2s1:"330+ active automations",aboutP2b:", ",aboutP2s2:"113,000+ executions",aboutP2c:" and ",aboutP2s3:"~99% uptime",aboutP2d:", integrating APIs, databases and architectures built to grow without friction.",aboutP3:"I also self-host my own infrastructure and build custom applications end to end, combining systems thinking with a rigorous engineering culture to create direct, measurable impact.",skillsHead:"cat stack.txt",
       workSub:"A selection of work across AI, automation and product. Hover to preview.",seeMore:"View more projects",guidesSub:"Notes on what I build, automate and self-host.",contactIntro:"Need to automate processes, integrate systems or scale your operation? Let's talk about how I can help.",
       fName:"Name",fEmail:"Email",fMsg:"Message",fSend:"Send message",successTitle:"Thanks for reaching out!",successMsg:"I've received your message and will get back to you very soon.",locLabel:"Location",
@@ -629,6 +650,7 @@ class Component extends DCLogic {
     var filters=this.FILTERDEF.map(function(f){return {label:f[lang],cls:self.state.filter===f.v?"on":"",onClick:function(){self.setFilter(f.v);}};});
     var metrics=this.METRICDEF.map(function(m,i){var v=self.state.metv[i];return {display:"+"+Math.floor(v).toLocaleString("es-CO")+m.suffix,label:L.metrics[i]};});
     var experience=this.EXPERIENCE.map(function(e){return {date:e[lang].date,role:e[lang].role,company:e.company,desc:e[lang].desc};});
+    var certs=this.CERTS.map(function(c){return {img:c.img,issuer:c.issuer,url:c.url,title:c[lang].title,date:c[lang].date};});
     var guides=this.GUIDES.map(function(g){return {num:g.num,cat:g[lang].cat,title:g[lang].t,desc:g[lang].d,meta:g[lang].meta,url:g.externalUrl||("guias/"+g.id+".html")};});
     var email="aperaltaguarin@gmail.com";
     return {
@@ -640,7 +662,7 @@ class Component extends DCLogic {
       toggleTheme:function(){self.toggleTheme();},setEs:function(){self.setLang("es");},setEn:function(){self.setLang("en");},
       toggleMenu:function(){self.toggleMenu();},closeMenu:function(){self.setState({menu:false});},
       submitContact:function(e){self.submit(e);},
-      t:L,skills:this.SKILLS,metrics:metrics,experience:experience,filters:filters,projects:projects,active:active,guides:guides,
+      t:L,skills:this.SKILLS,metrics:metrics,experience:experience,certs:certs,filters:filters,projects:projects,active:active,guides:guides,
       projListClass:collapsed?"collapsed":"",showMore:collapsed&&vis.length>6,expandProjects:function(){self.expandProjects();},
       contactSent:this.state.sent,showForm:!this.state.sent,
       email:email,mailto:"mailto:"+email
