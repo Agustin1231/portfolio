@@ -460,5 +460,95 @@ var GUIDES_DATA = [
             "Un agente demasiado autónomo con tareas irreversibles es un riesgo, no un ahorro."
         ],
         tools: ["Agentes de IA", "IA en producción", "n8n", "Human-in-the-loop", "Trazabilidad"]
+    },
+    {
+        id: "mcp-o-api-cuando-usar-cada-uno",
+        number: "06",
+        visible: true,
+        category: "MCP y agentes de IA",
+        title: "MCP o API: cuándo conectar una herramienta a un agente de IA y cuándo dejarla en un flujo",
+        subtitle: "MCP no reemplaza a las APIs. Lo que cambia es quién decide la llamada: tú o el modelo. Ese es el único criterio que uso para elegir.",
+        description: "¿MCP o API? No compiten: casi todo servidor MCP termina llamando a la misma API de siempre. Te explico con casos reales cuándo conviene entregarle una herramienta a un agente de IA por MCP, cuándo dejarla como un llamado HTTP dentro de un flujo, y qué trabajo de integración no te ahorra ninguno de los dos.",
+        image: "",
+        imageCaption: "",
+        date: "Agosto 2026",
+        readingTime: "7 min de lectura",
+        urlLabel: "Leer guía",
+        requirements: [
+            "Una herramienta o servicio con API a la que quieras conectar un agente de IA (un CRM, un gestor de tareas, tu correo, una base de datos).",
+            "Claridad sobre si el orden de las llamadas ya lo sabes tú de antemano o si depende de lo que pida el usuario en el momento.",
+            "Un agente o cliente que soporte herramientas por MCP, si vas por ese lado.",
+            "Un lugar donde queden registradas las llamadas que se ejecutaron, sobre todo si el que decide es el modelo.",
+            "Paciencia para escribir buenas descripciones de herramientas: es ahí donde se gana o se pierde."
+        ],
+        sections: [
+            {
+                title: "La pregunta está mal armada",
+                content: [
+                    { type: "lead", text: "Me preguntan seguido si MCP viene a reemplazar las APIs, y la comparación no es esa. Casi todo servidor MCP que he abierto por dentro termina llamando a la misma API de siempre." },
+                    { type: "paragraph", text: "MCP es un protocolo para exponerle herramientas a un modelo de forma estándar. Debajo sigue habiendo peticiones HTTP, tokens, límites de uso y respuestas con el formato raro de siempre. Uno vive encima del otro, no uno en lugar del otro." },
+                    { type: "paragraph", text: "Entonces la pregunta útil no es cuál es mejor. Es esta: en tu caso, ¿quién decide qué llamada se hace y en qué orden? Si lo decides tú cuando armas el flujo, es una cosa. Si lo decide el modelo en el momento, es otra." }
+                ]
+            },
+            {
+                title: "Cuándo un llamado normal dentro de un flujo es la respuesta correcta",
+                content: [
+                    { type: "lead", text: "Si ya sabes qué llamada tiene que pasar, en qué orden y con qué datos, no necesitas que un modelo lo decida por ti." },
+                    { type: "paragraph", text: "Un proceso que siempre hace lo mismo (llega un lead, se valida, se crea el contacto, se dispara el correo) es un camino fijo. Ahí un llamado HTTP dentro de un flujo de automatización te da tres cosas que un agente no: sabes exactamente qué se ejecutó, cuesta lo mismo siempre y no depende de que el modelo se despierte de buenas." },
+                    { type: "paragraph", text: "También pesa el tema de auditoría. Cuando el cliente pregunta por qué a ese contacto le llegó ese mensaje, en un flujo lo sigues paso a paso. Con un agente decidiendo, primero tienes que reconstruir por qué eligió esa herramienta y no otra." },
+                    { type: "paragraph", text: "Mi regla: si puedes dibujar el proceso en una servilleta sin usar la palabra depende, déjalo en un flujo." }
+                ]
+            },
+            {
+                title: "Cuándo sí vale la pena MCP",
+                content: [
+                    { type: "lead", text: "MCP empieza a ganar cuando la decisión no la puedes tomar tú de antemano." },
+                    { type: "paragraph", text: "El primer caso es el agente conversacional. Alguien le escribe y puede pedir cualquier cosa: consultar una tarea, crear otra, buscar un cliente, revisar el calendario. No hay un orden fijo posible porque el orden lo pone quien pregunta. Cablear eso como flujo te obliga a adivinar todas las rutas, y siempre falta una." },
+                    { type: "paragraph", text: "El segundo caso es el reuso. Si armas la integración una vez como servidor MCP, la conectan varios agentes y varios clientes distintos sin volver a cablear nada. Cuando tienes tres o cuatro agentes que necesitan tocar el mismo sistema, ese ahorro sí se nota." },
+                    { type: "paragraph", text: "El tercero es más práctico y es el que más uso: herramientas que quiero tener a la mano mientras trabajo, no dentro de un proceso. Consultar mi base de conocimiento, revisar el estado de un servidor, mirar métricas. No es un proceso que corre solo, es algo que le pido cuando lo necesito." }
+                ]
+            },
+            {
+                title: "Lo que no te compra ninguno de los dos",
+                content: [
+                    { type: "lead", text: "La promesa de que MCP te ahorra la integración me suena a demo. El trabajo no desaparece, se corre de lugar." },
+                    { type: "paragraph", text: "Hace poco estaba conectando una herramienta con una llamada HTTP normalita y me devolvía ciento sesenta y un elementos sueltos donde yo esperaba una sola lista con todo adentro. Mirando el output dos minutos uno lo cacha y ajusta. Un modelo no tiene de dónde sacar ese detalle si nadie se lo escribió." },
+                    { type: "paragraph", text: "Ese es el punto. Con una API tú lees la respuesta rara y la acomodas una vez. Con MCP tienes que explicarle por escrito al modelo qué devuelve, cuándo sirve y cuándo no la use. El trabajo pasó de escribir la llamada a documentarla bien, y esa parte casi nadie la muestra." },
+                    { type: "paragraph", text: "En la práctica, una herramienta mal descrita es peor que no tenerla: el modelo la va a usar cuando no toca, y vas a estar depurando por qué hizo algo que nunca le pediste." }
+                ]
+            },
+            {
+                title: "El costo escondido de llenar de herramientas al agente",
+                content: [
+                    { type: "paragraph", text: "Cada herramienta que le conectas ocupa espacio en el contexto del modelo y le suma una opción más para equivocarse. Un agente con seis herramientas bien escogidas acierta más que uno con cuarenta conectadas por si acaso." },
+                    { type: "paragraph", text: "Y está el tema de permisos, que es el que más me preocupa en cuentas de clientes. Cuando le entregas una herramienta a un agente, le estás entregando la capacidad de ejecutarla sin que nadie apruebe cada vez. Lo que borra, lo que manda hacia afuera y lo que mueve plata no va por ahí, o va con confirmación humana de por medio." },
+                    { type: "paragraph", text: "Por eso yo arranco al revés de como suele hacerse: la lista de herramientas empieza vacía y solo entra la que ya me hizo falta dos veces." }
+                ]
+            },
+            {
+                title: "Cómo lo decido en treinta segundos",
+                content: [
+                    { type: "lead", text: "Cuando tengo que elegir, me hago cuatro preguntas y con eso me alcanza." },
+                    { type: "paragraph", text: "Uno: ¿el orden de las llamadas lo sé yo de antemano? Si la respuesta es sí, va en un flujo con llamado normal. Dos: ¿esto lo van a usar varios agentes o varios clientes? Si es sí, MCP empieza a pagar el trabajo extra." },
+                    { type: "paragraph", text: "Tres: ¿qué pasa si se ejecuta cuando no debía? Si la respuesta incomoda, no se la entrego suelta al agente. Cuatro: ¿puedo explicar en dos líneas para qué sirve y cuándo no usarla? Si no puedo, el problema no es el protocolo, es que todavía no entiendo bien la herramienta." },
+                    { type: "paragraph", text: "Con eso, casi todo lo que tiene un camino fijo termina en API pura dentro de un flujo, y MCP me queda para lo que de verdad decide el modelo. No es una postura en contra de MCP, es que cada uno resuelve un problema distinto y confundirlos sale caro." }
+                ]
+            }
+        ],
+        pros: [
+            "MCP te deja armar la integración una vez y reusarla en varios agentes sin volver a cablear.",
+            "Sirve cuando el orden de las llamadas lo decide quien pregunta, no tú al diseñar el proceso.",
+            "Un llamado normal dentro de un flujo es más barato, más predecible y más fácil de auditar.",
+            "Elegir bien te ahorra depuraciones eternas de por qué el agente hizo algo que nadie pidió.",
+            "El criterio es uno solo y se aplica rápido: quién decide la llamada, tú o el modelo."
+        ],
+        cons: [
+            "MCP no te ahorra el trabajo de integración, lo mueve a escribir buenas descripciones de herramientas.",
+            "Cada herramienta conectada ocupa contexto y le suma al agente una forma más de equivocarse.",
+            "Con el modelo decidiendo, explicar qué pasó exige registro propio: no basta con ver la respuesta.",
+            "Entregar acciones irreversibles a un agente sin confirmación humana es un riesgo, no un ahorro.",
+            "Montar un servidor MCP para un proceso de camino fijo es complejidad que no te devuelve nada."
+        ],
+        tools: ["MCP", "APIs", "Agentes de IA", "n8n", "Automatización"]
     }
 ];
