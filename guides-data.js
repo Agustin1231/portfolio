@@ -550,5 +550,221 @@ var GUIDES_DATA = [
             "Montar un servidor MCP para un proceso de camino fijo es complejidad que no te devuelve nada."
         ],
         tools: ["MCP", "APIs", "Agentes de IA", "n8n", "Automatización"]
+    },
+    {
+        "id": "agente-ia-whatsapp-que-necesitas",
+        "number": "07",
+        "visible": true,
+        "category": "Agentes de IA en WhatsApp",
+        "title": "Agente de IA para WhatsApp: lo que nadie te cuenta antes de conectarlo",
+        "subtitle": "El modelo es la parte fácil. Lo que decide si tu agente de WhatsApp sirve o molesta es el canal: cómo escribe la gente, la ventana de 24 horas y quién contesta cuando el bot se queda corto.",
+        "description": "Guía práctica para montar un agente de IA en WhatsApp que atienda de verdad: API oficial o no oficial, la ventana de 24 horas y las plantillas, cómo manejar los mensajes partidos y los audios, cuándo pasarle la conversación a un humano y cómo saber si está funcionando. Con lo que aprendí operando uno en producción.",
+        "image": "",
+        "imageCaption": "",
+        "date": "Agosto 2026",
+        "readingTime": "8 min de lectura",
+        "urlLabel": "Leer guía",
+        "requirements": [
+            "Un número de teléfono que puedas dedicar al negocio y que no esté ya usándose en la app normal de WhatsApp.",
+            "Una cuenta de WhatsApp Business Platform con el negocio verificado, si vas por la vía oficial.",
+            "Un lugar donde guardar el historial de cada conversación, no solo el último mensaje: una base de datos, no la memoria del proceso.",
+            "Alguien del equipo disponible para recibir las conversaciones que el agente no deba resolver solo.",
+            "Claridad sobre qué preguntas llegan de verdad hoy. Si nunca has leído las conversaciones reales, empieza por ahí."
+        ],
+        "sections": [
+            {
+                "title": "WhatsApp no es un canal más",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "La mayoría de los agentes de WhatsApp que fallan no fallan por el modelo. Fallan porque los armaron pensando en un chat de página web, y la gente en WhatsApp no escribe así."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En una web el usuario escribe una pregunta completa y espera. En WhatsApp manda cuatro mensajes seguidos, uno con el saludo, otro con la mitad de la duda, después una foto y al final un audio de cuarenta segundos aclarando lo que quiso decir. Si tu agente responde a cada mensaje apenas llega, va a contestar tres veces cosas distintas antes de que la persona termine de escribir."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La otra diferencia es que la conversación nunca se cierra. Alguien te escribe hoy, desaparece y vuelve en tres semanas con un simple y entonces. Si tu agente no sabe qué se habló antes, esa persona tiene que repetir todo, y ahí ya perdiste."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y hay una expectativa que no existe en otros canales: WhatsApp es donde la gente le escribe a la mamá. Si contestas en dos horas con un texto que parece formulario, se nota más que en cualquier otro lado."
+                    }
+                ]
+            },
+            {
+                "title": "La API oficial o la puerta de atrás",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Esta es la primera decisión y la que más caro se paga si la tomas mal."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Por un lado está la vía oficial, la WhatsApp Business Platform de Meta. Pides acceso, verificas el negocio, te asignan un número y pagas por conversación. Es más trámite al principio y tiene reglas que hay que respetar, pero tu número no se cae de un día para otro."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Por el otro están las librerías no oficiales, esas que se conectan como si fueran WhatsApp Web. Montas una en una tarde y sale gratis. El problema es que si Meta lo detecta te bloquea el número, y ese número suele ser el mismo que el negocio lleva años repartiendo en tarjetas, en la fachada y en Google."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Mi criterio es simple: para probar una idea interna o un piloto que puedes botar, la vía rápida sirve. Para el número por donde entran los clientes que pagan, oficial. Perder ese número no es un problema técnico, es un problema comercial."
+                    }
+                ]
+            },
+            {
+                "title": "La ventana de 24 horas manda sobre tu diseño",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Es la regla que más gente descubre tarde, casi siempre cuando ya prometió una funcionalidad que no se puede hacer."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Con la API oficial puedes escribirle libremente a alguien solo durante las 24 horas siguientes a su último mensaje. Pasado ese tiempo no puedes mandar el texto que se te antoje: tienes que usar una plantilla aprobada previamente por Meta."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Eso tumba de una todo lo que suene a seguimiento espontáneo. El recordatorio a los tres días, el mensaje de vuelve a visitarnos, la promoción improvisada del viernes. Todo eso son plantillas, y las plantillas se aprueban, se rechazan y hay que tenerlas listas antes."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo práctico: haz la lista de mensajes fuera de ventana que tu proceso va a necesitar y déjalos aprobados desde el principio. Y diseña la conversación para resolver dentro de la ventana, porque cada vez que te sales dependes de una plantilla rígida en lugar de una respuesta que se adapta."
+                    }
+                ]
+            },
+            {
+                "title": "Junta los mensajes antes de responder",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El arreglo más barato y el que más mejora la sensación de estar hablando con alguien que entiende."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En vez de responder al instante, espera unos segundos desde el último mensaje recibido. Si en ese tiempo llega otro, reinicias la cuenta. Cuando la persona por fin para, juntas todo lo que mandó y eso es lo que procesas. Con dos o tres segundos ya se nota el cambio."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Los audios entran en la misma bolsa. La gente manda notas de voz sin pensarlo, así que el agente necesita transcribirlas y tratarlas como un mensaje más. Si tu flujo ignora los audios, en la práctica está ignorando a buena parte de los clientes."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y guarda el historial por conversación, no por mensaje suelto. La memoria vive en tu base de datos, no en el proceso que se ejecuta, porque ese proceso termina y se olvida de todo. Esa persona que vuelve tres semanas después es la prueba de fuego."
+                    }
+                ]
+            },
+            {
+                "title": "Decide qué puede hacer solo y qué no",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Un agente que solo responde preguntas es un folleto que escribe. El valor aparece cuando hace cosas, y ahí también aparece el riesgo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Yo lo separo por si la acción se puede deshacer. Consultar el estado de un pedido, buscar un cliente en el CRM, mostrar horarios disponibles, dejar registrada la conversación: todo eso lo hace solo, porque si se equivoca no rompe nada."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Agendar una cita, cambiarle los datos a un cliente, prometer un precio o mandar algo que el cliente va a leer como un compromiso: eso pasa por confirmación hasta que el agente se lo gane con semanas de historial limpio."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La pregunta que uso para decidir es cuánto cuesta arreglar el error. Si la respuesta es un mensaje de disculpa, adelante. Si la respuesta es una llamada incómoda o plata devuelta, ahí va un humano en el medio."
+                    }
+                ]
+            },
+            {
+                "title": "El paso a un humano es un protocolo, no un botón",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Todo agente se va a quedar corto en algún momento. Lo que define la experiencia es qué pasa en ese momento exacto."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Necesitas tres cosas claras. Cuándo se entrega la conversación: cuando el cliente lo pide, cuando el tema es de reclamo o dinero, o cuando el agente ya dio dos vueltas sin resolver. A quién le llega y por dónde le avisas, porque si la alerta cae en un grupo que nadie lee, no hay traspaso. Y qué pasa mientras tanto: el agente tiene que decir que ya viene alguien, no dejar el chat en visto."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Falta la parte que casi todos olvidan: cuando el humano entra, el agente se calla. Si los dos escriben en el mismo chat, el cliente ve una conversación esquizofrénica y la confianza se va al piso."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y cuando el humano termina, alguien tiene que devolver el control. Sin eso, esa conversación queda muda para siempre y nadie se entera."
+                    }
+                ]
+            },
+            {
+                "title": "Cómo saber si está funcionando de verdad",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Que no salte ningún error no significa que esté atendiendo bien. Esa confusión me costó caro una vez."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Tuve un flujo que siguió marcando ejecución exitosa durante días mientras ya no estaba guardando nada. Técnicamente no fallaba. Simplemente había dejado de hacer su trabajo, y me di cuenta de casualidad. Desde ahí no entrego nada que no valide el resultado, no solo el estado."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En WhatsApp eso se traduce en revisar conversaciones completas, no contadores. Cuántas se resolvieron sin pasar a un humano, en cuántas la persona tuvo que repetir lo mismo dos veces, en cuáles el agente respondió algo que no le constaba. Esa última es la que más duele y no aparece en ningún tablero."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Un hábito barato: la primera semana lee todas las conversaciones. Todas. Vas a encontrar en dos días más problemas reales que en un mes de pruebas hechas por ti mismo."
+                    }
+                ]
+            },
+            {
+                "title": "El orden en que yo lo armaría",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Si empiezas mañana, este es el camino que menos vueltas da."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Primero lee las conversaciones que ya tienes y saca las diez preguntas que más se repiten. Ese es el alcance del agente, no lo que te imaginas que la gente pregunta."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Segundo resuelve el canal: número, acceso oficial y las plantillas que vas a necesitar fuera de la ventana. Tercero monta la conversación con memoria por cliente y el juntado de mensajes, todavía sin dejarlo ejecutar nada."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuarto define el traspaso a humano y pruébalo antes de abrirle la puerta a nadie. Quinto suéltale acciones, empezando por las que se pueden deshacer. Y sexto lee las conversaciones cada semana y ajusta, porque la gente va a preguntar cosas que ninguno de los dos previó."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El agente de WhatsApp que atiende hoy mi operación pasó por esos seis pasos, en ese orden, y lleva más de nueve mil horas de atención manual ahorradas. No fue porque el modelo fuera especial, sino porque el canal quedó bien resuelto antes de pedirle inteligencia a nada."
+                    }
+                ]
+            }
+        ],
+        "pros": [
+            "Atiende a la hora que la gente escribe de verdad, que casi nunca es la hora de oficina.",
+            "El cliente no repite su historia cada vez, porque la conversación tiene memoria propia.",
+            "Las preguntas repetidas dejan de consumir al equipo y quedan resueltas en el primer minuto.",
+            "Cada conversación queda registrada y se puede revisar después, sin depender de la memoria de nadie.",
+            "El traspaso a un humano llega con contexto, así que quien entra no arranca de cero."
+        ],
+        "cons": [
+            "La ventana de 24 horas te obliga a planear las plantillas antes, no cuando se te ocurra el mensaje.",
+            "Ahorrarte la API oficial pone en riesgo el número por donde entran tus clientes.",
+            "Si nadie recibe las conversaciones que el agente entrega, el traspaso empeora la experiencia en vez de salvarla.",
+            "Un agente que responde de más inventa compromisos, y eso cuesta más que no haber contestado.",
+            "Sin leer conversaciones reales, los tableros te muestran salud donde hay clientes perdidos."
+        ],
+        "tools": [
+            "WhatsApp Business API",
+            "Agentes de IA",
+            "n8n",
+            "Automatización",
+            "Atención al cliente"
+        ]
     }
 ];
