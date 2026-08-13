@@ -766,5 +766,252 @@ var GUIDES_DATA = [
             "Automatización",
             "Atención al cliente"
         ]
+    },
+    {
+        "id": "manejo-errores-automatizaciones",
+        "number": "08",
+        "visible": true,
+        "category": "Errores y monitoreo",
+        "title": "Cuando una automatización falla y nadie se entera: manejo de errores y alertas",
+        "subtitle": "Montar el flujo o escribir el script es la mitad del trabajo. La otra mitad es qué pasa el día que se rompe: quién se entera, con cuánta información y qué se hace con los datos que quedaron a medio camino.",
+        "description": "Manejo de errores y alertas en automatizaciones, tanto en n8n como en código propio: por qué tu cobertura es menor de la que crees, cómo detectar las fallas silenciosas que salen en verde, cómo hacer que la alerta llegue ya diagnosticada, cuándo reintentar sin duplicar operaciones y cómo no perder los datos de una ejecución que se cayó a la mitad.",
+        "image": "",
+        "imageCaption": "",
+        "date": "Agosto 2026",
+        "readingTime": "8 min de lectura",
+        "urlLabel": "Leer guía",
+        "requirements": [
+            "Saber qué tienes corriendo solo hoy: qué flujos, qué scripts, qué servicios y en qué máquina vive cada uno.",
+            "Acceso de administrador a esas piezas, para poder cambiarles la configuración de errores y reintentos.",
+            "Un canal de avisos que una persona concreta lea de verdad. Telegram, Slack o correo da igual, lo que importa es que tenga dueño.",
+            "Un lugar donde guardar lo que llega antes de procesarlo: una tabla, un archivo o una cola. La memoria del proceso no sirve, se va con él.",
+            "Tener claro cuáles son críticos. Si todos lo son, ninguno lo es y las alertas se vuelven ruido.",
+            "Un modelo de IA con acceso al detalle de la ejecución fallida, solo si vas a montar la parte del diagnóstico automático."
+        ],
+        "sections": [
+            {
+                "title": "El problema no es el error, es enterarte tarde",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Una automatización que falla y grita es un problema de una hora. Una que falla en silencio se convierte en semanas de datos perdidos, y casi siempre te enteras porque te lo dice un cliente."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuando montas la primera, el error se ve. Estás mirando la pantalla, la ejecución se pinta en rojo o el script escupe el mensaje en la terminal, y lo arreglas ahí mismo. Da igual si es un flujo visual, un script en el servidor o un servicio dentro de un contenedor: mientras sea una sola cosa y la estés mirando, no hay problema."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El problema aparece después, cuando tienes veinte piezas corriendo a las tres de la mañana y nadie está mirando nada. Ahí el error deja de ser un asunto técnico y pasa a ser un asunto de operación. Alguien tiene que enterarse, entender qué se rompió y decidir si hay que reprocesar algo o si puede esperar al lunes."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Esta guía es sobre esa parte, no sobre construir. Los ejemplos concretos salen de n8n y de scripts propios porque es donde vivo, pero el problema es idéntico en cualquier herramienta: lo que cambia es dónde se configura, no qué hay que resolver."
+                    }
+                ]
+            },
+            {
+                "title": "Tu cobertura es menor de la que crees",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Casi nadie sabe qué porcentaje de sus automatizaciones avisa cuando falla. El que lo mide se lleva una sorpresa."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En n8n existe un flujo especial que se dispara cuando otro se cae. La gente lo monta una vez, lo prueba, le llega el aviso y asume que la instancia entera quedó cubierta. No es así: solo captura los flujos que lo tienen asignado uno por uno en su propia configuración. No es global, no se hereda y no te dice cuáles quedaron sueltos."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En una instancia que audité había cuatro flujos de error distintos, montados por personas distintas en momentos distintos, y más de noventa flujos activos sin ninguno asignado. Esos noventa se caían sin avisarle a nadie, y nadie lo había notado justamente porque el que sí avisaba avisaba muy bien."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En código pasa lo mismo con otra cara. El bloque que atrapa excepciones envuelve solo la mitad del script y lo que revienta afuera se pierde. La tarea programada manda el error al correo del sistema, que es una dirección que nadie abrió nunca. El contenedor muere y el orquestador lo levanta tan rápido que la falla no existió para nadie. No es que falte manejo de errores: es que el aviso muere en un log."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Antes que cualquier otra cosa, haz el inventario. Lista todo lo que corre solo y escribe al lado si avisa cuando falla y a quién le llega. Aunque sea en una hoja de cálculo hecha a mano. Esa tabla es lo que más rápido paga de todo lo que hay en esta guía."
+                    }
+                ]
+            },
+            {
+                "title": "La falla silenciosa es la que hace daño",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Que salga en verde no significa que haya hecho su trabajo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Tuve un flujo que estuvo marcando ejecución exitosa durante días mientras había dejado de guardar registros. El servicio al que llamaba respondía correctamente pero devolvía vacío, y como nadie estaba validando el contenido, el flujo seguía su camino tan tranquilo. Me di cuenta de casualidad, revisando otra cosa."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En código el equivalente es el bloque que atrapa la excepción y continúa como si nada, o el proceso que termina con código cero porque nunca comprobó que la respuesta trajera algo adentro. Cada vez que envuelves un error para que no moleste, estás fabricando exactamente esta clase de falla."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Ningún manejo de errores te va a avisar de esto, porque técnicamente no hubo error. Por eso además de atrapar fallos hay que validar resultados: que el registro exista, que el contador se haya movido, que el archivo pese más de cero. Si no compruebas nada de eso, lo único que sabes es que corrió."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La forma más barata de cubrirlo es un chequeo de ausencia. Un proceso aparte, a otra hora, que pregunte lo contrario de lo normal: si hoy no se registró nada, avisa. Suena tonto y es lo que más veces me ha salvado, porque busca justo el problema que nadie está buscando."
+                    }
+                ]
+            },
+            {
+                "title": "Una alerta que nadie lee es una alerta que no existe",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El aviso más difícil de diseñar no es el técnico, es el que alguien va a leer y atender."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El error clásico es mandar las alertas al canal general del equipo, donde ya hay conversación, memes y coordinación del día. Ahí el aviso dura visible tres minutos. Peor todavía si va a un grupo grande, porque un mensaje que es de todos no es de nadie."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y un archivo de log no es un canal. Un error escrito en el disco del servidor solo existe si alguien entra a leerlo, y nadie entra a leerlo un domingo. Lo mismo con el tablero bonito que solo se abre cuando ya sospechas que algo anda mal."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Yo separo el canal de avisos del canal de conversación. Las fallas me llegan por un bot que solo sirve para eso, así que cuando ese bot escribe ya sé que es algo que pasó, no alguien preguntándome algo. Es un cambio de cinco minutos y cambia por completo la probabilidad de que el aviso se atienda."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cada alerta necesita dueño y acción. Si al leerla nadie sabe qué se supone que hay que hacer, en dos semanas la empiezan a ignorar. Y una alerta ignorada es peor que no tener ninguna, porque te da sensación de cobertura mientras el problema crece."
+                    }
+                ]
+            },
+            {
+                "title": "Que la alerta llegue ya diagnosticada",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El salto de calidad no fue avisar. Fue avisar con la causa probable adentro del mensaje."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Una alerta cruda te dice que algo falló y ya. Con eso te toca abrir el computador, entrar a la herramienta correcta, buscar la ejecución, encontrar el paso que reventó y leer el error. Son diez o quince minutos cada vez, y si estás en la calle son diez o quince minutos que no tienes."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo que monté es un solo punto de entrada para todas las fallas. Cuando una automatización se cae, manda a un endpoint mío la referencia de la ejecución y de dónde viene. Del otro lado, un proceso va a buscar el detalle, extrae el paso que reventó y el mensaje real del fallo, se lo pasa a un modelo y me llega un aviso con qué se rompió, dónde y por qué probablemente pasó."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Hoy le entran cuatro instancias de n8n, mías y de clientes, pero el diseño no depende de n8n: cualquier script puede pegarle al mismo endpoint con el mismo formato, y el aviso llega igual. Tener un único lugar donde aterrizan todas las fallas vale más que el diagnóstico en sí, porque es lo que evita que cada herramienta nueva traiga su propio rincón donde perderse."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La ganancia real no es el diagnóstico perfecto, es el triaje. Leo el aviso desde el celular y en un minuto sé si tengo que salir corriendo o si puede esperar. Ese minuto es la diferencia entre operar tus automatizaciones y vivir apagando incendios."
+                    }
+                ]
+            },
+            {
+                "title": "Reintentar no es gratis",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Antes de activar reintentos automáticos, pregúntate qué pasa si ese paso corre dos veces."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Casi toda herramienta te regala reintentos: un par de clics en n8n, una librería que reintenta sola en tu código, la política de reentrega de una cola. Para leer datos es perfecto, porque cubre lo que suele fallar de verdad: una API que se cayó un segundo, un límite de peticiones, una red que parpadeó."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El problema aparece cuando el paso que falló ya alcanzó a hacer algo: mandó el correo, creó el registro, cobró. El caso típico es el tiempo de espera agotado. La operación sí se ejecutó del otro lado, lo que no llegó a tiempo fue la respuesta. Tu automatización lo lee como un fallo, reintenta y acabas de duplicar."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y un duplicado silencioso es más difícil de encontrar que un error a gritos, porque no rompe nada: solo deja dos cobros, dos correos o dos registros que alguien va a descubrir mucho después."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La regla que uso: reintenta sin miedo los pasos que solo leen. Los que escriben, solo si el sistema del otro lado te deja mandar una clave tuya que identifique la operación, para que el segundo intento reconozca que eso ya se hizo. Si no se puede, prefiero que falle y avise antes que se ejecute dos veces."
+                    }
+                ]
+            },
+            {
+                "title": "Los datos que quedaron a medio camino",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Cuando algo se cae en la mitad, la pregunta no es solo por qué se cayó, sino qué se quedó sin procesar."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Si procesabas cien registros y reventó en el sesenta, tienes cuarenta huérfanos que nadie va a reclamar. Y si el disparador era un webhook, ese evento no vuelve nunca: el otro sistema ya lo mandó, ya recibió su respuesta y se olvidó del asunto."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Por eso a todo lo que recibe eventos le pongo un buzón. Lo primero que hace es guardar lo que llegó, en crudo y sin tocarlo, antes de procesar nada. Si el resto se rompe, el dato sigue ahí y se puede volver a correr cuando el problema esté arreglado. Es de las cosas más baratas de montar y de las que más veces salvan la semana."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En los procesos por lotes el equivalente es dejar escrito por dónde ibas. Guardar el último identificador procesado convierte volver a correr en algo aburrido en vez de peligroso, y te evita la decisión horrible de repetir todo o adivinar dónde quedó."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Es la diferencia entre se cayó y lo arreglé, y se cayó, lo arreglé y volví a correr lo que faltaba. Sin buzón y sin marca de avance, esa segunda mitad de la frase no existe y siempre queda un hueco que alguien va a encontrar después."
+                    }
+                ]
+            },
+            {
+                "title": "El orden en que yo lo armaría",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Si hoy tienes cosas corriendo en producción sin nada de esto, este es el orden que más resultado da por hora invertida."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Primero el inventario y la cobertura: qué corre solo, qué avisa cuando falla y a quién le llega. Conectar el aviso a lo que ya estaba huérfano suele ser el trabajo de una tarde y es lo que más mueve la aguja."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Segundo, un solo canal de avisos, separado de la conversación y con un dueño con nombre propio. Tercero, guarda en crudo lo que llega antes de procesarlo, al menos donde entren eventos que no se repiten."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuarto, un chequeo de ausencia para lo crítico: si hoy no corrió o no produjo nada, que avise. Quinto, revisa dónde tienes reintentos y quítalos de los pasos que escriben si no puedes evitar el duplicado."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y de último el diagnóstico automático. Es la parte más vistosa y por eso mucha gente empieza por ahí, pero diagnosticar en segundos un error que nunca te llega no sirve absolutamente de nada."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Nada de esto se luce en una demo. Es exactamente lo que separa una automatización que sigue viva a los seis meses de una que el equipo dejó de creerle a la tercera semana."
+                    }
+                ]
+            }
+        ],
+        "pros": [
+            "Te enteras tú antes que el cliente, que es la diferencia entre un ajuste y una disculpa.",
+            "El aviso llega con el paso que falló y la causa probable, así que decides en un minuto si corres o esperas.",
+            "Guardar en crudo lo que llega te deja reprocesar en vez de perder datos que no vuelven.",
+            "El inventario de cobertura destapa lo que llevaba meses fallando sin avisarle a nadie.",
+            "El equipo vuelve a confiar en la automatización, porque dejan de aparecer sorpresas."
+        ],
+        "cons": [
+            "Es trabajo que no se ve: no luce en ninguna demo y por eso siempre se deja para después.",
+            "Avisar de todo genera fatiga de alertas y termina con la gente ignorando el canal.",
+            "Los reintentos mal puestos duplican operaciones, y ese daño es peor que la falla original.",
+            "Las fallas silenciosas no las cubre ningún manejo de errores: hay que escribir chequeos aparte y mantenerlos.",
+            "El diagnóstico con IA suma un costo por cada ejecución fallida. Es poco, pero no es cero."
+        ],
+        "tools": [
+            "n8n",
+            "Python",
+            "Webhooks",
+            "APIs",
+            "Colas y reintentos",
+            "Telegram",
+            "Agentes de IA"
+        ]
     }
 ];
