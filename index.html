@@ -268,6 +268,7 @@ a{color:inherit;text-decoration:none}
 .guideFoot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line2);padding-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.76rem}
 .guideMeta{color:var(--faint)}
 .guideLink{color:var(--accent);display:inline-flex;align-items:center;gap:.4rem}
+.guideDots{display:none}
 /* contact */
 .contactGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:3.4rem;align-items:start}
 .cMethods{margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
@@ -327,6 +328,9 @@ a{color:inherit;text-decoration:none}
 .guideGrid::-webkit-scrollbar{display:none}
 .guideCard{flex:0 0 86%;scroll-snap-align:center;padding:1.5rem}
 .guideNum{font-size:2rem;margin-bottom:.7rem}
+.guideDots{display:flex;justify-content:center;gap:.5rem;margin-top:.2rem}
+.gdot{width:6px;height:6px;border-radius:50%;background:var(--line);transition:background .25s,transform .25s}
+.gdot.on{background:var(--accent);transform:scale(1.35)}
 .moreWrap{display:none}
 .scrollcue{display:none}
 }
@@ -406,6 +410,7 @@ a{color:inherit;text-decoration:none}
 <section class="sec guides" id="guias"><div class="wrap">
 <div class="sechead reveal"><div class="eyebrow mono"><b>[ 04 ]</b> // {{t.s04}}</div><h2 class="sectitle">{{t.titleGuides}}</h2><p class="secsub">{{t.guidesSub}}</p></div>
 <div class="guideGrid"><sc-for list="{{guides}}" as="g" hint-placeholder-count="2"><a class="guideCard reveal" href="{{g.url}}"><div class="guideNum mono">{{g.num}}</div><div class="guideCat mono">{{g.cat}}</div><h3 class="guideTitle">{{g.title}}</h3><p class="guideDesc">{{g.desc}}</p><div class="guideFoot"><span class="guideMeta">{{g.meta}}</span><span class="guideLink">{{t.guideRead}} →</span></div></a></sc-for></div>
+<div class="guideDots" aria-hidden="true"><sc-for list="{{guides}}" as="g" hint-placeholder-count="2"><span class="gdot"></span></sc-for></div>
 </div></section>
 
 <section class="sec" id="contacto"><div class="wrap">
@@ -521,8 +526,22 @@ class Component extends DCLogic {
     this.startAscii();
     this.startBg3d();
     this.observe();
+    this.guideDots();
     this.fetchMetrics();
     this.scrollToHash();
+  }
+  guideDots(){
+    this._gs=function(e){
+      var gg=e.target;
+      if(!gg||!gg.classList||!gg.classList.contains("guideGrid"))return;
+      var dots=document.querySelectorAll(".guideDots .gdot");
+      if(!dots.length)return;
+      var idx=Math.round(gg.scrollLeft/(gg.scrollWidth/dots.length));
+      if(idx<0)idx=0;if(idx>dots.length-1)idx=dots.length-1;
+      for(var j=0;j<dots.length;j++)dots[j].classList.toggle("on",j===idx);
+    };
+    document.addEventListener("scroll",this._gs,{capture:true,passive:true});
+    var d0=document.querySelector(".guideDots .gdot");if(d0)d0.classList.add("on");
   }
   scrollToHash(){
     var h=window.location.hash;
@@ -535,7 +554,7 @@ class Component extends DCLogic {
     }
     setTimeout(go,0);
   }
-  componentWillUnmount(){cancelAnimationFrame(this._raf);cancelAnimationFrame(this._raf3);if(this._io)this._io.disconnect();if(this._ioA)this._ioA.disconnect();window.removeEventListener("resize",this._rz);window.removeEventListener("pointermove",this._pm);window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);}
+  componentWillUnmount(){cancelAnimationFrame(this._raf);cancelAnimationFrame(this._raf3);if(this._io)this._io.disconnect();if(this._ioA)this._ioA.disconnect();window.removeEventListener("resize",this._rz);window.removeEventListener("pointermove",this._pm);window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);document.removeEventListener("scroll",this._gs,{capture:true});}
 
   hexToRgba(hex,a){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return "rgba("+((n>>16)&255)+","+((n>>8)&255)+","+(n&255)+","+a+")";}
   hexToRgb(hex){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return [(n>>16)&255,(n>>8)&255,n&255];}
