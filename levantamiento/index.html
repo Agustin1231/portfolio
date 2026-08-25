@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Levantamiento de proceso — URPE AI Lab</title>
+<title>Levantamiento de proceso — Agustin Peralta</title>
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Formulario de levantamiento de proceso para automatización. URPE AI Lab.">
+<meta name="description" content="Formulario de levantamiento de proceso para automatización.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -184,7 +184,7 @@ select option{background:var(--panel);color:var(--fg)}
 
 <div class="top">
   <div class="topIn">
-    <div class="brand"><span class="sq"></span>URPE AI LAB</div>
+    <div class="brand"><span class="sq"></span>agustin.peralta</div>
     <div class="stepCount mono" id="stepCount">Paso 1 de 8</div>
   </div>
   <div class="bar"><div class="barFill" id="barFill"></div></div>
@@ -194,9 +194,9 @@ select option{background:var(--panel);color:var(--fg)}
 
   <div class="hero" id="hero">
     <div class="eyebrow">Levantamiento de proceso</div>
-    <h1>Cuéntanos cómo funciona hoy</h1>
+    <h1>Cuéntame cómo funciona hoy</h1>
     <p class="lead">Este formulario recoge la información de <b>un solo proceso</b>. Si hay varios procesos a automatizar, se llena uno por cada uno. Toma entre 8 y 12 minutos y se guarda solo mientras lo llenas.</p>
-    <div class="note"><b>¿Prefieres hablar?</b> En las preguntas abiertas encontrarás un botón para responder con audio en vez de escribir. Nosotros lo transcribimos.</div>
+    <div class="note"><b>¿Prefieres hablar?</b> En las preguntas abiertas encontrarás un botón para responder con audio en vez de escribir. Yo lo transcribo.</div>
     <div class="note"><b>Seguridad.</b> No incluyas contraseñas, tokens ni accesos a sistemas. Esa información se solicita después por un canal seguro.</div>
   </div>
 
@@ -447,11 +447,11 @@ select option{background:var(--panel);color:var(--fg)}
   <div class="done" id="done">
     <div class="doneIcon">✓</div>
     <h2>Listo, recibido</h2>
-    <p>Gracias por el detalle. Revisamos la información y te contactamos por el mismo canal donde recibiste este enlace para agendar la llamada de validación.</p>
+    <p>Gracias por el detalle. Reviso la información y te contacto por el mismo canal donde recibiste este enlace para agendar la llamada de validación.</p>
   </div>
 
   <div class="foot">
-    <span>URPE AI LAB · Levantamiento de proceso</span>
+    <span>Agustin Peralta · Levantamiento de proceso</span>
     <a href="https://agustin.agustinynatalia.site" target="_blank" rel="noopener">agustin.agustinynatalia.site</a>
   </div>
 </div>
@@ -460,7 +460,7 @@ select option{background:var(--panel);color:var(--fg)}
 (function(){
   "use strict";
   var WEBHOOK = "https://n8n.agustinynatalia.site/webhook/levantamiento-proceso";
-  var KEY = "urpe_levantamiento_v1";
+  var KEY = "levantamiento_v1";
 
   var steps = [].slice.call(document.querySelectorAll(".step"));
   var total = steps.length;
@@ -765,7 +765,7 @@ select option{background:var(--panel);color:var(--fg)}
       .catch(function(){
         nextBtn.disabled = false;
         nextBtn.textContent = "Enviar";
-        alert("No se pudo enviar. Revisa la conexión e inténtalo otra vez. Si sigue fallando, avísanos por el canal donde recibiste este enlace.");
+        alert("No se pudo enviar. Revisa la conexión e inténtalo otra vez. Si sigue fallando, avísame por el canal donde recibiste este enlace.");
       });
   }
 
