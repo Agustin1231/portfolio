@@ -185,7 +185,7 @@ select option{background:var(--panel);color:var(--fg)}
 <div class="top">
   <div class="topIn">
     <div class="brand"><span class="sq"></span>URPE AI LAB</div>
-    <div class="stepCount mono" id="stepCount">Paso 1 de 9</div>
+    <div class="stepCount mono" id="stepCount">Paso 1 de 8</div>
   </div>
   <div class="bar"><div class="barFill" id="barFill"></div></div>
 </div>
@@ -195,7 +195,7 @@ select option{background:var(--panel);color:var(--fg)}
   <div class="hero" id="hero">
     <div class="eyebrow">Levantamiento de proceso</div>
     <h1>Cuéntanos cómo funciona hoy</h1>
-    <p class="lead">Este formulario recoge la información de <b>un solo proceso</b>. Si hay varios procesos a automatizar, se llena uno por cada uno. Toma entre 10 y 15 minutos y se guarda solo mientras lo llenas.</p>
+    <p class="lead">Este formulario recoge la información de <b>un solo proceso</b>. Si hay varios procesos a automatizar, se llena uno por cada uno. Toma entre 8 y 12 minutos y se guarda solo mientras lo llenas.</p>
     <div class="note"><b>¿Prefieres hablar?</b> En las preguntas abiertas encontrarás un botón para responder con audio en vez de escribir. Nosotros lo transcribimos.</div>
     <div class="note"><b>Seguridad.</b> No incluyas contraseñas, tokens ni accesos a sistemas. Esa información se solicita después por un canal seguro.</div>
   </div>
@@ -255,19 +255,6 @@ select option{background:var(--panel);color:var(--fg)}
         </div>
       </div>
 
-      <div class="f">
-        <label class="q" for="q5">¿Con qué frecuencia se dispara?</label>
-        <select id="q5" name="Frecuencia">
-          <option value="">Selecciona una opción</option>
-          <option>Varias veces al día</option>
-          <option>Una vez al día</option>
-          <option>Semanal</option>
-          <option>Quincenal</option>
-          <option>Mensual</option>
-          <option>Irregular, sin patrón</option>
-        </select>
-      </div>
-
       <div class="f" data-req>
         <label class="q" for="q6">¿Dónde termina el proceso?<span class="req">*</span></label>
         <div class="help">Cuál es el resultado final y quién lo recibe. Ejemplo, "un correo al cliente con la confirmación" o "una fila nueva en el Excel de contabilidad".</div>
@@ -306,66 +293,12 @@ select option{background:var(--panel);color:var(--fg)}
           <input type="text" name="Detalle de aprobacion" placeholder="¿Cuál paso y quién aprueba?">
         </div>
       </div>
-
-      <div class="f">
-        <label class="q" for="q10">¿Qué pasa cuando algo sale mal y cada cuánto ocurre?</label>
-        <div class="help">Los errores típicos son los que definen el diseño de la solución.</div>
-        <textarea id="q10" name="Que pasa cuando falla" placeholder="Una o dos veces por semana se pierde un pedido porque nadie revisó el correo."></textarea>
-      </div>
     </section>
 
     <!-- ============ 4 ============ -->
     <section class="step" data-step="4">
       <div class="blockHead">
         <div class="blockNum mono">BLOQUE 04</div>
-        <div class="blockTitle">Cuánto duele</div>
-        <div class="blockSub">El tamaño del problema en números. Si no lo sabes exacto, un estimado sirve.</div>
-      </div>
-
-      <div class="f">
-        <label class="q" for="q11">¿Cuántas veces se ejecuta al mes?</label>
-        <input type="number" id="q11" name="Ejecuciones al mes" min="0" placeholder="200">
-      </div>
-
-      <div class="f">
-        <label class="q" for="q12">¿Cuánto tiempo toma cada ejecución, en minutos?</label>
-        <input type="number" id="q12" name="Minutos por ejecucion" min="0" placeholder="15">
-      </div>
-
-      <div class="f">
-        <label class="q" for="q13">¿Cuántas personas lo tocan?</label>
-        <input type="number" id="q13" name="Personas que lo tocan" min="0" placeholder="3">
-      </div>
-
-      <div class="f">
-        <label class="q">¿Qué se pierde cuando falla?</label>
-        <div class="help">Puedes marcar varias.</div>
-        <div class="opts" data-multi="Que se pierde cuando falla">
-          <label class="opt"><input type="checkbox" value="Tiempo y reproceso"><span>Tiempo y reproceso</span></label>
-          <label class="opt"><input type="checkbox" value="Dinero directo"><span>Dinero directo</span></label>
-          <label class="opt"><input type="checkbox" value="Un cliente molesto o perdido"><span>Un cliente molesto o perdido</span></label>
-          <label class="opt"><input type="checkbox" value="Incumplimiento legal o normativo"><span>Incumplimiento legal o normativo</span></label>
-          <label class="opt"><input type="checkbox" value="Información que no se recupera"><span>Información que no se recupera</span></label>
-        </div>
-      </div>
-
-      <div class="f">
-        <label class="q">Del 1 al 5, ¿qué tan urgente es resolverlo?</label>
-        <div class="scale" data-scale="Urgencia">
-          <label><input type="radio" name="urg" value="1"><span>1</span></label>
-          <label><input type="radio" name="urg" value="2"><span>2</span></label>
-          <label><input type="radio" name="urg" value="3"><span>3</span></label>
-          <label><input type="radio" name="urg" value="4"><span>4</span></label>
-          <label><input type="radio" name="urg" value="5"><span>5</span></label>
-        </div>
-        <div class="scaleEnds"><span>Puede esperar</span><span>Urge ya</span></div>
-      </div>
-    </section>
-
-    <!-- ============ 5 ============ -->
-    <section class="step" data-step="5">
-      <div class="blockHead">
-        <div class="blockNum mono">BLOQUE 05</div>
         <div class="blockTitle">Sistemas involucrados</div>
         <div class="blockSub">Con qué herramientas se hace hoy.</div>
       </div>
@@ -378,32 +311,17 @@ select option{background:var(--panel);color:var(--fg)}
       </div>
 
       <div class="f">
-        <label class="q">¿Esos sistemas tienen API o alguna integración disponible?</label>
-        <div class="opts" data-single="Tienen API">
-          <label class="opt"><input type="radio" name="api" value="Sí, tienen API"><span>Sí, tienen API</span></label>
-          <label class="opt"><input type="radio" name="api" value="No, solo se usan por pantalla"><span>No, solo se usan por pantalla</span></label>
-          <label class="opt"><input type="radio" name="api" value="No lo sabemos"><span>No lo sabemos</span></label>
-        </div>
-      </div>
-
-      <div class="f">
-        <label class="q" for="q18">¿Hay algo ya automatizado en este proceso?</label>
-        <div class="help">Zapier, Make, macros de Excel, scripts. Si no hay nada, escribe "nada".</div>
-        <input type="text" id="q18" name="Ya automatizado" placeholder="Nada">
-      </div>
-
-      <div class="f">
         <label class="q" for="q19">¿Cuántas personas usarían la solución nueva?</label>
         <input type="number" id="q19" name="Usuarios de la solucion" min="0" placeholder="5">
       </div>
     </section>
 
-    <!-- ============ 6 ============ -->
-    <section class="step" data-step="6">
+    <!-- ============ 5 ============ -->
+    <section class="step" data-step="5">
       <div class="blockHead">
-        <div class="blockNum mono">BLOQUE 06</div>
+        <div class="blockNum mono">BLOQUE 05</div>
         <div class="blockTitle">Entradas y salidas</div>
-        <div class="blockSub">Qué información entra, qué sale y en qué volumen.</div>
+        <div class="blockSub">Qué información entra y qué sale.</div>
       </div>
 
       <div class="f" data-req>
@@ -419,18 +337,12 @@ select option{background:var(--panel);color:var(--fg)}
         <textarea id="q21" name="Output" placeholder="Un resumen mensual en Excel y un aviso por WhatsApp al comercial."></textarea>
         <div class="err">Este campo es obligatorio</div>
       </div>
-
-      <div class="f">
-        <label class="q" for="q22">¿Qué volumen manejan?</label>
-        <div class="help">Ejemplo, "200 facturas al mes" o "unos 40 mensajes diarios".</div>
-        <input type="text" id="q22" name="Volumen" placeholder="200 facturas al mes">
-      </div>
     </section>
 
-    <!-- ============ 7 ============ -->
-    <section class="step" data-step="7">
+    <!-- ============ 6 ============ -->
+    <section class="step" data-step="6">
       <div class="blockHead">
-        <div class="blockNum mono">BLOQUE 07</div>
+        <div class="blockNum mono">BLOQUE 06</div>
         <div class="blockTitle">El proceso ideal</div>
         <div class="blockSub">Cómo se vería si funcionara perfecto.</div>
       </div>
@@ -455,18 +367,17 @@ select option{background:var(--panel);color:var(--fg)}
       </div>
     </section>
 
-    <!-- ============ 8 ============ -->
-    <section class="step" data-step="8">
+    <!-- ============ 7 ============ -->
+    <section class="step" data-step="7">
       <div class="blockHead">
-        <div class="blockNum mono">BLOQUE 08</div>
+        <div class="blockNum mono">BLOQUE 07</div>
         <div class="blockTitle">Dónde vive la solución</div>
-        <div class="blockSub">Infraestructura, restricciones y tiempos.</div>
+        <div class="blockSub">Infraestructura y tiempos.</div>
       </div>
 
       <div class="f" data-req>
         <label class="q">¿Dónde se debe alojar la solución?<span class="req">*</span></label>
         <div class="opts" data-single="Alojamiento" data-cond="cond-infra|En un servidor propio de la empresa, en sus instalaciones|En la nube de la empresa (AWS, Azure, Google Cloud u otra)">
-          <label class="opt"><input type="radio" name="host" value="En la infraestructura de URPE AI Lab, nosotros ponemos servidor y mantenimiento"><span>En la infraestructura de URPE AI Lab, nosotros ponemos servidor y mantenimiento</span></label>
           <label class="opt"><input type="radio" name="host" value="En un servidor propio de la empresa, en sus instalaciones"><span>En un servidor propio de la empresa, en sus instalaciones</span></label>
           <label class="opt"><input type="radio" name="host" value="En la nube de la empresa (AWS, Azure, Google Cloud u otra)"><span>En la nube de la empresa (AWS, Azure, Google Cloud u otra)</span></label>
           <label class="opt"><input type="radio" name="host" value="Solo dentro de herramientas SaaS que la empresa ya paga"><span>Solo dentro de herramientas SaaS que la empresa ya paga</span></label>
@@ -476,15 +387,6 @@ select option{background:var(--panel);color:var(--fg)}
         <div class="cond" id="cond-infra">
           <label class="q" style="font-size:.94rem">¿Quién administra ese servidor y podemos tener acceso para desplegar?</label>
           <input type="text" name="Quien administra el servidor" placeholder="Proveedor externo, contacto y si nos dan acceso" style="margin-top:.5rem">
-        </div>
-      </div>
-
-      <div class="f">
-        <label class="q">¿Hay restricción de que los datos no salgan del país o de la empresa?</label>
-        <div class="opts" data-single="Restriccion de datos">
-          <label class="opt"><input type="radio" name="datos" value="Sí, hay restricción"><span>Sí, hay restricción</span></label>
-          <label class="opt"><input type="radio" name="datos" value="No"><span>No</span></label>
-          <label class="opt"><input type="radio" name="datos" value="No lo sabemos"><span>No lo sabemos</span></label>
         </div>
       </div>
 
@@ -506,10 +408,10 @@ select option{background:var(--panel);color:var(--fg)}
       </div>
     </section>
 
-    <!-- ============ 9 ============ -->
-    <section class="step" data-step="9">
+    <!-- ============ 8 ============ -->
+    <section class="step" data-step="8">
       <div class="blockHead">
-        <div class="blockNum mono">BLOQUE 09</div>
+        <div class="blockNum mono">BLOQUE 08</div>
         <div class="blockTitle">Cierre</div>
         <div class="blockSub">Lo último y ya.</div>
       </div>
@@ -529,12 +431,6 @@ select option{background:var(--panel);color:var(--fg)}
         <textarea id="q32" name="Que mas deberiamos saber"></textarea>
       </div>
 
-      <div class="f" data-req data-email>
-        <label class="q" for="q33">Correo de contacto para el seguimiento<span class="req">*</span></label>
-        <input type="email" id="q33" name="Correo de contacto" placeholder="nombre@empresa.com">
-        <div class="err">Escribe un correo válido</div>
-      </div>
-
       <div class="f">
         <label class="q" for="q34">Empresa</label>
         <input type="text" id="q34" name="Empresa" placeholder="Nombre de la empresa">
@@ -551,7 +447,7 @@ select option{background:var(--panel);color:var(--fg)}
   <div class="done" id="done">
     <div class="doneIcon">✓</div>
     <h2>Listo, recibido</h2>
-    <p>Gracias por el detalle. Revisamos la información y te escribimos al correo que dejaste para agendar la llamada de validación.</p>
+    <p>Gracias por el detalle. Revisamos la información y te contactamos por el mismo canal donde recibiste este enlace para agendar la llamada de validación.</p>
   </div>
 
   <div class="foot">
