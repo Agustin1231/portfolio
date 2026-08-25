@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Levantamiento de proceso — URPE AI Lab</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Formulario de levantamiento de proceso para automatización. URPE AI Lab.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d; --panel:#141417; --panel2:#1a1a1e;
+  --line:rgba(255,255,255,.11); --line2:rgba(255,255,255,.055);
+  --fg:#eceae4; --dim:#9b9a91; --faint:#585851;
+  --accent:#ff5c35; --btnfg:#0b0b0d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  background:var(--bg);color:var(--fg);
+  min-height:100vh;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono',monospace}
+::selection{background:var(--accent);color:var(--btnfg)}
+
+/* ---------- topbar ---------- */
+.top{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line2);
+}
+.topIn{max-width:820px;margin:0 auto;padding:.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.92rem;letter-spacing:-.3px;display:flex;align-items:center;gap:.55rem}
+.brand .sq{width:9px;height:9px;background:var(--accent);border-radius:2px;flex:none}
+.stepCount{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--faint);letter-spacing:.5px;white-space:nowrap}
+.bar{height:2px;background:var(--line2)}
+.barFill{height:100%;width:0;background:var(--accent);transition:width .45s cubic-bezier(.4,0,.2,1)}
+
+/* ---------- layout ---------- */
+.wrap{max-width:820px;margin:0 auto;padding:2.6rem 1.4rem 5rem}
+.hero{margin-bottom:2.6rem}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+h1{font-size:clamp(1.7rem,4.6vw,2.5rem);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:1rem}
+.lead{color:var(--dim);font-size:1.02rem;max-width:60ch}
+.note{
+  margin-top:1.5rem;padding:.95rem 1.1rem;
+  border:1px solid var(--line2);border-left:2px solid var(--accent);
+  border-radius:0 8px 8px 0;background:var(--panel);
+  font-size:.88rem;color:var(--dim);
+}
+.note b{color:var(--fg);font-weight:600}
+
+/* ---------- steps ---------- */
+.step{display:none;animation:fade .4s ease}
+.step.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.blockHead{margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--line2)}
+.blockNum{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--faint);letter-spacing:1px;margin-bottom:.45rem}
+.blockTitle{font-size:1.32rem;font-weight:600;letter-spacing:-.01em}
+.blockSub{color:var(--dim);font-size:.9rem;margin-top:.45rem}
+
+/* ---------- fields ---------- */
+.f{margin-bottom:2rem}
+.f label.q{display:block;font-size:1rem;font-weight:500;margin-bottom:.35rem}
+.req{color:var(--accent);margin-left:.25rem}
+.help{font-size:.85rem;color:var(--faint);margin-bottom:.75rem;line-height:1.5}
+input[type=text],input[type=email],input[type=number],input[type=date],textarea,select{
+  width:100%;background:var(--panel);color:var(--fg);
+  border:1px solid var(--line);border-radius:9px;
+  padding:.85rem 1rem;font-family:inherit;font-size:.96rem;
+  transition:border-color .2s,box-shadow .2s;
+}
+textarea{min-height:120px;resize:vertical;line-height:1.6}
+input:focus,textarea:focus,select:focus{
+  outline:none;border-color:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 14%,transparent);
+}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%239b9a91' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 1rem center}
+select option{background:var(--panel);color:var(--fg)}
+
+.opts{display:flex;flex-direction:column;gap:.55rem}
+.opt{
+  display:flex;align-items:flex-start;gap:.75rem;
+  padding:.8rem 1rem;background:var(--panel);
+  border:1px solid var(--line);border-radius:9px;cursor:pointer;
+  transition:border-color .2s,background .2s;font-size:.94rem;
+}
+.opt:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.opt input{accent-color:var(--accent);margin-top:.3rem;flex:none;width:15px;height:15px;cursor:pointer}
+.opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--panel))}
+
+.scale{display:flex;gap:.55rem;flex-wrap:wrap}
+.scale label{
+  flex:1;min-width:56px;text-align:center;cursor:pointer;
+  padding:.9rem .3rem;background:var(--panel);border:1px solid var(--line);
+  border-radius:9px;font-family:'JetBrains Mono',monospace;font-size:1.05rem;
+  transition:all .2s;
+}
+.scale label:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.scale input{display:none}
+.scale input:checked + span{color:var(--btnfg)}
+.scale label.sel{background:var(--accent);border-color:var(--accent);color:var(--btnfg);font-weight:600}
+.scaleEnds{display:flex;justify-content:space-between;font-size:.76rem;color:var(--faint);margin-top:.5rem;font-family:'JetBrains Mono',monospace}
+
+.drop{
+  display:block;border:1px dashed var(--line);border-radius:10px;padding:1.6rem 1rem;
+  text-align:center;color:var(--dim);cursor:pointer;background:var(--panel);
+  transition:border-color .2s,background .2s;font-size:.9rem;
+}
+.drop:hover,.drop.over{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,var(--panel))}
+.drop input{display:none}
+.fileList{margin-top:.7rem;display:flex;flex-direction:column;gap:.4rem}
+.fileItem{display:flex;justify-content:space-between;align-items:center;gap:.8rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--dim);background:var(--panel2);border:1px solid var(--line2);border-radius:7px;padding:.5rem .75rem}
+.fileItem button{background:none;border:none;color:var(--faint);cursor:pointer;font-size:1rem;line-height:1;padding:0 .2rem}
+.fileItem button:hover{color:var(--accent)}
+
+/* ---------- audio ---------- */
+.rec{margin-top:.7rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.recBtn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;
+  padding:.55rem .95rem;border-radius:8px;border:1px solid var(--line);
+  background:var(--panel);color:var(--dim);cursor:pointer;transition:all .2s;
+}
+.recBtn:hover{border-color:var(--accent);color:var(--accent)}
+.recBtn .mic{width:9px;height:9px;border-radius:50%;background:var(--dim);flex:none;transition:background .2s}
+.recBtn:hover .mic{background:var(--accent)}
+.recBtn.rec-on{border-color:var(--accent);color:var(--accent)}
+.recBtn.rec-on .mic{background:var(--accent);animation:pulseRec 1.1s infinite}
+@keyframes pulseRec{0%{opacity:1}50%{opacity:.25}100%{opacity:1}}
+.recTime{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--faint)}
+.recPlay{display:flex;align-items:center;gap:.6rem;width:100%;margin-top:.5rem}
+.recPlay audio{flex:1;height:34px}
+.recDel{background:none;border:1px solid var(--line);color:var(--faint);border-radius:7px;cursor:pointer;padding:.35rem .6rem;font-family:'JetBrains Mono',monospace;font-size:.72rem}
+.recDel:hover{border-color:var(--accent);color:var(--accent)}
+.orText{font-size:.76rem;color:var(--faint);font-family:'JetBrains Mono',monospace}
+
+.cond{display:none;margin-top:1.1rem;padding-left:1rem;border-left:2px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+.cond.on{display:block;animation:fade .3s ease}
+.err{color:var(--accent);font-size:.83rem;margin-top:.45rem;display:none;font-family:'JetBrains Mono',monospace}
+.f.bad input,.f.bad textarea,.f.bad select{border-color:var(--accent)}
+.f.bad .err{display:block}
+
+/* ---------- nav ---------- */
+.nav{display:flex;gap:.8rem;justify-content:space-between;align-items:center;margin-top:2.8rem;padding-top:1.6rem;border-top:1px solid var(--line2)}
+.btn{
+  font-family:'JetBrains Mono',monospace;font-size:.85rem;
+  padding:.85rem 1.6rem;border-radius:9px;border:1px solid var(--line);
+  cursor:pointer;transition:all .22s;background:none;color:var(--fg);
+  display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px;
+}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:600}
+.btnP:hover{transform:translateY(-2px);box-shadow:0 10px 26px color-mix(in srgb,var(--accent) 32%,transparent)}
+.btnO:hover{border-color:var(--accent);color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.saved{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--faint)}
+
+/* ---------- done ---------- */
+.done{display:none;text-align:center;padding:4rem 1rem}
+.done.on{display:block;animation:fade .5s ease}
+.doneIcon{width:58px;height:58px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1.6rem}
+.done h2{font-size:1.6rem;font-weight:600;margin-bottom:.8rem}
+.done p{color:var(--dim);max-width:46ch;margin:0 auto}
+
+.foot{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--line2);font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+.foot a{color:var(--faint);text-decoration:none}
+.foot a:hover{color:var(--accent)}
+
+@media(max-width:560px){
+  .wrap{padding:2rem 1.1rem 4rem}
+  .nav{flex-direction:column-reverse;align-items:stretch}
+  .btn{justify-content:center;width:100%}
+  .navMeta{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="topIn">
+    <div class="brand"><span class="sq"></span>URPE AI LAB</div>
+    <div class="stepCount mono" id="stepCount">Paso 1 de 9</div>
+  </div>
+  <div class="bar"><div class="barFill" id="barFill"></div></div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero" id="hero">
+    <div class="eyebrow">Levantamiento de proceso</div>
+    <h1>Cuéntanos cómo funciona hoy</h1>
+    <p class="lead">Este formulario recoge la información de <b>un solo proceso</b>. Si hay varios procesos a automatizar, se llena uno por cada uno. Toma entre 10 y 15 minutos y se guarda solo mientras lo llenas.</p>
+    <div class="note"><b>¿Prefieres hablar?</b> En las preguntas abiertas encontrarás un botón para responder con audio en vez de escribir. Nosotros lo transcribimos.</div>
+    <div class="note"><b>Seguridad.</b> No incluyas contraseñas, tokens ni accesos a sistemas. Esa información se solicita después por un canal seguro.</div>
+  </div>
+
+  <form id="form" novalidate>
+
+    <!-- ============ 1 ============ -->
+    <section class="step on" data-step="1">
+      <div class="blockHead">
+        <div class="blockNum mono">BLOQUE 01</div>
+        <div class="blockTitle">El proceso y su propósito</div>
+        <div class="blockSub">Empecemos por lo básico, qué es y para qué existe.</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q1">Nombre del proceso<span class="req">*</span></label>
+        <div class="help">Ejemplo, "Alta de nuevo proveedor" o "Confirmación de reservas".</div>
+        <input type="text" id="q1" name="Nombre del proceso" placeholder="Alta de nuevo proveedor">
+        <div class="err">Este campo es obligatorio</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q2">¿Para qué existe este proceso?<span class="req">*</span></label>
+        <div class="help">Qué problema resuelve o qué resultado produce para el negocio. En una o dos frases, sin tecnicismos.</div>
+        <textarea id="q2" name="Proposito del proceso" placeholder="Para que ningún proveedor entre sin validar sus documentos y contabilidad pueda pagarle sin devoluciones."></textarea>
+        <div class="err">Este campo es obligatorio</div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q3">¿Qué área o persona es la dueña del proceso?</label>
+        <input type="text" id="q3" name="Dueno del proceso" placeholder="Administración, Marta Gómez">
+      </div>
+    </section>
+
+    <!-- ============ 2 ============ -->
+    <section class="step" data-step="2">
+      <div class="blockHead">
+        <div class="blockNum mono">BLOQUE 02</div>
+        <div class="blockTitle">Disparo y destino</div>
+        <div class="blockSub">Qué lo enciende y dónde termina.</div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Qué hace que el proceso arranque?</label>
+        <div class="help">Puedes marcar varias.</div>
+        <div class="opts" data-multi="Disparadores">
+          <label class="opt"><input type="checkbox" value="Llega un correo"><span>Llega un correo</span></label>
+          <label class="opt"><input type="checkbox" value="Llega un mensaje de WhatsApp"><span>Llega un mensaje de WhatsApp</span></label>
+          <label class="opt"><input type="checkbox" value="Un cliente llena un formulario"><span>Un cliente llena un formulario</span></label>
+          <label class="opt"><input type="checkbox" value="Se crea o cambia un registro en un sistema"><span>Se crea o cambia un registro en un sistema</span></label>
+          <label class="opt"><input type="checkbox" value="Una llamada telefónica"><span>Una llamada telefónica</span></label>
+          <label class="opt"><input type="checkbox" value="Alguien lo hace en una fecha o día fijo"><span>Alguien lo hace en una fecha o día fijo</span></label>
+          <label class="opt"><input type="checkbox" value="Otro" data-other="1"><span>Otro</span></label>
+        </div>
+        <div class="cond" id="cond-otro-disparo">
+          <input type="text" name="Otro disparador" placeholder="¿Cuál?">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q5">¿Con qué frecuencia se dispara?</label>
+        <select id="q5" name="Frecuencia">
+          <option value="">Selecciona una opción</option>
+          <option>Varias veces al día</option>
+          <option>Una vez al día</option>
+          <option>Semanal</option>
+          <option>Quincenal</option>
+          <option>Mensual</option>
+          <option>Irregular, sin patrón</option>
+        </select>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q6">¿Dónde termina el proceso?<span class="req">*</span></label>
+        <div class="help">Cuál es el resultado final y quién lo recibe. Ejemplo, "un correo al cliente con la confirmación" o "una fila nueva en el Excel de contabilidad".</div>
+        <textarea id="q6" name="Donde termina" placeholder="Termina cuando el comercial recibe el aviso y el registro queda en el CRM."></textarea>
+        <div class="err">Este campo es obligatorio</div>
+      </div>
+    </section>
+
+    <!-- ============ 3 ============ -->
+    <section class="step" data-step="3">
+      <div class="blockHead">
+        <div class="blockNum mono">BLOQUE 03</div>
+        <div class="blockTitle">Paso a paso actual</div>
+        <div class="blockSub">Cómo se hace hoy, con todo y lo incómodo.</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q7">Describe el paso a paso tal como se hace hoy<span class="req">*</span></label>
+        <div class="help">Numerado, en palabras simples, incluyendo los pasos manuales por incómodos que parezcan.</div>
+        <textarea id="q7" name="Paso a paso actual" style="min-height:180px" placeholder="1. Recibimos el correo del cliente&#10;2. Copiamos los datos a la hoja de cálculo&#10;3. Le escribimos por WhatsApp para confirmar&#10;4. Marcamos la fila en verde"></textarea>
+        <div class="err">Este campo es obligatorio</div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q8">¿Quiénes intervienen y qué hace cada uno?</label>
+        <textarea id="q8" name="Personas que intervienen" placeholder="Recepción recibe, administración valida, gerencia aprueba."></textarea>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Algún paso necesita aprobación de alguien?</label>
+        <div class="opts" data-single="Requiere aprobacion" data-cond="cond-aprob|Sí">
+          <label class="opt"><input type="radio" name="aprob" value="Sí"><span>Sí</span></label>
+          <label class="opt"><input type="radio" name="aprob" value="No"><span>No</span></label>
+        </div>
+        <div class="cond" id="cond-aprob">
+          <input type="text" name="Detalle de aprobacion" placeholder="¿Cuál paso y quién aprueba?">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q10">¿Qué pasa cuando algo sale mal y cada cuánto ocurre?</label>
+        <div class="help">Los errores típicos son los que definen el diseño de la solución.</div>
+        <textarea id="q10" name="Que pasa cuando falla" placeholder="Una o dos veces por semana se pierde un pedido porque nadie revisó el correo."></textarea>
+      </div>
+    </section>
+
+    <!-- ============ 4 ============ -->
+    <section class="step" data-step="4">
+      <div class="blockHead">
+        <div class="blockNum mono">BLOQUE 04</div>
+        <div class="blockTitle">Cuánto duele</div>
+        <div class="blockSub">El tamaño del problema en números. Si no lo sabes exacto, un estimado sirve.</div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q11">¿Cuántas veces se ejecuta al mes?</label>
+        <input type="number" id="q11" name="Ejecuciones al mes" min="0" placeholder="200">
+      </div>
+
+      <div class="f">
+        <label class="q" for="q12">¿Cuánto tiempo toma cada ejecución, en minutos?</label>
+        <input type="number" id="q12" name="Minutos por ejecucion" min="0" placeholder="15">
+      </div>
+
+      <div class="f">
+        <label class="q" for="q13">¿Cuántas personas lo tocan?</label>
+        <input type="number" id="q13" name="Personas que lo tocan" min="0" placeholder="3">
+      </div>
+
+      <div class="f">
+        <label class="q">¿Qué se pierde cuando falla?</label>
+        <div class="help">Puedes marcar varias.</div>
+        <div class="opts" data-multi="Que se pierde cuando falla">
+          <label class="opt"><input type="checkbox" value="Tiempo y reproceso"><span>Tiempo y reproceso</span></label>
+          <label class="opt"><input type="checkbox" value="Dinero directo"><span>Dinero directo</span></label>
+          <label class="opt"><input type="checkbox" value="Un cliente molesto o perdido"><span>Un cliente molesto o perdido</span></label>
+          <label class="opt"><input type="checkbox" value="Incumplimiento legal o normativo"><span>Incumplimiento legal o normativo</span></label>
+          <label class="opt"><input type="checkbox" value="Información que no se recupera"><span>Información que no se recupera</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">Del 1 al 5, ¿qué tan urgente es resolverlo?</label>
+        <div class="scale" data-scale="Urgencia">
+          <label><input type="radio" name="urg" value="1"><span>1</span></label>
+          <label><input type="radio" name="urg" value="2"><span>2</span></label>
+          <label><input type="radio" name="urg" value="3"><span>3</span></label>
+          <label><input type="radio" name="urg" value="4"><span>4</span></label>
+          <label><input type="radio" name="urg" value="5"><span>5</span></label>
+        </div>
+        <div class="scaleEnds"><span>Puede esperar</span><span>Urge ya</span></div>
+      </div>
+    </section>
+
+    <!-- ============ 5 ============ -->
+    <section class="step" data-step="5">
+      <div class="blockHead">
+        <div class="blockNum mono">BLOQUE 05</div>
+        <div class="blockTitle">Sistemas involucrados</div>
+        <div class="blockSub">Con qué herramientas se hace hoy.</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q16">¿Qué sistemas o herramientas intervienen?<span class="req">*</span></label>
+        <div class="help">Nómbralos todos, incluyendo los que parecen menores. Ejemplo, CRM, ERP, Excel, Gmail, WhatsApp Business, una web propia.</div>
+        <textarea id="q16" name="Sistemas involucrados" placeholder="Gmail, Excel en Drive, HubSpot, WhatsApp Business."></textarea>
+        <div class="err">Este campo es obligatorio</div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Esos sistemas tienen API o alguna integración disponible?</label>
+        <div class="opts" data-single="Tienen API">
+          <label class="opt"><input type="radio" name="api" value="Sí, tienen API"><span>Sí, tienen API</span></label>
+          <label class="opt"><input type="radio" name="api" value="No, solo se usan por pantalla"><span>No, solo se usan por pantalla</span></label>
+          <label class="opt"><input type="radio" name="api" value="No lo sabemos"><span>No lo sabemos</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q18">¿Hay algo ya automatizado en este proceso?</label>
+        <div class="help">Zapier, Make, macros de Excel, scripts. Si no hay nada, escribe "nada".</div>
+        <input type="text" id="q18" name="Ya automatizado" placeholder="Nada">
+      </div>
+
+      <div class="f">
+        <label class="q" for="q19">¿Cuántas personas usarían la solución nueva?</label>
+        <input type="number" id="q19" name="Usuarios de la solucion" min="0" placeholder="5">
+      </div>
+    </section>
+
+    <!-- ============ 6 ============ -->
+    <section class="step" data-step="6">
+      <div class="blockHead">
+        <div class="blockNum mono">BLOQUE 06</div>
+        <div class="blockTitle">Entradas y salidas</div>
+        <div class="blockSub">Qué información entra, qué sale y en qué volumen.</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q20">¿Qué información entra y en qué formato?<span class="req">*</span></label>
+        <div class="help">Ejemplo, "PDF de factura por correo" o "datos que el cliente escribe en un formulario web".</div>
+        <textarea id="q20" name="Input" placeholder="Facturas en PDF que llegan por correo, más un Excel semanal del proveedor."></textarea>
+        <div class="err">Este campo es obligatorio</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q21">¿Qué información sale y en qué formato?<span class="req">*</span></label>
+        <div class="help">Ejemplo, "un Excel mensual" o "un mensaje de WhatsApp al comercial".</div>
+        <textarea id="q21" name="Output" placeholder="Un resumen mensual en Excel y un aviso por WhatsApp al comercial."></textarea>
+        <div class="err">Este campo es obligatorio</div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q22">¿Qué volumen manejan?</label>
+        <div class="help">Ejemplo, "200 facturas al mes" o "unos 40 mensajes diarios".</div>
+        <input type="text" id="q22" name="Volumen" placeholder="200 facturas al mes">
+      </div>
+    </section>
+
+    <!-- ============ 7 ============ -->
+    <section class="step" data-step="7">
+      <div class="blockHead">
+        <div class="blockNum mono">BLOQUE 07</div>
+        <div class="blockTitle">El proceso ideal</div>
+        <div class="blockSub">Cómo se vería si funcionara perfecto.</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q23">Si esto funcionara perfecto, ¿cómo se vería?<span class="req">*</span></label>
+        <div class="help">Descríbelo como se lo contarías a un compañero, sin pensar en la tecnología.</div>
+        <textarea id="q23" name="Proceso ideal" placeholder="Llega el correo y solo. El sistema arma el registro y nos avisa si algo falta."></textarea>
+        <div class="err">Este campo es obligatorio</div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q24">¿Qué señal te diría que quedó bien resuelto?</label>
+        <div class="help">Ejemplo, "que nadie vuelva a copiar datos a mano" o "que el cliente reciba respuesta en menos de 5 minutos".</div>
+        <input type="text" id="q24" name="Senal de exito" placeholder="Que nadie vuelva a copiar datos a mano">
+      </div>
+
+      <div class="f">
+        <label class="q" for="q25">¿Hay algo que deba seguir siendo manual?</label>
+        <div class="help">Decisiones, aprobaciones o contacto humano que no se quieren automatizar.</div>
+        <textarea id="q25" name="Debe seguir manual" placeholder="La llamada de bienvenida la queremos seguir haciendo nosotros."></textarea>
+      </div>
+    </section>
+
+    <!-- ============ 8 ============ -->
+    <section class="step" data-step="8">
+      <div class="blockHead">
+        <div class="blockNum mono">BLOQUE 08</div>
+        <div class="blockTitle">Dónde vive la solución</div>
+        <div class="blockSub">Infraestructura, restricciones y tiempos.</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q">¿Dónde se debe alojar la solución?<span class="req">*</span></label>
+        <div class="opts" data-single="Alojamiento" data-cond="cond-infra|En un servidor propio de la empresa, en sus instalaciones|En la nube de la empresa (AWS, Azure, Google Cloud u otra)">
+          <label class="opt"><input type="radio" name="host" value="En la infraestructura de URPE AI Lab, nosotros ponemos servidor y mantenimiento"><span>En la infraestructura de URPE AI Lab, nosotros ponemos servidor y mantenimiento</span></label>
+          <label class="opt"><input type="radio" name="host" value="En un servidor propio de la empresa, en sus instalaciones"><span>En un servidor propio de la empresa, en sus instalaciones</span></label>
+          <label class="opt"><input type="radio" name="host" value="En la nube de la empresa (AWS, Azure, Google Cloud u otra)"><span>En la nube de la empresa (AWS, Azure, Google Cloud u otra)</span></label>
+          <label class="opt"><input type="radio" name="host" value="Solo dentro de herramientas SaaS que la empresa ya paga"><span>Solo dentro de herramientas SaaS que la empresa ya paga</span></label>
+          <label class="opt"><input type="radio" name="host" value="No lo tenemos definido, queremos una recomendación"><span>No lo tenemos definido, queremos una recomendación</span></label>
+        </div>
+        <div class="err">Selecciona una opción</div>
+        <div class="cond" id="cond-infra">
+          <label class="q" style="font-size:.94rem">¿Quién administra ese servidor y podemos tener acceso para desplegar?</label>
+          <input type="text" name="Quien administra el servidor" placeholder="Proveedor externo, contacto y si nos dan acceso" style="margin-top:.5rem">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Hay restricción de que los datos no salgan del país o de la empresa?</label>
+        <div class="opts" data-single="Restriccion de datos">
+          <label class="opt"><input type="radio" name="datos" value="Sí, hay restricción"><span>Sí, hay restricción</span></label>
+          <label class="opt"><input type="radio" name="datos" value="No"><span>No</span></label>
+          <label class="opt"><input type="radio" name="datos" value="No lo sabemos"><span>No lo sabemos</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q29">¿Hay una fecha límite o un evento que marque la urgencia?</label>
+        <input type="date" id="q29" name="Fecha limite">
+      </div>
+
+      <div class="f">
+        <label class="q" for="q30">¿En qué rango de inversión se están moviendo?</label>
+        <select id="q30" name="Rango de inversion">
+          <option value="">Selecciona una opción</option>
+          <option>Menos de 500 USD</option>
+          <option>Entre 500 y 1.500 USD</option>
+          <option>Entre 1.500 y 5.000 USD</option>
+          <option>Más de 5.000 USD</option>
+          <option>Prefiero hablarlo en la llamada</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- ============ 9 ============ -->
+    <section class="step" data-step="9">
+      <div class="blockHead">
+        <div class="blockNum mono">BLOQUE 09</div>
+        <div class="blockTitle">Cierre</div>
+        <div class="blockSub">Lo último y ya.</div>
+      </div>
+
+      <div class="f">
+        <label class="q">Adjunta capturas, plantillas o documentos del proceso</label>
+        <div class="help">Una captura de la pantalla que usan hoy ahorra tres correos de ida y vuelta. Máximo 10 MB por archivo.</div>
+        <label class="drop" id="drop">
+          <input type="file" id="files" multiple>
+          <span id="dropTxt">Arrastra los archivos aquí o haz clic para elegirlos</span>
+        </label>
+        <div class="fileList" id="fileList"></div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q32">¿Qué más deberíamos saber que no te preguntamos?</label>
+        <textarea id="q32" name="Que mas deberiamos saber"></textarea>
+      </div>
+
+      <div class="f" data-req data-email>
+        <label class="q" for="q33">Correo de contacto para el seguimiento<span class="req">*</span></label>
+        <input type="email" id="q33" name="Correo de contacto" placeholder="nombre@empresa.com">
+        <div class="err">Escribe un correo válido</div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q34">Empresa</label>
+        <input type="text" id="q34" name="Empresa" placeholder="Nombre de la empresa">
+      </div>
+    </section>
+
+    <div class="nav" id="nav">
+      <button type="button" class="btn btnO" id="prev">← Atrás</button>
+      <div class="navMeta saved mono" id="savedMsg">Se guarda solo en este navegador</div>
+      <button type="button" class="btn btnP" id="next">Siguiente →</button>
+    </div>
+  </form>
+
+  <div class="done" id="done">
+    <div class="doneIcon">✓</div>
+    <h2>Listo, recibido</h2>
+    <p>Gracias por el detalle. Revisamos la información y te escribimos al correo que dejaste para agendar la llamada de validación.</p>
+  </div>
+
+  <div class="foot">
+    <span>URPE AI LAB · Levantamiento de proceso</span>
+    <a href="https://agustin.agustinynatalia.site" target="_blank" rel="noopener">agustin.agustinynatalia.site</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var WEBHOOK = "https://n8n.agustinynatalia.site/webhook/levantamiento-proceso";
+  var KEY = "urpe_levantamiento_v1";
+
+  var steps = [].slice.call(document.querySelectorAll(".step"));
+  var total = steps.length;
+  var cur = 0;
+  var form = document.getElementById("form");
+  var hero = document.getElementById("hero");
+  var nav = document.getElementById("nav");
+  var prevBtn = document.getElementById("prev");
+  var nextBtn = document.getElementById("next");
+  var barFill = document.getElementById("barFill");
+  var stepCount = document.getElementById("stepCount");
+  var pickedFiles = [];
+
+  function render(){
+    steps.forEach(function(s,i){ s.classList.toggle("on", i===cur); });
+    barFill.style.width = ((cur+1)/total*100)+"%";
+    stepCount.textContent = "Paso "+(cur+1)+" de "+total;
+    prevBtn.style.visibility = cur===0 ? "hidden" : "visible";
+    nextBtn.textContent = cur===total-1 ? "Enviar" : "Siguiente →";
+    nextBtn.classList.toggle("btnP", true);
+    hero.style.display = cur===0 ? "block" : "none";
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  /* ---- selection visuals ---- */
+  document.querySelectorAll(".opt input").forEach(function(inp){
+    inp.addEventListener("change", function(){
+      var group = inp.closest(".opts");
+      if(inp.type==="radio"){
+        group.querySelectorAll(".opt").forEach(function(o){ o.classList.remove("sel"); });
+      }
+      inp.closest(".opt").classList.toggle("sel", inp.checked);
+      var fBox = inp.closest(".f");
+      if(fBox) fBox.classList.remove("bad");
+      handleCond(group);
+      save();
+    });
+  });
+  document.querySelectorAll(".scale label").forEach(function(l){
+    l.addEventListener("click", function(){
+      l.closest(".scale").querySelectorAll("label").forEach(function(x){ x.classList.remove("sel"); });
+      l.classList.add("sel");
+      save();
+    });
+  });
+
+  function handleCond(group){
+    var spec = group.getAttribute("data-cond");
+    if(spec){
+      var parts = spec.split("|");
+      var box = document.getElementById(parts[0]);
+      var vals = parts.slice(1);
+      var sel = group.querySelector("input:checked");
+      box.classList.toggle("on", !!sel && vals.indexOf(sel.value)>-1);
+    }
+    var other = group.querySelector('input[data-other]');
+    if(other){
+      var ob = document.getElementById("cond-otro-disparo");
+      if(ob) ob.classList.toggle("on", other.checked);
+    }
+  }
+
+  /* ---- audio por pregunta ---- */
+  var recordings = {};
+  var activeRec = null;
+
+  function slug(s){
+    return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+            .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,45);
+  }
+  function pickMime(){
+    var opts = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"];
+    for(var i=0;i<opts.length;i++){
+      if(window.MediaRecorder && MediaRecorder.isTypeSupported(opts[i])) return opts[i];
+    }
+    return "";
+  }
+  function extFor(m){ return m.indexOf("mp4")>-1 ? "m4a" : (m.indexOf("ogg")>-1 ? "ogg" : "webm"); }
+
+  document.querySelectorAll("textarea").forEach(function(ta){
+    if(!navigator.mediaDevices || !window.MediaRecorder) return;
+    var wrap = document.createElement("div");
+    wrap.className = "rec";
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "recBtn";
+    btn.innerHTML = '<span class="mic"></span><span class="lbl">Responder con audio</span>';
+    var time = document.createElement("span");
+    time.className = "recTime";
+    var hint = document.createElement("span");
+    hint.className = "orText"; hint.textContent = "si prefieres hablar en vez de escribir";
+    var play = document.createElement("div");
+    play.className = "recPlay"; play.style.display = "none";
+    wrap.appendChild(btn); wrap.appendChild(time); wrap.appendChild(hint); wrap.appendChild(play);
+    ta.parentNode.insertBefore(wrap, ta.nextSibling);
+
+    var mr = null, chunks = [], t0 = 0, tick = null;
+
+    function stop(){
+      if(mr && mr.state !== "inactive") mr.stop();
+    }
+    function reset(){
+      clearInterval(tick); tick = null;
+      btn.classList.remove("rec-on");
+      btn.querySelector(".lbl").textContent = "Responder con audio";
+      time.textContent = "";
+      activeRec = null;
+    }
+
+    btn.addEventListener("click", function(){
+      if(mr && mr.state === "recording"){ stop(); return; }
+      if(activeRec) activeRec();
+      navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+        var mime = pickMime();
+        mr = mime ? new MediaRecorder(stream, {mimeType:mime}) : new MediaRecorder(stream);
+        chunks = [];
+        mr.ondataavailable = function(e){ if(e.data.size) chunks.push(e.data); };
+        mr.onstop = function(){
+          stream.getTracks().forEach(function(t){ t.stop(); });
+          var type = mr.mimeType || mime || "audio/webm";
+          var blob = new Blob(chunks, {type:type});
+          recordings[ta.name] = {blob:blob, ext:extFor(type)};
+          var url = URL.createObjectURL(blob);
+          play.innerHTML = "";
+          var au = document.createElement("audio");
+          au.controls = true; au.src = url;
+          var del = document.createElement("button");
+          del.type = "button"; del.className = "recDel"; del.textContent = "Borrar";
+          del.addEventListener("click", function(){
+            delete recordings[ta.name];
+            play.style.display = "none"; play.innerHTML = "";
+          });
+          play.appendChild(au); play.appendChild(del);
+          play.style.display = "flex";
+          var f = ta.closest(".f"); if(f) f.classList.remove("bad");
+          reset();
+        };
+        mr.start();
+        t0 = Date.now();
+        btn.classList.add("rec-on");
+        btn.querySelector(".lbl").textContent = "Detener";
+        tick = setInterval(function(){
+          var s = Math.floor((Date.now()-t0)/1000);
+          time.textContent = String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+          if(s >= 300) stop();
+        }, 250);
+        activeRec = stop;
+      }).catch(function(){
+        alert("No pudimos acceder al micrófono. Revisa los permisos del navegador o escribe la respuesta.");
+      });
+    });
+  });
+
+  /* ---- files ---- */
+  var drop = document.getElementById("drop");
+  var fileInput = document.getElementById("files");
+  var fileList = document.getElementById("fileList");
+  fileInput.addEventListener("change", function(){
+    [].slice.call(fileInput.files).forEach(function(f){
+      if(f.size > 10*1024*1024){ alert("El archivo "+f.name+" pasa de 10 MB."); return; }
+      pickedFiles.push(f);
+    });
+    fileInput.value = "";
+    paintFiles();
+  });
+  ["dragenter","dragover"].forEach(function(e){
+    drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.add("over"); });
+  });
+  ["dragleave","drop"].forEach(function(e){
+    drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.remove("over"); });
+  });
+  drop.addEventListener("drop", function(ev){
+    [].slice.call(ev.dataTransfer.files).forEach(function(f){ pickedFiles.push(f); });
+    paintFiles();
+  });
+  function paintFiles(){
+    fileList.innerHTML = "";
+    pickedFiles.forEach(function(f,i){
+      var row = document.createElement("div");
+      row.className = "fileItem";
+      row.innerHTML = "<span>"+f.name+" · "+(f.size/1024).toFixed(0)+" KB</span>";
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = "×";
+      b.addEventListener("click", function(){ pickedFiles.splice(i,1); paintFiles(); });
+      row.appendChild(b);
+      fileList.appendChild(row);
+    });
+  }
+
+  /* ---- validation ---- */
+  function validate(idx){
+    var ok = true;
+    steps[idx].querySelectorAll(".f[data-req]").forEach(function(f){
+      var bad = false;
+      var g = f.querySelector(".opts");
+      if(g){
+        if(!g.querySelector("input:checked")) bad = true;
+      } else {
+        var field = f.querySelector("input[type=text],input[type=email],textarea,select");
+        if(field){
+          var v = field.value.trim();
+          if(!v && !(field.name && recordings[field.name])) bad = true;
+          if(!bad && f.hasAttribute("data-email") && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) bad = true;
+        }
+      }
+      f.classList.toggle("bad", bad);
+      if(bad) ok = false;
+    });
+    if(!ok){
+      var first = steps[idx].querySelector(".f.bad");
+      if(first) first.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+    return ok;
+  }
+  form.addEventListener("input", function(e){
+    var f = e.target.closest(".f");
+    if(f) f.classList.remove("bad");
+    save();
+  });
+
+  /* ---- persistence ---- */
+  var saveTimer;
+  function save(){
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      var data = {};
+      form.querySelectorAll("input,textarea,select").forEach(function(el,i){
+        if(el.type==="file") return;
+        var k = el.id || (el.name+"_"+i);
+        data[k] = (el.type==="checkbox"||el.type==="radio") ? el.checked : el.value;
+      });
+      try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){}
+    }, 400);
+  }
+  function restore(){
+    var raw;
+    try{ raw = localStorage.getItem(KEY); }catch(e){ return; }
+    if(!raw) return;
+    var data = JSON.parse(raw);
+    form.querySelectorAll("input,textarea,select").forEach(function(el,i){
+      if(el.type==="file") return;
+      var k = el.id || (el.name+"_"+i);
+      if(!(k in data)) return;
+      if(el.type==="checkbox"||el.type==="radio"){
+        el.checked = data[k];
+        if(el.checked){
+          var opt = el.closest(".opt"); if(opt) opt.classList.add("sel");
+          var sl = el.closest(".scale label"); if(sl) sl.classList.add("sel");
+        }
+      } else { el.value = data[k]; }
+    });
+    document.querySelectorAll(".opts").forEach(handleCond);
+    document.getElementById("savedMsg").textContent = "Recuperamos lo que llevabas";
+  }
+
+  /* ---- collect + submit ---- */
+  function collect(){
+    var out = {};
+    form.querySelectorAll("input[type=text],input[type=email],input[type=number],input[type=date],textarea,select").forEach(function(el){
+      var v = el.value.trim();
+      if(v && el.name) out[el.name] = v;
+    });
+    document.querySelectorAll("[data-multi]").forEach(function(g){
+      var vals = [].slice.call(g.querySelectorAll("input:checked")).map(function(i){ return i.value; });
+      if(vals.length) out[g.getAttribute("data-multi")] = vals.join(", ");
+    });
+    document.querySelectorAll("[data-single]").forEach(function(g){
+      var s = g.querySelector("input:checked");
+      if(s) out[g.getAttribute("data-single")] = s.value;
+    });
+    document.querySelectorAll("[data-scale]").forEach(function(g){
+      var s = g.querySelector("input:checked");
+      if(s) out[g.getAttribute("data-scale")] = s.value + " de 5";
+    });
+    return out;
+  }
+
+  function submit(){
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Enviando...";
+    var fd = new FormData();
+    var data = collect();
+    Object.keys(data).forEach(function(k){ fd.append(k, data[k]); });
+    fd.append("_meta", JSON.stringify({enviado: new Date().toISOString(), origen: location.href}));
+    pickedFiles.forEach(function(f,i){ fd.append("adjunto_"+(i+1), f, f.name); });
+    Object.keys(recordings).forEach(function(name, i){
+      var r = recordings[name];
+      fd.append("audio_"+(i+1), r.blob, "audio-"+slug(name)+"."+r.ext);
+    });
+
+    fetch(WEBHOOK, {method:"POST", body: fd})
+      .then(function(r){
+        if(!r.ok) throw new Error("HTTP "+r.status);
+        try{ localStorage.removeItem(KEY); }catch(e){}
+        form.style.display = "none";
+        nav.style.display = "none";
+        hero.style.display = "none";
+        document.getElementById("done").classList.add("on");
+        barFill.style.width = "100%";
+        stepCount.textContent = "Completado";
+        window.scrollTo({top:0, behavior:"smooth"});
+      })
+      .catch(function(){
+        nextBtn.disabled = false;
+        nextBtn.textContent = "Enviar";
+        alert("No se pudo enviar. Revisa la conexión e inténtalo otra vez. Si sigue fallando, avísanos por el canal donde recibiste este enlace.");
+      });
+  }
+
+  nextBtn.addEventListener("click", function(){
+    if(!validate(cur)) return;
+    if(cur === total-1){ submit(); return; }
+    cur++; render();
+  });
+  prevBtn.addEventListener("click", function(){
+    if(cur>0){ cur--; render(); }
+  });
+
+  restore();
+  render();
+})();
+</script>
+</body>
+</html>
