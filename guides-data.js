@@ -1013,5 +1013,252 @@ var GUIDES_DATA = [
             "Telegram",
             "Agentes de IA"
         ]
+    },
+    {
+        "id": "cuando-tu-agente-necesita-rag",
+        "number": "09",
+        "visible": true,
+        "category": "RAG y bases de conocimiento",
+        "title": "Cuándo tu agente de IA necesita RAG y cuándo te estás complicando",
+        "subtitle": "Montar una base vectorial se volvió el paso obligado de cualquier agente que tenga que responder sobre documentos. En la mayoría de casos que me llegan, el problema se resolvía con contexto bien armado y sin base vectorial, y en los casos donde sí hace falta el trabajo pesado no es montarla sino mantenerla viva.",
+        "description": "Cuándo usar RAG en un agente de IA y cuándo no hace falta. Qué es RAG explicado sin humo, las tres preguntas que hago antes de montar una base vectorial, las alternativas más baratas que casi nadie prueba primero, por qué la ingesta importa más que el modelo de embeddings y cómo saber si tu agente está recuperando bien.",
+        "image": "",
+        "imageCaption": "",
+        "date": "Agosto 2026",
+        "readingTime": "8 min de lectura",
+        "urlLabel": "Leer guía",
+        "requirements": [
+            "Tener claro qué preguntas concretas quieres que el agente responda. Sin esa lista no hay forma de decidir ni de evaluar.",
+            "Saber dónde vive hoy la información y en qué formato está. No es lo mismo documentos escritos que PDF escaneados, hojas de cálculo o notas de voz.",
+            "Un responsable con nombre propio de mantener esa información al día. Si no existe, es lo primero que hay que crear.",
+            "Un modelo de lenguaje al que le puedas pasar contexto en el prompt, que es lo único que necesitas para el primer escalón.",
+            "Solo si terminas necesitando base vectorial, un proveedor de embeddings y un lugar donde guardarlos. Para empezar sirve un archivo en disco, no hace falta un servicio aparte.",
+            "Veinte o treinta preguntas reales de usuarios de verdad para medir si recupera bien. Las preguntas inventadas por el que construye siempre salen aprobadas."
+        ],
+        "sections": [
+            {
+                "title": "RAG no es memoria, es un buscador pegado al modelo",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Un modelo de lenguaje no se acuerda de nada. RAG no le da memoria, le pone al lado un buscador que le mete en el prompt los pedazos de texto que parecen relevantes, justo antes de que responda."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuando alguien dice que su agente ya conoce los documentos de la empresa, lo que hay debajo casi siempre es esto. Se parte cada documento en fragmentos, cada fragmento se convierte en una lista de números que representa su significado, y eso se guarda. Cuando llega una pregunta se convierte igual, se buscan los fragmentos más parecidos, se pegan al prompt y el modelo responde leyendo lo que le pusieron adelante."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Dicho así se entiende por qué no arregla lo que la gente cree que arregla. El modelo no aprendió nada, no se acuerda de la conversación de ayer y no quedó más inteligente. Lo único que cambió es qué texto tiene a la vista en el momento de responder."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y de ahí sale la consecuencia que más duele. Si el buscador trae el fragmento equivocado, el modelo responde con toda la seguridad del mundo sobre el fragmento equivocado. La calidad de la respuesta la manda la recuperación y no el modelo, que es justo la mitad del sistema que casi nadie mira."
+                    }
+                ]
+            },
+            {
+                "title": "Las tres preguntas antes de montar una base vectorial",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Antes de armar nada mido tres cosas. Cuánto texto hay, cada cuánto cambia y qué tan impredecibles son las preguntas."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Si todo lo que el agente necesita saber cabe en el prompt, no hace falta RAG. Los modelos de hoy se leen un documento entero de una sentada, así que un manual de veinte páginas o una lista de precios se les puede pasar completa cada vez. Sale más barato de mantener que una base vectorial y además el modelo ve todo el contexto, no cinco pedazos sueltos que alguien escogió por él."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La segunda es cada cuánto cambia eso. Si cambia todos los días, tu problema no es de búsqueda sino de actualización, y meterle embeddings encima solo agrega un paso más que se queda viejo. Y si no cambia casi nunca, con más razón va fijo en el prompt y te ahorras la mitad del proyecto."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La tercera es qué preguntan de verdad. Si son cinco variantes de la misma cosa, no necesitas recuperación semántica, necesitas cinco respuestas bien escritas. He visto flujos con base vectorial montada resolviendo preguntas de horario y de dirección, que es como comprar un camión para traer el mercado de la esquina."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "RAG empieza a valer la pena cuando hay mucho texto, la pregunta puede ser cualquiera y no sabes de antemano en qué documento está la respuesta. Las tres al tiempo, no una sola."
+                    }
+                ]
+            },
+            {
+                "title": "Lo que suele alcanzar y casi nadie prueba primero",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Entre no tener nada y montar una base vectorial hay tres escalones que la gente se salta de una."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El primero es meter el contenido en el prompt, ordenado y con títulos claros. Suena tosco y es lo que mejor funciona cuando el volumen es chico, porque el modelo lee todo y no depende de que un buscador acierte. La regla práctica es que si el contenido cabe sin apretar, va completo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El segundo es usar el buscador que ya trae el sistema donde viven los documentos. Mis notas viven en un gestor de conocimiento self-hosted y el agente las consulta por la API de búsqueda que ya tenía, sin embeddings de por medio. Casi toda herramienta seria trae búsqueda por texto, y esa búsqueda ya sabe de permisos, de carpetas y de qué se actualizó."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El tercero es un índice. Un archivo corto que lista qué documentos existen y de qué habla cada uno, que sí va completo en el prompt, y el agente abre solo el que necesita. Así funciona mi propia memoria de trabajo, con un índice de una línea por tema y el detalle en archivos aparte que se cargan bajo demanda. Es barato, se depura leyendo y falla de formas que se entienden."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Los tres se montan en horas, no cobran por fragmento y no hay que mantenerlos sincronizados con nada. Si con eso el agente ya responde bien, ahí terminó el proyecto y te ahorraste la parte cara."
+                    }
+                ]
+            },
+            {
+                "title": "Cuándo sí hace falta de verdad",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Hay casos donde no hay vuelta que darle, y casi todos tienen la misma forma."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El caso claro es soporte sobre un cuerpo grande de documentación, donde hay cientos de páginas repartidas en muchos documentos y la pregunta del cliente puede caer en cualquiera. Ahí no hay prompt que aguante y no hay forma de adivinar cuál abrir, así que necesitas que algo escoja por ti antes de responder."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El otro caso es cuando la gente pregunta con palabras distintas a las que están escritas en el documento. El cliente escribe que no le llegó lo que compró y el documento habla de novedades en la entrega. La búsqueda por palabra se queda en la mitad ahí, y la semántica encuentra el fragmento aunque no comparta ni una palabra con la pregunta. Ese es el escenario donde RAG gana de verdad y no por moda."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Yo lo tengo montado sobre mis propias notas por esa segunda razón, porque le pregunto en lenguaje suelto a cosas que escribí hace meses. Son sesenta y un archivos convertidos en poco más de doscientos fragmentos, guardados en una base que es un solo archivo en disco. No hace falta un servicio aparte ni un servidor de vectores para arrancar, y quitarse esa pieza de encima le baja bastante la complejidad al asunto."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Convertir los documentos a números cuesta poco y se paga una sola vez por fragmento. Lo caro nunca fue eso, es lo que viene después."
+                    }
+                ]
+            },
+            {
+                "title": "Si lo que entra está incompleto, ninguna base vectorial lo arregla",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "La recuperación solo puede encontrar lo que alguien convirtió en texto. Todo lo demás, para el buscador, no existe."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Armé un panel donde aterrizan las conversaciones de WhatsApp de un negocio, con su buscador encima. Al revisar los datos había sesenta notas de voz guardadas con su archivo y ninguna transcrita. Para el buscador esas conversaciones estaban en blanco, y son justo las de los clientes que prefieren hablar en vez de escribir. Ningún ajuste de modelo iba a rescatar eso, porque el contenido nunca llegó a ser texto."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Con los documentos pasa lo mismo y con más frecuencia de la que uno espera. El PDF escaneado que es una foto de una hoja, la tabla de precios que al extraerla queda como una fila de números sin encabezado, el manual que vive en diapositivas. Todo eso entra al índice como basura o no entra, y la búsqueda después no tiene de dónde sacar la respuesta."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Por eso el primer trabajo de un RAG no es escoger el modelo de embeddings sino medir qué porcentaje de lo que quieres consultar es texto de verdad. Esa revisión aburrida explica la mayoría de los proyectos que responden mal sin que nadie sepa por qué."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y falta cómo se corta. Si el fragmento parte la frase por la mitad, el buscador devuelve media respuesta y el modelo completa la otra mitad por su cuenta, que es la peor combinación posible. Cortar por títulos y secciones en vez de cada tantos caracteres arregla más problemas de calidad que cambiar de proveedor."
+                    }
+                ]
+            },
+            {
+                "title": "El trabajo real empieza cuando ya funciona",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El pipeline lo tienes andando en días. Lo que cuesta es lo que pasa seis meses después, cuando el agente sigue respondiendo con información que ya no es verdad."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La empresa cambia una política, sube precios, saca un producto o retira un proceso viejo, y la base de conocimiento no se mueve al mismo ritmo. El agente responde con la misma seguridad de siempre porque no sabe que algo cambió, solo sabe lo que tiene guardado. Y lo peor es que eso no genera ningún error en el log, todo se ve verde mientras la respuesta ya es mentira."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Definir quién actualiza los documentos, cada cuánto y cómo se detecta lo que quedó viejo lleva semanas de conversación con el equipo, porque ese proceso casi nunca existía antes de que llegaras. Armar el RAG es ingeniería, mantenerlo es gobernanza, y la segunda parte es la que decide si el proyecto sigue vivo el año que viene."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo que más me ha servido es que cada documento indexado lleve fecha y dueño, y que reemplazar signifique borrar. Un documento viejo que se quedó en el índice compite con el nuevo cada vez que alguien pregunta, y a veces gana, así que acumular versiones sin limpiar es una forma silenciosa de dañar el sistema."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En lo técnico ayuda que la actualización sea barata. Yo reviso qué archivos cambiaron y solo vuelvo a procesar esos, así actualizar no es un evento sino una rutina. Cuando reindexar cuesta una tarde, nadie reindexa."
+                    }
+                ]
+            },
+            {
+                "title": "Cómo saber si está recuperando bien",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "La respuesta se ve bien casi siempre, porque el modelo escribe bonito con lo que sea que le pongan adelante. Hay que mirar un escalón más abajo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo primero es evaluar la recuperación aparte de la respuesta. Armas una lista de veinte o treinta preguntas reales, anotas al lado qué documento debería salir en cada una, y mides cuántas veces sale entre los primeros resultados. Si no haces eso, lo que estás calificando es la redacción del modelo y no el conocimiento del sistema."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo segundo es un umbral. Si el resultado más parecido igual queda lejos de la pregunta, prefiero que el agente diga que no lo tiene a que responda con lo que más se le pareció. Un agente que admite que no sabe es infinitamente más útil que uno que improvisa bien, sobre todo cuando del otro lado hay un cliente tomando una decisión."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo tercero es citar la fuente en cada respuesta. Sirve para que quien pregunta verifique, y de paso delata rapidísimo cuándo el buscador está trayendo cualquier cosa. Si la cita no aparece o no corresponde, ya sabes dónde está el problema sin abrir el código."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y guarda las preguntas que salieron mal. Esa lista es lo que le dice al dueño de la información qué documento falta o cuál quedó viejo, que es la única forma de que el mantenimiento deje de depender de que alguien se acuerde."
+                    }
+                ]
+            },
+            {
+                "title": "El orden en que yo lo armaría",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Si hoy tienes que hacer que un agente responda sobre tus documentos, este es el orden que menos tiempo desperdicia."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Primero escribe las preguntas que tiene que responder. Con esa lista al frente casi siempre se ve que el contenido cabe en el prompt o que basta con un índice y abrir el documento correcto. Prueba ese escalón antes de comprar nada."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Segundo, si no alcanza, revisa la ingesta antes que la búsqueda. Cuánto de eso es texto real, qué está escaneado, qué está en audio y qué se rompe al extraerlo. Es la parte aburrida y es la que decide el resultado."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Tercero, arma la base vectorial pequeña y sobre lo que de verdad importa, con fecha y dueño en cada documento, cortando por secciones. Empieza en un archivo local y ya te mudarás cuando el volumen lo pida, que casi nunca es el primer mes."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuarto, antes de lanzar deja escrito quién actualiza qué y cada cuánto, y monta la evaluación de recuperación con preguntas reales. Sin esas dos cosas el sistema funciona el día de la demo y se degrada en silencio a partir de ahí."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Montar RAG hoy es fácil y por eso se volvió la respuesta por defecto. Mantener una base de conocimiento viva sigue siendo difícil, y eso no lo resuelve ninguna herramienta que te instales."
+                    }
+                ]
+            }
+        ],
+        "pros": [
+            "El agente responde con la información de tu negocio y no con lo que el modelo se imagine.",
+            "La recuperación semántica encuentra la respuesta aunque el cliente la pregunte con otras palabras.",
+            "Citar la fuente en cada respuesta permite verificar y destapa rápido cuando el buscador falla.",
+            "Actualizar un documento cambia lo que responde el agente al instante, sin tocar el modelo ni reentrenar nada.",
+            "Se puede empezar con una base en un archivo local, sin servicios nuevos ni infraestructura aparte."
+        ],
+        "cons": [
+            "En la mayoría de casos chicos es complejidad que no hacía falta, porque el contenido cabía en el prompt.",
+            "Si la respuesta correcta nunca se convirtió en texto, ningún ajuste la va a encontrar.",
+            "Mantener la base al día es un problema de gobernanza y se lo termina comiendo el proyecto.",
+            "Cuando la información queda vieja el agente sigue respondiendo con seguridad y sin generar ningún error visible.",
+            "Suma piezas que hay que evaluar aparte, porque una respuesta bien redactada no prueba que haya recuperado lo correcto."
+        ],
+        "tools": [
+            "Agentes de IA",
+            "RAG",
+            "Bases vectoriales",
+            "Embeddings",
+            "Bases de conocimiento",
+            "n8n",
+            "Python"
+        ]
     }
 ];
