@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo saber si una automatización sirvió de verdad — Agustin Peralta</title>
+<meta name="description" content="Cómo medir el retorno real de una automatización con IA. Las cuatro métricas que importan, por qué las horas ahorradas se inflan solas, cómo capturar el dato desde el propio flujo en vez de estimarlo después, qué es el ahorro de atención y por qué no debe sumarse a las horas, y cómo tomar la línea base antes de automatizar.">
+<meta name="keywords" content="Automatización de procesos, Métricas y ROI, n8n, PostgreSQL, Webhooks, Tableros de datos, Métricas y ROI">
+<meta name="author" content="Agustin Peralta">
+<link rel="canonical" href="https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html">
+<link rel="alternate" hreflang="es" href="https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo saber si una automatización sirvió de verdad — Agustin Peralta">
+<meta property="og:description" content="Cómo medir el retorno real de una automatización con IA. Las cuatro métricas que importan, por qué las horas ahorradas se inflan solas, cómo capturar el dato desde el propio flujo en vez de estimarlo después, qué es el ahorro de atención y por qué no debe sumarse a las horas, y cómo tomar la línea base antes de automatizar.">
+<meta property="og:url" content="https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html">
+<meta property="og:image" content="https://agustin.agustinynatalia.site/og-image.png?v=330-167000-17000">
+<meta property="og:site_name" content="Agustin Peralta">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cómo saber si una automatización sirvió de verdad — Agustin Peralta">
+<meta name="twitter:description" content="Cómo medir el retorno real de una automatización con IA. Las cuatro métricas que importan, por qué las horas ahorradas se inflan solas, cómo capturar el dato desde el propio flujo en vez de estimarlo después, qué es el ahorro de atención y por qué no debe sumarse a las horas, y cómo tomar la línea base antes de automatizar.">
+<meta name="twitter:image" content="https://agustin.agustinynatalia.site/og-image.png?v=330-167000-17000">
+<meta name="theme-color" content="#f1efe9">
+<script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Cómo saber si una automatización sirvió de verdad","description":"Cómo medir el retorno real de una automatización con IA. Las cuatro métricas que importan, por qué las horas ahorradas se inflan solas, cómo capturar el dato desde el propio flujo en vez de estimarlo después, qué es el ahorro de atención y por qué no debe sumarse a las horas, y cómo tomar la línea base antes de automatizar.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html"},"url":"https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=330-167000-17000","articleSection":"Métricas y ROI","keywords":"Automatización de procesos, Métricas y ROI, n8n, PostgreSQL, Webhooks, Tableros de datos","datePublished":"2026-08-01","dateModified":"2026-08-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/index.html#guias"},{"@type":"ListItem","position":3,"name":"Cómo saber si una automatización sirvió de verdad","item":"https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html"}]}]}</script>
+<script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:#0b0b0d}
+html{overflow-x:hidden}
+.site{--bg:#0b0b0d;--bg2:#131316;--panel:#141417;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.055);--fg:#eceae4;--dim:#9b9a91;--faint:#585851;--btnfg:#0b0b0d;font-family:'Space Grotesk',system-ui,sans-serif;background-color:var(--bg);color:var(--fg);min-height:100vh}
+.site.light{--bg:#f1efe9;--bg2:#ffffff;--panel:#ffffff;--line:rgba(20,18,15,.15);--line2:rgba(20,18,15,.07);--fg:#191712;--dim:#6b675e;--faint:#a7a397;--btnfg:#ffffff}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1220px;margin:0 auto;padding:0 2.2rem}
+.rd{max-width:820px;margin:0 auto;padding:0 2.2rem}
+a{color:inherit;text-decoration:none}
+.acc{color:var(--accent)}
+::selection{background:var(--accent);color:var(--btnfg)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.98rem;letter-spacing:-.3px;display:flex;align-items:center}
+.curs{color:var(--accent);animation:bl 1.1s steps(1) infinite;margin-left:1px}
+@keyframes bl{50%{opacity:0}}
+.navlinks{display:flex;gap:2rem;list-style:none}
+.navlinks a{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim);letter-spacing:.2px;transition:color .25s;position:relative}
+.navlinks a:hover,.navlinks a.on{color:var(--fg)}
+.navlinks a::before{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--accent);transition:right .3s}
+.navlinks a:hover::before,.navlinks a.on::before{right:0}
+.navtools{display:flex;align-items:center;gap:.5rem}
+.lang{display:flex;font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.lang button{font:inherit;background:none;border:none;color:var(--dim);padding:.42rem .6rem;cursor:pointer;transition:all .2s}
+.lang button.on{background:var(--accent);color:var(--btnfg)}
+.tgl{width:38px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:none;color:var(--fg);cursor:pointer;font-size:1rem;transition:all .2s}
+.tgl:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:34px;align-items:center;justify-content:center}
+.burger span{width:20px;height:2px;background:var(--fg);transition:.3s}
+.bg3d{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:.6}
+.btn{font-family:'JetBrains Mono',monospace;font-size:.85rem;padding:.85rem 1.5rem;border-radius:8px;border:1px solid var(--line);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px;color:var(--fg);background:none}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:500}
+.btnP:hover{transform:translateY(-2px);box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 35%,transparent)}
+.btnO:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.stackTags{display:flex;flex-wrap:wrap;gap:.55rem}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.82rem;padding:.42rem .8rem;border:1px solid var(--line);border-radius:7px;color:var(--fg);transition:all .22s}
+.tag:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.footer{border-top:1px solid var(--line);padding:2.6rem 0;position:relative;z-index:1;background-color:var(--bg)}
+.footIn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim)}
+.footIn .y{color:var(--faint)}
+.dhero{padding:8.5rem 0 2.5rem;position:relative;z-index:1}
+.back{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--dim);margin-bottom:2.2rem;transition:color .2s}
+.back:hover{color:var(--accent)}
+.dcat{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.dtitle{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:600;letter-spacing:-.035em;line-height:1.06;margin-bottom:1.2rem}
+.dsub{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--dim);line-height:1.5;margin-bottom:2rem}
+.dmeta{display:flex;flex-wrap:wrap;gap:2.6rem;padding:1.4rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dmeta .k{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.4rem}
+.dmeta .v{font-size:1rem;color:var(--fg)}
+.dllink{margin-top:1.8rem}
+.dsec{padding:2.6rem 0;position:relative;z-index:1}
+.dsech{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem}
+.dsech::before{content:'';width:24px;height:1px;background:var(--accent)}
+.dlead{font-size:1.4rem;font-weight:500;line-height:1.45;letter-spacing:-.01em;margin-bottom:1.3rem;color:var(--fg)}
+.dp{color:var(--dim);line-height:1.8;font-size:1.06rem;margin-bottom:1.2rem}
+.reqlist{list-style:none;display:grid;gap:.85rem}
+.reqlist li{display:flex;gap:.85rem;color:var(--dim);line-height:1.6;font-size:1.02rem}
+.reqlist li::before{content:'→';color:var(--accent);font-family:'JetBrains Mono',monospace;flex-shrink:0}
+.pcgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.pccard{border:1px solid var(--line);border-radius:14px;padding:1.7rem;background:color-mix(in srgb,var(--panel) 65%,transparent)}
+.pccard h4{font-family:'JetBrains Mono',monospace;font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:1.2rem;color:var(--fg)}
+.pclist{list-style:none;display:grid;gap:.8rem}
+.pclist li{display:flex;gap:.7rem;color:var(--dim);line-height:1.55;font-size:.96rem}
+.pclist li .mk{flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:600}
+.pros h4{color:var(--accent)}
+.pros .mk{color:var(--accent)}
+.cons .mk{color:var(--faint)}
+.dcta{border:1px solid var(--line);border-radius:20px;padding:3.2rem 2rem;text-align:center;background:color-mix(in srgb,var(--panel) 65%,transparent);position:relative;z-index:1}
+.dcta h3{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.6rem}
+.dctaRow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.notfound{padding:11rem 0 8rem;text-align:center;position:relative;z-index:1}
+@media(max-width:920px){
+.navlinks{position:fixed;top:0;right:0;width:270px;height:100vh;flex-direction:column;background:var(--bg2);border-left:1px solid var(--line);padding:5.5rem 2rem;gap:1.4rem;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.navlinks.open{transform:none}
+.burger{display:flex}
+.wrap,.rd{padding:0 1.4rem}
+.pcgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="site light" id="top" style="--accent:#ff5c35">
+<nav class="nav"><div class="wrap navbar">
+<a class="brand" href="../index.html">agustin.peralta<span class="curs">▮</span></a>
+<ul class="navlinks" id="nav">
+<li><a href="../index.html#sobre">sobre-mí</a></li>
+<li><a href="../index.html#experiencia">experiencia</a></li>
+<li><a href="../index.html#proyectos">proyectos</a></li>
+<li><a class="on" href="../index.html#guias">guías</a></li>
+<li><a href="/metricas">métricas</a></li>
+<li><a href="../index.html#contacto">contacto</a></li>
+</ul>
+<div class="navtools">
+<button class="tgl" id="tgl" aria-label="Cambiar tema">☾</button>
+<button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+</div>
+</div></nav>
+
+<header class="dhero"><div class="rd">
+<a class="back mono" href="../index.html#guias">← volver a guías</a>
+<div class="dcat mono">Métricas y ROI</div>
+<h1 class="dtitle">Cómo saber si una automatización sirvió de verdad</h1>
+<p class="dsub">Casi todo el mundo mide una automatización por si corre sin errores. Eso no dice nada sobre si valió la pena. Estas son las cuatro cifras que sí lo dicen, cómo se capturan sin montar un proyecto aparte, y las trampas que hacen que un tablero se vea espectacular mientras la operación sigue igual de lenta.</p>
+<div class="dmeta">
+<div><div class="k mono">Publicado</div><div class="v">Agosto 2026</div></div>
+<div><div class="k mono">Lectura</div><div class="v">9 min de lectura</div></div>
+</div>
+</div></header>
+
+<section class="dsec"><div class="rd"><div class="dsech mono">Que corra sin errores no es una métrica de negocio</div>
+<p class="dlead">El primer tablero que arma casi todo el mundo muestra ejecuciones exitosas y ejecuciones fallidas. Esa cifra sirve para saber si el sistema está vivo, no para saber si hizo falta construirlo.</p>
+<p class="dp">Una automatización puede llevar ocho meses corriendo con cero fallos y no haberle devuelto un solo minuto a nadie. Pasa más de lo que parece. El flujo procesa correos que ya nadie leía, genera un informe que se archiva sin abrir, o resuelve un caso que ocurría dos veces al año. Todo verde en el tablero y cero impacto en la operación.</p>
+<p class="dp">La confusión viene de que la disponibilidad es fácil de medir y el valor no. La plataforma te regala el porcentaje de éxito, así que ese es el número que termina en la presentación. El problema es que responde a una pregunta que nadie hizo. La pregunta real es qué cambió en la operación desde que esto existe.</p>
+<p class="dp">Mi regla es simple. La disponibilidad se vigila con alertas, no con tableros. Si algo falla quiero un mensaje, no un gráfico. El tablero se reserva para las cifras que le importan a quien firma el presupuesto.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Las cuatro cifras que sí responden la pregunta</div>
+<p class="dlead">Después de instrumentar bastantes procesos propios y de clientes, me quedé con cuatro números. Los demás son adorno o se derivan de estos.</p>
+<p class="dp">La primera es el volumen real, o sea cuántas veces se ejecutó de verdad y resolvió algo. No cuántas veces se disparó el flujo. Un proceso que corre cada cinco minutos y en el noventa por ciento de las corridas no encuentra trabajo tiene un volumen mucho más bajo del que muestra el contador de ejecuciones.</p>
+<p class="dp">La segunda es el tiempo por caso, medido antes y después. Antes se cronometra a mano con la persona que lo hacía, y conviene hacerlo dos o tres veces porque la primera medición siempre sale optimista. Después se toma del propio sistema. La diferencia multiplicada por el volumen es el ahorro, y ese es el único cálculo que hace falta.</p>
+<p class="dp">La tercera es la tasa de intervención humana. Qué porcentaje de los casos terminó necesitando que alguien entrara a arreglar, revisar o rehacer. Esta es la métrica que más gente omite y la que más rápido destapa una automatización que en realidad movió el trabajo de lugar en vez de eliminarlo.</p>
+<p class="dp">La cuarta es el error que se evitó. Cuántos casos salían mal antes y cuántos salen mal ahora. En procesos de facturación, nómina o cumplimiento normativo esta suele valer más que las horas, porque un solo error corregido a tiempo puede costar más que todo el desarrollo.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Las horas ahorradas se inflan solas y hay que domarlas</div>
+<p class="dlead">Es la cifra más citada y la más fácil de manipular sin querer. Basta con estimar generoso una sola vez y el número queda contaminado para siempre, porque después se multiplica por miles de ejecuciones.</p>
+<p class="dp">El error típico es estimar el ahorro por ejecución mirando el caso más lento. Si el proceso a veces toma cuarenta minutos pero normalmente toma ocho, y anotas cuarenta, el total se va a las nubes. La mediana miente menos que el promedio, y el promedio miente menos que el peor caso que uno recuerda.</p>
+<p class="dp">El segundo error es contar el mismo ahorro dos veces. Si tienes un flujo que publica contenido y además un proceso interno que dispara ese flujo, y los dos se registran, esas horas están duplicadas. Cuando instrumenté mis propias automatizaciones tuve que dejar varias sin registrar a propósito por esto, porque el trabajo ya lo estaba contando otro eslabón de la cadena.</p>
+<p class="dp">El tercero es sumar el ahorro de una tarea que igual nadie hacía. Automatizar un informe que se pedía y nunca se leía no ahorra tiempo, elimina una tarea inútil. Es una mejora, pero no es una hora recuperada, y presentarla como tal es lo que hace que el número total pierda credibilidad cuando alguien lo audita.</p>
+<p class="dp">Un truco que uso para mantener el número honesto es redondear siempre hacia abajo. Si el cálculo da mil ochocientas horas, reporto mil ochocientas, no dos mil. Cuando el cliente hace su propia cuenta y le da más de lo que dijiste, ganas. Cuando le da menos, perdiste todo el crédito de una sola vez.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">El dato se captura desde el flujo, no se reconstruye después</div>
+<p class="dlead">La forma más barata de medir es que cada automatización avise ella misma que trabajó. Un paso final que manda un registro, y ya. Reconstruir las cifras meses después mirando historiales es un trabajo mucho más caro y sale peor.</p>
+<p class="dp">El patrón que uso es una tabla de registro donde cada fila es una ejecución. Guarda el nombre del proceso, los minutos que se ahorraron en ese caso, con qué herramienta corrió, para qué organización y de qué área es. Nada más. Con esos cinco campos se responde casi cualquier pregunta que llegue después, y agrupar por cualquiera de ellos da una vista distinta sin cambiar nada.</p>
+<p class="dp">La parte que se subestima es la normalización. Si un flujo escribe la herramienta con mayúscula y otro con minúscula, o uno dice marketing y otro mercadeo, terminas con un tablero lleno de categorías que en realidad son la misma. Yo normalizo en el punto de entrada, no en la consulta, porque el dato sucio que entra a una tabla se queda ahí para siempre.</p>
+<p class="dp">El registro se escribe desde el último paso del flujo, no desde el primero. Si se registra al arrancar, estás contando intentos y no resultados, y el día que algo se rompa a la mitad vas a estar reportando ahorro que nunca ocurrió.</p>
+<p class="dp">Una advertencia de operación. Si la dirección web que recibe los registros deja de responder, la automatización principal no se puede caer por eso. Ese paso siempre va en modo tolerante a fallos, porque perder una fila de estadística es un problema menor y frenar el proceso del cliente es un problema grave.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">El ahorro de atención existe pero no son horas</div>
+<p class="dlead">Hay automatizaciones que no le ahorran tiempo a nadie y aun así valen. Vigilan algo, y solo hablan cuando pasa lo que tenían que vigilar. Meterlas en el conteo de horas es la forma más rápida de arruinar la credibilidad de todo el tablero.</p>
+<p class="dp">El caso típico es un monitor que revisa cada pocos minutos si llegó algo importante. Nadie estaba haciendo eso a mano antes, porque a mano era imposible. No hay una hora que recuperar. Lo que hay es la tranquilidad de no tener que acordarse, y eso es real pero no se convierte en dinero por la vía de multiplicar horas por tarifa.</p>
+<p class="dp">En mis propios sistemas tomé la decisión de dejar estos casos fuera del conteo de horas y reportarlos aparte. Suena a que te estás quitando puntos, y en el corto plazo sí. En el mediano es lo contrario, porque cuando alguien revisa tus números y encuentra que cada cifra aguanta la pregunta de dónde salió, todo lo demás que digas pesa más.</p>
+<p class="dp">La forma correcta de presentarlos es por lo que evitan. Cuántas veces avisó a tiempo, y qué habría costado enterarse tarde. Ese es un argumento de riesgo, no de productividad, y quien decide sabe leer los dos.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Sin línea base no hay medición, hay opinión</div>
+<p class="dlead">Este es el error que más caro sale y el único que no tiene arreglo después. Si no mediste cómo estaban las cosas antes de automatizar, cualquier cifra que presentes es una estimación tuya, y el cliente lo va a notar.</p>
+<p class="dp">La línea base se toma en la primera reunión, cuando todavía estás entendiendo el proceso. Son tres preguntas. Cuánto se demora hoy, cuántas veces pasa al mes, y cuántas veces sale mal. Se anotan con nombre de quien las respondió y con fecha, y esa nota se guarda en la propuesta. No hace falta un estudio de tiempos, hace falta un número acordado por escrito antes de empezar.</p>
+<p class="dp">El motivo de ponerlo por escrito no es desconfianza, es memoria. A los seis meses nadie se acuerda de que el proceso tomaba cuarenta minutos, porque ya se acostumbraron a que toma dos. La percepción se ajusta rapidísimo a lo nuevo y el mérito se evapora si no quedó anotado.</p>
+<p class="dp">Si llegaste tarde y el proceso ya está automatizado, todavía se puede recuperar algo. Se cronometra a mano una muestra de casos con la persona que lo hacía antes, se deja claro que es una reconstrucción y no una medición, y se reporta como tal. Es más débil, pero es honesto y sirve.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Cómo se lo cuentas a quien firma</div>
+<p class="dlead">Quien aprueba el presupuesto no quiere ver el tablero. Quiere una frase con un número adentro que pueda repetir en su propia reunión sin tener que abrir nada.</p>
+<p class="dp">La estructura que me funciona es de tres partes. Qué se recuperó, expresado en algo que se pueda imaginar. Qué se dejó de romper. Y qué se puede hacer ahora que antes no cabía. Las horas sueltas no significan nada para nadie, pero decir que se liberó el equivalente a media persona a tiempo completo aterriza al instante.</p>
+<p class="dp">Conviene traducir las horas a la unidad que use esa empresa. Si trabajan por jornadas, en jornadas. Si facturan por hora, en dinero, dejando explícito con qué tarifa hiciste la cuenta para que nadie tenga que adivinar. El número que no se puede auditar se descuenta mentalmente, aunque nadie lo diga en voz alta.</p>
+<p class="dp">Y hay algo que casi nadie hace y cambia la conversación. Mostrar también lo que no funcionó. Un proceso que automatizaste y resultó que casi no se usaba, dicho por ti antes de que lo descubra otro, compra más confianza que cinco cifras buenas. Además te deja proponer el siguiente paso desde la evidencia y no desde la intuición.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Por dónde empezaría si arrancas de cero</div>
+<p class="dlead">No hace falta una plataforma de analítica ni un proyecto aparte. Se puede tener medición decente en una tarde y mejorarla después.</p>
+<p class="dp">Primero, la tabla de registro con los cinco campos. Segundo, un paso al final de cada automatización que escriba una fila. Tercero, una consulta que agrupe por proceso y por área y devuelva ejecuciones y minutos. Con eso ya tienes más de lo que tiene la mayoría.</p>
+<p class="dp">El tablero visual va al final, no al principio, y es la parte menos importante. Sirve para que otros miren sin pedirte permiso, pero no agrega ni un dato que no estuviera ya en la tabla. Si el tiempo es corto, se sacrifica el tablero y se conserva el registro, nunca al revés.</p>
+<p class="dp">Lo último y lo más incómodo. Ponle fecha a la revisión, algo como noventa días después de entregar, y déjala agendada desde el día uno. Medir sirve para decidir, y la decisión más valiosa que habilita este trabajo es apagar lo que no está sirviendo. Una automatización que nadie usa no es neutra, cuesta mantenimiento y ocupa atención.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Requisitos</div><ul class="reqlist"><li>Saber cuánto se demora hoy el proceso a mano y cuántas veces al mes ocurre. Sin esos dos números no hay forma de comparar después.</li><li>Quién hace hoy esa tarea y qué haría con el tiempo que le quede libre. Si la respuesta no existe, el ahorro no se va a ver en ninguna parte.</li><li>Un lugar donde guardar el registro de cada ejecución. Una tabla en una base de datos alcanza y sobra, no hace falta una herramienta de analítica.</li><li>Que la automatización pueda avisar cuando termina, aunque sea con una llamada a una dirección web al final del flujo.</li><li>Un criterio escrito de qué cuenta como ejecución válida. Un flujo que corre y no encuentra nada que hacer no es lo mismo que uno que resolvió un caso.</li><li>Acuerdo previo con quien paga sobre qué número define el éxito, antes de empezar. Después de entregar, esa conversación siempre se pierde.</li></ul></div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Pros y contras</div><div class="pcgrid"><div class="pccard pros"><h4>A favor</h4><ul class="pclist"><li><span class="mk">+</span><span>Convierte la conversación con el cliente en una de evidencia y no de percepción, que es donde uno siempre pierde.</span></li><li><span class="mk">+</span><span>El registro por ejecución se monta en una tarde y no depende de ninguna herramienta de analítica.</span></li><li><span class="mk">+</span><span>Permite detectar temprano las automatizaciones que corren perfecto pero no le sirven a nadie.</span></li><li><span class="mk">+</span><span>Con cinco campos bien normalizados se responden preguntas que ni te habías planteado al empezar.</span></li><li><span class="mk">+</span><span>Redondear hacia abajo y reportar lo que no funcionó compra credibilidad que después se traduce en más alcance.</span></li></ul></div><div class="pccard cons"><h4>En contra</h4><ul class="pclist"><li><span class="mk">−</span><span>Si no tomaste la línea base antes de automatizar, no hay forma de reconstruirla bien después.</span></li><li><span class="mk">−</span><span>Las horas ahorradas se inflan solas por doble conteo y por estimar sobre el peor caso.</span></li><li><span class="mk">−</span><span>Instrumentar cada flujo suma un paso más que mantener y que se puede romper en silencio.</span></li><li><span class="mk">−</span><span>El ahorro de atención es real pero no se puede sumar a las horas sin ensuciar toda la cifra.</span></li><li><span class="mk">−</span><span>Medir bien a veces demuestra que el proyecto no valía la pena, y hay que estar dispuesto a decirlo.</span></li></ul></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Herramientas</div><div class="stackTags"><span class="tag mono">Automatización de procesos</span><span class="tag mono">Métricas y ROI</span><span class="tag mono">n8n</span><span class="tag mono">PostgreSQL</span><span class="tag mono">Webhooks</span><span class="tag mono">Tableros de datos</span></div></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="../index.html#contacto">Hablemos →</a><a class="btn btnO" href="../index.html#guias">volver a guías</a></div></div></div></section>
+
+<footer class="footer"><div class="wrap footIn">
+<span>Diseñado y desarrollado por Agustin Peralta</span>
+<span class="y">© 2026 · <span class="acc">Bogotá</span></span>
+</div></footer>
+</div>
+<script>
+(function(){
+  var site=document.querySelector(".site");
+  try{if(localStorage.getItem("ap-theme")==="dark")site.classList.remove("light");}catch(e){}
+  var tgl=document.getElementById("tgl");
+  function icon(){tgl.textContent=site.classList.contains("light")?"☾":"☀";}
+  icon();
+  tgl.addEventListener("click",function(){
+    site.classList.toggle("light");
+    try{localStorage.setItem("ap-theme",site.classList.contains("light")?"light":"dark");}catch(e){}
+    icon();
+  });
+  document.getElementById("burger").addEventListener("click",function(){
+    document.getElementById("nav").classList.toggle("open");
+  });
+})();
+</script>
+</body>
+</html>
