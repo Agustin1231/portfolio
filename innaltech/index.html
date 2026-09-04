@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Innaltech · Cuestionario del proyecto</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2; --panel:#ffffff; --panel2:#eeece7;
+  --line:#cfcbc2; --line2:#e3e0d9;
+  --fg:#15151a; --dim:#4d4b46; --faint:#6f6c65;
+  --accent:#c8401a; --btnfg:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  background:var(--bg);color:var(--fg);
+  min-height:100vh;line-height:1.65;font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono',monospace}
+::selection{background:var(--accent);color:var(--btnfg)}
+
+.top{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 94%,transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line2);
+}
+.topIn{max-width:800px;margin:0 auto;padding:1rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:1rem;letter-spacing:-.3px;display:flex;align-items:center;gap:.55rem}
+.brand .sq{width:10px;height:10px;background:var(--accent);border-radius:2px;flex:none}
+.stepCount{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--faint);letter-spacing:.4px;white-space:nowrap}
+.bar{height:3px;background:var(--line2)}
+.barFill{height:100%;width:0;background:var(--accent);transition:width .45s cubic-bezier(.4,0,.2,1)}
+
+.wrap{max-width:800px;margin:0 auto;padding:2.6rem 1.4rem 5rem}
+.hero{margin-bottom:2.6rem}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.85rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+h1{font-size:clamp(1.9rem,4.8vw,2.7rem);font-weight:600;letter-spacing:-.02em;line-height:1.18;margin-bottom:1rem}
+.lead{color:var(--dim);font-size:1.14rem;max-width:58ch}
+.note{
+  margin-top:1.4rem;padding:1.05rem 1.2rem;
+  border:1px solid var(--line2);border-left:3px solid var(--accent);
+  border-radius:0 10px 10px 0;background:var(--panel);
+  font-size:1rem;color:var(--dim);
+}
+.note b{color:var(--fg);font-weight:600}
+
+.step{display:none;animation:fade .4s ease}
+.step.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.blockHead{margin-bottom:2.2rem;padding-bottom:1.1rem;border-bottom:1px solid var(--line2)}
+.blockNum{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--faint);letter-spacing:1px;margin-bottom:.5rem}
+.blockTitle{font-size:1.62rem;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.blockSub{color:var(--dim);font-size:1.03rem;margin-top:.55rem}
+
+.f{margin-bottom:2.6rem}
+.f label.q{display:block;font-size:1.18rem;font-weight:600;margin-bottom:.4rem;line-height:1.4}
+.req{color:var(--accent);margin-left:.25rem}
+.help{font-size:1rem;color:var(--faint);margin-bottom:.9rem;line-height:1.55}
+input[type=text],input[type=email],input[type=tel],input[type=number],textarea,select{
+  width:100%;background:var(--panel);color:var(--fg);
+  border:1.5px solid var(--line);border-radius:10px;
+  padding:1rem 1.1rem;font-family:inherit;font-size:1.08rem;
+  transition:border-color .2s,box-shadow .2s;
+}
+textarea{min-height:130px;resize:vertical;line-height:1.65}
+input:focus,textarea:focus,select:focus{
+  outline:none;border-color:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent);
+}
+input::placeholder,textarea::placeholder{color:#9b988f}
+select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%236f6c65' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 1.1rem center}
+
+.opts{display:flex;flex-direction:column;gap:.6rem}
+.opt{
+  display:flex;align-items:flex-start;gap:.85rem;
+  padding:1rem 1.15rem;background:var(--panel);
+  border:1.5px solid var(--line);border-radius:10px;cursor:pointer;
+  transition:border-color .2s,background .2s;font-size:1.06rem;line-height:1.45;
+}
+.opt:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+.opt input{accent-color:var(--accent);margin-top:.28rem;flex:none;width:20px;height:20px;cursor:pointer}
+.opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--panel))}
+.opt.big{flex-direction:column;gap:.4rem;padding:1.2rem 1.25rem}
+.opt.big .oh{display:flex;align-items:center;gap:.85rem;font-weight:600;font-size:1.1rem}
+.opt.big .od{color:var(--dim);font-size:1rem;padding-left:2.05rem;line-height:1.5}
+
+.drop{
+  display:block;border:2px dashed var(--line);border-radius:12px;padding:1.8rem 1rem;
+  text-align:center;color:var(--dim);cursor:pointer;background:var(--panel);
+  transition:border-color .2s,background .2s;font-size:1.04rem;font-weight:500;
+}
+.drop:hover,.drop.over{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,var(--panel))}
+.drop input{display:none}
+.fileList{margin-top:.8rem;display:flex;flex-direction:column;gap:.45rem}
+.fileItem{display:flex;justify-content:space-between;align-items:center;gap:.8rem;font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--dim);background:var(--panel2);border:1px solid var(--line2);border-radius:8px;padding:.6rem .85rem}
+.fileItem button{background:none;border:none;color:var(--faint);cursor:pointer;font-size:1.3rem;line-height:1;padding:0 .3rem}
+.fileItem button:hover{color:var(--accent)}
+
+.rec{margin-top:.8rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.recBtn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:'JetBrains Mono',monospace;font-size:.92rem;
+  padding:.7rem 1.15rem;border-radius:9px;border:1.5px solid var(--line);
+  background:var(--panel);color:var(--dim);cursor:pointer;transition:all .2s;
+}
+.recBtn:hover{border-color:var(--accent);color:var(--accent)}
+.recBtn .mic{width:11px;height:11px;border-radius:50%;background:var(--faint);flex:none;transition:background .2s}
+.recBtn:hover .mic{background:var(--accent)}
+.recBtn.rec-on{border-color:var(--accent);color:var(--accent)}
+.recBtn.rec-on .mic{background:var(--accent);animation:pulseRec 1.1s infinite}
+@keyframes pulseRec{0%{opacity:1}50%{opacity:.25}100%{opacity:1}}
+.recTime{font-family:'JetBrains Mono',monospace;font-size:.92rem;color:var(--faint)}
+.recPlay{display:flex;align-items:center;gap:.6rem;width:100%;margin-top:.55rem}
+.recPlay audio{flex:1;height:38px}
+.recDel{background:none;border:1.5px solid var(--line);color:var(--faint);border-radius:8px;cursor:pointer;padding:.45rem .75rem;font-family:'JetBrains Mono',monospace;font-size:.82rem}
+.recDel:hover{border-color:var(--accent);color:var(--accent)}
+.orText{font-size:.92rem;color:var(--faint)}
+
+.cond{display:none;margin-top:1.2rem;padding-left:1.1rem;border-left:3px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+.cond.on{display:block;animation:fade .3s ease}
+.cond .q{font-size:1.05rem !important;font-weight:500 !important;margin-bottom:.55rem}
+.err{color:var(--accent);font-size:.95rem;margin-top:.5rem;display:none;font-weight:500}
+.f.bad input,.f.bad textarea,.f.bad select{border-color:var(--accent)}
+.f.bad .err{display:block}
+
+.nav{display:flex;gap:.8rem;justify-content:space-between;align-items:center;margin-top:3rem;padding-top:1.7rem;border-top:1px solid var(--line2)}
+.btn{
+  font-family:'JetBrains Mono',monospace;font-size:.98rem;
+  padding:1rem 1.9rem;border-radius:10px;border:1.5px solid var(--line);
+  cursor:pointer;transition:all .22s;background:var(--panel);color:var(--fg);
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:600}
+.btnP:hover{transform:translateY(-2px);box-shadow:0 10px 26px color-mix(in srgb,var(--accent) 30%,transparent)}
+.btnO:hover{border-color:var(--accent);color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.saved{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--faint)}
+
+.done{display:none;text-align:center;padding:4rem 1rem}
+.done.on{display:block;animation:fade .5s ease}
+.doneIcon{width:64px;height:64px;border-radius:50%;border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1.6rem}
+.done h2{font-size:1.8rem;font-weight:600;margin-bottom:.9rem}
+.done p{color:var(--dim);max-width:48ch;margin:0 auto;font-size:1.08rem}
+
+.foot{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--line2);font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+.foot a{color:var(--faint);text-decoration:none}
+.foot a:hover{color:var(--accent)}
+
+@media(max-width:560px){
+  body{font-size:16px}
+  .wrap{padding:2rem 1.1rem 4rem}
+  .nav{flex-direction:column-reverse;align-items:stretch}
+  .btn{justify-content:center;width:100%}
+  .navMeta{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="topIn">
+    <div class="brand"><span class="sq"></span>agustin.peralta</div>
+    <div class="stepCount mono" id="stepCount">Paso 1</div>
+  </div>
+  <div class="bar"><div class="barFill" id="barFill"></div></div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero" id="hero">
+    <div class="eyebrow">Innaltech · Woorbel</div>
+    <h1>Contadnos cómo trabajáis hoy</h1>
+    <p class="lead">Este cuestionario recoge la información que nos falta tras la visita del 4 de septiembre. No hace falta que lo rellene una sola persona ni que se conteste todo: en la primera pantalla nos decís de qué parte de la empresa nos podéis hablar y solo os mostramos esas preguntas.</p>
+    <div class="note"><b>¿Preferís hablar?</b> En las preguntas largas hay un botón para responder con la voz en vez de escribir. Nosotros lo pasamos a texto.</div>
+    <div class="note"><b>Si algo no lo sabéis, no pasa nada.</b> Todas las preguntas tienen la opción "No lo sé". Es una respuesta útil, no un fallo.</div>
+    <div class="note"><b>Seguridad.</b> No escribáis contraseñas ni claves de acceso a ningún programa. Eso se pide más adelante por un canal seguro.</div>
+  </div>
+
+  <form id="form" novalidate>
+    <section class="step on" data-step="1">
+      <div class="blockHead">
+        <div class="blockNum mono">PANTALLA 1</div>
+        <div class="blockTitle">Quién nos contesta</div>
+        <div class="blockSub">Para saber a quién preguntar si algo no queda claro.</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q1">Nombre y apellidos<span class="req">*</span></label>
+        <input type="text" id="q1" name="Nombre de quien responde" placeholder="">
+        <div class="err">Necesitamos este dato</div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q2">Cargo o función en la empresa</label>
+        <div class="help">Por ejemplo, jefe de almacén, administración, gerencia.</div>
+        <input type="text" id="q2" name="Cargo de quien responde" placeholder="">
+      </div>
+
+      <div class="f" data-req>
+        <label class="q" for="q3">Teléfono o correo de contacto<span class="req">*</span></label>
+        <input type="text" id="q3" name="Contacto de quien responde" placeholder="">
+        <div class="err">Necesitamos este dato</div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Desde qué empresa respondéis?</label>
+        <div class="opts" data-single="Empresa desde la que responde">
+          <label class="opt"><input type="radio" name="emp" value="Innaltech"><span>Innaltech</span></label>
+          <label class="opt"><input type="radio" name="emp" value="Woorbel"><span>Woorbel</span></label>
+          <label class="opt"><input type="radio" name="emp" value="Las dos"><span>Las dos</span></label>
+          <label class="opt"><input type="radio" name="emp" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q">¿De qué partes de la empresa nos podéis hablar?<span class="req">*</span></label>
+        <div class="help">Marcad todas las que conozcáis bien. Solo os enseñaremos esas preguntas. Si hay otra persona que lleva otra área, puede rellenar este mismo enlace por su cuenta.</div>
+        <div class="opts" id="roles" data-multi="Areas que conoce">
+          <label class="opt"><input type="checkbox" value="El almacén" data-role="almacen"><span>El almacén, dónde está guardado cada material</span></label>
+          <label class="opt"><input type="checkbox" value="La gabia de pintura" data-role="pintura"><span>La gabia de pintura, cómo se cargan las piezas</span></label>
+          <label class="opt"><input type="checkbox" value="Las compras" data-role="compras"><span>Las compras a proveedores</span></label>
+          <label class="opt"><input type="checkbox" value="Facturas y contabilidad" data-role="admin"><span>Las facturas y la contabilidad (SAGE)</span></label>
+          <label class="opt"><input type="checkbox" value="Las ventas" data-role="ventas"><span>Las ventas y los clientes</span></label>
+          <label class="opt"><input type="checkbox" value="Todo" data-role="todo"><span>De todo un poco, voy a rellenarlo entero</span></label>
+        </div>
+        <div class="err">Marcad al menos una</div>
+      </div>
+    </section>
+
+    <section class="step" data-step="2">
+      <div class="blockHead">
+        <div class="blockNum mono">PANTALLA 2</div>
+        <div class="blockTitle">Lo más importante</div>
+        <div class="blockSub">Cinco preguntas para saber por dónde empezar.</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q">Si mañana pudierais arreglar una sola cosa, ¿cuál sería?<span class="req">*</span></label>
+        <div class="opts" data-single="Prioridad numero uno">
+          <label class="opt"><input type="radio" name="prio" value="Saber dónde está cada material"><span>Saber dónde está cada material sin tener que buscarlo</span></label>
+          <label class="opt"><input type="radio" name="prio" value="Aprovechar mejor cada carga de pintura"><span>Aprovechar mejor cada carga de pintura</span></label>
+          <label class="opt"><input type="radio" name="prio" value="Que las compras no se hagan a mano"><span>Que las compras dejen de hacerse a mano</span></label>
+          <label class="opt"><input type="radio" name="prio" value="Que las facturas dejen de comer tiempo"><span>Que las facturas y el papeleo dejen de comer tiempo</span></label>
+          <label class="opt"><input type="radio" name="prio" value="Ordenar las ventas"><span>Tener las ventas más ordenadas</span></label>
+          <label class="opt"><input type="radio" name="prio" value="No lo tengo claro"><span>No lo tengo claro</span></label>
+        </div>
+        <div class="err">Elegid una opción</div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q10">¿Qué es lo que más tiempo os hace perder hoy?</label>
+        <div class="help">Contadlo como se lo contaríais a un compañero. Podéis grabarlo hablando.</div>
+        <textarea id="q10" name="Lo que mas tiempo hace perder" placeholder=""></textarea>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Alguien ha medido cuánto os cuesta ese problema?</label>
+        <div class="help">Horas buscando material, cargas de pintura desaprovechadas, fallos de stock.</div>
+        <div class="opts" data-single="Han medido el problema" data-cond="c-medido|Sí, tenemos alguna cifra">
+          <label class="opt"><input type="radio" name="med" value="Sí, tenemos alguna cifra"><span>Sí, tenemos alguna cifra</span></label>
+          <label class="opt"><input type="radio" name="med" value="Lo notamos pero no lo hemos medido"><span>Lo notamos, pero no lo hemos medido</span></label>
+          <label class="opt"><input type="radio" name="med" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div class="cond" id="c-medido">
+          <label class="q" for="q11b">¿Qué cifra tenéis?</label>
+          <input type="text" id="q11b" name="Cifra del problema medida" placeholder="">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Habéis intentado antes poner en marcha algo parecido?</label>
+        <div class="help">Un programa de almacén, un inventario digital, una herramienta que se compró y no se usa.</div>
+        <div class="opts" data-single="Intentos previos de digitalizacion" data-cond="c-intento|Sí y funcionó|Sí pero se quedó a medias|Sí y se abandonó">
+          <label class="opt"><input type="radio" name="int" value="Sí y funcionó"><span>Sí, y funcionó</span></label>
+          <label class="opt"><input type="radio" name="int" value="Sí pero se quedó a medias"><span>Sí, pero se quedó a medias</span></label>
+          <label class="opt"><input type="radio" name="int" value="Sí y se abandonó"><span>Sí, y se acabó abandonando</span></label>
+          <label class="opt"><input type="radio" name="int" value="Nunca"><span>Nunca lo hemos intentado</span></label>
+        </div>
+        <div class="cond" id="c-intento">
+          <label class="q" for="q12b">¿Qué se probó y por qué no cuajó?</label>
+          <div class="help">Esto es de lo más útil que nos podéis contar, evita que repitamos el mismo error.</div>
+          <textarea id="q12b" name="Que se probo antes y por que fallo" placeholder=""></textarea>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Para cuándo os gustaría tenerlo funcionando?</label>
+        <div class="opts" data-single="Plazo deseado">
+          <label class="opt"><input type="radio" name="plazo" value="Cuanto antes"><span>Cuanto antes</span></label>
+          <label class="opt"><input type="radio" name="plazo" value="En unos 3 meses"><span>En unos 3 meses</span></label>
+          <label class="opt"><input type="radio" name="plazo" value="En unos 6 meses"><span>En unos 6 meses</span></label>
+          <label class="opt"><input type="radio" name="plazo" value="Este año"><span>Antes de que acabe el año</span></label>
+          <label class="opt"><input type="radio" name="plazo" value="Sin fecha concreta"><span>No tenemos fecha</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="3" data-roles="almacen">
+      <div class="blockHead">
+        <div class="blockNum mono">ALMACÉN · 1 DE 3</div>
+        <div class="blockTitle">Qué necesitáis del almacén</div>
+        <div class="blockSub">Esta primera pregunta es la más importante de todo el cuestionario.</div>
+      </div>
+
+      <div class="f" data-req>
+        <label class="q">¿Qué queréis que haga el sistema?<span class="req">*</span></label>
+        <div class="help">Las tres opciones son válidas, pero son trabajos muy distintos. Elegid la que de verdad necesitáis.</div>
+        <div class="opts" data-single="Alcance del sistema de almacen" data-cond="c-slot|Que además nos proponga dónde colocar cada material">
+          <label class="opt big"><span class="oh"><input type="radio" name="alc" value="Solo saber dónde está"><span>Solo saber dónde está</span></span><span class="od">Escribo la referencia y la pantalla me dice el sitio, por ejemplo A16. Dónde se coloca cada cosa lo seguimos decidiendo nosotros.</span></label>
+          <label class="opt big"><span class="oh"><input type="radio" name="alc" value="Dónde está y cuánto queda"><span>Dónde está y cuánto queda</span></span><span class="od">Lo anterior y además cuánto material hay en ese sitio.</span></label>
+          <label class="opt big"><span class="oh"><input type="radio" name="alc" value="Que además nos proponga dónde colocar cada material"><span>Que además nos proponga dónde colocarlo</span></span><span class="od">Lo anterior y además el sistema propone en qué sitio debería estar cada material para que el almacén funcione mejor.</span></label>
+          <label class="opt big"><span class="oh"><input type="radio" name="alc" value="No lo tenemos claro"><span>No lo tenemos claro</span></span><span class="od">Preferimos que nos lo recomendéis vosotros.</span></label>
+        </div>
+        <div class="err">Elegid una opción</div>
+        <div class="cond" id="c-slot">
+          <label class="q">Para proponer un sitio, ¿qué debería tener en cuenta?</label>
+          <div class="help">Marcad las que os parezcan importantes.</div>
+          <div class="opts" data-multi="Criterios de colocacion">
+            <label class="opt"><input type="checkbox" value="Lo que más se mueve, a mano"><span>Lo que más se mueve, que esté a mano</span></label>
+            <label class="opt"><input type="checkbox" value="Lo pesado abajo"><span>Lo pesado, abajo</span></label>
+            <label class="opt"><input type="checkbox" value="Lo largo junto"><span>Lo largo, todo junto</span></label>
+            <label class="opt"><input type="checkbox" value="Familias de perfil juntas"><span>Los perfiles de la misma familia, juntos</span></label>
+            <label class="opt"><input type="checkbox" value="Cerca de la salida"><span>Cerca de la zona de salida</span></label>
+            <label class="opt"><input type="checkbox" value="Cerca de pintura"><span>Cerca de la zona de pintura</span></label>
+            <label class="opt"><input type="checkbox" value="No lo sé"><span>No lo sé</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Cómo sabéis hoy dónde está un material?</label>
+        <div class="help">Podéis marcar varias.</div>
+        <div class="opts" data-multi="Como saben hoy donde esta el material">
+          <label class="opt"><input type="checkbox" value="Nos lo sabemos de memoria"><span>Nos lo sabemos de memoria</span></label>
+          <label class="opt"><input type="checkbox" value="Está apuntado en papel o Excel"><span>Está apuntado en un papel o en un Excel</span></label>
+          <label class="opt"><input type="checkbox" value="Se pregunta al que lleva más años"><span>Se le pregunta al que lleva más años</span></label>
+          <label class="opt"><input type="checkbox" value="A veces hay que buscarlo"><span>A veces simplemente hay que buscarlo</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Cuánto se tarda en encontrar un material que no está a la vista?</label>
+        <div class="opts" data-single="Tiempo de busqueda de material">
+          <label class="opt"><input type="radio" name="tbus" value="Menos de 5 minutos"><span>Menos de 5 minutos</span></label>
+          <label class="opt"><input type="radio" name="tbus" value="Entre 5 y 15 minutos"><span>Entre 5 y 15 minutos</span></label>
+          <label class="opt"><input type="radio" name="tbus" value="Entre 15 y 30 minutos"><span>Entre 15 y 30 minutos</span></label>
+          <label class="opt"><input type="radio" name="tbus" value="Más de media hora"><span>Más de media hora</span></label>
+          <label class="opt"><input type="radio" name="tbus" value="Depende del día"><span>Depende del día, no hay regla</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="4" data-roles="almacen">
+      <div class="blockHead">
+        <div class="blockNum mono">ALMACÉN · 2 DE 3</div>
+        <div class="blockTitle">El listado y los planos</div>
+        <div class="blockSub">Aquí es donde el proyecto se abarata o se encarece. Un par de archivos nos ahorran semanas.</div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Dónde está apuntado hoy el listado de materiales?</label>
+        <div class="opts" data-multi="Donde esta el inventario hoy">
+          <label class="opt"><input type="checkbox" value="En un Excel"><span>En un Excel</span></label>
+          <label class="opt"><input type="checkbox" value="En SAGE"><span>En SAGE</span></label>
+          <label class="opt"><input type="checkbox" value="En otro programa"><span>En otro programa</span></label>
+          <label class="opt"><input type="checkbox" value="En papel"><span>En papel</span></label>
+          <label class="opt"><input type="checkbox" value="En la cabeza de la gente"><span>En la cabeza de la gente</span></label>
+          <label class="opt"><input type="checkbox" value="No hay un listado"><span>No hay un listado como tal</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">Subid el listado si lo tenéis</label>
+        <div class="help">Aunque esté incompleto o desactualizado nos sirve igual. Es lo que más nos ayuda de todo el cuestionario.</div>
+        <label class="drop" data-name="inventario">
+          <input type="file" multiple>
+          <span>Pulsad aquí para elegir el archivo</span>
+        </label>
+        <div class="fileList"></div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Está al día ese listado?</label>
+        <div class="opts" data-single="Fiabilidad del inventario">
+          <label class="opt"><input type="radio" name="fiab" value="Sí, está al día"><span>Sí, está al día</span></label>
+          <label class="opt"><input type="radio" name="fiab" value="Más o menos"><span>Más o menos</span></label>
+          <label class="opt"><input type="radio" name="fiab" value="Lleva tiempo sin tocarse"><span>Lleva tiempo sin tocarse</span></label>
+          <label class="opt"><input type="radio" name="fiab" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">De cada referencia, ¿qué datos tenéis apuntados?</label>
+        <div class="help">Marcad todos los que existan, aunque no sea para todas las referencias.</div>
+        <div class="opts" data-multi="Datos por referencia">
+          <label class="opt"><input type="checkbox" value="Medidas"><span>Las medidas</span></label>
+          <label class="opt"><input type="checkbox" value="Peso por metro"><span>El peso por metro</span></label>
+          <label class="opt"><input type="checkbox" value="Familia o tipo"><span>La familia o el tipo de perfil</span></label>
+          <label class="opt"><input type="checkbox" value="Cómo se guarda (barra, caja, palet)"><span>Cómo se guarda (en barra, en caja, en palet)</span></label>
+          <label class="opt"><input type="checkbox" value="Una foto"><span>Una foto</span></label>
+          <label class="opt"><input type="checkbox" value="Un plano o dibujo"><span>Un plano o dibujo</span></label>
+          <label class="opt"><input type="checkbox" value="Solo el código y el nombre"><span>Solo el código y el nombre</span></label>
+          <label class="opt"><input type="checkbox" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Tenéis dibujos o planos de las piezas?</label>
+        <div class="opts" data-single="Existen planos de las piezas">
+          <label class="opt"><input type="radio" name="plan" value="Sí, de todas"><span>Sí, de todas</span></label>
+          <label class="opt"><input type="radio" name="plan" value="Solo de algunas"><span>Solo de algunas</span></label>
+          <label class="opt"><input type="radio" name="plan" value="No"><span>No</span></label>
+          <label class="opt"><input type="radio" name="plan" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">Subid un plano de ejemplo, el que sea</label>
+        <div class="help">Con uno solo nos vale. Nos dice si preparar los datos de las 1.000 referencias es cuestión de días o un trabajo en sí mismo.</div>
+        <label class="drop" data-name="plano-ejemplo">
+          <input type="file" multiple>
+          <span>Pulsad aquí para elegir el archivo</span>
+        </label>
+        <div class="fileList"></div>
+      </div>
+
+      <div class="f">
+        <label class="q">Ese dibujo, ¿enseña la forma exacta del perfil por dentro?</label>
+        <div class="help">Es decir, si se ve el corte de la pieza con sus huecos y sus alas, o si solo pone el largo y el ancho.</div>
+        <div class="opts" data-single="Nivel de detalle del plano">
+          <label class="opt"><input type="radio" name="det" value="Se ve la forma exacta del corte"><span>Sí, se ve la forma exacta del corte</span></label>
+          <label class="opt"><input type="radio" name="det" value="Solo medidas generales"><span>No, solo las medidas generales</span></label>
+          <label class="opt"><input type="radio" name="det" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Cuántas referencias nuevas entran al catálogo cada año?</label>
+        <div class="opts" data-single="Referencias nuevas al ano">
+          <label class="opt"><input type="radio" name="ref" value="Casi ninguna"><span>Casi ninguna</span></label>
+          <label class="opt"><input type="radio" name="ref" value="Menos de 20"><span>Menos de 20</span></label>
+          <label class="opt"><input type="radio" name="ref" value="Entre 20 y 100"><span>Entre 20 y 100</span></label>
+          <label class="opt"><input type="radio" name="ref" value="Más de 100"><span>Más de 100</span></label>
+          <label class="opt"><input type="radio" name="ref" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="5" data-roles="almacen">
+      <div class="blockHead">
+        <div class="blockNum mono">ALMACÉN · 3 DE 3</div>
+        <div class="blockTitle">Cómo es el almacén por dentro</div>
+        <div class="blockSub">Con unas fotos nos hacemos una idea mejor que con cualquier explicación.</div>
+      </div>
+
+      <div class="f">
+        <label class="q">Haced 3 o 4 fotos del almacén y subidlas</label>
+        <div class="help">Un pasillo, una estantería de cerca y la zona por donde entra y sale el material. Con el móvil sobra.</div>
+        <label class="drop" data-name="fotos-almacen">
+          <input type="file" multiple accept="image/*">
+          <span>Pulsad aquí para elegir las fotos</span>
+        </label>
+        <div class="fileList"></div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Las estanterías o las zonas tienen ya nombre o número?</label>
+        <div class="opts" data-single="Nomenclatura de ubicaciones" data-cond="c-nom|Sí, todas|Solo algunas">
+          <label class="opt"><input type="radio" name="nom" value="Sí, todas"><span>Sí, todas</span></label>
+          <label class="opt"><input type="radio" name="nom" value="Solo algunas"><span>Solo algunas</span></label>
+          <label class="opt"><input type="radio" name="nom" value="No, ninguna"><span>No, ninguna</span></label>
+          <label class="opt"><input type="radio" name="nom" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div class="cond" id="c-nom">
+          <label class="q" for="q30b">¿Cómo se llaman?</label>
+          <div class="help">Por ejemplo, "Nave 1, estantería A, altura 3".</div>
+          <input type="text" id="q30b" name="Como se llaman las ubicaciones" placeholder="">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">Si hubiera que poner carteles o etiquetas en las estanterías, ¿se podría?</label>
+        <div class="opts" data-single="Se pueden etiquetar ubicaciones">
+          <label class="opt"><input type="radio" name="etq" value="Sí, sin problema"><span>Sí, sin problema</span></label>
+          <label class="opt"><input type="radio" name="etq" value="Sí pero hay zonas complicadas"><span>Sí, pero hay zonas complicadas</span></label>
+          <label class="opt"><input type="radio" name="etq" value="Preferimos que no"><span>Preferimos que no</span></label>
+          <label class="opt"><input type="radio" name="etq" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Con qué consultaría un trabajador dónde está el material?</label>
+        <div class="help">Podéis marcar varias.</div>
+        <div class="opts" data-multi="Dispositivo de consulta">
+          <label class="opt"><input type="checkbox" value="Su propio móvil"><span>Con su propio móvil</span></label>
+          <label class="opt"><input type="checkbox" value="Móvil o tablet de la empresa"><span>Con un móvil o tablet de la empresa</span></label>
+          <label class="opt"><input type="checkbox" value="Un ordenador fijo en el almacén"><span>Con un ordenador fijo en el almacén</span></label>
+          <label class="opt"><input type="checkbox" value="Una pistola de códigos"><span>Con una pistola de leer códigos</span></label>
+          <label class="opt"><input type="checkbox" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Hay cobertura de wifi o de datos en todo el almacén?</label>
+        <div class="opts" data-single="Cobertura en planta">
+          <label class="opt"><input type="radio" name="wifi" value="Sí, en todo"><span>Sí, en todo</span></label>
+          <label class="opt"><input type="radio" name="wifi" value="Solo en algunas zonas"><span>Solo en algunas zonas</span></label>
+          <label class="opt"><input type="radio" name="wifi" value="No"><span>No</span></label>
+          <label class="opt"><input type="radio" name="wifi" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q34">¿Quién apunta lo que entra y lo que sale, y en qué momento?</label>
+        <div class="help">Contadlo tal cual pasa hoy, aunque no haya un procedimiento escrito.</div>
+        <textarea id="q34" name="Quien apunta entradas y salidas" placeholder=""></textarea>
+      </div>
+
+      <div class="f">
+        <label class="q">Si el sistema propone una colocación mejor, ¿estaríais dispuestos a mover material de sitio?</label>
+        <div class="help">Mover toneladas de aluminio es un trabajo en sí mismo. Es muy distinto documentar dónde está ahora que reorganizar el almacén.</div>
+        <div class="opts" data-single="Disposicion a reubicar material">
+          <label class="opt"><input type="radio" name="reub" value="Sí, todo lo que haga falta"><span>Sí, todo lo que haga falta</span></label>
+          <label class="opt"><input type="radio" name="reub" value="Solo una parte"><span>Solo una parte, poco a poco</span></label>
+          <label class="opt"><input type="radio" name="reub" value="No, que documente dónde está ahora"><span>No, preferimos que apunte dónde está ahora</span></label>
+          <label class="opt"><input type="radio" name="reub" value="Lo hablamos"><span>Eso lo hablamos</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Hay estanterías con límite de peso o material que no puede ir en ciertos sitios?</label>
+        <div class="opts" data-single="Limites de peso o ubicacion" data-cond="c-peso|Sí">
+          <label class="opt"><input type="radio" name="pes" value="Sí"><span>Sí</span></label>
+          <label class="opt"><input type="radio" name="pes" value="No"><span>No</span></label>
+          <label class="opt"><input type="radio" name="pes" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div class="cond" id="c-peso">
+          <label class="q" for="q37b">¿Cuáles?</label>
+          <textarea id="q37b" name="Detalle de limites de peso" placeholder=""></textarea>
+        </div>
+      </div>
+    </section>
+    <section class="step" data-step="6" data-roles="pintura">
+      <div class="blockHead">
+        <div class="blockNum mono">PINTURA</div>
+        <div class="blockTitle">La gabia de pintura</div>
+        <div class="blockSub">Cómo se cargan hoy las piezas y qué reglas hay que respetar.</div>
+      </div>
+
+      <div class="f">
+        <label class="q">Subid una foto de una gabia vacía y otra cargada</label>
+        <div class="help">Cargada como se carga normalmente, no como quedaría perfecta. Nos interesa ver la realidad.</div>
+        <label class="drop" data-name="fotos-gabia">
+          <input type="file" multiple accept="image/*">
+          <span>Pulsad aquí para elegir las fotos</span>
+        </label>
+        <div class="fileList"></div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Todas las gabias son iguales?</label>
+        <div class="help">Nos dijisteis 6 metros de largo por 0,59 de ancho y 1,55 de alto.</div>
+        <div class="opts" data-single="Todas las gabias son iguales" data-cond="c-gab|Hay varios tamaños">
+          <label class="opt"><input type="radio" name="gab" value="Sí, todas iguales"><span>Sí, todas iguales</span></label>
+          <label class="opt"><input type="radio" name="gab" value="Hay varios tamaños"><span>Hay varios tamaños</span></label>
+          <label class="opt"><input type="radio" name="gab" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div class="cond" id="c-gab">
+          <label class="q" for="q40b">¿Qué tamaños hay?</label>
+          <input type="text" id="q40b" name="Tamanos de gabia" placeholder="">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Quién decide hoy cómo se colocan las piezas dentro?</label>
+        <div class="opts" data-single="Quien decide la carga de la gabia">
+          <label class="opt"><input type="radio" name="qcar" value="El operario sobre la marcha"><span>El operario, sobre la marcha</span></label>
+          <label class="opt"><input type="radio" name="qcar" value="Hay una forma acordada"><span>Hay una forma acordada de hacerlo</span></label>
+          <label class="opt"><input type="radio" name="qcar" value="Cada uno lo hace a su manera"><span>Cada uno lo hace a su manera</span></label>
+          <label class="opt"><input type="radio" name="qcar" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Qué se suele meter en una misma carga?</label>
+        <div class="opts" data-single="Criterio de mezcla en la carga">
+          <label class="opt"><input type="radio" name="mez" value="Piezas de un mismo pedido"><span>Piezas de un mismo pedido</span></label>
+          <label class="opt"><input type="radio" name="mez" value="Piezas del mismo color"><span>Piezas del mismo color de pintura</span></label>
+          <label class="opt"><input type="radio" name="mez" value="Lo que toque, mezclado"><span>Lo que toque, mezclado</span></label>
+          <label class="opt"><input type="radio" name="mez" value="Depende del día"><span>Depende del día</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">Reglas que no se pueden saltar al cargar</label>
+        <div class="help">Marcad todas las que apliquen. Si el sistema no las conoce, propondrá cargas imposibles.</div>
+        <div class="opts" data-multi="Restricciones de carga">
+          <label class="opt"><input type="checkbox" value="Las piezas no se pueden tocar entre sí"><span>Las piezas no se pueden tocar entre sí</span></label>
+          <label class="opt"><input type="checkbox" value="Hay que dejar hueco para que la pintura llegue"><span>Hay que dejar hueco para que la pintura llegue por todos lados</span></label>
+          <label class="opt"><input type="checkbox" value="Hay piezas que van en una posición concreta"><span>Hay piezas que solo se pueden colgar en una posición</span></label>
+          <label class="opt"><input type="checkbox" value="Hay piezas que no pueden ir juntas"><span>Hay piezas que no pueden ir juntas</span></label>
+          <label class="opt"><input type="checkbox" value="Hay un peso máximo"><span>Hay un peso máximo por gabia</span></label>
+          <label class="opt"><input type="checkbox" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div style="margin-top:.9rem">
+          <input type="text" name="Otras restricciones de carga" placeholder="¿Alguna regla más? Escribidla aquí">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Cuántas cargas de gabia hacéis?</label>
+        <div class="opts" data-single="Cargas de gabia por dia" data-cond="c-cargas|Lo cuento mejor por semana">
+          <label class="opt"><input type="radio" name="ncar" value="Menos de 5 al día"><span>Menos de 5 al día</span></label>
+          <label class="opt"><input type="radio" name="ncar" value="Entre 5 y 15 al día"><span>Entre 5 y 15 al día</span></label>
+          <label class="opt"><input type="radio" name="ncar" value="Más de 15 al día"><span>Más de 15 al día</span></label>
+          <label class="opt"><input type="radio" name="ncar" value="Lo cuento mejor por semana"><span>Lo cuento mejor por semana</span></label>
+          <label class="opt"><input type="radio" name="ncar" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div class="cond" id="c-cargas">
+          <label class="q" for="q44b">¿Cuántas por semana?</label>
+          <input type="text" id="q44b" name="Cargas de gabia por semana" placeholder="">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q45">¿Sabéis cuánto os cuesta cada carga?</label>
+        <div class="help">Aunque sea aproximado. Con eso podemos calcular cuánto se ahorraría metiendo más piezas por carga.</div>
+        <input type="text" id="q45" name="Coste por carga de gabia" placeholder="Si no lo sabéis, escribid: no lo sé">
+      </div>
+
+      <div class="f">
+        <label class="q">Si la carga saliera perfecta, ¿qué mejoraría?</label>
+        <div class="help">Podéis marcar varias.</div>
+        <div class="opts" data-multi="Criterio de exito de la gabia">
+          <label class="opt"><input type="checkbox" value="Caben más piezas"><span>Caben más piezas</span></label>
+          <label class="opt"><input type="checkbox" value="Se pintan más kilos de una vez"><span>Se pintan más kilos de una vez</span></label>
+          <label class="opt"><input type="checkbox" value="Se aprovecha mejor la pintura"><span>Se aprovecha mejor la pintura</span></label>
+          <label class="opt"><input type="checkbox" value="Se tarda menos en cargar"><span>Se tarda menos en cargar</span></label>
+          <label class="opt"><input type="checkbox" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Qué queréis que haga el sistema con eso?</label>
+        <div class="opts" data-single="Resultado esperado del optimizador de gabia">
+          <label class="opt"><input type="radio" name="rgab" value="Enseñar en pantalla cómo colocarlas"><span>Que enseñe en una pantalla cómo colocarlas y el operario lo siga</span></label>
+          <label class="opt"><input type="radio" name="rgab" value="Que además hable con una máquina de carga"><span>Que además se conecte con alguna máquina de carga</span></label>
+          <label class="opt"><input type="radio" name="rgab" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="7" data-roles="compras">
+      <div class="blockHead">
+        <div class="blockNum mono">COMPRAS</div>
+        <div class="blockTitle">Compras a proveedores</div>
+        <div class="blockSub">Cómo se compra hoy y qué se podría quitar de en medio.</div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Cómo compráis hoy?</label>
+        <div class="help">Podéis marcar varias.</div>
+        <div class="opts" data-multi="Como compran hoy">
+          <label class="opt"><input type="checkbox" value="Por teléfono"><span>Por teléfono</span></label>
+          <label class="opt"><input type="checkbox" value="Por email"><span>Por email</span></label>
+          <label class="opt"><input type="checkbox" value="Por WhatsApp"><span>Por WhatsApp</span></label>
+          <label class="opt"><input type="checkbox" value="Por la web del proveedor"><span>Entrando en la web del proveedor</span></label>
+          <label class="opt"><input type="checkbox" value="Con un programa"><span>Con un programa</span></label>
+          <label class="opt"><input type="checkbox" value="Lo apunta alguien en un Excel"><span>Lo apunta alguien en un Excel</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿A cuántos proveedores compráis habitualmente?</label>
+        <div class="opts" data-single="Numero de proveedores">
+          <label class="opt"><input type="radio" name="nprov" value="Menos de 5"><span>Menos de 5</span></label>
+          <label class="opt"><input type="radio" name="nprov" value="Entre 5 y 15"><span>Entre 5 y 15</span></label>
+          <label class="opt"><input type="radio" name="nprov" value="Entre 15 y 40"><span>Entre 15 y 40</span></label>
+          <label class="opt"><input type="radio" name="nprov" value="Más de 40"><span>Más de 40</span></label>
+          <label class="opt"><input type="radio" name="nprov" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q50">¿Qué compráis y a quién?</label>
+        <div class="help">Por ejemplo, aluminio en bruto, tornillería, pintura, embalaje. Podéis grabarlo hablando.</div>
+        <textarea id="q50" name="Que compran y a quien" placeholder=""></textarea>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Qué hace que se lance un pedido de compra?</label>
+        <div class="opts" data-multi="Que dispara un pedido de compra">
+          <label class="opt"><input type="checkbox" value="Se acaba el material"><span>Que se está acabando el material</span></label>
+          <label class="opt"><input type="checkbox" value="Alguien se da cuenta"><span>Que alguien se da cuenta al pasar por el almacén</span></label>
+          <label class="opt"><input type="checkbox" value="Lo pide un cliente"><span>Que entra el pedido de un cliente</span></label>
+          <label class="opt"><input type="checkbox" value="Hay una previsión"><span>Que hay una previsión de lo que va a hacer falta</span></label>
+          <label class="opt"><input type="checkbox" value="Se compra en fechas fijas"><span>Se compra en fechas fijas</span></label>
+          <label class="opt"><input type="checkbox" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">Si el sistema supiera cuánto material queda, ¿querríais que avisara solo cuando toca reponer?</label>
+        <div class="opts" data-single="Reposicion automatica desde inventario">
+          <label class="opt"><input type="radio" name="repo" value="Sí, que avise"><span>Sí, que avise y ya decidimos nosotros</span></label>
+          <label class="opt"><input type="radio" name="repo" value="Sí, y que prepare el pedido"><span>Sí, y que además deje el pedido preparado para revisarlo</span></label>
+          <label class="opt"><input type="radio" name="repo" value="No, preferimos decidirlo nosotros"><span>No, preferimos seguir decidiéndolo nosotros</span></label>
+          <label class="opt"><input type="radio" name="repo" value="Lo hablamos"><span>Eso lo hablamos</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Alguien tiene que dar el visto bueno antes de comprar?</label>
+        <div class="opts" data-single="Aprobacion de compras" data-cond="c-apro|Sí, siempre|Solo si pasa de cierta cantidad">
+          <label class="opt"><input type="radio" name="apro" value="Sí, siempre"><span>Sí, siempre</span></label>
+          <label class="opt"><input type="radio" name="apro" value="Solo si pasa de cierta cantidad"><span>Solo si pasa de cierta cantidad</span></label>
+          <label class="opt"><input type="radio" name="apro" value="No"><span>No</span></label>
+        </div>
+        <div class="cond" id="c-apro">
+          <label class="q" for="q53b">¿Quién lo aprueba y a partir de qué cantidad?</label>
+          <input type="text" id="q53b" name="Quien aprueba las compras" placeholder="">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Cuántos pedidos de compra hacéis al mes?</label>
+        <div class="opts" data-single="Pedidos de compra al mes">
+          <label class="opt"><input type="radio" name="npc" value="Menos de 10"><span>Menos de 10</span></label>
+          <label class="opt"><input type="radio" name="npc" value="Entre 10 y 50"><span>Entre 10 y 50</span></label>
+          <label class="opt"><input type="radio" name="npc" value="Entre 50 y 200"><span>Entre 50 y 200</span></label>
+          <label class="opt"><input type="radio" name="npc" value="Más de 200"><span>Más de 200</span></label>
+          <label class="opt"><input type="radio" name="npc" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q55">Cuando llega el material, ¿qué hacéis con el albarán?</label>
+        <div class="help">Desde que el camión descarga hasta que la factura queda contabilizada.</div>
+        <textarea id="q55" name="Que hacen con el albaran" placeholder=""></textarea>
+      </div>
+
+      <div class="f">
+        <label class="q">Subid un albarán y una factura de proveedor de ejemplo</label>
+        <div class="help">Podéis tapar lo que no queráis enseñar. Nos interesa el formato, no los importes.</div>
+        <label class="drop" data-name="albaran-factura">
+          <input type="file" multiple>
+          <span>Pulsad aquí para elegir los archivos</span>
+        </label>
+        <div class="fileList"></div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Usáis ya algún programa de compras o proveedores, aunque sea sencillo?</label>
+        <div class="opts" data-single="Programa de compras actual" data-cond="c-prog|Sí">
+          <label class="opt"><input type="radio" name="prog" value="Sí"><span>Sí</span></label>
+          <label class="opt"><input type="radio" name="prog" value="No"><span>No</span></label>
+          <label class="opt"><input type="radio" name="prog" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div class="cond" id="c-prog">
+          <label class="q" for="q57b">¿Cuál?</label>
+          <input type="text" id="q57b" name="Cual programa de compras" placeholder="">
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="8" data-roles="admin">
+      <div class="blockHead">
+        <div class="blockNum mono">ADMINISTRACIÓN</div>
+        <div class="blockTitle">Facturas y SAGE</div>
+        <div class="blockSub">La primera pregunta se resuelve con una foto, no hace falta saber la respuesta.</div>
+      </div>
+
+      <div class="f">
+        <label class="q">Foto de la pantalla de SAGE</label>
+        <div class="help">Abrid SAGE, pulsad arriba en <b>Ayuda</b> y luego en <b>Acerca de</b>. Sale una ventana con el nombre y el número de versión. Hacedle una foto con el móvil y subidla aquí. Esa ventana nos dice cómo se puede conectar SAGE con lo nuevo, y de eso depende buena parte del presupuesto.</div>
+        <label class="drop" data-name="sage-version">
+          <input type="file" multiple accept="image/*">
+          <span>Pulsad aquí para subir la foto</span>
+        </label>
+        <div class="fileList"></div>
+      </div>
+
+      <div class="f">
+        <label class="q">Si lo sabéis, ¿qué SAGE tenéis?</label>
+        <div class="opts" data-single="Version de SAGE">
+          <label class="opt"><input type="radio" name="sage" value="SAGE 50cloud"><span>SAGE 50cloud</span></label>
+          <label class="opt"><input type="radio" name="sage" value="SAGE 200"><span>SAGE 200</span></label>
+          <label class="opt"><input type="radio" name="sage" value="SAGE Despachos"><span>SAGE Despachos</span></label>
+          <label class="opt"><input type="radio" name="sage" value="SAGE X3"><span>SAGE X3</span></label>
+          <label class="opt"><input type="radio" name="sage" value="Otro"><span>Otro</span></label>
+          <label class="opt"><input type="radio" name="sage" value="No lo sé"><span>No lo sé, va la foto</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿SAGE está instalado en un ordenador de la empresa o entráis por internet?</label>
+        <div class="opts" data-single="SAGE local o nube">
+          <label class="opt"><input type="radio" name="sloc" value="Instalado en un ordenador"><span>Instalado en un ordenador de la empresa</span></label>
+          <label class="opt"><input type="radio" name="sloc" value="Se entra por internet"><span>Se entra por internet desde el navegador</span></label>
+          <label class="opt"><input type="radio" name="sloc" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q61">¿Quién os instala y mantiene SAGE?</label>
+        <div class="help">Nombre de la empresa o de la persona y un teléfono si lo tenéis a mano. Vamos a necesitar hablar con ellos.</div>
+        <input type="text" id="q61" name="Quien mantiene SAGE" placeholder="">
+      </div>
+
+      <div class="f">
+        <label class="q">De todo el papeleo, ¿qué os come más tiempo?</label>
+        <div class="help">Podéis marcar varias.</div>
+        <div class="opts" data-multi="Que consume mas tiempo administrativo">
+          <label class="opt"><input type="checkbox" value="Hacer las facturas de venta"><span>Hacer las facturas de venta</span></label>
+          <label class="opt"><input type="checkbox" value="Meter las facturas de proveedores"><span>Meter a mano las facturas de proveedores</span></label>
+          <label class="opt"><input type="checkbox" value="Cuadrar el banco"><span>Cuadrar los movimientos del banco</span></label>
+          <label class="opt"><input type="checkbox" value="Sacar informes"><span>Sacar informes</span></label>
+          <label class="opt"><input type="checkbox" value="Perseguir cobros"><span>Perseguir cobros</span></label>
+          <label class="opt"><input type="checkbox" value="Otra cosa"><span>Otra cosa</span></label>
+        </div>
+        <div style="margin-top:.9rem">
+          <input type="text" name="Otro consumo de tiempo administrativo" placeholder="Si hay otra cosa, escribidla aquí">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Cuántas facturas emitís al mes?</label>
+        <div class="opts" data-single="Facturas emitidas al mes">
+          <label class="opt"><input type="radio" name="fem" value="Menos de 50"><span>Menos de 50</span></label>
+          <label class="opt"><input type="radio" name="fem" value="Entre 50 y 200"><span>Entre 50 y 200</span></label>
+          <label class="opt"><input type="radio" name="fem" value="Entre 200 y 500"><span>Entre 200 y 500</span></label>
+          <label class="opt"><input type="radio" name="fem" value="Más de 500"><span>Más de 500</span></label>
+          <label class="opt"><input type="radio" name="fem" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Y cuántas recibís al mes?</label>
+        <div class="opts" data-single="Facturas recibidas al mes">
+          <label class="opt"><input type="radio" name="frec" value="Menos de 50"><span>Menos de 50</span></label>
+          <label class="opt"><input type="radio" name="frec" value="Entre 50 y 200"><span>Entre 50 y 200</span></label>
+          <label class="opt"><input type="radio" name="frec" value="Entre 200 y 500"><span>Entre 200 y 500</span></label>
+          <label class="opt"><input type="radio" name="frec" value="Más de 500"><span>Más de 500</span></label>
+          <label class="opt"><input type="radio" name="frec" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Innaltech y Woorbel llevan contabilidad separada?</label>
+        <div class="opts" data-single="Sociedades contables">
+          <label class="opt"><input type="radio" name="soc" value="Sí, son dos contabilidades"><span>Sí, son dos contabilidades distintas</span></label>
+          <label class="opt"><input type="radio" name="soc" value="No, es una sola"><span>No, es una sola</span></label>
+          <label class="opt"><input type="radio" name="soc" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Estáis ya con la factura electrónica obligatoria?</label>
+        <div class="opts" data-single="Situacion factura electronica">
+          <label class="opt"><input type="radio" name="fe" value="Sí, ya la usamos"><span>Sí, ya la usamos</span></label>
+          <label class="opt"><input type="radio" name="fe" value="Lo estamos preparando"><span>Lo estamos preparando</span></label>
+          <label class="opt"><input type="radio" name="fe" value="Todavía no"><span>Todavía no</span></label>
+          <label class="opt"><input type="radio" name="fe" value="No sé de qué se trata"><span>No sé de qué se trata</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿La contabilidad la lleváis dentro o una gestoría?</label>
+        <div class="opts" data-single="Contabilidad interna o gestoria">
+          <label class="opt"><input type="radio" name="gest" value="Dentro de la empresa"><span>Dentro de la empresa</span></label>
+          <label class="opt"><input type="radio" name="gest" value="Una gestoría"><span>Una gestoría</span></label>
+          <label class="opt"><input type="radio" name="gest" value="Mitad y mitad"><span>Mitad y mitad</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Querríais que cada venta generara su factura sola?</label>
+        <div class="opts" data-single="Facturacion automatica desde ventas">
+          <label class="opt"><input type="radio" name="fauto" value="Sí"><span>Sí</span></label>
+          <label class="opt"><input type="radio" name="fauto" value="No"><span>No</span></label>
+          <label class="opt"><input type="radio" name="fauto" value="Lo hablamos"><span>Eso lo hablamos</span></label>
+        </div>
+      </div>
+    </section>
+    <section class="step" data-step="9" data-roles="ventas">
+      <div class="blockHead">
+        <div class="blockNum mono">VENTAS</div>
+        <div class="blockTitle">Ventas y clientes</div>
+        <div class="blockSub">Por dónde entran los pedidos y qué os gustaría ver de un vistazo.</div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Por dónde os llegan los pedidos?</label>
+        <div class="help">Podéis marcar varias.</div>
+        <div class="opts" data-multi="Canales de venta actuales">
+          <label class="opt"><input type="checkbox" value="Llaman por teléfono"><span>Llaman por teléfono</span></label>
+          <label class="opt"><input type="checkbox" value="Por email"><span>Por email</span></label>
+          <label class="opt"><input type="checkbox" value="Comerciales que visitan"><span>Comerciales que visitan al cliente</span></label>
+          <label class="opt"><input type="checkbox" value="Distribuidores"><span>Distribuidores</span></label>
+          <label class="opt"><input type="checkbox" value="Tienda online propia"><span>Una tienda online propia</span></label>
+          <label class="opt"><input type="checkbox" value="Marketplaces"><span>Portales de venta de terceros</span></label>
+        </div>
+        <div style="margin-top:.9rem">
+          <input type="text" name="Otro canal de venta" placeholder="Si hay otro canal, escribidlo aquí">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Usáis algún programa para llevar los clientes?</label>
+        <div class="opts" data-single="Programa de clientes" data-cond="c-crm|Sí">
+          <label class="opt"><input type="radio" name="crm" value="Sí"><span>Sí</span></label>
+          <label class="opt"><input type="radio" name="crm" value="Lo llevamos en Excel"><span>Lo llevamos en Excel</span></label>
+          <label class="opt"><input type="radio" name="crm" value="No"><span>No</span></label>
+          <label class="opt"><input type="radio" name="crm" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div class="cond" id="c-crm">
+          <label class="q" for="q71b">¿Cuál?</label>
+          <input type="text" id="q71b" name="Cual programa de clientes" placeholder="">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Qué os gustaría poder ver de un vistazo?</label>
+        <div class="help">Podéis marcar varias.</div>
+        <div class="opts" data-multi="Que quieren ver de las ventas">
+          <label class="opt"><input type="checkbox" value="Todos los pedidos en una sola pantalla"><span>Todos los pedidos en una sola pantalla</span></label>
+          <label class="opt"><input type="checkbox" value="En qué va cada pedido"><span>En qué punto va cada pedido</span></label>
+          <label class="opt"><input type="checkbox" value="Cuánto ha vendido cada comercial"><span>Cuánto ha vendido cada comercial</span></label>
+          <label class="opt"><input type="checkbox" value="Qué se vende más"><span>Qué se vende más y qué menos</span></label>
+          <label class="opt"><input type="checkbox" value="Clientes que llevan tiempo sin comprar"><span>Qué clientes llevan tiempo sin comprar</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q73">¿Cuántas personas venden y desde dónde trabajan?</label>
+        <div class="help">Por ejemplo, "tres en oficina y dos en la calle con el móvil".</div>
+        <input type="text" id="q73" name="Personas que venden y desde donde" placeholder="">
+      </div>
+
+      <div class="f">
+        <label class="q">¿Necesitáis saber en el momento si hay material antes de prometer una entrega?</label>
+        <div class="opts" data-single="Necesidad de stock en tiempo real">
+          <label class="opt"><input type="radio" name="stk" value="Sí, es clave"><span>Sí, es clave</span></label>
+          <label class="opt"><input type="radio" name="stk" value="Estaría bien"><span>Estaría bien, pero no es crítico</span></label>
+          <label class="opt"><input type="radio" name="stk" value="No hace falta"><span>No hace falta</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="10">
+      <div class="blockHead">
+        <div class="blockNum mono">LA EMPRESA</div>
+        <div class="blockTitle">Cómo estáis montados por dentro</div>
+        <div class="blockSub">Seis preguntas para dimensionar el proyecto.</div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Tenéis a alguien de informática?</label>
+        <div class="opts" data-single="Soporte informatico" data-cond="c-it|Sí, en plantilla|Una empresa externa">
+          <label class="opt"><input type="radio" name="it" value="Sí, en plantilla"><span>Sí, alguien en plantilla</span></label>
+          <label class="opt"><input type="radio" name="it" value="Una empresa externa"><span>Una empresa externa que nos lleva todo</span></label>
+          <label class="opt"><input type="radio" name="it" value="Nadie fijo"><span>Nadie fijo, se llama cuando hay problemas</span></label>
+          <label class="opt"><input type="radio" name="it" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div class="cond" id="c-it">
+          <label class="q" for="q75b">¿Quién es y cómo se le contacta?</label>
+          <input type="text" id="q75b" name="Contacto de informatica" placeholder="">
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Los programas de la empresa están en ordenadores de aquí o en internet?</label>
+        <div class="opts" data-single="Infraestructura actual">
+          <label class="opt"><input type="radio" name="infra" value="En ordenadores de la empresa"><span>En ordenadores o servidores de la empresa</span></label>
+          <label class="opt"><input type="radio" name="infra" value="En internet"><span>En internet, se entra por el navegador</span></label>
+          <label class="opt"><input type="radio" name="infra" value="Mezclado"><span>Un poco de cada</span></label>
+          <label class="opt"><input type="radio" name="infra" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q77">¿Quién sería la persona de contacto durante el proyecto?</label>
+        <div class="help">La persona a la que preguntaremos las dudas del día a día. Nombre, cargo y teléfono.</div>
+        <input type="text" id="q77" name="Interlocutor del proyecto" placeholder="">
+      </div>
+
+      <div class="f">
+        <label class="q">Si hiciera falta comprar tablets, lectores o una impresora de etiquetas, ¿habría margen?</label>
+        <div class="opts" data-single="Presupuesto para hardware">
+          <label class="opt"><input type="radio" name="hw" value="Sí"><span>Sí, si hace falta se compra</span></label>
+          <label class="opt"><input type="radio" name="hw" value="Poco, mejor con lo que ya tenemos"><span>Poco, mejor aprovechar lo que ya tenemos</span></label>
+          <label class="opt"><input type="radio" name="hw" value="No lo sé, dependerá"><span>No lo sé, dependerá de cuánto sea</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Hay alguna exigencia sobre dónde se guardan los datos?</label>
+        <div class="help">Estaríamos guardando todo vuestro catálogo, así que preguntamos.</div>
+        <div class="opts" data-single="Requisitos de alojamiento de datos">
+          <label class="opt"><input type="radio" name="dat" value="Tienen que estar en España o la UE"><span>Tienen que estar en España o en la Unión Europea</span></label>
+          <label class="opt"><input type="radio" name="dat" value="No hay exigencia"><span>No tenemos ninguna exigencia</span></label>
+          <label class="opt"><input type="radio" name="dat" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Qué cifra tenéis en la cabeza para esto?</label>
+        <div class="help">Aunque sea una horquilla muy amplia. Nos sirve para proponeros algo realista en vez de algo que no encaja.</div>
+        <div class="opts" data-single="Presupuesto orientativo">
+          <label class="opt"><input type="radio" name="pres" value="Menos de 10.000 euros"><span>Menos de 10.000 euros</span></label>
+          <label class="opt"><input type="radio" name="pres" value="Entre 10.000 y 25.000 euros"><span>Entre 10.000 y 25.000 euros</span></label>
+          <label class="opt"><input type="radio" name="pres" value="Entre 25.000 y 60.000 euros"><span>Entre 25.000 y 60.000 euros</span></label>
+          <label class="opt"><input type="radio" name="pres" value="Más de 60.000 euros"><span>Más de 60.000 euros</span></label>
+          <label class="opt"><input type="radio" name="pres" value="Prefiero hablarlo en la reunión"><span>Prefiero hablarlo en la reunión</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="11">
+      <div class="blockHead">
+        <div class="blockNum mono">CIERRE</div>
+        <div class="blockTitle">Lo último y ya está</div>
+        <div class="blockSub">Gracias por el rato.</div>
+      </div>
+
+      <div class="f">
+        <label class="q" for="q81">¿Qué es importante que sepamos y no os hemos preguntado?</label>
+        <div class="help">Esta suele ser la respuesta más valiosa de todo el cuestionario. Si os resulta más cómodo, grabadla hablando.</div>
+        <textarea id="q81" name="Que mas deberiamos saber" placeholder=""></textarea>
+      </div>
+
+      <div class="f">
+        <label class="q">Subid cualquier otra cosa que ayude</label>
+        <div class="help">Fotos, listados, capturas de pantalla, presupuestos anteriores. Lo que sea.</div>
+        <label class="drop" data-name="otros">
+          <input type="file" multiple>
+          <span>Pulsad aquí para elegir los archivos</span>
+        </label>
+        <div class="fileList"></div>
+      </div>
+
+      <div class="f">
+        <label class="q">¿Cuándo os viene bien una reunión?</label>
+        <div class="opts" data-single="Preferencia de horario">
+          <label class="opt"><input type="radio" name="hor" value="Por las mañanas"><span>Por las mañanas</span></label>
+          <label class="opt"><input type="radio" name="hor" value="Por las tardes"><span>Por las tardes</span></label>
+          <label class="opt"><input type="radio" name="hor" value="Indiferente"><span>Indiferente</span></label>
+        </div>
+        <div style="margin-top:.9rem">
+          <input type="text" name="Dias que van mejor" placeholder="¿Qué días os van mejor?">
+        </div>
+      </div>
+    </section>
+
+    <div class="nav" id="nav">
+      <button type="button" class="btn btnO" id="prev">← Atrás</button>
+      <div class="navMeta saved mono" id="savedMsg">Se guarda solo en este navegador</div>
+      <button type="button" class="btn btnP" id="next">Siguiente →</button>
+    </div>
+  </form>
+
+  <div class="done" id="done">
+    <div class="doneIcon">✓</div>
+    <h2>Recibido, gracias</h2>
+    <p>Revisamos las respuestas y os proponemos fecha para la reunión de cierre de alcance. Si hay otra persona en la empresa que pueda contestar los bloques que habéis dejado fuera, podéis reenviarle este mismo enlace.</p>
+  </div>
+
+  <div class="foot">
+    <span>Innaltech-Woorbel SL · Cuestionario de proyecto</span>
+    <span>04/09/2026</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var WEBHOOK = "https://n8n.agustinynatalia.site/webhook/levantamiento-proceso";
+  var KEY = "innaltech_v1";
+
+  var all = [].slice.call(document.querySelectorAll(".step"));
+  var visible = all.slice();
+  var cur = 0;
+  var form = document.getElementById("form");
+  var hero = document.getElementById("hero");
+  var nav = document.getElementById("nav");
+  var prevBtn = document.getElementById("prev");
+  var nextBtn = document.getElementById("next");
+  var barFill = document.getElementById("barFill");
+  var stepCount = document.getElementById("stepCount");
+
+  function selectedRoles(){
+    var r = [];
+    document.querySelectorAll("#roles input:checked").forEach(function(i){
+      r.push(i.getAttribute("data-role"));
+    });
+    return r;
+  }
+  function recompute(){
+    var roles = selectedRoles();
+    var todo = roles.indexOf("todo") > -1 || roles.length === 0;
+    var active = visible[cur];
+    visible = all.filter(function(s){
+      var need = s.getAttribute("data-roles");
+      if(!need) return true;
+      if(todo) return true;
+      return need.split(",").some(function(n){ return roles.indexOf(n.trim()) > -1; });
+    });
+    var idx = visible.indexOf(active);
+    cur = idx > -1 ? idx : Math.min(cur, visible.length - 1);
+  }
+
+  function render(){
+    all.forEach(function(s){ s.classList.remove("on"); });
+    visible[cur].classList.add("on");
+    var total = visible.length;
+    barFill.style.width = ((cur+1)/total*100)+"%";
+    stepCount.textContent = "Paso "+(cur+1)+" de "+total;
+    prevBtn.style.visibility = cur===0 ? "hidden" : "visible";
+    nextBtn.textContent = cur===total-1 ? "Enviar" : "Siguiente →";
+    hero.style.display = cur===0 ? "block" : "none";
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  document.querySelectorAll(".opt input").forEach(function(inp){
+    inp.addEventListener("change", function(){
+      var group = inp.closest(".opts");
+      if(inp.type==="radio"){
+        group.querySelectorAll(".opt").forEach(function(o){ o.classList.remove("sel"); });
+      }
+      inp.closest(".opt").classList.toggle("sel", inp.checked);
+      var fBox = inp.closest(".f");
+      if(fBox) fBox.classList.remove("bad");
+      handleCond(group);
+      save();
+    });
+  });
+
+  function handleCond(group){
+    var spec = group.getAttribute("data-cond");
+    if(!spec) return;
+    var parts = spec.split("|");
+    var box = document.getElementById(parts[0]);
+    if(!box) return;
+    var vals = parts.slice(1);
+    var sel = group.querySelector("input:checked");
+    box.classList.toggle("on", !!sel && vals.indexOf(sel.value)>-1);
+  }
+
+  /* ---- audio por pregunta ---- */
+  var recordings = {};
+  var activeRec = null;
+
+  function slug(s){
+    return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+            .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,45);
+  }
+  function pickMime(){
+    var opts = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"];
+    for(var i=0;i<opts.length;i++){
+      if(window.MediaRecorder && MediaRecorder.isTypeSupported(opts[i])) return opts[i];
+    }
+    return "";
+  }
+  function extFor(m){ return m.indexOf("mp4")>-1 ? "m4a" : (m.indexOf("ogg")>-1 ? "ogg" : "webm"); }
+
+  document.querySelectorAll("textarea").forEach(function(ta){
+    if(!navigator.mediaDevices || !window.MediaRecorder) return;
+    var wrap = document.createElement("div");
+    wrap.className = "rec";
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "recBtn";
+    btn.innerHTML = '<span class="mic"></span><span class="lbl">Responder hablando</span>';
+    var time = document.createElement("span");
+    time.className = "recTime";
+    var hint = document.createElement("span");
+    hint.className = "orText"; hint.textContent = "si preferís hablar en vez de escribir";
+    var play = document.createElement("div");
+    play.className = "recPlay"; play.style.display = "none";
+    wrap.appendChild(btn); wrap.appendChild(time); wrap.appendChild(hint); wrap.appendChild(play);
+    ta.parentNode.insertBefore(wrap, ta.nextSibling);
+
+    var mr = null, chunks = [], t0 = 0, tick = null;
+    function stop(){ if(mr && mr.state !== "inactive") mr.stop(); }
+    function reset(){
+      clearInterval(tick); tick = null;
+      btn.classList.remove("rec-on");
+      btn.querySelector(".lbl").textContent = "Responder hablando";
+      time.textContent = "";
+      activeRec = null;
+    }
+    btn.addEventListener("click", function(){
+      if(mr && mr.state === "recording"){ stop(); return; }
+      if(activeRec) activeRec();
+      navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+        var mime = pickMime();
+        mr = mime ? new MediaRecorder(stream, {mimeType:mime}) : new MediaRecorder(stream);
+        chunks = [];
+        mr.ondataavailable = function(e){ if(e.data.size) chunks.push(e.data); };
+        mr.onstop = function(){
+          stream.getTracks().forEach(function(t){ t.stop(); });
+          var type = mr.mimeType || mime || "audio/webm";
+          var blob = new Blob(chunks, {type:type});
+          recordings[ta.name] = {blob:blob, ext:extFor(type)};
+          var url = URL.createObjectURL(blob);
+          play.innerHTML = "";
+          var au = document.createElement("audio");
+          au.controls = true; au.src = url;
+          var del = document.createElement("button");
+          del.type = "button"; del.className = "recDel"; del.textContent = "Borrar";
+          del.addEventListener("click", function(){
+            delete recordings[ta.name];
+            play.style.display = "none"; play.innerHTML = "";
+          });
+          play.appendChild(au); play.appendChild(del);
+          play.style.display = "flex";
+          var f = ta.closest(".f"); if(f) f.classList.remove("bad");
+          reset();
+        };
+        mr.start();
+        t0 = Date.now();
+        btn.classList.add("rec-on");
+        btn.querySelector(".lbl").textContent = "Detener";
+        tick = setInterval(function(){
+          var s = Math.floor((Date.now()-t0)/1000);
+          time.textContent = String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+          if(s >= 300) stop();
+        }, 250);
+        activeRec = stop;
+      }).catch(function(){
+        alert("No hemos podido acceder al micrófono. Revisad los permisos del navegador o escribid la respuesta.");
+      });
+    });
+  });
+
+  /* ---- adjuntos, una zona por pregunta ---- */
+  var picked = [];
+  document.querySelectorAll(".drop").forEach(function(drop){
+    var group = drop.getAttribute("data-name");
+    var input = drop.querySelector("input[type=file]");
+    var list = drop.parentNode.querySelector(".fileList");
+    function paint(){
+      list.innerHTML = "";
+      picked.forEach(function(item){
+        if(item.group !== group) return;
+        var row = document.createElement("div");
+        row.className = "fileItem";
+        row.innerHTML = "<span>"+item.file.name+" · "+(item.file.size/1024).toFixed(0)+" KB</span>";
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = "×";
+        b.addEventListener("click", function(){
+          picked.splice(picked.indexOf(item),1); paint();
+        });
+        row.appendChild(b);
+        list.appendChild(row);
+      });
+    }
+    function add(files){
+      [].slice.call(files).forEach(function(f){
+        if(f.size > 20*1024*1024){ alert("El archivo "+f.name+" pasa de 20 MB."); return; }
+        picked.push({group:group, file:f});
+      });
+      paint();
+    }
+    input.addEventListener("change", function(){ add(input.files); input.value = ""; });
+    ["dragenter","dragover"].forEach(function(e){
+      drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.add("over"); });
+    });
+    ["dragleave","drop"].forEach(function(e){
+      drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.remove("over"); });
+    });
+    drop.addEventListener("drop", function(ev){ add(ev.dataTransfer.files); });
+  });
+
+  /* ---- validación ---- */
+  function validate(step){
+    var ok = true;
+    step.querySelectorAll(".f[data-req]").forEach(function(f){
+      var bad = false;
+      var g = f.querySelector(".opts");
+      if(g){
+        if(!g.querySelector("input:checked")) bad = true;
+      } else {
+        var field = f.querySelector("input[type=text],input[type=email],textarea,select");
+        if(field){
+          var v = field.value.trim();
+          if(!v && !(field.name && recordings[field.name])) bad = true;
+        }
+      }
+      f.classList.toggle("bad", bad);
+      if(bad) ok = false;
+    });
+    if(!ok){
+      var first = step.querySelector(".f.bad");
+      if(first) first.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+    return ok;
+  }
+  form.addEventListener("input", function(e){
+    var f = e.target.closest(".f");
+    if(f) f.classList.remove("bad");
+    save();
+  });
+
+  /* ---- guardado local ---- */
+  var saveTimer;
+  function save(){
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      var data = {};
+      form.querySelectorAll("input,textarea,select").forEach(function(el,i){
+        if(el.type==="file") return;
+        var k = el.id || (el.name+"_"+i);
+        data[k] = (el.type==="checkbox"||el.type==="radio") ? el.checked : el.value;
+      });
+      try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){}
+    }, 400);
+  }
+  function restore(){
+    var raw;
+    try{ raw = localStorage.getItem(KEY); }catch(e){ return; }
+    if(!raw) return;
+    var data;
+    try{ data = JSON.parse(raw); }catch(e){ return; }
+    form.querySelectorAll("input,textarea,select").forEach(function(el,i){
+      if(el.type==="file") return;
+      var k = el.id || (el.name+"_"+i);
+      if(!(k in data)) return;
+      if(el.type==="checkbox"||el.type==="radio"){
+        el.checked = data[k];
+        if(el.checked){
+          var opt = el.closest(".opt"); if(opt) opt.classList.add("sel");
+        }
+      } else { el.value = data[k]; }
+    });
+    document.querySelectorAll(".opts").forEach(handleCond);
+    document.getElementById("savedMsg").textContent = "Recuperamos lo que llevabais";
+  }
+
+  /* ---- envío ---- */
+  function collect(){
+    var out = {};
+    visible.forEach(function(step){
+      step.querySelectorAll("input[type=text],input[type=email],input[type=tel],input[type=number],textarea,select").forEach(function(el){
+        var v = el.value.trim();
+        if(v && el.name) out[el.name] = v;
+      });
+      step.querySelectorAll("[data-multi]").forEach(function(g){
+        var vals = [].slice.call(g.querySelectorAll("input:checked")).map(function(i){ return i.value; });
+        if(vals.length) out[g.getAttribute("data-multi")] = vals.join(", ");
+      });
+      step.querySelectorAll("[data-single]").forEach(function(g){
+        var s = g.querySelector("input:checked");
+        if(s) out[g.getAttribute("data-single")] = s.value;
+      });
+    });
+    return out;
+  }
+
+  function submit(){
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Enviando...";
+    var fd = new FormData();
+    var data = collect();
+    Object.keys(data).forEach(function(k){ fd.append(k, data[k]); });
+    fd.append("Cliente", "Innaltech-Woorbel SL");
+    fd.append("_meta", JSON.stringify({
+      formulario: "innaltech", enviado: new Date().toISOString(), origen: location.href
+    }));
+    picked.forEach(function(item, i){
+      fd.append("adjunto_"+(i+1), item.file, item.group+"__"+item.file.name);
+    });
+    Object.keys(recordings).forEach(function(name, i){
+      var r = recordings[name];
+      fd.append("audio_"+(i+1), r.blob, "audio-"+slug(name)+"."+r.ext);
+    });
+
+    fetch(WEBHOOK, {method:"POST", body: fd})
+      .then(function(r){
+        if(!r.ok) throw new Error("HTTP "+r.status);
+        try{ localStorage.removeItem(KEY); }catch(e){}
+        form.style.display = "none";
+        hero.style.display = "none";
+        document.getElementById("done").classList.add("on");
+        barFill.style.width = "100%";
+        stepCount.textContent = "Completado";
+        window.scrollTo({top:0, behavior:"smooth"});
+      })
+      .catch(function(){
+        nextBtn.disabled = false;
+        nextBtn.textContent = "Enviar";
+        alert("No se ha podido enviar. Revisad la conexión e intentadlo otra vez. Si sigue fallando, avisadnos por el mismo canal donde recibisteis este enlace.");
+      });
+  }
+
+  nextBtn.addEventListener("click", function(){
+    if(!validate(visible[cur])) return;
+    if(cur === 0) recompute();
+    if(cur === visible.length-1){ submit(); return; }
+    cur++; render();
+  });
+  prevBtn.addEventListener("click", function(){
+    if(cur>0){ cur--; render(); }
+  });
+
+  restore();
+  recompute();
+  cur = 0;
+  render();
+})();
+</script>
+</body>
+</html>
