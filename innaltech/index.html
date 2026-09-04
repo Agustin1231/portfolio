@@ -178,7 +178,7 @@ select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;u
   <div class="hero" id="hero">
     <div class="eyebrow">Innaltech · Woorbel</div>
     <h1>Contadnos cómo trabajáis hoy</h1>
-    <p class="lead">Este cuestionario recoge la información que nos falta tras la visita del 4 de septiembre. No hace falta que lo rellene una sola persona ni que se conteste todo: en la primera pantalla nos decís de qué parte de la empresa nos podéis hablar y solo os mostramos esas preguntas.</p>
+    <p class="lead">Este cuestionario recoge la información que nos falta tras la visita del 4 de septiembre. No hace falta que lo rellene una sola persona ni que se conteste todo. Si una pregunta es de un área que no lleváis, pasad de largo y seguid adelante.</p>
     <div class="note"><b>¿Preferís hablar?</b> En las preguntas largas hay un botón para responder con la voz en vez de escribir. Nosotros lo pasamos a texto.</div>
     <div class="note"><b>Si algo no lo sabéis, no pasa nada.</b> Todas las preguntas tienen la opción "No lo sé". Es una respuesta útil, no un fallo.</div>
     <div class="note"><b>Seguridad.</b> No escribáis contraseñas ni claves de acceso a ningún programa. Eso se pide más adelante por un canal seguro.</div>
@@ -210,29 +210,6 @@ select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;u
         <div class="err">Necesitamos este dato</div>
       </div>
 
-      <div class="f">
-        <label class="q">¿Desde qué empresa respondéis?</label>
-        <div class="opts" data-single="Empresa desde la que responde">
-          <label class="opt"><input type="radio" name="emp" value="Innaltech"><span>Innaltech</span></label>
-          <label class="opt"><input type="radio" name="emp" value="Woorbel"><span>Woorbel</span></label>
-          <label class="opt"><input type="radio" name="emp" value="Las dos"><span>Las dos</span></label>
-          <label class="opt"><input type="radio" name="emp" value="No lo sé"><span>No lo sé</span></label>
-        </div>
-      </div>
-
-      <div class="f" data-req>
-        <label class="q">¿De qué partes de la empresa nos podéis hablar?<span class="req">*</span></label>
-        <div class="help">Marcad todas las que conozcáis bien. Solo os enseñaremos esas preguntas. Si hay otra persona que lleva otra área, puede rellenar este mismo enlace por su cuenta.</div>
-        <div class="opts" id="roles" data-multi="Areas que conoce">
-          <label class="opt"><input type="checkbox" value="El almacén" data-role="almacen"><span>El almacén, dónde está guardado cada material</span></label>
-          <label class="opt"><input type="checkbox" value="La gabia de pintura" data-role="pintura"><span>La gabia de pintura, cómo se cargan las piezas</span></label>
-          <label class="opt"><input type="checkbox" value="Las compras" data-role="compras"><span>Las compras a proveedores</span></label>
-          <label class="opt"><input type="checkbox" value="Facturas y contabilidad" data-role="admin"><span>Las facturas y la contabilidad (SAGE)</span></label>
-          <label class="opt"><input type="checkbox" value="Las ventas" data-role="ventas"><span>Las ventas y los clientes</span></label>
-          <label class="opt"><input type="checkbox" value="Todo" data-role="todo"><span>De todo un poco, voy a rellenarlo entero</span></label>
-        </div>
-        <div class="err">Marcad al menos una</div>
-      </div>
     </section>
 
     <section class="step" data-step="2">
