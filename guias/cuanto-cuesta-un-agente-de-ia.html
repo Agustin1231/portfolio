@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuánto cuesta de verdad tener un agente de IA corriendo — Agustin Peralta</title>
+<meta name="description" content="Cuánto cuesta operar un agente de IA en producción. Por qué el precio por millón de tokens no predice la factura, cómo el historial de conversación multiplica el costo de cada turno, qué modelo poner en cada paso del flujo, los reintentos que se pagan igual, los costos que no aparecen en la factura del proveedor y cómo estimar el gasto mensual con una prueba real antes de construir.">
+<meta name="keywords" content="Agentes de IA, Costos y arquitectura, n8n, Gemini, Claude, Observabilidad, Costos y arquitectura">
+<meta name="author" content="Agustin Peralta">
+<link rel="canonical" href="https://agustin.agustinynatalia.site/guias/cuanto-cuesta-un-agente-de-ia.html">
+<link rel="alternate" hreflang="es" href="https://agustin.agustinynatalia.site/guias/cuanto-cuesta-un-agente-de-ia.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cuánto cuesta de verdad tener un agente de IA corriendo — Agustin Peralta">
+<meta property="og:description" content="Cuánto cuesta operar un agente de IA en producción. Por qué el precio por millón de tokens no predice la factura, cómo el historial de conversación multiplica el costo de cada turno, qué modelo poner en cada paso del flujo, los reintentos que se pagan igual, los costos que no aparecen en la factura del proveedor y cómo estimar el gasto mensual con una prueba real antes de construir.">
+<meta property="og:url" content="https://agustin.agustinynatalia.site/guias/cuanto-cuesta-un-agente-de-ia.html">
+<meta property="og:image" content="https://agustin.agustinynatalia.site/og-image.png?v=330-167000-17000">
+<meta property="og:site_name" content="Agustin Peralta">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cuánto cuesta de verdad tener un agente de IA corriendo — Agustin Peralta">
+<meta name="twitter:description" content="Cuánto cuesta operar un agente de IA en producción. Por qué el precio por millón de tokens no predice la factura, cómo el historial de conversación multiplica el costo de cada turno, qué modelo poner en cada paso del flujo, los reintentos que se pagan igual, los costos que no aparecen en la factura del proveedor y cómo estimar el gasto mensual con una prueba real antes de construir.">
+<meta name="twitter:image" content="https://agustin.agustinynatalia.site/og-image.png?v=330-167000-17000">
+<meta name="theme-color" content="#f1efe9">
+<script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Cuánto cuesta de verdad tener un agente de IA corriendo","description":"Cuánto cuesta operar un agente de IA en producción. Por qué el precio por millón de tokens no predice la factura, cómo el historial de conversación multiplica el costo de cada turno, qué modelo poner en cada paso del flujo, los reintentos que se pagan igual, los costos que no aparecen en la factura del proveedor y cómo estimar el gasto mensual con una prueba real antes de construir.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/cuanto-cuesta-un-agente-de-ia.html"},"url":"https://agustin.agustinynatalia.site/guias/cuanto-cuesta-un-agente-de-ia.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=330-167000-17000","articleSection":"Costos y arquitectura","keywords":"Agentes de IA, Costos y arquitectura, n8n, Gemini, Claude, Observabilidad","datePublished":"2026-09-01","dateModified":"2026-09-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/index.html#guias"},{"@type":"ListItem","position":3,"name":"Cuánto cuesta de verdad tener un agente de IA corriendo","item":"https://agustin.agustinynatalia.site/guias/cuanto-cuesta-un-agente-de-ia.html"}]}]}</script>
+<script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:#0b0b0d}
+html{overflow-x:hidden}
+.site{--bg:#0b0b0d;--bg2:#131316;--panel:#141417;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.055);--fg:#eceae4;--dim:#9b9a91;--faint:#585851;--btnfg:#0b0b0d;font-family:'Space Grotesk',system-ui,sans-serif;background-color:var(--bg);color:var(--fg);min-height:100vh}
+.site.light{--bg:#f1efe9;--bg2:#ffffff;--panel:#ffffff;--line:rgba(20,18,15,.15);--line2:rgba(20,18,15,.07);--fg:#191712;--dim:#6b675e;--faint:#a7a397;--btnfg:#ffffff}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1220px;margin:0 auto;padding:0 2.2rem}
+.rd{max-width:820px;margin:0 auto;padding:0 2.2rem}
+a{color:inherit;text-decoration:none}
+.acc{color:var(--accent)}
+::selection{background:var(--accent);color:var(--btnfg)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.98rem;letter-spacing:-.3px;display:flex;align-items:center}
+.curs{color:var(--accent);animation:bl 1.1s steps(1) infinite;margin-left:1px}
+@keyframes bl{50%{opacity:0}}
+.navlinks{display:flex;gap:2rem;list-style:none}
+.navlinks a{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim);letter-spacing:.2px;transition:color .25s;position:relative}
+.navlinks a:hover,.navlinks a.on{color:var(--fg)}
+.navlinks a::before{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--accent);transition:right .3s}
+.navlinks a:hover::before,.navlinks a.on::before{right:0}
+.navtools{display:flex;align-items:center;gap:.5rem}
+.lang{display:flex;font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.lang button{font:inherit;background:none;border:none;color:var(--dim);padding:.42rem .6rem;cursor:pointer;transition:all .2s}
+.lang button.on{background:var(--accent);color:var(--btnfg)}
+.tgl{width:38px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:none;color:var(--fg);cursor:pointer;font-size:1rem;transition:all .2s}
+.tgl:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:34px;align-items:center;justify-content:center}
+.burger span{width:20px;height:2px;background:var(--fg);transition:.3s}
+.bg3d{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:.6}
+.btn{font-family:'JetBrains Mono',monospace;font-size:.85rem;padding:.85rem 1.5rem;border-radius:8px;border:1px solid var(--line);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px;color:var(--fg);background:none}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:500}
+.btnP:hover{transform:translateY(-2px);box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 35%,transparent)}
+.btnO:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.stackTags{display:flex;flex-wrap:wrap;gap:.55rem}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.82rem;padding:.42rem .8rem;border:1px solid var(--line);border-radius:7px;color:var(--fg);transition:all .22s}
+.tag:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.footer{border-top:1px solid var(--line);padding:2.6rem 0;position:relative;z-index:1;background-color:var(--bg)}
+.footIn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim)}
+.footIn .y{color:var(--faint)}
+.dhero{padding:8.5rem 0 2.5rem;position:relative;z-index:1}
+.back{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--dim);margin-bottom:2.2rem;transition:color .2s}
+.back:hover{color:var(--accent)}
+.dcat{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.dtitle{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:600;letter-spacing:-.035em;line-height:1.06;margin-bottom:1.2rem}
+.dsub{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--dim);line-height:1.5;margin-bottom:2rem}
+.dmeta{display:flex;flex-wrap:wrap;gap:2.6rem;padding:1.4rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dmeta .k{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.4rem}
+.dmeta .v{font-size:1rem;color:var(--fg)}
+.dllink{margin-top:1.8rem}
+.dsec{padding:2.6rem 0;position:relative;z-index:1}
+.dsech{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem}
+.dsech::before{content:'';width:24px;height:1px;background:var(--accent)}
+.dlead{font-size:1.4rem;font-weight:500;line-height:1.45;letter-spacing:-.01em;margin-bottom:1.3rem;color:var(--fg)}
+.dp{color:var(--dim);line-height:1.8;font-size:1.06rem;margin-bottom:1.2rem}
+.reqlist{list-style:none;display:grid;gap:.85rem}
+.reqlist li{display:flex;gap:.85rem;color:var(--dim);line-height:1.6;font-size:1.02rem}
+.reqlist li::before{content:'→';color:var(--accent);font-family:'JetBrains Mono',monospace;flex-shrink:0}
+.pcgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.pccard{border:1px solid var(--line);border-radius:14px;padding:1.7rem;background:color-mix(in srgb,var(--panel) 65%,transparent)}
+.pccard h4{font-family:'JetBrains Mono',monospace;font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:1.2rem;color:var(--fg)}
+.pclist{list-style:none;display:grid;gap:.8rem}
+.pclist li{display:flex;gap:.7rem;color:var(--dim);line-height:1.55;font-size:.96rem}
+.pclist li .mk{flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:600}
+.pros h4{color:var(--accent)}
+.pros .mk{color:var(--accent)}
+.cons .mk{color:var(--faint)}
+.dcta{border:1px solid var(--line);border-radius:20px;padding:3.2rem 2rem;text-align:center;background:color-mix(in srgb,var(--panel) 65%,transparent);position:relative;z-index:1}
+.dcta h3{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.6rem}
+.dctaRow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.notfound{padding:11rem 0 8rem;text-align:center;position:relative;z-index:1}
+@media(max-width:920px){
+.navlinks{position:fixed;top:0;right:0;width:270px;height:100vh;flex-direction:column;background:var(--bg2);border-left:1px solid var(--line);padding:5.5rem 2rem;gap:1.4rem;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.navlinks.open{transform:none}
+.burger{display:flex}
+.wrap,.rd{padding:0 1.4rem}
+.pcgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="site light" id="top" style="--accent:#ff5c35">
+<nav class="nav"><div class="wrap navbar">
+<a class="brand" href="../index.html">agustin.peralta<span class="curs">▮</span></a>
+<ul class="navlinks" id="nav">
+<li><a href="../index.html#sobre">sobre-mí</a></li>
+<li><a href="../index.html#experiencia">experiencia</a></li>
+<li><a href="../index.html#proyectos">proyectos</a></li>
+<li><a class="on" href="../index.html#guias">guías</a></li>
+<li><a href="/metricas">métricas</a></li>
+<li><a href="../index.html#contacto">contacto</a></li>
+</ul>
+<div class="navtools">
+<button class="tgl" id="tgl" aria-label="Cambiar tema">☾</button>
+<button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+</div>
+</div></nav>
+
+<header class="dhero"><div class="rd">
+<a class="back mono" href="../index.html#guias">← volver a guías</a>
+<div class="dcat mono">Costos y arquitectura</div>
+<h1 class="dtitle">Cuánto cuesta de verdad tener un agente de IA corriendo</h1>
+<p class="dsub">La factura del modelo es la parte fácil de calcular y casi nunca es la que sorprende. Esto es lo que se paga cuando un agente lleva meses en producción, qué decisión de diseño mueve más la cuenta que cambiar de proveedor, y cómo estimar el gasto antes de escribir la primera línea.</p>
+<div class="dmeta">
+<div><div class="k mono">Publicado</div><div class="v">Septiembre 2026</div></div>
+<div><div class="k mono">Lectura</div><div class="v">10 min de lectura</div></div>
+</div>
+</div></header>
+
+<section class="dsec"><div class="rd"><div class="dsech mono">El precio por millón de tokens no te dice cuánto vas a pagar</div>
+<p class="dlead">Casi todo el mundo empieza comparando tarifas entre proveedores, y esa es justamente la parte que menos predice la factura de fin de mes.</p>
+<p class="dp">He visto dos agentes montados con el mismo modelo donde uno gasta diez veces más que el otro. La tarifa era idéntica. Lo que cambiaba era cuánto texto pasaba por el modelo en cada ejecución, y eso no lo decide el proveedor, lo decides tú cuando armas el flujo.</p>
+<p class="dp">La unidad de costo no es el modelo, es la ejecución completa. Un agente que resuelve un caso con una sola llamada corta puede salir más barato con el modelo caro que otro que da doce vueltas con el barato. Por eso comparar precios de lista antes de haber medido una ejecución real es perder el tiempo.</p>
+<p class="dp">Mi forma de verlo es sencilla. Primero mido cuánto cuesta que el flujo resuelva un caso de punta a punta, después multiplico por el volumen que espero, y solo al final me pregunto si cambiar de proveedor mueve la aguja. Casi nunca es lo que más la mueve.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">El historial de la conversación es el que multiplica la cuenta</div>
+<p class="dp">Esta es la parte que más sorprende a la gente que arranca. Un modelo no recuerda nada por su cuenta, así que en cada turno le vuelves a mandar la conversación completa para que sepa de qué están hablando. El turno veinte no cuesta lo mismo que el primero, cuesta mucho más, porque lleva cargando todo lo anterior.</p>
+<p class="dp">El efecto es que el gasto no crece parejo con la cantidad de mensajes, crece más rápido. Una conversación larga con un usuario que escribe cortico y muchas veces puede costar más que veinte conversaciones cortas, aunque el contenido útil sea el mismo. Y si al prompt de sistema le fuiste agregando instrucciones con el tiempo, ese texto también viaja completo en cada turno.</p>
+<p class="dp">Lo que hago es cortar la ventana. Se mandan los últimos mensajes completos y lo anterior entra resumido, o directamente no entra si el caso ya se resolvió. También reviso el prompt de sistema cada tanto, porque tiende a engordar con reglas que se agregaron para un caso puntual y quedaron ahí para siempre.</p>
+<p class="dp">Si el proveedor ofrece caché de la parte fija del prompt, vale la pena usarla. Es el mismo texto viajando una y otra vez, y pagar por él a tarifa completa cada turno no tiene sentido cuando existe la opción de que quede cacheado.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">No todos los pasos merecen el modelo caro</div>
+<p class="dlead">En un flujo bien armado la mayoría de llamadas al modelo no son para escribir nada, son para decidir algo. Y decidir entre cuatro opciones no necesita el modelo bueno.</p>
+<p class="dp">La regla que sigo es separar clasificar de redactar. Cuando el paso es mirar un mensaje y decir si es una queja, una cotización o una consulta, uso el modelo más barato del proveedor, el de la gama liviana. Cuando el paso es escribir lo que el cliente va a leer, ahí sí va el bueno. En la práctica eso significa que el ochenta por ciento de las llamadas de un flujo corren en el modelo barato y el gasto se concentra en las pocas que se ven.</p>
+<p class="dp">Hay algo que suena obvio y casi nadie hace, que es sacar el modelo de los pasos donde no hace falta. Si la decisión se puede tomar con una condición sobre un campo, se toma con una condición. Meter un modelo a preguntarle si un número es mayor que otro es pagar por algo que el flujo ya sabía hacer gratis.</p>
+<p class="dp">Otra que ahorra plata sin que se note la diferencia es pedir respuestas cortas cuando la respuesta es para otro sistema y no para una persona. Si lo que sigue es un paso que solo lee una categoría, no hace falta que el modelo explique su razonamiento en tres párrafos que nadie va a leer y que se pagan igual.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Los reintentos y los bucles se pagan completos</div>
+<p class="dp">Una llamada que falla se cobra igual si el modelo alcanzó a procesar la entrada. Eso quiere decir que una política de reintentos generosa multiplica el costo de los días malos, que son justo los días en que el proveedor está lento y todo reintenta más.</p>
+<p class="dp">El caso más caro que me ha tocado ver es el agente que se queda dando vueltas. Llama una herramienta, no le gusta el resultado, vuelve a llamarla, y como cada vuelta arrastra todo lo anterior, las últimas iteraciones son las más costosas de todas. Si nadie le puso un tope de iteraciones, un solo caso raro puede gastar lo de un día entero.</p>
+<p class="dp">Por eso pongo tope de iteraciones desde el primer día, límite de reintentos con espera entre uno y otro, y una alerta que avise cuando una sola ejecución se pasa de cierto costo. Esa alerta ha salvado más plata que cualquier optimización de prompt.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Lo que no aparece en la factura del proveedor</div>
+<p class="dlead">Cuando alguien pregunta cuánto cuesta el agente casi siempre está pensando en la cuenta del modelo, y esa suele ser la mitad de la historia.</p>
+<p class="dp">Está el servidor donde corre el flujo, la base de datos donde vive el historial, y el almacenamiento que crece solo porque cada conversación se guarda entera. Si hay búsqueda semántica de por medio, está el costo de generar los vectores y el de mantener actualizado lo que ya se indexó, que es un gasto que vuelve cada vez que el contenido cambia.</p>
+<p class="dp">Pero el que de verdad pesa y nadie mete en la cuenta es el tiempo de la persona que revisa. Un agente que necesita que alguien mire cada salida antes de que salga no cuesta lo que dice la factura, cuesta eso más el rato diario de esa persona. Y ese costo sube con el volumen igual que el otro.</p>
+<p class="dp">También hay un costo que aparece cada tanto y conviene tenerlo previsto, que es el de mover el sistema cuando el proveedor cambia el modelo o retira el que estabas usando. No es una catástrofe, pero son días de trabajo para volver a probar que las salidas siguen siendo las que esperabas.</p>
+<p class="dp">Cuando cotizo un proyecto separo esto en dos partes. Mis honorarios van por un lado y el consumo de servidores y proveedores va por otro, a nombre del cliente. Así el cliente ve qué le está costando operar y yo no termino financiando una cuenta que crece con el uso que él le dé.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Cuándo la suscripción sale mejor que la API</div>
+<p class="dp">Para herramientas internas, donde el volumen es tuyo y no de un cliente, a veces la cuenta cambia por completo si en vez de pagar por consumo usas una suscripción que ya tienes. Es el mismo modelo, la diferencia es el esquema de cobro.</p>
+<p class="dp">Lo tengo montado así para uno de mis proyectos internos. El sistema no llama a la API con una llave por consumo sino que pasa por una capa intermedia que usa la suscripción, y volver atrás es cambiar una variable de entorno. Esa reversibilidad es la parte importante, porque el día que el volumen crezca o la herramienta deje de ser interna, se devuelve el cambio sin tocar el código.</p>
+<p class="dp">Eso sí, no aplica para todo. Un producto que le facturas a un cliente y que corre con el volumen de él va por API, con su propia llave y su propio tope. Mezclar las dos cosas es una discusión que no quieres tener después.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Cómo estimarlo antes de construir</div>
+<p class="dlead">La única estimación que se sostiene es la que sale de correr el flujo de verdad, aunque sea veinte veces.</p>
+<p class="dp">Lo que hago es armar el flujo con el prompt real y los datos reales, correrlo con veinte casos que se parezcan a los que va a recibir, y mirar el consumo que quedó registrado. Eso me da el costo promedio de una ejecución. De ahí en adelante es multiplicar por el volumen mensual y agregarle un margen, porque los casos raros siempre salen más caros que el promedio.</p>
+<p class="dp">Los veinte casos tienen que incluir los feos. Si solo pruebas con el mensaje bien escrito, el promedio que te queda es el del mejor día. El correo que llega a medias, el que trae un hilo de veinte respuestas pegado abajo y el que viene con un archivo adjunto son los que mueven el número.</p>
+<p class="dp">Con ese dato ya puedes tener la conversación difícil antes y no después. Si el costo por caso resuelto es mayor que lo que cuesta resolverlo a mano, el proyecto no era de IA y es mejor saberlo con el prototipo que con seis meses de facturas encima.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Por dónde empezaría si arrancas de cero</div>
+<p class="dp">Primero mediría una ejecución real de punta a punta antes de comparar proveedores. Ese número es el que manda y el resto de la conversación depende de él.</p>
+<p class="dp">Después pondría el tope de gasto y la alerta por ejecución costosa, antes de abrirle el flujo a nadie. Es lo más barato de montar y lo único que te protege del caso raro que se queda dando vueltas un domingo.</p>
+<p class="dp">Luego separaría los pasos que clasifican de los que redactan, y mandaría los primeros al modelo liviano. Ahí suele estar la mayor parte del ahorro y casi nunca se nota en la calidad de lo que ve el cliente.</p>
+<p class="dp">Por último cortaría el historial y revisaría el prompt de sistema una vez al mes. Las dos cosas engordan solas mientras el sistema está vivo, y engordar ahí se paga en cada turno de cada conversación.</p>
+</div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Requisitos</div><ul class="reqlist"><li>Cuántas veces al mes se va a ejecutar el flujo, con un número real y no con el optimista. Todo el cálculo cuelga de ahí y si ese dato está inflado el resto sobra.</li><li>Cuántos pasos del flujo pasan de verdad por un modelo. Buena parte de los que uno cree que necesitan IA se resuelven con una condición y no cuestan nada.</li><li>Qué tan larga es una conversación típica, si el agente conversa. El gasto no crece con la cantidad de mensajes sino con lo que se arrastra dentro de cada uno.</li><li>Acceso al tablero de consumo del proveedor desde el primer día. Si no ves el gasto diario, el día que se dispare te enteras cuando llegue la factura.</li><li>Un tope de gasto configurado antes de abrir el flujo al público, aunque te parezca exagerado ponerlo.</li><li>Saber quién paga la cuenta, si tú o el cliente. Eso cambia por completo qué modelo tiene sentido en cada paso y cómo se cotiza el proyecto.</li></ul></div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Pros y contras</div><div class="pcgrid"><div class="pccard pros"><h4>A favor</h4><ul class="pclist"><li><span class="mk">+</span><span>Medir una ejecución real toma una tarde y reemplaza cualquier comparación de tarifas entre proveedores.</span></li><li><span class="mk">+</span><span>Separar la clasificación de la redacción baja la cuenta sin que el cliente note diferencia en lo que lee.</span></li><li><span class="mk">+</span><span>El tope de gasto y la alerta por ejecución costosa se montan una vez y evitan el susto del caso que se queda en bucle.</span></li><li><span class="mk">+</span><span>Cortar el historial y adelgazar el prompt de sistema ahorra en cada turno, no una sola vez.</span></li><li><span class="mk">+</span><span>Estimar antes de construir permite matar a tiempo el proyecto que no daba, que sale mucho más barato que matarlo después.</span></li><li><span class="mk">+</span><span>Separar honorarios de consumo en la cotización deja claro qué cuesta construirlo y qué cuesta operarlo.</span></li></ul></div><div class="pccard cons"><h4>En contra</h4><ul class="pclist"><li><span class="mk">−</span><span>Ninguna estimación aguanta si el volumen mensual que te dieron era el optimista y no el real.</span></li><li><span class="mk">−</span><span>Cachear la parte fija del prompt obliga a mantenerla estable, y eso pelea con la costumbre de irle agregando reglas.</span></li><li><span class="mk">−</span><span>Bajar de modelo en un paso pide volver a probar ese paso, porque el barato falla distinto y no siempre falla claro.</span></li><li><span class="mk">−</span><span>Instrumentar el costo por ejecución agrega un registro más que mantener y que se puede romper en silencio.</span></li><li><span class="mk">−</span><span>El tiempo de la persona que revisa es el costo más grande y el más difícil de defender en una cotización.</span></li><li><span class="mk">−</span><span>Cuando el proveedor retira un modelo toca volver a validar las salidas, y eso son días que nadie presupuestó.</span></li></ul></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Herramientas</div><div class="stackTags"><span class="tag mono">Agentes de IA</span><span class="tag mono">Costos y arquitectura</span><span class="tag mono">n8n</span><span class="tag mono">Gemini</span><span class="tag mono">Claude</span><span class="tag mono">Observabilidad</span></div></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="../index.html#contacto">Hablemos →</a><a class="btn btnO" href="../index.html#guias">volver a guías</a></div></div></div></section>
+
+<footer class="footer"><div class="wrap footIn">
+<span>Diseñado y desarrollado por Agustin Peralta</span>
+<span class="y">© 2026 · <span class="acc">Bogotá</span></span>
+</div></footer>
+</div>
+<script>
+(function(){
+  var site=document.querySelector(".site");
+  try{if(localStorage.getItem("ap-theme")==="dark")site.classList.remove("light");}catch(e){}
+  var tgl=document.getElementById("tgl");
+  function icon(){tgl.textContent=site.classList.contains("light")?"☾":"☀";}
+  icon();
+  tgl.addEventListener("click",function(){
+    site.classList.toggle("light");
+    try{localStorage.setItem("ap-theme",site.classList.contains("light")?"light":"dark");}catch(e){}
+    icon();
+  });
+  document.getElementById("burger").addEventListener("click",function(){
+    document.getElementById("nav").classList.toggle("open");
+  });
+})();
+</script>
+</body>
+</html>

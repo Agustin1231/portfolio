@@ -1486,5 +1486,217 @@ var GUIDES_DATA = [
             "Webhooks",
             "Tableros de datos"
         ]
+    },
+    {
+        "id": "cuanto-cuesta-un-agente-de-ia",
+        "number": "11",
+        "visible": true,
+        "category": "Costos y arquitectura",
+        "title": "Cuánto cuesta de verdad tener un agente de IA corriendo",
+        "subtitle": "La factura del modelo es la parte fácil de calcular y casi nunca es la que sorprende. Esto es lo que se paga cuando un agente lleva meses en producción, qué decisión de diseño mueve más la cuenta que cambiar de proveedor, y cómo estimar el gasto antes de escribir la primera línea.",
+        "description": "Cuánto cuesta operar un agente de IA en producción. Por qué el precio por millón de tokens no predice la factura, cómo el historial de conversación multiplica el costo de cada turno, qué modelo poner en cada paso del flujo, los reintentos que se pagan igual, los costos que no aparecen en la factura del proveedor y cómo estimar el gasto mensual con una prueba real antes de construir.",
+        "image": "",
+        "imageCaption": "",
+        "date": "Septiembre 2026",
+        "readingTime": "10 min de lectura",
+        "urlLabel": "Leer guía",
+        "requirements": [
+            "Cuántas veces al mes se va a ejecutar el flujo, con un número real y no con el optimista. Todo el cálculo cuelga de ahí y si ese dato está inflado el resto sobra.",
+            "Cuántos pasos del flujo pasan de verdad por un modelo. Buena parte de los que uno cree que necesitan IA se resuelven con una condición y no cuestan nada.",
+            "Qué tan larga es una conversación típica, si el agente conversa. El gasto no crece con la cantidad de mensajes sino con lo que se arrastra dentro de cada uno.",
+            "Acceso al tablero de consumo del proveedor desde el primer día. Si no ves el gasto diario, el día que se dispare te enteras cuando llegue la factura.",
+            "Un tope de gasto configurado antes de abrir el flujo al público, aunque te parezca exagerado ponerlo.",
+            "Saber quién paga la cuenta, si tú o el cliente. Eso cambia por completo qué modelo tiene sentido en cada paso y cómo se cotiza el proyecto."
+        ],
+        "sections": [
+            {
+                "title": "El precio por millón de tokens no te dice cuánto vas a pagar",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Casi todo el mundo empieza comparando tarifas entre proveedores, y esa es justamente la parte que menos predice la factura de fin de mes."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "He visto dos agentes montados con el mismo modelo donde uno gasta diez veces más que el otro. La tarifa era idéntica. Lo que cambiaba era cuánto texto pasaba por el modelo en cada ejecución, y eso no lo decide el proveedor, lo decides tú cuando armas el flujo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La unidad de costo no es el modelo, es la ejecución completa. Un agente que resuelve un caso con una sola llamada corta puede salir más barato con el modelo caro que otro que da doce vueltas con el barato. Por eso comparar precios de lista antes de haber medido una ejecución real es perder el tiempo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Mi forma de verlo es sencilla. Primero mido cuánto cuesta que el flujo resuelva un caso de punta a punta, después multiplico por el volumen que espero, y solo al final me pregunto si cambiar de proveedor mueve la aguja. Casi nunca es lo que más la mueve."
+                    }
+                ]
+            },
+            {
+                "title": "El historial de la conversación es el que multiplica la cuenta",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "text": "Esta es la parte que más sorprende a la gente que arranca. Un modelo no recuerda nada por su cuenta, así que en cada turno le vuelves a mandar la conversación completa para que sepa de qué están hablando. El turno veinte no cuesta lo mismo que el primero, cuesta mucho más, porque lleva cargando todo lo anterior."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El efecto es que el gasto no crece parejo con la cantidad de mensajes, crece más rápido. Una conversación larga con un usuario que escribe cortico y muchas veces puede costar más que veinte conversaciones cortas, aunque el contenido útil sea el mismo. Y si al prompt de sistema le fuiste agregando instrucciones con el tiempo, ese texto también viaja completo en cada turno."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo que hago es cortar la ventana. Se mandan los últimos mensajes completos y lo anterior entra resumido, o directamente no entra si el caso ya se resolvió. También reviso el prompt de sistema cada tanto, porque tiende a engordar con reglas que se agregaron para un caso puntual y quedaron ahí para siempre."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Si el proveedor ofrece caché de la parte fija del prompt, vale la pena usarla. Es el mismo texto viajando una y otra vez, y pagar por él a tarifa completa cada turno no tiene sentido cuando existe la opción de que quede cacheado."
+                    }
+                ]
+            },
+            {
+                "title": "No todos los pasos merecen el modelo caro",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "En un flujo bien armado la mayoría de llamadas al modelo no son para escribir nada, son para decidir algo. Y decidir entre cuatro opciones no necesita el modelo bueno."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La regla que sigo es separar clasificar de redactar. Cuando el paso es mirar un mensaje y decir si es una queja, una cotización o una consulta, uso el modelo más barato del proveedor, el de la gama liviana. Cuando el paso es escribir lo que el cliente va a leer, ahí sí va el bueno. En la práctica eso significa que el ochenta por ciento de las llamadas de un flujo corren en el modelo barato y el gasto se concentra en las pocas que se ven."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Hay algo que suena obvio y casi nadie hace, que es sacar el modelo de los pasos donde no hace falta. Si la decisión se puede tomar con una condición sobre un campo, se toma con una condición. Meter un modelo a preguntarle si un número es mayor que otro es pagar por algo que el flujo ya sabía hacer gratis."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Otra que ahorra plata sin que se note la diferencia es pedir respuestas cortas cuando la respuesta es para otro sistema y no para una persona. Si lo que sigue es un paso que solo lee una categoría, no hace falta que el modelo explique su razonamiento en tres párrafos que nadie va a leer y que se pagan igual."
+                    }
+                ]
+            },
+            {
+                "title": "Los reintentos y los bucles se pagan completos",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "text": "Una llamada que falla se cobra igual si el modelo alcanzó a procesar la entrada. Eso quiere decir que una política de reintentos generosa multiplica el costo de los días malos, que son justo los días en que el proveedor está lento y todo reintenta más."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El caso más caro que me ha tocado ver es el agente que se queda dando vueltas. Llama una herramienta, no le gusta el resultado, vuelve a llamarla, y como cada vuelta arrastra todo lo anterior, las últimas iteraciones son las más costosas de todas. Si nadie le puso un tope de iteraciones, un solo caso raro puede gastar lo de un día entero."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Por eso pongo tope de iteraciones desde el primer día, límite de reintentos con espera entre uno y otro, y una alerta que avise cuando una sola ejecución se pasa de cierto costo. Esa alerta ha salvado más plata que cualquier optimización de prompt."
+                    }
+                ]
+            },
+            {
+                "title": "Lo que no aparece en la factura del proveedor",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Cuando alguien pregunta cuánto cuesta el agente casi siempre está pensando en la cuenta del modelo, y esa suele ser la mitad de la historia."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Está el servidor donde corre el flujo, la base de datos donde vive el historial, y el almacenamiento que crece solo porque cada conversación se guarda entera. Si hay búsqueda semántica de por medio, está el costo de generar los vectores y el de mantener actualizado lo que ya se indexó, que es un gasto que vuelve cada vez que el contenido cambia."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Pero el que de verdad pesa y nadie mete en la cuenta es el tiempo de la persona que revisa. Un agente que necesita que alguien mire cada salida antes de que salga no cuesta lo que dice la factura, cuesta eso más el rato diario de esa persona. Y ese costo sube con el volumen igual que el otro."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "También hay un costo que aparece cada tanto y conviene tenerlo previsto, que es el de mover el sistema cuando el proveedor cambia el modelo o retira el que estabas usando. No es una catástrofe, pero son días de trabajo para volver a probar que las salidas siguen siendo las que esperabas."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuando cotizo un proyecto separo esto en dos partes. Mis honorarios van por un lado y el consumo de servidores y proveedores va por otro, a nombre del cliente. Así el cliente ve qué le está costando operar y yo no termino financiando una cuenta que crece con el uso que él le dé."
+                    }
+                ]
+            },
+            {
+                "title": "Cuándo la suscripción sale mejor que la API",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "text": "Para herramientas internas, donde el volumen es tuyo y no de un cliente, a veces la cuenta cambia por completo si en vez de pagar por consumo usas una suscripción que ya tienes. Es el mismo modelo, la diferencia es el esquema de cobro."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo tengo montado así para uno de mis proyectos internos. El sistema no llama a la API con una llave por consumo sino que pasa por una capa intermedia que usa la suscripción, y volver atrás es cambiar una variable de entorno. Esa reversibilidad es la parte importante, porque el día que el volumen crezca o la herramienta deje de ser interna, se devuelve el cambio sin tocar el código."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Eso sí, no aplica para todo. Un producto que le facturas a un cliente y que corre con el volumen de él va por API, con su propia llave y su propio tope. Mezclar las dos cosas es una discusión que no quieres tener después."
+                    }
+                ]
+            },
+            {
+                "title": "Cómo estimarlo antes de construir",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "La única estimación que se sostiene es la que sale de correr el flujo de verdad, aunque sea veinte veces."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo que hago es armar el flujo con el prompt real y los datos reales, correrlo con veinte casos que se parezcan a los que va a recibir, y mirar el consumo que quedó registrado. Eso me da el costo promedio de una ejecución. De ahí en adelante es multiplicar por el volumen mensual y agregarle un margen, porque los casos raros siempre salen más caros que el promedio."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Los veinte casos tienen que incluir los feos. Si solo pruebas con el mensaje bien escrito, el promedio que te queda es el del mejor día. El correo que llega a medias, el que trae un hilo de veinte respuestas pegado abajo y el que viene con un archivo adjunto son los que mueven el número."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Con ese dato ya puedes tener la conversación difícil antes y no después. Si el costo por caso resuelto es mayor que lo que cuesta resolverlo a mano, el proyecto no era de IA y es mejor saberlo con el prototipo que con seis meses de facturas encima."
+                    }
+                ]
+            },
+            {
+                "title": "Por dónde empezaría si arrancas de cero",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "text": "Primero mediría una ejecución real de punta a punta antes de comparar proveedores. Ese número es el que manda y el resto de la conversación depende de él."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Después pondría el tope de gasto y la alerta por ejecución costosa, antes de abrirle el flujo a nadie. Es lo más barato de montar y lo único que te protege del caso raro que se queda dando vueltas un domingo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Luego separaría los pasos que clasifican de los que redactan, y mandaría los primeros al modelo liviano. Ahí suele estar la mayor parte del ahorro y casi nunca se nota en la calidad de lo que ve el cliente."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Por último cortaría el historial y revisaría el prompt de sistema una vez al mes. Las dos cosas engordan solas mientras el sistema está vivo, y engordar ahí se paga en cada turno de cada conversación."
+                    }
+                ]
+            }
+        ],
+        "pros": [
+            "Medir una ejecución real toma una tarde y reemplaza cualquier comparación de tarifas entre proveedores.",
+            "Separar la clasificación de la redacción baja la cuenta sin que el cliente note diferencia en lo que lee.",
+            "El tope de gasto y la alerta por ejecución costosa se montan una vez y evitan el susto del caso que se queda en bucle.",
+            "Cortar el historial y adelgazar el prompt de sistema ahorra en cada turno, no una sola vez.",
+            "Estimar antes de construir permite matar a tiempo el proyecto que no daba, que sale mucho más barato que matarlo después.",
+            "Separar honorarios de consumo en la cotización deja claro qué cuesta construirlo y qué cuesta operarlo."
+        ],
+        "cons": [
+            "Ninguna estimación aguanta si el volumen mensual que te dieron era el optimista y no el real.",
+            "Cachear la parte fija del prompt obliga a mantenerla estable, y eso pelea con la costumbre de irle agregando reglas.",
+            "Bajar de modelo en un paso pide volver a probar ese paso, porque el barato falla distinto y no siempre falla claro.",
+            "Instrumentar el costo por ejecución agrega un registro más que mantener y que se puede romper en silencio.",
+            "El tiempo de la persona que revisa es el costo más grande y el más difícil de defender en una cotización.",
+            "Cuando el proveedor retira un modelo toca volver a validar las salidas, y eso son días que nadie presupuestó."
+        ],
+        "tools": [
+            "Agentes de IA",
+            "Costos y arquitectura",
+            "n8n",
+            "Gemini",
+            "Claude",
+            "Observabilidad"
+        ]
     }
 ];
