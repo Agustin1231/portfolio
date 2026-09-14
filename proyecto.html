@@ -93,6 +93,29 @@ a{color:inherit;text-decoration:none}
 .dgridbg{position:absolute;inset:0;background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:26px 26px;pointer-events:none}
 .dcap{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--faint);text-align:center;margin-bottom:1rem}
 .dsec{padding:1.9rem 0;position:relative;z-index:1}
+.gstage{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+.gbar{display:flex;align-items:center;gap:.45rem;padding:.72rem 1rem;border-bottom:1px solid var(--line2)}
+.gdot{width:10px;height:10px;border-radius:50%;background:var(--line);flex:none}
+.gttl{margin-left:.9rem;font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--dim);letter-spacing:.2px}
+.gshot{display:block;width:100%;padding:0;border:none;background:#0b0b0d;aspect-ratio:16/10;cursor:zoom-in}
+.gshot img{width:100%;height:100%;object-fit:cover;display:block}
+.gcap{color:var(--dim);line-height:1.65;font-size:1.02rem;margin:1.1rem 0 1.35rem;max-width:70ch}
+.gthumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem}
+.gthumb{aspect-ratio:16/10;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#0b0b0d;padding:0;cursor:pointer;transition:border-color .22s,transform .22s}
+.gthumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.5;transition:opacity .22s}
+.gthumb:hover{transform:translateY(-2px)}
+.gthumb:hover img{opacity:.85}
+.gthumb.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.gthumb.on img{opacity:1}
+.gnote{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--faint);margin-top:1rem}
+.lbox{position:fixed;inset:0;z-index:3000;background:rgba(7,7,9,.94);display:flex;align-items:center;justify-content:center;padding:4rem 4.5rem;cursor:zoom-out}
+.lbox img{max-width:100%;max-height:100%;border-radius:10px;border:1px solid rgba(255,255,255,.14);display:block}
+.lbtn{position:absolute;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#eceae4;border-radius:9px;cursor:pointer;font-size:1.15rem;width:42px;height:42px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.lbtn:hover{background:var(--accent);border-color:var(--accent);color:var(--btnfg)}
+.lprev{left:1.1rem;top:50%;transform:translateY(-50%)}
+.lnext{right:1.1rem;top:50%;transform:translateY(-50%)}
+.lclose{top:1.1rem;right:1.1rem}
+.lcap{position:absolute;bottom:1.2rem;left:0;right:0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#9b9a91;padding:0 2rem}
 .dsech{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.15rem;display:flex;align-items:center;gap:.7rem}
 .dsech::before{content:'';width:24px;height:1px;background:var(--accent)}
 .dlead{font-size:1.45rem;font-weight:500;line-height:1.42;letter-spacing:-.01em;margin-bottom:1.3rem;max-width:none;color:var(--fg)}
@@ -131,6 +154,9 @@ a{color:inherit;text-decoration:none}
 .wrap{padding:0 1.4rem}
 .dmetrics,.psteps,.rgrid{grid-template-columns:repeat(2,1fr)}
 .fgrid,.lgrid{grid-template-columns:1fr}
+.gthumbs{grid-template-columns:repeat(3,1fr)}
+.lbox{padding:3rem 1rem}
+.lprev{left:.4rem}.lnext{right:.4rem}
 .pstep{border-right:none;border-bottom:1px solid var(--line2)}
 .pstep:last-child{border-bottom:none}
 }
@@ -174,6 +200,17 @@ a{color:inherit;text-decoration:none}
 <sc-if value="{{proj.live}}" hint-placeholder-val="{{false}}"><a class="btn btnP" href="{{proj.live}}" target="_blank">{{proj.liveLabel}} ↗</a></sc-if>
 </div></header>
 
+<sc-if value="{{hasGallery}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="wrap">
+<div class="dsech mono">{{t.secGallery}}</div>
+<div class="gstage">
+<div class="gbar"><span class="gdot"></span><span class="gdot"></span><span class="gdot"></span><span class="gttl mono">{{shotTitle}}</span></div>
+<button class="gshot" onClick="{{openZoom}}" aria-label="{{t.zoomIn}}"><img src="{{shotSrc}}" alt="{{shotTitle}}"></button>
+</div>
+<p class="gcap">{{shotCap}}</p>
+<div class="gthumbs"><sc-for list="{{gallery}}" as="g" hint-placeholder-count="5"><button class="gthumb {{g.cls}}" onClick="{{g.onClick}}" aria-label="{{g.title}}"><img src="{{g.src}}" alt="{{g.title}}" loading="lazy"></button></sc-for></div>
+<sc-if value="{{hasGalleryNote}}" hint-placeholder-val="{{false}}"><div class="gnote mono">{{galleryNote}}</div></sc-if>
+</div></section></sc-if>
+
 <sc-if value="{{proj.hasMetrics}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secMetrics}}</div><div class="dmetrics"><sc-for list="{{proj.metrics}}" as="m" hint-placeholder-count="4"><div class="dmcell"><div class="dmval mono">{{m.value}}</div><div class="dmlbl mono">{{m.label}}</div></div></sc-for></div></div></section></sc-if>
 
 <sc-for list="{{proj.sections}}" as="s" hint-placeholder-count="2"><section class="dsec"><div class="wrap"><div class="dsech mono">{{s.title}}</div><sc-for list="{{s.items}}" as="c" hint-placeholder-count="2"><p class="{{c.cls}}">{{c.text}}</p></sc-for></div></section></sc-for>
@@ -189,6 +226,16 @@ a{color:inherit;text-decoration:none}
 <section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secStack}}</div><div class="stackTags"><sc-for list="{{proj.techFull}}" as="tf" hint-placeholder-count="6"><span class="tag mono">{{tf}}</span></sc-for></div></div></section>
 
 <section class="dsec"><div class="wrap"><div class="dcta"><h3>{{t.ctaTitle}}</h3><div class="dctaRow"><a class="btn btnP" href="index.html#contacto">{{t.ctaBtn}} →</a><a class="btn btnO" href="/proyectos">{{t.back}}</a></div></div></div></section>
+
+<sc-if value="{{zoomOpen}}" hint-placeholder-val="{{false}}">
+<div class="lbox" onClick="{{closeZoom}}">
+<button class="lbtn lprev" onClick="{{prevShot}}" aria-label="anterior">←</button>
+<img src="{{shotSrc}}" alt="{{shotTitle}}">
+<button class="lbtn lnext" onClick="{{nextShot}}" aria-label="siguiente">→</button>
+<button class="lbtn lclose" onClick="{{closeZoom}}" aria-label="cerrar">✕</button>
+<div class="lcap">{{shotTitle}} — {{shotCap}}</div>
+</div>
+</sc-if>
 </sc-if>
 
 <footer class="footer"><div class="wrap footIn">
@@ -203,16 +250,18 @@ class Component extends DCLogic {
     es:{navAbout:"sobre-mí",navExp:"experiencia",navWork:"proyectos",navGuides:"guías",navMetrics:"métricas",navContact:"contacto",
       back:"volver a proyectos",mYear:"Año",mClient:"Cliente",mDuration:"Duración",mSaved:"Tiempo ahorrado",mMoney:"Ahorro estimado",
       secMetrics:"En números",secFeatures:"Qué hace",secProcess:"Proceso",secResults:"Resultados",secLearnings:"Aprendizajes",secStack:"Stack técnico",
+      secGallery:"Por dentro",zoomIn:"Ampliar captura",
       ctaTitle:"¿Tienes un proyecto en mente?",ctaBtn:"Hablemos",notFound:"Proyecto no encontrado",liveDefault:"Ver en vivo",
       footerText:"Diseñado y desarrollado por Agustin Peralta"},
     en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
       back:"back to work",mYear:"Year",mClient:"Client",mDuration:"Duration",mSaved:"Time saved",mMoney:"Estimated savings",
       secMetrics:"By the numbers",secFeatures:"What it does",secProcess:"Process",secResults:"Results",secLearnings:"Learnings",secStack:"Tech stack",
+      secGallery:"Inside the product",zoomIn:"Enlarge screenshot",
       ctaTitle:"Have a project in mind?",ctaBtn:"Let's talk",notFound:"Project not found",liveDefault:"View live",
       footerText:"Designed & built by Agustin Peralta"}
   };
 
-  state = {theme:"light",lang:"es",menu:false,proj:null,loaded:false};
+  state = {theme:"light",lang:"es",menu:false,proj:null,loaded:false,shot:0,zoom:false};
 
   componentDidMount(){
     try{
@@ -221,8 +270,22 @@ class Component extends DCLogic {
     }catch(e){}
     this.startBg3d();
     this.loadProject();
+    var self=this;
+    this._key=function(e){
+      if(!self.state.zoom)return;
+      if(e.key==="Escape")self.setState({zoom:false});
+      else if(e.key==="ArrowRight")self.stepShot(1);
+      else if(e.key==="ArrowLeft")self.stepShot(-1);
+    };
+    window.addEventListener("keydown",this._key);
   }
-  componentWillUnmount(){cancelAnimationFrame(this._raf3);window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);}
+  componentWillUnmount(){cancelAnimationFrame(this._raf3);window.removeEventListener("resize",this._rz3);window.removeEventListener("pointermove",this._pm3);window.removeEventListener("keydown",this._key);}
+
+  stepShot(d){
+    var g=(this.state.proj&&this.state.proj.gallery)||[];
+    if(!g.length)return;
+    this.setState({shot:(this.state.shot+d+g.length)%g.length});
+  }
 
   loadProject(){
     var self=this,tries=0;
@@ -231,7 +294,7 @@ class Component extends DCLogic {
         var id=new URLSearchParams(window.location.search).get("id");
         var list=window.PROJECTS_DATA;
         var pr=id?list.filter(function(x){return x.id===id;})[0]:list[0];
-        self.setState({proj:pr||null,loaded:true});
+        self.setState({proj:pr||null,loaded:true,shot:0,zoom:false});
         if(pr&&pr.title)document.title=pr.title+" — Agustin Peralta";
         window.scrollTo(0,0);
       }else if(tries++<50){setTimeout(attempt,40);}
@@ -308,6 +371,18 @@ class Component extends DCLogic {
       savedHours:hasSaved?(fmtNum(savedH)+" h"):"",
       savedMoney:hasSaved?("$"+fmtNum(savedH*HOUR_USD)+" USD"):""
     };
+    var gal=pr.gallery||[];
+    var idx=Math.min(this.state.shot,Math.max(0,gal.length-1));
+    var act=gal[idx]||{};
+    base.hasGallery=gal.length>0;
+    base.gallery=gal.map(function(g,i){return {src:g.src,title:g.title||"",cls:i===idx?"on":"",onClick:function(){self.setState({shot:i});}};});
+    base.shotSrc=act.src||"";base.shotTitle=act.title||"";base.shotCap=act.caption||"";
+    base.galleryNote=pr.galleryNote||"";base.hasGalleryNote=!!pr.galleryNote;
+    base.zoomOpen=!!this.state.zoom&&gal.length>0;
+    base.openZoom=function(){self.setState({zoom:true});};
+    base.closeZoom=function(){self.setState({zoom:false});};
+    base.prevShot=function(e){if(e&&e.stopPropagation)e.stopPropagation();self.stepShot(-1);};
+    base.nextShot=function(e){if(e&&e.stopPropagation)e.stopPropagation();self.stepShot(1);};
     base.show=true;base.notFound=false;
     return base;
   }

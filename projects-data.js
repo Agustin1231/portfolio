@@ -274,6 +274,14 @@ var PROJECTS_DATA = [
         duration: "En operación",
         image: "img/proyectos/agente-whatsapp.jpg",
         imageCaption: "Bandeja de conversaciones del agente en el panel de operación, con los datos de ejemplo y las cifras ocultas",
+        gallery: [
+            { src: "img/proyectos/galeria/agente-whatsapp/01-bandeja.jpg", title: "Bandeja de conversaciones", caption: "El hilo completo de cada contacto, con la etapa de compra y la opción de tomar el control en cualquier momento." },
+            { src: "img/proyectos/galeria/agente-whatsapp/02-metricas.jpg", title: "Tablero de operación", caption: "Volumen, conversión y ticket promedio del canal. Las cifras van ocultas." },
+            { src: "img/proyectos/galeria/agente-whatsapp/03-auditoria.jpg", title: "Auditoría del agente", caption: "Cada conversación se revisa contra las reglas del negocio y queda con su puntaje y su motivo." },
+            { src: "img/proyectos/galeria/agente-whatsapp/04-agente.jpg", title: "Configuración del agente", caption: "Modelo, tiempos de espera y el límite exacto de lo que puede resolver antes de ceder el turno." },
+            { src: "img/proyectos/galeria/agente-whatsapp/05-costos.jpg", title: "Costo de operación", caption: "Gasto por día, por conversación y por venta, con la proyección de cierre de ciclo. Los montos van ocultos." }
+        ],
+        galleryNote: "Capturas del panel en modo demostración, con datos de ejemplo y las cifras del cliente ocultas",
         techCard: ["Python", "LangGraph", "WhatsApp API", "PostgreSQL"],
         techFull: [
             "Python",
