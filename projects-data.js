@@ -18,6 +18,10 @@ var PROJECTS_DATA = [
         hoursSaved: 600,
         image: "img/proyectos/automatizacion-analitica-podcasts.jpg",
         imageCaption: "Arquitectura general del sistema de monitoreo y análisis de podcasts",
+        gallery: [
+            {"src": "img/proyectos/galeria/flujo-podcasts/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El proceso diario en n8n, desde el disparador programado hasta guardar los datos y avisar al equipo."}
+        ],
+        galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: ["n8n", "OP3", "Supabase", "JavaScript"],
         techFull: [
             "n8n",
@@ -140,6 +144,10 @@ var PROJECTS_DATA = [
         hoursSaved: 316,
         image: "img/proyectos/recontacto-automatizado-de-leads-crm.jpg",
         imageCaption: "Arquitectura del flujo: del CRM a la campaña multicanal de recontacto",
+        gallery: [
+            {"src": "img/proyectos/galeria/flujo-recontacto-crm/01-flujo.jpg", "title": "El flujo en n8n", "caption": "La secuencia que lee el CRM, arma la campaña multicanal y hace seguimiento a cada oportunidad."}
+        ],
+        galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: ["n8n", "Odoo", "GoHighLevel"],
         techFull: ["n8n", "Odoo API", "XML-RPC", "GoHighLevel", "WhatsApp API", "Email / SMTP"],
         metrics: [
@@ -184,6 +192,10 @@ var PROJECTS_DATA = [
         duration: "En operación",
         image: "img/proyectos/prospeccion-automatizada-de-leads-b2b.jpg",
         imageCaption: "Del filtro de búsqueda al prospecto listo en cadencia de outbound",
+        gallery: [
+            {"src": "img/proyectos/galeria/flujo-prospeccion-b2b/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El flujo que busca el perfil objetivo, verifica el correo y carga el prospecto en la cadencia de outbound."}
+        ],
+        galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: ["n8n", "Apollo", "Klenty"],
         techFull: ["n8n", "Apollo API", "Klenty API", "Google Sheets", "IA (agente de resiliencia)"],
         metrics: [
@@ -229,6 +241,10 @@ var PROJECTS_DATA = [
         duration: "En operación",
         image: "img/proyectos/recordatorio-automatizado-de-reuniones-whatsapp.jpg",
         imageCaption: "De la agenda del día siguiente al recordatorio en WhatsApp, en automático",
+        gallery: [
+            {"src": "img/proyectos/galeria/flujo-recordatorios/01-flujo.jpg", "title": "El flujo en n8n", "caption": "La revisión diaria de la agenda que filtra teléfonos válidos y envía el recordatorio por WhatsApp."}
+        ],
+        galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: ["n8n", "WhatsApp", "AiSensy"],
         techFull: ["n8n", "AiSensy (WhatsApp API)", "Plataforma de agendamiento", "Schedule Trigger"],
         metrics: [
@@ -581,6 +597,10 @@ var PROJECTS_DATA = [
         duration: "1 mes",
         image: "img/proyectos/agente-de-ia-para-insights-estrategicos.jpg",
         imageCaption: "Visualización del flujo de un agente de IA generando informes estratégicos automatizados.",
+        gallery: [
+            {"src": "img/proyectos/galeria/flujo-insights/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El flujo que reúne la información, la analiza con IA y deja los hallazgos listos para el equipo."}
+        ],
+        galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: [
             "OpenAI",
             "n8n",
@@ -732,6 +752,10 @@ var PROJECTS_DATA = [
         hoursSaved: 515,
         image: "img/proyectos/automatizacion-inteligente-de-analisis-de-shows.jpg",
         imageCaption: "Dashboard de análisis de shows con métricas y visualizaciones clave.",
+        gallery: [
+            {"src": "img/proyectos/galeria/flujo-analisis-shows/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El proceso que trae los datos de los shows, los analiza con IA y detecta las tendencias de la semana."}
+        ],
+        galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: [
             "n8n",
             "OpenAI",
@@ -882,6 +906,10 @@ var PROJECTS_DATA = [
         duration: "2-3 meses",
         image: "img/proyectos/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital.jpg",
         imageCaption: "Diagrama de flujo de automatización de contenido y diseño con IA en n8n.",
+        gallery: [
+            {"src": "img/proyectos/galeria/flujo-contenido-marketing/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El flujo que genera el copy y la imagen con IA, ensambla la pieza y la publica sin trabajo manual."}
+        ],
+        galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: [
             "n8n",
             "Google Gemini",
@@ -1034,6 +1062,10 @@ var PROJECTS_DATA = [
         duration: "3 meses",
         image: "img/proyectos/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia.jpg",
         imageCaption: "Diagrama de flujo de automatización de contenido con IA para un blog de tecnología.",
+        gallery: [
+            {"src": "img/proyectos/galeria/flujo-blog/01-flujo.jpg", "title": "El flujo en n8n", "caption": "La cadena que produce el contenido con IA y lo publica en el blog de forma automática."}
+        ],
+        galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: [
             "n8n",
             "Google Gemini",
@@ -1486,6 +1518,14 @@ var PROJECTS_DATA = [
         hoursSaved: 248,
         image: "img/proyectos/monica-designer-identidad-de-marca-ia.jpg",
         imageCaption: "De un brief breve a una identidad de marca completa.",
+        gallery: [
+            {"src": "img/proyectos/galeria/monica-designer/01-portada.jpg", "title": "Portada del brandbook", "caption": "La marca completa entregada como un manual navegable, generado de punta a punta por la API."},
+            {"src": "img/proyectos/galeria/monica-designer/02-color.jpg", "title": "Sistema de color", "caption": "Paleta extraída del logo, con el rol de cada color y su significado dentro de la marca."},
+            {"src": "img/proyectos/galeria/monica-designer/03-tipografia.jpg", "title": "Tipografía", "caption": "Las familias tipográficas para títulos, cuerpo y código, con su uso ya definido."},
+            {"src": "img/proyectos/galeria/monica-designer/04-flyer-promo.jpg", "title": "Pieza de campaña", "caption": "Un flyer promocional listo para publicar, generado con la identidad de la marca."},
+            {"src": "img/proyectos/galeria/monica-designer/05-flyer-beneficios.jpg", "title": "Flyer de beneficios", "caption": "Otra pieza de la misma familia visual, coherente con el resto del sistema."}
+        ],
+        galleryNote: "Ejemplo generado con una marca ficticia (Aurora Cafe) para mostrar el resultado de la API",
         techCard: ["Inteligencia Artificial", "Diseño", "Producto"],
         techFull: [
             "Inteligencia Artificial generativa",
@@ -1636,6 +1676,14 @@ var PROJECTS_DATA = [
         imageCaption: "Un solo panel para administrar todas tus instancias de n8n.",
         liveUrl: "https://github.com/Agustin1231/flowdeck",
         liveLabel: "Ver en GitHub",
+        gallery: [
+            {"src": "img/proyectos/galeria/flowdeck/01-instancias.jpg", "title": "Instancias conectadas", "caption": "Todas las instancias de n8n en un solo lugar, con su estado y su acceso centralizado."},
+            {"src": "img/proyectos/galeria/flowdeck/02-resumen.jpg", "title": "Resumen general", "caption": "El estado de cada instancia de un vistazo, sin entrar una por una."},
+            {"src": "img/proyectos/galeria/flowdeck/03-workflows.jpg", "title": "Workflows", "caption": "El listado de flujos de una instancia, con su estado activo o en pausa."},
+            {"src": "img/proyectos/galeria/flowdeck/04-detalle.jpg", "title": "Detalle del workflow", "caption": "La ficha de un flujo puntual con su información y sus acciones."},
+            {"src": "img/proyectos/galeria/flowdeck/05-ejecuciones.jpg", "title": "Ejecuciones", "caption": "El historial de corridas de un flujo, para revisar que todo está funcionando."}
+        ],
+        galleryNote: "Vistas de FlowDeck conectado a instancias de demostración, sin datos de clientes",
         techCard: ["n8n", "React", "Node.js", "PWA"],
         techFull: [
             "React",
