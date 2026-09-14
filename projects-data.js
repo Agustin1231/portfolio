@@ -263,6 +263,282 @@ var PROJECTS_DATA = [
         visible: true
     },
     {
+        id: "agente-de-ia-que-atiende-y-cobra-por-whatsapp",
+        number: "16",
+        category: "IA y Atención al Cliente",
+        title: "Agente de IA que Atiende y Cobra por WhatsApp",
+        subtitle: "Un agente conversacional que responde en WhatsApp, resuelve dudas de compra y recupera pagos pendientes sin que nadie escriba a mano",
+        description: "Diseño e implementación de un agente de IA que conversa por WhatsApp con cada persona interesada, responde sus dudas sobre el producto, arma el pedido y hace seguimiento a los pagos que quedaron a medias, operando las 24 horas y pasando a una persona del equipo cuando hace falta.",
+        year: "2026",
+        company: "Cliente de comercio electrónico",
+        duration: "En operación",
+        image: "img/proyectos/agente-whatsapp.jpg",
+        imageCaption: "Bandeja de conversaciones del agente en el panel de operación, con los datos de ejemplo y las cifras ocultas",
+        techCard: ["Python", "LangGraph", "WhatsApp API", "PostgreSQL"],
+        techFull: [
+            "Python",
+            "LangGraph",
+            "WhatsApp Cloud API",
+            "PostgreSQL",
+            "Chatwoot",
+            "Docker"
+        ],
+        metrics: [
+            { label: "Canal", value: "WhatsApp" },
+            { label: "Operación", value: "24/7" },
+            { label: "Traspaso", value: "A humano" },
+            { label: "Memoria", value: "Por contacto" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que cada persona que escribe por WhatsApp reciba una respuesta inmediata y útil, a cualquier hora, y que los pagos que quedan a medias se recuperen solos." },
+                    { type: "paragraph", text: "El equipo contestaba mensajes uno por uno y solo dentro del horario laboral. Las consultas de la noche y del fin de semana se acumulaban, y los pedidos que quedaban sin pagar se enfriaban porque nadie alcanzaba a hacerles seguimiento. El objetivo fue montar un agente que sostuviera la conversación completa y supiera cuándo ceder el turno a una persona." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Construí un agente conversacional en Python con LangGraph, conectado a la API oficial de WhatsApp, que mantiene el hilo de cada contacto y recuerda lo que ya se habló con esa persona." },
+                    { type: "paragraph", text: "El agente resuelve las dudas frecuentes del producto, arma el pedido, envía el enlace de pago y, si el pago no se completa, retoma la conversación días después con un mensaje que tiene en cuenta en qué punto se quedó." },
+                    { type: "paragraph", text: "Toda la conversación queda guardada en PostgreSQL y espejada en una bandeja donde el equipo puede leer el hilo completo y tomar el control en cualquier momento. El agente detecta solo los casos que se salen de su alcance y los entrega a una persona." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Conversación con memoria", description: "El agente recuerda lo que ya habló con cada contacto, así que no repite preguntas ni pierde el hilo entre un día y otro." },
+            { title: "Recuperación de pagos", description: "Cuando un pedido queda sin pagar, el agente retoma la conversación con un mensaje que reconoce en qué punto se quedó la compra." },
+            { title: "Traspaso a una persona", description: "Los casos fuera de su alcance se entregan a un humano con todo el contexto de la conversación a la vista." },
+            { title: "Operación continua", description: "Responde de noche y en fin de semana, cuando antes los mensajes simplemente se acumulaban hasta el lunes." }
+        ],
+        process: [
+            { phase: "Fase 1", title: "Mapa de la conversación", description: "Relevamiento de las preguntas reales que llegan por WhatsApp y de los puntos donde se caen las compras." },
+            { phase: "Fase 2", title: "Diseño del agente", description: "Definición de los turnos, la memoria por contacto y los límites claros de lo que el agente puede resolver solo." },
+            { phase: "Fase 3", title: "Integración", description: "Conexión con la API oficial de WhatsApp, la pasarela de pago y la bandeja compartida del equipo." },
+            { phase: "Fase 4", title: "Puesta en operación", description: "Ajuste del tono, afinado de los mensajes de seguimiento y monitoreo de las conversaciones en vivo." }
+        ],
+        results: [
+            { number: "24/7", label: "Atención sin horario ni turnos" },
+            { number: "0", label: "Mensajes escritos a mano para el primer contacto" },
+            { number: "100%", label: "Conversaciones registradas y auditables" },
+            { number: "Automático", label: "Seguimiento a los pagos que quedan pendientes" }
+        ],
+        learnings: [
+            { title: "El límite importa más que la respuesta", text: "Un agente útil no es el que contesta todo, sino el que reconoce rápido lo que no le corresponde y lo entrega a una persona con el contexto completo." },
+            { title: "La memoria cambia el tono", text: "Recordar la conversación anterior convierte un recordatorio genérico en un mensaje que la persona siente dirigido a ella." },
+            { title: "Registrar todo desde el día uno", text: "Guardar cada conversación desde el arranque fue lo que después permitió auditar el comportamiento del agente y corregirlo con evidencia." }
+        ],
+        visible: true
+    },
+    {
+        id: "panel-de-auditoria-para-un-agente-de-ia",
+        number: "17",
+        category: "Observabilidad de Agentes de IA",
+        title: "Panel de Auditoría para un Agente de IA",
+        subtitle: "Cada conversación del agente se revisa contra las reglas del negocio y queda con su rastro, para saber si respondió bien y por qué",
+        description: "Construcción de un panel web donde el equipo revisa cómo se está comportando un agente de IA en producción. Cada conversación se evalúa contra las reglas del negocio, queda con su resultado y su motivo, y el acceso se separa por rol.",
+        year: "2026",
+        company: "Cliente de comercio electrónico",
+        duration: "En operación",
+        image: "img/proyectos/panel-auditoria.jpg",
+        imageCaption: "Vista de auditoría del panel, con los indicadores difuminados y la marca del cliente reemplazada",
+        techCard: ["FastAPI", "PostgreSQL", "JavaScript", "Roles"],
+        techFull: [
+            "FastAPI",
+            "Python",
+            "PostgreSQL",
+            "JavaScript",
+            "Roles y permisos",
+            "Docker"
+        ],
+        metrics: [
+            { label: "Revisión", value: "Diaria" },
+            { label: "Alcance", value: "Cada conversación" },
+            { label: "Acceso", value: "Por rol" },
+            { label: "Rastro", value: "Versionado" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Poder responder con evidencia si el agente está haciendo bien su trabajo, sin leer las conversaciones una por una." },
+                    { type: "paragraph", text: "Un agente de IA en producción puede empezar a responder distinto sin que nadie se dé cuenta, porque nada se rompe de forma visible. El objetivo fue montar un lugar donde el comportamiento del agente se mida contra reglas escritas del negocio y quede registrado, para detectar la desviación antes que el cliente." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Desarrollé un panel web sobre una API en FastAPI que toma las conversaciones del agente y las evalúa contra un conjunto de reglas del negocio definidas por el equipo." },
+                    { type: "paragraph", text: "Cada evaluación guarda el resultado y el motivo, de modo que no queda solo un aprobado o un rechazado sino la razón detrás. Las reglas están atadas a la versión de las instrucciones del agente, así que cambiar esas instrucciones obliga a revisar la evaluación en lugar de arrastrarla en silencio." },
+                    { type: "paragraph", text: "El panel separa el acceso por rol, de forma que las pantallas de administración y el detalle sensible solo quedan a la vista de quien corresponde." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Evaluación contra reglas del negocio", description: "Cada conversación se mide contra criterios escritos por el equipo, no contra una impresión general de que el agente anda bien." },
+            { title: "Motivo, no solo resultado", description: "Toda evaluación guarda por qué pasó o falló, que es lo que realmente permite corregir el comportamiento." },
+            { title: "Reglas atadas a la versión", description: "Cambiar las instrucciones del agente obliga a revisar las reglas, en vez de seguir evaluando con criterios viejos." },
+            { title: "Acceso separado por rol", description: "Las pantallas de administración y la información sensible quedan restringidas a los perfiles autorizados." }
+        ],
+        process: [
+            { phase: "Fase 1", title: "Definición de criterios", description: "Traducción de las expectativas del negocio a reglas concretas y verificables sobre la conversación." },
+            { phase: "Fase 2", title: "Motor de evaluación", description: "Implementación del proceso que recorre las conversaciones y deja resultado y motivo en la base de datos." },
+            { phase: "Fase 3", title: "Panel de revisión", description: "Construcción de las vistas para filtrar, leer el hilo completo y entender una evaluación en contexto." },
+            { phase: "Fase 4", title: "Control de acceso", description: "Separación de permisos por rol para proteger las pantallas de administración y el detalle sensible." }
+        ],
+        results: [
+            { number: "100%", label: "Conversaciones evaluadas de forma automática" },
+            { number: "Con motivo", label: "Cada resultado explica por qué se aprobó o falló" },
+            { number: "Versionado", label: "Las reglas quedan atadas a la versión de instrucciones" },
+            { number: "Por rol", label: "Acceso restringido a la información sensible" }
+        ],
+        learnings: [
+            { title: "Un agente falla en silencio", text: "A diferencia de un proceso tradicional, un agente que se desvía no arroja ningún error; sin auditoría nadie se entera hasta que se queja un cliente." },
+            { title: "Auditar exige criterios escritos", text: "No se puede evaluar contra una idea vaga de calidad. Escribir las reglas fue la mitad del trabajo del proyecto." },
+            { title: "Versionar evita evaluaciones fantasma", text: "Atar las reglas a la versión de las instrucciones impide que el panel siga dando por bueno un comportamiento que ya cambió." }
+        ],
+        visible: true
+    },
+    {
+        id: "de-plataforma-por-suscripcion-a-infraestructura-propia",
+        number: "18",
+        category: "Arquitectura y Costos",
+        title: "De una Plataforma por Suscripción a Infraestructura Propia",
+        subtitle: "Rediseño de una operación que vivía en una herramienta de pago por operación, llevándola a infraestructura propia con el costo bajo control y a la vista",
+        description: "Migración por etapas de una operación completa que corría sobre una plataforma en la nube facturada por operación, hacia infraestructura propia en contenedores, con los datos corriendo en paralelo durante todo el proceso y una reducción del costo mensual del 91 por ciento.",
+        year: "2026",
+        company: "Cliente de comercio electrónico",
+        duration: "En operación",
+        image: "img/proyectos/migracion-costos.jpg",
+        imageCaption: "Vista de costos del panel, con las cifras difuminadas y la marca del cliente reemplazada",
+        techCard: ["Docker", "Coolify", "PostgreSQL", "Python"],
+        techFull: [
+            "Docker",
+            "Coolify",
+            "PostgreSQL",
+            "Python",
+            "FastAPI",
+            "VPS"
+        ],
+        metrics: [
+            { label: "Costo mensual", value: "-91%" },
+            { label: "Corte", value: "Por etapas" },
+            { label: "Datos", value: "En paralelo" },
+            { label: "Control", value: "Propio" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Sacar la operación de una plataforma que cobraba por cada operación ejecutada, sin apagar el negocio ni un solo día." },
+                    { type: "paragraph", text: "El costo de la plataforma crecía con el volumen, así que vender más salía cada vez más caro. Además, la lógica del negocio vivía dentro de una herramienta ajena y no se podía auditar de verdad. El objetivo fue llevar todo a infraestructura propia manteniendo la operación viva durante la transición." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Levanté primero la línea base real de costo, operación por operación, para tener un número verificable contra el cual comparar. Ese trabajo fue el que sostuvo toda la decisión." },
+                    { type: "paragraph", text: "Después diseñé la salida en etapas, con los datos escribiéndose en paralelo desde el primer día en la nueva base, de modo que la infraestructura propia se fue llenando de información real mientras la plataforma vieja seguía operando." },
+                    { type: "paragraph", text: "Cada etapa se cortó cuando la nueva ruta ya estaba probada, y se cuidó que nadie quedara a mitad de un ciclo de garantía en el momento del cambio. El resultado fue una operación equivalente sobre contenedores propios, con el costo bajo control y la lógica del negocio a la vista." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Línea base verificable", description: "Antes de mover nada se midió el costo real por operación, para que el ahorro fuera un número comprobable y no una promesa." },
+            { title: "Datos en paralelo", description: "La nueva base se fue llenando con información real desde el primer día, mucho antes de apagar la plataforma anterior." },
+            { title: "Corte por etapas", description: "Cada pieza se migró y se probó por separado, así ninguna falla podía tumbar la operación completa." },
+            { title: "Lógica auditable", description: "Las reglas del negocio dejaron de estar encerradas en una herramienta ajena y quedaron en código que se puede leer y versionar." }
+        ],
+        process: [
+            { phase: "Fase 1", title: "Medición del costo real", description: "Reconstrucción del gasto por operación para tener una línea base verificable y no una estimación." },
+            { phase: "Fase 2", title: "Réplica en paralelo", description: "Montaje de la infraestructura propia escribiendo los mismos datos, sin tocar todavía la operación en vivo." },
+            { phase: "Fase 3", title: "Corte por etapas", description: "Traslado de una pieza a la vez, cada una con su verificación antes de apagar la ruta anterior." },
+            { phase: "Fase 4", title: "Cierre y respaldo", description: "Rescate del historial y de la configuración de la plataforma saliente antes de dar de baja la suscripción." }
+        ],
+        results: [
+            { number: "-91%", label: "Reducción del costo mensual de operación" },
+            { number: "0", label: "Días de operación detenida durante la migración" },
+            { number: "Propio", label: "Control total de los datos y la lógica del negocio" },
+            { number: "Fijo", label: "El costo dejó de crecer con el volumen de ventas" }
+        ],
+        learnings: [
+            { title: "Medir antes de migrar", text: "Sin una línea base verificable, cualquier ahorro que uno reporte después es discutible. Medir primero fue lo que hizo defendible la decisión." },
+            { title: "Pagar por operación castiga el crecimiento", text: "Un modelo de cobro por ejecución significa que el mejor mes del negocio es también el más caro, y eso se nota rápido cuando el volumen sube." },
+            { title: "Nadie a medio ciclo", text: "La parte delicada de una migración no es técnica sino de calendario, porque hay personas a mitad de un proceso que no pueden quedar en el limbo." }
+        ],
+        visible: true
+    },
+    {
+        id: "plataforma-de-orientacion-vocacional-con-ia",
+        number: "19",
+        category: "IA y Educación",
+        title: "Plataforma de Orientación Vocacional con IA",
+        subtitle: "Un cuestionario vocacional con una conversación de IA que responde citando los documentos oficiales de la institución",
+        description: "Desarrollo de una plataforma web donde una persona responde un cuestionario vocacional, recibe su resultado y puede conversar con un asistente de IA que responde únicamente con base en los documentos institucionales, citando el documento y la página de donde sale cada respuesta.",
+        year: "2026",
+        company: "Institución educativa",
+        duration: "En operación",
+        image: "img/proyectos/orientacion-vocacional.jpg",
+        imageCaption: "Arquitectura de la plataforma, con la capa de IA aislada de la aplicación y de la API de negocio",
+        techCard: ["Angular", ".NET", "MySQL", "pgvector"],
+        techFull: [
+            "Angular",
+            ".NET",
+            "MySQL",
+            "pgvector",
+            "Python",
+            "Docker"
+        ],
+        metrics: [
+            { label: "Resultado", value: "Inmediato" },
+            { label: "Respuestas", value: "Con cita" },
+            { label: "Capa de IA", value: "Aislada" },
+            { label: "Panel", value: "Con roles" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que una persona indecisa pueda explorar su vocación y resolver dudas reales sobre los programas, con respuestas que salen de los documentos oficiales y no de la imaginación del modelo." },
+                    { type: "paragraph", text: "La orientación dependía de la disponibilidad de una persona y del material que esa persona tuviera a mano. El objetivo fue ofrecer un primer acercamiento disponible en todo momento, confiable, donde cada afirmación sobre un programa se pueda rastrear hasta el documento que la respalda." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "La plataforma tiene una aplicación web donde la persona responde el cuestionario y recibe su resultado, y una API de negocio que administra catálogos, resultados, sesión y permisos." },
+                    { type: "paragraph", text: "La conversación con IA corre en un servicio aparte, con los documentos institucionales indexados en una base vectorial. Cada respuesta cita el documento y la página de donde proviene, de modo que la afirmación se puede verificar." },
+                    { type: "paragraph", text: "El panel de administración permite editar las instrucciones del asistente sin tocar código, y el acceso está separado por rol. La capa de IA quedó desacoplada a propósito, así cambiar de modelo, local o en la nube, no obliga a modificar la aplicación ni la API." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Respuestas con fuente", description: "Cada respuesta del asistente cita el documento institucional y la página de donde sale, así se puede verificar en vez de creer." },
+            { title: "Capa de IA desacoplada", description: "El servicio de IA vive aparte, de modo que cambiar de proveedor o de modelo no toca la aplicación ni la API de negocio." },
+            { title: "Sin llaves en el navegador", description: "El front nunca habla directo con el proveedor de IA, siempre pasa por la API, así ninguna credencial queda expuesta en el cliente." },
+            { title: "Instrucciones editables", description: "El comportamiento del asistente se ajusta desde el panel de administración sin necesidad de un despliegue." }
+        ],
+        process: [
+            { phase: "Fase 1", title: "Modelo del cuestionario", description: "Definición de la estructura del test, los catálogos y la forma de calcular y presentar el resultado." },
+            { phase: "Fase 2", title: "Aplicación y API", description: "Construcción del front en Angular y de la API de negocio en .NET con sesión, roles y permisos." },
+            { phase: "Fase 3", title: "Capa de conocimiento", description: "Indexación de los documentos institucionales en una base vectorial para que las respuestas salgan de la fuente oficial." },
+            { phase: "Fase 4", title: "Panel y despliegue", description: "Administración con roles, edición de instrucciones y puesta en marcha en contenedores." }
+        ],
+        results: [
+            { number: "100%", label: "Respuestas del asistente citando documento y página" },
+            { number: "0", label: "Credenciales de IA expuestas en el navegador" },
+            { number: "Inmediato", label: "Resultado del cuestionario sin esperar a una cita" },
+            { number: "Intercambiable", label: "El modelo de IA se puede cambiar sin tocar la aplicación" }
+        ],
+        learnings: [
+            { title: "Citar la fuente cambia la confianza", text: "En un contexto educativo, una respuesta sin respaldo no sirve. Mostrar el documento y la página convierte al asistente en algo verificable." },
+            { title: "Aislar la IA protege el proyecto", text: "Separar el servicio de IA permitió evaluar modelos distintos, locales y en la nube, sin rehacer nada de la aplicación." },
+            { title: "Editar sin desplegar", text: "Dejar las instrucciones del asistente en el panel le devolvió al equipo el control sobre el tono, sin depender de un desarrollador." }
+        ],
+        visible: true
+    },
+    {
         id: "agente-de-ia-para-insights-estrategicos",
         number: "02",
         category: "IA y Automatización",
