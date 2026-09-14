@@ -275,11 +275,11 @@ var PROJECTS_DATA = [
         image: "img/proyectos/agente-whatsapp.jpg",
         imageCaption: "Bandeja de conversaciones del agente en el panel de operación, con los datos de ejemplo y las cifras ocultas",
         gallery: [
-            { src: "img/proyectos/galeria/agente-whatsapp/01-bandeja.jpg", title: "Bandeja de conversaciones", caption: "El hilo completo de cada contacto, con la etapa de compra y la opción de tomar el control en cualquier momento." },
-            { src: "img/proyectos/galeria/agente-whatsapp/02-metricas.jpg", title: "Tablero de operación", caption: "Volumen, conversión y ticket promedio del canal. Las cifras van ocultas." },
-            { src: "img/proyectos/galeria/agente-whatsapp/03-auditoria.jpg", title: "Auditoría del agente", caption: "Cada conversación se revisa contra las reglas del negocio y queda con su puntaje y su motivo." },
-            { src: "img/proyectos/galeria/agente-whatsapp/04-agente.jpg", title: "Configuración del agente", caption: "Modelo, tiempos de espera y el límite exacto de lo que puede resolver antes de ceder el turno." },
-            { src: "img/proyectos/galeria/agente-whatsapp/05-costos.jpg", title: "Costo de operación", caption: "Gasto por día, por conversación y por venta, con la proyección de cierre de ciclo. Los montos van ocultos." }
+            { src: "img/proyectos/galeria/panel-operacion/mensajes.jpg", title: "Bandeja de conversaciones", caption: "El hilo completo de cada contacto, con la etapa de compra y la opción de tomar el control en cualquier momento." },
+            { src: "img/proyectos/galeria/panel-operacion/metricas.jpg", title: "Tablero de operación", caption: "Volumen, conversión y ticket promedio del canal. Las cifras van ocultas." },
+            { src: "img/proyectos/galeria/panel-operacion/auditoria.jpg", title: "Auditoría del agente", caption: "Cada conversación se revisa contra las reglas del negocio y queda con su puntaje y su motivo." },
+            { src: "img/proyectos/galeria/panel-operacion/agente.jpg", title: "Configuración del agente", caption: "Modelo, tiempos de espera y el límite exacto de lo que puede resolver antes de ceder el turno." },
+            { src: "img/proyectos/galeria/panel-operacion/costos.jpg", title: "Costo de operación", caption: "Gasto por día, por conversación y por venta, con la proyección de cierre de ciclo. Los montos van ocultos." }
         ],
         galleryNote: "Capturas del panel en modo demostración, con datos de ejemplo y las cifras del cliente ocultas",
         techCard: ["Python", "LangGraph", "WhatsApp API", "PostgreSQL"],
@@ -351,6 +351,13 @@ var PROJECTS_DATA = [
         duration: "En operación",
         image: "img/proyectos/panel-auditoria.jpg",
         imageCaption: "Vista de auditoría del panel, con los indicadores difuminados y la marca del cliente reemplazada",
+        gallery: [
+            { src: "img/proyectos/galeria/panel-operacion/auditoria.jpg", title: "Resultado de cada conversación", caption: "El agente se evalúa contra las reglas del negocio y cada caso queda con su resultado y el motivo que lo explica." },
+            { src: "img/proyectos/galeria/panel-operacion/agente.jpg", title: "Qué versión estaba corriendo", caption: "Modelo, tiempos de espera y límites del agente quedan a la vista, porque una regla solo sirve si se sabe contra qué versión se evaluó." },
+            { src: "img/proyectos/galeria/panel-operacion/mensajes.jpg", title: "La conversación completa", caption: "Desde el hallazgo se entra al hilo entero, con la etapa en la que estaba el contacto y la opción de tomar el control." },
+            { src: "img/proyectos/galeria/panel-operacion/tickets.jpg", title: "Del hallazgo al pendiente", caption: "Un caso marcado en auditoría se convierte en ticket con su evidencia enlazada, así el reporte no se queda en una captura suelta." }
+        ],
+        galleryNote: "Capturas del panel en modo demostración, con datos de ejemplo y las cifras del cliente ocultas",
         techCard: ["FastAPI", "PostgreSQL", "JavaScript", "Roles"],
         techFull: [
             "FastAPI",
@@ -420,6 +427,12 @@ var PROJECTS_DATA = [
         duration: "En operación",
         image: "img/proyectos/migracion-costos.jpg",
         imageCaption: "Vista de costos del panel, con las cifras difuminadas y la marca del cliente reemplazada",
+        gallery: [
+            { src: "img/proyectos/galeria/panel-operacion/costos.jpg", title: "Qué cuesta operar hoy", caption: "Gasto por día, por conversación y por venta, con la proyección de cierre de ciclo. Antes el costo solo se veía en la factura de fin de mes." },
+            { src: "img/proyectos/galeria/panel-operacion/negocio.jpg", title: "El costo contra el ingreso", caption: "Ingreso, costo y margen en la misma pantalla, que es la única forma de saber si la migración valió la pena." },
+            { src: "img/proyectos/galeria/panel-operacion/metricas.jpg", title: "La operación sigue igual de visible", caption: "Volumen y conversión del canal después del cambio de infraestructura, para comprobar que nada se rompió en el camino." }
+        ],
+        galleryNote: "Capturas del panel en modo demostración, con datos de ejemplo y las cifras del cliente ocultas",
         techCard: ["Docker", "Coolify", "PostgreSQL", "Python"],
         techFull: [
             "Docker",
@@ -1165,6 +1178,15 @@ var PROJECTS_DATA = [
         duration: "2 meses",
         image: "img/proyectos/pulso-app-salud-cardiovascular.jpg",
         imageCaption: "Dashboard de métricas cardiovasculares con análisis IA en streaming",
+        gallery: [
+            { src: "img/proyectos/galeria/pulso/01-metricas.jpg", title: "Métricas del día", caption: "Frecuencia, peso, sueño y estrés se registran en segundos y quedan clasificados al instante, sin crear ninguna cuenta." },
+            { src: "img/proyectos/galeria/pulso/02-analisis.jpg", title: "Análisis personalizado", caption: "La IA lee las métricas registradas y devuelve la lectura en streaming, para que el texto aparezca mientras se está escribiendo." },
+            { src: "img/proyectos/galeria/pulso/03-score.jpg", title: "Score cardiovascular", caption: "Un solo número con su desglose por factor, así se entiende qué está sumando y qué está restando." },
+            { src: "img/proyectos/galeria/pulso/04-receta.jpg", title: "Asistente de recetas", caption: "Con los ingredientes que hay en casa arma la receta cardioprotectora completa, con preparación paso a paso y por qué cada alimento cuida el corazón." },
+            { src: "img/proyectos/galeria/pulso/05-rutina.jpg", title: "Rutina generada", caption: "Cuatro preguntas y devuelve la rutina completa con series, descansos y la razón de cada ejercicio." },
+            { src: "img/proyectos/galeria/pulso/06-habitos.jpg", title: "Seguimiento de hábitos", caption: "El avance del día enlazado con la rutina activa, que es lo que hace que la persona vuelva mañana." }
+        ],
+        galleryNote: "Vistas reales de la aplicación con datos de ejemplo. La app no pide cuenta ni guarda datos personales",
         techCard: ["Next.js 15", "Claude", "Imagen 3", "Supabase"],
         techFull: [
             "Next.js 15 (App Router)",
@@ -1681,6 +1703,12 @@ var PROJECTS_DATA = [
         hoursSaved: 264,
         image: "img/proyectos/visor-de-orquestacion-de-subagentes.jpg",
         imageCaption: "El orquestador delegando una tarea al subagente de diagramas, con la actividad registrada en vivo",
+        gallery: [
+            { src: "img/proyectos/galeria/visor-subagentes/01-mapa.jpg", title: "El mapa de subagentes", caption: "Cada nodo es un subagente con su especialidad. Alrededor del orquestador se ve quién está trabajando y quién está libre." },
+            { src: "img/proyectos/galeria/visor-subagentes/02-delegacion.jpg", title: "Una delegación en curso", caption: "La solicitud entra, el orquestador la reparte y el registro de la derecha va contando el recorrido paso por paso." },
+            { src: "img/proyectos/galeria/visor-subagentes/03-oscuro.jpg", title: "Modo oscuro", caption: "La misma vista pensada para dejarla abierta en una pantalla secundaria durante horas." }
+        ],
+        galleryNote: "Vistas en vivo del visor, con los datos sensibles del registro enmascarados",
         techCard: ["JavaScript", "SVG", "Docker", "Coolify"],
         techFull: [
             "HTML5",
