@@ -502,6 +502,16 @@ var PROJECTS_DATA = [
         duration: "En operación",
         image: "img/proyectos/orientacion-vocacional.jpg",
         imageCaption: "Arquitectura de la plataforma, con la capa de IA aislada de la aplicación y de la API de negocio",
+        gallery: [
+            { src: "img/proyectos/galeria/orientacion-vocacional/01-inicio.jpg", title: "Entrada al recorrido", caption: "La pantalla que ve el estudiante al llegar. El lenguaje está pensado para alguien de grado once, no para un formulario administrativo." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/02-avatar.jpg", title: "Elección de avatar", caption: "Antes de las preguntas, la persona escoge cómo quiere aparecer. Es lo que sostiene la atención hasta el final del cuestionario." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/03-datos.jpg", title: "Datos y consentimiento", caption: "Los datos mínimos que la institución necesita para el seguimiento, con la autorización de tratamiento explícita." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/04-pregunta.jpg", title: "Cuestionario vocacional", caption: "Veintidós preguntas de situación, sin escalas numéricas. Cada opción suma a un perfil distinto." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/05-resultado.jpg", title: "Resultado del perfil", caption: "El perfil dominante explicado en lenguaje claro, junto a los programas de la institución que mejor encajan." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/06-afinidades.jpg", title: "Mapa de afinidades", caption: "El peso de cada perfil en la persona, para que el resultado no se lea como una etiqueta única." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/07-asesor.jpg", title: "Asesor de IA con citas", caption: "La conversación sobre el resultado. Cada respuesta sale de los documentos oficiales y dice de qué documento y qué página viene." }
+        ],
+        galleryNote: "Recorrido completo en modo demostración, con datos de ejemplo y la marca de la institución reemplazada",
         techCard: ["Angular", ".NET", "MySQL", "pgvector"],
         techFull: [
             "Angular",
@@ -1316,6 +1326,11 @@ var PROJECTS_DATA = [
         imageCaption: "Atención conversacional automatizada con calificación de clientes.",
         liveUrl: "https://brain.urpeailab.com/visual",
         liveLabel: "Ver el visual en vivo",
+        gallery: [
+            { src: "img/proyectos/galeria/monica-brain/01-mapa.jpg", title: "Mapa del sistema", caption: "Cada pieza del asistente es un nodo y cada línea es una llamada real entre ellas. El tamaño indica cuánto trabajo carga cada una." },
+            { src: "img/proyectos/galeria/monica-brain/02-detalle.jpg", title: "Detalle de un componente", caption: "Al acercarse a un nodo se abre qué hace, de qué tipo es y con quién habla. Sirve para explicarle el sistema a alguien que no es técnico." }
+        ],
+        galleryNote: "Mapa interactivo del sistema, en vivo en brain.urpeailab.com",
         techCard: ["IA conversacional", "Automatización", "Integraciones"],
         techFull: [
             "Inteligencia Artificial (LLMs)",
@@ -1390,6 +1405,12 @@ var PROJECTS_DATA = [
         duration: "Proyecto activo",
         image: "img/proyectos/monica-developer-apps-por-prompts.jpg",
         imageCaption: "De una idea descrita en palabras a una aplicación lista para usar.",
+        gallery: [
+            { src: "img/proyectos/galeria/monica-developer/01-portada.jpg", title: "La promesa del producto", caption: "Describe la aplicación en español y la plataforma la genera con las reglas fiscales y las pasarelas de pago de la región ya resueltas." },
+            { src: "img/proyectos/galeria/monica-developer/02-templates.jpg", title: "Plantillas por oficio", caption: "Puntos de partida ya probados para abogados, clínicas y contadores, en vez de empezar cada aplicación desde cero." },
+            { src: "img/proyectos/galeria/monica-developer/03-precios.jpg", title: "Planes", caption: "Tres niveles según cuántas aplicaciones se generen al mes y qué modelo de IA se usa detrás." }
+        ],
+        galleryNote: "Capturas de la versión beta pública",
         techCard: ["Inteligencia Artificial", "Desarrollo web", "Producto"],
         techFull: [
             "Inteligencia Artificial generativa",
