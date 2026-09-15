@@ -1698,5 +1698,113 @@ var GUIDES_DATA = [
             "Claude",
             "Observabilidad"
         ]
+    },
+    {
+        id: "de-584-a-54-dolares-caso-real",
+        number: "12",
+        visible: true,
+        category: "Costos + arquitectura",
+        title: "De USD 584 a USD 54 al mes, el desglose completo de un caso real",
+        subtitle: "Un cliente creía que su sistema le costaba USD 177 al mes. Le costaba 584. Este es el desglose línea por línea, cómo lo medí y cómo lo bajé a 54.",
+        description: "Caso real y anonimizado de reducción de costos en un sistema de atención por WhatsApp en producción. Cifras medidas, no estimadas, con el método para que reproduzcas la medición en tu propia operación.",
+        image: "",
+        imageCaption: "",
+        date: "Septiembre 2026",
+        readingTime: "8 min de lectura",
+        urlLabel: "Leer guía",
+        requirements: [
+            "Acceso de facturación a cada servicio que pagas. No la pantalla de planes, la factura real del último ciclo cerrado.",
+            "Un mes de datos de uso, porque el costo de las plataformas que cobran por operación depende del volumen y no del plan contratado.",
+            "Saber cuántos mensajes o eventos procesa tu sistema al mes. Sin ese denominador no puedes calcular costo por unidad, que es la única cifra comparable.",
+            "Disposición a medir el antes antes de tocar nada. Si migras primero y mides después, ya no tienes con qué comparar."
+        ],
+        sections: [
+            {
+                title: "El cliente creía que pagaba una cosa y pagaba otra",
+                content: [
+                    { type: "lead", text: "Un cliente con un sistema de atención por WhatsApp en producción me pasó su tabla de costos. Sumaba USD 177,71 al mes. Fui a verificarla contra las facturas reales y el gasto era más del triple." },
+                    { type: "paragraph", text: "Publico este caso anonimizado porque lo prometí en una propuesta y porque la mayoría de los artículos sobre ahorro con IA no traen una sola cifra verificable. Las que siguen están medidas contra facturación real, con la fecha de medición y el método para que tú repitas el ejercicio." },
+                    { type: "paragraph", text: "El nombre del cliente no aparece y no va a aparecer. Lo que aporta valor es el desglose y el método, no de quién es la cuenta." }
+                ]
+            },
+            {
+                title: "El antes real, línea por línea",
+                content: [
+                    { type: "paragraph", text: "Medido el 4 de septiembre de 2026, con la factura de cada proveedor a la vista. Entre paréntesis lo que decía la tabla del cliente." },
+                    { type: "paragraph", text: "Plataforma de automatización visual, USD 243,22 (creía 64,71). Modelo de lenguaje por API, USD 278,00 (creía 50,00). Plataforma de atención al cliente, USD 38,00. Base de datos en la nube, USD 20,00. Transcripción de notas de voz, USD 5,00. Total real, USD 584,22 al mes." },
+                    { type: "paragraph", text: "Los tres rubros fijos estaban bien en su tabla. Los dos que se equivocó son exactamente los dos que se mueven solos con el uso, y ese es el patrón que vale la pena llevarse de aquí." }
+                ]
+            },
+            {
+                title: "Por qué se equivocó justo en esos dos",
+                content: [
+                    { type: "paragraph", text: "La plataforma de automatización cobra por operación, no por escenario. El plan base eran USD 116,47, pero el sistema consumía 8.999 operaciones diarias y ya llevaba dos paquetes extra de 10.000 operaciones comprados de forma automática a USD 9,75 cada uno. Proyectado al corte del ciclo daba USD 243,22, rozando el tope de compra automática de USD 262,72." },
+                    { type: "paragraph", text: "Un detalle que casi nadie mira. El 21 de agosto el ritmo era 8.372 operaciones diarias y el 4 de septiembre 8.999. Sube sin que nadie decida nada, porque un solo mensaje entrante dispara docenas de operaciones internas." },
+                    { type: "paragraph", text: "Con el modelo pasó lo mismo. No había una factura mensual sino 18 recargas automáticas de USD 10 en 19,8 días. Nadie suma recargas automáticas. Son USD 9,13 diarios, unos USD 278 al mes, cinco veces y media lo que el cliente creía." },
+                    { type: "paragraph", text: "La lección no es que ese cliente sea descuidado. Es que el cobro por consumo y la recarga automática están diseñados para no dolerte, y lo logran." }
+                ]
+            },
+            {
+                title: "Qué reemplacé y por cuánto",
+                content: [
+                    { type: "paragraph", text: "La plataforma de automatización visual salió y entró n8n autohospedado en un servidor que el cliente ya necesitaba por otras razones. De USD 243,22 a cero." },
+                    { type: "paragraph", text: "La base de datos en la nube salió y entró Postgres en el mismo servidor. De USD 20 a cero." },
+                    { type: "paragraph", text: "El modelo caro salió y entró uno más barato por API, con el contexto topado en doce turnos de historial más el prompt maestro. De USD 278 a unos USD 12." },
+                    { type: "paragraph", text: "La transcripción cambió de proveedor y bajó de USD 5 a unos USD 4. La plataforma de atención al cliente se quedó igual, USD 38, porque ahí no había nada que ganar. Se sumó una auditoría diaria de calidad de respuestas que cuesta USD 0,27 al mes con tope de veinte conversaciones diarias." },
+                    { type: "paragraph", text: "Total después, USD 54,27 al mes." }
+                ]
+            },
+            {
+                title: "El resultado y el número que mejor lo explica",
+                content: [
+                    { type: "lead", text: "De USD 584,22 a USD 54,27 al mes. Son USD 529,95 mensuales, un 91 por ciento menos, USD 6.359 al año." },
+                    { type: "paragraph", text: "Pero el porcentaje es el número flojo, porque depende de cuánto pagabas antes. El número que de verdad explica el cambio es el costo por mensaje." },
+                    { type: "paragraph", text: "En agosto el sistema procesó 8.268 mensajes entrantes repartidos en 2.097 conversaciones. Al costo viejo, responder un mensaje salía USD 0,063. Con el sistema nuevo sale USD 0,0016. Es 39 veces más barato por mensaje." },
+                    { type: "paragraph", text: "Y hay una diferencia de fondo más allá del monto. El esquema viejo cobraba por operación interna, así que la factura subía sola aunque nadie cambiara nada. El nuevo cobra por mensaje realmente atendido. Si el volumen se triplica, el modelo pasa de USD 12 a USD 36 y sigue diez veces por debajo de lo que pagaban antes." }
+                ]
+            },
+            {
+                title: "Lo que no entra en esa cuenta",
+                content: [
+                    { type: "paragraph", text: "Si te vendo el 91 por ciento sin las letras chicas, te estoy vendiendo humo. Estas son." },
+                    { type: "paragraph", text: "El servidor no está en el total del después. Es el único rubro nuevo y su factura todavía no la tengo. Aun cargándole USD 40 al mes, el ahorro sigue por encima del 83 por ciento, pero el número honesto hoy es ese rango y no el 91 pelado." },
+                    { type: "paragraph", text: "Las plantillas de WhatsApp tampoco entran, porque el cliente ya las pagaba antes y no cambian con la migración. Meterlas a un lado y no al otro sería inflar el resultado." },
+                    { type: "paragraph", text: "Y la más importante. El ahorro solo se materializa cuando la plataforma vieja queda apagada. Mientras los dos sistemas corren en paralelo el cliente paga las dos cosas y la factura del mes sube, no baja. Si migras y no apagas, no ahorraste nada, te compraste un segundo gasto." },
+                    { type: "paragraph", text: "Un último aviso sobre el antes. La captura de la tabla del cliente venía cortada, así que podría haber filas que no entraron. El total real puede ser incluso más alto, nunca más bajo." }
+                ]
+            },
+            {
+                title: "Cómo reproducir la medición",
+                content: [
+                    { type: "paragraph", text: "Esta es la parte que hace verificable el caso. Sin esto son cifras bonitas que tienes que creerme." },
+                    { type: "paragraph", text: "Primero, deja de estimar el costo del modelo. Cada corrida del agente guarda sus tokens y su costo en una tabla propia, así que el gasto se consulta, no se proyecta. En la medición salió USD 0,001218 por respuesta sobre corridas reales en producción, con techo de USD 0,002 si el contexto va lleno." },
+                    { type: "paragraph", text: "Segundo, saca el volumen de la misma base, contando mensajes entrantes por mes. Ese es el denominador del costo por mensaje y sin él no hay comparación posible." },
+                    { type: "paragraph", text: "Tercero, mientras la plataforma vieja siga encendida, su API te da operaciones consumidas y paquetes extra comprados. Cuando la apagues ese renglón queda en cero, y esa es literalmente la mitad de la comprobación." },
+                    { type: "paragraph", text: "Cuarto, lo que no se mide solo hay que cargarlo a mano. Atención al cliente, transcripción y servidor salen de sus facturas. Si los dejas fuera, tu panel de costos miente por omisión." },
+                    { type: "paragraph", text: "El cliente ve todo esto en un módulo de costos dentro de su propio panel, con vistas de costo diario y costo por conversación. La idea es que no dependa de mi palabra ni de la suya." }
+                ]
+            },
+            {
+                title: "Qué aplica a ti y qué no",
+                content: [
+                    { type: "paragraph", text: "Si tu operación pasa por una plataforma que cobra por operación y por un modelo con recarga automática, la primera parte te aplica entera. Ve a las facturas, no a la pantalla de planes, y calcula tu costo por unidad procesada. Ese ejercicio toma media hora y casi siempre sorprende." },
+                    { type: "paragraph", text: "La segunda parte, la de autohospedar, aplica mucho menos de lo que parece. Funcionó aquí porque hay volumen sostenido, había un servidor que de todos modos hacía falta y hay alguien que puede mantenerlo. Si eres una persona sola con cinco suscripciones, montar infraestructura para ahorrar USD 40 al mes es un mal negocio, porque tu tiempo cuesta más que eso." },
+                    { type: "paragraph", text: "El ahorro no vino de ser más austero. Vino de medir bien y de cambiar el modelo de cobro, de pagar por operación interna a pagar por trabajo realmente hecho." }
+                ]
+            }
+        ],
+        pros: [
+            "Las cifras salen de facturación real y de corridas registradas en producción, no de estimaciones.",
+            "El costo por mensaje deja de ser una caja negra y se puede consultar cuando quieras.",
+            "Cambia el modelo de cobro, así que la factura deja de subir sola con el uso.",
+            "La inversión inicial del cliente se recupera en dos meses con el ahorro."
+        ],
+        cons: [
+            "Requiere un servidor y alguien que lo mantenga, que es un costo real aunque no aparezca en la factura del SaaS.",
+            "Solo tiene sentido con volumen sostenido. Con poco tráfico el ahorro no paga el trabajo de montarlo.",
+            "Durante la migración se pagan los dos sistemas a la vez y la factura sube antes de bajar.",
+            "Los backups y la disponibilidad pasan a ser tu responsabilidad, no la del proveedor."
+        ],
+        tools: ["n8n", "PostgreSQL", "Modelos por API", "Self-hosting", "Costos y arquitectura", "WhatsApp"]
     }
 ];
