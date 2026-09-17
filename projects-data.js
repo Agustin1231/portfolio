@@ -1867,5 +1867,181 @@ var PROJECTS_DATA = [
         liveUrl: "https://multiagentes.agustinynatalia.site",
         liveLabel: "Ver en vivo",
         visible: true
+    },
+    {
+        id: "notetaker-de-reuniones-con-ia",
+        number: "20",
+        category: "IA y Productividad Comercial",
+        title: "Notetaker de Reuniones con IA",
+        subtitle: "La reunión termina y el CRM ya tiene la nota, las tareas y el correo resumen",
+        description: "Sistema que toma la transcripción de cada reunión comercial apenas termina, redacta la nota del contacto con IA, actualiza el CRM, crea las tareas de seguimiento, envía un resumen por correo y guarda la grabación, sin que el asesor escriba nada.",
+        year: "2026",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "img/proyectos/notetaker-reuniones-ia.jpg",
+        imageCaption: "De la transcripción de la reunión a la nota, las tareas y el resumen, en automático",
+        techCard: ["n8n", "IA", "CRM", "PostgreSQL"],
+        techFull: [
+            "n8n",
+            "Agente de IA con herramientas",
+            "Modelos de lenguaje",
+            "PostgreSQL",
+            "API de agenda y transcripción",
+            "Correo transaccional",
+            "API de video"
+        ],
+        metrics: [
+            { label: "Nota del contacto", value: "Automática" },
+            { label: "Resumen", value: "Por correo" },
+            { label: "Tareas", value: "Creadas solas" },
+            { label: "Grabación", value: "Archivada" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que ninguna reunión dependa de que el asesor se acuerde de escribir la nota después." },
+                    { type: "paragraph", text: "El registro de las reuniones se hacía a mano, cuando quedaba tiempo. Lo que se acordaba en la llamada se perdía, el CRM quedaba desactualizado y los compromisos no llegaban a ninguna lista de tareas. El objetivo fue que el cierre de la reunión dispare todo el trabajo administrativo que venía después." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Cuando termina la reunión, la transcripción entra por webhook al flujo. Primero se guarda completa en base de datos, para que quede el respaldo literal de lo que se dijo antes de que cualquier modelo la interprete." },
+                    { type: "paragraph", text: "Sobre esa transcripción corre un agente de IA con herramientas propias: puede actualizar la nota del contacto, marcar la cita como realizada y crear tareas de seguimiento. No genera texto suelto, ejecuta acciones concretas sobre el CRM." },
+                    { type: "paragraph", text: "En paralelo se arma un resumen en HTML con los puntos tratados, los acuerdos y los próximos pasos, y se envía por correo a quien participó. La grabación se sube a una biblioteca privada de video, así la reunión queda consultable sin ocupar espacio en el disco de nadie." },
+                    { type: "paragraph", text: "Al final del día, un segundo proceso revisa las transcripciones de la jornada con un analista de desempeño comercial hecho con IA, que devuelve qué se hizo bien y qué se dejó pasar en cada conversación." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Transcripción guardada antes de interpretar", description: "El texto literal de la reunión se almacena primero. Si el modelo resume mal, la fuente original sigue intacta para revisarla." },
+            { title: "Agente con herramientas, no con texto", description: "La IA no escribe un resumen para copiar y pegar, actualiza la nota del contacto, marca la cita y crea las tareas directamente en el CRM." },
+            { title: "Resumen por correo", description: "Cada participante recibe el resumen con los acuerdos y los próximos pasos en el mismo momento en que termina la reunión." },
+            { title: "Grabación archivada", description: "El video queda subido en una biblioteca privada y enlazado al registro de la reunión, disponible para consultar después." },
+            { title: "Evaluación diaria del desempeño", description: "Un proceso nocturno analiza las conversaciones del día y señala qué se manejó bien y qué se pasó por alto." }
+        ],
+        learnings: [
+            { title: "El respaldo va antes que el resumen", text: "Guardar la transcripción cruda antes de pasarla por el modelo fue la decisión que hizo confiable el resto. Todo lo demás se puede volver a generar." },
+            { title: "Herramientas en vez de texto", text: "Darle acciones al agente en lugar de pedirle un resumen eliminó el paso manual que seguía existiendo, alguien tenía que copiar la salida al CRM." },
+            { title: "Lo administrativo no era el problema real", text: "El valor no fue ahorrar los minutos de escribir la nota, fue que dejara de existir el registro que nunca se hacía." }
+        ],
+        visible: true
+    },
+    {
+        id: "campanas-de-correo-contextualizadas-con-ia",
+        number: "21",
+        category: "IA y Ventas",
+        title: "Campañas de Correo Contextualizadas con IA",
+        subtitle: "Cada correo de la cadencia se escribe con el hilo previo, se revisa antes de salir y decide cuándo va el siguiente",
+        description: "Motor de campañas de correo donde cada mensaje se redacta con IA a partir de la conversación anterior con ese contacto, pasa por un evaluador antes de enviarse y recalcula por sí mismo la fecha del próximo envío según lo que responda la persona.",
+        year: "2026",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "img/proyectos/campanas-correo-contextualizadas.jpg",
+        imageCaption: "El ciclo de la cadencia, redactar con contexto, evaluar, enviar y reprogramar",
+        techCard: ["n8n", "IA", "PostgreSQL", "API de correo"],
+        techFull: [
+            "n8n",
+            "Agentes de IA especializados",
+            "Evaluador de calidad",
+            "Memoria conversacional en PostgreSQL",
+            "API de correo",
+            "Clasificador de respuestas"
+        ],
+        metrics: [
+            { label: "Redacción", value: "Con el hilo previo" },
+            { label: "Revisión", value: "Antes de enviar" },
+            { label: "Cadencia", value: "Se recalcula sola" },
+            { label: "Respuestas", value: "Clasificadas" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que una cadencia de correos deje de ser una plantilla repetida y se comporte como alguien que sí leyó la conversación anterior." },
+                    { type: "paragraph", text: "Las secuencias tradicionales mandan el mismo texto sin importar lo que pasó antes, si la persona ya respondió, si ya dijo que no le interesa o si preguntó algo puntual. El objetivo fue que cada correo salga con el contexto real del contacto y que el ritmo de la cadencia se ajuste a lo que esa persona hace." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Un proceso programado revisa cada media hora qué contactos tienen un correo pendiente según su cadencia y los entrega al motor de redacción." },
+                    { type: "paragraph", text: "La redacción está separada en agentes con una sola responsabilidad cada uno, uno escribe el cuerpo, otro lo convierte a HTML presentable y otro define el asunto. Antes de enviar, un evaluador revisa el resultado, y la memoria conversacional en base de datos le da a cada agente el historial completo con ese contacto." },
+                    { type: "paragraph", text: "El envío sale por la API de correo con la identidad de quien firma el mensaje, no desde una dirección genérica de campaña. Apenas se envía, el flujo recalcula la fecha del próximo contacto y actualiza el estado de inscripción de esa persona en la campaña." },
+                    { type: "paragraph", text: "Las respuestas que llegan entran a un flujo aparte que las clasifica con IA y devuelve una salida estructurada, de modo que un interesado, una objeción y una baja no terminen en la misma bandeja indiferenciada." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Redacción con el hilo completo", description: "Cada correo se escribe con la conversación previa de ese contacto, no con una plantilla fija repetida para todos." },
+            { title: "Agentes con una sola tarea", description: "Cuerpo, formato y asunto se resuelven por separado. Cada pieza mejora sin romper las otras." },
+            { title: "Evaluador antes del envío", description: "Un paso de revisión mira el correo antes de que salga, así el error no se descubre en la bandeja del destinatario." },
+            { title: "Cadencia que se recalcula", description: "La fecha del próximo mensaje se decide al momento del envío según el estado real del contacto, no por un calendario rígido." },
+            { title: "Respuestas clasificadas", description: "Lo que responde la persona se categoriza automáticamente en una salida estructurada, lista para que el equipo actúe según el caso." }
+        ],
+        learnings: [
+            { title: "Dividir al redactor mejora el resultado", text: "Un solo agente encargado de cuerpo, formato y asunto produce texto mediocre en las tres cosas. Separarlo subió la calidad de cada parte." },
+            { title: "Evaluar cuesta menos que corregir", text: "Un paso de revisión antes del envío es más barato que disculparse por un correo mal armado que ya salió." },
+            { title: "El ritmo es parte del mensaje", text: "Recalcular cuándo va el siguiente correo, en vez de fijarlo de antemano, cambió más los resultados que el contenido mismo." }
+        ],
+        visible: true
+    },
+    {
+        id: "escalamiento-a-humano-en-un-agente-de-ia",
+        number: "22",
+        category: "IA y Atención al Cliente",
+        title: "Escalamiento a Humano en un Agente de IA",
+        subtitle: "Cuando el caso no le corresponde al agente, pasa a una persona y el flujo espera su respuesta",
+        description: "Mecanismo de escalamiento que detiene al agente de IA cuando un caso necesita criterio humano, se lo entrega al asesor correcto según la empresa y deja el proceso en espera hasta que esa persona responde, sin perder el hilo de la conversación.",
+        year: "2026",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "img/proyectos/escalamiento-human-in-the-loop.jpg",
+        imageCaption: "El agente se detiene, el caso llega al asesor y el flujo espera la decisión humana",
+        techCard: ["n8n", "IA", "Correo", "Enrutamiento"],
+        techFull: [
+            "n8n",
+            "Agente de IA",
+            "Aprobación por correo con espera",
+            "Enrutamiento por empresa",
+            "Generación de imagen con IA"
+        ],
+        metrics: [
+            { label: "Decisión", value: "Humana" },
+            { label: "Flujo", value: "Queda en espera" },
+            { label: "Destinatario", value: "Por empresa" },
+            { label: "Contexto", value: "No se pierde" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Darle al agente de IA una forma limpia de decir no sé y pasarle el caso a una persona, sin que la conversación se corte." },
+                    { type: "paragraph", text: "Un agente que responde todo siempre termina inventando en el caso que no le corresponde. El objetivo fue definir el límite y construir la salida, cuando el caso pide criterio humano alguien lo recibe, decide, y esa decisión vuelve al flujo." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "El escalamiento está montado como una herramienta del propio agente. Cuando el agente determina que el caso excede lo que puede resolver, lo invoca con el contexto de la conversación en vez de improvisar una respuesta." },
+                    { type: "paragraph", text: "El caso se enruta según la empresa a la que pertenece el contacto, de modo que cada organización recibe sus escalamientos en su propio canal y con su propio responsable." },
+                    { type: "paragraph", text: "El aviso al asesor se envía con una espera de respuesta, el flujo no continúa hasta que la persona contesta. Esa pausa es lo que convierte el escalamiento en un paso real del proceso y no en una notificación que alguien puede ignorar." },
+                    { type: "paragraph", text: "El mismo flujo incluye una rama de generación de imagen con IA, para los casos donde la respuesta al contacto necesita material visual armado en el momento." }
+                ]
+            }
+        ],
+        features: [
+            { title: "El escalamiento es una herramienta", description: "El agente decide cuándo pasar el caso, igual que decide usar cualquier otra de sus herramientas. No es una regla externa que lo interrumpe." },
+            { title: "Espera activa de la respuesta", description: "El flujo queda detenido hasta que el asesor responde, así el escalamiento no se convierte en un correo más que nadie abre." },
+            { title: "Enrutamiento por empresa", description: "Cada organización recibe sus casos en su canal y con su responsable, sin mezclar bandejas entre clientes." },
+            { title: "El contexto viaja con el caso", description: "La persona que recibe el escalamiento ve la conversación completa, no un aviso suelto sin historia." }
+        ],
+        learnings: [
+            { title: "Un agente necesita saber rendirse", text: "La calidad de un agente no se mide solo por lo que responde, sino por qué tan bien identifica lo que no le corresponde responder." },
+            { title: "Notificar no es escalar", text: "Mientras el flujo seguía después de avisar, los escalamientos se perdían. Detener el proceso hasta la respuesta fue lo que los volvió confiables." },
+            { title: "El límite se define antes de construir", text: "Decidir de antemano qué casos son humanos evitó tener que corregir respuestas inventadas después de que ya salieron." }
+        ],
+        visible: true
     }
 ];
