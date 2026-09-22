@@ -1806,5 +1806,105 @@ var GUIDES_DATA = [
             "Los backups y la disponibilidad pasan a ser tu responsabilidad, no la del proveedor."
         ],
         tools: ["n8n", "PostgreSQL", "Modelos por API", "Self-hosting", "Costos y arquitectura", "WhatsApp"]
+    },
+    {
+        id: "darle-acceso-a-tus-datos-a-un-agente-de-ia",
+        number: "13",
+        visible: true,
+        category: "Seguridad y permisos",
+        title: "Darle acceso a tus datos a un agente de IA sin regalarle la casa",
+        subtitle: "Casi todo el mundo conecta el agente con su propia cuenta y le entrega el llavero entero. Identidad separada, alcance mínimo, dónde vive la credencial y cómo se revoca el día que toque, con los casos donde me falló a mí.",
+        description: "Cómo darle acceso a tus datos a un agente de IA sin exponer tus cuentas. Identidad propia para el agente, alcance mínimo por recurso, credenciales fuera del repositorio, el patrón del intermediario que guarda la llave y el procedimiento de revocación, con casos reales y lo que quedó mal resuelto.",
+        image: "",
+        imageCaption: "",
+        date: "Septiembre 2026",
+        readingTime: "8 min de lectura",
+        urlLabel: "Leer guía",
+        requirements: [
+            "La lista de los servicios que el agente va a tocar de verdad, no los que podría llegar a necesitar. Cada servicio de más es una llave que vas a tener que rotar algún día.",
+            "Permiso para crear usuarios o cuentas nuevas en esos servicios. Si solo puedes reutilizar la tuya, el agente hereda tu poder y eso ya no se arregla después.",
+            "Saber en qué pantalla de cada proveedor se apaga una llave. Borrar tu copia local no revoca nada, y ese malentendido es el más caro de esta guía.",
+            "Un lugar para los secretos fuera del repositorio, aunque sea un archivo con permisos restringidos en el servidor."
+        ],
+        sections: [
+            {
+                title: "El agente no debería usar tu cuenta",
+                content: [
+                    { type: "lead", text: "Casi todo el que conecta un agente a sus herramientas lo hace con su propio usuario, porque es el que ya tiene a mano. Desde ese momento el agente puede hacer todo lo que puedes hacer tú, y el registro de actividad dice que lo hiciste tú." },
+                    { type: "paragraph", text: "Eso rompe dos cosas a la vez. La primera es el alcance, porque tu cuenta llega a sitios que el agente no necesita ni va a usar nunca. La segunda es la trazabilidad, que importa más de lo que parece. Cuando algo sale raro quieres abrir el historial y saber si ese cambio lo hizo una persona o un proceso automático, y con la cuenta compartida esa pregunta no tiene respuesta." },
+                    { type: "paragraph", text: "Mis agentes tienen cuenta propia en las herramientas donde trabajan. En el gestor de tareas, por ejemplo, el agente es un usuario distinto del mío, con su nombre. El costo es una licencia más en los servicios que cobran por asiento. A cambio, cada tarjeta movida tiene autor y el día que quiera cortarle el acceso desactivo ese usuario sin tocar el mío." },
+                    { type: "paragraph", text: "La versión pobre de esto, cuando el servicio no deja crear usuarios, es generar al menos una llave aparte solo para el agente. No te devuelve la trazabilidad, pero sí la posibilidad de apagar una cosa sin tumbar todas las demás." }
+                ]
+            },
+            {
+                title: "Alcance mínimo, que no es lo mismo que alcance cómodo",
+                content: [
+                    { type: "paragraph", text: "El alcance es qué puede hacer una llave, no a qué producto pertenece. Es la parte que más se subestima, porque los proveedores la esconden detrás de una lista de casillas que uno marca sin leer con tal de que la conexión funcione de una vez." },
+                    { type: "paragraph", text: "Tenía un token de Google que leía el calendario sin problemas y asumí que servía para todo Google. El día que el agente tuvo que escribir dentro de un documento, el mismo token falló, porque su alcance era solo de calendario. La salida no fue ampliarlo. Fue usar una credencial distinta, con permiso de documentos, y dejar la de calendario exactamente como estaba." },
+                    { type: "paragraph", text: "Esa molestia es la señal de que el alcance está bien puesto. Si una credencial tuya nunca te ha dado un error de permisos, lo más probable es que tenga bastante más del que necesita." },
+                    { type: "paragraph", text: "El segundo nivel del alcance es el recurso, y ahí se gana todavía más. Hace poco entregué un documento a un cliente y el agente tenía que escribir adentro. No le di acceso a mi Drive. Compartí ese documento con la cuenta del agente, igual que lo compartiría con una persona. El agente escribe en ese archivo y no sabe que existe ningún otro." },
+                    { type: "paragraph", text: "La misma pregunta sirve en todas partes. Si el agente responde correos de soporte no necesita tu bandeja entera, necesita una etiqueta. Si consulta pedidos no necesita la base de datos, necesita una vista de solo lectura con las columnas de ese caso. Bajar del servicio al recurso es lo que convierte una filtración en un incidente acotado." }
+                ]
+            },
+            {
+                title: "Dónde vive la credencial",
+                content: [
+                    { type: "paragraph", text: "Ninguna credencial entra al repositorio. Ni en un archivo de configuración, ni comentada, ni como ejemplo de formato en la documentación." },
+                    { type: "paragraph", text: "Lo del ejemplo no es exageración. Si pegas una llave real en un README para mostrar el formato y haces commit, borrarla después no sirve de nada, porque queda en el historial de git y cualquiera que clone el repositorio se la lleva completa. A partir de ahí la única salida honesta es rotarla, o sea generarla de nuevo en el proveedor y actualizar todos los sitios donde estaba." },
+                    { type: "paragraph", text: "Mis secretos viven en un solo archivo de entorno fuera del árbol del repositorio, con permisos de lectura únicamente para su dueño, y los procesos lo cargan al arrancar. No es sofisticado. Un gestor de secretos dedicado es mejor, pero un archivo fuera del repo con los permisos correctos ya te saca de casi todos los accidentes reales." },
+                    { type: "paragraph", text: "El vector que nadie mira son los respaldos. Cuando exportas un flujo de una plataforma visual para guardarlo, ese archivo suele traer adentro las llaves de las conexiones en texto plano. Me pasó con los respaldos de un cliente. Parecen un JSON inofensivo y son un llavero, así que van al mismo lugar que los secretos y nunca al repositorio del proyecto." },
+                    { type: "paragraph", text: "Y queda el inventario, que suena a burocracia hasta el día que lo necesitas. Apunta dónde está guardada cada credencial, porque no siempre es donde crees. En un proyecto estuve buscando un token de WhatsApp dentro del servidor y no estaba ahí, vivía dentro de la plataforma de atención al cliente. Una llave que no sabes dónde está es una llave que no puedes rotar." }
+                ]
+            },
+            {
+                title: "La llave que el agente nunca ve",
+                content: [
+                    { type: "lead", text: "Hay un patrón que ataca el problema por el otro lado. En vez de entregarle la credencial al agente, pones un servicio en el medio que la guarda por él." },
+                    { type: "paragraph", text: "Una aplicación mía consulta un modelo de lenguaje a través de un intermediario propio que hace la llamada real. La aplicación no tiene la llave, tiene la dirección de ese servicio. Si mañana alguien entra a la aplicación no se lleva ninguna credencial del proveedor, porque ahí adentro no hay ninguna." },
+                    { type: "paragraph", text: "Encima te da dos cosas de regalo. Todo el tráfico pasa por un punto donde puedes verlo y contarlo, y puedes cambiar de proveedor o cortar el acceso tocando una variable, sin volver a desplegar la aplicación." },
+                    { type: "paragraph", text: "No aplica a todo, porque ese intermediario es un componente más que hay que mantener y que se puede caer. Tiene sentido cuando la credencial es cara, cuando la comparten varios clientes o cuando la aplicación está expuesta a internet. Para un script que corre en tu propia máquina es exagerado." }
+                ]
+            },
+            {
+                title: "Revocar es un procedimiento, no un impulso",
+                content: [
+                    { type: "lead", text: "Dar acceso es una decisión de un minuto. Quitarlo es una lista de pasos, y si no la escribes el día que conectas, no la vas a improvisar el día que la necesites." },
+                    { type: "paragraph", text: "Cuando cerré el contrato con un cliente hice el recorrido completo. Retiré sus credenciales de mi lado, archivé los procesos automáticos que las usaban y apagué lo que seguía corriendo. Hasta ahí, el manual." },
+                    { type: "paragraph", text: "Lo que quedó abierto es la parte incómoda de esta guía. Durante el proyecto generé una llave de un proveedor de modelos que está a mi nombre y que quedó dentro del sistema del cliente. Yo ya no toco ese sistema, pero la llave sigue viva, y si alguien la usa el consumo llega a mi cuenta." },
+                    { type: "paragraph", text: "La lección es concreta y me costó entenderla así. Borrar tu copia de una credencial no la revoca. Revocarla es entrar al proveedor que la emitió y apagarla ahí, y eso hay que hacerlo aunque rompa algo del otro lado, porque mientras esté encendida la responsabilidad es tuya." },
+                    { type: "paragraph", text: "Por eso, cuando entrego un sistema que consume servicios pagos, las llaves deberían nacer en la cuenta del cliente desde el primer día, aunque las configure yo. Es más incómodo al arrancar y te ahorra exactamente este problema al cerrar." }
+                ]
+            },
+            {
+                title: "Los permisos que se abren solos",
+                content: [
+                    { type: "paragraph", text: "Hay dos fugas que no vienen de una mala decisión, vienen del uso diario, y por eso no aparecen en ninguna revisión de arquitectura." },
+                    { type: "paragraph", text: "La primera son los enlaces para compartir. Un documento creado con prisa queda muchas veces en modo cualquiera con el enlace puede editar, que es el valor cómodo por defecto. Me pasó con un entregable que llevaba mi nombre. Lo bajé a solo comentarios antes de que saliera, pero el punto es que nadie había decidido eso, simplemente se quedó así. Antes de mandar un enlace, mira quién más puede entrar y qué puede hacer adentro." },
+                    { type: "paragraph", text: "La segunda son los ambientes de prueba. Monté una instancia de una herramienta para probar una integración y a las semanas tenía conversaciones reales de mi WhatsApp adentro. Nació como un juguete y terminó guardando datos que no quiero en un servidor de pruebas. La borré entera, con los datos. Un ambiente de prueba conectado a una cuenta real deja de ser un ambiente de prueba en la primera ejecución." }
+                ]
+            },
+            {
+                title: "La lista antes de conectar",
+                content: [
+                    { type: "paragraph", text: "Siete preguntas. Si alguna no tiene respuesta, el agente todavía no se conecta." },
+                    { type: "paragraph", text: "Una, ¿el agente tiene identidad propia o está entrando con la tuya? Dos, ¿qué puede hacer exactamente esa credencial y qué le sobra de todo lo que puede hacer? Tres, ¿tiene acceso al servicio completo o solo al recurso que necesita?" },
+                    { type: "paragraph", text: "Cuatro, ¿dónde está guardada, y estás seguro de que ese lugar no termina dentro del repositorio? Cinco, ¿quién más tiene hoy ese enlace o esa llave? Seis, ¿cómo se revoca, en qué pantalla del proveedor y en cuántos minutos? Siete, ¿a nombre de quién está emitida, tuyo o del cliente, y quién paga la factura si alguien la usa?" },
+                    { type: "paragraph", text: "Ninguna necesita herramientas nuevas. Todas se contestan en la pantalla de configuración de los servicios que ya estás usando. La diferencia entre contestarlas al conectar o el día del incidente es la diferencia entre veinte minutos y un fin de semana." }
+                ]
+            }
+        ],
+        pros: [
+            "La identidad separada te dice en el historial si un cambio lo hizo una persona o el agente, que es la primera pregunta cuando algo sale mal.",
+            "Cortarle el acceso al agente deja de ser un evento traumático, porque no comparte cuenta con nadie.",
+            "El alcance por recurso limita el daño de una llave filtrada a un documento o a una tabla, en vez de a todo el servicio.",
+            "El intermediario que guarda la llave permite cambiar de proveedor o cortar el acceso sin volver a desplegar la aplicación."
+        ],
+        cons: [
+            "La identidad propia cuesta una licencia más en los servicios que cobran por usuario.",
+            "El alcance mínimo se paga en errores de permisos mientras armas, y la tentación de ampliarlo para salir del paso es real.",
+            "El intermediario es un componente más que hay que mantener y que se puede caer.",
+            "Nada de esto se configura solo. Es trabajo manual servicio por servicio y no hay atajo que lo cubra entero."
+        ],
+        tools: ["Agentes de IA", "Seguridad", "Credenciales y tokens", "OAuth", "Control de acceso", "Self-hosting"]
     }
 ];
