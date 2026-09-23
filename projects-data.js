@@ -2215,5 +2215,294 @@ var PROJECTS_DATA = [
             { title: "Guardar el error vale tanto como avisarlo", text: "El aviso resuelve el momento, el registro es el que muestra el patrón." }
         ],
         visible: true
+    },
+    {
+        id: "contenido-y-publicacion-automatizada-en-linkedin",
+        number: "26",
+        category: "IA y Marca Personal",
+        title: "Contenido y Publicación Automatizada en LinkedIn",
+        subtitle: "El sistema propone el tema, escribe con la voz de quien firma y publica sin que nadie se siente a redactar",
+        description: "Sistema de contenido que elige el tema del día, redacta el post con la voz de la persona que lo firma, verifica que no repita algo ya publicado y lo deja programado en LinkedIn, sosteniendo una cadencia diaria sin trabajo manual.",
+        year: "2026",
+        company: "Proyecto propio",
+        duration: "En operación",
+        image: "img/proyectos/contenido-linkedin-automatizado.jpg",
+        imageCaption: "Del tema del día al post programado, con el control de repetidos en el medio",
+        techCard: ["n8n", "Gemini", "PostgreSQL", "API de LinkedIn"],
+        techFull: [
+            "n8n",
+            "Google Gemini",
+            "API oficial de LinkedIn",
+            "PostgreSQL",
+            "Generación de carruseles en PDF",
+            "Programación con horario aleatorio"
+        ],
+        metrics: [
+            { label: "Cadencia", value: "Diaria" },
+            { label: "Redacción", value: "Con voz propia" },
+            { label: "Repetidos", value: "Descartados" },
+            { label: "Formatos", value: "Post y carrusel" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Publicar todos los días sin que publicar se convierta en el trabajo del día." },
+                    { type: "paragraph", text: "Sostener una cadencia diaria en LinkedIn es más un problema de constancia que de escritura. La dificultad no es redactar un post, es redactar el número trescientos sin repetir lo mismo y sin que se note que lo escribió una máquina." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "El tema no se improvisa. Un flujo separado propone los temas del día a partir de tendencias y de un archivo de ideas que se va alimentando de las conversaciones de trabajo, así el contenido sale de lo que de verdad está pasando." },
+                    { type: "paragraph", text: "La redacción pasa por dos filtros encadenados. El primero quita las marcas típicas de escritura automática y el segundo ajusta el texto a la voz de quien firma, con su vocabulario y su ritmo medidos sobre textos reales." },
+                    { type: "paragraph", text: "Antes de programar, el sistema compara contra el histórico de lo ya publicado y descarta lo que se parece demasiado a un post anterior. Ese control es lo que evita el efecto de cuenta que repite siempre lo mismo." },
+                    { type: "paragraph", text: "La publicación sale por la API oficial de LinkedIn a una hora sorteada dentro de una franja, y cuando la pieza lo amerita se arma como carrusel en PDF en lugar de texto plano." }
+                ]
+            }
+        ],
+        features: [
+            { title: "El tema sale de lo que pasa", description: "Las ideas se capturan de las conversaciones de trabajo reales, no de una lista genérica de temas de marketing." },
+            { title: "Dos filtros, no uno", description: "Un paso quita las marcas de escritura automática y otro pone la voz propia. Hacerlo en un solo paso daba texto correcto pero sin personalidad." },
+            { title: "Control de repetidos", description: "Cada pieza se compara contra el histórico antes de programarse, que es lo que evita repetir el mismo argumento con otras palabras." },
+            { title: "Carrusel cuando corresponde", description: "Las piezas con datos o comparaciones se arman como documento en vez de texto, porque en ese formato se leen mejor." }
+        ],
+        learnings: [
+            { title: "La voz se puede medir", text: "Analizar textos propios y sacar el largo de frase, la puntuación y el vocabulario dio un perfil mucho más útil que describir el tono con adjetivos." },
+            { title: "Lo difícil es no repetirse", text: "El cuello de botella de la constancia no es escribir, es tener algo distinto que decir. El archivo de ideas resolvió más que el redactor." },
+            { title: "Publicar con la API evita el copiar y pegar", text: "Mientras hubo un paso manual de pegar el texto, la cadencia se caía los días ocupados." }
+        ],
+        visible: true
+    },
+    {
+        id: "clasificacion-y-respuesta-de-correos-con-ia",
+        number: "27",
+        category: "IA y Operaciones",
+        title: "Clasificación y Respuesta de Correos con IA",
+        subtitle: "Cada correo entra clasificado por intención y urgencia, y el que amerita respuesta llega con el borrador escrito",
+        description: "Sistema que lee cada correo entrante, recupera el hilo previo con ese contacto, lo clasifica por intención y urgencia y deja un borrador de respuesta redactado sobre el contexto de la conversación, para que la persona decida en lugar de escribir desde cero.",
+        year: "2026",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "img/proyectos/triage-de-correos-con-ia.jpg",
+        imageCaption: "El correo entra, se clasifica contra el hilo previo y sale con borrador",
+        techCard: ["n8n", "Gemini", "Gmail", "PostgreSQL"],
+        techFull: [
+            "n8n",
+            "Agentes de IA",
+            "Google Gemini",
+            "OpenRouter",
+            "Gmail",
+            "PostgreSQL como memoria de conversación"
+        ],
+        metrics: [
+            { label: "Lectura", value: "Automática" },
+            { label: "Clasificación", value: "Intención y urgencia" },
+            { label: "Memoria", value: "Por contacto" },
+            { label: "Decisión", value: "Humana" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que abrir la bandeja deje de ser el primer trabajo del día." },
+                    { type: "paragraph", text: "Una bandeja compartida con volumen alto se atiende por orden de llegada, no por importancia, y eso hace que lo urgente espere detrás de lo trivial. El objetivo fue que el orden lo decidiera el contenido y no el reloj." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Cada correo entrante dispara el flujo. Lo primero que hace el sistema no es leer el mensaje sino recuperar el historial con ese contacto, porque el mismo texto significa cosas distintas según lo que se haya hablado antes." },
+                    { type: "paragraph", text: "Con ese contexto, un agente clasifica el correo por intención y por urgencia. Esa doble etiqueta es la que permite ordenar la bandeja por lo que importa en lugar de por hora de llegada." },
+                    { type: "paragraph", text: "Para los correos que ameritan respuesta, un segundo agente redacta el borrador apoyado en el hilo anterior, de modo que la persona edita y envía en vez de escribir desde cero." },
+                    { type: "paragraph", text: "El sistema nunca envía solo. La última decisión es siempre humana, y esa frontera se puso a propósito en una bandeja donde un error de tono le cuesta un cliente al negocio." }
+                ]
+            }
+        ],
+        features: [
+            { title: "El hilo antes que el mensaje", description: "Se recupera la conversación previa antes de interpretar el correo, porque sin ese contexto la clasificación se equivoca en los casos que más importan." },
+            { title: "Dos etiquetas, no una", description: "Intención y urgencia por separado permiten ordenar la bandeja de verdad. Una sola etiqueta mezcla lo importante con lo ruidoso." },
+            { title: "Borrador, no envío", description: "El sistema prepara la respuesta y se detiene. La decisión de enviar queda siempre en una persona." },
+            { title: "Memoria persistente por contacto", description: "El historial vive en base de datos, así la interpretación mejora con cada intercambio en lugar de empezar de cero." }
+        ],
+        learnings: [
+            { title: "Clasificar sin contexto es adivinar", text: "Leer el correo aislado daba etiquetas plausibles y equivocadas. Recuperar el hilo primero cambió la calidad por completo." },
+            { title: "El borrador vale más que la clasificación", text: "Ordenar la bandeja ahorra minutos, tener la respuesta empezada ahorra el trabajo." },
+            { title: "La frontera del envío es de producto, no técnica", text: "Enviar solo era perfectamente posible. No hacerlo fue la decisión que permitió que el sistema se usara." }
+        ],
+        visible: true
+    },
+    {
+        id: "screening-de-hojas-de-vida-con-ia",
+        number: "28",
+        category: "IA y Recursos Humanos",
+        title: "Screening de Hojas de Vida con IA",
+        subtitle: "Los PDF entran desde la carpeta compartida y salen como resúmenes comparables contra el perfil buscado",
+        description: "Flujo que toma las hojas de vida de una carpeta compartida, extrae el texto de cada PDF, las resume con IA contra el perfil que se está buscando y deja todo en una tabla comparable, convirtiendo una pila de archivos en una lista ordenada de candidatos.",
+        year: "2026",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "img/proyectos/screening-hojas-de-vida.jpg",
+        imageCaption: "De la carpeta con PDF sueltos a una tabla de candidatos comparables",
+        techCard: ["n8n", "Gemini", "Google Drive", "Supabase"],
+        techFull: [
+            "n8n",
+            "Google Gemini",
+            "Google Drive",
+            "Extracción de texto de PDF",
+            "Supabase",
+            "Procesamiento por lotes"
+        ],
+        metrics: [
+            { label: "Entrada", value: "Carpeta compartida" },
+            { label: "Lectura", value: "Automática" },
+            { label: "Criterios", value: "Homogéneos" },
+            { label: "Salida", value: "Tabla comparable" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que leer cien hojas de vida deje de costar una semana de alguien." },
+                    { type: "paragraph", text: "El filtro inicial de una convocatoria es trabajo mecánico y caro. Alguien abre archivo por archivo, y para cuando llega al número cuarenta ya no está aplicando el mismo criterio que aplicó al primero." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Los archivos se recogen de una carpeta compartida, que es donde ya caían por costumbre. No hubo que cambiarle el hábito a nadie para que el sistema empezara a funcionar." },
+                    { type: "paragraph", text: "De cada PDF se extrae el texto, incluidos los que vienen como imagen escaneada, que son los que normalmente se saltan los filtros automáticos y terminan revisándose a mano." },
+                    { type: "paragraph", text: "La IA resume cada hoja de vida contra el perfil buscado, no en abstracto. El resumen responde qué tiene y qué le falta a esa persona frente a lo que se está pidiendo." },
+                    { type: "paragraph", text: "Todo queda en una tabla con los mismos campos para todos, que es lo que hace posible comparar. El criterio no se cansa en el candidato cuarenta." }
+                ]
+            }
+        ],
+        features: [
+            { title: "El hábito no se cambia", description: "La entrada es la carpeta donde el equipo ya dejaba los archivos, así la adopción no dependió de que nadie aprendiera nada nuevo." },
+            { title: "Se leen también los escaneados", description: "La extracción cubre los PDF que vienen como imagen, que suelen ser justo los que quedan fuera de los filtros automáticos." },
+            { title: "Resumen contra el perfil", description: "Cada resumen responde a lo que se está buscando en esa convocatoria, no es una síntesis genérica de la hoja de vida." },
+            { title: "Criterio constante", description: "La ventaja real no es la velocidad, es que el candidato número cuarenta se evalúa con el mismo rigor que el primero." }
+        ],
+        learnings: [
+            { title: "El cansancio es el sesgo", text: "La inconsistencia entre el primer candidato y el último era un problema más grande que el tiempo que tomaba leerlos." },
+            { title: "Resumir contra algo", text: "Un resumen genérico no ayuda a decidir. Resumir contra el perfil buscado convierte el texto en un criterio de descarte." },
+            { title: "Los escaneados importan", text: "Ignorarlos parecía un detalle y era la fuente de todo el trabajo manual que quedaba después." }
+        ],
+        visible: true
+    },
+    {
+        id: "ciclo-de-vida-de-la-cita-con-ia",
+        number: "29",
+        category: "IA y Atención al Cliente",
+        title: "Ciclo de Vida de la Cita con IA",
+        subtitle: "Recordatorio antes, contexto del caso al empezar y seguimiento cuando termina, sin que nadie lo dispare",
+        description: "Sistema que acompaña la cita completa. Recuerda al cliente veinticuatro horas antes, entrega al asesor el resumen del caso justo cuando la cita empieza y ejecuta el seguimiento cuando termina, cerrando el hueco entre agendar y que la cita sirva para algo.",
+        year: "2026",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "img/proyectos/ciclo-de-vida-de-la-cita.jpg",
+        imageCaption: "Las tres ventanas de una cita, cubiertas sin intervención",
+        techCard: ["n8n", "IA", "PostgreSQL", "Calendario"],
+        techFull: [
+            "n8n",
+            "Agentes de IA",
+            "OpenRouter",
+            "Memoria en PostgreSQL",
+            "Integración con calendario",
+            "Cadencias programadas"
+        ],
+        metrics: [
+            { label: "Antes", value: "Recordatorio automático" },
+            { label: "Al empezar", value: "Contexto al asesor" },
+            { label: "Después", value: "Seguimiento" },
+            { label: "Memoria", value: "Por caso" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que agendar la cita no sea lo último que hace el sistema." },
+                    { type: "paragraph", text: "Agendar es la parte fácil. Lo que se pierde plata es la ausencia sin aviso, el asesor que entra a la cita sin saber quién es la persona, y el caso que después de la reunión nadie retoma." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "El recordatorio sale veinticuatro horas antes por el mismo canal donde se agendó la cita, que es donde la persona ya está conversando, y no por un correo que se pierde entre otros." },
+                    { type: "paragraph", text: "Justo antes de que empiece, un agente arma el resumen del caso a partir de todo lo conversado y se lo entrega al asesor. Entrar a la cita sabiendo el contexto cambia por completo el primer minuto." },
+                    { type: "paragraph", text: "Al terminar, arranca la cadencia de seguimiento, con mensajes que se redactan sobre lo que efectivamente pasó en la cita y no sobre una plantilla igual para todos." },
+                    { type: "paragraph", text: "Cada etapa consulta la memoria del caso en base de datos, de modo que el sistema sabe en qué punto va esa persona y no le repite algo que ya se le dijo." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Recuerda donde la persona está", description: "El aviso sale por el canal de la conversación original, no por un correo aparte que compite con todo lo demás." },
+            { title: "El asesor entra con contexto", description: "El resumen del caso llega al momento de empezar, que es cuando sirve, y no en un reporte que se lee después." },
+            { title: "Seguimiento sobre lo que pasó", description: "La cadencia posterior se redacta con lo conversado en la cita, no con una plantilla común." },
+            { title: "Memoria por caso", description: "Cada etapa sabe qué se le dijo antes a esa persona, así el sistema no se repite ni se contradice." }
+        ],
+        learnings: [
+            { title: "La cita no empieza cuando empieza", text: "La mitad del valor está en las veinticuatro horas previas y en las horas siguientes, que es justo donde no había nada." },
+            { title: "Recordar por el canal correcto", text: "Mover el recordatorio al canal de la conversación cambió la asistencia más que mejorar el texto del mensaje." },
+            { title: "Seguir sin memoria es molestar", text: "Una cadencia que no sabe qué se habló repite lo mismo y se siente como spam, aunque el texto esté bien escrito." }
+        ],
+        visible: true
+    },
+    {
+        id: "documentador-automatico-de-flujos-n8n",
+        number: "30",
+        category: "Herramientas y Operaciones",
+        title: "Documentador Automático de Flujos n8n",
+        subtitle: "Lee la automatización desde la API, entiende qué hace cada nodo y escribe el documento técnico",
+        description: "Herramienta que toma un flujo de n8n desde su propia API, interpreta qué hace cada nodo y cómo se conectan entre sí, y escribe el documento técnico en Drive, para que la operación deje de depender de que alguien recuerde cómo funciona lo que construyó.",
+        year: "2026",
+        company: "Urpe AI Lab",
+        duration: "En operación",
+        image: "img/proyectos/documentador-de-flujos-n8n.jpg",
+        imageCaption: "El flujo se baja por API, la IA lo interpreta y el documento queda en Drive",
+        techCard: ["n8n", "OpenRouter", "Google Docs", "API de n8n"],
+        techFull: [
+            "n8n",
+            "OpenRouter",
+            "API de n8n",
+            "Google Docs",
+            "Google Drive"
+        ],
+        metrics: [
+            { label: "Fuente", value: "El flujo real" },
+            { label: "Interpretación", value: "Nodo por nodo" },
+            { label: "Salida", value: "Google Docs" },
+            { label: "Esfuerzo", value: "Ninguno" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que la automatización que nadie documentó deje de ser un problema futuro." },
+                    { type: "paragraph", text: "La documentación técnica se escribe cuando hay tiempo, o sea nunca, y el costo aparece meses después, cuando hay que tocar un flujo que nadie recuerda y la única fuente de verdad es el lienzo de nodos." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "La herramienta baja el flujo desde la API de n8n, así que documenta lo que está corriendo de verdad y no una versión que alguien exportó hace meses." },
+                    { type: "paragraph", text: "La IA interpreta el JSON, que es la parte no obvia. No basta con listar nodos, hay que entender el orden, las condiciones y qué hace cada rama para poder narrar el proceso en lenguaje llano." },
+                    { type: "paragraph", text: "El resultado se escribe como documento en Drive, en el mismo lugar donde el equipo ya busca las cosas, con la explicación general del flujo y el detalle por nodo." },
+                    { type: "paragraph", text: "Como la fuente es el flujo vivo, volver a correrlo después de un cambio regenera la documentación actualizada sin que nadie tenga que acordarse de mantenerla." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Documenta lo que corre", description: "La fuente es la API, no un export viejo, así que el documento refleja el estado real del flujo." },
+            { title: "Interpreta, no lista", description: "Explica el orden, las condiciones y las ramas, que es lo que hace falta para entender un flujo sin abrirlo." },
+            { title: "Sale donde ya buscan", description: "El documento queda en Drive, en el lugar donde el equipo ya busca, en vez de en una herramienta nueva." },
+            { title: "Se regenera", description: "Después de cambiar el flujo se vuelve a correr y la documentación se actualiza sola." }
+        ],
+        learnings: [
+            { title: "La documentación no se mantiene, se regenera", text: "Todo intento de mantenerla a mano se degradó. Hacerla reproducible desde la fuente fue lo único que funcionó." },
+            { title: "El JSON no se explica solo", text: "Listar nodos no sirve de nada. El valor está en narrar qué hace el flujo, y eso es exactamente lo que un modelo hace bien." },
+            { title: "Escribir donde ya miran", text: "Publicar en Drive en vez de en una herramienta propia fue lo que hizo que alguien la leyera." }
+        ],
+        visible: true
     }
 ];
