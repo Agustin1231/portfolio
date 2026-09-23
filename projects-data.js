@@ -2043,5 +2043,177 @@ var PROJECTS_DATA = [
             { title: "El límite se define antes de construir", text: "Decidir de antemano qué casos son humanos evitó tener que corregir respuestas inventadas después de que ya salieron." }
         ],
         visible: true
+    },
+    {
+        id: "evaluacion-de-elegibilidad-eb2-niw-con-ia",
+        number: "23",
+        category: "IA y Servicios Migratorios",
+        title: "Evaluación de Elegibilidad EB2-NIW con IA",
+        subtitle: "El candidato llena un formulario y recibe su probabilidad real de calificar, con el plan de lo que le falta",
+        description: "Sistema que evalúa con IA si un profesional califica a la visa estadounidense EB2-NIW, estima su probabilidad criterio por criterio y devuelve una hoja de ruta personalizada, todo antes de que el equipo legal invierta una hora en el caso.",
+        year: "2026",
+        company: "Firma de servicios migratorios",
+        duration: "En operación",
+        image: "img/proyectos/elegibilidad-eb2-niw.jpg",
+        imageCaption: "Del perfil del candidato a la probabilidad estimada y su hoja de ruta",
+        techCard: ["n8n", "Gemini", "OpenRouter", "Supabase"],
+        techFull: [
+            "n8n",
+            "Agentes de IA",
+            "Google Gemini",
+            "OpenRouter",
+            "Supabase",
+            "Webhooks con respuesta"
+        ],
+        metrics: [
+            { label: "Evaluación", value: "Automática" },
+            { label: "Criterios", value: "Uno por uno" },
+            { label: "Entrega", value: "Enlace único" },
+            { label: "Registro", value: "En base de datos" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Saber si una persona califica antes de cobrarle, y decírselo con un argumento que se sostenga." },
+                    { type: "paragraph", text: "La visa EB2-NIW se evalúa contra varios criterios que se ponderan entre sí, y hacerlo a mano consume horas de un abogado por cada consulta que llega. Muchas de esas consultas no califican, así que el tiempo se gasta antes de saber si hay caso." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "El perfil profesional del candidato entra por un formulario web y dispara el flujo. A partir de ahí varios agentes de IA evalúan cada criterio por separado en vez de pedirle a un solo modelo un veredicto global, que es donde se pierde el matiz." },
+                    { type: "paragraph", text: "Los resultados parciales se combinan en una probabilidad estimada, y un segundo flujo arma la hoja de ruta, o sea qué le falta a esa persona para fortalecer su caso y en qué orden conviene hacerlo." },
+                    { type: "paragraph", text: "Todo el expediente queda guardado en base de datos y el reporte se entrega por un enlace único, sin adjuntos por correo y sin que el candidato tenga que crear una cuenta." },
+                    { type: "paragraph", text: "El sistema se extendió después hacia la parte documental, con el borrador del formulario I-140 y las cartas de soporte generadas a partir del mismo expediente." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Un agente por criterio", description: "Cada requisito se evalúa por separado y después se combina. Pedirle el veredicto completo a un solo modelo aplanaba los casos límite, que son justamente los que importan." },
+            { title: "Probabilidad, no un sí o un no", description: "El resultado es un estimado con su sustento, así el equipo legal sabe dónde está parado el caso en vez de recibir una etiqueta." },
+            { title: "Hoja de ruta accionable", description: "Además del veredicto, el candidato recibe qué le falta y por dónde empezar, que es lo que convierte un rechazo en una conversación." },
+            { title: "Entrega por enlace único", description: "El reporte vive en una dirección propia, sin adjuntos ni registro previo, y queda asociado al expediente en base de datos." }
+        ],
+        learnings: [
+            { title: "Dividir el juicio mejora el juicio", text: "Separar la evaluación en criterios independientes dio resultados mucho más estables que un solo prompt pidiendo la conclusión final." },
+            { title: "Filtrar temprano es el valor", text: "El ahorro real no está en redactar más rápido, está en no empezar los casos que no iban a prosperar." },
+            { title: "El plan importa tanto como el veredicto", text: "Decirle a alguien que todavía no califica sirve poco. Decirle qué le falta convierte esa respuesta en el inicio del servicio." }
+        ],
+        visible: true
+    },
+    {
+        id: "agendamiento-conversacional-con-calendario-real",
+        number: "24",
+        category: "IA y Productividad Comercial",
+        title: "Agendamiento Conversacional con Calendario Real",
+        subtitle: "El agente de IA consulta los huecos libres, reserva, mueve y cancela sobre el calendario de verdad",
+        description: "Capa de servicios sobre el calendario corporativo que le permite a un agente de IA agendar durante la conversación, ver la disponibilidad real, crear el evento, reagendarlo o cancelarlo, y dejar al equipo notificado sin que nadie toque el calendario a mano.",
+        year: "2026",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "img/proyectos/agendamiento-calendario-nylas.jpg",
+        imageCaption: "Las cuatro operaciones del calendario, expuestas como servicios que el agente consume",
+        techCard: ["n8n", "Nylas", "Supabase", "Google Chat"],
+        techFull: [
+            "n8n",
+            "API de Nylas",
+            "Supabase",
+            "Google Chat",
+            "Webhooks con respuesta",
+            "Subflujos reutilizables"
+        ],
+        metrics: [
+            { label: "Disponibilidad", value: "En vivo" },
+            { label: "Operaciones", value: "Cuatro" },
+            { label: "Estado", value: "Sincronizado" },
+            { label: "Equipo", value: "Notificado" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que agendar deje de ser un enlace que se manda y pase a resolverse dentro de la misma conversación." },
+                    { type: "paragraph", text: "Mandar un enlace de calendario rompe el hilo y pierde gente. Para que el agente pudiera cerrar la cita hablando, necesitaba ver el calendario real y poder escribir en él, no simular que lo hacía." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Se construyeron cuatro operaciones como servicios independientes, consultar disponibilidad, crear el evento, reagendarlo y eliminarlo. Cada una vive en su propio flujo y se expone por webhook, así el agente las usa como herramientas sueltas según lo que pida la conversación." },
+                    { type: "paragraph", text: "La disponibilidad se consulta contra el calendario real en el momento, no contra una copia, de modo que dos personas conversando al mismo tiempo no pueden reservar el mismo espacio." },
+                    { type: "paragraph", text: "Cada cita queda registrada en base de datos con su estado, lo que permite reagendar o cancelar después sin depender de que alguien recuerde el identificador del evento." },
+                    { type: "paragraph", text: "Toda operación dispara un aviso al canal del equipo, así la persona que atiende ve la agenda moverse en tiempo real aunque la haya movido el agente." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Una operación por flujo", description: "Consultar, crear, reagendar y eliminar viven separados. El agente compone lo que necesita en vez de llamar a un flujo gigante que hace de todo." },
+            { title: "Disponibilidad contra el calendario real", description: "Cada consulta va al calendario en vivo, no a una copia sincronizada cada tanto, que es donde aparecen las citas duplicadas." },
+            { title: "El estado vive en base de datos", description: "Reagendar o cancelar después no depende de que alguien conserve el identificador del evento en la conversación." },
+            { title: "El equipo ve lo que hace el agente", description: "Cada movimiento se avisa al canal, de modo que la agenda automática y la humana son la misma agenda." }
+        ],
+        learnings: [
+            { title: "Herramientas pequeñas, agente confiable", text: "Cuatro flujos chicos con una responsabilidad cada uno resultaron más fáciles de depurar que un solo servicio de agendamiento con condicionales adentro." },
+            { title: "La disponibilidad no se cachea", text: "Cualquier copia intermedia del calendario, por fresca que sea, termina produciendo la cita doble que rompe la confianza en el sistema." },
+            { title: "Automatizar sin esconder", text: "Avisar al equipo cada vez que el agente toca la agenda fue lo que hizo que dejaran de revisar el calendario por desconfianza." }
+        ],
+        visible: true
+    },
+    {
+        id: "captura-centralizada-de-fallas-en-n8n",
+        number: "25",
+        category: "Operaciones y Confiabilidad",
+        title: "Captura Centralizada de Fallas en Automatizaciones",
+        subtitle: "Cuando un flujo revienta en producción queda registrado con su contexto y el equipo se entera en el momento",
+        description: "Manejador de errores conectado a las automatizaciones de toda la operación. Captura cualquier ejecución fallida con su causa y su contexto, la deja guardada en base de datos y avisa al canal del equipo, para que una falla silenciosa deje de descubrirse días después por el reclamo de un cliente.",
+        year: "2026",
+        company: "Urpe AI Lab",
+        duration: "En operación",
+        image: "img/proyectos/captura-de-fallas-n8n.jpg",
+        imageCaption: "Cualquier flujo que falle termina en el mismo lugar, registrado y avisado",
+        techCard: ["n8n", "Supabase", "Google Chat", "Error Trigger"],
+        techFull: [
+            "n8n",
+            "Error Trigger",
+            "Supabase",
+            "Google Chat",
+            "Webhooks"
+        ],
+        metrics: [
+            { label: "Cobertura", value: "Toda la operación" },
+            { label: "Registro", value: "Histórico" },
+            { label: "Aviso", value: "Inmediato" },
+            { label: "Contexto", value: "Completo" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que ninguna automatización se caiga en silencio." },
+                    { type: "paragraph", text: "Una automatización que falla y no avisa es peor que no tenerla, porque el equipo sigue confiando en que el trabajo se está haciendo. El problema aparece días después, cuando alguien nota que los correos no salieron o que los datos no se actualizaron." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "En lugar de agregarle manejo de errores a cada flujo, se construyó un manejador único que los demás declaran como su flujo de error. Cualquier ejecución que reviente, sin importar de qué automatización venga, termina en el mismo lugar." },
+                    { type: "paragraph", text: "El manejador captura el error con su contexto, o sea qué flujo falló, en qué nodo y con qué mensaje, y lo guarda en base de datos. Ese registro es lo que después permite ver si una falla fue un caso aislado o si viene repitiéndose." },
+                    { type: "paragraph", text: "En paralelo se envía el aviso al canal del equipo, con lo necesario para saber si hay que actuar ya o puede esperar." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Un solo manejador para todo", description: "Los flujos no llevan su propia lógica de errores, la declaran. Agregar una automatización nueva no implica volver a resolver el problema." },
+            { title: "El error queda con su contexto", description: "Se guarda qué flujo, qué nodo y qué mensaje, que es la diferencia entre un aviso que sirve y uno que obliga a entrar a buscar." },
+            { title: "Historial consultable", description: "Al quedar en base de datos, una falla repetida se distingue de una casual sin depender de la memoria de nadie." },
+            { title: "Aviso en el canal del equipo", description: "La alerta llega donde el equipo ya está mirando, no a una bandeja que se revisa al final del día." }
+        ],
+        learnings: [
+            { title: "El manejo de errores es infraestructura", text: "Resolverlo una vez y que todos los flujos lo declaren escala; resolverlo flujo por flujo se degrada con cada automatización nueva." },
+            { title: "Avisar sin contexto no sirve", text: "Un aviso que solo dice que algo falló obliga a entrar a investigar igual. El contexto en el propio mensaje es lo que ahorra el tiempo." },
+            { title: "Guardar el error vale tanto como avisarlo", text: "El aviso resuelve el momento, el registro es el que muestra el patrón." }
+        ],
+        visible: true
     }
 ];
