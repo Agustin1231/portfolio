@@ -1906,5 +1906,206 @@ var GUIDES_DATA = [
             "Nada de esto se configura solo. Es trabajo manual servicio por servicio y no hay atajo que lo cubra entero."
         ],
         tools: ["Agentes de IA", "Seguridad", "Credenciales y tokens", "OAuth", "Control de acceso", "Self-hosting"]
+    },
+    {
+        "id": "las-alertas-que-nadie-lee",
+        "number": "14",
+        "visible": true,
+        "category": "Errores y monitoreo",
+        "title": "Las alertas que nadie lee, o por qué avisar de cada falla hace que no veas ninguna",
+        "subtitle": "Tengo montado un sistema que me avisa cada falla ya diagnosticada, y aun así un flujo estuvo caído toda una noche sin que nadie lo viera. El problema no era la calidad del aviso, era la cantidad. Cómo agrupar, qué callar, qué cortar de raíz y cómo saber si tus alertas sirven.",
+        "description": "Fatiga de alertas en automatizaciones y n8n. Por qué mandar un aviso por cada ejecución fallida entierra las fallas que importan, cómo agrupar por huella de error con una ventana de tiempo, qué errores registrar sin avisar, cómo cortar los avisos de flujos que ya no existen y cómo medir si tus alertas sirven, con cifras reales de un sistema en producción.",
+        "image": "",
+        "imageCaption": "",
+        "date": "Septiembre 2026",
+        "readingTime": "7 min de lectura",
+        "urlLabel": "Leer guía",
+        "requirements": [
+            "El historial de lo que ya te ha avisado, aunque sea el chat donde llegan los mensajes. Sin eso no hay forma de saber cuánto ruido tienes.",
+            "La lista de lo que está encendido y de lo que ya apagaste. Buena parte del ruido suele venir de cosas que ya no existen.",
+            "Que cada aviso traiga al menos el nombre del flujo, el paso que falló y el mensaje de error. Si solo trae un enlace, no hay nada que agrupar.",
+            "Un lugar donde guardar estado entre un aviso y el siguiente, un archivo o una tabla. Agrupar es recordar qué ya avisaste."
+        ],
+        "sections": [
+            {
+                "title": "Tenía las alertas y aun así no vi la caída",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Hace un mes escribí cómo hacer que una alerta llegue ya diagnosticada. Lo tengo montado, funciona, y aun así un flujo estuvo caído dieciséis horas seguidas sin que nadie se enterara."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Falló cada hora durante toda una noche y buena parte de la mañana siguiente, y cada una de esas fallas generó su aviso con el nombre del flujo, el paso que reventó y la causa probable. No faltó información. Faltó que alguien la viera, y nadie la vio porque llegó revuelta con todo lo demás."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuando me senté a contar, la carpeta donde se guardan los avisos tenía más de novecientos. Más de quinientos venían de flujos que yo mismo había apagado en una limpieza un mes antes, y seguían llegando porque nadie había vuelto a mirar de dónde salían. En otro flujo, un solo contacto atascado generó dieciocho avisos idénticos en un día, uno cada media hora, y cada uno con su propio diagnóstico pagado."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Esta guía es la continuación de la de manejo de errores. Allá el problema era enterarse. Acá es el contrario, enterarse de tanto que ya no se distingue nada."
+                    }
+                ]
+            },
+            {
+                "title": "Una falla que se repite es un incidente, no veinte",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Casi todos los sistemas de aviso cuentan ejecuciones. Lo que a ti te importa son fallas, y no son lo mismo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Si un flujo corre cada media hora y el servicio del otro lado está caído, vas a recibir dos avisos por hora hasta que alguien lo arregle, y todos dicen lo mismo. El primero te sirve, el segundo te confirma que sigue, y del tercero en adelante lo único que hacen es empujar hacia arriba cualquier otra cosa que haya llegado en el medio, que es justo lo que no te puedes perder."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Hay además un costo que no se ve. Si cada aviso pasa por un modelo de IA que diagnostica la causa, como lo tengo yo, cada repetición es una llamada pagada para llegar a la misma conclusión que ya tenías desde la primera."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La salida es cambiar la unidad. Dejar de avisar por ejecución y empezar a avisar por falla. Para eso cada error necesita una identidad que no cambie de una ejecución a la siguiente, y el identificador de la ejecución no sirve porque es nuevo cada vez."
+                    }
+                ]
+            },
+            {
+                "title": "La huella del error",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Lo que se repite entre una falla y la siguiente es el flujo, el paso que reventó y el mensaje de error. Esa combinación es la huella."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El detalle que casi todo el mundo se salta está en el mensaje. Casi siempre trae adentro un número que cambia, el id del contacto, el del pedido, una hora. Si lo usas tal cual, cada falla parece nueva aunque sea exactamente el mismo problema con otro cliente. Yo reemplazo todos los números del mensaje por un comodín antes de armar la huella, y con eso \"no se encontró el contacto 1553\" y \"no se encontró el contacto 2210\" pasan a ser lo que son, una sola falla."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Con la huella armada la regla es corta. La primera vez que aparece llega el aviso completo, con diagnóstico. Si vuelve a aparecer dentro de las seis horas siguientes se registra y no se avisa. Cuando se vence la ventana, si siguió fallando, llega una sola línea diciendo cuántas veces se repitió mientras estuvo callada, sin volver a diagnosticar nada."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Las seis horas no tienen nada de mágico. Es el tiempo en el que yo razonablemente ya vi el primer aviso y o lo estoy arreglando o decidí que puede esperar. Si tu operación se mide en minutos la ventana tiene que ser más corta, lo que importa es que exista."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En las primeras horas con la agrupación prendida entraron ocho fallas y llegaron tres mensajes. Una de ellas se repitió cada hora durante cinco horas seguidas y dejó un solo aviso, en vez de cinco que habrían tapado cualquier otra cosa que pasara esa mañana."
+                    }
+                ]
+            },
+            {
+                "title": "No todo error merece un aviso",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Hay errores que son parte del funcionamiento normal y errores que significan que algo se rompió. Si los tratas igual, entrenas a la gente a ignorar los dos."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El caso más claro que tengo es un bot de WhatsApp que manda mensajes de seguimiento. Meta limita cuántos mensajes de marketing le pueden llegar a una misma persona, y cuando pasas ese límite la API devuelve un error. Ese error es normal, pasa todos los días, afecta a un solo destinatario y no hay nada que arreglar. Hay otro código, en cambio, que dice que la cuenta del negocio tiene un problema, y ese frena los envíos para todo el mundo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Los dos llegan como error. Si los dos avisan, a la tercera semana el equipo ya aprendió que los avisos de ese bot son ruido, y el día que llegue el de la cuenta lo van a ignorar igual. Por eso el primero se registra y se cuenta, y el segundo detiene los envíos y avisa de inmediato."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Esta clasificación exige sentarse con la documentación del servicio y con tu propio historial de errores, código por código, y es aburrido. También es lo que más ruido quita por hora invertida, porque casi siempre dos o tres códigos esperables son la mayor parte del volumen."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Una variante de lo mismo es el error pasajero. Un servicio que no responde una vez casi siempre responde a la segunda. En uno de los flujos que opero, cuando un envío falla se vuelve a intentar a los cuarenta segundos, y el aviso solo sale si el segundo intento también falla. Esto vale únicamente para pasos que se pueden repetir sin duplicar nada, que es la regla de reintentos de la guía de manejo de errores."
+                    }
+                ]
+            },
+            {
+                "title": "Los avisos de cosas que ya no existen",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Más de la mitad de mis avisos venían de flujos que ya estaban apagados. Nadie los estaba leyendo, y nadie tenía por qué leerlos."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuando apagas un flujo o das de baja un proyecto, casi nunca apagas lo que avisa por él. Queda un disparador programado en algún lado, una ejecución que se había quedado en cola, un flujo de errores que sigue asignado. Y como nadie los atiende, esos avisos se vuelven el fondo de la pantalla, el ruido contra el que se pierde todo lo demás."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo que aprendí es que el ciclo de vida de una alerta tiene que ir amarrado al del proceso. Cuando algo se apaga, en la misma lista de pasos va apagar su aviso y confirmar que dejó de llegar. Y cada tanto conviene cruzar de dónde vienen los avisos contra lo que de verdad está encendido. Si el origen ya no existe se corta en la fuente, no se filtra en el destino, porque un filtro es una regla más que alguien tiene que acordarse de mantener."
+                    }
+                ]
+            },
+            {
+                "title": "Contar avisos no te dice cómo estás",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Mirar el volumen de alertas para juzgar la salud de tus automatizaciones te lleva a conclusiones equivocadas. Me pasó a mí revisando justamente el flujo de esta historia."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Vi que tenía trece fallas en sus últimas veinticuatro ejecuciones y lo reporté como un flujo que fallaba más de la mitad de las veces. Estaba mal. Cuando revisé el historial completo eran dieciséis caídas seguidas en una sola noche, ya superadas, y después más de treinta ejecuciones en verde. No era un flujo inestable, era un bloque cerrado que mi ventana de veinticuatro agarró justo encima."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Una racha y una tasa piden cosas distintas. La racha tiene una causa puntual, algo se cayó y volvió, y la pregunta útil es por qué nadie se enteró a tiempo. La tasa sostenida es un flujo mal construido que hay que reescribir. Antes de sacar una conclusión sobre un flujo mira el historial entero y fíjate si los errores están juntos o repartidos."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo que sí te dice cómo estás no es cuántos avisos llegan, es cuántos terminaron en una acción. Si de cada diez avisos solo uno te hizo mover algo, los otros nueve están entrenando a alguien a no leer."
+                    }
+                ]
+            },
+            {
+                "title": "La revisión que yo haría esta semana",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Si tienes avisos de fallas corriendo hace un tiempo, esto se revisa en una tarde y en este orden."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Primero, cuenta. Cuántos avisos te llegaron el último mes y de cuántos flujos distintos. Si no puedes responder eso, ahí está el primer problema."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Segundo, cruza el origen de cada aviso contra lo que está encendido y corta en la fuente todo lo que venga de algo apagado. Es lo que más volumen baja con menos esfuerzo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Tercero, agrupa por huella con una ventana de tiempo. Es lo que más cambia la experiencia de leer los avisos y lo que menos código lleva, un archivo con la última vez que avisaste cada huella alcanza."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuarto, sepárate una hora con los códigos de error que más se repiten y decide cuáles son normales. Esos se cuentan, no se avisan."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y cada tanto pregúntate cuántos de los avisos del último mes terminaron en que alguien hiciera algo. Ese número es la salud real de tus alertas, mucho más que el volumen."
+                    }
+                ]
+            }
+        ],
+        "pros": [
+            "Una falla que dura horas deja un aviso y un recordatorio en vez de uno por ejecución, así que lo nuevo no queda enterrado.",
+            "Si el aviso pasa por un modelo que diagnostica, agrupar ahorra una llamada pagada por cada repetición.",
+            "Separar los errores esperables de los graves hace que el aviso grave vuelva a significar algo.",
+            "Cortar los avisos de procesos apagados baja el volumen sin tocar nada de lo que sí está vivo."
+        ],
+        "cons": [
+            "Una ventana larga puede tapar un cambio. Si la misma falla empeora dentro de la ventana, no te enteras hasta el resumen.",
+            "Normalizar los números del mensaje a veces junta dos fallas que eran distintas. Hay que probarlo contra los errores reales de tu sistema.",
+            "Clasificar códigos de error es trabajo manual y se desactualiza cuando el proveedor cambia su documentación.",
+            "Agrupar exige guardar estado entre avisos, y ese estado es una pieza más que se puede corromper o perder."
+        ],
+        "tools": [
+            "n8n",
+            "Python",
+            "Alertas",
+            "Monitoreo",
+            "Telegram",
+            "Agentes de IA"
+        ]
     }
 ];
