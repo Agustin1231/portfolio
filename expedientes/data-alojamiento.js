@@ -26,32 +26,108 @@ window.FORM = {
       ]
     },
     {
-      title: 'Registro en el Ministerio de Turismo y seguro', short: 'Registro',
+      title: 'Registro en el Ministerio de Turismo', short: 'Registro',
       items: [
         { t: 'section', title: 'Registro Ministerio de Turismo' },
         { t: 'row', items: [{ t: 'text', label: 'No. registro Ministerio de Turismo', req: true }, { t: 'date', label: 'Fecha de registro', req: true }] },
         { t: 'row', items: [{ t: 'text', label: 'No. LUAF', req: true, help: 'Licencia Única Anual de Funcionamiento' }, { t: 'date', label: 'Última actualización', req: true }] },
         { t: 'doc', label: 'Certificado de registro MINTUR', req: true },
-        { t: 'doc', label: 'LUAF vigente', req: true, date: 'Fecha de vencimiento' },
-        { t: 'section', title: 'Seguro de responsabilidad civil' },
-        { t: 'row', items: [{ t: 'text', label: 'Aseguradora', req: true }, { t: 'text', label: 'No. de póliza', req: true }] },
-        { t: 'doc', label: 'Copia de la póliza de responsabilidad civil', req: true, date: 'Vigente hasta' }
+        { t: 'doc', label: 'LUAF vigente', req: true, date: 'Fecha de vencimiento' }
       ]
     },
     {
-      title: 'Responsabilidad ambiental y categoría', short: 'Categoría',
+      title: 'Seguros y coberturas', short: 'Seguros',
       items: [
-        { t: 'section', title: 'Responsabilidad social y ambiental' },
+        { t: 'section', title: 'Seguros y coberturas', desc: 'Registre cada póliza que tenga el establecimiento y adjunte la copia. La de responsabilidad civil es obligatoria.' },
+        { t: 'row', items: [{ t: 'text', label: 'Aseguradora, responsabilidad civil', req: true }, { t: 'text', label: 'No. de póliza', req: true }] },
+        { t: 'row', items: [{ t: 'number', label: 'Monto asegurado (USD)', req: true }, { t: 'date', label: 'Vigente hasta', req: true }] },
+        { t: 'file', label: 'Copia de la póliza de responsabilidad civil', req: true },
+        { t: 'table', label: 'Otras pólizas', rowHead: 'Tipo de seguro', help: 'Complete solo las que tenga.',
+          rows: ['Incendio y líneas aliadas', 'Accidentes personales de huéspedes', 'Robo y asalto', 'Responsabilidad civil por alimentos y bebidas', 'Vehículos de transfer, SPPAT y responsabilidad civil', 'Equipos y maquinaria', 'Otro'],
+          cols: [{ h: 'Tiene', type: 'select', opts: ['Sí', 'No'] }, { h: 'Aseguradora' }, { h: 'No. póliza' }, { h: 'Monto asegurado (USD)', type: 'number' }, { h: 'Vigente hasta', type: 'date' }, { h: 'Verificado', type: 'check', q: true }] },
+        { t: 'file', label: 'Copias de las otras pólizas', multi: true },
+        { t: 'group', q: true, items: [
+          { t: 'matrix', q: true, label: 'Verificación de documentos', head: 'Documento', cols: ['Cumple', 'No cumple', 'N/A'], check: false, rows: ['Póliza de responsabilidad civil vigente', 'Copias de las otras pólizas'] }
+        ] },
+        { t: 'textarea', label: 'Observaciones de la sección' }
+      ]
+    },
+    {
+      title: 'Responsabilidad ambiental', short: 'Ambiental',
+      items: [
+        { t: 'section', title: 'Responsabilidad ambiental', desc: 'Marque Sí, No o N/A en cada fila.' },
         { t: 'matrix', rows: [
+          '#Políticas y prácticas',
           'El establecimiento cuenta con políticas de responsabilidad ambiental (3Rs)',
           'Promueve el uso eficiente del agua',
           'Promueve el uso eficiente de la energía eléctrica',
           'Cuenta con fuentes de energía alternativa (hidráulica, solar, eólica, etc.)',
           'Cuenta con cocinas de inducción',
           'Cuenta con programa de manejo de desechos (abono, reciclaje de plásticos, etc.)',
-          'Uso de productos biodegradables'
+          'Uso de productos biodegradables',
+          '#Gestión y seguimiento',
+          'Separa los residuos en la fuente (orgánicos, reciclables, no aprovechables)',
+          'Entrega los residuos peligrosos (aceites, pilas, químicos) a un gestor autorizado',
+          'Reduce los plásticos de un solo uso (sorbetes, botellas, amenities)',
+          'Registra cada mes el consumo de agua y energía',
+          'Mide o compensa su huella de carbono',
+          'Capacita al personal en buenas prácticas ambientales',
+          '#Entorno natural',
+          'Tiene medidas para no alterar la fauna silvestre (iluminación, ruido, no alimentar animales)',
+          'No vende ni exhibe productos hechos con flora o fauna silvestre protegida',
+          'Informa a los huéspedes sobre las buenas prácticas ambientales del establecimiento'
         ] },
-        { t: 'textarea', label: 'Observaciones de la sección' },
+        { t: 'radio', id: 'regamb', label: '¿Cuenta con registro o licencia ambiental del Ministerio del Ambiente (MAATE)?', req: true, inline: true, opts: ['Sí', 'No', 'En trámite', 'No aplica'] },
+        { t: 'row', items: [
+          { t: 'text', label: 'No. de registro o licencia ambiental', show: { id: 'regamb', eq: 'Sí', label: '¿Cuenta con registro o licencia ambiental?' } },
+          { t: 'date', label: 'Fecha de emisión', show: { id: 'regamb', eq: 'Sí', label: '¿Cuenta con registro o licencia ambiental?' } }
+        ] },
+        { t: 'file', label: 'Copia del registro o licencia ambiental', show: { id: 'regamb', eq: 'Sí', label: '¿Cuenta con registro o licencia ambiental?' } },
+        { t: 'checks', id: 'certamb', label: 'Certificaciones ambientales o de turismo sostenible', cols: true, opts: ['Punto Verde (MAATE)', 'Smart Voyager', 'Rainforest Alliance', 'Green Globe', 'EarthCheck', 'Travelife', 'Biosphere', 'Otra', 'Ninguna'] },
+        { t: 'file', label: 'Certificados vigentes', multi: true, help: 'Si tiene alguna certificación, adjunte el certificado con su fecha de vigencia.' },
+        { t: 'group', q: true, items: [
+          { t: 'matrix', q: true, label: 'Verificación de documentos', head: 'Documento', cols: ['Cumple', 'No cumple', 'N/A'], check: false, rows: ['Registro o licencia ambiental', 'Certificaciones ambientales vigentes'] }
+        ] },
+        { t: 'textarea', label: 'Observaciones de la sección' }
+      ]
+    },
+    {
+      title: 'Responsabilidad social y laboral', short: 'Social',
+      items: [
+        { t: 'section', title: 'Personal del establecimiento' },
+        { t: 'row', items: [{ t: 'number', label: 'Número total de trabajadores', req: true }, { t: 'number', label: '% de trabajadores de la comunidad local', ph: '0 a 100' }] },
+        { t: 'row', items: [{ t: 'number', label: '% de mujeres en el personal', ph: '0 a 100' }, { t: 'number', label: 'Trabajadores con discapacidad' }] },
+        { t: 'section', title: 'Cumplimiento laboral', desc: 'Marque Sí, No o N/A en cada fila.' },
+        { t: 'matrix', rows: [
+          'Todo el personal está afiliado al IESS',
+          'Paga al menos el salario básico unificado y los beneficios de ley (décimos, vacaciones, utilidades)',
+          'Los contratos de trabajo están registrados en el Ministerio del Trabajo (SUT)',
+          'Tiene reglamento interno de trabajo aprobado',
+          'Tiene reglamento o plan de higiene y seguridad en el trabajo',
+          'Entrega equipo de protección al personal que lo requiere (cocina, mantenimiento, limpieza)',
+          'Tiene protocolo de prevención del acoso y la discriminación en el trabajo',
+          'No hay trabajo infantil en el establecimiento',
+          'Cumple la cuota de personas con discapacidad (4 % desde 25 trabajadores)'
+        ] },
+        { t: 'section', title: 'Compromiso social', desc: 'Marque Sí, No o N/A en cada fila.' },
+        { t: 'matrix', rows: [
+          'Firmó el código de conducta contra la explotación sexual de niñas, niños y adolescentes (ESNNA)',
+          'Capacita al personal en prevención de la ESNNA',
+          'Compra a proveedores y productores locales',
+          'Apoya proyectos o actividades de la comunidad',
+          'Promueve la cultura, la gastronomía y la artesanía local'
+        ] },
+        { t: 'doc', label: 'Certificado de cumplimiento de obligaciones patronales (IESS)', req: true, date: 'Fecha de emisión' },
+        { t: 'doc', label: 'Código de conducta contra la ESNNA firmado' },
+        { t: 'group', q: true, items: [
+          { t: 'matrix', q: true, label: 'Verificación de documentos', head: 'Documento', cols: ['Cumple', 'No cumple', 'N/A'], check: false, rows: ['Certificado de obligaciones patronales IESS', 'Código de conducta ESNNA firmado'] }
+        ] },
+        { t: 'textarea', label: 'Observaciones de la sección' }
+      ]
+    },
+    {
+      title: 'Clasificación y categoría', short: 'Categoría',
+      items: [
         { t: 'section', title: 'Clasificación y categoría del alojamiento' },
         { t: 'radio', id: 'tipo', label: 'Tipo de alojamiento', req: true, cols: true, opts: ['Hotel (H)', 'Hostal (HS)', 'Hostería (HT)', 'Hacienda Turística (HA)', 'Lodge (L)', 'Resort (RS)', 'Refugio (RF)', 'Campamento Turístico (CT)', 'Casa de Huéspedes (CH)'] },
         { t: 'row', items: [
