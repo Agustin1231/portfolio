@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><title>Prueba de importación</title></head><body>
+<form id="expediente" action="#" method="post">
+<h1>Prueba de importación</h1>
+<p>Una muestra de cada tipo de campo para ver qué respeta el importador de Formstack.</p>
+
+<!-- ===== PAGINA 1: Página de prueba ===== -->
+<fieldset><legend>Sección de prueba</legend><p>Descripción de la sección</p></fieldset>
+<p><label for="f2">Nombre del proveedor *</label><br><input type="text" id="f2" name="f2"></p>
+<p><label for="f3">Email gerencia</label><br><input type="email" id="f3" name="f3"></p>
+<p><label for="f4">Fecha de registro</label><br><input type="date" id="f4" name="f4"></p>
+<p><label for="f5">Número total de trabajadores</label><br><input type="number" id="f5" name="f5"></p>
+<p><label for="f6">País</label><br><select id="f6" name="f6"><option value=""></option><option>Ecuador</option><option>Perú</option><option>Otro</option></select></p>
+<fieldset><legend>Tipo de alojamiento</legend><label><input type="radio" name="f7" value="Hotel"> Hotel</label><br><label><input type="radio" name="f7" value="Hostal"> Hostal</label><br><label><input type="radio" name="f7" value="Lodge"> Lodge</label><br></fieldset>
+<fieldset><legend>Certificaciones</legend><label><input type="checkbox" name="f8" value="Punto Verde"> Punto Verde</label><br><label><input type="checkbox" name="f8" value="Smart Voyager"> Smart Voyager</label><br><label><input type="checkbox" name="f8" value="Ninguna"> Ninguna</label><br></fieldset>
+<p><label for="f9">Observaciones de la sección</label><br><textarea id="f9" name="f9"></textarea></p>
+<p><label for="f10">Copia de la póliza</label><br><input type="file" id="f10" name="f10"></p>
+<fieldset><legend>[MATRIZ] Políticas ambientales</legend><table><tr><th></th><th>Sí</th><th>No</th><th>N/A</th></tr><tr><td>Uso eficiente del agua</td><td><input type="radio" name="f12_0" value="Sí"></td><td><input type="radio" name="f12_0" value="No"></td><td><input type="radio" name="f12_0" value="N/A"></td></tr><tr><td>Energía alternativa</td><td><input type="radio" name="f12_1" value="Sí"></td><td><input type="radio" name="f12_1" value="No"></td><td><input type="radio" name="f12_1" value="N/A"></td></tr><tr><td>Manejo de desechos</td><td><input type="radio" name="f12_2" value="Sí"></td><td><input type="radio" name="f12_2" value="No"></td><td><input type="radio" name="f12_2" value="N/A"></td></tr></table></fieldset>
+<fieldset><legend>[QUASAR] [MATRIZ] Verificación, políticas ambientales</legend><table><tr><th></th><th>Sí</th><th>No</th><th>N/A</th></tr><tr><td>Uso eficiente del agua</td><td><input type="radio" name="f13_0" value="Sí"></td><td><input type="radio" name="f13_0" value="No"></td><td><input type="radio" name="f13_0" value="N/A"></td></tr><tr><td>Energía alternativa</td><td><input type="radio" name="f13_1" value="Sí"></td><td><input type="radio" name="f13_1" value="No"></td><td><input type="radio" name="f13_1" value="N/A"></td></tr><tr><td>Manejo de desechos</td><td><input type="radio" name="f13_2" value="Sí"></td><td><input type="radio" name="f13_2" value="No"></td><td><input type="radio" name="f13_2" value="N/A"></td></tr></table></fieldset>
+<fieldset><legend>[TABLA] Otras pólizas</legend><table><tr><th>Tipo de seguro</th><th>Aseguradora</th><th>No. póliza</th></tr><tr><td>Incendio</td><td><input type="text" name="f15_0_0"></td><td><input type="text" name="f15_0_1"></td></tr><tr><td>Robo</td><td><input type="text" name="f15_1_0"></td><td><input type="text" name="f15_1_1"></td></tr></table></fieldset>
+<p><label for="f16">[QUASAR] Ejecutivo Quasar</label><br><input type="text" id="f16" name="f16"></p>
+<p><label><input type="checkbox" name="f17" value="Acepto"> Declaro que la información es verídica.</label></p>
+
+<p><input type="submit" value="Enviar"></p>
+</form>
+</body></html>
