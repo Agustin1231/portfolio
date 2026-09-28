@@ -8,6 +8,8 @@
 //   imageCaption, requirements[] (lista "Requisitos"), sections[{title,
 //   content:[{type:"lead"|"paragraph", text}]}], pros[], cons[], tools[]
 //   downloadFile + downloadLabel (opcional): archivo .md descargable
+//   seoTitle + seoDescription (opcional): <title> y meta description cortos para Google
+//   (título hasta 60, descripción 120-160). Si faltan se usan title y description.
 //   visible: true para mostrar. Si NINGUNA está visible, #guias muestra
 //   un estado "Próximamente".
 // Para publicar: editar este archivo, validar JS, push a main y redeploy Coolify.
@@ -15,6 +17,8 @@
 var GUIDES_DATA = [
     {
         id: "sistema-conocimiento-outline",
+        seoTitle: "Cómo conectar un agente de IA a tu base de conocimiento",
+        seoDescription: "Conecté un agente de IA a una base de conocimiento propia con Outline, open source y en mi servidor. Cómo funciona, qué resuelve y sus pros y contras.",
         number: "01",
         visible: true,
         category: "Sistema de conocimiento + IA",
@@ -87,6 +91,8 @@ var GUIDES_DATA = [
     },
     {
         id: "self-hosting-ahorro",
+        seoTitle: "Alternativas open source gratis a Zapier, Notion y más",
+        seoDescription: "Cambié cinco suscripciones como Zapier, Notion y Vercel por herramientas open source gratis en mi servidor. Qué usaba, con qué lo cambié y qué pierdo.",
         number: "02",
         visible: true,
         category: "Self-hosting + ahorro",
@@ -176,6 +182,8 @@ var GUIDES_DATA = [
     },
     {
         id: "buscadores-ia-cual-elegir",
+        seoTitle: "Perplexity vs ChatGPT vs Google, mejor buscador con IA",
+        seoDescription: "Perplexity, ChatGPT Search y Google AI Mode cuestan casi lo mismo. En qué es mejor cada buscador con IA, cuánto cuesta de verdad y cuál elegir según tu uso.",
         number: "03",
         visible: true,
         category: "Buscadores con IA",
@@ -265,6 +273,8 @@ var GUIDES_DATA = [
     },
     {
         id: "senales-proceso-automatizar",
+        seoTitle: "Cómo automatizar procesos de tu empresa con IA, 6 señales",
+        seoDescription: "Las 6 señales que reviso para decidir qué proceso de tu empresa automatizar con IA, cómo puntuarlas y en qué orden hacerlo para no automatizar un proceso roto.",
         number: "04",
         visible: true,
         category: "Automatización de procesos",
@@ -378,6 +388,8 @@ var GUIDES_DATA = [
     },
     {
         id: "agente-ia-demo-a-produccion",
+        seoTitle: "Cómo llevar un agente de IA de la demo a producción",
+        seoDescription: "Cómo pasar un agente de IA de la demo a producción con permisos graduales, acciones reversibles, aprobación humana y trazabilidad, y qué hacer si se equivoca.",
         number: "05",
         visible: true,
         category: "Agentes de IA en producción",
@@ -463,6 +475,8 @@ var GUIDES_DATA = [
     },
     {
         id: "mcp-o-api-cuando-usar-cada-uno",
+        seoTitle: "MCP o API, cuándo usar cada uno con un agente de IA",
+        seoDescription: "MCP y API no compiten, casi todo servidor MCP llama a la misma API. Cuándo darle una herramienta a un agente de IA por MCP y cuándo dejarla en un flujo.",
         number: "06",
         visible: true,
         category: "MCP y agentes de IA",
@@ -553,6 +567,8 @@ var GUIDES_DATA = [
     },
     {
         "id": "agente-ia-whatsapp-que-necesitas",
+        "seoTitle": "Agente de IA para WhatsApp, lo que debes saber antes",
+        "seoDescription": "Cómo montar un agente de IA en WhatsApp que atienda bien. API oficial, ventana de 24 horas, plantillas, audios, paso a un humano y cómo medir si funciona.",
         "number": "07",
         "visible": true,
         "category": "Agentes de IA en WhatsApp",
@@ -769,6 +785,8 @@ var GUIDES_DATA = [
     },
     {
         "id": "manejo-errores-automatizaciones",
+        "seoTitle": "Manejo de errores y alertas en automatizaciones y n8n",
+        "seoDescription": "Cómo detectar las fallas silenciosas de tus automatizaciones en n8n o en código, que la alerta llegue diagnosticada y reintentar sin duplicar ni perder datos.",
         "number": "08",
         "visible": true,
         "category": "Errores y monitoreo",
@@ -1016,6 +1034,8 @@ var GUIDES_DATA = [
     },
     {
         "id": "cuando-tu-agente-necesita-rag",
+        "seoTitle": "Cuándo usar RAG en un agente de IA y cuándo no",
+        "seoDescription": "Qué es RAG sin humo, las tres preguntas que hago antes de montar una base vectorial, las alternativas más baratas y cómo saber si tu agente recupera bien.",
         "number": "09",
         "visible": true,
         "category": "RAG y bases de conocimiento",
@@ -1263,6 +1283,8 @@ var GUIDES_DATA = [
     },
     {
         "id": "medir-si-la-automatizacion-sirvio",
+        "seoTitle": "Cómo medir el retorno real de una automatización con IA",
+        "seoDescription": "Las cuatro métricas que dicen si una automatización con IA valió la pena, por qué las horas ahorradas se inflan y cómo tomar la línea base antes de automatizar.",
         "number": "10",
         "visible": true,
         "category": "Métricas y ROI",
@@ -1489,6 +1511,8 @@ var GUIDES_DATA = [
     },
     {
         "id": "cuanto-cuesta-un-agente-de-ia",
+        "seoTitle": "Cuánto cuesta un agente de IA en producción",
+        "seoDescription": "Por qué el precio por millón de tokens no predice la factura de un agente de IA, qué modelo poner en cada paso y cómo estimar el gasto antes de construir.",
         "number": "11",
         "visible": true,
         "category": "Costos y arquitectura",
@@ -1701,6 +1725,8 @@ var GUIDES_DATA = [
     },
     {
         id: "de-584-a-54-dolares-caso-real",
+        seoTitle: "Cómo bajé un sistema de WhatsApp de USD 584 a 54 al mes",
+        seoDescription: "Caso real de reducción de costos en un sistema de atención por WhatsApp con IA. Cifras medidas línea por línea y el método para repetir la medición.",
         number: "12",
         visible: true,
         category: "Costos + arquitectura",
@@ -1809,6 +1835,8 @@ var GUIDES_DATA = [
     },
     {
         id: "darle-acceso-a-tus-datos-a-un-agente-de-ia",
+        seoTitle: "Dar acceso a tus datos a un agente de IA de forma segura",
+        seoDescription: "Cómo conectar un agente de IA a tus datos sin exponer tus cuentas. Identidad propia, alcance mínimo, credenciales fuera del repositorio y cómo revocarlo.",
         number: "13",
         visible: true,
         category: "Seguridad y permisos",
@@ -1909,6 +1937,8 @@ var GUIDES_DATA = [
     },
     {
         "id": "las-alertas-que-nadie-lee",
+        "seoTitle": "Fatiga de alertas en n8n, por qué no ves las fallas",
+        "seoDescription": "Por qué un aviso por cada ejecución fallida en n8n entierra las fallas importantes, cómo agrupar por huella de error y cómo medir si tus alertas sirven.",
         "number": "14",
         "visible": true,
         "category": "Errores y monitoreo",

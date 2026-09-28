@@ -100,6 +100,9 @@ function page(g) {
   const url = BASE + "guias/" + g.id + ".html";
   const title = g.title + " — Agustin Peralta";
   const desc = g.description || g.subtitle || "";
+  // Lo que ve Google en resultados. Redes y JSON-LD siguen con el título largo.
+  const seoTitle = g.seoTitle ? (g.seoTitle.length <= 42 ? g.seoTitle + " | Agustin Peralta" : g.seoTitle) : title;
+  const seoDesc = g.seoDescription || desc;
   const published = isoDate(g.date);
   const keywords = (g.tools || []).concat([g.category]).filter(Boolean).join(", ");
   const dl = g.downloadFile
@@ -110,8 +113,8 @@ function page(g) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)}</title>
-<meta name="description" content="${attr(desc)}">
+<title>${esc(seoTitle)}</title>
+<meta name="description" content="${attr(seoDesc)}">
 <meta name="keywords" content="${attr(keywords)}">
 <meta name="author" content="Agustin Peralta">
 <link rel="canonical" href="${attr(url)}">

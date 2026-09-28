@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+# Material de clientes y cuestionarios, no son parte del portafolio
+Disallow: /expedientes/
+Disallow: /innaltech/
+Disallow: /levantamiento/
 
 Sitemap: https://agustin.agustinynatalia.site/sitemap.xml
