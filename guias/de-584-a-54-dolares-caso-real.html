@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"De USD 584 a USD 54 al mes, el desglose completo de un caso real","description":"Caso real y anonimizado de reducción de costos en un sistema de atención por WhatsApp en producción. Cifras medidas, no estimadas, con el método para que reproduzcas la medición en tu propia operación.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/de-584-a-54-dolares-caso-real.html"},"url":"https://agustin.agustinynatalia.site/guias/de-584-a-54-dolares-caso-real.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"Costos + arquitectura","keywords":"n8n, PostgreSQL, Modelos por API, Self-hosting, Costos y arquitectura, WhatsApp","datePublished":"2026-09-01","dateModified":"2026-09-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/index.html#guias"},{"@type":"ListItem","position":3,"name":"De USD 584 a USD 54 al mes, el desglose completo de un caso real","item":"https://agustin.agustinynatalia.site/guias/de-584-a-54-dolares-caso-real.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"De USD 584 a USD 54 al mes, el desglose completo de un caso real","description":"Caso real y anonimizado de reducción de costos en un sistema de atención por WhatsApp en producción. Cifras medidas, no estimadas, con el método para que reproduzcas la medición en tu propia operación.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/de-584-a-54-dolares-caso-real.html"},"url":"https://agustin.agustinynatalia.site/guias/de-584-a-54-dolares-caso-real.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"Costos + arquitectura","keywords":"n8n, PostgreSQL, Modelos por API, Self-hosting, Costos y arquitectura, WhatsApp","datePublished":"2026-09-01","dateModified":"2026-09-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/guias/"},{"@type":"ListItem","position":3,"name":"De USD 584 a USD 54 al mes, el desglose completo de un caso real","item":"https://agustin.agustinynatalia.site/guias/de-584-a-54-dolares-caso-real.html"}]}]}</script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -107,19 +107,32 @@ a{color:inherit;text-decoration:none}
 .wrap,.rd{padding:0 1.4rem}
 .pcgrid{grid-template-columns:1fr}
 }
+
+.relList{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.7rem}
+.relList a{display:flex;flex-direction:column;gap:.25rem;padding:1rem 1.1rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;text-decoration:none;color:inherit;transition:border-color .2s}
+.relList a:hover{border-color:var(--accent)}
+.relCat{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+.relT{font-weight:600;line-height:1.35}
+.hubList{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+.hubList a{display:block;padding:1.2rem 1.3rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:12px;text-decoration:none;color:inherit;transition:border-color .2s}
+.hubList a:hover{border-color:var(--accent)}
+.hubList h2{font-size:1.15rem;margin:.35rem 0 .45rem;line-height:1.3}
+.hubList p{margin:0;opacity:.8;line-height:1.5}
+.hubMeta{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+
 </style>
 </head>
 <body>
 <div class="site light" id="top" style="--accent:#ff5c35">
 <nav class="nav"><div class="wrap navbar">
-<a class="brand" href="../index.html">agustin.peralta<span class="curs">▮</span></a>
+<a class="brand" href="/">agustin.peralta<span class="curs">▮</span></a>
 <ul class="navlinks" id="nav">
-<li><a href="../index.html#sobre">sobre-mí</a></li>
-<li><a href="../index.html#experiencia">experiencia</a></li>
-<li><a href="../index.html#proyectos">proyectos</a></li>
-<li><a class="on" href="../index.html#guias">guías</a></li>
+<li><a href="/#sobre">sobre-mí</a></li>
+<li><a href="/#experiencia">experiencia</a></li>
+<li><a href="/#proyectos">proyectos</a></li>
+<li><a class="on" href="/guias/">guías</a></li>
 <li><a href="/metricas">métricas</a></li>
-<li><a href="../index.html#contacto">contacto</a></li>
+<li><a href="/#contacto">contacto</a></li>
 </ul>
 <div class="navtools">
 <button class="tgl" id="tgl" aria-label="Cambiar tema">☾</button>
@@ -128,7 +141,7 @@ a{color:inherit;text-decoration:none}
 </div></nav>
 
 <header class="dhero"><div class="rd">
-<a class="back mono" href="../index.html#guias">← volver a guías</a>
+<a class="back mono" href="/guias/">← volver a guías</a>
 <div class="dcat mono">Costos + arquitectura</div>
 <h1 class="dtitle">De USD 584 a USD 54 al mes, el desglose completo de un caso real</h1>
 <p class="dsub">Un cliente creía que su sistema le costaba USD 177 al mes. Le costaba 584. Este es el desglose línea por línea, cómo lo medí y cómo lo bajé a 54.</p>
@@ -190,7 +203,8 @@ a{color:inherit;text-decoration:none}
 <section class="dsec"><div class="rd"><div class="dsech mono">Requisitos</div><ul class="reqlist"><li>Acceso de facturación a cada servicio que pagas. No la pantalla de planes, la factura real del último ciclo cerrado.</li><li>Un mes de datos de uso, porque el costo de las plataformas que cobran por operación depende del volumen y no del plan contratado.</li><li>Saber cuántos mensajes o eventos procesa tu sistema al mes. Sin ese denominador no puedes calcular costo por unidad, que es la única cifra comparable.</li><li>Disposición a medir el antes antes de tocar nada. Si migras primero y mides después, ya no tienes con qué comparar.</li></ul></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Pros y contras</div><div class="pcgrid"><div class="pccard pros"><h4>A favor</h4><ul class="pclist"><li><span class="mk">+</span><span>Las cifras salen de facturación real y de corridas registradas en producción, no de estimaciones.</span></li><li><span class="mk">+</span><span>El costo por mensaje deja de ser una caja negra y se puede consultar cuando quieras.</span></li><li><span class="mk">+</span><span>Cambia el modelo de cobro, así que la factura deja de subir sola con el uso.</span></li><li><span class="mk">+</span><span>La inversión inicial del cliente se recupera en dos meses con el ahorro.</span></li></ul></div><div class="pccard cons"><h4>En contra</h4><ul class="pclist"><li><span class="mk">−</span><span>Requiere un servidor y alguien que lo mantenga, que es un costo real aunque no aparezca en la factura del SaaS.</span></li><li><span class="mk">−</span><span>Solo tiene sentido con volumen sostenido. Con poco tráfico el ahorro no paga el trabajo de montarlo.</span></li><li><span class="mk">−</span><span>Durante la migración se pagan los dos sistemas a la vez y la factura sube antes de bajar.</span></li><li><span class="mk">−</span><span>Los backups y la disponibilidad pasan a ser tu responsabilidad, no la del proveedor.</span></li></ul></div></div></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Herramientas</div><div class="stackTags"><span class="tag mono">n8n</span><span class="tag mono">PostgreSQL</span><span class="tag mono">Modelos por API</span><span class="tag mono">Self-hosting</span><span class="tag mono">Costos y arquitectura</span><span class="tag mono">WhatsApp</span></div></div></section>
-<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="../index.html#contacto">Hablemos →</a><a class="btn btnO" href="../index.html#guias">volver a guías</a></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Otras guías</div><ul class="relList"><li><a href="/guias/self-hosting-ahorro.html"><span class="relCat mono">Self-hosting + ahorro</span><span class="relT">5 herramientas open source gratis para reemplazar tus suscripciones (Zapier, Notion y más)</span></a></li><li><a href="/guias/cuanto-cuesta-un-agente-de-ia.html"><span class="relCat mono">Costos y arquitectura</span><span class="relT">Cuánto cuesta de verdad tener un agente de IA corriendo</span></a></li><li><a href="/guias/agente-ia-whatsapp-que-necesitas.html"><span class="relCat mono">Agentes de IA en WhatsApp</span><span class="relT">Agente de IA para WhatsApp: lo que nadie te cuenta antes de conectarlo</span></a></li></ul><a class="back mono" href="/guias/">Ver todas las guías →</a></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="/#contacto">Hablemos →</a><a class="btn btnO" href="/guias/">volver a guías</a></div></div></div></section>
 
 <footer class="footer"><div class="wrap footIn">
 <span>Diseñado y desarrollado por Agustin Peralta</span>

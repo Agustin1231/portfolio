@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Darle acceso a tus datos a un agente de IA sin regalarle la casa","description":"Cómo darle acceso a tus datos a un agente de IA sin exponer tus cuentas. Identidad propia para el agente, alcance mínimo por recurso, credenciales fuera del repositorio, el patrón del intermediario que guarda la llave y el procedimiento de revocación, con casos reales y lo que quedó mal resuelto.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/darle-acceso-a-tus-datos-a-un-agente-de-ia.html"},"url":"https://agustin.agustinynatalia.site/guias/darle-acceso-a-tus-datos-a-un-agente-de-ia.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"Seguridad y permisos","keywords":"Agentes de IA, Seguridad, Credenciales y tokens, OAuth, Control de acceso, Self-hosting","datePublished":"2026-09-01","dateModified":"2026-09-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/index.html#guias"},{"@type":"ListItem","position":3,"name":"Darle acceso a tus datos a un agente de IA sin regalarle la casa","item":"https://agustin.agustinynatalia.site/guias/darle-acceso-a-tus-datos-a-un-agente-de-ia.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Darle acceso a tus datos a un agente de IA sin regalarle la casa","description":"Cómo darle acceso a tus datos a un agente de IA sin exponer tus cuentas. Identidad propia para el agente, alcance mínimo por recurso, credenciales fuera del repositorio, el patrón del intermediario que guarda la llave y el procedimiento de revocación, con casos reales y lo que quedó mal resuelto.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/darle-acceso-a-tus-datos-a-un-agente-de-ia.html"},"url":"https://agustin.agustinynatalia.site/guias/darle-acceso-a-tus-datos-a-un-agente-de-ia.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"Seguridad y permisos","keywords":"Agentes de IA, Seguridad, Credenciales y tokens, OAuth, Control de acceso, Self-hosting","datePublished":"2026-09-01","dateModified":"2026-09-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/guias/"},{"@type":"ListItem","position":3,"name":"Darle acceso a tus datos a un agente de IA sin regalarle la casa","item":"https://agustin.agustinynatalia.site/guias/darle-acceso-a-tus-datos-a-un-agente-de-ia.html"}]}]}</script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -107,19 +107,32 @@ a{color:inherit;text-decoration:none}
 .wrap,.rd{padding:0 1.4rem}
 .pcgrid{grid-template-columns:1fr}
 }
+
+.relList{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.7rem}
+.relList a{display:flex;flex-direction:column;gap:.25rem;padding:1rem 1.1rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;text-decoration:none;color:inherit;transition:border-color .2s}
+.relList a:hover{border-color:var(--accent)}
+.relCat{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+.relT{font-weight:600;line-height:1.35}
+.hubList{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+.hubList a{display:block;padding:1.2rem 1.3rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:12px;text-decoration:none;color:inherit;transition:border-color .2s}
+.hubList a:hover{border-color:var(--accent)}
+.hubList h2{font-size:1.15rem;margin:.35rem 0 .45rem;line-height:1.3}
+.hubList p{margin:0;opacity:.8;line-height:1.5}
+.hubMeta{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+
 </style>
 </head>
 <body>
 <div class="site light" id="top" style="--accent:#ff5c35">
 <nav class="nav"><div class="wrap navbar">
-<a class="brand" href="../index.html">agustin.peralta<span class="curs">▮</span></a>
+<a class="brand" href="/">agustin.peralta<span class="curs">▮</span></a>
 <ul class="navlinks" id="nav">
-<li><a href="../index.html#sobre">sobre-mí</a></li>
-<li><a href="../index.html#experiencia">experiencia</a></li>
-<li><a href="../index.html#proyectos">proyectos</a></li>
-<li><a class="on" href="../index.html#guias">guías</a></li>
+<li><a href="/#sobre">sobre-mí</a></li>
+<li><a href="/#experiencia">experiencia</a></li>
+<li><a href="/#proyectos">proyectos</a></li>
+<li><a class="on" href="/guias/">guías</a></li>
 <li><a href="/metricas">métricas</a></li>
-<li><a href="../index.html#contacto">contacto</a></li>
+<li><a href="/#contacto">contacto</a></li>
 </ul>
 <div class="navtools">
 <button class="tgl" id="tgl" aria-label="Cambiar tema">☾</button>
@@ -128,7 +141,7 @@ a{color:inherit;text-decoration:none}
 </div></nav>
 
 <header class="dhero"><div class="rd">
-<a class="back mono" href="../index.html#guias">← volver a guías</a>
+<a class="back mono" href="/guias/">← volver a guías</a>
 <div class="dcat mono">Seguridad y permisos</div>
 <h1 class="dtitle">Darle acceso a tus datos a un agente de IA sin regalarle la casa</h1>
 <p class="dsub">Casi todo el mundo conecta el agente con su propia cuenta y le entrega el llavero entero. Identidad separada, alcance mínimo, dónde vive la credencial y cómo se revoca el día que toque, con los casos donde me falló a mí.</p>
@@ -185,7 +198,8 @@ a{color:inherit;text-decoration:none}
 <section class="dsec"><div class="rd"><div class="dsech mono">Requisitos</div><ul class="reqlist"><li>La lista de los servicios que el agente va a tocar de verdad, no los que podría llegar a necesitar. Cada servicio de más es una llave que vas a tener que rotar algún día.</li><li>Permiso para crear usuarios o cuentas nuevas en esos servicios. Si solo puedes reutilizar la tuya, el agente hereda tu poder y eso ya no se arregla después.</li><li>Saber en qué pantalla de cada proveedor se apaga una llave. Borrar tu copia local no revoca nada, y ese malentendido es el más caro de esta guía.</li><li>Un lugar para los secretos fuera del repositorio, aunque sea un archivo con permisos restringidos en el servidor.</li></ul></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Pros y contras</div><div class="pcgrid"><div class="pccard pros"><h4>A favor</h4><ul class="pclist"><li><span class="mk">+</span><span>La identidad separada te dice en el historial si un cambio lo hizo una persona o el agente, que es la primera pregunta cuando algo sale mal.</span></li><li><span class="mk">+</span><span>Cortarle el acceso al agente deja de ser un evento traumático, porque no comparte cuenta con nadie.</span></li><li><span class="mk">+</span><span>El alcance por recurso limita el daño de una llave filtrada a un documento o a una tabla, en vez de a todo el servicio.</span></li><li><span class="mk">+</span><span>El intermediario que guarda la llave permite cambiar de proveedor o cortar el acceso sin volver a desplegar la aplicación.</span></li></ul></div><div class="pccard cons"><h4>En contra</h4><ul class="pclist"><li><span class="mk">−</span><span>La identidad propia cuesta una licencia más en los servicios que cobran por usuario.</span></li><li><span class="mk">−</span><span>El alcance mínimo se paga en errores de permisos mientras armas, y la tentación de ampliarlo para salir del paso es real.</span></li><li><span class="mk">−</span><span>El intermediario es un componente más que hay que mantener y que se puede caer.</span></li><li><span class="mk">−</span><span>Nada de esto se configura solo. Es trabajo manual servicio por servicio y no hay atajo que lo cubra entero.</span></li></ul></div></div></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Herramientas</div><div class="stackTags"><span class="tag mono">Agentes de IA</span><span class="tag mono">Seguridad</span><span class="tag mono">Credenciales y tokens</span><span class="tag mono">OAuth</span><span class="tag mono">Control de acceso</span><span class="tag mono">Self-hosting</span></div></div></section>
-<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="../index.html#contacto">Hablemos →</a><a class="btn btnO" href="../index.html#guias">volver a guías</a></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Otras guías</div><ul class="relList"><li><a href="/guias/sistema-conocimiento-outline.html"><span class="relCat mono">Sistema de conocimiento + IA</span><span class="relT">Cómo conecté un agente de IA a mi base de conocimiento (segundo cerebro self-hosted)</span></a></li><li><a href="/guias/de-584-a-54-dolares-caso-real.html"><span class="relCat mono">Costos + arquitectura</span><span class="relT">De USD 584 a USD 54 al mes, el desglose completo de un caso real</span></a></li><li><a href="/guias/cuanto-cuesta-un-agente-de-ia.html"><span class="relCat mono">Costos y arquitectura</span><span class="relT">Cuánto cuesta de verdad tener un agente de IA corriendo</span></a></li></ul><a class="back mono" href="/guias/">Ver todas las guías →</a></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="/#contacto">Hablemos →</a><a class="btn btnO" href="/guias/">volver a guías</a></div></div></div></section>
 
 <footer class="footer"><div class="wrap footIn">
 <span>Diseñado y desarrollado por Agustin Peralta</span>

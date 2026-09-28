@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Cuando una automatización falla y nadie se entera: manejo de errores y alertas","description":"Manejo de errores y alertas en automatizaciones, tanto en n8n como en código propio: por qué tu cobertura es menor de la que crees, cómo detectar las fallas silenciosas que salen en verde, cómo hacer que la alerta llegue ya diagnosticada, cuándo reintentar sin duplicar operaciones y cómo no perder los datos de una ejecución que se cayó a la mitad.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/manejo-errores-automatizaciones.html"},"url":"https://agustin.agustinynatalia.site/guias/manejo-errores-automatizaciones.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"Errores y monitoreo","keywords":"n8n, Python, Webhooks, APIs, Colas y reintentos, Telegram, Agentes de IA","datePublished":"2026-08-01","dateModified":"2026-08-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/index.html#guias"},{"@type":"ListItem","position":3,"name":"Cuando una automatización falla y nadie se entera: manejo de errores y alertas","item":"https://agustin.agustinynatalia.site/guias/manejo-errores-automatizaciones.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Cuando una automatización falla y nadie se entera: manejo de errores y alertas","description":"Manejo de errores y alertas en automatizaciones, tanto en n8n como en código propio: por qué tu cobertura es menor de la que crees, cómo detectar las fallas silenciosas que salen en verde, cómo hacer que la alerta llegue ya diagnosticada, cuándo reintentar sin duplicar operaciones y cómo no perder los datos de una ejecución que se cayó a la mitad.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/manejo-errores-automatizaciones.html"},"url":"https://agustin.agustinynatalia.site/guias/manejo-errores-automatizaciones.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"Errores y monitoreo","keywords":"n8n, Python, Webhooks, APIs, Colas y reintentos, Telegram, Agentes de IA","datePublished":"2026-08-01","dateModified":"2026-08-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/guias/"},{"@type":"ListItem","position":3,"name":"Cuando una automatización falla y nadie se entera: manejo de errores y alertas","item":"https://agustin.agustinynatalia.site/guias/manejo-errores-automatizaciones.html"}]}]}</script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -107,19 +107,32 @@ a{color:inherit;text-decoration:none}
 .wrap,.rd{padding:0 1.4rem}
 .pcgrid{grid-template-columns:1fr}
 }
+
+.relList{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.7rem}
+.relList a{display:flex;flex-direction:column;gap:.25rem;padding:1rem 1.1rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;text-decoration:none;color:inherit;transition:border-color .2s}
+.relList a:hover{border-color:var(--accent)}
+.relCat{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+.relT{font-weight:600;line-height:1.35}
+.hubList{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+.hubList a{display:block;padding:1.2rem 1.3rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:12px;text-decoration:none;color:inherit;transition:border-color .2s}
+.hubList a:hover{border-color:var(--accent)}
+.hubList h2{font-size:1.15rem;margin:.35rem 0 .45rem;line-height:1.3}
+.hubList p{margin:0;opacity:.8;line-height:1.5}
+.hubMeta{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+
 </style>
 </head>
 <body>
 <div class="site light" id="top" style="--accent:#ff5c35">
 <nav class="nav"><div class="wrap navbar">
-<a class="brand" href="../index.html">agustin.peralta<span class="curs">▮</span></a>
+<a class="brand" href="/">agustin.peralta<span class="curs">▮</span></a>
 <ul class="navlinks" id="nav">
-<li><a href="../index.html#sobre">sobre-mí</a></li>
-<li><a href="../index.html#experiencia">experiencia</a></li>
-<li><a href="../index.html#proyectos">proyectos</a></li>
-<li><a class="on" href="../index.html#guias">guías</a></li>
+<li><a href="/#sobre">sobre-mí</a></li>
+<li><a href="/#experiencia">experiencia</a></li>
+<li><a href="/#proyectos">proyectos</a></li>
+<li><a class="on" href="/guias/">guías</a></li>
 <li><a href="/metricas">métricas</a></li>
-<li><a href="../index.html#contacto">contacto</a></li>
+<li><a href="/#contacto">contacto</a></li>
 </ul>
 <div class="navtools">
 <button class="tgl" id="tgl" aria-label="Cambiar tema">☾</button>
@@ -128,7 +141,7 @@ a{color:inherit;text-decoration:none}
 </div></nav>
 
 <header class="dhero"><div class="rd">
-<a class="back mono" href="../index.html#guias">← volver a guías</a>
+<a class="back mono" href="/guias/">← volver a guías</a>
 <div class="dcat mono">Errores y monitoreo</div>
 <h1 class="dtitle">Cuando una automatización falla y nadie se entera: manejo de errores y alertas</h1>
 <p class="dsub">Montar el flujo o escribir el script es la mitad del trabajo. La otra mitad es qué pasa el día que se rompe: quién se entera, con cuánta información y qué se hace con los datos que quedaron a medio camino.</p>
@@ -197,7 +210,8 @@ a{color:inherit;text-decoration:none}
 <section class="dsec"><div class="rd"><div class="dsech mono">Requisitos</div><ul class="reqlist"><li>Saber qué tienes corriendo solo hoy: qué flujos, qué scripts, qué servicios y en qué máquina vive cada uno.</li><li>Acceso de administrador a esas piezas, para poder cambiarles la configuración de errores y reintentos.</li><li>Un canal de avisos que una persona concreta lea de verdad. Telegram, Slack o correo da igual, lo que importa es que tenga dueño.</li><li>Un lugar donde guardar lo que llega antes de procesarlo: una tabla, un archivo o una cola. La memoria del proceso no sirve, se va con él.</li><li>Tener claro cuáles son críticos. Si todos lo son, ninguno lo es y las alertas se vuelven ruido.</li><li>Un modelo de IA con acceso al detalle de la ejecución fallida, solo si vas a montar la parte del diagnóstico automático.</li></ul></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Pros y contras</div><div class="pcgrid"><div class="pccard pros"><h4>A favor</h4><ul class="pclist"><li><span class="mk">+</span><span>Te enteras tú antes que el cliente, que es la diferencia entre un ajuste y una disculpa.</span></li><li><span class="mk">+</span><span>El aviso llega con el paso que falló y la causa probable, así que decides en un minuto si corres o esperas.</span></li><li><span class="mk">+</span><span>Guardar en crudo lo que llega te deja reprocesar en vez de perder datos que no vuelven.</span></li><li><span class="mk">+</span><span>El inventario de cobertura destapa lo que llevaba meses fallando sin avisarle a nadie.</span></li><li><span class="mk">+</span><span>El equipo vuelve a confiar en la automatización, porque dejan de aparecer sorpresas.</span></li></ul></div><div class="pccard cons"><h4>En contra</h4><ul class="pclist"><li><span class="mk">−</span><span>Es trabajo que no se ve: no luce en ninguna demo y por eso siempre se deja para después.</span></li><li><span class="mk">−</span><span>Avisar de todo genera fatiga de alertas y termina con la gente ignorando el canal.</span></li><li><span class="mk">−</span><span>Los reintentos mal puestos duplican operaciones, y ese daño es peor que la falla original.</span></li><li><span class="mk">−</span><span>Las fallas silenciosas no las cubre ningún manejo de errores: hay que escribir chequeos aparte y mantenerlos.</span></li><li><span class="mk">−</span><span>El diagnóstico con IA suma un costo por cada ejecución fallida. Es poco, pero no es cero.</span></li></ul></div></div></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Herramientas</div><div class="stackTags"><span class="tag mono">n8n</span><span class="tag mono">Python</span><span class="tag mono">Webhooks</span><span class="tag mono">APIs</span><span class="tag mono">Colas y reintentos</span><span class="tag mono">Telegram</span><span class="tag mono">Agentes de IA</span></div></div></section>
-<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="../index.html#contacto">Hablemos →</a><a class="btn btnO" href="../index.html#guias">volver a guías</a></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Otras guías</div><ul class="relList"><li><a href="/guias/las-alertas-que-nadie-lee.html"><span class="relCat mono">Errores y monitoreo</span><span class="relT">Las alertas que nadie lee, o por qué avisar de cada falla hace que no veas ninguna</span></a></li><li><a href="/guias/cuando-tu-agente-necesita-rag.html"><span class="relCat mono">RAG y bases de conocimiento</span><span class="relT">Cuándo tu agente de IA necesita RAG y cuándo te estás complicando</span></a></li><li><a href="/guias/mcp-o-api-cuando-usar-cada-uno.html"><span class="relCat mono">MCP y agentes de IA</span><span class="relT">MCP o API: cuándo conectar una herramienta a un agente de IA y cuándo dejarla en un flujo</span></a></li></ul><a class="back mono" href="/guias/">Ver todas las guías →</a></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="/#contacto">Hablemos →</a><a class="btn btnO" href="/guias/">volver a guías</a></div></div></div></section>
 
 <footer class="footer"><div class="wrap footIn">
 <span>Diseñado y desarrollado por Agustin Peralta</span>

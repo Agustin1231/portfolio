@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"MCP o API: cuándo conectar una herramienta a un agente de IA y cuándo dejarla en un flujo","description":"¿MCP o API? No compiten: casi todo servidor MCP termina llamando a la misma API de siempre. Te explico con casos reales cuándo conviene entregarle una herramienta a un agente de IA por MCP, cuándo dejarla como un llamado HTTP dentro de un flujo, y qué trabajo de integración no te ahorra ninguno de los dos.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/mcp-o-api-cuando-usar-cada-uno.html"},"url":"https://agustin.agustinynatalia.site/guias/mcp-o-api-cuando-usar-cada-uno.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"MCP y agentes de IA","keywords":"MCP, APIs, Agentes de IA, n8n, Automatización","datePublished":"2026-08-01","dateModified":"2026-08-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/index.html#guias"},{"@type":"ListItem","position":3,"name":"MCP o API: cuándo conectar una herramienta a un agente de IA y cuándo dejarla en un flujo","item":"https://agustin.agustinynatalia.site/guias/mcp-o-api-cuando-usar-cada-uno.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"MCP o API: cuándo conectar una herramienta a un agente de IA y cuándo dejarla en un flujo","description":"¿MCP o API? No compiten: casi todo servidor MCP termina llamando a la misma API de siempre. Te explico con casos reales cuándo conviene entregarle una herramienta a un agente de IA por MCP, cuándo dejarla como un llamado HTTP dentro de un flujo, y qué trabajo de integración no te ahorra ninguno de los dos.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/mcp-o-api-cuando-usar-cada-uno.html"},"url":"https://agustin.agustinynatalia.site/guias/mcp-o-api-cuando-usar-cada-uno.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"MCP y agentes de IA","keywords":"MCP, APIs, Agentes de IA, n8n, Automatización","datePublished":"2026-08-01","dateModified":"2026-08-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/guias/"},{"@type":"ListItem","position":3,"name":"MCP o API: cuándo conectar una herramienta a un agente de IA y cuándo dejarla en un flujo","item":"https://agustin.agustinynatalia.site/guias/mcp-o-api-cuando-usar-cada-uno.html"}]}]}</script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -107,19 +107,32 @@ a{color:inherit;text-decoration:none}
 .wrap,.rd{padding:0 1.4rem}
 .pcgrid{grid-template-columns:1fr}
 }
+
+.relList{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.7rem}
+.relList a{display:flex;flex-direction:column;gap:.25rem;padding:1rem 1.1rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;text-decoration:none;color:inherit;transition:border-color .2s}
+.relList a:hover{border-color:var(--accent)}
+.relCat{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+.relT{font-weight:600;line-height:1.35}
+.hubList{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+.hubList a{display:block;padding:1.2rem 1.3rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:12px;text-decoration:none;color:inherit;transition:border-color .2s}
+.hubList a:hover{border-color:var(--accent)}
+.hubList h2{font-size:1.15rem;margin:.35rem 0 .45rem;line-height:1.3}
+.hubList p{margin:0;opacity:.8;line-height:1.5}
+.hubMeta{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+
 </style>
 </head>
 <body>
 <div class="site light" id="top" style="--accent:#ff5c35">
 <nav class="nav"><div class="wrap navbar">
-<a class="brand" href="../index.html">agustin.peralta<span class="curs">▮</span></a>
+<a class="brand" href="/">agustin.peralta<span class="curs">▮</span></a>
 <ul class="navlinks" id="nav">
-<li><a href="../index.html#sobre">sobre-mí</a></li>
-<li><a href="../index.html#experiencia">experiencia</a></li>
-<li><a href="../index.html#proyectos">proyectos</a></li>
-<li><a class="on" href="../index.html#guias">guías</a></li>
+<li><a href="/#sobre">sobre-mí</a></li>
+<li><a href="/#experiencia">experiencia</a></li>
+<li><a href="/#proyectos">proyectos</a></li>
+<li><a class="on" href="/guias/">guías</a></li>
 <li><a href="/metricas">métricas</a></li>
-<li><a href="../index.html#contacto">contacto</a></li>
+<li><a href="/#contacto">contacto</a></li>
 </ul>
 <div class="navtools">
 <button class="tgl" id="tgl" aria-label="Cambiar tema">☾</button>
@@ -128,7 +141,7 @@ a{color:inherit;text-decoration:none}
 </div></nav>
 
 <header class="dhero"><div class="rd">
-<a class="back mono" href="../index.html#guias">← volver a guías</a>
+<a class="back mono" href="/guias/">← volver a guías</a>
 <div class="dcat mono">MCP y agentes de IA</div>
 <h1 class="dtitle">MCP o API: cuándo conectar una herramienta a un agente de IA y cuándo dejarla en un flujo</h1>
 <p class="dsub">MCP no reemplaza a las APIs. Lo que cambia es quién decide la llamada: tú o el modelo. Ese es el único criterio que uso para elegir.</p>
@@ -175,7 +188,8 @@ a{color:inherit;text-decoration:none}
 <section class="dsec"><div class="rd"><div class="dsech mono">Requisitos</div><ul class="reqlist"><li>Una herramienta o servicio con API a la que quieras conectar un agente de IA (un CRM, un gestor de tareas, tu correo, una base de datos).</li><li>Claridad sobre si el orden de las llamadas ya lo sabes tú de antemano o si depende de lo que pida el usuario en el momento.</li><li>Un agente o cliente que soporte herramientas por MCP, si vas por ese lado.</li><li>Un lugar donde queden registradas las llamadas que se ejecutaron, sobre todo si el que decide es el modelo.</li><li>Paciencia para escribir buenas descripciones de herramientas: es ahí donde se gana o se pierde.</li></ul></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Pros y contras</div><div class="pcgrid"><div class="pccard pros"><h4>A favor</h4><ul class="pclist"><li><span class="mk">+</span><span>MCP te deja armar la integración una vez y reusarla en varios agentes sin volver a cablear.</span></li><li><span class="mk">+</span><span>Sirve cuando el orden de las llamadas lo decide quien pregunta, no tú al diseñar el proceso.</span></li><li><span class="mk">+</span><span>Un llamado normal dentro de un flujo es más barato, más predecible y más fácil de auditar.</span></li><li><span class="mk">+</span><span>Elegir bien te ahorra depuraciones eternas de por qué el agente hizo algo que nadie pidió.</span></li><li><span class="mk">+</span><span>El criterio es uno solo y se aplica rápido: quién decide la llamada, tú o el modelo.</span></li></ul></div><div class="pccard cons"><h4>En contra</h4><ul class="pclist"><li><span class="mk">−</span><span>MCP no te ahorra el trabajo de integración, lo mueve a escribir buenas descripciones de herramientas.</span></li><li><span class="mk">−</span><span>Cada herramienta conectada ocupa contexto y le suma al agente una forma más de equivocarse.</span></li><li><span class="mk">−</span><span>Con el modelo decidiendo, explicar qué pasó exige registro propio: no basta con ver la respuesta.</span></li><li><span class="mk">−</span><span>Entregar acciones irreversibles a un agente sin confirmación humana es un riesgo, no un ahorro.</span></li><li><span class="mk">−</span><span>Montar un servidor MCP para un proceso de camino fijo es complejidad que no te devuelve nada.</span></li></ul></div></div></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Herramientas</div><div class="stackTags"><span class="tag mono">MCP</span><span class="tag mono">APIs</span><span class="tag mono">Agentes de IA</span><span class="tag mono">n8n</span><span class="tag mono">Automatización</span></div></div></section>
-<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="../index.html#contacto">Hablemos →</a><a class="btn btnO" href="../index.html#guias">volver a guías</a></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Otras guías</div><ul class="relList"><li><a href="/guias/agente-ia-whatsapp-que-necesitas.html"><span class="relCat mono">Agentes de IA en WhatsApp</span><span class="relT">Agente de IA para WhatsApp: lo que nadie te cuenta antes de conectarlo</span></a></li><li><a href="/guias/cuando-tu-agente-necesita-rag.html"><span class="relCat mono">RAG y bases de conocimiento</span><span class="relT">Cuándo tu agente de IA necesita RAG y cuándo te estás complicando</span></a></li><li><a href="/guias/cuanto-cuesta-un-agente-de-ia.html"><span class="relCat mono">Costos y arquitectura</span><span class="relT">Cuánto cuesta de verdad tener un agente de IA corriendo</span></a></li></ul><a class="back mono" href="/guias/">Ver todas las guías →</a></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="/#contacto">Hablemos →</a><a class="btn btnO" href="/guias/">volver a guías</a></div></div></div></section>
 
 <footer class="footer"><div class="wrap footIn">
 <span>Diseñado y desarrollado por Agustin Peralta</span>

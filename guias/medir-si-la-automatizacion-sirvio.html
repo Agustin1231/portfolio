@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Cómo saber si una automatización sirvió de verdad","description":"Cómo medir el retorno real de una automatización con IA. Las cuatro métricas que importan, por qué las horas ahorradas se inflan solas, cómo capturar el dato desde el propio flujo en vez de estimarlo después, qué es el ahorro de atención y por qué no debe sumarse a las horas, y cómo tomar la línea base antes de automatizar.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html"},"url":"https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"Métricas y ROI","keywords":"Automatización de procesos, Métricas y ROI, n8n, PostgreSQL, Webhooks, Tableros de datos","datePublished":"2026-08-01","dateModified":"2026-08-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/index.html#guias"},{"@type":"ListItem","position":3,"name":"Cómo saber si una automatización sirvió de verdad","item":"https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Cómo saber si una automatización sirvió de verdad","description":"Cómo medir el retorno real de una automatización con IA. Las cuatro métricas que importan, por qué las horas ahorradas se inflan solas, cómo capturar el dato desde el propio flujo en vez de estimarlo después, qué es el ahorro de atención y por qué no debe sumarse a las horas, y cómo tomar la línea base antes de automatizar.","inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html"},"url":"https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html","author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"publisher":{"@type":"Person","name":"Agustin Peralta","@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/og-image.png?v=340-237000-24000","articleSection":"Métricas y ROI","keywords":"Automatización de procesos, Métricas y ROI, n8n, PostgreSQL, Webhooks, Tableros de datos","datePublished":"2026-08-01","dateModified":"2026-08-01"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://agustin.agustinynatalia.site/guias/"},{"@type":"ListItem","position":3,"name":"Cómo saber si una automatización sirvió de verdad","item":"https://agustin.agustinynatalia.site/guias/medir-si-la-automatizacion-sirvio.html"}]}]}</script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -107,19 +107,32 @@ a{color:inherit;text-decoration:none}
 .wrap,.rd{padding:0 1.4rem}
 .pcgrid{grid-template-columns:1fr}
 }
+
+.relList{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.7rem}
+.relList a{display:flex;flex-direction:column;gap:.25rem;padding:1rem 1.1rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;text-decoration:none;color:inherit;transition:border-color .2s}
+.relList a:hover{border-color:var(--accent)}
+.relCat{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+.relT{font-weight:600;line-height:1.35}
+.hubList{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+.hubList a{display:block;padding:1.2rem 1.3rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:12px;text-decoration:none;color:inherit;transition:border-color .2s}
+.hubList a:hover{border-color:var(--accent)}
+.hubList h2{font-size:1.15rem;margin:.35rem 0 .45rem;line-height:1.3}
+.hubList p{margin:0;opacity:.8;line-height:1.5}
+.hubMeta{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+
 </style>
 </head>
 <body>
 <div class="site light" id="top" style="--accent:#ff5c35">
 <nav class="nav"><div class="wrap navbar">
-<a class="brand" href="../index.html">agustin.peralta<span class="curs">▮</span></a>
+<a class="brand" href="/">agustin.peralta<span class="curs">▮</span></a>
 <ul class="navlinks" id="nav">
-<li><a href="../index.html#sobre">sobre-mí</a></li>
-<li><a href="../index.html#experiencia">experiencia</a></li>
-<li><a href="../index.html#proyectos">proyectos</a></li>
-<li><a class="on" href="../index.html#guias">guías</a></li>
+<li><a href="/#sobre">sobre-mí</a></li>
+<li><a href="/#experiencia">experiencia</a></li>
+<li><a href="/#proyectos">proyectos</a></li>
+<li><a class="on" href="/guias/">guías</a></li>
 <li><a href="/metricas">métricas</a></li>
-<li><a href="../index.html#contacto">contacto</a></li>
+<li><a href="/#contacto">contacto</a></li>
 </ul>
 <div class="navtools">
 <button class="tgl" id="tgl" aria-label="Cambiar tema">☾</button>
@@ -128,7 +141,7 @@ a{color:inherit;text-decoration:none}
 </div></nav>
 
 <header class="dhero"><div class="rd">
-<a class="back mono" href="../index.html#guias">← volver a guías</a>
+<a class="back mono" href="/guias/">← volver a guías</a>
 <div class="dcat mono">Métricas y ROI</div>
 <h1 class="dtitle">Cómo saber si una automatización sirvió de verdad</h1>
 <p class="dsub">Casi todo el mundo mide una automatización por si corre sin errores. Eso no dice nada sobre si valió la pena. Estas son las cuatro cifras que sí lo dicen, cómo se capturan sin montar un proyecto aparte, y las trampas que hacen que un tablero se vea espectacular mientras la operación sigue igual de lenta.</p>
@@ -192,7 +205,8 @@ a{color:inherit;text-decoration:none}
 <section class="dsec"><div class="rd"><div class="dsech mono">Requisitos</div><ul class="reqlist"><li>Saber cuánto se demora hoy el proceso a mano y cuántas veces al mes ocurre. Sin esos dos números no hay forma de comparar después.</li><li>Quién hace hoy esa tarea y qué haría con el tiempo que le quede libre. Si la respuesta no existe, el ahorro no se va a ver en ninguna parte.</li><li>Un lugar donde guardar el registro de cada ejecución. Una tabla en una base de datos alcanza y sobra, no hace falta una herramienta de analítica.</li><li>Que la automatización pueda avisar cuando termina, aunque sea con una llamada a una dirección web al final del flujo.</li><li>Un criterio escrito de qué cuenta como ejecución válida. Un flujo que corre y no encuentra nada que hacer no es lo mismo que uno que resolvió un caso.</li><li>Acuerdo previo con quien paga sobre qué número define el éxito, antes de empezar. Después de entregar, esa conversación siempre se pierde.</li></ul></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Pros y contras</div><div class="pcgrid"><div class="pccard pros"><h4>A favor</h4><ul class="pclist"><li><span class="mk">+</span><span>Convierte la conversación con el cliente en una de evidencia y no de percepción, que es donde uno siempre pierde.</span></li><li><span class="mk">+</span><span>El registro por ejecución se monta en una tarde y no depende de ninguna herramienta de analítica.</span></li><li><span class="mk">+</span><span>Permite detectar temprano las automatizaciones que corren perfecto pero no le sirven a nadie.</span></li><li><span class="mk">+</span><span>Con cinco campos bien normalizados se responden preguntas que ni te habías planteado al empezar.</span></li><li><span class="mk">+</span><span>Redondear hacia abajo y reportar lo que no funcionó compra credibilidad que después se traduce en más alcance.</span></li></ul></div><div class="pccard cons"><h4>En contra</h4><ul class="pclist"><li><span class="mk">−</span><span>Si no tomaste la línea base antes de automatizar, no hay forma de reconstruirla bien después.</span></li><li><span class="mk">−</span><span>Las horas ahorradas se inflan solas por doble conteo y por estimar sobre el peor caso.</span></li><li><span class="mk">−</span><span>Instrumentar cada flujo suma un paso más que mantener y que se puede romper en silencio.</span></li><li><span class="mk">−</span><span>El ahorro de atención es real pero no se puede sumar a las horas sin ensuciar toda la cifra.</span></li><li><span class="mk">−</span><span>Medir bien a veces demuestra que el proyecto no valía la pena, y hay que estar dispuesto a decirlo.</span></li></ul></div></div></div></section>
 <section class="dsec"><div class="rd"><div class="dsech mono">Herramientas</div><div class="stackTags"><span class="tag mono">Automatización de procesos</span><span class="tag mono">Métricas y ROI</span><span class="tag mono">n8n</span><span class="tag mono">PostgreSQL</span><span class="tag mono">Webhooks</span><span class="tag mono">Tableros de datos</span></div></div></section>
-<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="../index.html#contacto">Hablemos →</a><a class="btn btnO" href="../index.html#guias">volver a guías</a></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dsech mono">Otras guías</div><ul class="relList"><li><a href="/guias/senales-proceso-automatizar.html"><span class="relCat mono">Automatización de procesos</span><span class="relT">Cómo automatizar los procesos de tu empresa con IA: 6 señales para saber cuáles</span></a></li><li><a href="/guias/de-584-a-54-dolares-caso-real.html"><span class="relCat mono">Costos + arquitectura</span><span class="relT">De USD 584 a USD 54 al mes, el desglose completo de un caso real</span></a></li><li><a href="/guias/manejo-errores-automatizaciones.html"><span class="relCat mono">Errores y monitoreo</span><span class="relT">Cuando una automatización falla y nadie se entera: manejo de errores y alertas</span></a></li></ul><a class="back mono" href="/guias/">Ver todas las guías →</a></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="/#contacto">Hablemos →</a><a class="btn btnO" href="/guias/">volver a guías</a></div></div></div></section>
 
 <footer class="footer"><div class="wrap footIn">
 <span>Diseñado y desarrollado por Agustin Peralta</span>
