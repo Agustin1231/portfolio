@@ -202,7 +202,7 @@ ${EXTRA_CSS}
 </div>${dl}
 </div></header>
 ${sectionsHtml(g)}${relatedHtml(g)}
-<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="/#contacto">Hablemos →</a><a class="btn btnO" href="/guias/">volver a guías</a></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>¿Te sirvió esta guía?</h3><div class="dctaRow"><a class="btn btnP" href="https://www.upwork.com/freelancers/agustinperalta" target="_blank" rel="noopener" data-umami-event="upwork-guia">Contrátame en Upwork →</a><a class="btn btnO" href="/guias/">volver a guías</a></div></div></div></section>
 
 <footer class="footer"><div class="wrap footIn">
 <span>Diseñado y desarrollado por Agustin Peralta</span>
