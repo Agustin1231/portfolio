@@ -212,6 +212,15 @@ a{color:inherit;text-decoration:none}
 .certMeta{display:flex;flex-wrap:wrap;gap:.7rem;font-size:.82rem;color:var(--dim)}
 .certDesc{margin-top:.8rem;font-size:.9rem;line-height:1.6;color:var(--dim)}
 .certLink{display:inline-block;margin-top:.9rem;font-size:.82rem;color:var(--accent)}
+.certGroup{font:inherit;color:inherit;text-align:left;cursor:pointer;width:100%}
+.certCount{color:var(--accent);font-weight:600}
+.certStack{position:relative;overflow:visible;box-shadow:6px 6px 0 -1px var(--bg2),6px 6px 0 0 var(--line2),12px 12px 0 -1px var(--bg2),12px 12px 0 0 var(--line2);margin:0 12px 12px 0}
+.certModal{position:fixed;inset:0;z-index:100000;background:rgba(10,10,10,.62);overflow-y:auto;overscroll-behavior:contain;padding:5vh 4vw}
+.certModalBox{max-width:1180px;margin:0 auto;background:var(--bg);border:1px solid var(--line);padding:1.8rem}
+.certModalHead{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1.4rem}
+.certModalTitle{font-size:1.6rem;font-weight:600;letter-spacing:-.01em}
+.certClose{white-space:nowrap;flex:0 0 auto;background:none;border:1px solid var(--line);color:inherit;padding:.5rem .8rem;cursor:pointer;font-size:.8rem}
+.certClose:hover{border-color:var(--accent);color:var(--accent)}
 .expDate{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);padding-top:.3rem;letter-spacing:.1px}
 .expRole{font-size:1.32rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.25rem}
 .expCo{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--dim);margin-bottom:.9rem}
@@ -409,8 +418,8 @@ a{color:inherit;text-decoration:none}
 <div class="sechead reveal"><div class="eyebrow mono"><b>[ 03 ]</b> // {{t.s03}}</div><h2 class="sectitle">{{t.titleExp}}</h2></div>
 <div><sc-for list="{{experience}}" as="e" hint-placeholder-count="5"><div class="expRow reveal"><div class="expDate mono">{{e.date}}</div><div><h3 class="expRole">{{e.role}}</h3><div class="expCo mono">{{e.company}}</div><p class="expDesc">{{e.desc}}</p></div></div></sc-for></div>
 <div class="certsWrap reveal">
-<div class="certsHead mono">// {{t.titleCerts}}</div>
-<div class="certGrid"><sc-for list="{{certs}}" as="c" hint-placeholder-count="1"><a class="certCard" href="{{c.url}}" target="_blank" rel="noopener"><div class="certTop"><div class="certImg"><img src="{{c.img}}" alt="{{c.title}}" loading="lazy"></div><div class="certHead"><div class="certTitle">{{c.title}}</div><div class="certMeta mono"><span>{{c.issuer}}</span><span>{{c.date}}</span></div></div></div><div class="certBody"><p class="certDesc">{{c.desc}}</p><span class="certLink mono">{{t.certVerify}} ↗</span></div></a></sc-for></div>
+<div class="sechead"><div class="eyebrow mono">// {{t.certEyebrow}}</div><h2 class="sectitle">{{t.titleCerts}}</h2><p class="secsub">{{t.certSub}}</p></div>
+<div class="certGrid"><sc-for list="{{certGroups}}" as="g" hint-placeholder-count="2"><button type="button" class="certCard certGroup" onClick="{{g.open}}"><div class="certTop"><div class="certImg certStack"><img src="{{g.img}}" alt="{{g.name}}" loading="lazy"></div><div class="certHead"><div class="certTitle">{{g.name}}</div><div class="certMeta mono"><span>{{g.issuer}}</span><span class="certCount">{{g.count}}</span></div></div></div><div class="certBody"><p class="certDesc">{{g.list}}</p><span class="certLink mono">{{t.certSee}} →</span></div></button></sc-for></div>
 </div>
 </div></section>
 
@@ -440,6 +449,7 @@ a{color:inherit;text-decoration:none}
 <span class="mono" style="font-size:.78rem"><a href="/guias/" style="color:var(--dim)">Guías</a> · <a href="/proyectos" style="color:var(--dim)">Proyectos</a> · <a href="/metricas" style="color:var(--dim)">Métricas</a> · <a href="terminos.html" style="color:var(--dim)">Términos</a> · <a href="privacidad.html" style="color:var(--dim)">Privacidad</a></span>
 <span class="y">© 2026 · <span class="acc">Bogotá</span></span>
 </div></footer>
+<sc-if value="{{certModal}}" hint-placeholder-val="{{false}}"><div class="certModal" onClick="{{closeCerts}}"><div class="certModalBox"><div class="certModalHead"><div><div class="certsHead mono">// {{t.titleCerts}}</div><h3 class="certModalTitle">{{certModalTitle}}</h3></div><button type="button" class="certClose mono" onClick="{{closeCertsBtn}}">{{t.certClose}} ✕</button></div><div class="certGrid"><sc-for list="{{modalCerts}}" as="c" hint-placeholder-count="1"><a class="certCard" href="{{c.url}}" target="_blank" rel="noopener"><div class="certTop"><div class="certImg"><img src="{{c.img}}" alt="{{c.title}}" loading="lazy"></div><div class="certHead"><div class="certTitle">{{c.title}}</div><div class="certMeta mono"><span>{{c.issuer}}</span><span>{{c.date}}</span></div></div></div><div class="certBody"><p class="certDesc">{{c.desc}}</p><span class="certLink mono">{{t.certVerify}} ↗</span></div></a></sc-for></div></div></div></sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ff5c35&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;asciiField&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;scene3d&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
@@ -494,21 +504,67 @@ class Component extends DCLogic {
   ];
   SKILLS = ["Python","LangGraph","LLMs","n8n","FastAPI","Next.js","TypeScript","PostgreSQL","Docker","Supabase"];
   CERTS = [
-    {img:"/certs/n8n-program.png",issuer:"n8n Academy",url:"https://credentials.learn.n8n.io/credentials/7f3bec8fbdbf4dbf90b46f5e1095fc63/",
+    {img:"/certs/n8n-program.png",group:"n8n",issuer:"n8n Academy",url:"https://credentials.learn.n8n.io/credentials/7f3bec8fbdbf4dbf90b46f5e1095fc63/",
       es:{title:"n8n Professional Certificate: Program Completion",date:"Julio 2026",desc:"Credencial profesional que acredita la finalización completa del programa de n8n Academy, con nota aprobatoria en todos los cursos: fundamentos, integraciones con APIs, y prácticas de IA, testing y producción."},
       en:{title:"n8n Professional Certificate: Program Completion",date:"July 2026",desc:"Professional credential certifying full completion of the n8n Academy program, with passing grades across every course: fundamentals, API integrations, and AI, testing and production practices."}},
-    {img:"/certs/n8n-qs101.png",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/fda37efe7ffa4cce966746391e86d89f",
+    {img:"/certs/n8n-qs101.png",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/fda37efe7ffa4cce966746391e86d89f",
       es:{title:"n8n Quickstart (QS101)",date:"Julio 2026",desc:"Certificación oficial de n8n: construcción de workflows, transformación de datos entre APIs y bases de datos, manejo de errores en producción y agentes de IA con herramientas y memoria."},
       en:{title:"n8n Quickstart (QS101)",date:"July 2026",desc:"Official n8n certification: workflow building, data transformation across APIs and databases, production error handling, and AI agents with tools and memory."}},
-    {img:"/certs/n8n-n8n101.png",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/83b8a971834f43f6a8efdfc3e2fc564a",
+    {img:"/certs/n8n-n8n101.png",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/83b8a971834f43f6a8efdfc3e2fc564a",
       es:{title:"n8n Essentials: Your First Workflows (N8N101)",date:"Julio 2026",desc:"Certificación oficial de n8n: triggers y credenciales, modelo de datos e items, expresiones y pipelines con ramas, con autenticación por headers, filtrado, agregación y generación de archivos."},
       en:{title:"n8n Essentials: Your First Workflows (N8N101)",date:"July 2026",desc:"Official n8n certification: triggers and credentials, data model and items, expressions and branching pipelines, with header authentication, filtering, aggregation and file generation."}},
-    {img:"/certs/n8n-n8n102.png",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/0f0cbaef0f494e4ead64a2d20011e8bc",
+    {img:"/certs/n8n-n8n102.png",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/0f0cbaef0f494e4ead64a2d20011e8bc",
       es:{title:"n8n Integrations: APIs & Connected Workflows (N8N102)",date:"Julio 2026",desc:"Certificación oficial de n8n: consumo de APIs REST con autenticación, paginación y manejo de límites, cruce de datos entre sistemas con Merge, y conexión de servicios en pipelines de extremo a extremo."},
       en:{title:"n8n Integrations: APIs & Connected Workflows (N8N102)",date:"July 2026",desc:"Official n8n certification: consuming REST APIs with authentication, pagination and rate limit handling, cross-system data joins with Merge, and connecting services into end to end pipelines."}},
-    {img:"/certs/n8n-n8n103.png",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/7e7f937cebac488cbae716e22470f04b",
+    {img:"/certs/n8n-n8n103.png",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/7e7f937cebac488cbae716e22470f04b",
       es:{title:"n8n In Practice: AI, Testing & Best Practices (N8N103)",date:"Julio 2026",desc:"Certificación oficial de n8n: pruebas con datos fijados, reintentos y workflows de error, depuración de ejecuciones fallidas y silenciosas, agentes de IA frente a nodos de IA estándar, y organización de proyectos para producción."},
-      en:{title:"n8n In Practice: AI, Testing & Best Practices (N8N103)",date:"July 2026",desc:"Official n8n certification: testing with pinned data, retries and error workflows, debugging failed and silent executions, AI agents versus standard AI nodes, and project organization for production."}}
+      en:{title:"n8n In Practice: AI, Testing & Best Practices (N8N103)",date:"July 2026",desc:"Official n8n certification: testing with pinned data, retries and error workflows, debugging failed and silent executions, AI agents versus standard AI nodes, and project organization for production."}},
+    {img:"/certs/claude-claude-code-in-action.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/f6c469eb0154ba73895fa80ae03f29d2",
+      es:{title:"Claude Code in Action",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: desarrollo de software con Claude Code, manejo del contexto del proyecto, comandos personalizados, hooks e integración con servidores MCP y GitHub."},
+      en:{title:"Claude Code in Action",date:"September 2026",desc:"Official Anthropic badge: software development with Claude Code, project context management, custom commands, hooks, and integration with MCP servers and GitHub."}},
+    {img:"/certs/claude-building-with-the-claude-api.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/a8a706a37f10876b13d056145e7f7419",
+      es:{title:"Building with the Claude API",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: la API de Claude de punta a punta, con ingeniería y evaluación de prompts, uso de herramientas, RAG, MCP y flujos de agentes."},
+      en:{title:"Building with the Claude API",date:"September 2026",desc:"Official Anthropic badge: the Claude API end to end, with prompt engineering and evaluation, tool use, RAG, MCP and agent workflows."}},
+    {img:"/certs/claude-claude-code-101.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/5b652432ffecc5f05884c81fe1d52d1a",
+      es:{title:"Claude Code 101",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: fundamentos de Claude Code para trabajar desde la terminal con un agente de programación."},
+      en:{title:"Claude Code 101",date:"September 2026",desc:"Official Anthropic badge: claude Code fundamentals for working from the terminal with a coding agent."}},
+    {img:"/certs/claude-claude-with-amazon-bedrock.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/7174b1d3e3b4c8801fe7c2295cda61ab",
+      es:{title:"Claude with Amazon Bedrock",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso de los modelos de Claude a través de Amazon Bedrock para llevarlos a infraestructura de AWS."},
+      en:{title:"Claude with Amazon Bedrock",date:"September 2026",desc:"Official Anthropic badge: using Claude models through Amazon Bedrock to run them on AWS infrastructure."}},
+    {img:"/certs/claude-building-effective-human-agent-teams.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/22eca1fcff04e9477d4bd284b2540919",
+      es:{title:"Building Effective Human-Agent Teams",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: cómo repartir el trabajo entre personas y agentes de IA para que el equipo rinda mejor."},
+      en:{title:"Building Effective Human-Agent Teams",date:"September 2026",desc:"Official Anthropic badge: how to split work between people and AI agents so the team performs better."}},
+    {img:"/certs/claude-introduction-to-claude-cowork.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/034bc85eb4db47c5dbea4b5e355c8f3a",
+      es:{title:"Introduction to Claude Cowork",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: delegar en Claude tareas de varios pasos sobre archivos y herramientas."},
+      en:{title:"Introduction to Claude Cowork",date:"September 2026",desc:"Official Anthropic badge: delegating multi-step tasks on files and tools to Claude."}},
+    {img:"/certs/claude-introduction-to-claude-tag.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/b93b8c36cabae23318a9615d7541c0da",
+      es:{title:"Introduction to Claude Tag",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: curso introductorio de Anthropic sobre Claude Tag."},
+      en:{title:"Introduction to Claude Tag",date:"September 2026",desc:"Official Anthropic badge: anthropic's introductory course on Claude Tag."}},
+    {img:"/certs/claude-claude-101.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/059f3851a94cd6821cc9b30e1131a273",
+      es:{title:"Claude 101",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: fundamentos de Claude para el trabajo diario."},
+      en:{title:"Claude 101",date:"September 2026",desc:"Official Anthropic badge: claude fundamentals for everyday work."}},
+    {img:"/certs/claude-ai-capabilities-and-limitations.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/32754ae4cfd4d28c5859164d46925c96",
+      es:{title:"AI Capabilities and Limitations",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: qué puede hacer bien la IA y dónde falla, para decidir cuándo confiar en ella."},
+      en:{title:"AI Capabilities and Limitations",date:"September 2026",desc:"Official Anthropic badge: what AI does well and where it fails, to decide when to trust it."}},
+    {img:"/certs/claude-ai-fluency-for-small-businesses.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/11b65130eb3ef8a480875191fbeab9eb",
+      es:{title:"AI Fluency for Small Businesses",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso práctico y responsable de la IA en empresas pequeñas."},
+      en:{title:"AI Fluency for Small Businesses",date:"September 2026",desc:"Official Anthropic badge: practical, responsible use of AI in small businesses."}},
+    {img:"/certs/claude-ai-fluency-for-creative-work.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/cdc3e63dde3469534a33fe1f34b5d522",
+      es:{title:"AI Fluency for Creative Work",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso de la IA en trabajo creativo, manteniendo el criterio propio."},
+      en:{title:"AI Fluency for Creative Work",date:"September 2026",desc:"Official Anthropic badge: using AI in creative work while keeping your own judgment."}},
+    {img:"/certs/claude-ai-fluency-for-nonprofits.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/0605d5c9c17431dc015ad46755494e46",
+      es:{title:"AI Fluency for Nonprofits",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso de la IA en organizaciones sin ánimo de lucro."},
+      en:{title:"AI Fluency for Nonprofits",date:"September 2026",desc:"Official Anthropic badge: using AI in nonprofit organizations."}},
+    {img:"/certs/claude-teaching-ai-fluency.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/919c8c81d37f4d24a8cf079ad17db5e5",
+      es:{title:"Teaching AI Fluency",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: cómo enseñar a otros a trabajar con IA de forma efectiva y responsable."},
+      en:{title:"Teaching AI Fluency",date:"September 2026",desc:"Official Anthropic badge: how to teach others to work with AI effectively and responsibly."}},
+    {img:"/certs/claude-ai-fluency-for-students.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/1ad5fb5b608d77344b28cccea1a53cf9",
+      es:{title:"AI Fluency for Students",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso responsable de la IA para aprender."},
+      en:{title:"AI Fluency for Students",date:"September 2026",desc:"Official Anthropic badge: responsible use of AI for learning."}}
+  ];
+  CERTGROUPS = [
+    {key:"n8n",name:"n8n",issuer:"n8n Academy",img:"/certs/logo-n8n.png"},
+    {key:"anthropic",name:"Anthropic",issuer:"Claude Academy",img:"/certs/logo-anthropic.png"}
   ];
   FILTERDEF = [
     {v:"all",es:"Todos",en:"All"},{v:"auto",es:"Automatización",en:"Automation"},{v:"ai",es:"IA & Agentes",en:"AI & Agents"},{v:"prod",es:"Producto",en:"Product"},{v:"tools",es:"Herramientas",en:"Tools"}
@@ -516,7 +572,7 @@ class Component extends DCLogic {
   I18N = {
     es:{navAbout:"sobre-mí",navExp:"experiencia",navWork:"proyectos",navGuides:"guías",navMetrics:"métricas",navContact:"contacto",
       heroStatus:"Disponible para nuevos proyectos",heroHi:"// hola, soy",heroRole:"Ingeniero de IA & Automatización",heroDescA:"Especializado en inteligencia artificial aplicada y automatización de procesos: integro sistemas, desarrollo agentes y optimizo flujos de trabajo. Transformo operaciones manuales en sistemas que ya han eliminado ",heroStat:"más de 24.000 horas",heroDescB:" de trabajo manual, más de ",heroStat2:"$100.000 USD",heroDescC:" ahorrados a las empresas.",ctaWork:"Ver proyectos",ctaMetrics:"Mis métricas",ctaContact:"Contactar",
-      s01:"sobre mí",s02:"proyectos",s03:"experiencia",s04:"guías",s05:"contacto",titleAbout:"Construyo sistemas que automatizan, razonan y escalan",titleExp:"Trayectoria",titleCerts:"Certificaciones",certVerify:"Verificar",titleWork:"Trabajo seleccionado",titleGuides:"Guías",titleContact:"Trabajemos juntos",
+      s01:"sobre mí",s02:"proyectos",s03:"experiencia",s04:"guías",s05:"contacto",titleAbout:"Construyo sistemas que automatizan, razonan y escalan",titleExp:"Trayectoria",titleCerts:"Certificaciones",certVerify:"Verificar",certCount:"certificaciones",certMore:"más",certEyebrow:"certificaciones",certSub:"Cursos oficiales de las herramientas con las que trabajo, con su enlace para verificarlos.",certSee:"Ver todas",certClose:"Cerrar",titleWork:"Trabajo seleccionado",titleGuides:"Guías",titleContact:"Trabajemos juntos",
       aboutLead:"Ingeniero de sistemas especializado en inteligencia artificial aplicada y automatización de procesos, enfocado en construir soluciones que razonan, automatizan y escalan.",aboutP1:"Diseño y despliego agentes de IA y automatizaciones de extremo a extremo sobre un stack en Python, TypeScript y SQL, apoyándome en n8n, LangGraph y la orquestación de LLMs para resolver problemas reales de negocio.",aboutP2a:"Como líder técnico he llevado a producción sistemas con ",aboutP2s1:"340+ automatizaciones activas",aboutP2b:", ",aboutP2s2:"241.000+ ejecuciones",aboutP2c:" y ",aboutP2s3:"~99% de uptime",aboutP2d:", integrando APIs, bases de datos y arquitecturas pensadas para crecer sin fricción.",aboutP3:"También self-hosteo mi propia infraestructura y desarrollo aplicaciones a medida, combinando pensamiento sistémico con una cultura de ingeniería rigurosa para generar impacto directo y medible.",skillsHead:"cat stack.txt",
       workSub:"Una selección de trabajos en IA, automatización y producto. Pasa el cursor para previsualizar.",seeMore:"Ver más proyectos",guidesAll:"Ver todas las guías",guidesSub:"Notas sobre lo que construyo, automatizo y self-hosteo.",contactIntro:"¿Necesitas automatizar procesos, integrar sistemas o escalar tu operación? Conversemos sobre cómo puedo ayudarte.",
       upK:"Contrátame por Upwork",upTitle:"Contrátame en Upwork",upMsg:"Todos mis proyectos nuevos los tomo por Upwork. Elige un servicio con precio fijo y arrancamos, o mira mi perfil con reseñas. El pago queda protegido para los dos.",upBtn:"Ver mi perfil en Upwork",upFrom:"desde",upN:"Automatización con n8n",upW:"Agente de IA para WhatsApp",upA:"Auditoría de procesos para automatizar",locLabel:"Ubicación",
@@ -524,7 +580,7 @@ class Component extends DCLogic {
       metrics:["Horas de trabajo ahorradas","Ejecuciones automatizadas","Automatizaciones en producción"]},
     en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
       heroStatus:"Available for new projects",heroHi:"// hi, I'm",heroRole:"AI & Automation Engineer",heroDescA:"Specialized in applied artificial intelligence and process automation: I integrate systems, build agents and optimize workflows. I turn manual operations into systems that have already eliminated ",heroStat:"24,000+ hours",heroDescB:" of manual work and over ",heroStat2:"$100,000 USD",heroDescC:" saved for companies.",ctaWork:"View work",ctaMetrics:"My metrics",ctaContact:"Get in touch",
-      s01:"about",s02:"work",s03:"experience",s04:"guides",s05:"contact",titleAbout:"I build systems that automate, reason and scale",titleExp:"Track record",titleCerts:"Certifications",certVerify:"Verify",titleWork:"Selected work",titleGuides:"Guides",titleContact:"Let's work together",
+      s01:"about",s02:"work",s03:"experience",s04:"guides",s05:"contact",titleAbout:"I build systems that automate, reason and scale",titleExp:"Track record",titleCerts:"Certifications",certVerify:"Verify",certCount:"certifications",certMore:"more",certEyebrow:"certifications",certSub:"Official courses on the tools I work with, each with a link to verify it.",certSee:"View all",certClose:"Close",titleWork:"Selected work",titleGuides:"Guides",titleContact:"Let's work together",
       aboutLead:"Systems engineer specialized in applied artificial intelligence and process automation, focused on building solutions that reason, automate and scale.",aboutP1:"I design and deploy AI agents and end-to-end automations on a stack of Python, TypeScript and SQL, leaning on n8n, LangGraph and LLM orchestration to solve real business problems.",aboutP2a:"As a technical lead I've shipped production systems with ",aboutP2s1:"340+ active automations",aboutP2b:", ",aboutP2s2:"241,000+ executions",aboutP2c:" and ",aboutP2s3:"~99% uptime",aboutP2d:", integrating APIs, databases and architectures built to grow without friction.",aboutP3:"I also self-host my own infrastructure and build custom applications end to end, combining systems thinking with a rigorous engineering culture to create direct, measurable impact.",skillsHead:"cat stack.txt",
       workSub:"A selection of work across AI, automation and product. Hover to preview.",seeMore:"View more projects",guidesAll:"View all guides",guidesSub:"Notes on what I build, automate and self-host.",contactIntro:"Need to automate processes, integrate systems or scale your operation? Let's talk about how I can help.",
       upK:"Hire me through Upwork",upTitle:"Hire me on Upwork",upMsg:"I take all new projects through Upwork. Pick a fixed-price service and we start, or check my profile and reviews. Payment stays protected for both of us.",upBtn:"View my Upwork profile",upFrom:"from",upN:"n8n workflow automation",upW:"AI agent for WhatsApp",upA:"Process automation audit",locLabel:"Location",
@@ -533,13 +589,14 @@ class Component extends DCLogic {
   };
   METRICDEF = [{key:"total_horas",target:10000,round:1000,suffix:" h"},{key:"total_ejecuciones",target:120000,round:10000,suffix:""},{key:"total_automatizaciones",target:330,round:10,suffix:""}];
 
-  state = {theme:"light",lang:"es",menu:false,filter:"all",active:0,sent:false,showAll:false,metv:[0,0,0]};
+  state = {theme:"light",lang:"es",menu:false,filter:"all",active:0,sent:false,showAll:false,metv:[0,0,0],certOpen:null};
 
   componentDidMount(){
     try{
       var th=localStorage.getItem("ap-theme");if(th==="dark"||th==="light")this.setState({theme:th});
       var lg=localStorage.getItem("ap-lang");if(lg==="es"||lg==="en")this.setState({lang:lg});
     }catch(e){}
+    var selfK=this;window.addEventListener("keydown",function(e){if(e.key==="Escape"&&selfK.state.certOpen)selfK.closeCerts();});
     this.startAscii();
     this.startBg3d();
     this.observe();
@@ -686,6 +743,8 @@ class Component extends DCLogic {
   setFilter(v){this.setState({filter:v,active:0,showAll:false});}
   setActive(i){this.setState({active:i});}
   expandProjects(){this.setState({showAll:true});}
+  openCerts(k){this.setState({certOpen:k});try{document.documentElement.style.overflow="hidden";document.body.style.overflow="hidden";}catch(e){}}
+  closeCerts(){this.setState({certOpen:null});try{document.documentElement.style.overflow="";document.body.style.overflow="";}catch(e){}}
 
   renderVals(){
     var self=this;var lang=this.state.lang;var L=this.I18N[lang];var accent=this.props.accent||"#ff5c35";
@@ -712,7 +771,13 @@ class Component extends DCLogic {
     var filters=this.FILTERDEF.map(function(f){return {label:f[lang],cls:self.state.filter===f.v?"on":"",onClick:function(){self.setFilter(f.v);}};});
     var metrics=this.METRICDEF.map(function(m,i){var v=self.state.metv[i];return {display:"+"+Math.floor(v).toLocaleString("es-CO")+m.suffix,label:L.metrics[i]};});
     var experience=this.EXPERIENCE.map(function(e){return {date:e[lang].date,role:e[lang].role,company:e.company,desc:e[lang].desc};});
-    var certs=this.CERTS.map(function(c){return {img:c.img,issuer:c.issuer,url:c.url,title:c[lang].title,date:c[lang].date,desc:c[lang].desc};});
+    var certs=this.CERTS.map(function(c){return {group:c.group,img:c.img,issuer:c.issuer,url:c.url,title:c[lang].title,date:c[lang].date,desc:c[lang].desc};});
+    // Una tarjeta por emisor; al abrirla se ven todas sus certificaciones.
+    var certGroups=this.CERTGROUPS.map(function(g){var its=certs.filter(function(c){return c.group===g.key;});
+      return {name:g.name,issuer:g.issuer,img:g.img,count:its.length+" "+L.certCount,list:its.slice(0,4).map(function(c){return c.title;}).join(" · ")+(its.length>4?" · +"+(its.length-4)+" "+L.certMore:""),open:function(){self.openCerts(g.key);}};})
+      .filter(function(g){return g.count.charAt(0)!=="0";});
+    var og=this.state.certOpen?this.CERTGROUPS.filter(function(g){return g.key===self.state.certOpen;})[0]:null;
+    var modalCerts=og?certs.filter(function(c){return c.group===og.key;}):[];
     var guides=this.GUIDES.map(function(g){return {num:g.num,cat:g[lang].cat,title:g[lang].t,desc:g[lang].d,meta:g[lang].meta,url:g.externalUrl||("guias/"+g.id+".html")};});
     var email="aperaltaguarin@gmail.com";
     return {
@@ -723,12 +788,13 @@ class Component extends DCLogic {
       esCls:lang==="es"?"on":"",enCls:lang==="en"?"on":"",
       toggleTheme:function(){self.toggleTheme();},setEs:function(){self.setLang("es");},setEn:function(){self.setLang("en");},
       toggleMenu:function(){self.toggleMenu();},closeMenu:function(){self.setState({menu:false});},
-      t:L,skills:this.SKILLS,metrics:metrics,experience:experience,certs:certs,filters:filters,projects:projects,active:active,guides:guides,
+      t:L,skills:this.SKILLS,metrics:metrics,experience:experience,certs:certs,certGroups:certGroups,modalCerts:modalCerts,certModal:!!og,certModalTitle:og?og.name+" · "+og.issuer:"",closeCerts:function(e){if(e&&e.target!==e.currentTarget)return;self.closeCerts();},closeCertsBtn:function(){self.closeCerts();},filters:filters,projects:projects,active:active,guides:guides,
       projListClass:collapsed?"collapsed":"",showMore:collapsed&&vis.length>6,expandProjects:function(){self.expandProjects();},
       email:email,mailto:"mailto:"+email
     };
   }
 }
 </script>
+<script defer src="/upwork-pop.js"></script>
 </body>
 </html>

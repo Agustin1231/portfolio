@@ -232,6 +232,7 @@ ${sectionsHtml(g)}${relatedHtml(g)}
   });
 })();
 </script>
+<script defer src="/upwork-pop.js"></script>
 </body>
 </html>
 `;
