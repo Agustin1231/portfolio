@@ -146,6 +146,12 @@ a{color:inherit;text-decoration:none}
 .dcta{border:1px solid var(--line);border-radius:20px;padding:3.4rem 2rem;text-align:center;background:color-mix(in srgb,var(--panel) 65%,transparent);position:relative;z-index:1}
 .dcta h3{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.7rem}
 .dctaRow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.dctaP{color:var(--dim);max-width:560px;margin:-.6rem auto 1.6rem;line-height:1.6}
+.upSvcs{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:0 auto 1.8rem;max-width:860px;text-align:left}
+.upSvc{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg);transition:border-color .2s,transform .2s}
+.upSvc:hover{border-color:var(--accent);transform:translateY(-2px)}
+.upSvc b{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.8rem;font-weight:500}
+@media(max-width:720px){.upSvcs{grid-template-columns:1fr}}
 .notfound{padding:11rem 0 8rem;text-align:center;position:relative;z-index:1}
 .notfound .dtitle{max-width:none;margin-bottom:2rem}
 @media(max-width:920px){
@@ -226,7 +232,7 @@ a{color:inherit;text-decoration:none}
 
 <section class="dsec"><div class="wrap"><div class="dsech mono">{{t.secStack}}</div><div class="stackTags"><sc-for list="{{proj.techFull}}" as="tf" hint-placeholder-count="6"><span class="tag mono">{{tf}}</span></sc-for></div></div></section>
 
-<section class="dsec"><div class="wrap"><div class="dcta"><h3>{{t.ctaTitle}}</h3><div class="dctaRow"><a class="btn btnP" href="https://www.upwork.com/freelancers/agustinperalta" target="_blank" rel="noopener">{{t.ctaBtn}} →</a><a class="btn btnO" href="/proyectos">{{t.back}}</a></div></div></div></section>
+<section class="dsec"><div class="wrap"><div class="dcta"><h3>{{t.ctaTitle}}</h3><p class="dctaP">{{t.ctaMsg}}</p><div class="upSvcs"><a class="upSvc" href="https://www.upwork.com/services/product/development-it-an-n8n-workflow-automation-for-your-crm-forms-email-and-sheets-2104901857369884325" target="_blank" rel="noopener"><span>{{t.upN}}</span><b>{{t.upFrom}} $190</b></a><a class="upSvc" href="https://www.upwork.com/services/product/development-it-an-ai-whatsapp-agent-for-customer-service-with-the-official-cloud-api-2104903909913353811" target="_blank" rel="noopener"><span>{{t.upW}}</span><b>{{t.upFrom}} $460</b></a><a class="upSvc" href="https://www.upwork.com/services/product/consulting-hr-a-business-process-automation-audit-with-a-prioritized-action-plan-2104904529895557158" target="_blank" rel="noopener"><span>{{t.upA}}</span><b>{{t.upFrom}} $115</b></a></div><div class="dctaRow"><a class="btn btnP" href="https://www.upwork.com/freelancers/agustinperalta" target="_blank" rel="noopener">{{t.ctaBtn}} →</a><a class="btn btnO" href="/proyectos">{{t.back}}</a></div></div></div></section>
 
 <sc-if value="{{zoomOpen}}" hint-placeholder-val="{{false}}">
 <div class="lbox" onClick="{{closeZoom}}">
@@ -252,13 +258,13 @@ class Component extends DCLogic {
       back:"volver a proyectos",mYear:"Año",mClient:"Cliente",mDuration:"Duración",mSaved:"Tiempo ahorrado",mMoney:"Ahorro estimado",
       secMetrics:"En números",secFeatures:"Qué hace",secProcess:"Proceso",secResults:"Resultados",secLearnings:"Aprendizajes",secStack:"Stack técnico",
       secGallery:"Por dentro",zoomIn:"Ampliar captura",
-      ctaTitle:"¿Tienes un proyecto en mente?",ctaBtn:"Contrátame en Upwork",notFound:"Proyecto no encontrado",liveDefault:"Ver en vivo",
+      ctaTitle:"¿Tienes un proyecto en mente?",ctaBtn:"Ver mi perfil en Upwork",ctaMsg:"Contrátame por Upwork con un servicio de precio fijo o mira mi perfil con reseñas.",upFrom:"desde",upN:"Automatización con n8n",upW:"Agente de IA para WhatsApp",upA:"Auditoría de procesos",notFound:"Proyecto no encontrado",liveDefault:"Ver en vivo",
       footerText:"Diseñado y desarrollado por Agustin Peralta"},
     en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
       back:"back to work",mYear:"Year",mClient:"Client",mDuration:"Duration",mSaved:"Time saved",mMoney:"Estimated savings",
       secMetrics:"By the numbers",secFeatures:"What it does",secProcess:"Process",secResults:"Results",secLearnings:"Learnings",secStack:"Tech stack",
       secGallery:"Inside the product",zoomIn:"Enlarge screenshot",
-      ctaTitle:"Have a project in mind?",ctaBtn:"Hire me on Upwork",notFound:"Project not found",liveDefault:"View live",
+      ctaTitle:"Have a project in mind?",ctaBtn:"View my Upwork profile",ctaMsg:"Hire me on Upwork with a fixed-price service or check my profile and reviews.",upFrom:"from",upN:"n8n workflow automation",upW:"AI agent for WhatsApp",upA:"Process automation audit",notFound:"Project not found",liveDefault:"View live",
       footerText:"Designed & built by Agustin Peralta"}
   };
 

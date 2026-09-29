@@ -168,6 +168,12 @@ a{color:inherit;text-decoration:none}
 .dcta{border:1px solid var(--line);border-radius:20px;padding:3.2rem 2rem;text-align:center;background:color-mix(in srgb,var(--panel) 65%,transparent);position:relative;z-index:1}
 .dcta h3{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.6rem}
 .dctaRow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.dctaP{color:var(--dim);max-width:560px;margin:-.6rem auto 1.6rem;line-height:1.6}
+.upSvcs{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:0 auto 1.8rem;max-width:860px;text-align:left}
+.upSvc{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg);transition:border-color .2s,transform .2s}
+.upSvc:hover{border-color:var(--accent);transform:translateY(-2px)}
+.upSvc b{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.8rem;font-weight:500}
+@media(max-width:720px){.upSvcs{grid-template-columns:1fr}}
 .notfound{padding:11rem 0 8rem;text-align:center;position:relative;z-index:1}
 @media(max-width:920px){
 .navlinks{position:fixed;top:0;right:0;width:270px;height:100vh;flex-direction:column;background:var(--bg2);border-left:1px solid var(--line);padding:5.5rem 2rem;gap:1.4rem;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
@@ -225,7 +231,7 @@ a{color:inherit;text-decoration:none}
 
 <sc-if value="{{g.hasTools}}" hint-placeholder-val="{{false}}"><section class="dsec"><div class="rd"><div class="dsech mono">{{t.secTools}}</div><div class="stackTags"><sc-for list="{{g.tools}}" as="tl" hint-placeholder-count="5"><span class="tag mono">{{tl}}</span></sc-for></div></div></section></sc-if>
 
-<section class="dsec"><div class="rd"><div class="dcta"><h3>{{t.ctaTitle}}</h3><div class="dctaRow"><a class="btn btnP" href="https://www.upwork.com/freelancers/agustinperalta" target="_blank" rel="noopener" data-hablemos="1">{{t.ctaBtn}} →</a><a class="btn btnO" href="index.html#guias">{{t.back}}</a></div></div></div></section>
+<section class="dsec"><div class="rd"><div class="dcta"><h3>{{t.ctaTitle}}</h3><p class="dctaP">{{t.ctaMsg}}</p><div class="upSvcs"><a class="upSvc" href="https://www.upwork.com/services/product/development-it-an-n8n-workflow-automation-for-your-crm-forms-email-and-sheets-2104901857369884325" target="_blank" rel="noopener"><span>{{t.upN}}</span><b>{{t.upFrom}} $190</b></a><a class="upSvc" href="https://www.upwork.com/services/product/development-it-an-ai-whatsapp-agent-for-customer-service-with-the-official-cloud-api-2104903909913353811" target="_blank" rel="noopener"><span>{{t.upW}}</span><b>{{t.upFrom}} $460</b></a><a class="upSvc" href="https://www.upwork.com/services/product/consulting-hr-a-business-process-automation-audit-with-a-prioritized-action-plan-2104904529895557158" target="_blank" rel="noopener"><span>{{t.upA}}</span><b>{{t.upFrom}} $115</b></a></div><div class="dctaRow"><a class="btn btnP" href="https://www.upwork.com/freelancers/agustinperalta" target="_blank" rel="noopener" data-hablemos="1">{{t.ctaBtn}} →</a><a class="btn btnO" href="index.html#guias">{{t.back}}</a></div></div></div></section>
 </sc-if>
 
 <footer class="footer"><div class="wrap footIn">
@@ -240,12 +246,12 @@ class Component extends DCLogic {
     es:{navAbout:"sobre-mí",navExp:"experiencia",navWork:"proyectos",navGuides:"guías",navMetrics:"métricas",navContact:"contacto",
       back:"volver a guías",mDate:"Publicado",mReading:"Lectura",
       secReq:"Requisitos",secPros:"Pros y contras",prosLabel:"A favor",consLabel:"En contra",secTools:"Herramientas",
-      ctaTitle:"¿Te sirvió esta guía?",ctaBtn:"Contrátame en Upwork",notFound:"Guía no encontrada",dlDefault:"Descargar guía",
+      ctaTitle:"¿Te sirvió esta guía?",ctaBtn:"Ver mi perfil en Upwork",ctaMsg:"Contrátame por Upwork con un servicio de precio fijo o mira mi perfil con reseñas.",upFrom:"desde",upN:"Automatización con n8n",upW:"Agente de IA para WhatsApp",upA:"Auditoría de procesos",notFound:"Guía no encontrada",dlDefault:"Descargar guía",
       footerText:"Diseñado y desarrollado por Agustin Peralta"},
     en:{navAbout:"about",navExp:"experience",navWork:"work",navGuides:"guides",navMetrics:"metrics",navContact:"contact",
       back:"back to guides",mDate:"Published",mReading:"Reading",
       secReq:"Requirements",secPros:"Pros & cons",prosLabel:"Pros",consLabel:"Cons",secTools:"Tools",
-      ctaTitle:"Found this useful?",ctaBtn:"Hire me on Upwork",notFound:"Guide not found",dlDefault:"Download guide",
+      ctaTitle:"Found this useful?",ctaBtn:"View my Upwork profile",ctaMsg:"Hire me on Upwork with a fixed-price service or check my profile and reviews.",upFrom:"from",upN:"n8n workflow automation",upW:"AI agent for WhatsApp",upA:"Process automation audit",notFound:"Guide not found",dlDefault:"Download guide",
       footerText:"Designed & built by Agustin Peralta"}
   };
 
