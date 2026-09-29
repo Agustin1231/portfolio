@@ -8,6 +8,7 @@
 //   imageCaption, requirements[] (lista "Requisitos"), sections[{title,
 //   content:[{type:"lead"|"paragraph", text}]}], pros[], cons[], tools[]
 //   downloadFile + downloadLabel (opcional): archivo .md descargable
+//   references[] (opcional): [{t: título, s: autor y año, u: url}] se listan como "Referencias" con enlace
 //   seoTitle + seoDescription (opcional): <title> y meta description cortos para Google
 //   (título hasta 60, descripción 120-160). Si faltan se usan title y description.
 //   visible: true para mostrar. Si NINGUNA está visible, #guias muestra
@@ -2136,6 +2137,282 @@ var GUIDES_DATA = [
             "Monitoreo",
             "Telegram",
             "Agentes de IA"
+        ]
+    },
+    {
+        "id": "arnes-o-modelo-mas-capaz",
+        "seoTitle": "Arnés o modelo más capaz, qué conviene en tu empresa",
+        "seoDescription": "Un modelo más barato dentro de un arnés bien diseñado muchas veces rinde igual que el modelo de vanguardia. Costos, estudios y cuándo usar cada uno.",
+        "number": "15",
+        "visible": true,
+        "category": "Costos y arquitectura",
+        "title": "Arnés o modelo más capaz, qué le conviene de verdad a tu empresa",
+        "subtitle": "Muchas empresas pagan el modelo de vanguardia para todo, incluso para tareas que un modelo diez veces más barato hace igual de bien si le armas bien el entorno. Qué es el arnés, qué dicen los estudios, qué he visto en producción y cómo decidir tarea por tarea.",
+        "description": "Comparación entre usar el modelo de IA más capaz con pocas restricciones o un modelo más barato dentro de un arnés bien diseñado (pasos fijos, herramientas claras y validaciones). Costos reales por token, lo que muestran FrugalGPT, RouteLLM, Agentless y SWE-agent, un caso en producción y una forma práctica de decidir cuál usar en cada tarea.",
+        "image": "",
+        "imageCaption": "",
+        "date": "Septiembre 2026",
+        "readingTime": "9 min de lectura",
+        "urlLabel": "Leer guía",
+        "requirements": [
+            "Una lista de las tareas que hoy le pasas a un modelo de IA, aunque sea aproximada. La decisión se toma tarea por tarea, no para toda la empresa.",
+            "Lo que te cuesta cada una al mes. Casi todos los proveedores muestran el gasto por clave o por proyecto, y con eso alcanza para empezar.",
+            "Un puñado de casos reales de cada tarea, veinte o treinta, con la respuesta que consideras buena. Sin eso no hay forma de saber si el modelo barato rinde igual.",
+            "Alguien que pueda escribir y mantener algo de código o flujos en una herramienta como n8n. El arnés no se arma solo."
+        ],
+        "sections": [
+            {
+                "title": "El modelo más caro no es la decisión más segura",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Cuando una empresa empieza con IA, lo normal es escoger el mejor modelo que haya y usarlo para todo. Parece la decisión prudente, y muchas veces es la más cara sin necesidad."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "La lógica se entiende. Si el modelo de vanguardia es el que mejor razona, usarlo en todo reduce el riesgo de que algo salga mal. El problema es que la mayoría de lo que una empresa le pide a la IA no exige razonar mucho. Clasificar un correo, sacar los datos de una factura, responder la pregunta número cuarenta sobre horarios o decidir a qué área va un ticket son tareas que se repiten miles de veces con la misma forma."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Para ese tipo de trabajo hay otra opción, que es usar un modelo más chico y más barato, pero meterlo dentro de un entorno bien diseñado que le diga exactamente qué hacer, con qué herramientas y qué respuesta se acepta. A ese entorno en inglés le dicen harness. Yo le digo arnés, y de esa comparación se trata esta guía."
+                    }
+                ]
+            },
+            {
+                "title": "Qué es el arnés",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El arnés es todo lo que rodea al modelo. Las instrucciones, las herramientas que puede usar, los pasos que ya están fijos en código y las reglas que revisan su respuesta antes de que llegue a alguien."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Un modelo con pocas restricciones recibe un objetivo y decide él mismo cómo cumplirlo, qué herramienta usar, en qué orden y cuándo parar. Un modelo dentro de un arnés estricto no decide casi nada de eso. El camino ya está trazado y al modelo solo se le pide la parte que de verdad necesita lenguaje, por ejemplo entender qué quiso decir el cliente o redactar la respuesta."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Anthropic hace una distinción parecida en su guía para construir agentes. Llama flujos de trabajo a los sistemas donde el modelo y las herramientas siguen caminos definidos en código, y agentes a los sistemas donde el modelo dirige su propio proceso. Su recomendación es buscar la solución más simple posible y solo agregar complejidad cuando haga falta, porque los sistemas más autónomos suelen cambiar latencia y costo por mejor desempeño, y ese cambio no siempre vale la pena."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En la práctica un arnés bien hecho tiene cuatro piezas. Pasos fijos para todo lo que se puede decidir sin el modelo, herramientas con entradas y salidas claras, una respuesta con formato definido que se pueda revisar con código, y una salida de emergencia que manda el caso a un modelo más capaz o a una persona cuando algo no cuadra."
+                    }
+                ]
+            },
+            {
+                "title": "La diferencia de precio es de diez veces o más",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Antes de hablar de calidad vale la pena mirar cuánto separa a un modelo de otro, porque la brecha es más grande de lo que la gente cree."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Con los precios publicados por Anthropic en septiembre de 2026, Claude Haiku 4.5 cuesta 1 dólar por millón de tokens de entrada y 5 por millón de salida. Claude Opus 5.5 cuesta 4 y 20, y Claude Fable 5.1, el más capaz de la familia, cuesta 10 y 50. Entre el más chico y el más grande hay diez veces de diferencia por cada palabra que entra y que sale."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Esa diferencia no es rara ni exclusiva de un proveedor. El estudio FrugalGPT, de investigadores de Stanford, revisó los precios de las APIs de modelos más usadas en 2023 y encontró que entre unas y otras las tarifas podían variar hasta cien veces. En una tarea que corre diez mil veces al mes, escoger bien el modelo es la diferencia entre un gasto que nadie nota y uno que obliga a apagar el proyecto."
+                    }
+                ]
+            },
+            {
+                "title": "Lo que dicen los estudios",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Hay varios trabajos serios que midieron justo esto, y apuntan en la misma dirección. El diseño alrededor del modelo pesa tanto como el modelo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El mismo FrugalGPT propuso una cascada, que es probar primero con un modelo barato, revisar si la respuesta es confiable y solo subir a uno más caro cuando no lo es. En sus experimentos esa cascada igualó el desempeño de GPT-4, el mejor modelo de ese momento, con hasta 98 % menos de costo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "RouteLLM, un trabajo de 2024 del equipo detrás de LMSYS, entrenó enrutadores que deciden en cada consulta si va al modelo fuerte o al débil. En pruebas conocidas redujeron el costo a menos de la mitad en algunos casos sin perder calidad en las respuestas."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En programación el resultado es todavía más claro. SWE-agent, de Princeton, mostró que diseñarle al modelo una interfaz propia para leer y editar código mejoraba mucho su capacidad de resolver problemas reales, sin cambiar de modelo. Y Agentless, de la Universidad de Illinois, resolvió problemas de GitHub con un proceso fijo de tres pasos, ubicar el error, repararlo y validar el parche, sin dejar que el modelo decidiera qué hacer después. Con eso logró el mejor resultado entre los agentes de código abierto del momento, 32 % de los problemas de SWE-bench Lite resueltos, con un costo de unos 70 centavos de dólar por problema."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Otro estudio de Princeton, AI Agents That Matter, lo dijo sin rodeos. Al medir los agentes solo por precisión y no por costo, los mejores terminaron siendo innecesariamente complejos y caros, y la comunidad sacó conclusiones equivocadas sobre de dónde venían las mejoras. Cuando se mide también el costo, varias soluciones simples quedan a la par de las más sofisticadas."
+                    }
+                ]
+            },
+            {
+                "title": "Lo que he visto en producción",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "En los sistemas que opero la mayor parte del ahorro no vino de negociar precios. Vino de decidir qué modelo atiende cada paso."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El caso más claro es el de una marca de e-commerce en México que pasó de gastar 584 dólares al mes a 54 con la misma operación. Solo en el modelo el gasto bajó de unos 278 dólares al mes a unos 12. El modelo caro salió y entró uno más barato, pero no a secas. Se le topó el contexto a doce turnos de historial, se le dio un prompt maestro con las reglas del negocio y cada respuesta queda registrada con reglas que la revisan. Ese entorno es el que permite que un modelo más barato atienda bien, y cada respuesta sale en promedio a una décima de centavo de dólar. El desglose completo está en la guía del caso de 584 a 54 dólares."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En mis flujos de n8n aplico el mismo criterio. Para clasificar uso el modelo más liviano disponible, para redactar uno intermedio, y los modelos grandes los dejo para las pocas tareas donde de verdad hay que razonar, como diagnosticar por qué falló algo que nunca había fallado. El arnés es lo que permite ese reparto, porque cada paso tiene una entrada y una salida clara y se puede cambiar el modelo de un paso sin tocar los demás."
+                    }
+                ]
+            },
+            {
+                "title": "Cuándo gana el arnés con un modelo más chico",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El arnés rinde más cuando la tarea es repetitiva, tiene una forma conocida y se puede comprobar si la respuesta quedó bien."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Clasificar, extraer datos de documentos, enrutar solicitudes, responder preguntas frecuentes a partir de una base conocida o llenar un formulario a partir de un correo son el terreno natural. En todas hay miles de casos parecidos, la respuesta correcta se puede describir de antemano y el código puede revisar si el modelo cumplió el formato, si el dato existe o si el valor tiene sentido."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "También gana cuando el volumen es alto. Diez veces de diferencia de precio en cien llamadas al mes no importa. En cien mil sí, y es justo en el volumen alto donde las tareas suelen ser más repetitivas."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y gana cuando necesitas que el sistema se comporte igual todos los días. Un modelo con libertad puede resolver el mismo caso de dos formas distintas en dos días seguidos. Un arnés con pasos fijos hace lo mismo siempre, y eso es lo que permite auditarlo y explicarle a un cliente por qué pasó lo que pasó."
+                    }
+                ]
+            },
+            {
+                "title": "Cuándo vale pagar el modelo más capaz",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El modelo grande con pocas restricciones sigue siendo la mejor opción en otro tipo de trabajo, y no hay que pelearse con eso."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuando la tarea es abierta y cada caso es distinto, como analizar un contrato, investigar un problema que nadie ha visto o planear algo con muchas piezas, no hay un camino que se pueda fijar de antemano. Ahí el valor está justo en que el modelo decida cómo avanzar, y un modelo chico se pierde."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "También conviene cuando todavía no conoces bien el proceso. Mi forma de trabajar es empezar con el modelo más capaz para aprender cómo se resuelve la tarea, qué casos raros aparecen y qué respuesta es la buena. Cuando eso ya está claro, lo convierto en pasos fijos y bajo al modelo más barato que aguante. Construir el arnés antes de entender la tarea es construir sobre supuestos."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y conviene cuando el error cuesta mucho más que el modelo. Si una mala respuesta significa perder un cliente grande o un problema legal, la diferencia de unos centavos por llamada no es el número que hay que cuidar. Aun así el arnés no sobra en ese caso, porque las validaciones y la salida hacia una persona son las que atrapan el error que cualquier modelo termina cometiendo."
+                    }
+                ]
+            },
+            {
+                "title": "La trampa de apretar demasiado",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El arnés también tiene costo, y si se exagera puede terminar siendo más caro que el modelo que querías evitar."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cada paso fijo, cada regla y cada validación es código que alguien tiene que mantener. Si el proceso del negocio cambia cada mes, el arnés se vuelve una lista de parches y la ventaja se va en horas de trabajo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Hay además un riesgo de más largo plazo. Rich Sutton, uno de los investigadores más reconocidos del aprendizaje por refuerzo, escribió en 2019 un ensayo llamado The Bitter Lesson donde muestra que, en setenta años de investigación en IA, los métodos generales que aprovechan más cómputo terminaron ganándoles a los que dependían del conocimiento humano metido a mano. Llevado a este tema, un arnés demasiado rígido puede quedarse viejo cuando salga un modelo que ya hace solo lo que tú tuviste que programar."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Por eso diseño los arneses para que cambiar de modelo sea fácil. El modelo va en un solo lugar, cada paso tiene su prueba con casos reales, y cada cierto tiempo vuelvo a correr esas pruebas con modelos nuevos para ver si ya puedo quitar reglas o bajar de modelo."
+                    }
+                ]
+            },
+            {
+                "title": "Cómo decidirlo en tu empresa",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "La pregunta no es cuál de los dos es mejor en general. Es cuál conviene para cada tarea, y eso se puede medir."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El primer paso es listar las tareas que hoy pasan por IA y cuánto cuesta cada una al mes. Casi siempre dos o tres concentran la mayor parte del gasto, y esas son las que vale la pena revisar primero."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Después, para cada una, separa veinte o treinta casos reales con su respuesta buena y córrelos con el modelo que usas hoy y con uno más barato dentro de un arnés simple, con instrucciones claras, un formato de respuesta fijo y una validación en código. Si el barato acierta igual o casi igual, ya tienes la respuesta."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Si queda un poco por debajo, prueba la cascada. El modelo barato responde primero y, si la validación falla o el caso no encaja, pasa al modelo grande. Así pagas el precio alto solo en la parte difícil, que suele ser una fracción chica del total."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y deja todo listo para volver a medir. Los precios bajan y los modelos chicos mejoran cada pocos meses, así que la decisión de hoy no es para siempre. Lo que sí dura es tener los casos de prueba y un arnés que te deje cambiar de modelo en una tarde."
+                    }
+                ]
+            }
+        ],
+        "pros": [
+            "Un modelo diez veces más barato por token cambia por completo la cuenta en las tareas de alto volumen.",
+            "Los pasos fijos hacen que el sistema se comporte igual todos los días, y eso se puede auditar y explicar.",
+            "Las validaciones en código atrapan errores que cualquier modelo comete, sea chico o grande.",
+            "Con cada paso separado puedes usar el modelo justo en cada uno y cambiarlo sin tocar el resto."
+        ],
+        "cons": [
+            "El arnés es código que hay que construir y mantener. Si el proceso cambia seguido, ese costo se come el ahorro.",
+            "Un arnés muy rígido se puede quedar viejo cuando llega un modelo que ya resuelve solo lo que tú programaste.",
+            "En tareas abiertas y distintas cada vez, un modelo chico se pierde aunque el entorno esté bien hecho.",
+            "Para saber si el modelo barato rinde igual necesitas casos de prueba reales, y armarlos toma tiempo."
+        ],
+        "references": [
+            {
+                "t": "Building effective agents",
+                "s": "Anthropic, diciembre de 2024",
+                "u": "https://www.anthropic.com/engineering/building-effective-agents"
+            },
+            {
+                "t": "Precios de la API de Claude",
+                "s": "Anthropic, documentación oficial, consultada en septiembre de 2026",
+                "u": "https://docs.claude.com/en/docs/about-claude/pricing"
+            },
+            {
+                "t": "FrugalGPT, How to Use Large Language Models While Reducing Cost and Improving Performance",
+                "s": "Chen, Zaharia y Zou, Stanford, 2023",
+                "u": "https://arxiv.org/abs/2305.05176"
+            },
+            {
+                "t": "RouteLLM, Learning to Route LLMs with Preference Data",
+                "s": "Ong y otros, LMSYS y UC Berkeley, 2024",
+                "u": "https://arxiv.org/abs/2406.18665"
+            },
+            {
+                "t": "SWE-agent, Agent-Computer Interfaces Enable Automated Software Engineering",
+                "s": "Yang y otros, Princeton, 2024",
+                "u": "https://arxiv.org/abs/2405.15793"
+            },
+            {
+                "t": "Agentless, Demystifying LLM-based Software Engineering Agents",
+                "s": "Xia y otros, Universidad de Illinois, 2024",
+                "u": "https://arxiv.org/abs/2407.01489"
+            },
+            {
+                "t": "AI Agents That Matter",
+                "s": "Kapoor y otros, Princeton, 2024",
+                "u": "https://arxiv.org/abs/2407.01502"
+            },
+            {
+                "t": "The Bitter Lesson",
+                "s": "Rich Sutton, 2019",
+                "u": "http://www.incompleteideas.net/IncIdeas/BitterLesson.html"
+            },
+            {
+                "t": "De USD 584 a USD 54 al mes, el caso completo",
+                "s": "Guía 12 de este sitio",
+                "u": "/guias/de-584-a-54-dolares-caso-real.html"
+            }
+        ],
+        "tools": [
+            "Agentes de IA",
+            "Claude",
+            "n8n",
+            "Costos y arquitectura",
+            "Validaciones",
+            "Enrutamiento de modelos"
         ]
     }
 ];

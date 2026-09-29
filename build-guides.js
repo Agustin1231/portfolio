@@ -53,6 +53,7 @@ function jsonld(g, url, published) {
   };
   if (g.category) blog.articleSection = g.category;
   if (Array.isArray(g.tools) && g.tools.length) blog.keywords = g.tools.join(", ");
+  if (Array.isArray(g.references) && g.references.length) blog.citation = g.references.filter(r => /^https?:/.test(r.u)).map(r => r.u);
   if (published) { blog.datePublished = published; blog.dateModified = published; }
   graph.push(blog);
   graph.push({
@@ -92,6 +93,11 @@ function sectionsHtml(g) {
   if (g.tools && g.tools.length) {
     const tags = g.tools.map(t => `<span class="tag mono">${esc(t)}</span>`).join("");
     html += `\n<section class="dsec"><div class="rd"><div class="dsech mono">Herramientas</div><div class="stackTags">${tags}</div></div></section>`;
+  }
+  // Fuentes de las cifras y afirmaciones de la guía, con enlace para que el lector las revise.
+  if (g.references && g.references.length) {
+    const lis = g.references.map(r => `<li><a href="${attr(r.u)}"${/^https?:/.test(r.u) ? ' target="_blank" rel="noopener"' : ''}><span class="refT">${esc(r.t)}</span><span class="refS mono">${esc(r.s)}</span></a></li>`).join("");
+    html += `\n<section class="dsec"><div class="rd"><div class="dsech mono">Referencias</div><ul class="refList">${lis}</ul></div></section>`;
   }
   return html;
 }
