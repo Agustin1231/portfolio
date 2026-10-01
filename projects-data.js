@@ -2504,5 +2504,121 @@ var PROJECTS_DATA = [
             { title: "Escribir donde ya miran", text: "Publicar en Drive en vez de en una herramienta propia fue lo que hizo que alguien la leyera." }
         ],
         visible: true
+    },
+    {
+        id: "asistente-personal-de-ia",
+        number: "31",
+        category: "IA y Productividad",
+        title: "Asistente Personal de IA",
+        subtitle: "Un asistente que trabaja todo el día, recuerda el contexto y se encarga de lo repetitivo",
+        description: "Asistente de IA propio que atiende por chat, guarda memoria entre conversaciones y corre tareas programadas por su cuenta, para que el trabajo repetitivo del día a día salga solo y las decisiones queden siempre en manos de quien lo usa.",
+        year: "2026",
+        company: "Proyecto propio",
+        duration: "En operación",
+        hoursSaved: 70,
+        image: "img/proyectos/asistente-personal-de-ia.jpg",
+        imageCaption: "El asistente recibe el pedido por chat, consulta su memoria y ejecuta o programa la tarea",
+        techCard: ["Claude", "Python", "Telegram", "Linux"],
+        techFull: [
+            "Claude",
+            "Python",
+            "Telegram",
+            "Linux",
+            "Cron",
+            "APIs REST"
+        ],
+        metrics: [
+            { label: "Disponibilidad", value: "Todo el día" },
+            { label: "Memoria", value: "Persistente" },
+            { label: "Tareas programadas", value: "Diarias" },
+            { label: "Acciones externas", value: "Con aprobación" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que lo repetitivo del día deje de depender de acordarse de hacerlo." },
+                    { type: "paragraph", text: "Revisar pendientes, armar reportes, ordenar la bandeja y recordar lo que quedó a medias se come horas cada semana. Ninguna de esas tareas es difícil, pero todas compiten con el trabajo que sí necesita atención." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "El asistente vive en un servidor propio y se habla con él por chat, igual que con una persona. Recibe el pedido, lo resuelve y avisa cuando termina." },
+                    { type: "paragraph", text: "Guarda memoria en archivos que él mismo mantiene, así que cada conversación arranca con el contexto de las anteriores y no hay que volver a explicar las preferencias ni el estado de cada proyecto." },
+                    { type: "paragraph", text: "Además de responder, corre tareas programadas por su cuenta, como los reportes de cada mañana, el repaso de pendientes y los recordatorios, y solo escribe cuando hay algo que vale la pena." },
+                    { type: "paragraph", text: "Todo lo que sale hacia afuera, como enviar un correo o publicar algo, pasa primero por aprobación. Lo interno lo resuelve solo y lo externo lo propone." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Memoria entre conversaciones", description: "Recuerda decisiones, preferencias y pendientes, así que no hace falta repetir el contexto cada vez." },
+            { title: "Trabaja sin que se lo pidan", description: "Las tareas programadas salen a su hora y solo avisa cuando hay algo que revisar." },
+            { title: "Aprobación antes de actuar afuera", description: "Correos, publicaciones y cualquier acción externa esperan un sí explícito antes de salir." },
+            { title: "Se conecta con lo que ya se usa", description: "Trabaja sobre el chat, el correo y el gestor de tareas de siempre, sin obligar a cambiar de herramienta." }
+        ],
+        learnings: [
+            { title: "La memoria se escribe, no se supone", text: "Lo que el asistente no deja por escrito se pierde al día siguiente. Guardar cada decisión en un archivo fue lo que lo volvió confiable." },
+            { title: "Menos avisos, mejores avisos", text: "Un asistente que escribe por todo termina ignorado. Avisar solo cuando hay algo accionable fue lo que hizo que se leyeran." },
+            { title: "Lo externo siempre con permiso", text: "La confianza se gana separando lo que puede hacer solo de lo que necesita aprobación, y respetando esa línea sin excepciones." }
+        ],
+        visible: true
+    },
+    {
+        id: "sincronizacion-de-casos-con-el-crm",
+        number: "32",
+        category: "Automatización y Datos",
+        title: "Sincronización de Casos con el CRM",
+        subtitle: "Cada pago y cada cambio de estado del caso queda anotado en la ficha del cliente",
+        description: "Integración entre la plataforma donde se gestionan los casos de los clientes y el CRM del equipo comercial, para que cada pago de etapa, cambio de estado o nota registrada aparezca sola en la ficha del contacto, sin copiar nada a mano.",
+        year: "2025",
+        company: "Cliente B2B",
+        duration: "En operación",
+        image: "img/proyectos/sincronizacion-de-casos-con-el-crm.jpg",
+        imageCaption: "La plataforma de casos avisa del evento y la nota queda en la ficha del contacto en el CRM",
+        techCard: ["n8n", "Supabase", "Webhooks", "CRM"],
+        techFull: [
+            "n8n",
+            "Supabase Edge Functions",
+            "Webhooks",
+            "CRM",
+            "JavaScript"
+        ],
+        metrics: [
+            { label: "Disparo", value: "En tiempo real" },
+            { label: "Eventos", value: "Pagos y estados" },
+            { label: "Destino", value: "Ficha del CRM" },
+            { label: "Carga manual", value: "Ninguna" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que el equipo comercial vea el avance de cada caso sin salir del CRM." },
+                    { type: "paragraph", text: "El avance de los casos vivía en una plataforma y la relación con el cliente en otra. Para saber si alguien ya había pagado una etapa o en qué estado iba su trámite había que abrir las dos, y lo que se copiaba a mano llegaba tarde o no llegaba." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "La plataforma de casos avisa por webhook cada vez que pasa algo relevante, como un pago de etapa, un cambio de estado o una nota del equipo." },
+                    { type: "paragraph", text: "n8n recibe el evento y lo entrega a una función en Supabase que busca al contacto en el CRM por sus datos y escribe la nota en su ficha, con el monto, la etapa y el avance del caso." },
+                    { type: "paragraph", text: "Los eventos del entorno de pruebas se marcan como tales, así que se puede probar la integración sin ensuciar las fichas reales." },
+                    { type: "paragraph", text: "La lógica de negocio vive en la función y no en el flujo, lo que permite cambiar el formato de la nota sin tocar la automatización que recibe los eventos." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Al instante", description: "La nota aparece en el CRM en el mismo momento en que el evento ocurre en la plataforma de casos." },
+            { title: "Contexto completo", description: "Cada nota trae la etapa, el monto, el método de pago y el avance general, no solo un aviso suelto." },
+            { title: "Pruebas aisladas", description: "Los eventos de prueba se distinguen de los reales y no contaminan las fichas de los clientes." },
+            { title: "Lógica desacoplada", description: "El flujo solo recibe y entrega; las reglas viven en una función que se cambia sin tocar n8n." }
+        ],
+        learnings: [
+            { title: "Dos sistemas, una sola ficha", text: "El equipo no iba a abrir otra plataforma. Llevar el dato a donde ya trabajaban fue lo que hizo que se usara." },
+            { title: "El flujo delgado dura más", text: "Dejar n8n como un relevo simple y poner las reglas en una función hizo que los cambios fueran rápidos y sin riesgo." },
+            { title: "Probar sin miedo", text: "Marcar los eventos de prueba desde el origen permitió validar cada cambio contra el CRM real sin dañar datos." }
+        ],
+        visible: true
     }
 ];
