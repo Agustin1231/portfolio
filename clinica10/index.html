@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clínica 10 · Agente de llamadas</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2; --panel:#ffffff; --panel2:#eeece7;
+  --line:#cfcbc2; --line2:#e3e0d9;
+  --fg:#15151a; --dim:#4d4b46; --faint:#6f6c65;
+  --accent:#c8401a; --btnfg:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  background:var(--bg);color:var(--fg);
+  min-height:100vh;line-height:1.65;font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono',monospace}
+::selection{background:var(--accent);color:var(--btnfg)}
+
+.top{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 94%,transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line2);
+}
+.topIn{max-width:800px;margin:0 auto;padding:1rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:1rem;letter-spacing:-.3px;display:flex;align-items:center;gap:.55rem}
+.brand .sq{width:10px;height:10px;background:var(--accent);border-radius:2px;flex:none}
+.stepCount{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--faint);letter-spacing:.4px;white-space:nowrap}
+.bar{height:3px;background:var(--line2)}
+.barFill{height:100%;width:0;background:var(--accent);transition:width .45s cubic-bezier(.4,0,.2,1)}
+
+.wrap{max-width:800px;margin:0 auto;padding:2.6rem 1.4rem 5rem}
+.hero{margin-bottom:2.6rem}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.85rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+h1{font-size:clamp(1.9rem,4.8vw,2.7rem);font-weight:600;letter-spacing:-.02em;line-height:1.18;margin-bottom:1rem}
+.lead{color:var(--dim);font-size:1.14rem;max-width:58ch}
+.note{
+  margin-top:1.4rem;padding:1.05rem 1.2rem;
+  border:1px solid var(--line2);border-left:3px solid var(--accent);
+  border-radius:0 10px 10px 0;background:var(--panel);
+  font-size:1rem;color:var(--dim);
+}
+.note b{color:var(--fg);font-weight:600}
+
+.step{display:none;animation:fade .4s ease}
+.step.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.blockHead{margin-bottom:2.2rem;padding-bottom:1.1rem;border-bottom:1px solid var(--line2)}
+.blockNum{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--faint);letter-spacing:1px;margin-bottom:.5rem}
+.blockTitle{font-size:1.62rem;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.blockSub{color:var(--dim);font-size:1.03rem;margin-top:.55rem}
+
+.f{margin-bottom:2.6rem}
+.f label.q{display:block;font-size:1.18rem;font-weight:600;margin-bottom:.4rem;line-height:1.4}
+.req{color:var(--accent);margin-left:.25rem}
+.help{font-size:1rem;color:var(--faint);margin-bottom:.9rem;line-height:1.55}
+input[type=text],input[type=email],input[type=tel],input[type=number],textarea,select{
+  width:100%;background:var(--panel);color:var(--fg);
+  border:1.5px solid var(--line);border-radius:10px;
+  padding:1rem 1.1rem;font-family:inherit;font-size:1.08rem;
+  transition:border-color .2s,box-shadow .2s;
+}
+textarea{min-height:130px;resize:vertical;line-height:1.65}
+input:focus,textarea:focus,select:focus{
+  outline:none;border-color:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent);
+}
+input::placeholder,textarea::placeholder{color:#9b988f}
+select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%236f6c65' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 1.1rem center}
+
+.opts{display:flex;flex-direction:column;gap:.6rem}
+.opt{
+  display:flex;align-items:flex-start;gap:.85rem;
+  padding:1rem 1.15rem;background:var(--panel);
+  border:1.5px solid var(--line);border-radius:10px;cursor:pointer;
+  transition:border-color .2s,background .2s;font-size:1.06rem;line-height:1.45;
+}
+.opt:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+.opt input{accent-color:var(--accent);margin-top:.28rem;flex:none;width:20px;height:20px;cursor:pointer}
+.opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--panel))}
+.opt.big{flex-direction:column;gap:.4rem;padding:1.2rem 1.25rem}
+.opt.big .oh{display:flex;align-items:center;gap:.85rem;font-weight:600;font-size:1.1rem}
+.opt.big .od{color:var(--dim);font-size:1rem;padding-left:2.05rem;line-height:1.5}
+
+.drop{
+  display:block;border:2px dashed var(--line);border-radius:12px;padding:1.8rem 1rem;
+  text-align:center;color:var(--dim);cursor:pointer;background:var(--panel);
+  transition:border-color .2s,background .2s;font-size:1.04rem;font-weight:500;
+}
+.drop:hover,.drop.over{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,var(--panel))}
+.drop input{display:none}
+.fileList{margin-top:.8rem;display:flex;flex-direction:column;gap:.45rem}
+.fileItem{display:flex;justify-content:space-between;align-items:center;gap:.8rem;font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--dim);background:var(--panel2);border:1px solid var(--line2);border-radius:8px;padding:.6rem .85rem}
+.fileItem button{background:none;border:none;color:var(--faint);cursor:pointer;font-size:1.3rem;line-height:1;padding:0 .3rem}
+.fileItem button:hover{color:var(--accent)}
+
+.rec{margin-top:.8rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.recBtn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:'JetBrains Mono',monospace;font-size:.92rem;
+  padding:.7rem 1.15rem;border-radius:9px;border:1.5px solid var(--line);
+  background:var(--panel);color:var(--dim);cursor:pointer;transition:all .2s;
+}
+.recBtn:hover{border-color:var(--accent);color:var(--accent)}
+.recBtn .mic{width:11px;height:11px;border-radius:50%;background:var(--faint);flex:none;transition:background .2s}
+.recBtn:hover .mic{background:var(--accent)}
+.recBtn.rec-on{border-color:var(--accent);color:var(--accent)}
+.recBtn.rec-on .mic{background:var(--accent);animation:pulseRec 1.1s infinite}
+@keyframes pulseRec{0%{opacity:1}50%{opacity:.25}100%{opacity:1}}
+.recTime{font-family:'JetBrains Mono',monospace;font-size:.92rem;color:var(--faint)}
+.recPlay{display:flex;align-items:center;gap:.6rem;width:100%;margin-top:.55rem}
+.recPlay audio{flex:1;height:38px}
+.recDel{background:none;border:1.5px solid var(--line);color:var(--faint);border-radius:8px;cursor:pointer;padding:.45rem .75rem;font-family:'JetBrains Mono',monospace;font-size:.82rem}
+.recDel:hover{border-color:var(--accent);color:var(--accent)}
+.orText{font-size:.92rem;color:var(--faint)}
+
+.cond{display:none;margin-top:1.2rem;padding-left:1.1rem;border-left:3px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+.cond.on{display:block;animation:fade .3s ease}
+.cond .q{font-size:1.05rem !important;font-weight:500 !important;margin-bottom:.55rem}
+.err{color:var(--accent);font-size:.95rem;margin-top:.5rem;display:none;font-weight:500}
+.f.bad input,.f.bad textarea,.f.bad select{border-color:var(--accent)}
+.f.bad .err{display:block}
+
+.nav{display:flex;gap:.8rem;justify-content:space-between;align-items:center;margin-top:3rem;padding-top:1.7rem;border-top:1px solid var(--line2)}
+.btn{
+  font-family:'JetBrains Mono',monospace;font-size:.98rem;
+  padding:1rem 1.9rem;border-radius:10px;border:1.5px solid var(--line);
+  cursor:pointer;transition:all .22s;background:var(--panel);color:var(--fg);
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:600}
+.btnP:hover{transform:translateY(-2px);box-shadow:0 10px 26px color-mix(in srgb,var(--accent) 30%,transparent)}
+.btnO:hover{border-color:var(--accent);color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.saved{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--faint)}
+
+.done{display:none;text-align:center;padding:4rem 1rem}
+.done.on{display:block;animation:fade .5s ease}
+.doneIcon{width:64px;height:64px;border-radius:50%;border:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1.6rem}
+.done h2{font-size:1.8rem;font-weight:600;margin-bottom:.9rem}
+.done p{color:var(--dim);max-width:48ch;margin:0 auto;font-size:1.08rem}
+
+.foot{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--line2);font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+.foot a{color:var(--faint);text-decoration:none}
+.foot a:hover{color:var(--accent)}
+
+@media(max-width:560px){
+  body{font-size:16px}
+  .wrap{padding:2rem 1.1rem 4rem}
+  .nav{flex-direction:column-reverse;align-items:stretch}
+  .btn{justify-content:center;width:100%}
+  .navMeta{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="topIn">
+    <div class="brand"><span class="sq"></span>agustin.peralta</div>
+    <div class="stepCount mono" id="stepCount">Paso 1</div>
+  </div>
+  <div class="bar"><div class="barFill" id="barFill"></div></div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero" id="hero">
+    <div class="eyebrow">Clínica 10 · Castalla</div>
+    <h1>Contadnos cómo atendéis las llamadas</h1>
+    <p class="lead">Este cuestionario nos ayuda a entender cómo os llegan hoy las llamadas y qué esperáis del agente que las atenderá y del panel donde veréis todo lo que pasa. Son unos 10 minutos. No hace falta contestarlo todo; si una pregunta no aplica, pasad a la siguiente.</p>
+    <div class="note"><b>¿Preferís hablar?</b> En las preguntas largas hay un botón para responder con la voz en vez de escribir. Nosotros lo pasamos a texto.</div>
+    <div class="note"><b>Si algo no lo sabéis, no pasa nada.</b> Todas las preguntas tienen la opción "No lo sé". Es una respuesta útil, no un fallo.</div>
+    <div class="note"><b>Seguridad.</b> No escribáis contraseñas ni claves de acceso a ningún programa. Eso se pide más adelante por un canal seguro.</div>
+  </div>
+
+  <form id="form" novalidate>
+    <section class="step on" data-step="1">
+      <div class="blockHead">
+        <div class="blockNum mono">PANTALLA 1</div>
+        <div class="blockTitle">Quién nos contesta</div>
+        <div class="blockSub">Para saber a quién preguntar si algo no queda claro.</div>
+      </div>
+      <div class="f" data-req>
+        <label class="q" for="q1">Nombre y apellidos<span class="req">*</span></label>
+        <input type="text" id="q1" name="Nombre de quien responde" placeholder="">
+      </div>
+      <div class="f">
+        <label class="q" for="q2">Cargo o función en la clínica</label>
+        <input type="text" id="q2" name="Cargo de quien responde" placeholder="">
+      </div>
+      <div class="f" data-req>
+        <label class="q" for="q3">Teléfono o correo de contacto<span class="req">*</span></label>
+        <input type="text" id="q3" name="Contacto de quien responde" placeholder="">
+      </div>
+    </section>
+
+    <section class="step" data-step="2">
+      <div class="blockHead">
+        <div class="blockNum mono">PANTALLA 2</div>
+        <div class="blockTitle">Las llamadas hoy</div>
+        <div class="blockSub">Cómo entran y quién las atiende ahora mismo.</div>
+      </div>
+      <div class="f">
+        <label class="q">¿Cuántas llamadas recibís en un día normal, más o menos?</label>
+        <div class="opts" data-single="Llamadas al dia">
+          <label class="opt"><input type="radio" name="vol" value="Menos de 20"><span>Menos de 20</span></label>
+          <label class="opt"><input type="radio" name="vol" value="Entre 20 y 50"><span>Entre 20 y 50</span></label>
+          <label class="opt"><input type="radio" name="vol" value="Entre 50 y 100"><span>Entre 50 y 100</span></label>
+          <label class="opt"><input type="radio" name="vol" value="Más de 100"><span>Más de 100</span></label>
+          <label class="opt"><input type="radio" name="vol" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Quién atiende el teléfono hoy?</label>
+        <div class="opts" data-multi="Quien atiende hoy">
+          <label class="opt"><input type="checkbox" value="Recepción"><span>Recepción</span></label>
+          <label class="opt"><input type="checkbox" value="Auxiliares o higienistas"><span>Auxiliares o higienistas</span></label>
+          <label class="opt"><input type="checkbox" value="Los doctores"><span>Los doctores</span></label>
+          <label class="opt"><input type="checkbox" value="Quien esté libre"><span>Quien esté libre en ese momento</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">Cuando nadie puede contestar, ¿qué pasa con la llamada?</label>
+        <div class="opts" data-single="Que pasa con la llamada no atendida">
+          <label class="opt"><input type="radio" name="perd" value="Se pierde"><span>Se pierde</span></label>
+          <label class="opt"><input type="radio" name="perd" value="Salta un buzón de voz"><span>Salta un buzón de voz</span></label>
+          <label class="opt"><input type="radio" name="perd" value="Se desvía a un móvil"><span>Se desvía a un móvil</span></label>
+          <label class="opt"><input type="radio" name="perd" value="Se devuelve la llamada después"><span>Se mira la llamada perdida y se devuelve después</span></label>
+          <label class="opt"><input type="radio" name="perd" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Cuántas llamadas creéis que se quedan sin atender?</label>
+        <div class="opts" data-single="Llamadas sin atender">
+          <label class="opt"><input type="radio" name="sin" value="Casi ninguna"><span>Casi ninguna</span></label>
+          <label class="opt"><input type="radio" name="sin" value="Algunas al día"><span>Algunas al día</span></label>
+          <label class="opt"><input type="radio" name="sin" value="Bastantes, sobre todo en horas punta"><span>Bastantes, sobre todo en horas punta</span></label>
+          <label class="opt"><input type="radio" name="sin" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Por qué os llaman, sobre todo?</label>
+        <div class="help">Marcad todas las que apliquen.</div>
+        <div class="opts" data-multi="Motivos de llamada">
+          <label class="opt"><input type="checkbox" value="Pedir primera cita"><span>Pedir una primera cita</span></label>
+          <label class="opt"><input type="checkbox" value="Cambiar o cancelar cita"><span>Cambiar o cancelar una cita</span></label>
+          <label class="opt"><input type="checkbox" value="Urgencias o dolor"><span>Urgencias o dolor</span></label>
+          <label class="opt"><input type="checkbox" value="Precios y presupuestos"><span>Preguntar precios o un presupuesto</span></label>
+          <label class="opt"><input type="checkbox" value="Financiación"><span>Financiación o formas de pago</span></label>
+          <label class="opt"><input type="checkbox" value="Mutuas y seguros"><span>Mutuas o seguros</span></label>
+          <label class="opt"><input type="checkbox" value="Dudas después de un tratamiento"><span>Dudas después de un tratamiento</span></label>
+          <label class="opt"><input type="checkbox" value="Proveedores y comerciales"><span>Proveedores y comerciales</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q" for="q10">¿Qué es lo que más os molesta de cómo funcionan hoy las llamadas?</label>
+        <textarea id="q10" name="Lo que mas molesta de las llamadas hoy" placeholder=""></textarea>
+      </div>
+    </section>
+
+    <section class="step" data-step="3">
+      <div class="blockHead">
+        <div class="blockNum mono">PANTALLA 3</div>
+        <div class="blockTitle">Qué debe hacer el agente</div>
+        <div class="blockSub">Hasta dónde queréis que llegue.</div>
+      </div>
+      <div class="f" data-req>
+        <label class="q">¿Qué queréis que haga el agente de llamadas?<span class="req">*</span></label>
+        <div class="opts" data-single="Alcance del agente" data-cond="c-agenda|Atender, cribar y además dar la cita|Atender, cribar, dar cita y también llamar a pacientes">
+          <label class="opt big"><span class="oh"><input type="radio" name="alc" value="Atender y cribar"><span>Atender y cribar</span></span><span class="od">Contesta, entiende qué quiere el paciente, toma sus datos y lo deja apuntado para que el equipo le llame.</span></label>
+          <label class="opt big"><span class="oh"><input type="radio" name="alc" value="Atender, cribar y además dar la cita"><span>Atender, cribar y además dar la cita</span></span><span class="od">Lo anterior y, si hay hueco, deja la cita puesta en la agenda.</span></label>
+          <label class="opt big"><span class="oh"><input type="radio" name="alc" value="Atender, cribar, dar cita y también llamar a pacientes"><span>Todo lo anterior y también llamar</span></span><span class="od">Además hace llamadas salientes, por ejemplo recordatorios de cita o seguimiento de presupuestos.</span></label>
+          <label class="opt big"><span class="oh"><input type="radio" name="alc" value="No lo tenemos claro"><span>No lo tenemos claro</span></span><span class="od">Lo vemos juntos en la reunión.</span></label>
+        </div>
+        <div class="cond" id="c-agenda">
+          <label class="q">Para dar citas, ¿qué reglas hay que respetar?</label>
+          <div class="opts" data-multi="Reglas para dar citas">
+            <label class="opt"><input type="checkbox" value="Cada tratamiento dura distinto"><span>Cada tratamiento dura un tiempo distinto</span></label>
+            <label class="opt"><input type="checkbox" value="Cada doctor tiene sus días"><span>Cada doctor tiene sus días y sus tratamientos</span></label>
+            <label class="opt"><input type="checkbox" value="Huecos reservados para urgencias"><span>Hay huecos reservados para urgencias</span></label>
+            <label class="opt"><input type="checkbox" value="Primera visita con un doctor concreto"><span>La primera visita siempre la hace un doctor concreto</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Cuándo debe contestar el agente?</label>
+        <div class="opts" data-multi="Cuando contesta el agente">
+          <label class="opt"><input type="checkbox" value="Siempre"><span>Siempre, en todas las llamadas</span></label>
+          <label class="opt"><input type="checkbox" value="Fuera del horario de la clínica"><span>Fuera del horario de la clínica</span></label>
+          <label class="opt"><input type="checkbox" value="Cuando recepción está ocupada"><span>Cuando recepción está ocupada o no contesta</span></label>
+          <label class="opt"><input type="checkbox" value="Fines de semana y festivos"><span>Fines de semana y festivos</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Qué datos debe recoger de cada llamada?</label>
+        <div class="opts" data-multi="Datos que recoge el agente">
+          <label class="opt"><input type="checkbox" value="Nombre y teléfono"><span>Nombre y teléfono</span></label>
+          <label class="opt"><input type="checkbox" value="Si es paciente nuevo o ya es paciente"><span>Si es paciente nuevo o ya es paciente</span></label>
+          <label class="opt"><input type="checkbox" value="Tratamiento que le interesa"><span>Tratamiento que le interesa</span></label>
+          <label class="opt"><input type="checkbox" value="Si es urgencia o tiene dolor"><span>Si es urgencia o tiene dolor</span></label>
+          <label class="opt"><input type="checkbox" value="Mutua o seguro"><span>Mutua o seguro</span></label>
+          <label class="opt"><input type="checkbox" value="Día y hora que le viene bien"><span>Día y hora que le viene bien</span></label>
+          <label class="opt"><input type="checkbox" value="Cómo nos conoció"><span>Cómo nos conoció</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">Si llama alguien con una urgencia o con dolor, ¿qué debe hacer?</label>
+        <div class="opts" data-single="Que hacer con una urgencia">
+          <label class="opt"><input type="radio" name="urg" value="Pasar la llamada a una persona"><span>Pasar la llamada a una persona de la clínica</span></label>
+          <label class="opt"><input type="radio" name="urg" value="Avisar al equipo al momento"><span>Tomar los datos y avisar al equipo al momento</span></label>
+          <label class="opt"><input type="radio" name="urg" value="Dar cita de urgencia"><span>Darle directamente un hueco de urgencia</span></label>
+          <label class="opt"><input type="radio" name="urg" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Puede hablar de precios?</label>
+        <div class="opts" data-single="Puede hablar de precios">
+          <label class="opt"><input type="radio" name="pre" value="Sí, con nuestra lista de precios"><span>Sí, con nuestra lista de precios</span></label>
+          <label class="opt"><input type="radio" name="pre" value="Solo precios orientativos"><span>Solo precios orientativos o desde</span></label>
+          <label class="opt"><input type="radio" name="pre" value="No, nunca precios"><span>No, los precios los da siempre una persona</span></label>
+          <label class="opt"><input type="radio" name="pre" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿En qué idiomas debe atender?</label>
+        <div class="opts" data-multi="Idiomas del agente">
+          <label class="opt"><input type="checkbox" value="Castellano"><span>Castellano</span></label>
+          <label class="opt"><input type="checkbox" value="Valenciano"><span>Valenciano</span></label>
+          <label class="opt"><input type="checkbox" value="Inglés"><span>Inglés</span></label>
+          <label class="opt"><input type="checkbox" value="Otro"><span>Otro</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Queréis que el mismo agente conteste también el WhatsApp?</label>
+        <div class="opts" data-single="Tambien WhatsApp">
+          <label class="opt"><input type="radio" name="wa" value="Sí, desde el principio"><span>Sí, desde el principio</span></label>
+          <label class="opt"><input type="radio" name="wa" value="Más adelante"><span>Más adelante</span></label>
+          <label class="opt"><input type="radio" name="wa" value="No"><span>No, solo llamadas</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="4">
+      <div class="blockHead">
+        <div class="blockNum mono">PANTALLA 4</div>
+        <div class="blockTitle">Teléfono y agenda</div>
+        <div class="blockSub">Con qué tiene que conectarse el agente.</div>
+      </div>
+      <div class="f">
+        <label class="q">¿Qué tipo de línea tenéis?</label>
+        <div class="opts" data-single="Tipo de linea telefonica">
+          <label class="opt"><input type="radio" name="lin" value="Fijo normal"><span>Un fijo normal</span></label>
+          <label class="opt"><input type="radio" name="lin" value="Centralita"><span>Una centralita con varias extensiones</span></label>
+          <label class="opt"><input type="radio" name="lin" value="Móvil"><span>Un móvil</span></label>
+          <label class="opt"><input type="radio" name="lin" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div style="margin-top:.9rem">
+          <input type="text" name="Operador de telefonia" placeholder="¿Con qué compañía? Movistar, Vodafone, Orange...">
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Es importante seguir con el mismo número de teléfono?</label>
+        <div class="opts" data-single="Mantener el mismo numero">
+          <label class="opt"><input type="radio" name="num" value="Sí, imprescindible"><span>Sí, es imprescindible</span></label>
+          <label class="opt"><input type="radio" name="num" value="Nos da igual"><span>Nos da igual</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Con qué programa lleváis la agenda y las fichas de pacientes?</label>
+        <div class="opts" data-single="Programa de gestion de la clinica" data-cond="c-prog-otro|Otro">
+          <label class="opt"><input type="radio" name="prog" value="Gesden"><span>Gesden</span></label>
+          <label class="opt"><input type="radio" name="prog" value="Clinic Cloud"><span>Clinic Cloud</span></label>
+          <label class="opt"><input type="radio" name="prog" value="Ortokit"><span>Ortokit</span></label>
+          <label class="opt"><input type="radio" name="prog" value="Dentalink"><span>Dentalink</span></label>
+          <label class="opt"><input type="radio" name="prog" value="Otro"><span>Otro</span></label>
+          <label class="opt"><input type="radio" name="prog" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+        <div class="cond" id="c-prog-otro">
+          <input type="text" name="Otro programa de gestion" placeholder="¿Cuál?">
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">Ese programa, ¿cómo lo usáis?</label>
+        <div class="opts" data-single="Como se usa el programa">
+          <label class="opt"><input type="radio" name="nube" value="Desde el navegador, en la nube"><span>Desde el navegador, entrando con usuario y contraseña</span></label>
+          <label class="opt"><input type="radio" name="nube" value="Instalado en los ordenadores de la clínica"><span>Instalado en los ordenadores de la clínica</span></label>
+          <label class="opt"><input type="radio" name="nube" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="5">
+      <div class="blockHead">
+        <div class="blockNum mono">PANTALLA 5</div>
+        <div class="blockTitle">El panel de control</div>
+        <div class="blockSub">Lo que queréis ver de todas las llamadas.</div>
+      </div>
+      <div class="f">
+        <label class="q">¿Qué queréis ver en el panel?</label>
+        <div class="opts" data-multi="Que mostrar en el panel">
+          <label class="opt"><input type="checkbox" value="Listado de llamadas con fecha y duración"><span>El listado de llamadas con fecha y duración</span></label>
+          <label class="opt"><input type="checkbox" value="Resumen de cada llamada"><span>Un resumen de cada llamada</span></label>
+          <label class="opt"><input type="checkbox" value="Transcripción completa"><span>La transcripción completa</span></label>
+          <label class="opt"><input type="checkbox" value="Grabación de audio"><span>La grabación de audio</span></label>
+          <label class="opt"><input type="checkbox" value="Ficha de cada paciente con sus llamadas"><span>La ficha de cada paciente con todas sus llamadas</span></label>
+          <label class="opt"><input type="checkbox" value="Tratamiento o motivo de la llamada"><span>El tratamiento o motivo de cada llamada</span></label>
+          <label class="opt"><input type="checkbox" value="Estado de cada caso"><span>El estado de cada caso (pendiente de llamar, citado, descartado)</span></label>
+          <label class="opt"><input type="checkbox" value="Estadísticas"><span>Estadísticas (llamadas por día, motivos, cuántas acaban en cita)</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Cuántas personas usarían el panel?</label>
+        <div class="opts" data-single="Personas que usan el panel">
+          <label class="opt"><input type="radio" name="usu" value="1 o 2"><span>1 o 2</span></label>
+          <label class="opt"><input type="radio" name="usu" value="Entre 3 y 5"><span>Entre 3 y 5</span></label>
+          <label class="opt"><input type="radio" name="usu" value="Más de 5"><span>Más de 5</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">Cuando una llamada necesita que alguien actúe, ¿cómo queréis enteraros?</label>
+        <div class="opts" data-multi="Como avisar al equipo">
+          <label class="opt"><input type="checkbox" value="Aviso en el panel"><span>Con un aviso en el panel</span></label>
+          <label class="opt"><input type="checkbox" value="WhatsApp"><span>Por WhatsApp</span></label>
+          <label class="opt"><input type="checkbox" value="Correo"><span>Por correo</span></label>
+          <label class="opt"><input type="checkbox" value="Resumen diario"><span>Con un resumen al final del día</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">Los datos de las llamadas, ¿tienen que pasar también a vuestro programa de gestión?</label>
+        <div class="opts" data-single="Pasar datos al programa de gestion">
+          <label class="opt"><input type="radio" name="sync" value="Sí, automáticamente"><span>Sí, automáticamente</span></label>
+          <label class="opt"><input type="radio" name="sync" value="Con el panel nos basta"><span>No, con el panel nos basta</span></label>
+          <label class="opt"><input type="radio" name="sync" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="6">
+      <div class="blockHead">
+        <div class="blockNum mono">PANTALLA 6</div>
+        <div class="blockTitle">Datos de pacientes</div>
+        <div class="blockSub">Son datos de salud, así que conviene dejarlo claro desde el principio.</div>
+      </div>
+      <div class="f">
+        <label class="q">¿Se pueden grabar las llamadas?</label>
+        <div class="opts" data-single="Grabacion de llamadas">
+          <label class="opt"><input type="radio" name="grab" value="Sí, avisando al paciente"><span>Sí, avisando al paciente al empezar</span></label>
+          <label class="opt"><input type="radio" name="grab" value="Solo la transcripción, sin audio"><span>Solo guardar el texto, sin el audio</span></label>
+          <label class="opt"><input type="radio" name="grab" value="No lo sé"><span>No lo sé, lo vemos juntos</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Cuánto tiempo hay que guardar las llamadas?</label>
+        <div class="opts" data-single="Tiempo de conservacion">
+          <label class="opt"><input type="radio" name="cons" value="Unos meses"><span>Unos meses</span></label>
+          <label class="opt"><input type="radio" name="cons" value="Un año"><span>Un año</span></label>
+          <label class="opt"><input type="radio" name="cons" value="Lo que marque la ley"><span>Lo que marque la ley</span></label>
+          <label class="opt"><input type="radio" name="cons" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Tenéis a alguien o una empresa que os lleve la protección de datos?</label>
+        <div class="opts" data-single="Responsable de proteccion de datos">
+          <label class="opt"><input type="radio" name="dpo" value="Sí, una empresa externa"><span>Sí, una empresa externa</span></label>
+          <label class="opt"><input type="radio" name="dpo" value="Sí, alguien de la clínica"><span>Sí, alguien de la clínica</span></label>
+          <label class="opt"><input type="radio" name="dpo" value="No"><span>No</span></label>
+          <label class="opt"><input type="radio" name="dpo" value="No lo sé"><span>No lo sé</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="7">
+      <div class="blockHead">
+        <div class="blockNum mono">PANTALLA 7</div>
+        <div class="blockTitle">Lo que esperáis conseguir</div>
+        <div class="blockSub">Para saber cómo vamos a medir que funciona.</div>
+      </div>
+      <div class="f">
+        <label class="q">Si mañana funcionara, ¿qué sería lo más importante para vosotros?</label>
+        <div class="opts" data-single="Prioridad principal">
+          <label class="opt"><input type="radio" name="prio" value="No perder ninguna llamada"><span>No perder ninguna llamada</span></label>
+          <label class="opt"><input type="radio" name="prio" value="Quitar carga a recepción"><span>Quitar carga a recepción</span></label>
+          <label class="opt"><input type="radio" name="prio" value="Conseguir más primeras visitas"><span>Conseguir más primeras visitas</span></label>
+          <label class="opt"><input type="radio" name="prio" value="Saber qué pide la gente"><span>Saber qué pide la gente y por qué llama</span></label>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q" for="q70">¿Cuánto os deja de media un paciente nuevo?</label>
+        <div class="help">Una cifra aproximada nos sirve para calcular cuánto cuesta cada llamada perdida. Si no queréis darla, dejadla en blanco.</div>
+        <input type="text" id="q70" name="Valor medio de un paciente nuevo" placeholder="">
+      </div>
+      <div class="f">
+        <label class="q">¿Habéis probado antes algo parecido?</label>
+        <div class="opts" data-single="Intentos previos" data-cond="c-intento|Sí y no funcionó|Sí y lo seguimos usando">
+          <label class="opt"><input type="radio" name="int" value="Sí y no funcionó"><span>Sí, y no funcionó</span></label>
+          <label class="opt"><input type="radio" name="int" value="Sí y lo seguimos usando"><span>Sí, y lo seguimos usando</span></label>
+          <label class="opt"><input type="radio" name="int" value="Nunca"><span>Nunca</span></label>
+        </div>
+        <div class="cond" id="c-intento">
+          <label class="q" for="q72b">¿Qué era y qué pasó?</label>
+          <textarea id="q72b" name="Que se probo antes" placeholder=""></textarea>
+        </div>
+      </div>
+      <div class="f">
+        <label class="q">¿Para cuándo os gustaría tenerlo funcionando?</label>
+        <div class="opts" data-single="Plazo deseado">
+          <label class="opt"><input type="radio" name="plazo" value="Cuanto antes"><span>Cuanto antes</span></label>
+          <label class="opt"><input type="radio" name="plazo" value="En un mes"><span>En un mes</span></label>
+          <label class="opt"><input type="radio" name="plazo" value="En unos 3 meses"><span>En unos 3 meses</span></label>
+          <label class="opt"><input type="radio" name="plazo" value="Sin fecha concreta"><span>No tenemos fecha</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-step="8">
+      <div class="blockHead">
+        <div class="blockNum mono">CIERRE</div>
+        <div class="blockTitle">Lo último y ya está</div>
+        <div class="blockSub">Gracias por el rato.</div>
+      </div>
+      <div class="f">
+        <label class="q" for="q81">¿Qué es importante que sepamos y no os hemos preguntado?</label>
+        <div class="help">Esta suele ser la respuesta más valiosa de todo el cuestionario. Si os resulta más cómodo, grabadla hablando.</div>
+        <textarea id="q81" name="Que mas deberiamos saber" placeholder=""></textarea>
+      </div>
+      <div class="f">
+        <label class="q">Subid cualquier cosa que ayude</label>
+        <div class="help">Lista de precios, protocolo de recepción, preguntas frecuentes de los pacientes, capturas de la agenda. Lo que sea.</div>
+        <label class="drop" data-name="otros">
+          <input type="file" multiple>
+          <span>Pulsad aquí para elegir los archivos</span>
+        </label>
+        <div class="fileList"></div>
+      </div>
+      <div class="f">
+        <label class="q">¿Cuándo os viene bien una reunión?</label>
+        <div class="opts" data-single="Preferencia de horario">
+          <label class="opt"><input type="radio" name="hor" value="Por las mañanas"><span>Por las mañanas</span></label>
+          <label class="opt"><input type="radio" name="hor" value="Por las tardes"><span>Por las tardes</span></label>
+          <label class="opt"><input type="radio" name="hor" value="Indiferente"><span>Indiferente</span></label>
+        </div>
+        <div style="margin-top:.9rem">
+          <input type="text" name="Dias que van mejor" placeholder="¿Qué días os van mejor?">
+        </div>
+      </div>
+    </section>
+
+    <div class="nav" id="nav">
+      <button type="button" class="btn btnO" id="prev">← Atrás</button>
+      <div class="navMeta saved mono" id="savedMsg">Se guarda solo en este navegador</div>
+      <button type="button" class="btn btnP" id="next">Siguiente →</button>
+    </div>
+  </form>
+
+  <div class="done" id="done">
+    <div class="doneIcon">✓</div>
+    <h2>Recibido, gracias</h2>
+    <p>Revisamos las respuestas y os proponemos fecha para la reunión de cierre de alcance. Si hay otra persona en la empresa que pueda contestar los bloques que habéis dejado fuera, podéis reenviarle este mismo enlace.</p>
+  </div>
+
+  <div class="foot">
+    <span>Clínica 10 · Agente de llamadas</span>
+    <span>05/10/2026</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var WEBHOOK = "https://n8n.agustinynatalia.site/webhook/levantamiento-proceso";
+  var KEY = "clinica10_v1";
+
+  var all = [].slice.call(document.querySelectorAll(".step"));
+  var visible = all.slice();
+  var cur = 0;
+  var form = document.getElementById("form");
+  var hero = document.getElementById("hero");
+  var nav = document.getElementById("nav");
+  var prevBtn = document.getElementById("prev");
+  var nextBtn = document.getElementById("next");
+  var barFill = document.getElementById("barFill");
+  var stepCount = document.getElementById("stepCount");
+
+  function selectedRoles(){
+    var r = [];
+    document.querySelectorAll("#roles input:checked").forEach(function(i){
+      r.push(i.getAttribute("data-role"));
+    });
+    return r;
+  }
+  function recompute(){
+    var roles = selectedRoles();
+    var todo = roles.indexOf("todo") > -1 || roles.length === 0;
+    var active = visible[cur];
+    visible = all.filter(function(s){
+      var need = s.getAttribute("data-roles");
+      if(!need) return true;
+      if(todo) return true;
+      return need.split(",").some(function(n){ return roles.indexOf(n.trim()) > -1; });
+    });
+    var idx = visible.indexOf(active);
+    cur = idx > -1 ? idx : Math.min(cur, visible.length - 1);
+  }
+
+  function render(){
+    all.forEach(function(s){ s.classList.remove("on"); });
+    visible[cur].classList.add("on");
+    var total = visible.length;
+    barFill.style.width = ((cur+1)/total*100)+"%";
+    stepCount.textContent = "Paso "+(cur+1)+" de "+total;
+    prevBtn.style.visibility = cur===0 ? "hidden" : "visible";
+    nextBtn.textContent = cur===total-1 ? "Enviar" : "Siguiente →";
+    hero.style.display = cur===0 ? "block" : "none";
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  document.querySelectorAll(".opt input").forEach(function(inp){
+    inp.addEventListener("change", function(){
+      var group = inp.closest(".opts");
+      if(inp.type==="radio"){
+        group.querySelectorAll(".opt").forEach(function(o){ o.classList.remove("sel"); });
+      }
+      inp.closest(".opt").classList.toggle("sel", inp.checked);
+      var fBox = inp.closest(".f");
+      if(fBox) fBox.classList.remove("bad");
+      handleCond(group);
+      save();
+    });
+  });
+
+  function handleCond(group){
+    var spec = group.getAttribute("data-cond");
+    if(!spec) return;
+    var parts = spec.split("|");
+    var box = document.getElementById(parts[0]);
+    if(!box) return;
+    var vals = parts.slice(1);
+    var sel = group.querySelector("input:checked");
+    box.classList.toggle("on", !!sel && vals.indexOf(sel.value)>-1);
+  }
+
+  /* ---- audio por pregunta ---- */
+  var recordings = {};
+  var activeRec = null;
+
+  function slug(s){
+    return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+            .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,45);
+  }
+  function pickMime(){
+    var opts = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"];
+    for(var i=0;i<opts.length;i++){
+      if(window.MediaRecorder && MediaRecorder.isTypeSupported(opts[i])) return opts[i];
+    }
+    return "";
+  }
+  function extFor(m){ return m.indexOf("mp4")>-1 ? "m4a" : (m.indexOf("ogg")>-1 ? "ogg" : "webm"); }
+
+  document.querySelectorAll("textarea").forEach(function(ta){
+    if(!navigator.mediaDevices || !window.MediaRecorder) return;
+    var wrap = document.createElement("div");
+    wrap.className = "rec";
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "recBtn";
+    btn.innerHTML = '<span class="mic"></span><span class="lbl">Responder hablando</span>';
+    var time = document.createElement("span");
+    time.className = "recTime";
+    var hint = document.createElement("span");
+    hint.className = "orText"; hint.textContent = "si preferís hablar en vez de escribir";
+    var play = document.createElement("div");
+    play.className = "recPlay"; play.style.display = "none";
+    wrap.appendChild(btn); wrap.appendChild(time); wrap.appendChild(hint); wrap.appendChild(play);
+    ta.parentNode.insertBefore(wrap, ta.nextSibling);
+
+    var mr = null, chunks = [], t0 = 0, tick = null;
+    function stop(){ if(mr && mr.state !== "inactive") mr.stop(); }
+    function reset(){
+      clearInterval(tick); tick = null;
+      btn.classList.remove("rec-on");
+      btn.querySelector(".lbl").textContent = "Responder hablando";
+      time.textContent = "";
+      activeRec = null;
+    }
+    btn.addEventListener("click", function(){
+      if(mr && mr.state === "recording"){ stop(); return; }
+      if(activeRec) activeRec();
+      navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+        var mime = pickMime();
+        mr = mime ? new MediaRecorder(stream, {mimeType:mime}) : new MediaRecorder(stream);
+        chunks = [];
+        mr.ondataavailable = function(e){ if(e.data.size) chunks.push(e.data); };
+        mr.onstop = function(){
+          stream.getTracks().forEach(function(t){ t.stop(); });
+          var type = mr.mimeType || mime || "audio/webm";
+          var blob = new Blob(chunks, {type:type});
+          recordings[ta.name] = {blob:blob, ext:extFor(type)};
+          var url = URL.createObjectURL(blob);
+          play.innerHTML = "";
+          var au = document.createElement("audio");
+          au.controls = true; au.src = url;
+          var del = document.createElement("button");
+          del.type = "button"; del.className = "recDel"; del.textContent = "Borrar";
+          del.addEventListener("click", function(){
+            delete recordings[ta.name];
+            play.style.display = "none"; play.innerHTML = "";
+          });
+          play.appendChild(au); play.appendChild(del);
+          play.style.display = "flex";
+          var f = ta.closest(".f"); if(f) f.classList.remove("bad");
+          reset();
+        };
+        mr.start();
+        t0 = Date.now();
+        btn.classList.add("rec-on");
+        btn.querySelector(".lbl").textContent = "Detener";
+        tick = setInterval(function(){
+          var s = Math.floor((Date.now()-t0)/1000);
+          time.textContent = String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+          if(s >= 300) stop();
+        }, 250);
+        activeRec = stop;
+      }).catch(function(){
+        alert("No hemos podido acceder al micrófono. Revisad los permisos del navegador o escribid la respuesta.");
+      });
+    });
+  });
+
+  /* ---- adjuntos, una zona por pregunta ---- */
+  var picked = [];
+  document.querySelectorAll(".drop").forEach(function(drop){
+    var group = drop.getAttribute("data-name");
+    var input = drop.querySelector("input[type=file]");
+    var list = drop.parentNode.querySelector(".fileList");
+    function paint(){
+      list.innerHTML = "";
+      picked.forEach(function(item){
+        if(item.group !== group) return;
+        var row = document.createElement("div");
+        row.className = "fileItem";
+        row.innerHTML = "<span>"+item.file.name+" · "+(item.file.size/1024).toFixed(0)+" KB</span>";
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = "×";
+        b.addEventListener("click", function(){
+          picked.splice(picked.indexOf(item),1); paint();
+        });
+        row.appendChild(b);
+        list.appendChild(row);
+      });
+    }
+    function add(files){
+      [].slice.call(files).forEach(function(f){
+        if(f.size > 20*1024*1024){ alert("El archivo "+f.name+" pasa de 20 MB."); return; }
+        picked.push({group:group, file:f});
+      });
+      paint();
+    }
+    input.addEventListener("change", function(){ add(input.files); input.value = ""; });
+    ["dragenter","dragover"].forEach(function(e){
+      drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.add("over"); });
+    });
+    ["dragleave","drop"].forEach(function(e){
+      drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.remove("over"); });
+    });
+    drop.addEventListener("drop", function(ev){ add(ev.dataTransfer.files); });
+  });
+
+  /* ---- validación ---- */
+  function validate(step){
+    var ok = true;
+    step.querySelectorAll(".f[data-req]").forEach(function(f){
+      var bad = false;
+      var g = f.querySelector(".opts");
+      if(g){
+        if(!g.querySelector("input:checked")) bad = true;
+      } else {
+        var field = f.querySelector("input[type=text],input[type=email],textarea,select");
+        if(field){
+          var v = field.value.trim();
+          if(!v && !(field.name && recordings[field.name])) bad = true;
+        }
+      }
+      f.classList.toggle("bad", bad);
+      if(bad) ok = false;
+    });
+    if(!ok){
+      var first = step.querySelector(".f.bad");
+      if(first) first.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+    return ok;
+  }
+  form.addEventListener("input", function(e){
+    var f = e.target.closest(".f");
+    if(f) f.classList.remove("bad");
+    save();
+  });
+
+  /* ---- guardado local ---- */
+  var saveTimer;
+  function save(){
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      var data = {};
+      form.querySelectorAll("input,textarea,select").forEach(function(el,i){
+        if(el.type==="file") return;
+        var k = el.id || (el.name+"_"+i);
+        data[k] = (el.type==="checkbox"||el.type==="radio") ? el.checked : el.value;
+      });
+      try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){}
+    }, 400);
+  }
+  function restore(){
+    var raw;
+    try{ raw = localStorage.getItem(KEY); }catch(e){ return; }
+    if(!raw) return;
+    var data;
+    try{ data = JSON.parse(raw); }catch(e){ return; }
+    form.querySelectorAll("input,textarea,select").forEach(function(el,i){
+      if(el.type==="file") return;
+      var k = el.id || (el.name+"_"+i);
+      if(!(k in data)) return;
+      if(el.type==="checkbox"||el.type==="radio"){
+        el.checked = data[k];
+        if(el.checked){
+          var opt = el.closest(".opt"); if(opt) opt.classList.add("sel");
+        }
+      } else { el.value = data[k]; }
+    });
+    document.querySelectorAll(".opts").forEach(handleCond);
+    document.getElementById("savedMsg").textContent = "Recuperamos lo que llevabais";
+  }
+
+  /* ---- envío ---- */
+  function collect(){
+    var out = {};
+    visible.forEach(function(step){
+      step.querySelectorAll("input[type=text],input[type=email],input[type=tel],input[type=number],textarea,select").forEach(function(el){
+        var v = el.value.trim();
+        if(v && el.name) out[el.name] = v;
+      });
+      step.querySelectorAll("[data-multi]").forEach(function(g){
+        var vals = [].slice.call(g.querySelectorAll("input:checked")).map(function(i){ return i.value; });
+        if(vals.length) out[g.getAttribute("data-multi")] = vals.join(", ");
+      });
+      step.querySelectorAll("[data-single]").forEach(function(g){
+        var s = g.querySelector("input:checked");
+        if(s) out[g.getAttribute("data-single")] = s.value;
+      });
+    });
+    return out;
+  }
+
+  function submit(){
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Enviando...";
+    var fd = new FormData();
+    var data = collect();
+    Object.keys(data).forEach(function(k){ fd.append(k, data[k]); });
+    fd.append("Cliente", "Clinica 10 (Castalla)");
+    fd.append("_meta", JSON.stringify({
+      formulario: "clinica10", enviado: new Date().toISOString(), origen: location.href
+    }));
+    picked.forEach(function(item, i){
+      fd.append("adjunto_"+(i+1), item.file, item.group+"__"+item.file.name);
+    });
+    Object.keys(recordings).forEach(function(name, i){
+      var r = recordings[name];
+      fd.append("audio_"+(i+1), r.blob, "audio-"+slug(name)+"."+r.ext);
+    });
+
+    fetch(WEBHOOK, {method:"POST", body: fd})
+      .then(function(r){
+        if(!r.ok) throw new Error("HTTP "+r.status);
+        try{ localStorage.removeItem(KEY); }catch(e){}
+        form.style.display = "none";
+        hero.style.display = "none";
+        document.getElementById("done").classList.add("on");
+        barFill.style.width = "100%";
+        stepCount.textContent = "Completado";
+        window.scrollTo({top:0, behavior:"smooth"});
+      })
+      .catch(function(){
+        nextBtn.disabled = false;
+        nextBtn.textContent = "Enviar";
+        alert("No se ha podido enviar. Revisad la conexión e intentadlo otra vez. Si sigue fallando, avisadnos por el mismo canal donde recibisteis este enlace.");
+      });
+  }
+
+  nextBtn.addEventListener("click", function(){
+    if(!validate(visible[cur])) return;
+    if(cur === 0) recompute();
+    if(cur === visible.length-1){ submit(); return; }
+    cur++; render();
+  });
+  prevBtn.addEventListener("click", function(){
+    if(cur>0){ cur--; render(); }
+  });
+
+  restore();
+  recompute();
+  cur = 0;
+  render();
+})();
+</script>
+</body>
+</html>
