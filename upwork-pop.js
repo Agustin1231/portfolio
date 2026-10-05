@@ -19,7 +19,7 @@
   try{visto=sessionStorage.getItem("upPop")==="1";}catch(e){}
   if(visto)return;
   var pop=null;
-  function idioma(){try{if(localStorage.getItem("ap-lang")==="en")return "en";}catch(e){}return "es";}
+  function idioma(){return (function(){try{var s=localStorage.getItem("ap-lang");if(s==="es"||s==="en")return s;}catch(e){}var n=((navigator.languages&&navigator.languages[0])||navigator.language||"es").toLowerCase();return n.indexOf("es")===0?"es":"en";})();}
   function crear(){
     var host=document.querySelector(".site");
     if(!host)return null;

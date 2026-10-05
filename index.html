@@ -656,12 +656,12 @@ class Component extends DCLogic {
   };
   METRICDEF = [{key:"total_horas",target:10000,round:1000,suffix:" h"},{key:"total_ejecuciones",target:120000,round:10000,suffix:""},{key:"total_automatizaciones",target:330,round:10,suffix:""}];
 
-  state = {theme:"light",lang:"es",menu:false,filter:"all",active:0,sent:false,showAll:false,metv:[0,0,0],certOpen:null};
+  state = {theme:"light",lang:(function(){try{var s=localStorage.getItem("ap-lang");if(s==="es"||s==="en")return s;}catch(e){}var n=((navigator.languages&&navigator.languages[0])||navigator.language||"es").toLowerCase();return n.indexOf("es")===0?"es":"en";})(),menu:false,filter:"all",active:0,sent:false,showAll:false,metv:[0,0,0],certOpen:null};
 
   componentDidMount(){
     try{
       var th=localStorage.getItem("ap-theme");if(th==="dark"||th==="light")this.setState({theme:th});
-      var lg=localStorage.getItem("ap-lang");if(lg==="es"||lg==="en")this.setState({lang:lg});
+      document.documentElement.lang=this.state.lang;
     }catch(e){}
     var selfK=this;window.addEventListener("keydown",function(e){if(e.key==="Escape"&&selfK.state.certOpen)selfK.closeCerts();});
     this.startAscii();
@@ -805,7 +805,7 @@ class Component extends DCLogic {
   }
 
   toggleTheme(){var n=this.state.theme==="dark"?"light":"dark";this.setState({theme:n});try{localStorage.setItem("ap-theme",n);}catch(e){}}
-  setLang(l){this.setState({lang:l});try{localStorage.setItem("ap-lang",l);}catch(e){}}
+  setLang(l){this.setState({lang:l});document.documentElement.lang=l;try{localStorage.setItem("ap-lang",l);}catch(e){}}
   toggleMenu(){this.setState({menu:!this.state.menu});}
   setFilter(v){this.setState({filter:v,active:0,showAll:false});}
   setActive(i){this.setState({active:i});}
