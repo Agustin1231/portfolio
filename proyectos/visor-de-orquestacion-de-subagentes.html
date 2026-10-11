@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistema de Orquestación de Agentes de IA | Agustin Peralta</title>
+<meta name="description" content="Un orquestador central que delega en subagentes especialistas y ejecuta las automatizaciones internas de la operación">
+<meta name="keywords" content="HTML5, CSS3, JavaScript (sin frameworks), SVG animado, nginx, Docker, Coolify, Cloudflare DNS, Agentes de IA">
+<meta name="author" content="Agustin Peralta">
+<link rel="canonical" href="https://agustin.agustinynatalia.site/proyectos/visor-de-orquestacion-de-subagentes.html">
+<link rel="alternate" hreflang="es" href="https://agustin.agustinynatalia.site/proyectos/visor-de-orquestacion-de-subagentes.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sistema de Orquestación de Agentes de IA — Agustin Peralta">
+<meta property="og:description" content="Un orquestador central que delega en subagentes especialistas y ejecuta las automatizaciones internas de la operación">
+<meta property="og:url" content="https://agustin.agustinynatalia.site/proyectos/visor-de-orquestacion-de-subagentes.html">
+<meta property="og:image" content="https://agustin.agustinynatalia.site/img/proyectos/visor-de-orquestacion-de-subagentes.jpg">
+<meta property="og:image:width" content="1408">
+<meta property="og:image:height" content="768">
+<meta property="og:image:alt" content="El orquestador delegando una tarea al subagente de diagramas, con la actividad registrada en vivo">
+<meta property="og:site_name" content="Agustin Peralta">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sistema de Orquestación de Agentes de IA — Agustin Peralta">
+<meta name="twitter:description" content="Un orquestador central que delega en subagentes especialistas y ejecuta las automatizaciones internas de la operación">
+<meta name="twitter:image" content="https://agustin.agustinynatalia.site/img/proyectos/visor-de-orquestacion-de-subagentes.jpg">
+<meta name="theme-color" content="#f1efe9">
+<script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
+<link rel="preload" href="/fonts/space-grotesk-v22-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-v24-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jetbrains-mono-v24-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jetbrains-mono-v24-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/space-grotesk-v22-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/space-grotesk-v22-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"Sistema de Orquestación de Agentes de IA","headline":"Sistema de Orquestación de Agentes de IA","description":"Sistema donde un agente orquestador recibe cada solicitud, decide qué subagente especialista la resuelve y coordina además un conjunto de automatizaciones internas que sostienen la operación día a día: publicación de contenido, reportería, monitoreo de errores, transcripción de reuniones y finanzas. Incluye un visor en vivo que muestra la orquestación en tiempo real.","inLanguage":"es","url":"https://agustin.agustinynatalia.site/proyectos/visor-de-orquestacion-de-subagentes.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://agustin.agustinynatalia.site/proyectos/visor-de-orquestacion-de-subagentes.html"},"author":{"@type":"Person","name":"Agustin Peralta","url":"https://agustin.agustinynatalia.site/","@id":"https://agustin.agustinynatalia.site/#person"},"creator":{"@id":"https://agustin.agustinynatalia.site/#person"},"image":"https://agustin.agustinynatalia.site/img/proyectos/visor-de-orquestacion-de-subagentes.jpg","genre":"Agentes de IA","dateCreated":"2026","keywords":"HTML5, CSS3, JavaScript (sin frameworks), SVG animado, nginx, Docker, Coolify, Cloudflare DNS"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://agustin.agustinynatalia.site/"},{"@type":"ListItem","position":2,"name":"Proyectos","item":"https://agustin.agustinynatalia.site/proyectos"},{"@type":"ListItem","position":3,"name":"Sistema de Orquestación de Agentes de IA","item":"https://agustin.agustinynatalia.site/proyectos/visor-de-orquestacion-de-subagentes.html"}]}]}</script>
+<script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:#0b0b0d}
+html{overflow-x:hidden}
+.site{--bg:#0b0b0d;--bg2:#131316;--panel:#141417;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.055);--fg:#eceae4;--dim:#9b9a91;--faint:#585851;--btnfg:#0b0b0d;font-family:'Space Grotesk',system-ui,sans-serif;background-color:var(--bg);color:var(--fg);min-height:100vh}
+.site.light{--bg:#f1efe9;--bg2:#ffffff;--panel:#ffffff;--line:rgba(20,18,15,.15);--line2:rgba(20,18,15,.07);--fg:#191712;--dim:#6b675e;--faint:#a7a397;--btnfg:#ffffff}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1220px;margin:0 auto;padding:0 2.2rem}
+a{color:inherit;text-decoration:none}
+.acc{color:var(--accent)}
+::selection{background:var(--accent);color:var(--btnfg)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.98rem;letter-spacing:-.3px;display:flex;align-items:center}
+.curs{color:var(--accent);animation:bl 1.1s steps(1) infinite;margin-left:1px}
+@keyframes bl{50%{opacity:0}}
+.navlinks{display:flex;gap:2rem;list-style:none}
+.navlinks a{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim);letter-spacing:.2px;transition:color .25s;position:relative}
+.navlinks a:hover{color:var(--fg)}
+.navlinks a::before{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--accent);transition:right .3s}
+.navlinks a:hover::before{right:0}
+.navtools{display:flex;align-items:center;gap:.5rem}
+.lang{display:flex;font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.lang button{font:inherit;background:none;border:none;color:var(--dim);padding:.42rem .6rem;cursor:pointer;transition:all .2s}
+.lang button.on{background:var(--accent);color:var(--btnfg)}
+.tgl{width:38px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:none;color:var(--fg);cursor:pointer;font-size:1rem;transition:all .2s}
+.tgl:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:34px;align-items:center;justify-content:center}
+.burger span{width:20px;height:2px;background:var(--fg);transition:.3s}
+.bg3d{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:.6}
+.btn{font-family:'JetBrains Mono',monospace;font-size:.85rem;padding:.85rem 1.5rem;border-radius:8px;border:1px solid var(--line);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:500}
+.btnP:hover{transform:translateY(-2px);box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 35%,transparent)}
+.btnO{color:var(--fg);background:none}
+.btnO:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.stackTags{display:flex;flex-wrap:wrap;gap:.55rem}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.82rem;padding:.42rem .8rem;border:1px solid var(--line);border-radius:7px;color:var(--fg);transition:all .22s}
+.tag:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.footer{border-top:1px solid var(--line);padding:2.6rem 0;position:relative;z-index:1;background-color:var(--bg)}
+.footIn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim)}
+.footIn .y{color:var(--faint)}
+/* detail */
+.dhero{padding:8.5rem 0 2.5rem;position:relative;z-index:1}
+.back{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--dim);margin-bottom:2.2rem;transition:color .2s}
+.back:hover{color:var(--accent)}
+.dcat{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.dtitle{font-size:clamp(2.3rem,5.2vw,4rem);font-weight:600;letter-spacing:-.04em;line-height:1.02;margin-bottom:1.2rem;max-width:18ch}
+.dsub{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--dim);line-height:1.5;max-width:62ch;margin-bottom:2.2rem}
+.dmeta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem 2.6rem;padding:1.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:2rem}
+.dmeta .k{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.4rem}
+.dmeta .v{font-size:1rem;color:var(--fg)}
+.dmeta .vacc{color:var(--accent);font-weight:600}
+.dcover{position:relative;z-index:1;aspect-ratio:16/9;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel);margin-bottom:1rem}
+.dcover img{width:100%;height:100%;object-fit:cover;display:block}
+.dgridbg{position:absolute;inset:0;background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:26px 26px;pointer-events:none}
+.dcap{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--faint);text-align:center;margin-bottom:1rem}
+.dsec{padding:1.9rem 0;position:relative;z-index:1}
+.gstage{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+.gbar{display:flex;align-items:center;gap:.45rem;padding:.72rem 1rem;border-bottom:1px solid var(--line2)}
+.gdot{width:10px;height:10px;border-radius:50%;background:var(--line);flex:none}
+.gttl{margin-left:.9rem;font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--dim);letter-spacing:.2px}
+.gshot{display:block;width:100%;padding:0;border:none;background:#0b0b0d;aspect-ratio:16/10;cursor:zoom-in}
+.gshot img{width:100%;height:100%;object-fit:cover;display:block}
+.gcap{color:var(--dim);line-height:1.65;font-size:1.02rem;margin:1.1rem 0 1.35rem;max-width:70ch}
+.gthumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem}
+.gthumb{aspect-ratio:16/10;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#0b0b0d;padding:0;cursor:pointer;transition:border-color .22s,transform .22s}
+.gthumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.5;transition:opacity .22s}
+.gthumb:hover{transform:translateY(-2px)}
+.gthumb:hover img{opacity:.85}
+.gthumb.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.gthumb.on img{opacity:1}
+.gnote{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--faint);margin-top:1rem}
+.lbox{position:fixed;inset:0;z-index:3000;background:rgba(7,7,9,.94);display:flex;align-items:center;justify-content:center;padding:4rem 4.5rem;cursor:zoom-out}
+.lbox img{max-width:100%;max-height:100%;border-radius:10px;border:1px solid rgba(255,255,255,.14);display:block}
+.lbtn{position:absolute;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#eceae4;border-radius:9px;cursor:pointer;font-size:1.15rem;width:42px;height:42px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.lbtn:hover{background:var(--accent);border-color:var(--accent);color:var(--btnfg)}
+.lprev{left:1.1rem;top:50%;transform:translateY(-50%)}
+.lnext{right:1.1rem;top:50%;transform:translateY(-50%)}
+.lclose{top:1.1rem;right:1.1rem}
+.lcap{position:absolute;bottom:1.2rem;left:0;right:0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#9b9a91;padding:0 2rem}
+.dsech{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.15rem;display:flex;align-items:center;gap:.7rem}
+.dsech::before{content:'';width:24px;height:1px;background:var(--accent)}
+.dlead{font-size:1.45rem;font-weight:500;line-height:1.42;letter-spacing:-.01em;margin-bottom:1.3rem;max-width:none;color:var(--fg)}
+.dp{color:var(--dim);line-height:1.75;font-size:1.05rem;margin-bottom:1.1rem;max-width:none}
+.dmetrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.dmcell{border:1px solid var(--line);border-radius:14px;padding:1.6rem;background:color-mix(in srgb,var(--panel) 65%,transparent)}
+.dmval{font-family:'JetBrains Mono',monospace;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:600;color:var(--accent);line-height:1.05;letter-spacing:-.02em}
+.dmlbl{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--dim);margin-top:.7rem;line-height:1.4}
+.fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.fcard{border:1px solid var(--line);border-radius:14px;padding:1.7rem;background:color-mix(in srgb,var(--panel) 65%,transparent);transition:border-color .25s}
+.fcard:hover{border-color:var(--accent)}
+.fcard h4{font-size:1.15rem;font-weight:600;margin-bottom:.6rem;letter-spacing:-.01em}
+.fcard p{color:var(--dim);line-height:1.6;font-size:.96rem}
+.psteps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pstep{padding:1.6rem;border-right:1px solid var(--line2)}
+.pstep:last-child{border-right:none}
+.pphase{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);margin-bottom:.7rem}
+.pstep h4{font-size:1.02rem;font-weight:600;margin-bottom:.5rem;line-height:1.25}
+.pstep p{color:var(--dim);font-size:.9rem;line-height:1.55}
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.rnum{font-family:'JetBrains Mono',monospace;font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:600;color:var(--fg);line-height:1;letter-spacing:-.02em}
+.rlbl{color:var(--dim);font-size:.92rem;line-height:1.5;margin-top:.7rem;max-width:26ch}
+.lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.lcard{border-left:2px solid var(--accent);padding:.2rem 0 .2rem 1.3rem}
+.lcard h4{font-size:1.08rem;font-weight:600;margin-bottom:.55rem;letter-spacing:-.01em}
+.lcard p{color:var(--dim);line-height:1.65;font-size:.95rem}
+.dcta{border:1px solid var(--line);border-radius:20px;padding:3.4rem 2rem;text-align:center;background:color-mix(in srgb,var(--panel) 65%,transparent);position:relative;z-index:1}
+.dcta h3{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.7rem}
+.dctaRow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.dctaP{color:var(--dim);max-width:560px;margin:-.6rem auto 1.6rem;line-height:1.6}
+.upSvcs{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:0 auto 1.8rem;max-width:860px;text-align:left}
+.upSvc{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg);transition:border-color .2s,transform .2s}
+.upSvc:hover{border-color:var(--accent);transform:translateY(-2px)}
+.upSvc b{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.8rem;font-weight:500}
+@media(max-width:720px){.upSvcs{grid-template-columns:1fr}}
+.notfound{padding:11rem 0 8rem;text-align:center;position:relative;z-index:1}
+.notfound .dtitle{max-width:none;margin-bottom:2rem}
+@media(max-width:920px){
+.navlinks{position:fixed;top:0;right:0;width:270px;height:100vh;flex-direction:column;background:var(--bg2);border-left:1px solid var(--line);padding:5.5rem 2rem;gap:1.4rem;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:-20px 0 50px rgba(0,0,0,.3)}
+.navlinks.open{transform:none}
+.burger{display:flex}
+.wrap{padding:0 1.4rem}
+.dmetrics,.psteps,.rgrid{grid-template-columns:repeat(2,1fr)}
+.fgrid,.lgrid{grid-template-columns:1fr}
+.gthumbs{grid-template-columns:repeat(3,1fr)}
+.lbox{padding:3rem 1rem}
+.lprev{left:.4rem}.lnext{right:.4rem}
+.pstep{border-right:none;border-bottom:1px solid var(--line2)}
+.pstep:last-child{border-bottom:none}
+}
+@media(max-width:560px){.dmetrics,.rgrid,.psteps{grid-template-columns:1fr}.pstep{border-right:none;border-bottom:1px solid var(--line2)}.pstep:last-child{border-bottom:none}.dmeta{gap:1.6rem}.dhero{padding-top:7.5rem}}
+
+h2.dsech{font-weight:400}
+.lbox[hidden]{display:none}
+.relList{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.relList a{display:flex;flex-direction:column;gap:.35rem;height:100%;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--panel) 65%,transparent);transition:border-color .2s,transform .2s}
+.relList a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.relCat{font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
+.relT{font-weight:600;line-height:1.35}
+@media(max-width:920px){.relList{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="site light" id="top" style="--accent:#ff5c35;--accent-soft:rgba(255,92,53,0.13)">
+<nav class="nav"><div class="wrap navbar">
+<a class="brand" href="/">agustin.peralta<span class="curs">▮</span></a>
+<ul class="navlinks" id="nav">
+<li><a href="/#sobre" data-i18n="navAbout">sobre-mí</a></li>
+<li><a href="/#experiencia" data-i18n="navExp">experiencia</a></li>
+<li><a href="/#proyectos" data-i18n="navWork">proyectos</a></li>
+<li><a href="/#guias" data-i18n="navGuides">guías</a></li>
+<li><a href="/metricas" data-i18n="navMetrics">métricas</a></li>
+<li><a href="/#contacto" data-i18n="navContact">contacto</a></li>
+</ul>
+<div class="navtools">
+<div class="lang mono"><button type="button" class="on" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+<button type="button" class="tgl" id="tgl" aria-label="Cambiar tema" data-i18n-aria="theme">☾</button>
+<button type="button" class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+</div>
+</div></nav>
+
+<header class="dhero"><div class="wrap">
+<a class="back mono" href="/proyectos" data-i18n="backL">← volver a proyectos</a>
+<div class="dcat mono">Agentes de IA</div>
+<h1 class="dtitle">Sistema de Orquestación de Agentes de IA</h1>
+<p class="dsub">Un orquestador central que delega en subagentes especialistas y ejecuta las automatizaciones internas de la operación</p>
+<div class="dmeta">
+<div><div class="k mono" data-i18n="mYear">Año</div><div class="v">2026</div></div>
+<div><div class="k mono" data-i18n="mDuration">Duración</div><div class="v">Operación continua</div></div>
+<div><div class="k mono" data-i18n="mSaved">Tiempo ahorrado</div><div class="v">264 h</div></div><div><div class="k mono" data-i18n="mMoney">Ahorro estimado</div><div class="v vacc">$2,112 USD</div></div>
+</div>
+<a class="btn btnP" href="https://multiagentes.agustinynatalia.site" target="_blank" rel="noopener">Ver en vivo ↗</a>
+</div></header>
+
+<section class="dsec"><div class="wrap"><h2 class="dsech mono" data-i18n="secGallery">Por dentro</h2><div class="gstage"><div class="gbar"><span class="gdot"></span><span class="gdot"></span><span class="gdot"></span><span class="gttl mono" id="gttl">El mapa de subagentes</span></div><button type="button" class="gshot" id="gshot" aria-label="Ampliar captura" data-i18n-aria="zoomIn"><img id="gimg" src="/img/proyectos/galeria/visor-subagentes/01-mapa.webp" alt="El mapa de subagentes" decoding="async"></button></div><p class="gcap" id="gcap">Cada nodo es un subagente con su especialidad. Alrededor del orquestador se ve quién está trabajando y quién está libre.</p><div class="gthumbs" id="gthumbs"><button type="button" class="gthumb on" data-src="/img/proyectos/galeria/visor-subagentes/01-mapa.webp" data-title="El mapa de subagentes" data-cap="Cada nodo es un subagente con su especialidad. Alrededor del orquestador se ve quién está trabajando y quién está libre." aria-label="El mapa de subagentes"><img src="/img/proyectos/galeria/visor-subagentes/01-mapa.webp" alt="El mapa de subagentes" loading="lazy" decoding="async"></button><button type="button" class="gthumb" data-src="/img/proyectos/galeria/visor-subagentes/02-delegacion.webp" data-title="Una delegación en curso" data-cap="La solicitud entra, el orquestador la reparte y el registro de la derecha va contando el recorrido paso por paso." aria-label="Una delegación en curso"><img src="/img/proyectos/galeria/visor-subagentes/02-delegacion.webp" alt="Una delegación en curso" loading="lazy" decoding="async"></button><button type="button" class="gthumb" data-src="/img/proyectos/galeria/visor-subagentes/03-oscuro.webp" data-title="Modo oscuro" data-cap="La misma vista pensada para dejarla abierta en una pantalla secundaria durante horas." aria-label="Modo oscuro"><img src="/img/proyectos/galeria/visor-subagentes/03-oscuro.webp" alt="Modo oscuro" loading="lazy" decoding="async"></button></div><div class="gnote mono">Vistas en vivo del visor, con los datos sensibles del registro enmascarados</div></div></section>
+<section class="dsec"><div class="wrap"><h2 class="dsech mono" data-i18n="secMetrics">En números</h2><div class="dmetrics"><div class="dmcell"><div class="dmval mono">10</div><div class="dmlbl mono">Subagentes especialistas</div></div><div class="dmcell"><div class="dmval mono">20+</div><div class="dmlbl mono">Automatizaciones internas</div></div><div class="dmcell"><div class="dmval mono">24/7</div><div class="dmlbl mono">Ejecución</div></div><div class="dmcell"><div class="dmval mono">SVG en vivo</div><div class="dmlbl mono">Visor</div></div></div></div></section>
+<section class="dsec"><div class="wrap"><h2 class="dsech mono">Objetivo del Proyecto</h2><p class="dlead">Mostrar de forma visual e inmediata cómo funciona un sistema de subagentes: quién pide, quién delega y quién ejecuta cada tarea.</p><p class="dp">Cuando un agente principal coordina a varios especialistas, el proceso queda oculto entre logs y llamadas internas. El objetivo fue darle una cara visible a esa coordinación, para que cualquiera entienda en segundos cómo se reparte y se resuelve el trabajo.</p></div></section>
+<section class="dsec"><div class="wrap"><h2 class="dsech mono">Descripción del Proyecto</h2><p class="dp">El orquestador aparece en el centro y los subagentes especialistas alrededor. Al llegar una solicitud, se anima la conexión hacia el especialista elegido, su nodo cambia de estado mientras trabaja y se marca como listo al terminar, y cada paso queda registrado con su hora en un panel de actividad.</p><p class="dp">La página corre sin frameworks, con un grafo en SVG animado y un control para reproducir la secuencia cuantas veces se quiera. El panel de actividad enmascara automáticamente cualquier dato sensible (correos, rutas, tokens, identificadores) para poder mostrarlo sin exponer información.</p></div></section>
+<section class="dsec"><div class="wrap"><h2 class="dsech mono">Automatizaciones internas que coordina</h2><p class="dp">Más allá del visor, el orquestador ejecuta y coordina las automatizaciones que sostienen la operación diaria: publicación de contenido en redes, generación y programación de posts, reportería automática (tareas, Trello, finanzas), monitoreo y diagnóstico de errores de los flujos de n8n, transcripción de reuniones y seguimiento de la meta de ingresos.</p><p class="dp">En conjunto, estas automatizaciones internas suman cientos de horas de trabajo manual ahorradas, ejecutándose sin intervención y liberando tiempo para el trabajo con clientes.</p></div></section>
+<section class="dsec"><div class="wrap"><h2 class="dsech mono" data-i18n="secFeatures">Qué hace</h2><div class="fgrid"><div class="fcard"><h4>Orquestación en tiempo real</h4><p>Muestra al agente principal delegando a cada subagente, con la conexión animada y los cambios de estado: trabajando y listo.</p></div><div class="fcard"><h4>Tema claro y oscuro</h4><p>Alterna entre modo claro y oscuro con un clic y recuerda la preferencia en el navegador.</p></div><div class="fcard"><h4>Datos sensibles enmascarados</h4><p>El panel de actividad oculta automáticamente correos, rutas, tokens e identificadores con asteriscos antes de mostrarlos.</p></div><div class="fcard"><h4>Reproducción a un clic</h4><p>La animación corre sola al abrir y se puede repetir desde un botón o haciendo clic sobre la actividad.</p></div></div></div></section>
+<section class="dsec"><div class="wrap"><h2 class="dsech mono" data-i18n="secLearnings">Aprendizajes</h2><div class="lgrid"><div class="lcard"><h4>Lo visual explica mejor</h4><p>Ver la orquestación en movimiento comunica el funcionamiento de un sistema multiagente mucho más rápido que describirlo con texto.</p></div><div class="lcard"><h4>Mostrar sin exponer</h4><p>Enmascarar los datos sensibles en la interfaz permite enseñar el sistema en vivo sin filtrar información privada.</p></div></div></div></section>
+<section class="dsec"><div class="wrap"><h2 class="dsech mono" data-i18n="secStack">Stack técnico</h2><div class="stackTags"><span class="tag mono">HTML5</span><span class="tag mono">CSS3</span><span class="tag mono">JavaScript (sin frameworks)</span><span class="tag mono">SVG animado</span><span class="tag mono">nginx</span><span class="tag mono">Docker</span><span class="tag mono">Coolify</span><span class="tag mono">Cloudflare DNS</span></div></div></section>
+<section class="dsec"><div class="wrap"><h2 class="dsech mono" data-i18n="secRelated">Otros proyectos</h2><ul class="relList"><li><a href="/proyectos/panel-de-auditoria-para-un-agente-de-ia.html"><span class="relCat mono">Observabilidad de Agentes de IA</span><span class="relT">Panel de Auditoría para un Agente de IA</span></a></li><li><a href="/proyectos/de-plataforma-por-suscripcion-a-infraestructura-propia.html"><span class="relCat mono">Arquitectura y Costos</span><span class="relT">De una Plataforma por Suscripción a Infraestructura Propia</span></a></li><li><a href="/proyectos/ciclo-de-vida-de-la-cita-con-ia.html"><span class="relCat mono">IA y Atención al Cliente</span><span class="relT">Ciclo de Vida de la Cita con IA</span></a></li></ul><a class="back mono" href="/proyectos" data-i18n="allProjects">Ver todos los proyectos →</a></div></section>
+<section class="dsec"><div class="wrap"><div class="dcta"><h3 data-i18n="ctaTitle">¿Tienes un proyecto en mente?</h3><p class="dctaP" data-i18n="ctaMsg">Contrátame por Upwork con un servicio de precio fijo o mira mi perfil con reseñas.</p><div class="upSvcs"><a class="upSvc" href="https://www.upwork.com/services/product/development-it-an-n8n-workflow-automation-for-your-crm-forms-email-and-sheets-2104901857369884325" target="_blank" rel="noopener" data-umami-event="upwork-servicio-proyecto"><span data-i18n="upN">Automatización con n8n</span><b><span data-i18n="upFrom">desde</span> $190</b></a><a class="upSvc" href="https://www.upwork.com/services/product/development-it-an-ai-whatsapp-agent-for-customer-service-with-the-official-cloud-api-2104903909913353811" target="_blank" rel="noopener" data-umami-event="upwork-servicio-proyecto"><span data-i18n="upW">Agente de IA para WhatsApp</span><b><span data-i18n="upFrom">desde</span> $460</b></a><a class="upSvc" href="https://www.upwork.com/services/product/consulting-hr-a-business-process-automation-audit-with-a-prioritized-action-plan-2104904529895557158" target="_blank" rel="noopener" data-umami-event="upwork-servicio-proyecto"><span data-i18n="upA">Auditoría de procesos</span><b><span data-i18n="upFrom">desde</span> $115</b></a></div><div class="dctaRow"><a class="btn btnP" href="https://www.upwork.com/freelancers/agustinperalta" target="_blank" rel="noopener" data-umami-event="upwork-proyecto" data-i18n="ctaBtn">Ver mi perfil en Upwork →</a><a class="btn btnO" href="/proyectos" data-i18n="back">volver a proyectos</a></div></div></div></section>
+
+<div class="lbox" id="lbox" hidden>
+<button type="button" class="lbtn lprev" id="lprev" aria-label="anterior" data-i18n-aria="prev">←</button>
+<img id="limg" alt="">
+<button type="button" class="lbtn lnext" id="lnext" aria-label="siguiente" data-i18n-aria="next">→</button>
+<button type="button" class="lbtn lclose" id="lclose" aria-label="cerrar" data-i18n-aria="close">✕</button>
+<div class="lcap" id="lcap"></div>
+</div>
+<footer class="footer"><div class="wrap footIn">
+<span data-i18n="footerText">Diseñado y desarrollado por Agustin Peralta</span>
+<span class="y">© 2026 · <span class="acc">Bogotá</span></span>
+</div></footer>
+</div>
+<script>
+(function(){
+  var I18N={"es":{"navAbout":"sobre-mí","navExp":"experiencia","navWork":"proyectos","navGuides":"guías","navMetrics":"métricas","navContact":"contacto","back":"volver a proyectos","backL":"← volver a proyectos","mYear":"Año","mDuration":"Duración","mSaved":"Tiempo ahorrado","mMoney":"Ahorro estimado","secMetrics":"En números","secFeatures":"Qué hace","secProcess":"Proceso","secResults":"Resultados","secLearnings":"Aprendizajes","secStack":"Stack técnico","secGallery":"Por dentro","zoomIn":"Ampliar captura","secRelated":"Otros proyectos","allProjects":"Ver todos los proyectos →","ctaTitle":"¿Tienes un proyecto en mente?","ctaBtn":"Ver mi perfil en Upwork →","ctaMsg":"Contrátame por Upwork con un servicio de precio fijo o mira mi perfil con reseñas.","upFrom":"desde","upN":"Automatización con n8n","upW":"Agente de IA para WhatsApp","upA":"Auditoría de procesos","liveDefault":"Ver en vivo ↗","prev":"anterior","next":"siguiente","close":"cerrar","theme":"Cambiar tema","footerText":"Diseñado y desarrollado por Agustin Peralta"},"en":{"navAbout":"about","navExp":"experience","navWork":"work","navGuides":"guides","navMetrics":"metrics","navContact":"contact","back":"back to work","backL":"← back to work","mYear":"Year","mDuration":"Duration","mSaved":"Time saved","mMoney":"Estimated savings","secMetrics":"By the numbers","secFeatures":"What it does","secProcess":"Process","secResults":"Results","secLearnings":"Learnings","secStack":"Tech stack","secGallery":"Inside the product","zoomIn":"Enlarge screenshot","secRelated":"More projects","allProjects":"View all projects →","ctaTitle":"Have a project in mind?","ctaBtn":"View my Upwork profile →","ctaMsg":"Hire me on Upwork with a fixed-price service or check my profile and reviews.","upFrom":"from","upN":"n8n workflow automation","upW":"AI agent for WhatsApp","upA":"Process automation audit","liveDefault":"View live ↗","prev":"previous","next":"next","close":"close","theme":"Toggle theme","footerText":"Designed & built by Agustin Peralta"}};
+  var site=document.querySelector(".site");
+  try{if(localStorage.getItem("ap-theme")==="dark")site.classList.remove("light");}catch(e){}
+  var tgl=document.getElementById("tgl");
+  function icon(){tgl.textContent=site.classList.contains("light")?"\u263E":"\u2600";}
+  icon();
+  tgl.addEventListener("click",function(){
+    site.classList.toggle("light");
+    try{localStorage.setItem("ap-theme",site.classList.contains("light")?"light":"dark");}catch(e){}
+    icon();
+  });
+  var nav=document.getElementById("nav");
+  document.getElementById("burger").addEventListener("click",function(){nav.classList.toggle("open");});
+  nav.addEventListener("click",function(e){if(e.target.closest("a"))nav.classList.remove("open");});
+  // Idioma de la interfaz: el contenido del proyecto está en español, como en la versión dinámica.
+  function setLang(l,save){
+    var d=I18N[l]||I18N.es;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(d[k]!=null)el.textContent=d[k];});
+    document.querySelectorAll("[data-i18n-aria]").forEach(function(el){var k=el.getAttribute("data-i18n-aria");if(d[k]!=null)el.setAttribute("aria-label",d[k]);});
+    document.querySelectorAll(".lang button").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-lang")===l);});
+    if(save){try{localStorage.setItem("ap-lang",l);}catch(e){}}
+  }
+  var lang="es";
+  try{var s=localStorage.getItem("ap-lang");if(s==="es"||s==="en")lang=s;else{var n=((navigator.languages&&navigator.languages[0])||navigator.language||"es").toLowerCase();lang=n.indexOf("es")===0?"es":"en";}}catch(e){}
+  if(lang!=="es")setLang(lang,false);
+  document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.getAttribute("data-lang"),true);});});
+  // Galería: miniaturas, captura principal y visor a pantalla completa.
+  var thumbs=[].slice.call(document.querySelectorAll("#gthumbs .gthumb"));
+  if(!thumbs.length)return;
+  var cur=0,gimg=document.getElementById("gimg"),gttl=document.getElementById("gttl"),gcap=document.getElementById("gcap");
+  var lbox=document.getElementById("lbox"),limg=document.getElementById("limg"),lcap=document.getElementById("lcap");
+  function show(i){
+    cur=(i+thumbs.length)%thumbs.length;var t=thumbs[cur];
+    var src=t.getAttribute("data-src"),ttl=t.getAttribute("data-title"),cap=t.getAttribute("data-cap");
+    gimg.src=src;gimg.alt=ttl;gttl.textContent=ttl;gcap.textContent=cap;
+    thumbs.forEach(function(b,j){b.classList.toggle("on",j===cur);});
+    if(!lbox.hidden){limg.src=src;limg.alt=ttl;lcap.textContent=ttl+" \u2014 "+cap;}
+  }
+  function open(){var t=thumbs[cur];limg.src=t.getAttribute("data-src");limg.alt=t.getAttribute("data-title");lcap.textContent=t.getAttribute("data-title")+" \u2014 "+t.getAttribute("data-cap");lbox.hidden=false;}
+  function close(){lbox.hidden=true;}
+  thumbs.forEach(function(b,i){b.addEventListener("click",function(){show(i);});});
+  document.getElementById("gshot").addEventListener("click",open);
+  lbox.addEventListener("click",close);
+  document.getElementById("lprev").addEventListener("click",function(e){e.stopPropagation();show(cur-1);});
+  document.getElementById("lnext").addEventListener("click",function(e){e.stopPropagation();show(cur+1);});
+  document.getElementById("lclose").addEventListener("click",function(e){e.stopPropagation();close();});
+  window.addEventListener("keydown",function(e){
+    if(lbox.hidden)return;
+    if(e.key==="Escape")close();else if(e.key==="ArrowRight")show(cur+1);else if(e.key==="ArrowLeft")show(cur-1);
+  });
+})();
+</script>
+<script defer src="/upwork-pop.js"></script>
+</body>
+</html>

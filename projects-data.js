@@ -19,7 +19,7 @@ var PROJECTS_DATA = [
         image: "img/proyectos/automatizacion-analitica-podcasts.jpg",
         imageCaption: "Arquitectura general del sistema de monitoreo y análisis de podcasts",
         gallery: [
-            {"src": "img/proyectos/galeria/flujo-podcasts/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El proceso diario en n8n, desde el disparador programado hasta guardar los datos y avisar al equipo."}
+            {"src": "img/proyectos/galeria/flujo-podcasts/01-flujo.webp", "title": "El flujo en n8n", "caption": "El proceso diario en n8n, desde el disparador programado hasta guardar los datos y avisar al equipo."}
         ],
         galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: ["n8n", "OP3", "Supabase", "JavaScript"],
@@ -145,7 +145,7 @@ var PROJECTS_DATA = [
         image: "img/proyectos/recontacto-automatizado-de-leads-crm.jpg",
         imageCaption: "Arquitectura del flujo: del CRM a la campaña multicanal de recontacto",
         gallery: [
-            {"src": "img/proyectos/galeria/flujo-recontacto-crm/01-flujo.jpg", "title": "El flujo en n8n", "caption": "La secuencia que lee el CRM, arma la campaña multicanal y hace seguimiento a cada oportunidad."}
+            {"src": "img/proyectos/galeria/flujo-recontacto-crm/01-flujo.webp", "title": "El flujo en n8n", "caption": "La secuencia que lee el CRM, arma la campaña multicanal y hace seguimiento a cada oportunidad."}
         ],
         galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: ["n8n", "Odoo", "GoHighLevel"],
@@ -193,7 +193,7 @@ var PROJECTS_DATA = [
         image: "img/proyectos/prospeccion-automatizada-de-leads-b2b.jpg",
         imageCaption: "Del filtro de búsqueda al prospecto listo en cadencia de outbound",
         gallery: [
-            {"src": "img/proyectos/galeria/flujo-prospeccion-b2b/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El flujo que busca el perfil objetivo, verifica el correo y carga el prospecto en la cadencia de outbound."}
+            {"src": "img/proyectos/galeria/flujo-prospeccion-b2b/01-flujo.webp", "title": "El flujo en n8n", "caption": "El flujo que busca el perfil objetivo, verifica el correo y carga el prospecto en la cadencia de outbound."}
         ],
         galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: ["n8n", "Apollo", "Klenty"],
@@ -242,7 +242,7 @@ var PROJECTS_DATA = [
         image: "img/proyectos/recordatorio-automatizado-de-reuniones-whatsapp.jpg",
         imageCaption: "De la agenda del día siguiente al recordatorio en WhatsApp, en automático",
         gallery: [
-            {"src": "img/proyectos/galeria/flujo-recordatorios/01-flujo.jpg", "title": "El flujo en n8n", "caption": "La revisión diaria de la agenda que filtra teléfonos válidos y envía el recordatorio por WhatsApp."}
+            {"src": "img/proyectos/galeria/flujo-recordatorios/01-flujo.webp", "title": "El flujo en n8n", "caption": "La revisión diaria de la agenda que filtra teléfonos válidos y envía el recordatorio por WhatsApp."}
         ],
         galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: ["n8n", "WhatsApp", "AiSensy"],
@@ -291,11 +291,11 @@ var PROJECTS_DATA = [
         image: "img/proyectos/agente-whatsapp.jpg",
         imageCaption: "Bandeja de conversaciones del agente en el panel de operación, con los datos de ejemplo y las cifras ocultas",
         gallery: [
-            { src: "img/proyectos/galeria/panel-operacion/mensajes.jpg", title: "Bandeja de conversaciones", caption: "El hilo completo de cada contacto, con la etapa de compra y la opción de tomar el control en cualquier momento." },
-            { src: "img/proyectos/galeria/panel-operacion/metricas.jpg", title: "Tablero de operación", caption: "Volumen, conversión y ticket promedio del canal. Las cifras van ocultas." },
-            { src: "img/proyectos/galeria/panel-operacion/auditoria.jpg", title: "Auditoría del agente", caption: "Cada conversación se revisa contra las reglas del negocio y queda con su puntaje y su motivo." },
-            { src: "img/proyectos/galeria/panel-operacion/agente.jpg", title: "Configuración del agente", caption: "Modelo, tiempos de espera y el límite exacto de lo que puede resolver antes de ceder el turno." },
-            { src: "img/proyectos/galeria/panel-operacion/costos.jpg", title: "Costo de operación", caption: "Gasto por día, por conversación y por venta, con la proyección de cierre de ciclo. Los montos van ocultos." }
+            { src: "img/proyectos/galeria/panel-operacion/mensajes.webp", title: "Bandeja de conversaciones", caption: "El hilo completo de cada contacto, con la etapa de compra y la opción de tomar el control en cualquier momento." },
+            { src: "img/proyectos/galeria/panel-operacion/metricas.webp", title: "Tablero de operación", caption: "Volumen, conversión y ticket promedio del canal. Las cifras van ocultas." },
+            { src: "img/proyectos/galeria/panel-operacion/auditoria.webp", title: "Auditoría del agente", caption: "Cada conversación se revisa contra las reglas del negocio y queda con su puntaje y su motivo." },
+            { src: "img/proyectos/galeria/panel-operacion/agente.webp", title: "Configuración del agente", caption: "Modelo, tiempos de espera y el límite exacto de lo que puede resolver antes de ceder el turno." },
+            { src: "img/proyectos/galeria/panel-operacion/costos.webp", title: "Costo de operación", caption: "Gasto por día, por conversación y por venta, con la proyección de cierre de ciclo. Los montos van ocultos." }
         ],
         galleryNote: "Capturas del panel en modo demostración, con datos de ejemplo y las cifras del cliente ocultas",
         techCard: ["Python", "LangGraph", "WhatsApp API", "PostgreSQL"],
@@ -368,10 +368,10 @@ var PROJECTS_DATA = [
         image: "img/proyectos/panel-auditoria.jpg",
         imageCaption: "Vista de auditoría del panel, con los indicadores difuminados y la marca del cliente reemplazada",
         gallery: [
-            { src: "img/proyectos/galeria/panel-operacion/auditoria.jpg", title: "Resultado de cada conversación", caption: "El agente se evalúa contra las reglas del negocio y cada caso queda con su resultado y el motivo que lo explica." },
-            { src: "img/proyectos/galeria/panel-operacion/agente.jpg", title: "Qué versión estaba corriendo", caption: "Modelo, tiempos de espera y límites del agente quedan a la vista, porque una regla solo sirve si se sabe contra qué versión se evaluó." },
-            { src: "img/proyectos/galeria/panel-operacion/mensajes.jpg", title: "La conversación completa", caption: "Desde el hallazgo se entra al hilo entero, con la etapa en la que estaba el contacto y la opción de tomar el control." },
-            { src: "img/proyectos/galeria/panel-operacion/tickets.jpg", title: "Del hallazgo al pendiente", caption: "Un caso marcado en auditoría se convierte en ticket con su evidencia enlazada, así el reporte no se queda en una captura suelta." }
+            { src: "img/proyectos/galeria/panel-operacion/auditoria.webp", title: "Resultado de cada conversación", caption: "El agente se evalúa contra las reglas del negocio y cada caso queda con su resultado y el motivo que lo explica." },
+            { src: "img/proyectos/galeria/panel-operacion/agente.webp", title: "Qué versión estaba corriendo", caption: "Modelo, tiempos de espera y límites del agente quedan a la vista, porque una regla solo sirve si se sabe contra qué versión se evaluó." },
+            { src: "img/proyectos/galeria/panel-operacion/mensajes.webp", title: "La conversación completa", caption: "Desde el hallazgo se entra al hilo entero, con la etapa en la que estaba el contacto y la opción de tomar el control." },
+            { src: "img/proyectos/galeria/panel-operacion/tickets.webp", title: "Del hallazgo al pendiente", caption: "Un caso marcado en auditoría se convierte en ticket con su evidencia enlazada, así el reporte no se queda en una captura suelta." }
         ],
         galleryNote: "Capturas del panel en modo demostración, con datos de ejemplo y las cifras del cliente ocultas",
         techCard: ["FastAPI", "PostgreSQL", "JavaScript", "Roles"],
@@ -444,9 +444,9 @@ var PROJECTS_DATA = [
         image: "img/proyectos/migracion-costos.jpg",
         imageCaption: "Vista de costos del panel, con las cifras difuminadas y la marca del cliente reemplazada",
         gallery: [
-            { src: "img/proyectos/galeria/panel-operacion/costos.jpg", title: "Qué cuesta operar hoy", caption: "Gasto por día, por conversación y por venta, con la proyección de cierre de ciclo. Antes el costo solo se veía en la factura de fin de mes." },
-            { src: "img/proyectos/galeria/panel-operacion/negocio.jpg", title: "El costo contra el ingreso", caption: "Ingreso, costo y margen en la misma pantalla, que es la única forma de saber si la migración valió la pena." },
-            { src: "img/proyectos/galeria/panel-operacion/metricas.jpg", title: "La operación sigue igual de visible", caption: "Volumen y conversión del canal después del cambio de infraestructura, para comprobar que nada se rompió en el camino." }
+            { src: "img/proyectos/galeria/panel-operacion/costos.webp", title: "Qué cuesta operar hoy", caption: "Gasto por día, por conversación y por venta, con la proyección de cierre de ciclo. Antes el costo solo se veía en la factura de fin de mes." },
+            { src: "img/proyectos/galeria/panel-operacion/negocio.webp", title: "El costo contra el ingreso", caption: "Ingreso, costo y margen en la misma pantalla, que es la única forma de saber si la migración valió la pena." },
+            { src: "img/proyectos/galeria/panel-operacion/metricas.webp", title: "La operación sigue igual de visible", caption: "Volumen y conversión del canal después del cambio de infraestructura, para comprobar que nada se rompió en el camino." }
         ],
         galleryNote: "Capturas del panel en modo demostración, con datos de ejemplo y las cifras del cliente ocultas",
         techCard: ["Docker", "Coolify", "PostgreSQL", "Python"],
@@ -519,13 +519,13 @@ var PROJECTS_DATA = [
         image: "img/proyectos/orientacion-vocacional.jpg",
         imageCaption: "Arquitectura de la plataforma, con la capa de IA aislada de la aplicación y de la API de negocio",
         gallery: [
-            { src: "img/proyectos/galeria/orientacion-vocacional/01-inicio.jpg", title: "Entrada al recorrido", caption: "La pantalla que ve el estudiante al llegar. El lenguaje está pensado para alguien de grado once, no para un formulario administrativo." },
-            { src: "img/proyectos/galeria/orientacion-vocacional/02-avatar.jpg", title: "Elección de avatar", caption: "Antes de las preguntas, la persona escoge cómo quiere aparecer. Es lo que sostiene la atención hasta el final del cuestionario." },
-            { src: "img/proyectos/galeria/orientacion-vocacional/03-datos.jpg", title: "Datos y consentimiento", caption: "Los datos mínimos que la institución necesita para el seguimiento, con la autorización de tratamiento explícita." },
-            { src: "img/proyectos/galeria/orientacion-vocacional/04-pregunta.jpg", title: "Cuestionario vocacional", caption: "Veintidós preguntas de situación, sin escalas numéricas. Cada opción suma a un perfil distinto." },
-            { src: "img/proyectos/galeria/orientacion-vocacional/05-resultado.jpg", title: "Resultado del perfil", caption: "El perfil dominante explicado en lenguaje claro, junto a los programas de la institución que mejor encajan." },
-            { src: "img/proyectos/galeria/orientacion-vocacional/06-afinidades.jpg", title: "Mapa de afinidades", caption: "El peso de cada perfil en la persona, para que el resultado no se lea como una etiqueta única." },
-            { src: "img/proyectos/galeria/orientacion-vocacional/07-asesor.jpg", title: "Asesor de IA con citas", caption: "La conversación sobre el resultado. Cada respuesta sale de los documentos oficiales y dice de qué documento y qué página viene." }
+            { src: "img/proyectos/galeria/orientacion-vocacional/01-inicio.webp", title: "Entrada al recorrido", caption: "La pantalla que ve el estudiante al llegar. El lenguaje está pensado para alguien de grado once, no para un formulario administrativo." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/02-avatar.webp", title: "Elección de avatar", caption: "Antes de las preguntas, la persona escoge cómo quiere aparecer. Es lo que sostiene la atención hasta el final del cuestionario." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/03-datos.webp", title: "Datos y consentimiento", caption: "Los datos mínimos que la institución necesita para el seguimiento, con la autorización de tratamiento explícita." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/04-pregunta.webp", title: "Cuestionario vocacional", caption: "Veintidós preguntas de situación, sin escalas numéricas. Cada opción suma a un perfil distinto." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/05-resultado.webp", title: "Resultado del perfil", caption: "El perfil dominante explicado en lenguaje claro, junto a los programas de la institución que mejor encajan." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/06-afinidades.webp", title: "Mapa de afinidades", caption: "El peso de cada perfil en la persona, para que el resultado no se lea como una etiqueta única." },
+            { src: "img/proyectos/galeria/orientacion-vocacional/07-asesor.webp", title: "Asesor de IA con citas", caption: "La conversación sobre el resultado. Cada respuesta sale de los documentos oficiales y dice de qué documento y qué página viene." }
         ],
         galleryNote: "Recorrido completo en modo demostración, con datos de ejemplo y la marca de la institución reemplazada",
         techCard: ["Angular", ".NET", "MySQL", "pgvector"],
@@ -598,7 +598,7 @@ var PROJECTS_DATA = [
         image: "img/proyectos/agente-de-ia-para-insights-estrategicos.jpg",
         imageCaption: "Visualización del flujo de un agente de IA generando informes estratégicos automatizados.",
         gallery: [
-            {"src": "img/proyectos/galeria/flujo-insights/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El flujo que reúne la información, la analiza con IA y deja los hallazgos listos para el equipo."}
+            {"src": "img/proyectos/galeria/flujo-insights/01-flujo.webp", "title": "El flujo en n8n", "caption": "El flujo que reúne la información, la analiza con IA y deja los hallazgos listos para el equipo."}
         ],
         galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: [
@@ -753,7 +753,7 @@ var PROJECTS_DATA = [
         image: "img/proyectos/automatizacion-inteligente-de-analisis-de-shows.jpg",
         imageCaption: "Dashboard de análisis de shows con métricas y visualizaciones clave.",
         gallery: [
-            {"src": "img/proyectos/galeria/flujo-analisis-shows/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El proceso que trae los datos de los shows, los analiza con IA y detecta las tendencias de la semana."}
+            {"src": "img/proyectos/galeria/flujo-analisis-shows/01-flujo.webp", "title": "El flujo en n8n", "caption": "El proceso que trae los datos de los shows, los analiza con IA y detecta las tendencias de la semana."}
         ],
         galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: [
@@ -907,7 +907,7 @@ var PROJECTS_DATA = [
         image: "img/proyectos/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital.jpg",
         imageCaption: "Diagrama de flujo de automatización de contenido y diseño con IA en n8n.",
         gallery: [
-            {"src": "img/proyectos/galeria/flujo-contenido-marketing/01-flujo.jpg", "title": "El flujo en n8n", "caption": "El flujo que genera el copy y la imagen con IA, ensambla la pieza y la publica sin trabajo manual."}
+            {"src": "img/proyectos/galeria/flujo-contenido-marketing/01-flujo.webp", "title": "El flujo en n8n", "caption": "El flujo que genera el copy y la imagen con IA, ensambla la pieza y la publica sin trabajo manual."}
         ],
         galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: [
@@ -1063,7 +1063,7 @@ var PROJECTS_DATA = [
         image: "img/proyectos/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia.jpg",
         imageCaption: "Diagrama de flujo de automatización de contenido con IA para un blog de tecnología.",
         gallery: [
-            {"src": "img/proyectos/galeria/flujo-blog/01-flujo.jpg", "title": "El flujo en n8n", "caption": "La cadena que produce el contenido con IA y lo publica en el blog de forma automática."}
+            {"src": "img/proyectos/galeria/flujo-blog/01-flujo.webp", "title": "El flujo en n8n", "caption": "La cadena que produce el contenido con IA y lo publica en el blog de forma automática."}
         ],
         galleryNote: "Reconstrucción del flujo en n8n para mostrar la arquitectura, sin datos ni credenciales del cliente",
         techCard: [
@@ -1221,12 +1221,12 @@ var PROJECTS_DATA = [
         image: "img/proyectos/pulso-app-salud-cardiovascular.jpg",
         imageCaption: "Dashboard de métricas cardiovasculares con análisis IA en streaming",
         gallery: [
-            { src: "img/proyectos/galeria/pulso/01-metricas.jpg", title: "Métricas del día", caption: "Frecuencia, peso, sueño y estrés se registran en segundos y quedan clasificados al instante, sin crear ninguna cuenta." },
-            { src: "img/proyectos/galeria/pulso/02-analisis.jpg", title: "Análisis personalizado", caption: "La IA lee las métricas registradas y devuelve la lectura en streaming, para que el texto aparezca mientras se está escribiendo." },
-            { src: "img/proyectos/galeria/pulso/03-score.jpg", title: "Score cardiovascular", caption: "Un solo número con su desglose por factor, así se entiende qué está sumando y qué está restando." },
-            { src: "img/proyectos/galeria/pulso/04-receta.jpg", title: "Asistente de recetas", caption: "Con los ingredientes que hay en casa arma la receta cardioprotectora completa, con preparación paso a paso y por qué cada alimento cuida el corazón." },
-            { src: "img/proyectos/galeria/pulso/05-rutina.jpg", title: "Rutina generada", caption: "Cuatro preguntas y devuelve la rutina completa con series, descansos y la razón de cada ejercicio." },
-            { src: "img/proyectos/galeria/pulso/06-habitos.jpg", title: "Seguimiento de hábitos", caption: "El avance del día enlazado con la rutina activa, que es lo que hace que la persona vuelva mañana." }
+            { src: "img/proyectos/galeria/pulso/01-metricas.webp", title: "Métricas del día", caption: "Frecuencia, peso, sueño y estrés se registran en segundos y quedan clasificados al instante, sin crear ninguna cuenta." },
+            { src: "img/proyectos/galeria/pulso/02-analisis.webp", title: "Análisis personalizado", caption: "La IA lee las métricas registradas y devuelve la lectura en streaming, para que el texto aparezca mientras se está escribiendo." },
+            { src: "img/proyectos/galeria/pulso/03-score.webp", title: "Score cardiovascular", caption: "Un solo número con su desglose por factor, así se entiende qué está sumando y qué está restando." },
+            { src: "img/proyectos/galeria/pulso/04-receta.webp", title: "Asistente de recetas", caption: "Con los ingredientes que hay en casa arma la receta cardioprotectora completa, con preparación paso a paso y por qué cada alimento cuida el corazón." },
+            { src: "img/proyectos/galeria/pulso/05-rutina.webp", title: "Rutina generada", caption: "Cuatro preguntas y devuelve la rutina completa con series, descansos y la razón de cada ejercicio." },
+            { src: "img/proyectos/galeria/pulso/06-habitos.webp", title: "Seguimiento de hábitos", caption: "El avance del día enlazado con la rutina activa, que es lo que hace que la persona vuelva mañana." }
         ],
         galleryNote: "Vistas reales de la aplicación con datos de ejemplo. La app no pide cuenta ni guarda datos personales",
         techCard: ["Next.js 15", "Claude", "Imagen 3", "Supabase"],
@@ -1359,8 +1359,8 @@ var PROJECTS_DATA = [
         liveUrl: "https://brain.urpeailab.com/visual",
         liveLabel: "Ver el visual en vivo",
         gallery: [
-            { src: "img/proyectos/galeria/monica-brain/01-mapa.jpg", title: "Mapa del sistema", caption: "Cada pieza del asistente es un nodo y cada línea es una llamada real entre ellas. El tamaño indica cuánto trabajo carga cada una." },
-            { src: "img/proyectos/galeria/monica-brain/02-detalle.jpg", title: "Detalle de un componente", caption: "Al acercarse a un nodo se abre qué hace, de qué tipo es y con quién habla. Sirve para explicarle el sistema a alguien que no es técnico." }
+            { src: "img/proyectos/galeria/monica-brain/01-mapa.webp", title: "Mapa del sistema", caption: "Cada pieza del asistente es un nodo y cada línea es una llamada real entre ellas. El tamaño indica cuánto trabajo carga cada una." },
+            { src: "img/proyectos/galeria/monica-brain/02-detalle.webp", title: "Detalle de un componente", caption: "Al acercarse a un nodo se abre qué hace, de qué tipo es y con quién habla. Sirve para explicarle el sistema a alguien que no es técnico." }
         ],
         galleryNote: "Mapa interactivo del sistema, en vivo en brain.urpeailab.com",
         techCard: ["IA conversacional", "Automatización", "Integraciones"],
@@ -1438,9 +1438,9 @@ var PROJECTS_DATA = [
         image: "img/proyectos/monica-developer-apps-por-prompts.jpg",
         imageCaption: "De una idea descrita en palabras a una aplicación lista para usar.",
         gallery: [
-            { src: "img/proyectos/galeria/monica-developer/01-portada.jpg", title: "La promesa del producto", caption: "Describe la aplicación en español y la plataforma la genera con las reglas fiscales y las pasarelas de pago de la región ya resueltas." },
-            { src: "img/proyectos/galeria/monica-developer/02-templates.jpg", title: "Plantillas por oficio", caption: "Puntos de partida ya probados para abogados, clínicas y contadores, en vez de empezar cada aplicación desde cero." },
-            { src: "img/proyectos/galeria/monica-developer/03-precios.jpg", title: "Planes", caption: "Tres niveles según cuántas aplicaciones se generen al mes y qué modelo de IA se usa detrás." }
+            { src: "img/proyectos/galeria/monica-developer/01-portada.webp", title: "La promesa del producto", caption: "Describe la aplicación en español y la plataforma la genera con las reglas fiscales y las pasarelas de pago de la región ya resueltas." },
+            { src: "img/proyectos/galeria/monica-developer/02-templates.webp", title: "Plantillas por oficio", caption: "Puntos de partida ya probados para abogados, clínicas y contadores, en vez de empezar cada aplicación desde cero." },
+            { src: "img/proyectos/galeria/monica-developer/03-precios.webp", title: "Planes", caption: "Tres niveles según cuántas aplicaciones se generen al mes y qué modelo de IA se usa detrás." }
         ],
         galleryNote: "Capturas de la versión beta pública",
         techCard: ["Inteligencia Artificial", "Desarrollo web", "Producto"],
@@ -1519,11 +1519,11 @@ var PROJECTS_DATA = [
         image: "img/proyectos/monica-designer-identidad-de-marca-ia.jpg",
         imageCaption: "De un brief breve a una identidad de marca completa.",
         gallery: [
-            {"src": "img/proyectos/galeria/monica-designer/01-portada.jpg", "title": "Portada del brandbook", "caption": "La marca completa entregada como un manual navegable, generado de punta a punta por la API."},
-            {"src": "img/proyectos/galeria/monica-designer/02-color.jpg", "title": "Sistema de color", "caption": "Paleta extraída del logo, con el rol de cada color y su significado dentro de la marca."},
-            {"src": "img/proyectos/galeria/monica-designer/03-tipografia.jpg", "title": "Tipografía", "caption": "Las familias tipográficas para títulos, cuerpo y código, con su uso ya definido."},
-            {"src": "img/proyectos/galeria/monica-designer/04-flyer-promo.jpg", "title": "Pieza de campaña", "caption": "Un flyer promocional listo para publicar, generado con la identidad de la marca."},
-            {"src": "img/proyectos/galeria/monica-designer/05-flyer-beneficios.jpg", "title": "Flyer de beneficios", "caption": "Otra pieza de la misma familia visual, coherente con el resto del sistema."}
+            {"src": "img/proyectos/galeria/monica-designer/01-portada.webp", "title": "Portada del brandbook", "caption": "La marca completa entregada como un manual navegable, generado de punta a punta por la API."},
+            {"src": "img/proyectos/galeria/monica-designer/02-color.webp", "title": "Sistema de color", "caption": "Paleta extraída del logo, con el rol de cada color y su significado dentro de la marca."},
+            {"src": "img/proyectos/galeria/monica-designer/03-tipografia.webp", "title": "Tipografía", "caption": "Las familias tipográficas para títulos, cuerpo y código, con su uso ya definido."},
+            {"src": "img/proyectos/galeria/monica-designer/04-flyer-promo.webp", "title": "Pieza de campaña", "caption": "Un flyer promocional listo para publicar, generado con la identidad de la marca."},
+            {"src": "img/proyectos/galeria/monica-designer/05-flyer-beneficios.webp", "title": "Flyer de beneficios", "caption": "Otra pieza de la misma familia visual, coherente con el resto del sistema."}
         ],
         galleryNote: "Ejemplo generado con una marca ficticia (Aurora Cafe) para mostrar el resultado de la API",
         techCard: ["Inteligencia Artificial", "Diseño", "Producto"],
@@ -1677,11 +1677,11 @@ var PROJECTS_DATA = [
         liveUrl: "https://github.com/Agustin1231/flowdeck",
         liveLabel: "Ver en GitHub",
         gallery: [
-            {"src": "img/proyectos/galeria/flowdeck/01-instancias.jpg", "title": "Instancias conectadas", "caption": "Todas las instancias de n8n en un solo lugar, con su estado y su acceso centralizado."},
-            {"src": "img/proyectos/galeria/flowdeck/02-resumen.jpg", "title": "Resumen general", "caption": "El estado de cada instancia de un vistazo, sin entrar una por una."},
-            {"src": "img/proyectos/galeria/flowdeck/03-workflows.jpg", "title": "Workflows", "caption": "El listado de flujos de una instancia, con su estado activo o en pausa."},
-            {"src": "img/proyectos/galeria/flowdeck/04-detalle.jpg", "title": "Detalle del workflow", "caption": "La ficha de un flujo puntual con su información y sus acciones."},
-            {"src": "img/proyectos/galeria/flowdeck/05-ejecuciones.jpg", "title": "Ejecuciones", "caption": "El historial de corridas de un flujo, para revisar que todo está funcionando."}
+            {"src": "img/proyectos/galeria/flowdeck/01-instancias.webp", "title": "Instancias conectadas", "caption": "Todas las instancias de n8n en un solo lugar, con su estado y su acceso centralizado."},
+            {"src": "img/proyectos/galeria/flowdeck/02-resumen.webp", "title": "Resumen general", "caption": "El estado de cada instancia de un vistazo, sin entrar una por una."},
+            {"src": "img/proyectos/galeria/flowdeck/03-workflows.webp", "title": "Workflows", "caption": "El listado de flujos de una instancia, con su estado activo o en pausa."},
+            {"src": "img/proyectos/galeria/flowdeck/04-detalle.webp", "title": "Detalle del workflow", "caption": "La ficha de un flujo puntual con su información y sus acciones."},
+            {"src": "img/proyectos/galeria/flowdeck/05-ejecuciones.webp", "title": "Ejecuciones", "caption": "El historial de corridas de un flujo, para revisar que todo está funcionando."}
         ],
         galleryNote: "Vistas de FlowDeck conectado a instancias de demostración, sin datos de clientes",
         techCard: ["n8n", "React", "Node.js", "PWA"],
@@ -1773,9 +1773,9 @@ var PROJECTS_DATA = [
         image: "img/proyectos/visor-de-orquestacion-de-subagentes.jpg",
         imageCaption: "El orquestador delegando una tarea al subagente de diagramas, con la actividad registrada en vivo",
         gallery: [
-            { src: "img/proyectos/galeria/visor-subagentes/01-mapa.jpg", title: "El mapa de subagentes", caption: "Cada nodo es un subagente con su especialidad. Alrededor del orquestador se ve quién está trabajando y quién está libre." },
-            { src: "img/proyectos/galeria/visor-subagentes/02-delegacion.jpg", title: "Una delegación en curso", caption: "La solicitud entra, el orquestador la reparte y el registro de la derecha va contando el recorrido paso por paso." },
-            { src: "img/proyectos/galeria/visor-subagentes/03-oscuro.jpg", title: "Modo oscuro", caption: "La misma vista pensada para dejarla abierta en una pantalla secundaria durante horas." }
+            { src: "img/proyectos/galeria/visor-subagentes/01-mapa.webp", title: "El mapa de subagentes", caption: "Cada nodo es un subagente con su especialidad. Alrededor del orquestador se ve quién está trabajando y quién está libre." },
+            { src: "img/proyectos/galeria/visor-subagentes/02-delegacion.webp", title: "Una delegación en curso", caption: "La solicitud entra, el orquestador la reparte y el registro de la derecha va contando el recorrido paso por paso." },
+            { src: "img/proyectos/galeria/visor-subagentes/03-oscuro.webp", title: "Modo oscuro", caption: "La misma vista pensada para dejarla abierta en una pantalla secundaria durante horas." }
         ],
         galleryNote: "Vistas en vivo del visor, con los datos sensibles del registro enmascarados",
         techCard: ["JavaScript", "SVG", "Docker", "Coolify"],

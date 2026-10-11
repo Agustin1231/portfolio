@@ -6,9 +6,9 @@
 <title>Levantamiento de proceso — Agustin Peralta</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Formulario de levantamiento de proceso para automatización.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/space-grotesk-v22-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-v24-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jetbrains-mono-v24-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jetbrains-mono-v24-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/space-grotesk-v22-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/space-grotesk-v22-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style>
 <style>
 :root{
   --bg:#0b0b0d; --panel:#141417; --panel2:#1a1a1e;
@@ -613,17 +613,32 @@ select option{background:var(--panel);color:var(--fg)}
     });
   });
 
+  /* ---- tope total del envío ----
+     El webhook pasa por Cloudflare, que corta los envíos de más de 100 MB: se frena antes en 90 MB
+     (archivos + audios) para no hacer esperar una subida larga que igual va a fallar. */
+  var MAX_TOTAL = 90*1024*1024;
+  function totalBytes(){
+    var n = 0;
+    pickedFiles.forEach(function(file){ n += file.size; });
+    Object.keys(recordings).forEach(function(k){ n += recordings[k].blob.size || 0; });
+    return n;
+  }
+
   /* ---- files ---- */
   var drop = document.getElementById("drop");
   var fileInput = document.getElementById("files");
   var fileList = document.getElementById("fileList");
-  fileInput.addEventListener("change", function(){
-    [].slice.call(fileInput.files).forEach(function(f){
+  function addFiles(files){
+    [].slice.call(files).forEach(function(f){
       if(f.size > 10*1024*1024){ alert("El archivo "+f.name+" pasa de 10 MB."); return; }
+      if(totalBytes() + f.size > MAX_TOTAL){ alert("Con «"+f.name+"» el envío pasaría de 90 MB, el máximo que se puede mandar de una vez. Quita algún archivo o mándamelo por el canal donde recibiste este enlace."); return; }
       pickedFiles.push(f);
     });
-    fileInput.value = "";
     paintFiles();
+  }
+  fileInput.addEventListener("change", function(){
+    addFiles(fileInput.files);
+    fileInput.value = "";
   });
   ["dragenter","dragover"].forEach(function(e){
     drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.add("over"); });
@@ -631,16 +646,15 @@ select option{background:var(--panel);color:var(--fg)}
   ["dragleave","drop"].forEach(function(e){
     drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.remove("over"); });
   });
-  drop.addEventListener("drop", function(ev){
-    [].slice.call(ev.dataTransfer.files).forEach(function(f){ pickedFiles.push(f); });
-    paintFiles();
-  });
+  drop.addEventListener("drop", function(ev){ addFiles(ev.dataTransfer.files); });
   function paintFiles(){
     fileList.innerHTML = "";
     pickedFiles.forEach(function(f,i){
       var row = document.createElement("div");
       row.className = "fileItem";
-      row.innerHTML = "<span>"+f.name+" · "+(f.size/1024).toFixed(0)+" KB</span>";
+      var name = document.createElement("span");
+      name.textContent = f.name+" · "+(f.size/1024).toFixed(0)+" KB";
+      row.appendChild(name);
       var b = document.createElement("button");
       b.type = "button"; b.textContent = "×";
       b.addEventListener("click", function(){ pickedFiles.splice(i,1); paintFiles(); });
@@ -738,6 +752,7 @@ select option{background:var(--panel);color:var(--fg)}
   }
 
   function submit(){
+    if(totalBytes() > MAX_TOTAL){ alert("Entre archivos y audios el envío pasa de 90 MB, el máximo que se puede mandar de una vez. Quita algún archivo o mándamelo por el canal donde recibiste este enlace."); return; }
     nextBtn.disabled = true;
     nextBtn.textContent = "Enviando...";
     var fd = new FormData();

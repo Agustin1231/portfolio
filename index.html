@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTYVQM2HSF"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-VTYVQM2HSF');
-</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agustin Peralta — Ingeniero de IA & Automatización</title>
@@ -87,11 +79,11 @@ gtag('config', 'G-VTYVQM2HSF');
 <meta name="theme-color" content="#f1efe9">
 <style>x-dc{display:none!important}html{background:#f1efe9}</style>
 <script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script defer src="vendor/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z"></script>
-<script defer src="vendor/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1"></script>
+<link rel="preload" href="/fonts/space-grotesk-v22-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-v24-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jetbrains-mono-v24-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jetbrains-mono-v24-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/space-grotesk-v22-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/space-grotesk-v22-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style>
+<script defer src="/vendor/react-18.3.1.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z"></script>
+<script defer src="/vendor/react-dom-18.3.1.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1"></script>
 <script defer src="./support.js"></script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 </head>
@@ -99,9 +91,6 @@ gtag('config', 'G-VTYVQM2HSF');
 <x-dc>
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
@@ -455,28 +444,28 @@ a{color:inherit;text-decoration:none}
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ff5c35&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;asciiField&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;scene3d&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
 class Component extends DCLogic {
   PROJECTS = [
-    {id:"automatizacion-analitica-podcasts",num:"01",tag:"auto",featured:true,year:"2025",company:"Plataforma de Podcasts",hoursSaved:600,img:"img/proyectos/automatizacion-analitica-podcasts.jpg",tech:["n8n","PostgreSQL","APIs"],es:{t:"Automatización Analítica de Podcasts",s:"Extracción, validación y análisis diario de métricas de podcasts para decisiones"},en:{t:"Podcast Analytics Automation",s:"Daily extraction, validation and analysis of podcast metrics for decision-making"}},
-    {id:"recontacto-automatizado-de-leads-crm",num:"13",tag:"auto",featured:true,year:"2025",company:"Cliente B2B",hoursSaved:316,img:"img/proyectos/recontacto-automatizado-de-leads-crm.jpg",tech:["n8n","Odoo","GoHighLevel"],es:{t:"Recontacto Automatizado de Leads",s:"Reactivación masiva de oportunidades del CRM con campañas multicanal por WhatsApp y email"},en:{t:"Automated Lead Re-engagement",s:"Mass reactivation of CRM opportunities with multichannel WhatsApp and email campaigns"}},
-    {id:"prospeccion-automatizada-de-leads-b2b",num:"14",tag:"auto",featured:true,year:"2025",company:"Cliente B2B",img:"img/proyectos/prospeccion-automatizada-de-leads-b2b.jpg",tech:["n8n","Apollo","Klenty"],es:{t:"Prospección Automatizada de Leads B2B",s:"Búsqueda, enriquecimiento y carga de prospectos en cadencias de outbound"},en:{t:"Automated B2B Lead Prospecting",s:"Search, enrichment and loading of prospects into outbound cadences"}},
-    {id:"recordatorio-automatizado-de-reuniones-whatsapp",num:"15",tag:"auto",featured:true,year:"2025",company:"Cliente B2B",img:"img/proyectos/recordatorio-automatizado-de-reuniones-whatsapp.jpg",tech:["n8n","WhatsApp","AiSensy"],es:{t:"Recordatorio Automático de Reuniones",s:"Mensajes de WhatsApp que reducen las ausencias a las reuniones agendadas"},en:{t:"Automated Meeting Reminders",s:"WhatsApp messages that reduce no-shows to scheduled meetings"}},
-    {id:"agente-de-ia-que-atiende-y-cobra-por-whatsapp",num:"16",tag:"ai",featured:true,year:"2026",company:"Cliente de comercio electrónico",img:"img/proyectos/agente-whatsapp.jpg",tech:["Python","LangGraph","WhatsApp API"],es:{t:"Agente de IA que Atiende y Cobra por WhatsApp",s:"Responde dudas de compra, arma el pedido y recupera los pagos que quedan pendientes"},en:{t:"AI Agent that Serves and Collects on WhatsApp",s:"Answers buying questions, builds the order and recovers pending payments"}},
-    {id:"panel-de-auditoria-para-un-agente-de-ia",num:"17",tag:"ai",featured:true,year:"2026",company:"Cliente de comercio electrónico",img:"img/proyectos/panel-auditoria.jpg",tech:["FastAPI","PostgreSQL","JavaScript"],es:{t:"Panel de Auditoría para un Agente de IA",s:"Cada conversación se evalúa contra las reglas del negocio y queda con su motivo"},en:{t:"Audit Panel for an AI Agent",s:"Every conversation is scored against business rules and keeps its reasoning"}},
-    {id:"de-plataforma-por-suscripcion-a-infraestructura-propia",num:"18",tag:"tools",featured:true,year:"2026",company:"Cliente de comercio electrónico",img:"img/proyectos/migracion-costos.jpg",tech:["Docker","Coolify","PostgreSQL"],es:{t:"De una Plataforma por Suscripción a Infraestructura Propia",s:"Migración por etapas que bajó el costo mensual de operación un 91 por ciento"},en:{t:"From a Subscription Platform to Self-Hosted Infrastructure",s:"Staged migration that cut the monthly operating cost by 91 percent"}},
-    {id:"plataforma-de-orientacion-vocacional-con-ia",num:"19",tag:"ai",featured:true,year:"2026",company:"Institución educativa",img:"img/proyectos/orientacion-vocacional.jpg",tech:["Angular",".NET","pgvector"],es:{t:"Plataforma de Orientación Vocacional con IA",s:"Cuestionario vocacional y un asistente que responde citando los documentos oficiales"},en:{t:"AI-Powered Career Guidance Platform",s:"A vocational test plus an assistant that answers citing the official documents"}},
-    {id:"agente-de-ia-para-insights-estrategicos",num:"02",tag:"ai",year:"2025",company:"Urpe AI Lab",img:"img/proyectos/agente-de-ia-para-insights-estrategicos.jpg",tech:["LangGraph","LLMs","Python"],es:{t:"Agente de IA para Insights Estratégicos",s:"Transforma métricas de shows en recomendaciones estratégicas personalizadas"},en:{t:"AI Agent for Strategic Insights",s:"Turns show metrics into personalized strategic recommendations"}},
-    {id:"automatizacion-inteligente-de-analisis-de-shows",num:"03",tag:"auto",year:"2025",company:"Urpe AI Lab",hoursSaved:515,img:"img/proyectos/automatizacion-inteligente-de-analisis-de-shows.jpg",tech:["n8n","LLMs","Data Viz"],es:{t:"Automatización Inteligente de Análisis de Shows",s:"Análisis de rendimiento de shows mediante IA y visualización de datos"},en:{t:"Intelligent Show Analytics Automation",s:"Show performance analysis with AI and data visualization"}},
-    {id:"automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",num:"04",tag:"auto",year:"2025",company:"Nata",img:"img/proyectos/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital.jpg",tech:["n8n","IA Generativa","APIs"],es:{t:"Automatización de Contenido y Diseño con IA",s:"Flujo automatizado para crear contenido web y piezas visuales con IA"},en:{t:"AI Content & Design Automation",s:"Automated flow to create web content and visual assets with AI"}},
-    {id:"automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",num:"05",tag:"auto",year:"2026",company:"Proyecto Personal",img:"img/proyectos/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia.jpg",tech:["n8n","LLMs","APIs"],es:{t:"Publicación Automatizada para Blog de Tecnología",s:"Curación, creación y publicación automática de contenido tecnológico"},en:{t:"Automated Publishing for a Tech Blog",s:"Curating, creating and auto-publishing tech content end to end"}},
-    {id:"pulso-app-salud-cardiovascular",num:"06",tag:"prod",featured:true,year:"2025",company:"Producto propio",img:"img/proyectos/pulso-app-salud-cardiovascular.jpg",tech:["Next.js","PWA","IA"],es:{t:"Pulso — App PWA de Salud Cardiovascular",s:"App instalable con métricas, recetas y rutinas con IA, sin login"},en:{t:"Pulso — Cardiovascular Health PWA",s:"Installable app with AI metrics, recipes and routines, no login"}},
-    {id:"monica-brain-asistente-ia-omnicanal",num:"07",tag:"ai",featured:true,year:"2025",company:"Urpe AI Lab",hoursSaved:9258,live:"https://brain.urpeailab.com/visual",img:"img/proyectos/monica-brain-asistente-ia-omnicanal.jpg",tech:["LangGraph","LLMs","n8n"],es:{t:"Monica Brain — Asistente de IA Omnicanal",s:"Atiende, califica y da seguimiento a clientes en canales de mensajería"},en:{t:"Monica Brain — Omnichannel AI Assistant",s:"Answers, qualifies and follows up with customers across messaging channels"}},
-    {id:"monica-developer-apps-por-prompts",num:"08",tag:"prod",year:"2025",company:"Urpe AI Lab",img:"img/proyectos/monica-developer-apps-por-prompts.jpg",tech:["LLMs","Next.js","Docker"],es:{t:"Monica Developer — Aplicaciones por Prompts",s:"Crea apps web funcionales describiéndolas en lenguaje natural"},en:{t:"Monica Developer — Apps from Prompts",s:"Build working web apps by describing them in natural language"}},
-    {id:"monica-designer-identidad-de-marca-ia",num:"09",tag:"prod",featured:true,year:"2025",company:"Urpe AI Lab",hoursSaved:248,img:"img/proyectos/monica-designer-identidad-de-marca-ia.jpg",tech:["IA Generativa","APIs","Next.js"],es:{t:"Monica Designer — Identidad de Marca con IA",s:"Genera una identidad visual completa a partir de un brief"},en:{t:"Monica Designer — AI Brand Identity",s:"Generates a complete visual identity from a brief"}},
-    {id:"status-page-monitoreo-de-servicios",num:"10",tag:"tools",year:"2025",company:"Urpe AI Lab",live:"https://status.urpeailab.com/",img:"img/proyectos/status-page-monitoreo-de-servicios.jpg",tech:["Docker","Traefik","Self-hosted"],es:{t:"Status Page — Monitor de Estado de Servicios",s:"Página de estado autoalojada que vigila la disponibilidad en tiempo real"},en:{t:"Status Page — Service Status Monitor",s:"Self-hosted status page monitoring availability in real time"}},
-    {id:"flowdeck-gestor-n8n",num:"11",tag:"tools",featured:true,year:"2026",company:"Proyecto propio",live:"https://github.com/Agustin1231/flowdeck",img:"img/proyectos/flowdeck-gestor-n8n.jpg",tech:["Next.js","n8n API","Docker"],es:{t:"FlowDeck — Gestor Multi-instancia de n8n",s:"App instalable con login para administrar varias instancias de n8n"},en:{t:"FlowDeck — Multi-instance n8n Manager",s:"Installable app with login to manage multiple n8n instances"}},
-    {id:"visor-de-orquestacion-de-subagentes",num:"12",tag:"ai",featured:true,year:"2026",company:"Urpe AI Lab",hoursSaved:264,live:"https://multiagentes.agustinynatalia.site",img:"img/proyectos/visor-de-orquestacion-de-subagentes.jpg",tech:["LLMs","Node.js","WebSockets"],es:{t:"Sistema de Orquestación de Agentes de IA",s:"Un orquestador que delega en subagentes y corre las automatizaciones internas de la operación"},en:{t:"AI Agent Orchestration System",s:"An orchestrator that delegates to subagents and runs the internal ops automations"}},
-    {id:"notetaker-de-reuniones-con-ia",num:"20",tag:"ai",featured:true,year:"2026",company:"Cliente B2B",img:"img/proyectos/notetaker-reuniones-ia.jpg",tech:["n8n","IA","CRM"],es:{t:"Notetaker de Reuniones con IA",s:"La reunión termina y el CRM ya tiene la nota, las tareas y el correo resumen"},en:{t:"AI Meeting Notetaker",s:"The meeting ends and the CRM already has the note, the tasks and the summary email"}},
-    {id:"campanas-de-correo-contextualizadas-con-ia",num:"21",tag:"ai",featured:true,year:"2026",company:"Cliente B2B",img:"img/proyectos/campanas-correo-contextualizadas.jpg",tech:["n8n","IA","PostgreSQL"],es:{t:"Campañas de Correo Contextualizadas con IA",s:"Cada correo se escribe con el hilo previo, se revisa antes de salir y decide cuándo va el siguiente"},en:{t:"AI Context-Aware Email Campaigns",s:"Each email is written from the prior thread, reviewed before sending and sets its own next date"}},
-    {id:"escalamiento-a-humano-en-un-agente-de-ia",num:"22",tag:"ai",featured:true,year:"2026",company:"Cliente B2B",img:"img/proyectos/escalamiento-human-in-the-loop.jpg",tech:["n8n","IA","Correo"],es:{t:"Escalamiento a Humano en un Agente de IA",s:"Cuando el caso no le corresponde al agente, pasa a una persona y el flujo espera su respuesta"},en:{t:"Human Escalation in an AI Agent",s:"When the case is not the agent's call, it goes to a person and the flow waits for the answer"}}
+    {id:"automatizacion-analitica-podcasts",num:"01",tag:"auto",featured:true,year:"2025",company:"Plataforma de Podcasts",hoursSaved:600,img:"img/proyectos/automatizacion-analitica-podcasts.webp",tech:["n8n","PostgreSQL","APIs"],es:{t:"Automatización Analítica de Podcasts",s:"Extracción, validación y análisis diario de métricas de podcasts para decisiones"},en:{t:"Podcast Analytics Automation",s:"Daily extraction, validation and analysis of podcast metrics for decision-making"}},
+    {id:"recontacto-automatizado-de-leads-crm",num:"13",tag:"auto",featured:true,year:"2025",company:"Cliente B2B",hoursSaved:316,img:"img/proyectos/recontacto-automatizado-de-leads-crm.webp",tech:["n8n","Odoo","GoHighLevel"],es:{t:"Recontacto Automatizado de Leads",s:"Reactivación masiva de oportunidades del CRM con campañas multicanal por WhatsApp y email"},en:{t:"Automated Lead Re-engagement",s:"Mass reactivation of CRM opportunities with multichannel WhatsApp and email campaigns"}},
+    {id:"prospeccion-automatizada-de-leads-b2b",num:"14",tag:"auto",featured:true,year:"2025",company:"Cliente B2B",img:"img/proyectos/prospeccion-automatizada-de-leads-b2b.webp",tech:["n8n","Apollo","Klenty"],es:{t:"Prospección Automatizada de Leads B2B",s:"Búsqueda, enriquecimiento y carga de prospectos en cadencias de outbound"},en:{t:"Automated B2B Lead Prospecting",s:"Search, enrichment and loading of prospects into outbound cadences"}},
+    {id:"recordatorio-automatizado-de-reuniones-whatsapp",num:"15",tag:"auto",featured:true,year:"2025",company:"Cliente B2B",img:"img/proyectos/recordatorio-automatizado-de-reuniones-whatsapp.webp",tech:["n8n","WhatsApp","AiSensy"],es:{t:"Recordatorio Automático de Reuniones",s:"Mensajes de WhatsApp que reducen las ausencias a las reuniones agendadas"},en:{t:"Automated Meeting Reminders",s:"WhatsApp messages that reduce no-shows to scheduled meetings"}},
+    {id:"agente-de-ia-que-atiende-y-cobra-por-whatsapp",num:"16",tag:"ai",featured:true,year:"2026",company:"Cliente de comercio electrónico",img:"img/proyectos/agente-whatsapp.webp",tech:["Python","LangGraph","WhatsApp API"],es:{t:"Agente de IA que Atiende y Cobra por WhatsApp",s:"Responde dudas de compra, arma el pedido y recupera los pagos que quedan pendientes"},en:{t:"AI Agent that Serves and Collects on WhatsApp",s:"Answers buying questions, builds the order and recovers pending payments"}},
+    {id:"panel-de-auditoria-para-un-agente-de-ia",num:"17",tag:"ai",featured:true,year:"2026",company:"Cliente de comercio electrónico",img:"img/proyectos/panel-auditoria.webp",tech:["FastAPI","PostgreSQL","JavaScript"],es:{t:"Panel de Auditoría para un Agente de IA",s:"Cada conversación se evalúa contra las reglas del negocio y queda con su motivo"},en:{t:"Audit Panel for an AI Agent",s:"Every conversation is scored against business rules and keeps its reasoning"}},
+    {id:"de-plataforma-por-suscripcion-a-infraestructura-propia",num:"18",tag:"tools",featured:true,year:"2026",company:"Cliente de comercio electrónico",img:"img/proyectos/migracion-costos.webp",tech:["Docker","Coolify","PostgreSQL"],es:{t:"De una Plataforma por Suscripción a Infraestructura Propia",s:"Migración por etapas que bajó el costo mensual de operación un 91 por ciento"},en:{t:"From a Subscription Platform to Self-Hosted Infrastructure",s:"Staged migration that cut the monthly operating cost by 91 percent"}},
+    {id:"plataforma-de-orientacion-vocacional-con-ia",num:"19",tag:"ai",featured:true,year:"2026",company:"Institución educativa",img:"img/proyectos/orientacion-vocacional.webp",tech:["Angular",".NET","pgvector"],es:{t:"Plataforma de Orientación Vocacional con IA",s:"Cuestionario vocacional y un asistente que responde citando los documentos oficiales"},en:{t:"AI-Powered Career Guidance Platform",s:"A vocational test plus an assistant that answers citing the official documents"}},
+    {id:"agente-de-ia-para-insights-estrategicos",num:"02",tag:"ai",year:"2025",company:"Urpe AI Lab",img:"img/proyectos/agente-de-ia-para-insights-estrategicos.webp",tech:["LangGraph","LLMs","Python"],es:{t:"Agente de IA para Insights Estratégicos",s:"Transforma métricas de shows en recomendaciones estratégicas personalizadas"},en:{t:"AI Agent for Strategic Insights",s:"Turns show metrics into personalized strategic recommendations"}},
+    {id:"automatizacion-inteligente-de-analisis-de-shows",num:"03",tag:"auto",year:"2025",company:"Urpe AI Lab",hoursSaved:515,img:"img/proyectos/automatizacion-inteligente-de-analisis-de-shows.webp",tech:["n8n","LLMs","Data Viz"],es:{t:"Automatización Inteligente de Análisis de Shows",s:"Análisis de rendimiento de shows mediante IA y visualización de datos"},en:{t:"Intelligent Show Analytics Automation",s:"Show performance analysis with AI and data visualization"}},
+    {id:"automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital",num:"04",tag:"auto",year:"2025",company:"Nata",img:"img/proyectos/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital.webp",tech:["n8n","IA Generativa","APIs"],es:{t:"Automatización de Contenido y Diseño con IA",s:"Flujo automatizado para crear contenido web y piezas visuales con IA"},en:{t:"AI Content & Design Automation",s:"Automated flow to create web content and visual assets with AI"}},
+    {id:"automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia",num:"05",tag:"auto",year:"2026",company:"Proyecto Personal",img:"img/proyectos/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia.webp",tech:["n8n","LLMs","APIs"],es:{t:"Publicación Automatizada para Blog de Tecnología",s:"Curación, creación y publicación automática de contenido tecnológico"},en:{t:"Automated Publishing for a Tech Blog",s:"Curating, creating and auto-publishing tech content end to end"}},
+    {id:"pulso-app-salud-cardiovascular",num:"06",tag:"prod",featured:true,year:"2025",company:"Producto propio",img:"img/proyectos/pulso-app-salud-cardiovascular.webp",tech:["Next.js","PWA","IA"],es:{t:"Pulso — App PWA de Salud Cardiovascular",s:"App instalable con métricas, recetas y rutinas con IA, sin login"},en:{t:"Pulso — Cardiovascular Health PWA",s:"Installable app with AI metrics, recipes and routines, no login"}},
+    {id:"monica-brain-asistente-ia-omnicanal",num:"07",tag:"ai",featured:true,year:"2025",company:"Urpe AI Lab",hoursSaved:9258,live:"https://brain.urpeailab.com/visual",img:"img/proyectos/monica-brain-asistente-ia-omnicanal.webp",tech:["LangGraph","LLMs","n8n"],es:{t:"Monica Brain — Asistente de IA Omnicanal",s:"Atiende, califica y da seguimiento a clientes en canales de mensajería"},en:{t:"Monica Brain — Omnichannel AI Assistant",s:"Answers, qualifies and follows up with customers across messaging channels"}},
+    {id:"monica-developer-apps-por-prompts",num:"08",tag:"prod",year:"2025",company:"Urpe AI Lab",img:"img/proyectos/monica-developer-apps-por-prompts.webp",tech:["LLMs","Next.js","Docker"],es:{t:"Monica Developer — Aplicaciones por Prompts",s:"Crea apps web funcionales describiéndolas en lenguaje natural"},en:{t:"Monica Developer — Apps from Prompts",s:"Build working web apps by describing them in natural language"}},
+    {id:"monica-designer-identidad-de-marca-ia",num:"09",tag:"prod",featured:true,year:"2025",company:"Urpe AI Lab",hoursSaved:248,img:"img/proyectos/monica-designer-identidad-de-marca-ia.webp",tech:["IA Generativa","APIs","Next.js"],es:{t:"Monica Designer — Identidad de Marca con IA",s:"Genera una identidad visual completa a partir de un brief"},en:{t:"Monica Designer — AI Brand Identity",s:"Generates a complete visual identity from a brief"}},
+    {id:"status-page-monitoreo-de-servicios",num:"10",tag:"tools",year:"2025",company:"Urpe AI Lab",live:"https://status.urpeailab.com/",img:"img/proyectos/status-page-monitoreo-de-servicios.webp",tech:["Docker","Traefik","Self-hosted"],es:{t:"Status Page — Monitor de Estado de Servicios",s:"Página de estado autoalojada que vigila la disponibilidad en tiempo real"},en:{t:"Status Page — Service Status Monitor",s:"Self-hosted status page monitoring availability in real time"}},
+    {id:"flowdeck-gestor-n8n",num:"11",tag:"tools",featured:true,year:"2026",company:"Proyecto propio",live:"https://github.com/Agustin1231/flowdeck",img:"img/proyectos/flowdeck-gestor-n8n.webp",tech:["Next.js","n8n API","Docker"],es:{t:"FlowDeck — Gestor Multi-instancia de n8n",s:"App instalable con login para administrar varias instancias de n8n"},en:{t:"FlowDeck — Multi-instance n8n Manager",s:"Installable app with login to manage multiple n8n instances"}},
+    {id:"visor-de-orquestacion-de-subagentes",num:"12",tag:"ai",featured:true,year:"2026",company:"Urpe AI Lab",hoursSaved:264,live:"https://multiagentes.agustinynatalia.site",img:"img/proyectos/visor-de-orquestacion-de-subagentes.webp",tech:["LLMs","Node.js","WebSockets"],es:{t:"Sistema de Orquestación de Agentes de IA",s:"Un orquestador que delega en subagentes y corre las automatizaciones internas de la operación"},en:{t:"AI Agent Orchestration System",s:"An orchestrator that delegates to subagents and runs the internal ops automations"}},
+    {id:"notetaker-de-reuniones-con-ia",num:"20",tag:"ai",featured:true,year:"2026",company:"Cliente B2B",img:"img/proyectos/notetaker-reuniones-ia.webp",tech:["n8n","IA","CRM"],es:{t:"Notetaker de Reuniones con IA",s:"La reunión termina y el CRM ya tiene la nota, las tareas y el correo resumen"},en:{t:"AI Meeting Notetaker",s:"The meeting ends and the CRM already has the note, the tasks and the summary email"}},
+    {id:"campanas-de-correo-contextualizadas-con-ia",num:"21",tag:"ai",featured:true,year:"2026",company:"Cliente B2B",img:"img/proyectos/campanas-correo-contextualizadas.webp",tech:["n8n","IA","PostgreSQL"],es:{t:"Campañas de Correo Contextualizadas con IA",s:"Cada correo se escribe con el hilo previo, se revisa antes de salir y decide cuándo va el siguiente"},en:{t:"AI Context-Aware Email Campaigns",s:"Each email is written from the prior thread, reviewed before sending and sets its own next date"}},
+    {id:"escalamiento-a-humano-en-un-agente-de-ia",num:"22",tag:"ai",featured:true,year:"2026",company:"Cliente B2B",img:"img/proyectos/escalamiento-human-in-the-loop.webp",tech:["n8n","IA","Correo"],es:{t:"Escalamiento a Humano en un Agente de IA",s:"Cuando el caso no le corresponde al agente, pasa a una persona y el flujo espera su respuesta"},en:{t:"Human Escalation in an AI Agent",s:"When the case is not the agent's call, it goes to a person and the flow waits for the answer"}}
   ];
   GUIDES = [
     {id:"sistema-conocimiento-outline",num:"01",es:{cat:"Sistema de conocimiento + IA",t:"Cómo conecté un agente de IA a mi base de conocimiento (segundo cerebro self-hosted)",d:"Un segundo cerebro self-hosted con Outline donde mis agentes de IA capturan, organizan y responden por mí. Qué es, cómo funciona y sus pros y contras.",meta:"Jun 2026 · 5 min"},en:{cat:"Knowledge system + AI",t:"How I connected an AI agent to my knowledge base (self-hosted second brain)",d:"A self-hosted second brain with Outline where my AI agents capture, organize and answer for me. What it is, how it works and its pros and cons.",meta:"Jun 2026 · 5 min"}},
@@ -504,134 +493,134 @@ class Component extends DCLogic {
   ];
   SKILLS = ["Python","LangGraph","LLMs","n8n","FastAPI","Next.js","TypeScript","PostgreSQL","Docker","Supabase"];
   CERTS = [
-    {img:"/certs/n8n-program.png",group:"n8n",issuer:"n8n Academy",url:"https://credentials.learn.n8n.io/credentials/7f3bec8fbdbf4dbf90b46f5e1095fc63/",
+    {img:"/certs/n8n-program.webp",group:"n8n",issuer:"n8n Academy",url:"https://credentials.learn.n8n.io/credentials/7f3bec8fbdbf4dbf90b46f5e1095fc63/",
       es:{title:"n8n Professional Certificate: Program Completion",date:"Julio 2026",desc:"Credencial profesional que acredita la finalización completa del programa de n8n Academy, con nota aprobatoria en todos los cursos: fundamentos, integraciones con APIs, y prácticas de IA, testing y producción."},
       en:{title:"n8n Professional Certificate: Program Completion",date:"July 2026",desc:"Professional credential certifying full completion of the n8n Academy program, with passing grades across every course: fundamentals, API integrations, and AI, testing and production practices."}},
-    {img:"/certs/n8n-qs101.png",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/fda37efe7ffa4cce966746391e86d89f",
+    {img:"/certs/n8n-qs101.webp",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/fda37efe7ffa4cce966746391e86d89f",
       es:{title:"n8n Quickstart (QS101)",date:"Julio 2026",desc:"Certificación oficial de n8n: construcción de workflows, transformación de datos entre APIs y bases de datos, manejo de errores en producción y agentes de IA con herramientas y memoria."},
       en:{title:"n8n Quickstart (QS101)",date:"July 2026",desc:"Official n8n certification: workflow building, data transformation across APIs and databases, production error handling, and AI agents with tools and memory."}},
-    {img:"/certs/n8n-n8n101.png",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/83b8a971834f43f6a8efdfc3e2fc564a",
+    {img:"/certs/n8n-n8n101.webp",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/83b8a971834f43f6a8efdfc3e2fc564a",
       es:{title:"n8n Essentials: Your First Workflows (N8N101)",date:"Julio 2026",desc:"Certificación oficial de n8n: triggers y credenciales, modelo de datos e items, expresiones y pipelines con ramas, con autenticación por headers, filtrado, agregación y generación de archivos."},
       en:{title:"n8n Essentials: Your First Workflows (N8N101)",date:"July 2026",desc:"Official n8n certification: triggers and credentials, data model and items, expressions and branching pipelines, with header authentication, filtering, aggregation and file generation."}},
-    {img:"/certs/n8n-n8n102.png",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/0f0cbaef0f494e4ead64a2d20011e8bc",
+    {img:"/certs/n8n-n8n102.webp",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/0f0cbaef0f494e4ead64a2d20011e8bc",
       es:{title:"n8n Integrations: APIs & Connected Workflows (N8N102)",date:"Julio 2026",desc:"Certificación oficial de n8n: consumo de APIs REST con autenticación, paginación y manejo de límites, cruce de datos entre sistemas con Merge, y conexión de servicios en pipelines de extremo a extremo."},
       en:{title:"n8n Integrations: APIs & Connected Workflows (N8N102)",date:"July 2026",desc:"Official n8n certification: consuming REST APIs with authentication, pagination and rate limit handling, cross-system data joins with Merge, and connecting services into end to end pipelines."}},
-    {img:"/certs/n8n-n8n103.png",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/7e7f937cebac488cbae716e22470f04b",
+    {img:"/certs/n8n-n8n103.webp",group:"n8n",issuer:"n8n Academy",url:"https://learn.n8n.io/certificates/7e7f937cebac488cbae716e22470f04b",
       es:{title:"n8n In Practice: AI, Testing & Best Practices (N8N103)",date:"Julio 2026",desc:"Certificación oficial de n8n: pruebas con datos fijados, reintentos y workflows de error, depuración de ejecuciones fallidas y silenciosas, agentes de IA frente a nodos de IA estándar, y organización de proyectos para producción."},
       en:{title:"n8n In Practice: AI, Testing & Best Practices (N8N103)",date:"July 2026",desc:"Official n8n certification: testing with pinned data, retries and error workflows, debugging failed and silent executions, AI agents versus standard AI nodes, and project organization for production."}},
-    {img:"/certs/claude-claude-code-in-action.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/f6c469eb0154ba73895fa80ae03f29d2",
+    {img:"/certs/claude-claude-code-in-action.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/f6c469eb0154ba73895fa80ae03f29d2",
       es:{title:"Claude Code in Action",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: desarrollo de software con Claude Code, manejo del contexto del proyecto, comandos personalizados, hooks e integración con servidores MCP y GitHub."},
       en:{title:"Claude Code in Action",date:"September 2026",desc:"Official Anthropic badge: software development with Claude Code, project context management, custom commands, hooks, and integration with MCP servers and GitHub."}},
-    {img:"/certs/claude-building-with-the-claude-api.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/a8a706a37f10876b13d056145e7f7419",
+    {img:"/certs/claude-building-with-the-claude-api.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/a8a706a37f10876b13d056145e7f7419",
       es:{title:"Building with the Claude API",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: la API de Claude de punta a punta, con ingeniería y evaluación de prompts, uso de herramientas, RAG, MCP y flujos de agentes."},
       en:{title:"Building with the Claude API",date:"September 2026",desc:"Official Anthropic badge: the Claude API end to end, with prompt engineering and evaluation, tool use, RAG, MCP and agent workflows."}},
-    {img:"/certs/claude-introduction-to-model-context-protocol.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/8c5ea3e42e1d0110d4858e6abb119bb7",
+    {img:"/certs/claude-introduction-to-model-context-protocol.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/8c5ea3e42e1d0110d4858e6abb119bb7",
       es:{title:"Introduction to Model Context Protocol",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: qué es MCP y cómo construir servidores y clientes que conectan a Claude con herramientas y datos externos."},
       en:{title:"Introduction to Model Context Protocol",date:"September 2026",desc:"Official Anthropic badge: what MCP is and how to build servers and clients that connect Claude to external tools and data."}},
-    {img:"/certs/claude-model-context-protocol-advanced-topics.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/05da19930954cc217fd8f7ed8dd716a4",
+    {img:"/certs/claude-model-context-protocol-advanced-topics.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/05da19930954cc217fd8f7ed8dd716a4",
       es:{title:"Model Context Protocol: Advanced Topics",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: temas avanzados de MCP para llevar integraciones de agentes a producción."},
       en:{title:"Model Context Protocol: Advanced Topics",date:"September 2026",desc:"Official Anthropic badge: advanced MCP topics for taking agent integrations to production."}},
-    {img:"/certs/claude-claude-platform-101.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/4be4f16752985827950b98ef7066c9af",
+    {img:"/certs/claude-claude-platform-101.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/4be4f16752985827950b98ef7066c9af",
       es:{title:"Claude Platform 101",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: fundamentos de la plataforma de desarrollo de Claude para construir aplicaciones con la API."},
       en:{title:"Claude Platform 101",date:"September 2026",desc:"Official Anthropic badge: fundamentals of the Claude developer platform for building applications with the API."}},
-    {img:"/certs/claude-claude-code-101.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/5b652432ffecc5f05884c81fe1d52d1a",
+    {img:"/certs/claude-claude-code-101.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/5b652432ffecc5f05884c81fe1d52d1a",
       es:{title:"Claude Code 101",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: fundamentos de Claude Code para trabajar desde la terminal con un agente de programación."},
       en:{title:"Claude Code 101",date:"September 2026",desc:"Official Anthropic badge: claude Code fundamentals for working from the terminal with a coding agent."}},
-    {img:"/certs/claude-claude-with-amazon-bedrock.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/7174b1d3e3b4c8801fe7c2295cda61ab",
+    {img:"/certs/claude-claude-with-amazon-bedrock.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/7174b1d3e3b4c8801fe7c2295cda61ab",
       es:{title:"Claude with Amazon Bedrock",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso de los modelos de Claude a través de Amazon Bedrock para llevarlos a infraestructura de AWS."},
       en:{title:"Claude with Amazon Bedrock",date:"September 2026",desc:"Official Anthropic badge: using Claude models through Amazon Bedrock to run them on AWS infrastructure."}},
-    {img:"/certs/claude-claude-with-google-cloud-s-vertex-ai.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/5e29fc88b187b021622de6e81b493c5e",
+    {img:"/certs/claude-claude-with-google-cloud-s-vertex-ai.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/5e29fc88b187b021622de6e81b493c5e",
       es:{title:"Claude with Google Cloud's Vertex AI",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso de los modelos de Claude a través de Vertex AI en Google Cloud."},
       en:{title:"Claude with Google Cloud's Vertex AI",date:"September 2026",desc:"Official Anthropic badge: using Claude models through Vertex AI on Google Cloud."}},
-    {img:"/certs/claude-building-effective-human-agent-teams.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/22eca1fcff04e9477d4bd284b2540919",
+    {img:"/certs/claude-building-effective-human-agent-teams.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/22eca1fcff04e9477d4bd284b2540919",
       es:{title:"Building Effective Human-Agent Teams",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: cómo repartir el trabajo entre personas y agentes de IA para que el equipo rinda mejor."},
       en:{title:"Building Effective Human-Agent Teams",date:"September 2026",desc:"Official Anthropic badge: how to split work between people and AI agents so the team performs better."}},
-    {img:"/certs/claude-deploying-claude-enterprise-with-confidence.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/7637d08d8a04fa4148cb50550cfc1184",
+    {img:"/certs/claude-deploying-claude-enterprise-with-confidence.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/7637d08d8a04fa4148cb50550cfc1184",
       es:{title:"Deploying Claude Enterprise with Confidence",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: las decisiones clave para desplegar Claude en una empresa."},
       en:{title:"Deploying Claude Enterprise with Confidence",date:"September 2026",desc:"Official Anthropic badge: the key decisions for deploying Claude across a company."}},
-    {img:"/certs/claude-introduction-to-claude-cowork.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/034bc85eb4db47c5dbea4b5e355c8f3a",
+    {img:"/certs/claude-introduction-to-claude-cowork.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/034bc85eb4db47c5dbea4b5e355c8f3a",
       es:{title:"Introduction to Claude Cowork",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: delegar en Claude tareas de varios pasos sobre archivos y herramientas."},
       en:{title:"Introduction to Claude Cowork",date:"September 2026",desc:"Official Anthropic badge: delegating multi-step tasks on files and tools to Claude."}},
-    {img:"/certs/claude-introduction-to-claude-tag.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/b93b8c36cabae23318a9615d7541c0da",
+    {img:"/certs/claude-introduction-to-claude-tag.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/b93b8c36cabae23318a9615d7541c0da",
       es:{title:"Introduction to Claude Tag",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: curso introductorio de Anthropic sobre Claude Tag."},
       en:{title:"Introduction to Claude Tag",date:"September 2026",desc:"Official Anthropic badge: anthropic's introductory course on Claude Tag."}},
-    {img:"/certs/claude-claude-101.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/059f3851a94cd6821cc9b30e1131a273",
+    {img:"/certs/claude-claude-101.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/059f3851a94cd6821cc9b30e1131a273",
       es:{title:"Claude 101",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: fundamentos de Claude para el trabajo diario."},
       en:{title:"Claude 101",date:"September 2026",desc:"Official Anthropic badge: claude fundamentals for everyday work."}},
-    {img:"/certs/claude-ai-capabilities-and-limitations.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/32754ae4cfd4d28c5859164d46925c96",
+    {img:"/certs/claude-ai-capabilities-and-limitations.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/32754ae4cfd4d28c5859164d46925c96",
       es:{title:"AI Capabilities and Limitations",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: qué puede hacer bien la IA y dónde falla, para decidir cuándo confiar en ella."},
       en:{title:"AI Capabilities and Limitations",date:"September 2026",desc:"Official Anthropic badge: what AI does well and where it fails, to decide when to trust it."}},
-    {img:"/certs/claude-ai-fluency-framework-foundations.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/f8c5c5e680f0b4797cc477072875e2f1",
+    {img:"/certs/claude-ai-fluency-framework-foundations.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/f8c5c5e680f0b4797cc477072875e2f1",
       es:{title:"AI Fluency: Framework & Foundations",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: el marco de Anthropic para trabajar con IA de forma efectiva, ética y segura."},
       en:{title:"AI Fluency: Framework & Foundations",date:"September 2026",desc:"Official Anthropic badge: anthropic's framework for working with AI effectively, ethically and safely."}},
-    {img:"/certs/claude-ai-fluency-for-builders.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/816da63a967586a04cf9348048fe36c2",
+    {img:"/certs/claude-ai-fluency-for-builders.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/816da63a967586a04cf9348048fe36c2",
       es:{title:"AI Fluency for Builders",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: criterio para construir productos y soluciones con IA."},
       en:{title:"AI Fluency for Builders",date:"September 2026",desc:"Official Anthropic badge: judgment for building products and solutions with AI."}},
-    {img:"/certs/claude-ai-fluency-for-small-businesses.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/11b65130eb3ef8a480875191fbeab9eb",
+    {img:"/certs/claude-ai-fluency-for-small-businesses.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/11b65130eb3ef8a480875191fbeab9eb",
       es:{title:"AI Fluency for Small Businesses",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso práctico y responsable de la IA en empresas pequeñas."},
       en:{title:"AI Fluency for Small Businesses",date:"September 2026",desc:"Official Anthropic badge: practical, responsible use of AI in small businesses."}},
-    {img:"/certs/claude-ai-fluency-for-creative-work.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/cdc3e63dde3469534a33fe1f34b5d522",
+    {img:"/certs/claude-ai-fluency-for-creative-work.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/cdc3e63dde3469534a33fe1f34b5d522",
       es:{title:"AI Fluency for Creative Work",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso de la IA en trabajo creativo, manteniendo el criterio propio."},
       en:{title:"AI Fluency for Creative Work",date:"September 2026",desc:"Official Anthropic badge: using AI in creative work while keeping your own judgment."}},
-    {img:"/certs/claude-ai-fluency-for-nonprofits.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/0605d5c9c17431dc015ad46755494e46",
+    {img:"/certs/claude-ai-fluency-for-nonprofits.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/0605d5c9c17431dc015ad46755494e46",
       es:{title:"AI Fluency for Nonprofits",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso de la IA en organizaciones sin ánimo de lucro."},
       en:{title:"AI Fluency for Nonprofits",date:"September 2026",desc:"Official Anthropic badge: using AI in nonprofit organizations."}},
-    {img:"/certs/claude-teaching-ai-fluency.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/919c8c81d37f4d24a8cf079ad17db5e5",
+    {img:"/certs/claude-teaching-ai-fluency.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/919c8c81d37f4d24a8cf079ad17db5e5",
       es:{title:"Teaching AI Fluency",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: cómo enseñar a otros a trabajar con IA de forma efectiva y responsable."},
       en:{title:"Teaching AI Fluency",date:"September 2026",desc:"Official Anthropic badge: how to teach others to work with AI effectively and responsibly."}},
-    {img:"/certs/claude-ai-fluency-for-students.png",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/1ad5fb5b608d77344b28cccea1a53cf9",
+    {img:"/certs/claude-ai-fluency-for-students.webp",group:"anthropic",issuer:"Claude Academy · Anthropic",url:"https://academy.claude.com/verify/1ad5fb5b608d77344b28cccea1a53cf9",
       es:{title:"AI Fluency for Students",date:"Septiembre 2026",desc:"Insignia oficial de Anthropic: uso responsable de la IA para aprender."},
       en:{title:"AI Fluency for Students",date:"September 2026",desc:"Official Anthropic badge: responsible use of AI for learning."}},
-    {img:"/certs/openai-build-with-ai-openai-api-pathway-completion.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/6f78045e-c87c-4049-98df-745390a38cca",
+    {img:"/certs/openai-build-with-ai-openai-api-pathway-completion.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/6f78045e-c87c-4049-98df-745390a38cca",
       es:{title:"Build with AI · OpenAI API (Pathway Certificate)",date:"Septiembre 2026",desc:"Certificado de ruta completa de OpenAI Academy: los cursos de construcción con la API de OpenAI, cada evaluación aprobada con 80 % o más."},
       en:{title:"Build with AI · OpenAI API (Pathway Certificate)",date:"September 2026",desc:"OpenAI Academy pathway certificate: every Build with AI course on the OpenAI API, each assessment passed with 80% or higher."}},
-    {img:"/certs/openai-build-with-ai-codex-pathway-completion.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/98316566-1a5a-4b16-a49b-fe8c6c999ed3",
+    {img:"/certs/openai-build-with-ai-codex-pathway-completion.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/98316566-1a5a-4b16-a49b-fe8c6c999ed3",
       es:{title:"Build with AI · Codex (Pathway Certificate)",date:"Septiembre 2026",desc:"Certificado de ruta completa de OpenAI Academy: los tres cursos de Codex, cada evaluación aprobada con 80 % o más."},
       en:{title:"Build with AI · Codex (Pathway Certificate)",date:"September 2026",desc:"OpenAI Academy pathway certificate: all three Codex courses, each assessment passed with 80% or higher."}},
-    {img:"/certs/openai-apply-ai-at-work-pathway-completion.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/ab2a3c6e-17ce-48e8-a75d-65e245a0c5ee",
+    {img:"/certs/openai-apply-ai-at-work-pathway-completion.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/ab2a3c6e-17ce-48e8-a75d-65e245a0c5ee",
       es:{title:"Apply AI at Work (Pathway Certificate)",date:"Septiembre 2026",desc:"Certificado de ruta completa de OpenAI Academy: los cursos para aplicar IA en el trabajo, cada evaluación aprobada con 80 % o más."},
       en:{title:"Apply AI at Work (Pathway Certificate)",date:"September 2026",desc:"OpenAI Academy pathway certificate: every Apply AI at Work course, each assessment passed with 80% or higher."}},
-    {img:"/certs/openai-scope-ai-solutions.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/73da1e00-2938-47e9-b15a-80b56e0a6f92",
+    {img:"/certs/openai-scope-ai-solutions.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/73da1e00-2938-47e9-b15a-80b56e0a6f92",
       es:{title:"Scope AI Solutions",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: cómo definir el alcance de una solución de IA antes de construirla."},
       en:{title:"Scope AI Solutions",date:"September 2026",desc:"Official OpenAI Academy badge: how to scope an AI solution before building it."}},
-    {img:"/certs/openai-design-and-build-agentic-systems.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/1a0ed955-3e4e-448e-a026-cf6f325ee72b",
+    {img:"/certs/openai-design-and-build-agentic-systems.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/1a0ed955-3e4e-448e-a026-cf6f325ee72b",
       es:{title:"Design and Build Agentic Systems",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: diseño y construcción de sistemas con agentes sobre la API de OpenAI."},
       en:{title:"Design and Build Agentic Systems",date:"September 2026",desc:"Official OpenAI Academy badge: designing and building agentic systems on the OpenAI API."}},
-    {img:"/certs/openai-build-with-retrieval-augmented-generation.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/1f3b3d5e-c8a0-4c18-bb37-34c4a2b44824",
+    {img:"/certs/openai-build-with-retrieval-augmented-generation.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/1f3b3d5e-c8a0-4c18-bb37-34c4a2b44824",
       es:{title:"Build with Retrieval-Augmented Generation",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: construcción de aplicaciones con RAG para responder con información propia."},
       en:{title:"Build with Retrieval-Augmented Generation",date:"September 2026",desc:"Official OpenAI Academy badge: building RAG applications that answer from your own information."}},
-    {img:"/certs/openai-evaluate-ai-applications.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/ec9c95ea-3b0c-4e66-9685-5a903d8bdbac",
+    {img:"/certs/openai-evaluate-ai-applications.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/ec9c95ea-3b0c-4e66-9685-5a903d8bdbac",
       es:{title:"Evaluate AI Applications",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: cómo evaluar aplicaciones de IA con casos de prueba y métricas."},
       en:{title:"Evaluate AI Applications",date:"September 2026",desc:"Official OpenAI Academy badge: how to evaluate AI applications with test cases and metrics."}},
-    {img:"/certs/openai-optimize-ai-application-performance.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/5c34a74d-fc68-4178-9967-4e2ef1a74543",
+    {img:"/certs/openai-optimize-ai-application-performance.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/5c34a74d-fc68-4178-9967-4e2ef1a74543",
       es:{title:"Optimize AI Application Performance",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: mejorar velocidad y costo de una aplicación de IA sin perder la precisión requerida."},
       en:{title:"Optimize AI Application Performance",date:"September 2026",desc:"Official OpenAI Academy badge: improving an AI application's speed and cost while keeping the required accuracy."}},
-    {img:"/certs/openai-get-started-with-codex.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/0130eb0b-5743-47cc-96bf-d97add2b4efd",
+    {img:"/certs/openai-get-started-with-codex.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/0130eb0b-5743-47cc-96bf-d97add2b4efd",
       es:{title:"Get Started with Codex",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: primeros pasos con Codex, el agente de programación de OpenAI."},
       en:{title:"Get Started with Codex",date:"September 2026",desc:"Official OpenAI Academy badge: getting started with Codex, OpenAI's coding agent."}},
-    {img:"/certs/openai-extend-codex-workflows.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/8d44266f-1709-4d59-a95a-e4b7f0e91429",
+    {img:"/certs/openai-extend-codex-workflows.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/8d44266f-1709-4d59-a95a-e4b7f0e91429",
       es:{title:"Extend Codex Workflows",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: ampliar los flujos de trabajo de Codex con herramientas e integraciones."},
       en:{title:"Extend Codex Workflows",date:"September 2026",desc:"Official OpenAI Academy badge: extending Codex workflows with tools and integrations."}},
-    {img:"/certs/openai-scale-codex-across-teams-and-systems.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/f82e0902-f784-44f4-8daa-a7fdcd174d13",
+    {img:"/certs/openai-scale-codex-across-teams-and-systems.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/f82e0902-f784-44f4-8daa-a7fdcd174d13",
       es:{title:"Scale Codex Across Teams and Systems",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: llevar Codex a equipos y sistemas completos."},
       en:{title:"Scale Codex Across Teams and Systems",date:"September 2026",desc:"Official OpenAI Academy badge: scaling Codex across teams and systems."}},
-    {img:"/certs/openai-agents-and-workflows.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/98ed8a5c-f049-4027-8b74-539f6d65a7a4",
+    {img:"/certs/openai-agents-and-workflows.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/98ed8a5c-f049-4027-8b74-539f6d65a7a4",
       es:{title:"Agents and Workflows",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: flujos de trabajo repetibles y trabajo dirigido con agentes."},
       en:{title:"Agents and Workflows",date:"September 2026",desc:"Official OpenAI Academy badge: repeatable workflows and directing work with agents."}},
-    {img:"/certs/openai-applied-ai-foundations.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/cb8b3cbf-8997-43f9-90a3-e3e3e6ff531f",
+    {img:"/certs/openai-applied-ai-foundations.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/cb8b3cbf-8997-43f9-90a3-e3e3e6ff531f",
       es:{title:"Applied AI Foundations",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: convertir prompts útiles en flujos de trabajo repetibles."},
       en:{title:"Applied AI Foundations",date:"September 2026",desc:"Official OpenAI Academy badge: turning useful prompts into repeatable workflows."}},
-    {img:"/certs/openai-ai-foundations.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/f6e609be-0b7e-452b-8283-eaa10a331523",
+    {img:"/certs/openai-ai-foundations.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/f6e609be-0b7e-452b-8283-eaa10a331523",
       es:{title:"AI Foundations",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: fundamentos de IA, modelos de lenguaje y ChatGPT aplicados a tareas reales."},
       en:{title:"AI Foundations",date:"September 2026",desc:"Official OpenAI Academy badge: aI, language model and ChatGPT fundamentals applied to real tasks."}},
-    {img:"/certs/openai-ai-leadership.png",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/2a1826aa-30f1-49d8-a6eb-164f69d87ac4",
+    {img:"/certs/openai-ai-leadership.webp",group:"openai",issuer:"OpenAI Academy",url:"https://oaiacademy.credential.net/2a1826aa-30f1-49d8-a6eb-164f69d87ac4",
       es:{title:"AI Leadership",date:"Septiembre 2026",desc:"Insignia oficial de OpenAI Academy: estrategia de adopción de IA, gobierno y hoja de ruta para una iniciativa real."},
       en:{title:"AI Leadership",date:"September 2026",desc:"Official OpenAI Academy badge: aI adoption strategy, governance and roadmap for a real initiative."}}
   ];
   CERTGROUPS = [
-    {key:"n8n",name:"n8n",issuer:"n8n Academy",img:"/certs/logo-n8n.png"},
-    {key:"anthropic",name:"Anthropic",issuer:"Claude Academy",img:"/certs/logo-anthropic.png"},
-    {key:"openai",name:"OpenAI",issuer:"OpenAI Academy",img:"/certs/logo-openai.png"}
+    {key:"n8n",name:"n8n",issuer:"n8n Academy",img:"/certs/logo-n8n.webp"},
+    {key:"anthropic",name:"Anthropic",issuer:"Claude Academy",img:"/certs/logo-anthropic.webp"},
+    {key:"openai",name:"OpenAI",issuer:"OpenAI Academy",img:"/certs/logo-openai.webp"}
   ];
   FILTERDEF = [
     {v:"all",es:"Todos",en:"All"},{v:"auto",es:"Automatización",en:"Automation"},{v:"ai",es:"IA & Agentes",en:"AI & Agents"},{v:"prod",es:"Producto",en:"Product"},{v:"tools",es:"Herramientas",en:"Tools"}
@@ -703,42 +692,74 @@ class Component extends DCLogic {
   startBg3d(){
     if(this.props.scene3d===false)return;
     var cv=document.querySelector(".bg3d");if(!cv)return;var ctx=cv.getContext("2d");var self=this;
+    // Con "reducir movimiento" activado en el sistema se pinta un solo cuadro quieto.
+    var still=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     var dpr=Math.min(2,window.devicePixelRatio||1);var w=0,h=0;
-    function resize(){w=window.innerWidth;h=window.innerHeight;cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+"px";cv.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);}
-    this._rz3=resize;window.addEventListener("resize",resize);resize();
-    var mx=0,my=0;this._pm3=function(e){mx=e.clientX/window.innerWidth-0.5;my=e.clientY/window.innerHeight-0.5;};window.addEventListener("pointermove",this._pm3);
+    function resize(){w=window.innerWidth;h=window.innerHeight;cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+"px";cv.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);if(still)draw(0);}
+    var mx=0,my=0;this._pm3=function(e){mx=e.clientX/window.innerWidth-0.5;my=e.clientY/window.innerHeight-0.5;};
+    if(!still)window.addEventListener("pointermove",this._pm3,{passive:true});
     var DEPTH=15,NEAR=0.25,FAR=7,TRAVEL=24;
     var pts=[];for(var i=0;i<300;i++)pts.push({x:(Math.random()*2-1)*1.9,y:(Math.random()*2-1)*1.9,z:Math.random()*DEPTH,r:0.55+Math.random()*0.9});
-    var t=0,smoothP=0,fr=0,docH=0;
+    var t=0,smoothP=0,fr=0,docH=0,last=0,FRAME=1000/30;
     var acc=self.hexToRgb(self.props.accent||"#ff5c35");var accCss="rgb("+acc[0]+","+acc[1]+","+acc[2]+")";
-    function draw(){
+    function byZ(a,b){return a.z-b.z;}
+    function draw(now){
+      // ~30 fps: el fondo se mueve lento y así gasta la mitad. El avance va por tiempo real,
+      // no por cuadro, para que en pantallas de 120 Hz no corra al doble de velocidad.
+      if(!still){self._raf3=requestAnimationFrame(draw);if(now-last<FRAME-1)return;}
+      var k=last?Math.min(now-last,100)/16.667:1;last=now;
       var light=self.state.theme==="light";
       ctx.clearRect(0,0,w,h);
-      if((fr++&31)===0)docH=document.body.scrollHeight-window.innerHeight;
+      if(still||(fr++&15)===0)docH=document.body.scrollHeight-window.innerHeight;
       var p=docH>0?Math.min(1,Math.max(0,window.scrollY/docH)):0;
-      smoothP+=(p-smoothP)*0.08;
+      smoothP=still?p:smoothP+(p-smoothP)*(1-Math.pow(0.92,k));
       var camZ=smoothP*TRAVEL+t*0.05;
       var twist=smoothP*1.5+t*0.02+mx*0.35;
       var R=Math.min(w,h)*0.78,f=1.35,cx=w*0.5+mx*42,cy=h*0.5+my*30,ct=Math.cos(twist),st=Math.sin(twist);
       var scr=[];
-      for(var i=0;i<pts.length;i++){var pt=pts[i];var pz=pt.z-camZ;while(pz<NEAR){pt.z+=DEPTH;pz=pt.z-camZ;}while(pz>DEPTH+NEAR){pt.z-=DEPTH;pz=pt.z-camZ;}if(pz<NEAR||pz>FAR){scr.push(null);continue;}var rx=pt.x*ct-pt.y*st,ry=pt.x*st+pt.y*ct,s=f/pz;var depthT=1-(pz-NEAR)/(FAR-NEAR);var a=depthT;if(pz<0.8)a*=Math.max(0,pz/0.8);scr.push({x:cx+rx*s*R,y:cy+ry*s*R,z:pz,a:a,d:depthT,r:pt.r});}
-      var thr=R*0.17;ctx.lineWidth=1;ctx.strokeStyle=accCss;ctx.fillStyle=accCss;
-      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;for(var j=i+1;j<scr.length;j++){var B=scr[j];if(!B)continue;if(Math.abs(A.z-B.z)>1.6)continue;var dx=A.x-B.x,dy=A.y-B.y,dd=dx*dx+dy*dy;if(dd>thr*thr)continue;var prox=1-Math.sqrt(dd)/thr;var al=prox*Math.min(A.a,B.a)*(light?0.34:0.52);if(al<0.012)continue;ctx.globalAlpha=al;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}}
-      for(var i=0;i<scr.length;i++){var A=scr[i];if(!A)continue;ctx.globalAlpha=A.a*(light?0.55:0.85);var sz=A.r*(0.5+A.d*2.6);ctx.beginPath();ctx.arc(A.x,A.y,sz,0,6.2832);ctx.fill();}
+      for(var i=0;i<pts.length;i++){var pt=pts[i];var pz=pt.z-camZ;while(pz<NEAR){pt.z+=DEPTH;pz=pt.z-camZ;}while(pz>DEPTH+NEAR){pt.z-=DEPTH;pz=pt.z-camZ;}if(pz<NEAR||pz>FAR)continue;var rx=pt.x*ct-pt.y*st,ry=pt.x*st+pt.y*ct,s=f/pz;var depthT=1-(pz-NEAR)/(FAR-NEAR);var a=depthT;if(pz<0.8)a*=Math.max(0,pz/0.8);scr.push({x:cx+rx*s*R,y:cy+ry*s*R,z:pz,a:a,d:depthT,r:pt.r});}
+      // Ordenados por profundidad, el bucle de pares corta apenas la distancia en z pasa de 1.6
+      // en vez de comparar los ~45.000 pares en cada cuadro. Mismo color para todo: el orden no cambia el dibujo.
+      scr.sort(byZ);
+      var thr=R*0.17,thr2=thr*thr,la=light?0.34:0.52;ctx.lineWidth=1;ctx.strokeStyle=accCss;ctx.fillStyle=accCss;
+      for(var i=0;i<scr.length;i++){var A=scr[i];for(var j=i+1;j<scr.length;j++){var B=scr[j];if(B.z-A.z>1.6)break;var dx=A.x-B.x,dy=A.y-B.y,dd=dx*dx+dy*dy;if(dd>thr2)continue;var prox=1-Math.sqrt(dd)/thr;var al=prox*Math.min(A.a,B.a)*la;if(al<0.012)continue;ctx.globalAlpha=al;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}}
+      for(var i=0;i<scr.length;i++){var A=scr[i];ctx.globalAlpha=A.a*(light?0.55:0.85);var sz=A.r*(0.5+A.d*2.6);ctx.beginPath();ctx.arc(A.x,A.y,sz,0,6.2832);ctx.fill();}
       ctx.globalAlpha=1;
-      t+=0.016;self._raf3=requestAnimationFrame(draw);
+      t+=0.016*k;
     }
-    draw();
+    this._rz3=resize;window.addEventListener("resize",resize);resize();
+    // En modo quieto se repinta un cuadro después, cuando React ya aplicó el tema guardado.
+    if(still){this._redraw3=function(){draw(0);};requestAnimationFrame(this._redraw3);}else{this._raf3=requestAnimationFrame(draw);}
   }
 
+  METRICS_API = "https://n8n.agustinynatalia.site/webhook/metricas-automatizaciones";
+  METRICS_PROXY = "/api/metricas";
+  METRICS_CACHE = "metricas_cache_v1";
   fetchMetrics(){
-    var self=this;
-    fetch("https://n8n.agustinynatalia.site/webhook/metricas-automatizaciones").then(function(r){return r.json();}).then(function(d){
-      self.METRICDEF.forEach(function(m){var raw=Number(d[m.key]);if(isFinite(raw)&&raw>0){var f=Math.floor(raw/m.round)*m.round;if(f>0)m.target=f;}});
-      self.applyLiveCopy(d);
-      if(self._metShown)self.animateMetrics();
-      self.setState({});
-    }).catch(function(){});
+    var self=this,cached=false,ts=0;
+    // Primero lo último guardado (el mismo caché que usa /metricas): las cifras salen sin esperar
+    // al webhook, que tarda ~2 s y ejecuta un flujo de n8n en cada llamada. Si tiene menos de
+    // 5 minutos ni se vuelve a pedir.
+    try{
+      var raw=localStorage.getItem(this.METRICS_CACHE);
+      if(raw){var c=JSON.parse(raw);if(c&&Number(c.total_ejecuciones)>0){cached=true;this.applyMetrics(c);}}
+      ts=Number(localStorage.getItem(this.METRICS_CACHE+"_t"))||0;
+    }catch(e){}
+    if(cached&&Date.now()-ts<300000)return;
+    var ctrl=new AbortController();var timer=setTimeout(function(){ctrl.abort();},10000);
+    // Primero la copia que sirve nginx (se renueva cada 10 min); si no responde, directo al webhook.
+    function get(url){return fetch(url,{signal:ctrl.signal}).then(function(r){if(!r.ok)throw new Error("http");return r.json();}).then(function(d){if(!d||!(Number(d.total_ejecuciones)>0))throw new Error("datos");return d;});}
+    get(this.METRICS_PROXY).catch(function(){return get(self.METRICS_API);}).then(function(d){
+      clearTimeout(timer);
+      try{localStorage.setItem(self.METRICS_CACHE,JSON.stringify(d));localStorage.setItem(self.METRICS_CACHE+"_t",String(Date.now()));}catch(e){}
+      self.applyMetrics(d);
+    }).catch(function(){clearTimeout(timer);});
+  }
+  applyMetrics(d){
+    this.METRICDEF.forEach(function(m){var raw=Number(d[m.key]);if(isFinite(raw)&&raw>0){var f=Math.floor(raw/m.round)*m.round;if(f>0)m.target=f;}});
+    this.applyLiveCopy(d);
+    if(this._metShown)this.animateMetrics();
+    this.setState({});
   }
   applyLiveCopy(d){
     var fl=function(v,step){var n=Math.floor(Number(v)/step)*step;return (isFinite(n)&&n>0)?n:0;};
@@ -750,10 +771,13 @@ class Component extends DCLogic {
     if(ejec>0){es.aboutP2s2=ce(ejec)+"+ ejecuciones";en.aboutP2s2=cn(ejec)+"+ executions";}
   }
   animateMetrics(){
+    // Anima desde lo que se ve hacia el objetivo. Si las cifras reales llegan cuando la animación
+    // ya terminó (el webhook tarda), se vuelve a correr hacia ellas en vez de quedar en los valores de respaldo.
     if(this._metRun)return;this._metRun=true;var self=this;var t0=performance.now();var dur=1500;
+    var from=(this.state.metv||[0,0,0]).slice();
     function step(now){var p=Math.min(1,(now-t0)/dur);var e=1-Math.pow(1-p,3);
-      self.setState({metv:self.METRICDEF.map(function(m){return m.target*e;})});
-      if(p<1)requestAnimationFrame(step);}
+      self.setState({metv:self.METRICDEF.map(function(m,i){return from[i]+(m.target-from[i])*e;})});
+      if(p<1)requestAnimationFrame(step);else self._metRun=false;}
     requestAnimationFrame(step);
   }
   observe(){
@@ -769,42 +793,53 @@ class Component extends DCLogic {
   startAscii(){
     if(this.props.asciiField===false)return;
     var cv=document.querySelector(".asciiCanvas");if(!cv)return;var ctx=cv.getContext("2d");var self=this;
+    // Con "reducir movimiento" activado en el sistema se pinta un solo cuadro quieto.
+    var still=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     var ramp=" .·:-=+*#%@";var cell=window.innerWidth<760?20:16;var w=0,h=0,cols=0,rows=0,dpr=Math.min(2,window.devicePixelRatio||1);
-    var mx=-999,my=-999,t=0;
-    function resize(){var host=cv.parentElement;w=host.clientWidth;h=host.clientHeight;cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+"px";cv.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(w/cell);rows=Math.ceil(h/cell);ctx.font=cell+"px 'JetBrains Mono',monospace";ctx.textBaseline="top";}
-    this._rz=resize;window.addEventListener("resize",resize);resize();
-    this._pm=function(e){var r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;};window.addEventListener("pointermove",this._pm);
+    var mx=-999,my=-999,t=0,last=0,FRAME=1000/30,colS=[],rowS=[],diagS=[];
+    function resize(){var host=cv.parentElement;w=host.clientWidth;h=host.clientHeight;cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+"px";cv.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(w/cell);rows=Math.ceil(h/cell);ctx.font=cell+"px 'JetBrains Mono',monospace";ctx.textBaseline="top";if(still)draw(0);}
+    this._pm=function(e){var r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;};
+    if(!still)window.addEventListener("pointermove",this._pm,{passive:true});
     var accRgb=self.hexToRgb(self.props.accent||"#ff5c35");var accCss="rgb("+accRgb[0]+","+accRgb[1]+","+accRgb[2]+")";
     var vis=true;
-    this._ioA=new IntersectionObserver(function(en){var was=vis;vis=en[0].isIntersecting;if(vis&&!was)self._raf=requestAnimationFrame(draw);});
+    this._ioA=new IntersectionObserver(function(en){var was=vis;vis=en[0].isIntersecting;if(vis&&!was&&!still){cancelAnimationFrame(self._raf);last=0;self._raf=requestAnimationFrame(draw);}});
     this._ioA.observe(cv);
-    function draw(){
+    function draw(now){
       if(!vis)return;
+      // ~30 fps y avance por tiempo real (en pantallas de 120 Hz ya no corre al doble de velocidad).
+      if(!still){self._raf=requestAnimationFrame(draw);if(now-last<FRAME-1)return;}
+      var k=last?Math.min(now-last,100)/16.667:1;last=now;
       var light=self.state.theme==="light";
       var baseCss=light?"rgb(20,18,15)":"rgb(236,234,228)";
       var baseA=light?0.06:0.09,baseM=light?0.14:0.20;
       ctx.clearRect(0,0,w,h);
+      // Los tres senos dependen solo de la columna, de la fila y de su suma: se calculan una vez
+      // por cuadro en vez de tres por celda. La raíz solo se calcula cerca del puntero.
+      var cx,cy,top=ramp.length-1;
+      for(cx=0;cx<cols;cx++)colS[cx]=Math.sin(cx*cell*0.018+t*0.6);
+      for(cy=0;cy<rows;cy++)rowS[cy]=Math.sin(cy*cell*0.026-t*0.45);
+      for(cx=0;cx<cols+rows;cx++)diagS[cx]=Math.sin(cx*cell*0.013+t*0.9);
       var mode=0;ctx.fillStyle=baseCss;
-      for(var cy=0;cy<rows;cy++){for(var cx=0;cx<cols;cx++){
-        var x=cx*cell,y=cy*cell;
-        var v=Math.sin(x*0.018+t*0.6)+Math.sin(y*0.026-t*0.45)+Math.sin((x+y)*0.013+t*0.9);
-        v=(v+3)/6;
-        var dx=x-mx,dy=y-my,d=Math.sqrt(dx*dx+dy*dy);
-        var infl=Math.max(0,1-d/200);
+      for(cy=0;cy<rows;cy++){var y=cy*cell,dy=y-my,dy2=dy*dy,rs=rowS[cy];for(cx=0;cx<cols;cx++){
+        var x=cx*cell;
+        var v=(colS[cx]+rs+diagS[cx+cy]+3)/6;
+        var dx=x-mx,dd=dx*dx+dy2;
+        var infl=dd<40000?1-Math.sqrt(dd)/200:0;
         var val=Math.min(1,v*(0.7+infl*0.9)+infl*0.35);
-        var idx=Math.floor(val*(ramp.length-1));var ch=ramp[idx];
-        if(ch===" ")continue;
+        var idx=Math.floor(val*top);
+        if(idx===0)continue;
         if(infl>0.12){if(mode!==1){ctx.fillStyle=accCss;mode=1;}ctx.globalAlpha=Math.min(0.95,0.25+infl*0.75);}
         else{if(mode!==0){ctx.fillStyle=baseCss;mode=0;}ctx.globalAlpha=baseA+val*baseM;}
-        ctx.fillText(ch,x,y);
+        ctx.fillText(ramp[idx],x,y);
       }}
       ctx.globalAlpha=1;
-      t+=0.008;self._raf=requestAnimationFrame(draw);
+      t+=0.008*k;
     }
-    draw();
+    this._rz=resize;window.addEventListener("resize",resize);resize();
+    if(still){this._redrawA=function(){draw(0);};requestAnimationFrame(this._redrawA);}else{this._raf=requestAnimationFrame(draw);}
   }
 
-  toggleTheme(){var n=this.state.theme==="dark"?"light":"dark";this.setState({theme:n});try{localStorage.setItem("ap-theme",n);}catch(e){}}
+  toggleTheme(){var n=this.state.theme==="dark"?"light":"dark";this.setState({theme:n});try{localStorage.setItem("ap-theme",n);}catch(e){}var self=this;if(self._redraw3||self._redrawA)requestAnimationFrame(function(){if(self._redraw3)self._redraw3();if(self._redrawA)self._redrawA();});}
   setLang(l){this.setState({lang:l});document.documentElement.lang=l;try{localStorage.setItem("ap-lang",l);}catch(e){}}
   toggleMenu(){this.setState({menu:!this.state.menu});}
   setFilter(v){this.setState({filter:v,active:0,showAll:false});}
@@ -830,11 +865,11 @@ class Component extends DCLogic {
     });
     var ai=Math.min(this.state.active,vis.length-1);if(ai<0)ai=0;
     var collapsed=this.state.filter==="all"&&!this.state.showAll;
-    var projects=vis.map(function(p,i){var phs=(typeof p.hoursSaved==="number"&&p.hoursSaved>0)?p.hoursSaved:0;var psaved=phs?(L.saveLabel+" $"+(phs*8).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+" USD"):"";return {num:("0"+(i+1)).slice(-2),title:p[lang].t,sub:p[lang].s,year:p.year,img:p.img,tech:p.tech||[],saved:psaved,url:"/proyecto?id="+p.id,onEnter:function(){self.setActive(i);}};});
+    var projects=vis.map(function(p,i){var phs=(typeof p.hoursSaved==="number"&&p.hoursSaved>0)?p.hoursSaved:0;var psaved=phs?(L.saveLabel+" $"+(phs*8).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+" USD"):"";return {num:("0"+(i+1)).slice(-2),title:p[lang].t,sub:p[lang].s,year:p.year,img:p.img,tech:p.tech||[],saved:psaved,url:"/proyectos/"+p.id+".html",onEnter:function(){self.setActive(i);}};});
     var ap=vis[ai]||this.PROJECTS[0];
     var apHs=(typeof ap.hoursSaved==="number"&&ap.hoursSaved>0)?ap.hoursSaved:0;
     var apSaved=apHs?(L.saveLabel+" $"+(apHs*8).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+" USD"):"";
-    var active={img:ap.img,title:ap[lang].t,sub:ap[lang].s,cat:this.FILTERDEF.filter(function(f){return f.v===ap.tag;})[0][lang],company:ap.company,year:ap.year,saved:apSaved,url:"/proyecto?id="+ap.id,live:ap.live||""};
+    var active={img:ap.img,title:ap[lang].t,sub:ap[lang].s,cat:this.FILTERDEF.filter(function(f){return f.v===ap.tag;})[0][lang],company:ap.company,year:ap.year,saved:apSaved,url:"/proyectos/"+ap.id+".html",live:ap.live||""};
     var filters=this.FILTERDEF.map(function(f){return {label:f[lang],cls:self.state.filter===f.v?"on":"",onClick:function(){self.setFilter(f.v);}};});
     var metrics=this.METRICDEF.map(function(m,i){var v=self.state.metv[i];return {display:"+"+Math.floor(v).toLocaleString("es-CO")+m.suffix,label:L.metrics[i]};});
     var experience=this.EXPERIENCE.map(function(e){return {date:e[lang].date,role:e[lang].role,company:e.company,desc:e[lang].desc};});

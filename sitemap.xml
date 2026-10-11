@@ -2,25 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://agustin.agustinynatalia.site/</loc>
-    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://agustin.agustinynatalia.site/proyectos</loc>
-    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agustin.agustinynatalia.site/metricas</loc>
-    <lastmod>2026-10-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agustin.agustinynatalia.site/guias/</loc>
-    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -115,14 +111,172 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/automatizacion-analitica-podcasts.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/recontacto-automatizado-de-leads-crm.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/prospeccion-automatizada-de-leads-b2b.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/recordatorio-automatizado-de-reuniones-whatsapp.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/agente-de-ia-que-atiende-y-cobra-por-whatsapp.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/panel-de-auditoria-para-un-agente-de-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/de-plataforma-por-suscripcion-a-infraestructura-propia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/plataforma-de-orientacion-vocacional-con-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/agente-de-ia-para-insights-estrategicos.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/automatizacion-inteligente-de-analisis-de-shows.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/automatizacion-integral-de-contenido-y-diseno-con-ia-para-marketing-digital.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/automatizacion-completa-de-contenido-y-publicacion-para-blog-de-tecnologia-con-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/pulso-app-salud-cardiovascular.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/monica-brain-asistente-ia-omnicanal.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/monica-developer-apps-por-prompts.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/monica-designer-identidad-de-marca-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/status-page-monitoreo-de-servicios.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/flowdeck-gestor-n8n.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/visor-de-orquestacion-de-subagentes.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/notetaker-de-reuniones-con-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/campanas-de-correo-contextualizadas-con-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/escalamiento-a-humano-en-un-agente-de-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/evaluacion-de-elegibilidad-eb2-niw-con-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/agendamiento-conversacional-con-calendario-real.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/captura-centralizada-de-fallas-en-n8n.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/contenido-y-publicacion-automatizada-en-linkedin.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/clasificacion-y-respuesta-de-correos-con-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/screening-de-hojas-de-vida-con-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/ciclo-de-vida-de-la-cita-con-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/documentador-automatico-de-flujos-n8n.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/asistente-personal-de-ia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agustin.agustinynatalia.site/proyectos/sincronizacion-de-casos-con-el-crm.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://agustin.agustinynatalia.site/privacidad.html</loc>
-    <lastmod>2026-10-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://agustin.agustinynatalia.site/terminos.html</loc>
-    <lastmod>2026-10-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

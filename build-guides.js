@@ -4,10 +4,12 @@
 // contenido y el JSON-LD ya renderizados en el HTML (no por JS), para que
 // Google y los buscadores con IA lo indexen sin ejecutar JavaScript.
 // Reusa el CSS del shell Guia.dc.html para conservar el diseño.
-// Uso: node build-guides.js   (regenera todas las guías + sitemap.xml)
+// Uso: node build-guides.js   (regenera todas las guías, las páginas de proyectos
+//      con build-projects.js y el sitemap.xml)
 // ==========================================
 const fs = require("fs");
 const path = require("path");
+const { FONT_HEAD } = require("./build-shared.js");
 
 const BASE = "https://agustin.agustinynatalia.site/";
 let OGVER = "";
@@ -169,9 +171,7 @@ function page(g) {
 <meta name="twitter:image" content="${OG}">
 <meta name="theme-color" content="#f1efe9">
 <script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+${FONT_HEAD}
 <script type="application/ld+json">${jsonld(g, url, published)}</script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 <style>
@@ -292,28 +292,47 @@ ${items}
 fs.writeFileSync(path.join(outDir, "index.html"), hubPage());
 console.log("escrita guias/index.html con " + guides.length + " guías");
 
+// ---- páginas estáticas de proyectos (build-projects.js) ----
+// Se regeneran aquí para que una sola corrida deje guías, proyectos y sitemap al día.
+let projects;
+try {
+  projects = require("./build-projects.js").build();
+} catch (e) {
+  console.error("aviso: no pude generar las páginas de proyectos: " + e.message);
+  // El sitemap igual lista los proyectos visibles para no perderlos si el build falló.
+  const vm = require("vm");
+  const ctx = {};
+  vm.createContext(ctx);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, "projects-data.js"), "utf8") + "\n;this.__p = PROJECTS_DATA;", ctx);
+  projects = ctx.__p.filter(p => p.visible !== false);
+}
+
 // ---- regenerar sitemap.xml ----
-const today = new Date().toISOString().slice(0, 10);
+// <lastmod> solo donde hay una fecha real de contenido (la de cada guía). Antes iba la fecha
+// del día en cada corrida: el sitemap cambiaba a diario y Google deja de creerle al campo.
 const staticUrls = [
-  { loc: BASE, changefreq: "weekly", priority: "1.0", lastmod: today },
-  { loc: BASE + "proyectos", changefreq: "weekly", priority: "0.8", lastmod: today },
-  { loc: BASE + "metricas", changefreq: "daily", priority: "0.6", lastmod: today },
-  { loc: BASE + "guias/", changefreq: "weekly", priority: "0.9", lastmod: today }
+  { loc: BASE, changefreq: "weekly", priority: "1.0" },
+  { loc: BASE + "proyectos", changefreq: "weekly", priority: "0.8" },
+  { loc: BASE + "metricas", changefreq: "daily", priority: "0.6" },
+  { loc: BASE + "guias/", changefreq: "weekly", priority: "0.9" }
 ];
 const guideUrls = guides.map(g => ({
   loc: BASE + "guias/" + g.id + ".html", changefreq: "monthly", priority: "0.9",
-  lastmod: isoDate(g.date) || today
+  lastmod: isoDate(g.date)
+}));
+const projectUrls = projects.map(p => ({
+  loc: BASE + "proyectos/" + p.id + ".html", changefreq: "monthly", priority: "0.8"
 }));
 const tailUrls = [
-  { loc: BASE + "privacidad.html", changefreq: "yearly", priority: "0.2", lastmod: today },
-  { loc: BASE + "terminos.html", changefreq: "yearly", priority: "0.2", lastmod: today }
+  { loc: BASE + "privacidad.html", changefreq: "yearly", priority: "0.2" },
+  { loc: BASE + "terminos.html", changefreq: "yearly", priority: "0.2" }
 ];
-const all = staticUrls.concat(guideUrls, tailUrls);
+const all = staticUrls.concat(guideUrls, projectUrls, tailUrls);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${all.map(u => `  <url>
-    <loc>${u.loc}</loc>
-    <lastmod>${u.lastmod}</lastmod>
+    <loc>${u.loc}</loc>${u.lastmod ? `
+    <lastmod>${u.lastmod}</lastmod>` : ""}
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`).join("\n")}

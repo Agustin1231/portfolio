@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
-# Material de clientes y cuestionarios, no son parte del portafolio
+# Material de clientes. Los cuestionarios (/innaltech/, /levantamiento/, /clinica10/) ya llevan
+# <meta name="robots" content="noindex">, y bloquearlos aquí impedía que Google lo leyera.
+# /expedientes/ sigue bloqueado porque tiene un PDF y datos que no pueden llevar esa etiqueta;
+# cuando la cabecera X-Robots-Tag de deploy/nginx.conf esté activa, esta línea se puede quitar.
 Disallow: /expedientes/
-Disallow: /innaltech/
-Disallow: /levantamiento/
 
 Sitemap: https://agustin.agustinynatalia.site/sitemap.xml
