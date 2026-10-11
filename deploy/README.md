@@ -54,6 +54,12 @@ no hay bucle de redirecciones.
 - El modo SSL de la zona no se tocó: ya funcionaba con los demás subdominios con proxy (n8n, umami),
   así que no es "Flexible". Si alguna vez aparece un bucle de redirecciones, revisar que esté en
   **Full (strict)**.
+- **Ojo con el caché del navegador:** la zona tiene "Browser Cache TTL" en 4 horas, así que Cloudflare
+  le cambia a los `.js` el `no-cache` de nginx por `max-age=14400` (el HTML sí queda en `no-cache`).
+  Un cambio en `support.js`, `upwork-pop.js` o `guides-data.js` puede tardar hasta 4 horas en verse
+  para quien ya visitó el sitio. Los estilos van dentro del HTML, así que no les afecta. Arreglos:
+  versionar el `<script src>` (como ya hace `projects-data.js?v=...`) o poner Browser Cache TTL en
+  "Respect Existing Headers" en Cloudflare (afecta a toda la zona).
 - El token de Cloudflare que usa Rocky (`CLOUDFLARE_API_TOKEN`) solo tiene permiso de DNS. Para
   cambiar el modo SSL, reglas de caché o de WAF por API hace falta sumarle `Zone Settings: Edit` y
   `Zone WAF: Edit` (o hacerlo a mano en el panel).
