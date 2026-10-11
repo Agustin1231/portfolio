@@ -324,6 +324,7 @@ const projectUrls = projects.map(p => ({
   loc: BASE + "proyectos/" + p.id + ".html", changefreq: "monthly", priority: "0.8"
 }));
 const tailUrls = [
+  { loc: BASE + "aviso-privacidad.html", changefreq: "yearly", priority: "0.3" },
   { loc: BASE + "privacidad.html", changefreq: "yearly", priority: "0.2" },
   { loc: BASE + "terminos.html", changefreq: "yearly", priority: "0.2" }
 ];
