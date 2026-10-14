@@ -9,7 +9,7 @@
 // ==========================================
 const fs = require("fs");
 const path = require("path");
-const { FONT_HEAD } = require("./build-shared.js");
+const { FONT_HEAD, MOTION_HEAD } = require("./build-shared.js");
 
 const BASE = "https://agustin.agustinynatalia.site/";
 let OGVER = "";
@@ -178,6 +178,7 @@ ${FONT_HEAD}
 ${CSS}
 ${EXTRA_CSS}
 </style>
+${MOTION_HEAD}
 </head>
 <body>
 <div class="site light" id="top" style="--accent:${ACCENT}">
@@ -232,7 +233,7 @@ ${sectionsHtml(g)}${relatedHtml(g)}
   });
 })();
 </script>
-<script defer src="/upwork-pop.js"></script>
+<script defer src="/upwork-pop.js?v=20261014"></script>
 </body>
 </html>
 `;

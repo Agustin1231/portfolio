@@ -27,19 +27,32 @@
     var T=TXT[idioma()];
     var d=document.createElement("div");d.className="upPop";d.setAttribute("role","dialog");d.setAttribute("aria-label","Upwork");
     d.innerHTML='<button class="upPopX" type="button" aria-label="'+T.x+'">✕</button><div class="upPopK">'+T.k+'</div><p class="upPopT">'+T.t+'</p><p class="upPopP">'+T.p+'</p><a class="upPopB" href="https://www.upwork.com/freelancers/agustinperalta" target="_blank" rel="noopener" data-umami-event="upwork-popup">'+T.b+'</a>';
-    d.querySelector(".upPopX").addEventListener("click",function(){d.classList.remove("on");removeEventListener("scroll",revisar);});
+    d.querySelector(".upPopX").addEventListener("click",function(){d.classList.remove("on");removeEventListener("scroll",pedir);if(io)io.disconnect();});
     host.appendChild(d);
     return d;
   }
+  // Sin medir el diseño en cada evento de scroll: el alto se guarda con ResizeObserver, la
+  // visibilidad del bloque de contratación la avisa un IntersectionObserver y se revisa una vez por cuadro.
+  var alto=0,visibles=null,io=null;
+  function medirAlto(){alto=document.documentElement.scrollHeight-innerHeight;}
   function ctaVisible(){
-    var els=document.querySelectorAll(".dcta, #contacto");
-    for(var i=0;i<els.length;i++){var r=els[i].getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)return true;}
+    if(!io&&"IntersectionObserver" in window){
+      var els=document.querySelectorAll(".dcta, #contacto");
+      if(els.length){visibles=new Map();io=new IntersectionObserver(function(es){es.forEach(function(e){visibles.set(e.target,e.isIntersecting);});pedir();});for(var j=0;j<els.length;j++)io.observe(els[j]);}
+    }
+    if(visibles){var v=false;visibles.forEach(function(x){v=v||x;});return v;}
+    var els2=document.querySelectorAll(".dcta, #contacto");
+    for(var i=0;i<els2.length;i++){var r=els2[i].getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)return true;}
     return false;
   }
-  var mostrado=false;
-  function revisar(){
-    var alto=document.documentElement.scrollHeight-innerHeight;
-    var avance=alto>0?scrollY/alto:0;
+  var mostrado=false,pendiente=false;
+  function pedir(){if(!pendiente){pendiente=true;requestAnimationFrame(revisar);}}
+  function revisar(ts){
+    pendiente=false;
+    if(!alto)medirAlto();
+    // motion.js ya leyó el scroll en este cuadro: se reusa (cada lectura de scrollY fuerza el diseño).
+    var c=window.mxScroll,y=c&&c.ts===ts?c.y:scrollY;
+    var avance=alto>0?y/alto:0;
     if(!mostrado&&avance>=0.2&&!ctaVisible()){
       pop=pop||crear();if(!pop)return;
       pop.classList.add("on");mostrado=true;
@@ -47,5 +60,7 @@
     }
     if(pop&&pop.classList.contains("on")&&ctaVisible())pop.classList.remove("on");
   }
-  addEventListener("scroll",revisar,{passive:true});
+  if("ResizeObserver" in window)new ResizeObserver(medirAlto).observe(document.documentElement);
+  addEventListener("resize",medirAlto);
+  addEventListener("scroll",pedir,{passive:true});
 })();

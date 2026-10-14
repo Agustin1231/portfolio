@@ -12,6 +12,8 @@ Sitio web personal — live en https://agustin.agustinynatalia.site
 - Datos de proyectos y guías como fuente única editable (`projects-data.js`, `guides-data.js`)
 - Métricas en vivo vía webhook de n8n, servidas por nginx desde una copia en `/api/metricas` que se
   renueva cada 10 minutos; analytics con Umami
+- Microinteracciones en todo el sitio (títulos palabra por palabra, textos mono que se escriben,
+  entradas en cascada, transición entre páginas) y fondos animados dibujados en un Worker
 
 ## Estructura
 
@@ -32,7 +34,12 @@ projects-data.js        datos de proyectos (array PROJECTS_DATA, fuente única)
 guides-data.js          datos de guías (array GUIDES_DATA, fuente única)
 build-guides.js         genera guías, proyectos (vía build-projects.js) y sitemap.xml
 build-projects.js       genera proyectos/<id>.html y la lista <noscript> de proyectos.html
-build-shared.js         piezas comunes de los builds (bloque de fuentes del <head>)
+build-shared.js         piezas comunes de los builds (bloques de fuentes y de motion del <head>)
+motion.js, motion.css   microinteracciones de todo el sitio; van en el <head> de cada página
+fondo.js                arranca los fondos animados (.bg3d y el ASCII del inicio) en un Worker
+fondo-worker.js         el dibujo de esos fondos, sobre OffscreenCanvas
+vitrina.js, vitrina.css "Trabajo seleccionado" de la portada (casos apilados); datos en vitrina-data.js
+upwork-pop.js           aviso de Upwork al 20 % de lectura
 support.js              runtime dc (generado y minificado — no editar a mano)
 vendor/                 React 18.3.1 + ReactDOM UMD, con la versión en el nombre
 fonts/                  woff2 variables (latin y latin-ext) + licencias OFL
@@ -59,7 +66,16 @@ deploy/                 nginx.conf para Coolify y notas de servicios externos
   runtime detecta `window.React` y no lo vuelve a pedir a unpkg. Si se actualiza React, el archivo
   nuevo lleva otro nombre: nginx los cachea un año como inmutables.
 - Las fuentes se declaran con el mismo bloque en todas las páginas (`FONT_HEAD` de `build-shared.js`);
-  las páginas hechas a mano lo llevan copiado en el `<head>`.
+  las páginas hechas a mano lo llevan copiado en el `<head>`. Lo mismo con `MOTION_HEAD`
+  (motion.css + motion.js, sin `defer`: marca los elementos antes de que se pinten).
+- Rendimiento: las animaciones de entrada tienen que terminar (motion.js les pone `data-mx-fin` y les
+  saca la animación); si quedan "llenando" su último cuadro, cada elemento sigue siendo una capa que
+  el navegador actualiza en cada cuadro. En el scroll no se mide el diseño a mano: el scroll se lee
+  una vez por cuadro (`window.mxScroll`) y los altos se guardan con ResizeObserver.
+- Cloudflare guarda 4 h en el navegador los `.js` y `.css` (ver `deploy/README.md`), por eso los
+  archivos propios van con `?v=AAAAMMDD` en el `src`/`href`. Al cambiar uno, subir la versión en las
+  páginas (y en `build-shared.js`/`build-*.js` si es de las generadas, y correr el build). El Worker
+  se pide desde `fondo.js` con su propio `?v=`.
 - URLs limpias (`/proyectos`, `/metricas`, ...): dependen del `try_files $uri $uri.html ...` de nginx.
   `deploy/nginx.conf` es la config completa para pegar en Coolify; `deploy/README.md` explica eso y
   los ajustes de Cloudflare, n8n y el bot de la imagen OG.

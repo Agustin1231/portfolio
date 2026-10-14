@@ -32,6 +32,8 @@ location.replace(id&&/^[a-z0-9-]+$/.test(id)?"/guias/"+id+".html"+location.hash:
 <script defer src="guides-data.js"></script>
 <script defer src="/vendor/react-18.3.1.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z"></script>
 <script defer src="/vendor/react-dom-18.3.1.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1"></script>
+<link rel="stylesheet" href="/motion.css?v=20261014"><script src="/motion.js?v=20261014"></script>
+<script defer src="/fondo.js?v=20261014"></script>
 <script defer src="./support.js"></script>
 <script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
 <script>
@@ -302,7 +304,10 @@ class Component extends DCLogic {
   hexToRgb(hex){var h=(hex||"#ff5c35").replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return [(n>>16)&255,(n>>8)&255,n&255];}
   startBg3d(){
     if(this.props.scene3d===false)return;
-    var cv=document.querySelector(".bg3d");if(!cv)return;var ctx=cv.getContext("2d");var self=this;
+    var cv=document.querySelector(".bg3d");if(!cv)return;
+    // Si el navegador puede, el fondo se dibuja en otro hilo (fondo.js); si no, sigue aquí.
+    if(window.Fondo&&window.Fondo.iniciar(cv,"constelacion",{accent:this.props.accent}))return;
+    var ctx=cv.getContext("2d");var self=this;
     // Con "reducir movimiento" activado en el sistema se pinta un solo cuadro quieto.
     var still=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     var dpr=Math.min(2,window.devicePixelRatio||1);var w=0,h=0;
@@ -373,6 +378,6 @@ class Component extends DCLogic {
   }
 }
 </script>
-<script defer src="/upwork-pop.js"></script>
+<script defer src="/upwork-pop.js?v=20261014"></script>
 </body>
 </html>

@@ -8,4 +8,8 @@ const FONT_HEAD = `<link rel="preload" href="/fonts/space-grotesk-v22-latin.woff
 <link rel="preload" href="/fonts/jetbrains-mono-v24-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>${FONT_FACES}</style>`;
 
-module.exports = { FONT_FACES, FONT_HEAD };
+// Microinteracciones de todo el sitio (motion.js marca los elementos antes de que se pinten, por eso
+// va sin defer). Las páginas hechas a mano llevan esta misma línea en el <head>.
+const MOTION_HEAD = `<link rel="stylesheet" href="/motion.css?v=20261014"><script src="/motion.js?v=20261014"></script>`;
+
+module.exports = { FONT_FACES, FONT_HEAD, MOTION_HEAD };
