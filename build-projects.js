@@ -344,11 +344,6 @@ ${saved}
 </div>${live}
 </div></header>
 ${bodyHtml(p)}${relatedHtml(p)}
-<section class="dsec"><div class="wrap"><div class="dcta"><h3 data-i18n="ctaTitle">${esc(T.ctaTitle)}</h3><p class="dctaP" data-i18n="ctaMsg">${esc(T.ctaMsg)}</p><div class="upSvcs">${
-  up("https://www.upwork.com/services/product/development-it-an-n8n-workflow-automation-for-your-crm-forms-email-and-sheets-2104901857369884325", "upN", "$190")}${
-  up("https://www.upwork.com/services/product/development-it-an-ai-whatsapp-agent-for-customer-service-with-the-official-cloud-api-2104903909913353811", "upW", "$460")}${
-  up("https://www.upwork.com/services/product/consulting-hr-a-business-process-automation-audit-with-a-prioritized-action-plan-2104904529895557158", "upA", "$115")
-}</div><div class="dctaRow"><a class="btn btnP" href="https://www.upwork.com/freelancers/agustinperalta" target="_blank" rel="noopener" data-umami-event="upwork-proyecto" data-i18n="ctaBtn">${esc(T.ctaBtn)}</a><a class="btn btnO" href="/proyectos" data-i18n="back">${esc(T.back)}</a></div></div></div></section>
 ${lightbox}
 <footer class="footer"><div class="wrap footIn">
 <span data-i18n="footerText">${esc(T.footerText)}</span>
@@ -356,7 +351,6 @@ ${lightbox}
 </div></footer>
 </div>
 ${pageScript()}
-<script defer src="/upwork-pop.js?v=20261014"></script>
 </body>
 </html>
 `;
