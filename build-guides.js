@@ -9,7 +9,7 @@
 // ==========================================
 const fs = require("fs");
 const path = require("path");
-const { FONT_HEAD, MOTION_HEAD } = require("./build-shared.js");
+const { FONT_HEAD, MOTION_HEAD, ICON_HEAD } = require("./build-shared.js");
 
 const BASE = "https://agustin.agustinynatalia.site/";
 let OGVER = "";
@@ -179,6 +179,7 @@ ${CSS}
 ${EXTRA_CSS}
 </style>
 ${MOTION_HEAD}
+${ICON_HEAD}
 </head>
 <body>
 <div class="site light" id="top" style="--accent:${ACCENT}">

@@ -16,7 +16,7 @@ const ROOT = __dirname;
 const BASE = "https://agustin.agustinynatalia.site/";
 const ACCENT = "#ff5c35";
 const HOUR_USD = 8;
-const { FONT_HEAD, MOTION_HEAD } = require("./build-shared.js");
+const { FONT_HEAD, MOTION_HEAD, ICON_HEAD } = require("./build-shared.js");
 
 // ---- cargar datos ----
 function loadData(file, name) {
@@ -312,6 +312,7 @@ ${CSS}
 ${EXTRA_CSS}
 </style>
 ${MOTION_HEAD}
+${ICON_HEAD}
 </head>
 <body>
 <div class="site light" id="top" style="--accent:${ACCENT};--accent-soft:rgba(255,92,53,0.13)">

@@ -13,4 +13,8 @@ const FONT_HEAD = `<link rel="preload" href="/fonts/montserrat-normal-300-700-la
 // va sin defer). Las páginas hechas a mano llevan esta misma línea en el <head>.
 const MOTION_HEAD = `<link rel="stylesheet" href="/motion.css?v=20261014"><script src="/motion.js?v=20261014"></script>`;
 
-module.exports = { FONT_FACES, FONT_HEAD, MOTION_HEAD };
+// Favicon de la marca (la A de Great Vibes en naranja sobre tinta, 22-oct-2026). Las páginas hechas a mano
+// llevan esta misma línea en el <head>.
+const ICON_HEAD = `<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">`;
+
+module.exports = { FONT_FACES, FONT_HEAD, MOTION_HEAD, ICON_HEAD };
