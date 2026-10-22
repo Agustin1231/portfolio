@@ -2620,5 +2620,61 @@ var PROJECTS_DATA = [
             { title: "Probar sin miedo", text: "Marcar los eventos de prueba desde el origen permitió validar cada cambio contra el CRM real sin dañar datos." }
         ],
         visible: true
+    },
+    {
+        id: "tablero-consolidado-gohighlevel",
+        number: "33",
+        category: "Automatización y Datos",
+        title: "Tablero Consolidado de GoHighLevel",
+        subtitle: "Las métricas comerciales de más de 130 subcuentas en un solo tablero que se actualiza solo",
+        description: "Integración con la API de GoHighLevel que junta en Google Sheets las oportunidades, reuniones, propuestas y cierres de todas las subcuentas de una agencia, cada 4 horas y sin que nadie tenga que entrar a cada una.",
+        year: "2026",
+        company: "Agencia de marketing",
+        duration: "En operación",
+        image: "img/proyectos/tablero-consolidado-gohighlevel.jpg",
+        imageCaption: "De más de 130 subcuentas de GoHighLevel a un solo tablero con filtros, actualizado cada 4 horas",
+        techCard: ["GoHighLevel", "Python", "Google Sheets"],
+        techFull: [
+            "GoHighLevel API",
+            "OAuth 2.0 (app privada)",
+            "Python",
+            "Google Sheets API",
+            "Cron"
+        ],
+        metrics: [
+            { label: "Subcuentas", value: "130+" },
+            { label: "Actualización", value: "Cada 4 horas" },
+            { label: "Eventos por corrida", value: "23.000+" },
+            { label: "Cuentas nuevas", value: "Entran solas" }
+        ],
+        sections: [
+            {
+                title: "Objetivo del Proyecto",
+                content: [
+                    { type: "lead", text: "Que la agencia vea en un solo lugar cómo va el embudo comercial de todos sus clientes." },
+                    { type: "paragraph", text: "Cada subcuenta de GoHighLevel tenía su propio tablero, y además con dos plantillas distintas que nombraban diferente los mismos campos. Para saber cuántas reuniones, propuestas y cierres llevaba la agencia en total había que entrar subcuenta por subcuenta y sumar a mano, unas 4 horas de trabajo que nadie hacía seguido." }
+                ]
+            },
+            {
+                title: "Descripción del Proyecto",
+                content: [
+                    { type: "paragraph", text: "Una app privada de GoHighLevel, instalada en la agencia, pide un permiso por subcuenta y lee sus oportunidades con los campos de fecha de cada etapa." },
+                    { type: "paragraph", text: "Unos 60 nombres distintos de campos se normalizan a las mismas métricas: R1 y R2 agendadas y tenidas, propuestas y cierres. Las fechas se pasan a la zona horaria de cada subcuenta para que los números coincidan con los de GoHighLevel." },
+                    { type: "paragraph", text: "El resultado se escribe en Google Sheets cada 4 horas, con un panel por subcuenta, una pestaña por métrica mes a mes y filtros de periodo, estado de la oportunidad y tipo de subcuenta." },
+                    { type: "paragraph", text: "Las subcuentas nuevas que crea la agencia entran solas en la siguiente actualización, sin tocar nada." }
+                ]
+            }
+        ],
+        features: [
+            { title: "Todo en un solo tablero", description: "Oportunidades, reuniones, propuestas y cierres de más de 130 subcuentas, por subcuenta y por mes." },
+            { title: "Filtros que se respetan", description: "Periodo, estado y tipo de subcuenta; lo que elige el equipo se conserva entre actualizaciones." },
+            { title: "Plantillas distintas, mismas métricas", description: "Dos formas de nombrar los campos se traducen a las mismas columnas, sin cambiar cómo trabaja cada cliente." },
+            { title: "Crece solo", description: "Cada subcuenta nueva de la agencia aparece en el tablero en la siguiente corrida." }
+        ],
+        learnings: [
+            { title: "Validar contra la fuente", text: "Los números cuadraron con el tablero nativo de GoHighLevel recién al usar la zona horaria de cada subcuenta. Comparar con lo que el cliente ya ve evita discusiones." },
+            { title: "Respetar cómo trabaja cada uno", text: "En vez de pedir que todos usaran la misma plantilla, el tablero aprendió a leer las dos." }
+        ],
+        visible: true
     }
 ];
