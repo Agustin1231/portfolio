@@ -2414,5 +2414,237 @@ var GUIDES_DATA = [
             "Validaciones",
             "Enrutamiento de modelos"
         ]
+    },
+    {
+        "id": "como-cotizar-una-automatizacion-por-fases",
+        "seoTitle": "Cómo cotizar una automatización por fases",
+        "seoDescription": "Cómo armo una cotización de automatización por fases, con lo que recibe el cliente, cómo se comprueba, lo que no incluye y un soporte mensual con bolsa de horas.",
+        "number": "16",
+        "visible": true,
+        "category": "Negocio y alcance",
+        "title": "Cómo cotizar una automatización por fases sin pelear después por el alcance",
+        "subtitle": "Lo que más discusiones trae en un proyecto de automatización no es el precio, es lo que cada lado creía que estaba incluido. Así armo yo una cotización por fases, cómo pongo el número y cómo cobro el soporte cuando el proyecto ya está andando.",
+        "description": "Guía práctica para cotizar proyectos de automatización e IA por fases. Por qué arrancar con una fase pequeña, cómo escribir cada entrega con su forma de comprobarla, qué dejar por fuera, cómo separar los costos de proveedores y cómo cobrar el soporte mensual con una bolsa de horas.",
+        "image": "",
+        "imageCaption": "",
+        "date": "Octubre 2026",
+        "readingTime": "8 min de lectura",
+        "urlLabel": "Leer guía",
+        "requirements": [
+            "Una idea clara del proceso que el cliente quiere automatizar, aunque sea contada en una llamada o en un audio.",
+            "Haber visto, aunque sea por encima, los sistemas que hay que tocar (el CRM, la hoja de cálculo, la página web o la herramienta que usen).",
+            "Saber cuánto vale tu hora. Sin ese número todo lo demás es adivinar.",
+            "Una plantilla de cotización que puedas repetir. No tiene que ser bonita al principio, tiene que tener siempre las mismas secciones."
+        ],
+        "sections": [
+            {
+                "title": "El precio casi nunca es el problema",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Cuando un proyecto de automatización termina mal, rara vez es por la plata. Casi siempre es porque el cliente pensaba que algo venía incluido y quien lo construyó pensaba que no."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Pasa así. En la reunión el cliente cuenta su proceso, tú entiendes una versión, escribes una cotización con un número y una lista corta de lo que vas a hacer, y los dos firman tranquilos. A las tres semanas aparece el primer \"yo pensé que eso también lo hacía\". Nadie mintió. Cada uno llenó los huecos de la cotización con lo que tenía en la cabeza."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Por eso para mí la cotización no es el papel donde va el precio. Es el documento donde quedan escritos los límites del proyecto antes de empezar, cuando todavía es fácil hablarlos. El precio sale de ahí, no al revés."
+                    }
+                ]
+            },
+            {
+                "title": "Por qué la parto en fases",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Un proyecto de automatización siempre tiene cosas que no se ven hasta que uno mete las manos. Partirlo en fases es la forma honesta de cotizar algo que todavía no conoces del todo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Los datos vienen más sucios de lo que el cliente cree, un acceso tarda dos semanas en llegar, o resulta que la mitad del proceso vive en la cabeza de una persona y no está escrito en ningún lado. Si cotizas todo de una con un solo número, cualquiera de esas sorpresas te la comes tú o termina en una discusión."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Con fases, la primera es pequeña y barata, y su trabajo es justamente quitar esas incógnitas. A veces es dejar los datos en orden, a veces es automatizar un solo paso para probar que el resto se puede. Cuando termina, ya sabes con qué estás tratando y las siguientes fases se cotizan con mucha más certeza."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Al cliente también le sirve. Un consultor industrial con el que trabajo, que lleva treinta años montando fábricas, lo dice mejor que yo. Las empresas saben que tienen que cambiar, lo que no saben es cómo, y si les presentas todo de golpe se asustan. Empezar por un trozo pequeño y concreto, que funcione y se vea, es lo que hace que digan que sí a lo que sigue."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cada fase lleva su propio precio, su propio plazo y su propia entrega. Y el cliente puede parar después de cualquiera de ellas sin quedarse con algo a medias."
+                    }
+                ]
+            },
+            {
+                "title": "Cada entrega con su forma de comprobarla",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Esta es la sección que más discusiones me ha ahorrado. Al lado de cada cosa que el cliente recibe va escrito cómo vamos a comprobar juntos que quedó bien."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "No basta con poner \"formularios conectados al CRM\". Al lado va algo como \"enviamos una prueba desde cada formulario y el contacto aparece en el CRM con sus datos\". No basta con \"reporte automático\". Va \"el reporte llega el lunes a las 8 con las cifras de la semana anterior y cuadran con el sistema\"."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Escribirlo así tiene dos efectos. El cliente entiende de verdad qué está comprando, porque lo ve como algo que va a pasar y no como una palabra técnica. Y tú sabes exactamente cuándo terminaste, porque la entrega se acepta con esa prueba y no con una sensación."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Si para una entrega no se te ocurre cómo comprobarla, es señal de que todavía no la entiendes bien. Mejor preguntarlo antes de mandar la cotización."
+                    }
+                ]
+            },
+            {
+                "title": "Lo que no incluye también va escrito",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Una lista de lo que no está incluido parece negativa, pero es la parte que más tranquilidad le da a los dos lados."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Debajo de cada fase pongo en una línea lo que queda por fuera. El rediseño del sitio, la migración a otra herramienta, la redacción de contenido, las campañas pagas. No es para cobrar más después, es para que nadie lo dé por hecho. Si algún día lo quieren, se cotiza aparte y con calma."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo mismo con los costos de terceros. El servidor, las licencias, el consumo de las APIs de IA o los plugins pagos no van dentro de mi número. Van en un recuadro aparte que dice que se pagan directo al proveedor."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo aprendí por las malas. Una vez mandé una propuesta con todo sumado en un solo total y se leía carísima, aunque casi una quinta parte de ese número era servidor e IA, plata que no era mía. Al separar, el cliente vio un pago de entrada y una mensualidad razonable, y además el riesgo de que el consumo de IA se disparara dejó de estar en mi factura."
+                    }
+                ]
+            },
+            {
+                "title": "Lo que necesito del cliente, con fecha",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Casi todos los retrasos de un proyecto de automatización vienen de un acceso o un dato que el cliente tenía que entregar. Por eso eso también va en la cotización."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Hay una sección con lo que necesito de su lado, para cuándo y para qué. El usuario administrador de tal sistema en la semana 1, el archivo de clientes en la semana 2, la persona que conoce el proceso disponible una hora para resolver dudas."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y en los plazos va una frase que me ha salvado varias veces. El reloj se detiene mientras falte una decisión, un acceso o un insumo del cliente, y sigue cuando llega. Sin esa frase, la semana que alguien se demoró en darte una clave se cuenta como tu retraso."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Los plazos además los escribo en semanas de trabajo y no en fechas de calendario. La fecha real se fija cuando arranca cada fase, que es cuando ya están los accesos."
+                    }
+                ]
+            },
+            {
+                "title": "Cómo pongo el número",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El número sale de dos cuentas que hago por separado. Cuántas horas me va a tomar y cuánto vale el resultado para el cliente."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Las horas las estimo entrega por entrega, no a ojo para todo el proyecto. Si una entrega no la puedo estimar, la parto en pedazos más pequeños hasta que sí pueda. Multiplicadas por mi tarifa me dan el piso, lo mínimo por lo que vale la pena hacerlo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El valor para el cliente es lo que se ahorra o gana con la automatización. Horas de su equipo que deja de gastar, errores que dejan de costar plata, ventas que dejan de perderse. Ese número no lo invento, sale de lo que me cuentan en la reunión. Si la automatización le ahorra mucho más de lo que cuesta, hay espacio para cobrar por encima del piso. Si le ahorra poco, a lo mejor no es un buen proyecto para ninguno de los dos."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En medio de esas dos cuentas está la decisión de cuánto cobrar, y ahí entra algo que no sale de ninguna fórmula. A veces conviene un precio de entrada más bajo para empezar una relación que va a traer más fases. Lo importante es que sea una decisión consciente y no un descuento por nervios."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y siempre una fecha de validez. Mis cotizaciones valen quince días. Pasado eso los precios, los plazos o mi disponibilidad pueden cambiar."
+                    }
+                ]
+            },
+            {
+                "title": "Después de la entrega, soporte mensual con bolsa de horas",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Una automatización no se entrega y se olvida. Las herramientas se actualizan, los formularios se rompen y el cliente siempre quiere un ajuste más. Eso también se cotiza."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El formato que más me ha funcionado es un fee mensual con una bolsa de horas incluidas. El cliente paga lo mismo todos los meses y con eso tiene, digamos, hasta diez horas para ajustes, más el mantenimiento que hay que hacer aunque no pida nada, como actualizaciones, copias y revisar que las integraciones sigan conectadas."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Para fijar las horas pregunto cuántos cambios piden en un mes normal. Es común que haya meses sin pedidos y otros con ocho ajustes, así que la bolsa se calcula para el mes cargado y el mantenimiento cubre los tranquilos."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Las condiciones que dejo escritas son pocas. Si un mes se pasan de las horas, la hora adicional tiene un precio fijo y aviso antes de pasarse. Las horas que no se usan no se acumulan. Se paga a mes vencido, con el detalle de cada trabajo y sus horas. Y no hay permanencia mínima, se termina con treinta días de aviso. Si el servicio es bueno, el cliente se queda solo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Un detalle que ayuda a cerrar es regalar la puesta a punto del primer mes. Antes de entrar al ritmo mensual se arregla lo que hoy está fallando, y el cliente ve resultados desde la primera semana."
+                    }
+                ]
+            },
+            {
+                "title": "El orden en que la armo",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Si tuviera que resumir el proceso en una lista, sería esta."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Primero, escucho el proceso completo y pido ver los sistemas, aunque sea por encima. Segundo, parto el trabajo en fases y hago que la primera sea pequeña y quite incógnitas. Tercero, escribo cada entrega con su forma de comprobarla y debajo lo que no incluye. Cuarto, separo los costos de terceros y escribo lo que necesito del cliente con fecha. Quinto, estimo horas entrega por entrega y lo contrasto con el valor para el cliente. Sexto, pongo condiciones de pago, validez y lo que pasa con lo construido, que siempre queda a nombre del cliente al pagar cada fase. Y al final, si aplica, el soporte mensual."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Parece mucho para un documento que el cliente lee en cinco minutos. Pero cada línea de esas es una conversación que ya no hay que tener en medio del proyecto, cuando cuesta mucho más."
+                    }
+                ]
+            }
+        ],
+        "pros": [
+            "La primera fase pequeña quita las incógnitas antes de comprometer el proyecto completo.",
+            "Escribir cómo se comprueba cada entrega evita discutir si algo quedó terminado.",
+            "Separar los costos de proveedores hace que el precio se lea justo y saca de tu factura el riesgo del consumo.",
+            "El soporte con bolsa de horas le da al cliente un costo fijo y a ti un ingreso que se repite."
+        ],
+        "cons": [
+            "Cotizar así toma más tiempo que mandar un número en un mensaje.",
+            "Algunos clientes quieren un solo precio cerrado y las fases les generan desconfianza al principio.",
+            "Estimar horas entrega por entrega exige conocer bien los sistemas, y eso no siempre se puede antes de cotizar.",
+            "Una bolsa de horas mal calculada te deja trabajando gratis en los meses cargados."
+        ],
+        "references": [
+            {
+                "t": "Cómo llevar un agente de IA de la demo a producción",
+                "s": "Guía 05 de este sitio",
+                "u": "/guias/agente-ia-demo-a-produccion.html"
+            },
+            {
+                "t": "Cuánto cuesta de verdad tener un agente de IA corriendo",
+                "s": "Guía 11 de este sitio",
+                "u": "/guias/cuanto-cuesta-un-agente-de-ia.html"
+            },
+            {
+                "t": "Cómo saber si la automatización sirvió",
+                "s": "Guía 10 de este sitio",
+                "u": "/guias/medir-si-la-automatizacion-sirvio.html"
+            }
+        ],
+        "tools": [
+            "Cotizaciones",
+            "Alcance",
+            "Soporte mensual",
+            "Automatización",
+            "Negocio"
+        ]
     }
 ];
