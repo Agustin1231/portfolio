@@ -2646,5 +2646,243 @@ var GUIDES_DATA = [
             "Automatización",
             "Negocio"
         ]
+    },
+    {
+        "id": "migrar-de-make-o-zapier-sin-cortar-la-operacion",
+        "seoTitle": "Cómo migrar de Make o Zapier sin cortar la operación",
+        "seoDescription": "Cómo saqué una operación viva de Make sin apagar nada por el camino. Inventario real, datos en paralelo desde el día uno, corte por módulos y lo que falló.",
+        "number": "17",
+        "visible": true,
+        "category": "Migración y operación",
+        "title": "Cómo migrar de Make o Zapier sin cortar la operación",
+        "subtitle": "Migrar no es volver a construir lo que ya existe. Es cambiar cada pieza de lado sin que el equipo ni los clientes lo noten. Así lo planeé en un caso real, el orden que seguí y lo que se rompió cuando el plan se tuvo que apurar.",
+        "description": "Guía práctica para sacar una operación de Make o Zapier a infraestructura propia sin cortar el servicio. Inventario real de escenarios, tres reglas de migración, orden por módulos, corte con ventana para devolverse y qué hacer con los clientes que van por la mitad de un proceso.",
+        "image": "",
+        "imageCaption": "",
+        "date": "Octubre 2026",
+        "readingTime": "9 min de lectura",
+        "urlLabel": "Leer guía",
+        "requirements": [
+            "Acceso de administrador a la cuenta de Make o Zapier, para exportar los escenarios y ver el consumo real.",
+            "Saber qué procesos largos tiene tu operación (garantías, cobros pendientes, secuencias de varios días) y cuánto dura cada uno.",
+            "Un lugar donde guardar los datos nuevos desde el primer día, aunque todavía no sea el que manda.",
+            "Presupuesto para pagar las dos plataformas a la vez durante unas semanas."
+        ],
+        "sections": [
+            {
+                "title": "El día del corte es el que rompe los proyectos",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Cuando alguien decide salir de Make o de Zapier, casi siempre piensa en lo que va a construir. Lo difícil no es eso. Lo difícil es el día en que una cosa se apaga y la otra tiene que estar respondiendo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El caso que cuento aquí es un e-commerce en México que atiende a sus clientes por WhatsApp. Todo pasaba por Make y por una tabla de Airtable, desde el bot que contestaba hasta los recordatorios de pago y un seguimiento de garantía de seis semanas. En la guía 12 conté cuánto costaba de verdad ese sistema y cuánto bajó. Esta va del cómo, del orden en que se movió cada pieza."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Cuando el cliente revisó la propuesta puso una sola condición, y esa condición terminó gobernando todo el proyecto. El día que se apague Make no se puede perder ninguna función viva. No pidió que el sistema nuevo fuera más rápido ni más barato, eso venía por añadidura. Pidió que nada de lo que ya funcionaba dejara de funcionar."
+                    }
+                ]
+            },
+            {
+                "title": "Primero, el inventario de lo que de verdad corre",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Antes de planear nada hay que saber qué hay. Y lo que hay casi nunca coincide con lo que el cliente cree que tiene."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El cliente hablaba de siete sistemas. Al exportar la cuenta aparecieron diez escenarios. Varios de sus sistemas estaban partidos en más de un flujo, el recordatorio de pago eran tres escenarios y no uno, y dos escenarios ya no corrían, una copia a medias y una campaña vieja."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Lo más útil del inventario no fue la lista, fue el peso de cada cosa. Con las operaciones de los últimos 30 días a la vista, el bot y las notas de voz se llevaban el 87 por ciento del consumo. El seguimiento de garantía, el 7. La posventa, el 3. Los recordatorios de pago, el 2."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Ese reparto cambia cómo se cuenta el calendario. Los flujos pequeños son fáciles de mover, pero casi no pesan en la factura. La cuenta no baja de verdad hasta que se mueve el pesado, que además es el más delicado. Eso hay que decirlo al principio, porque si el cliente espera ver el ahorro en la segunda semana se va a sentir engañado."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "En ese inventario también salió algo que no tenía nada que ver con migrar. Los escenarios tenían llaves de otros servicios escritas en texto plano dentro de los módulos, y el archivo exportado ya había circulado. Antes de empezar se cambiaron todas."
+                    }
+                ]
+            },
+            {
+                "title": "Las tres reglas que puse antes de tocar nada",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El plan tenía nueve etapas, pero lo que de verdad lo sostenía eran tres reglas. Si alguna se rompe, el resto no importa."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Primera, nada se apaga sin haber corrido en paralelo. El escenario viejo y su reemplazo corren a la vez, se comparan las salidas y solo cuando coinciden se apaga el viejo. Y no se borra, queda apagado y exportado hasta que termina la migración."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Segunda, los datos no se migran al final, se migran desde el primer día. Es el error más común al planear. Si dejas la base para el último paso, llega un día en que hay que mover todo de golpe, con clientes a mitad de su garantía y pagos abiertos. En vez de eso, desde la primera semana cada mensaje y cada pedido se escribe en la base vieja y en la nueva al mismo tiempo. Al final no hay traslado, solo se decide cuál de las dos manda."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Tercera, nadie se queda a medio ciclo. Si un proceso dura seis semanas, el cliente que empezó con el sistema viejo lo termina en el sistema viejo, y al nuevo entran solo los que empiezan de cero. Ese módulo se apaga cuando termina el último ciclo en curso, no cuando el reemplazo está listo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Y una regla de convivencia mientras dura todo. Desde el primer día la plataforma vieja queda congelada. Lo que haya que cambiar se cambia en los dos lados o no se cambia, porque un ajuste hecho solo en Make a mitad del proyecto hace que la comparación de salidas deje de servir."
+                    }
+                ]
+            },
+            {
+                "title": "El orden, del módulo más aislado al más pesado",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El orden no sale de lo que es más urgente para el cliente. Sale de cuánto daño hace cada pieza si algo falla."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Primero va lo que no le cambia nada a nadie. Los accesos, el espejo de datos y una línea base de cómo funciona todo hoy, cuánto tarda el bot en responder, cuántas conversaciones hay por día y cuánto cuesta cada una. Sin esa línea base no hay forma de probar después que la migración sirvió."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Después, arreglar cómo se identifica a una persona. En este caso el mismo teléfono se buscaba de tres formas distintas según el flujo, con prefijo, sin prefijo o tal cual llegaba. Si eso no se unifica antes de mover nada, el sistema nuevo hereda los duplicados del viejo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Luego el módulo más aislado, que aquí era el recordatorio de pago en efectivo. Lo toca poca gente y si falla el daño es pequeño, así que sirve de ensayo del método de corte. Después la posventa, después la garantía y de último el bot, que es el que más pesa y el que más puede doler."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "El bot no se prende de un día para otro. Primero el nuevo escucha todo y no responde, y se comparan sus respuestas con las que dio el viejo. Después atiende una parte de las conversaciones. Después todas."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Al mover cada pieza salen fallas que nadie había reportado. El recordatorio de pago, por ejemplo, no distinguía el pago en efectivo de una transferencia pendiente, así que había gente que pagaba por transferencia y recibía cuatro días de mensajes pidiéndole que fuera a pagar a la tienda. Migrar es una buena excusa para revisar cada regla, no para copiarla tal cual."
+                    }
+                ]
+            },
+            {
+                "title": "Cómo se corta cada módulo",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Todos los módulos se cortan con el mismo procedimiento. Cambia el tamaño, no el método."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Uno, se construye el reemplazo. Dos, corre en paralelo con el viejo. Tres, se comparan las salidas de los dos. Cuatro, si coinciden, se apaga el escenario en Make, sin borrarlo. Cinco, se abre una ventana de siete días en la que devolverse es solo volver a prender el escenario viejo."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Ningún módulo pasa del paso tres al cuatro si las salidas no coinciden. Y durante esa ventana nada se borra ni se reescribe."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Por eso recomendé mantener la suscripción de Make un mes más de lo necesario. Es plata que se paga sabiendo en qué se va, a cambio de poder devolverse sin afán. Mientras corren los dos sistemas la factura sube en vez de bajar, y eso también hay que avisarlo antes."
+                    }
+                ]
+            },
+            {
+                "title": "Lo que pasó cuando el plan se tuvo que apurar",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "El plan era de 25 días hábiles más un mes de colchón. La realidad fue otra, y lo que falló es lo que más vale la pena contar."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "A los pocos días de arrancar, los créditos de Make se estaban acabando y el cliente necesitaba salir ya. Dos semanas después de presentar el plan la cuenta de Make estaba cancelada. El bot nuevo funcionó desde el primer día, pero la tercera regla, la de nadie a medio ciclo, quedó a medias."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Faltó un paso. Los clientes que iban por la mitad de su garantía tenían que pasar al sistema nuevo con su semana actual y su fecha de inicio, y ese traspaso no se corrió sobre todos. Un mes después, revisando un reclamo, apareció el tamaño del hueco. Desde el corte, hasta 157 clientes tenían semanas de seguimiento que nunca salieron, 405 mensajes en total. A uno de ellos eso le costó la garantía, y la marca tuvo que devolverle la plata."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Las causas son las que te vas a encontrar en cualquier migración. Registros que llegaron de la base vieja sin fecha de inicio, así que el sistema nuevo no tenía desde cuándo contar. Contactos sin un nombre que se pudiera usar (uno se llamaba \"000\") que el sistema saltaba para no mandar un saludo raro. Y un campo de \"activo\" que en la base vieja nunca se apagaba, así que ni siquiera se podía confiar en quién seguía de verdad en su seguimiento."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Se arregló en un día. Se corrió el traspaso sobre todos los ciclos vigentes, a cada cliente se le reprogramó la semana que le tocaba, los mensajes sin nombre salen con un saludo genérico y los semanales salen aunque al cliente lo esté atendiendo una persona. Pero el arreglo que más importa es otro."
+                    }
+                ]
+            },
+            {
+                "title": "El chequeo diario que debió estar desde el corte",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Un proceso largo que se migra necesita que alguien revise todos los días que cada cliente en curso tenga programado su siguiente paso. Y ese alguien no puede ser una persona."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Hoy corre un chequeo diario que recorre todos los ciclos vigentes y pregunta una sola cosa, si cada uno tiene agendada su próxima semana. Si encuentra uno que no, lo agenda y avisa. Si ese chequeo hubiera existido desde el corte, el hueco se habría visto al día siguiente y no un mes después, con un cliente reclamando."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Con el historial pasa algo parecido. Lo que se trae de la plataforma vieja tiene que quedar pegado a la misma persona. En este caso las conversaciones migradas aparecían en el panel como una conversación aparte del mismo número, y el equipo veía dos tarjetas para un solo cliente. Se resolvió agrupando todo por contacto, con lo migrado arriba dentro del mismo hilo. Parece un detalle, pero es el tipo de detalle por el que un equipo deja de confiar en el sistema nuevo."
+                    }
+                ]
+            },
+            {
+                "title": "El orden en que lo haría hoy",
+                "content": [
+                    {
+                        "type": "lead",
+                        "text": "Si tuviera que hacerlo otra vez, ya sabiendo lo que falló, esta sería la lista."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Primero, exporto la cuenta y saco el peso real de cada escenario, no la lista que cree el cliente. Segundo, cambio las llaves que estaban dentro de los escenarios y congelo la plataforma vieja. Tercero, prendo la escritura de datos en los dos lados y mido la línea base. Cuarto, unifico cómo se identifica a cada persona. Quinto, muevo los módulos del más aislado al más pesado, cada uno con paralelo, comparación, apagado y siete días para devolverse. Sexto, antes de apagar cualquier proceso largo, saco la lista de quién va por la mitad y lo traspaso con su fecha de inicio. Séptimo, dejo corriendo desde el primer día un chequeo diario de que cada cliente en curso tiene su próximo paso programado. Y solo al final cancelo la cuenta."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Si el plan se tiene que apurar, que casi siempre pasa, lo que no se recorta son el sexto y el séptimo. Todo lo demás aguanta un atajo. Un cliente que se queda a mitad de un proceso no."
+                    }
+                ]
+            }
+        ],
+        "pros": [
+            "El equipo y los clientes no notan el cambio, salvo que todo responde mejor.",
+            "Escribir los datos en los dos lados desde el inicio elimina el día de traslado masivo.",
+            "Cortar por módulos con una ventana de siete días deja volver atrás sin drama.",
+            "Migrar obliga a revisar cada regla, y salen fallas que nadie había reportado."
+        ],
+        "cons": [
+            "Durante el paralelo se pagan las dos plataformas y la factura sube antes de bajar.",
+            "Toma más tiempo que reconstruir todo y apagar lo viejo en un fin de semana.",
+            "Los procesos largos marcan el calendario y no se pueden acelerar.",
+            "Si el plan se apura, lo primero que se rompe son los clientes que van por la mitad."
+        ],
+        "references": [
+            {
+                "t": "De USD 584 a USD 54 al mes, el desglose completo de un caso real",
+                "s": "Guía 12 de este sitio",
+                "u": "/guias/de-584-a-54-dolares-caso-real.html"
+            },
+            {
+                "t": "Cómo llevar un agente de IA de la demo a producción",
+                "s": "Guía 05 de este sitio",
+                "u": "/guias/agente-ia-demo-a-produccion.html"
+            },
+            {
+                "t": "Las alertas que nadie lee",
+                "s": "Guía 14 de este sitio",
+                "u": "/guias/las-alertas-que-nadie-lee.html"
+            }
+        ],
+        "tools": [
+            "Make",
+            "Zapier",
+            "Migración",
+            "Airtable",
+            "PostgreSQL",
+            "WhatsApp",
+            "Operación"
+        ]
     }
 ];
