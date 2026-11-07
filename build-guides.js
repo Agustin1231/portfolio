@@ -328,7 +328,8 @@ const projectUrls = projects.map(p => ({
 const tailUrls = [
   { loc: BASE + "aviso-privacidad.html", changefreq: "yearly", priority: "0.3" },
   { loc: BASE + "privacidad.html", changefreq: "yearly", priority: "0.2" },
-  { loc: BASE + "terminos.html", changefreq: "yearly", priority: "0.2" }
+  { loc: BASE + "terminos.html", changefreq: "yearly", priority: "0.2" },
+  { loc: BASE + "eliminacion-datos.html", changefreq: "yearly", priority: "0.2" }
 ];
 const all = staticUrls.concat(guideUrls, projectUrls, tailUrls);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
