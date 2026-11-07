@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conecta tu agente de IA con tu tienda Shopify, paso a paso | Agustin Peralta</title>
+<meta name="description" content="Guía gratuita para conectar un agente de IA a tu tienda Shopify, tu WhatsApp y tu Instagram, para que conteste con los datos reales de tus pedidos y productos.">
+<meta name="keywords" content="agente de IA, Shopify, WhatsApp API, Instagram, atención al cliente, e-commerce">
+<meta name="author" content="Agustin Peralta">
+<link rel="canonical" href="https://agustin.agustinynatalia.site/guia-agente-tienda">
+<link rel="alternate" hreflang="es" href="https://agustin.agustinynatalia.site/guia-agente-tienda">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Conecta tu agente de IA con tu tienda Shopify, paso a paso">
+<meta property="og:description" content="Guía gratuita para conectar un agente de IA a tu tienda Shopify, tu WhatsApp y tu Instagram, para que conteste con los datos reales de tus pedidos y productos.">
+<meta property="og:url" content="https://agustin.agustinynatalia.site/guia-agente-tienda">
+<meta property="og:image" content="https://agustin.agustinynatalia.site/og-image.png?v=350-360000-34000">
+<meta property="og:site_name" content="Agustin Peralta">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Conecta tu agente de IA con tu tienda Shopify, paso a paso">
+<meta name="twitter:description" content="Guía gratuita para conectar un agente de IA a tu tienda Shopify, tu WhatsApp y tu Instagram, para que conteste con los datos reales de tus pedidos y productos.">
+<meta name="twitter:image" content="https://agustin.agustinynatalia.site/og-image.png?v=350-360000-34000">
+<meta name="theme-color" content="#f1efe9">
+<script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
+<link rel="preload" href="/fonts/montserrat-normal-300-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-garamond-normal-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500 700;font-display:swap;src:url(/fonts/cormorant-garamond-normal-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500 700;font-display:swap;src:url(/fonts/cormorant-garamond-normal-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Great Vibes';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/great-vibes-normal-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Great Vibes';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/great-vibes-normal-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/montserrat-normal-300-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/montserrat-normal-300-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}.site h1,.site h2,.site h3,.site .heroName,.site .sectitle,.site .lead,.site .metnum,.site .vt-big,.site .brand{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:-.01em;font-variant-numeric:lining-nums}.site .brand{font-size:1.3rem;letter-spacing:0}.site .heroName{line-height:.98;letter-spacing:-.015em}.site .heroHi,.site .heroHi.mono{font-family:'Great Vibes',cursive;font-size:2.3rem;letter-spacing:0;text-transform:none;margin-bottom:.3rem}.gv-f h3,.gv-fix h3,.gv-tip h3{font-family:'Montserrat',system-ui,sans-serif;font-weight:650;letter-spacing:-.01em}
+.gv-f h3{font-size:1.15rem}.gv-fix h3{font-size:1.25rem}.gv-tip h3{font-size:1rem}
+.gv-hero .btn{margin-top:1.6rem}
+.gv-chips{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+.gv-chips span{border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.85rem}
+.gv-index{position:sticky;top:64px;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line2)}
+.gv-index .rd{display:flex;gap:1.2rem;overflow-x:auto;padding-top:.8rem;padding-bottom:.8rem;white-space:nowrap;scrollbar-width:none}
+.gv-index a{font-size:.82rem;color:var(--dim);text-decoration:none}
+.gv-index a:hover{color:var(--accent)}
+.gv-step{font-size:.78rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.gv-h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.9rem,4vw,2.7rem);font-weight:600;line-height:1.15;margin-bottom:1rem}
+.gv-flips{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.4rem}
+.gv-flip{all:unset;cursor:pointer;perspective:1000px;min-height:240px;display:block}
+.gv-in{position:relative;width:100%;height:100%;min-height:240px;transition:transform .6s;transform-style:preserve-3d}
+.gv-flip:hover .gv-in,.gv-flip.on .gv-in{transform:rotateY(180deg)}
+.gv-f,.gv-b{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:14px;padding:1.4rem;background:var(--panel);display:flex;flex-direction:column;gap:.5rem}
+.gv-b{transform:rotateY(180deg);background:var(--accent);color:#fff;border-color:var(--accent);justify-content:center;line-height:1.55}
+.gv-n{color:var(--accent);font-size:.85rem}
+.gv-f h3{font-size:1.2rem}
+.gv-f p{color:var(--dim);line-height:1.5}
+.gv-tap{margin-top:auto;font-size:.72rem;color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
+.gv-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.4rem 0 1rem}
+.gv-tab{font:inherit;font-size:.88rem;padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line);background:none;color:var(--fg);cursor:pointer}
+.gv-tab.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.gv-panel{display:none;border:1px solid var(--line);border-radius:14px;padding:1.5rem;background:var(--panel)}
+.gv-panel.on{display:block}
+.gv-k{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.3rem}
+.gv-where p,.gv-metric p{line-height:1.6}
+.gv-ol{margin:1.1rem 0 1.1rem 1.3rem;display:grid;gap:.6rem;line-height:1.55}
+.gv-metric{border-left:3px solid var(--accent);padding:.8rem 1rem;background:color-mix(in srgb,var(--accent) 8%,transparent);border-radius:0 8px 8px 0}
+.gvc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem;margin-bottom:.6rem}
+.gvc-row{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:.8rem;align-items:end;padding:.9rem 0;border-top:1px solid var(--line2)}
+.gvc-name{font-weight:600;display:flex;gap:.6rem;align-items:center;align-self:center}
+.calc{border:1px solid var(--line);border-radius:14px;padding:1.4rem;background:var(--panel)}
+.calc .cf{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.calc .cl{font-size:.74rem;color:var(--dim);line-height:1.3}
+.calc input,.calc select{font:inherit;font-size:.95rem;padding:.6rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);width:100%;box-sizing:border-box}
+.calc input:focus,.calc select:focus{outline:none;border-color:var(--accent)}
+.cnum{display:inline-flex;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--accent);color:#fff;align-items:center;justify-content:center;font-size:.8rem;flex:none}
+.calcOut{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.2rem}
+.cbig{border:1px solid var(--line);border-radius:10px;padding:1rem}
+.cbig .k{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
+.cbig .v{font-size:1.45rem;font-weight:700;margin-top:.3rem;color:var(--accent);word-break:break-word}
+.cfirst{margin-top:1rem;padding:.9rem 1rem;border-left:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent);border-radius:0 8px 8px 0;line-height:1.5}
+.cfirst:empty{display:none}
+.gv-fix{display:grid;grid-template-columns:70px 1fr;gap:1rem;padding:1.6rem 0;border-top:1px solid var(--line2)}
+.gv-fixn{font-size:2.2rem;color:var(--accent);line-height:1}
+.gv-fix h3{font-size:1.3rem;margin-bottom:.6rem}
+.gv-msg{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:1rem 0;overflow:hidden}
+.gv-mh{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);padding:.6rem 1rem;border-bottom:1px solid var(--line2)}
+.gv-msg p{padding:1rem;line-height:1.6;background:color-mix(in srgb,#25d366 7%,transparent)}
+.gv-copy{font:inherit;font-size:.72rem;border:1px solid var(--line);background:none;color:var(--fg);border-radius:6px;padding:.25rem .6rem;cursor:pointer}
+.gv-copy:hover{border-color:var(--accent);color:var(--accent)}
+.gv-case{margin-top:.8rem;font-size:.92rem;line-height:1.5}
+.gv-case span{color:var(--accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;margin-right:.5rem}
+.gv-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.4rem}
+.gv-stat{border:1px solid var(--line);border-radius:14px;padding:1.3rem;background:var(--panel)}
+.gv-sv{font-size:2rem;font-weight:700;color:var(--accent);line-height:1.1}
+.gv-sl{color:var(--dim);margin-top:.4rem;line-height:1.45;font-size:.92rem}
+.gv-tips{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
+.gv-tip{border:1px solid var(--line);border-radius:14px;padding:1.3rem;background:var(--panel)}
+.gv-tip h3{font-size:1.05rem;margin-bottom:.5rem}
+.gv-tip p{color:var(--dim);line-height:1.55;font-size:.93rem}
+.gv-end{border:1px solid var(--accent);border-radius:18px;padding:2rem;background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.ccta{margin-top:1.4rem;display:flex;gap:1rem;flex-wrap:wrap}
+@media(max-width:820px){.gv-flips,.gv-tips{grid-template-columns:1fr}.gv-stats{grid-template-columns:1fr 1fr}.gvc-row{grid-template-columns:1fr}.calcOut{grid-template-columns:1fr}.gv-fix{grid-template-columns:1fr}.gv-fixn{font-size:1.6rem}}
+
+.gv-gate{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:1.2rem;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.gv-gate[hidden]{display:none}
+body.gv-locked{overflow:hidden}
+.gv-gcard{width:100%;max-width:470px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:2rem;box-shadow:0 30px 80px rgba(0,0,0,.18);display:grid;gap:.9rem;max-height:94vh;overflow:auto}
+.gv-gcard .gv-h2{font-size:clamp(1.6rem,5vw,2.1rem);margin-bottom:0}
+.gv-gsub{color:var(--dim);line-height:1.5}
+.gv-gcard .cf{display:flex;flex-direction:column;gap:.35rem}
+.gv-gcard .cl{font-size:.74rem;color:var(--dim)}
+.gv-gcard input{font:inherit;font-size:1rem;padding:.75rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);width:100%;box-sizing:border-box}
+.gv-gcard input:focus{outline:none;border-color:var(--accent)}
+.gv-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.gv-gbtn{justify-content:center;font-size:.95rem;padding:.95rem 1.2rem;margin-top:.2rem}
+.gv-gbtn[disabled]{opacity:.6;cursor:wait}
+.gv-gerr{color:#c5280c;font-size:.88rem;min-height:0}
+.gv-gerr:empty{display:none}
+.gv-glegal{font-size:.75rem;color:var(--faint);line-height:1.5}
+.gv-glegal a{color:var(--dim)}
+.gv-flips.c4{grid-template-columns:repeat(4,1fr)}
+.gv-checks{display:grid;gap:.7rem;margin-top:1.2rem}
+.gv-ck{display:flex;gap:.9rem;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;background:var(--panel);cursor:pointer;line-height:1.55}
+.gv-ck input{width:1.2rem;height:1.2rem;margin-top:.2rem;accent-color:var(--accent);flex:none}
+.gv-ck:has(input:checked){border-color:var(--accent)}
+.gv-ck:has(input:checked) span{color:var(--dim)}
+.gv-prog{display:flex;align-items:center;gap:1rem;margin-top:1rem;font-size:.85rem;color:var(--dim)}
+.gv-bar{flex:1;height:8px;border-radius:999px;background:var(--line2);overflow:hidden}
+.gv-bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.gv-tests{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
+.gv-test{border:1px solid var(--line);border-radius:14px;padding:1.2rem;background:var(--panel);display:flex;flex-direction:column;gap:.5rem}
+.gv-test p{font-size:1.02rem;line-height:1.45;background:color-mix(in srgb,#25d366 9%,transparent);border-radius:10px;padding:.6rem .8rem}
+.gv-test small{color:var(--dim);line-height:1.5;font-size:.88rem}
+@media(max-width:820px){.gv-flips.c4,.gv-tests{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "HowTo", "name": "Conecta tu agente de IA con tu tienda Shopify, paso a paso", "description": "Guía gratuita para conectar un agente de IA a tu tienda Shopify, tu WhatsApp y tu Instagram, para que conteste con los datos reales de tus pedidos y productos.", "url": "https://agustin.agustinynatalia.site/guia-agente-tienda", "inLanguage": "es", "step": [{"@type": "HowToStep", "name": "Entiende las cuatro piezas"}, {"@type": "HowToStep", "name": "Reúne lo que necesitas"}, {"@type": "HowToStep", "name": "Conecta Shopify"}, {"@type": "HowToStep", "name": "Conecta WhatsApp"}, {"@type": "HowToStep", "name": "Conecta Instagram"}, {"@type": "HowToStep", "name": "Arma el agente"}, {"@type": "HowToStep", "name": "Pruébalo"}], "author": {"@type": "Person", "name": "Agustin Peralta", "@id": "https://agustin.agustinynatalia.site/#person"}}]}</script>
+<script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:#0b0b0d}
+html{overflow-x:hidden}
+.site{--bg:#0b0b0d;--bg2:#131316;--panel:#141417;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.055);--fg:#eceae4;--dim:#9b9a91;--faint:#585851;--btnfg:#0b0b0d;font-family:'Montserrat',system-ui,sans-serif;background-color:var(--bg);color:var(--fg);min-height:100vh}
+.site.light{--bg:#f1efe9;--bg2:#ffffff;--panel:#ffffff;--line:rgba(20,18,15,.15);--line2:rgba(20,18,15,.07);--fg:#191712;--dim:#6b675e;--faint:#a7a397;--btnfg:#ffffff}
+.mono{font-family:'Montserrat',sans-serif}
+.wrap{max-width:1220px;margin:0 auto;padding:0 2.2rem}
+.rd{max-width:820px;margin:0 auto;padding:0 2.2rem}
+a{color:inherit;text-decoration:none}
+.acc{color:var(--accent)}
+::selection{background:var(--accent);color:var(--btnfg)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.98rem;letter-spacing:-.3px;display:flex;align-items:center}
+.curs{color:var(--accent);animation:bl 1.1s steps(1) infinite;margin-left:1px}
+@keyframes bl{50%{opacity:0}}
+.navlinks{display:flex;gap:2rem;list-style:none}
+.navlinks a{font-family:'Montserrat',sans-serif;font-size:.82rem;color:var(--dim);letter-spacing:.2px;transition:color .25s;position:relative}
+.navlinks a:hover,.navlinks a.on{color:var(--fg)}
+.navlinks a::before{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--accent);transition:right .3s}
+.navlinks a:hover::before,.navlinks a.on::before{right:0}
+.navtools{display:flex;align-items:center;gap:.5rem}
+.lang{display:flex;font-family:'Montserrat',sans-serif;font-size:.78rem;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.lang button{font:inherit;background:none;border:none;color:var(--dim);padding:.42rem .6rem;cursor:pointer;transition:all .2s}
+.lang button.on{background:var(--accent);color:var(--btnfg)}
+.tgl{width:38px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:none;color:var(--fg);cursor:pointer;font-size:1rem;transition:all .2s}
+.tgl:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:34px;align-items:center;justify-content:center}
+.burger span{width:20px;height:2px;background:var(--fg);transition:.3s}
+.bg3d{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:.6}
+.btn{font-family:'Montserrat',sans-serif;font-size:.85rem;padding:.85rem 1.5rem;border-radius:8px;border:1px solid var(--line);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px;color:var(--fg);background:none}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:500}
+.btnP:hover{transform:translateY(-2px);box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 35%,transparent)}
+.btnO:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.stackTags{display:flex;flex-wrap:wrap;gap:.55rem}
+.refList{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+.refList a{display:flex;flex-direction:column;gap:.2rem;padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:10px;color:var(--fg);text-decoration:none;transition:border-color .2s}
+.refList a:hover{border-color:var(--accent)}
+.refT{font-size:.98rem;line-height:1.4}
+.refS{font-size:.74rem;color:var(--dim)}
+.tag{font-family:'Montserrat',sans-serif;font-size:.82rem;padding:.42rem .8rem;border:1px solid var(--line);border-radius:7px;color:var(--fg);transition:all .22s}
+.tag:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.footer{border-top:1px solid var(--line);padding:2.6rem 0;position:relative;z-index:1;background-color:var(--bg)}
+.footIn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'Montserrat',sans-serif;font-size:.82rem;color:var(--dim)}
+.footIn .y{color:var(--faint)}
+.dhero{padding:8.5rem 0 2.5rem;position:relative;z-index:1}
+.back{display:inline-flex;align-items:center;gap:.5rem;font-family:'Montserrat',sans-serif;font-size:.8rem;color:var(--dim);margin-bottom:2.2rem;transition:color .2s}
+.back:hover{color:var(--accent)}
+.dcat{font-family:'Montserrat',sans-serif;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.dtitle{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:600;letter-spacing:-.035em;line-height:1.06;margin-bottom:1.2rem}
+.dsub{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--dim);line-height:1.5;margin-bottom:2rem}
+.dmeta{display:flex;flex-wrap:wrap;gap:2.6rem;padding:1.4rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dmeta .k{font-family:'Montserrat',sans-serif;font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.4rem}
+.dmeta .v{font-size:1rem;color:var(--fg)}
+.dllink{margin-top:1.8rem}
+.dsec{padding:2.6rem 0;position:relative;z-index:1}
+.dsech{font-family:'Montserrat',sans-serif;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem}
+.dsech::before{content:'';width:24px;height:1px;background:var(--accent)}
+.dlead{font-size:1.4rem;font-weight:500;line-height:1.45;letter-spacing:-.01em;margin-bottom:1.3rem;color:var(--fg)}
+.dp{color:var(--dim);line-height:1.8;font-size:1.06rem;margin-bottom:1.2rem}
+.reqlist{list-style:none;display:grid;gap:.85rem}
+.reqlist li{display:flex;gap:.85rem;color:var(--dim);line-height:1.6;font-size:1.02rem}
+.reqlist li::before{content:'→';color:var(--accent);font-family:'Montserrat',sans-serif;flex-shrink:0}
+.pcgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.pccard{border:1px solid var(--line);border-radius:14px;padding:1.7rem;background:color-mix(in srgb,var(--panel) 65%,transparent)}
+.pccard h4{font-family:'Montserrat',sans-serif;font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:1.2rem;color:var(--fg)}
+.pclist{list-style:none;display:grid;gap:.8rem}
+.pclist li{display:flex;gap:.7rem;color:var(--dim);line-height:1.55;font-size:.96rem}
+.pclist li .mk{flex-shrink:0;font-family:'Montserrat',sans-serif;font-weight:600}
+.pros h4{color:var(--accent)}
+.pros .mk{color:var(--accent)}
+.cons .mk{color:var(--faint)}
+.dcta{border:1px solid var(--line);border-radius:20px;padding:3.2rem 2rem;text-align:center;background:color-mix(in srgb,var(--panel) 65%,transparent);position:relative;z-index:1}
+.dcta h3{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.6rem}
+.dctaRow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.dctaP{color:var(--dim);max-width:560px;margin:-.6rem auto 1.6rem;line-height:1.6}
+.upSvcs{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:0 auto 1.8rem;max-width:860px;text-align:left}
+.upSvc{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg);transition:border-color .2s,transform .2s}
+.upSvc:hover{border-color:var(--accent);transform:translateY(-2px)}
+.upSvc b{font-family:'Montserrat',sans-serif;color:var(--accent);font-size:.8rem;font-weight:500}
+@media(max-width:720px){.upSvcs{grid-template-columns:1fr}}
+.notfound{padding:11rem 0 8rem;text-align:center;position:relative;z-index:1}
+@media(max-width:920px){
+.navlinks{position:fixed;top:0;right:0;width:270px;height:100vh;flex-direction:column;background:var(--bg2);border-left:1px solid var(--line);padding:5.5rem 2rem;gap:1.4rem;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.navlinks.open{transform:none}
+.burger{display:flex}
+.wrap,.rd{padding:0 1.4rem}
+.pcgrid{grid-template-columns:1fr}
+}
+
+.relList{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.7rem}
+.relList a{display:flex;flex-direction:column;gap:.25rem;padding:1rem 1.1rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;text-decoration:none;color:inherit;transition:border-color .2s}
+.relList a:hover{border-color:var(--accent)}
+.relCat{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+.relT{font-weight:600;line-height:1.35}
+.hubList{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+.hubList a{display:block;padding:1.2rem 1.3rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:12px;text-decoration:none;color:inherit;transition:border-color .2s}
+.hubList a:hover{border-color:var(--accent)}
+.hubList h2{font-size:1.15rem;margin:.35rem 0 .45rem;line-height:1.3}
+.hubList p{margin:0;opacity:.8;line-height:1.5}
+.hubMeta{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+
+
+</style>
+<link rel="stylesheet" href="/motion.css?v=20261014"><script src="/motion.js?v=20261014"></script>
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<div class="site light" id="top" style="--accent:#ff5c35">
+<nav class="nav"><div class="wrap navbar">
+<a class="brand" href="/">agustin.peralta<span class="curs">▮</span></a>
+<ul class="navlinks" id="nav">
+<li><a href="/#sobre">sobre-mí</a></li>
+<li><a href="/#experiencia">experiencia</a></li>
+<li><a href="/#proyectos">proyectos</a></li>
+<li><a href="/guias/">guías</a></li>
+<li><a href="/metricas">métricas</a></li>
+<li><a href="/#contacto">contacto</a></li>
+</ul>
+<div class="navtools">
+<button class="tgl" id="tgl" aria-label="Cambiar tema">☾</button>
+<button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+</div>
+</div></nav>
+
+<div class="gv-gate" id="gvGate" role="dialog" aria-modal="true" aria-labelledby="gvGateT">
+<form class="gv-gcard" id="gvForm" novalidate>
+<div class="gv-step mono">Guía gratuita · Agustin Peralta</div>
+<h2 class="gv-h2" id="gvGateT">Conecta tu agente de IA con tu tienda Shopify</h2>
+<p class="gv-gsub">Déjame tu nombre y tu correo y entras de una a la guía.</p>
+<label class="cf"><span class="cl mono">Nombre</span><input name="nombre" autocomplete="name" required maxlength="120"></label>
+<label class="cf"><span class="cl mono">Correo</span><input name="correo" type="email" autocomplete="email" required maxlength="200"></label>
+<label class="cf"><span class="cl mono">Tu Instagram o tu tienda (opcional)</span><input name="sitio" maxlength="200" placeholder="@tumarca o tumarca.com"></label>
+<input class="gv-hp" name="empresa" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="gv-gerr" id="gvErr" role="alert"></p>
+<button class="btn btnP gv-gbtn" type="submit">Entrar a la guía</button>
+<p class="gv-glegal">Guardo tu nombre y tu correo para mandarte contenido como este. Puedes pedir que los borre cuando quieras. <a href="/aviso-privacidad.html" target="_blank" rel="noopener">Aviso de privacidad</a>.</p>
+</form>
+</div>
+
+<header class="dhero gv-hero"><div class="rd" style="max-width:1080px">
+<div class="dcat mono">Guía gratuita · Tiendas Shopify</div>
+<h1 class="dtitle">Conecta tu agente de IA con tu tienda Shopify, paso a paso</h1>
+<p class="dsub">Qué necesitas y en qué orden conectarlo para que un agente de IA conteste en tu WhatsApp y tu Instagram con los datos reales de tu tienda. Dónde va cada pedido, qué tallas quedan, cuánto vale el envío. Y que te pase el chat cuando de verdad hace falta una persona.</p>
+<div class="gv-chips"><span>Shopify</span><span>WhatsApp</span><span>Instagram</span><span>Agente de IA</span></div>
+<a class="btn btnP" href="#paso1">Empezar la guía ↓</a>
+</div></header>
+
+<nav class="gv-index"><div class="rd" style="max-width:1080px">
+<a href="#paso1">1 · Las piezas</a><a href="#paso2">2 · Lo que necesitas</a><a href="#paso3">3 · Shopify</a><a href="#paso4">4 · WhatsApp</a><a href="#paso5">5 · Instagram</a><a href="#paso6">6 · El agente</a><a href="#paso7">7 · Pruébalo</a><a href="#practicas">Buenas prácticas</a>
+</div></nav>
+
+<section class="dsec" id="paso1"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 1 · Las piezas</div>
+<h2 class="gv-h2">Un agente que sirve tiene cuatro piezas</h2>
+<p class="dlead">La mayoría arranca por el modelo de IA y termina con un bot que habla bonito pero no sabe dónde está ningún pedido. El modelo es solo una de las cuatro piezas, y no es la más difícil.</p>
+<p class="dp">Toca cada tarjeta para ver qué hace cada una.</p>
+<div class="gv-flips c4">
+<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">01</span><h3>Tu tienda</h3><p>Pedidos, productos, inventario y clientes.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b"><p>Sin esto el agente adivina. Conectado a Shopify, puede buscar el pedido de quien escribe y decirle en qué va, o revisar si queda la talla antes de prometerla.</p></div></div></button>
+<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">02</span><h3>Los canales</h3><p>WhatsApp, Instagram y Facebook.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b"><p>Por donde te escriben tus clientes. Se conectan con las herramientas oficiales de Meta, no con apps que simulan ser tu celular, porque esas son las que terminan en un número bloqueado.</p></div></div></button>
+<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">03</span><h3>El cerebro</h3><p>El modelo de IA que redacta.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b"><p>Claude, GPT, Grok o Hermes. Cualquiera de los buenos sirve. Lo que cambia el resultado es lo que le das para trabajar, no la marca del modelo.</p></div></div></button>
+<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">04</span><h3>Las reglas</h3><p>Qué contesta y cuándo para.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b"><p>Cómo habla tu marca, qué puede prometer y en qué momento le pasa el chat a una persona. Es la pieza que separa un agente que vende de uno que te daña la marca.</p></div></div></button>
+</div>
+</div></section>
+
+<section class="dsec" id="paso2"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 2 · Lo que necesitas</div>
+<h2 class="gv-h2">Antes de conectar nada, ten esto a mano</h2>
+<p class="dp">Marca lo que ya tienes. La lista se queda guardada en este navegador para que vuelvas cuando quieras.</p>
+<div class="gv-checks" id="gvChecks">
+<label class="gv-ck"><input type="checkbox" data-k="c1"><span><b>Acceso de dueño a tu Shopify.</b> Las apps solo las puede instalar el dueño o alguien con permiso para administrarlas.</span></label>
+<label class="gv-ck"><input type="checkbox" data-k="c2"><span><b>Un portafolio comercial de Meta</b> (business.facebook.com) con tu negocio verificado. Te va a pedir los documentos de la empresa, como el RUT en Colombia.</span></label>
+<label class="gv-ck"><input type="checkbox" data-k="c3"><span><b>El número de WhatsApp de la tienda.</b> Si ya lo usas en la app de WhatsApp Business, lo puedes conectar sin dejar de usar la app en tu celular.</span></label>
+<label class="gv-ck"><input type="checkbox" data-k="c4"><span><b>Tu Instagram como cuenta profesional</b> (de empresa o de creador). Con una cuenta personal no se pueden leer los mensajes.</span></label>
+<label class="gv-ck"><input type="checkbox" data-k="c5"><span><b>Una cuenta de pago en un proveedor de IA</b>, como OpenRouter, Anthropic u OpenAI. Las versiones de pago no entrenan con las conversaciones de tus clientes.</span></label>
+<label class="gv-ck"><input type="checkbox" data-k="c6"><span><b>Un lugar donde corra el agente</b>, que puede ser un servidor propio o una herramienta como n8n. Tiene que estar prendido las 24 horas, porque ahí llegan los mensajes.</span></label>
+<label class="gv-ck"><input type="checkbox" data-k="c7"><span><b>Un método de pago en tu cuenta de WhatsApp.</b> Meta cobra los mensajes con plantilla y, desde octubre de 2026, también las respuestas, con 1.000 gratis al mes por número.</span></label>
+</div>
+<div class="gv-prog"><div class="gv-bar"><i id="gvBar"></i></div><span class="mono" id="gvProg">0 de 7 listos</span></div>
+</div></section>
+
+<section class="dsec" id="paso3"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 3 · Conecta Shopify</div>
+<h2 class="gv-h2">Dale al agente acceso de lectura a tu tienda</h2>
+<p class="dp">El agente necesita leer, no cambiar nada. Así, si algo falla, lo peor que pasa es que no encuentre un dato.</p>
+<div class="gv-fix">
+<div class="gv-fixn mono">01</div>
+<div><h3>Crea la app de tu tienda</h3>
+<p class="dp">Entra al Dev Dashboard de Shopify (dev.shopify.com) con la cuenta de tu tienda. Desde 2026 las apps nuevas se crean ahí y ya no desde el administrador de la tienda. Crea una con el nombre de tu agente.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">02</div>
+<div><h3>Pide solo los permisos de lectura</h3>
+<p class="dp">Con estos cuatro tu agente puede contestar casi todo lo que preguntan los clientes.</p>
+<div class="gv-msg"><div class="gv-mh mono">Permisos de la app<button class="gv-copy" type="button">Copiar</button></div><p>read_orders, read_products, read_customers, read_fulfillments</p></div>
+<p class="dp">El de pedidos sirve para "¿dónde va mi pedido?", el de productos para precios, tallas e inventario, el de clientes para encontrar a quien escribe por su correo o su teléfono, y el de envíos para la guía de rastreo. Son datos de tus compradores, así que solo los lee tu agente y no salen de ahí.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">03</div>
+<div><h3>Instálala y guarda las llaves</h3>
+<p class="dp">Instala la app en tu tienda y copia el ID y la clave secreta que te da el Dev Dashboard. Con esas dos llaves tu agente pide un permiso de acceso que dura 24 horas y lo renueva solo. Guárdalas como guardas la clave del banco. Nunca van en un chat ni en un documento compartido.</p>
+<div class="gv-case"><span class="mono">Pruébalo</span> pídele al agente un pedido real por su número. Si te devuelve el estado y la guía, la tienda quedó conectada.</div>
+</div></div>
+</div></section>
+
+<section class="dsec" id="paso4"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 4 · Conecta WhatsApp</div>
+<h2 class="gv-h2">WhatsApp, por la puerta oficial</h2>
+<p class="dp">Nada de apps que leen tu WhatsApp Web. Se hace con la API de WhatsApp de Meta, que es la única que no te pone en riesgo de bloqueo.</p>
+<div class="gv-fix">
+<div class="gv-fixn mono">01</div>
+<div><h3>Crea la app en Meta</h3>
+<p class="dp">En developers.facebook.com crea una app dentro de tu portafolio comercial y agrégale el caso de uso de WhatsApp. Meta te da un número de prueba para jugar antes de tocar el tuyo.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">02</div>
+<div><h3>Conecta tu número sin perder la app</h3>
+<p class="dp">Agrega el número de la tienda. Si ya lo usas en WhatsApp Business, elige conectarlo junto con la app (Meta lo llama coexistencia). Escaneas un código desde el celular y sigues contestando desde ahí cuando quieras. Al conectarlo te pregunta si quieres compartir tu historial de chats. Dile que sí, porque esas conversaciones son oro para el paso 6.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">03</div>
+<div><h3>Crea la llave que no se vence</h3>
+<p class="dp">En la configuración del portafolio crea un usuario del sistema, dale control total sobre tu cuenta de WhatsApp y genera un token con los permisos de mensajes y administración. Si no le das control total, los envíos fallan con un error de autorización que no dice por qué. Nos pasó.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">04</div>
+<div><h3>Dile a Meta dónde avisar</h3>
+<p class="dp">En la sección de webhooks pon la dirección de tu agente y suscríbete a los mensajes. Desde ese momento cada mensaje que te escriben le llega a tu agente en segundos.</p>
+<div class="gv-case"><span class="mono">Ojo</span> pasadas 24 horas desde el último mensaje del cliente, WhatsApp solo te deja escribirle con plantillas aprobadas. Arma desde ya las de "tu pedido va en camino" y "tu pago está pendiente".</div>
+</div></div>
+</div></section>
+
+<section class="dsec" id="paso5"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 5 · Conecta Instagram</div>
+<h2 class="gv-h2">Los mensajes directos de Instagram</h2>
+<div class="gv-fix">
+<div class="gv-fixn mono">01</div>
+<div><h3>Agrega Instagram a la misma app</h3>
+<p class="dp">En la misma app de Meta agrega el caso de uso de Instagram con inicio de sesión de Instagram. Pide los permisos de perfil y de mensajes, y entra con la cuenta de la tienda.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">02</div>
+<div><h3>Activa el acceso a mensajes</h3>
+<p class="dp">Desde la app de Instagram en el celular, en <b>Configuración → Mensajes y respuestas a historias → Herramientas conectadas</b>, activa <b>Permitir acceso a mensajes</b>. Sin ese interruptor el agente no recibe nada, aunque todo lo demás esté bien.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">03</div>
+<div><h3>Suscríbete a los mensajes</h3>
+<p class="dp">Igual que en WhatsApp, pon la dirección de tu agente en los webhooks de Instagram. Instagram también te da 24 horas para responder, y hasta 7 días si la respuesta la escribe una persona del equipo.</p>
+<div class="gv-case"><span class="mono">Ojo</span> mientras la app esté en modo de desarrollo, solo funciona con cuentas que tienen un rol en la app. Para atender a cualquier cliente, Meta tiene que aprobar los permisos.</div>
+</div></div>
+</div></section>
+
+<section class="dsec" id="paso6"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 6 · Arma el agente</div>
+<h2 class="gv-h2">Que suene como tú y no invente</h2>
+<div class="gv-fix">
+<div class="gv-fixn mono">01</div>
+<div><h3>Escoge el modelo</h3>
+<p class="dp">Claude, GPT, Grok o Hermes. Si no te quieres casar con uno, OpenRouter te deja usar cualquiera con una sola llave y ponerle un tope de gasto al mes. Empieza con un modelo rápido y barato. Si se equivoca en tus pruebas, subes de nivel.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">02</div>
+<div><h3>Arma las instrucciones con tus chats reales</h3>
+<p class="dp">No escribas las instrucciones desde cero. Exporta 20 o 30 conversaciones donde tú o tu equipo vendieron bien (en WhatsApp Business, abre el chat, toca los tres puntos, Más, Exportar chat, sin archivos) y sácale de ahí cómo saludas, qué preguntan siempre y cómo cierras. Así el agente suena a tu tienda y no a un robot.</p>
+<div class="gv-msg"><div class="gv-mh mono">Base para las instrucciones<button class="gv-copy" type="button">Copiar</button></div><p>Eres el asistente de {tienda}, una tienda de {qué vendes} en {país}. Contestas por WhatsApp e Instagram como lo haría el equipo, con mensajes cortos y en un tono {cercano o formal}. Antes de hablar de un pedido, búscalo con la herramienta de pedidos. Antes de prometer una talla o un color, revisa el inventario. Si no encuentras el dato, pide el número de pedido o el correo, y si sigues sin encontrarlo, dile que una persona del equipo le escribe. Nunca inventes precios, fechas de entrega ni descuentos. Pasa el chat a una persona si el cliente está molesto, pide un reembolso, quiere hablar con alguien o pregunta algo que no está aquí.</p></div>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">03</div>
+<div><h3>Dale herramientas, no solo texto</h3>
+<p class="dp">El agente no se aprende tu catálogo. Lo consulta cada vez. Dale cuatro herramientas conectadas a lo que armaste en el paso 3.</p>
+<ol class="gv-ol">
+<li><b>Buscar pedido</b> por número, correo o teléfono, que devuelva el estado y la guía de envío.</li>
+<li><b>Buscar producto</b> por nombre, que devuelva el precio y el inventario por talla o color.</li>
+<li><b>Calcular envío</b> según la ciudad, con tus tarifas reales.</li>
+<li><b>Pasar a una persona</b>, que te avise y deje al agente callado en ese chat hasta que tú lo devuelvas.</li>
+</ol>
+</div></div>
+</div></section>
+
+<section class="dsec" id="paso7"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 7 · Pruébalo</div>
+<h2 class="gv-h2">Seis mensajes antes de prenderlo</h2>
+<p class="dp">Escríbele estos seis mensajes desde un número que no sea el de la tienda. Si los seis salen bien, ya puedes abrirlo a tus clientes.</p>
+<div class="gv-tests">
+<div class="gv-test"><span class="gv-n mono">01 · Catálogo</span><p>"hola, ¿qué tienen en talla M?"</p><small>Debe revisar el inventario de verdad, no recitar todo el catálogo.</small></div>
+<div class="gv-test"><span class="gv-n mono">02 · Precio y envío</span><p>"¿cuánto vale y hacen envíos a Medellín?"</p><small>El precio de Shopify y tu tarifa real de envío, sin redondear.</small></div>
+<div class="gv-test"><span class="gv-n mono">03 · Pedido con datos</span><p>"mi pedido #1002 no me ha llegado"</p><small>Busca el pedido y da el estado con la guía de rastreo.</small></div>
+<div class="gv-test"><span class="gv-n mono">04 · Pedido sin datos</span><p>"¿dónde va mi pedido??"</p><small>Pide el número o el correo. No adivina.</small></div>
+<div class="gv-test"><span class="gv-n mono">05 · Cliente molesto</span><p>"me llegó roto, esto es un robo"</p><small>Se disculpa y pasa el chat a una persona. No discute.</small></div>
+<div class="gv-test"><span class="gv-n mono">06 · ¿Robot?</span><p>"¿eres un robot o una persona?"</p><small>Dice la verdad y ofrece pasarte con alguien del equipo.</small></div>
+</div>
+</div></section>
+
+<section class="dsec" id="caso"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">El caso real</div>
+<h2 class="gv-h2">Lo que pasó con una marca de México</h2>
+<p class="dp">Vende todo por WhatsApp y el equipo ya no daba abasto. Con un agente conectado a su tienda, más los recordatorios de pago y de carrito, estos fueron los números, sacados de su propia base de ventas.</p>
+<div class="gv-stats">
+<div class="gv-stat"><div class="gv-sv">3 de 4</div><div class="gv-sl">conversaciones resueltas sin que entre nadie del equipo</div></div>
+<div class="gv-stat"><div class="gv-sv">USD 12.400</div><div class="gv-sl">en ventas que ya daba por perdidas</div></div>
+<div class="gv-stat"><div class="gv-sv">73</div><div class="gv-sl">compras de carritos abandonados en cinco semanas</div></div>
+<div class="gv-stat"><div class="gv-sv">50</div><div class="gv-sl">pagos en efectivo que se iban a caer</div></div>
+</div>
+</div></section>
+
+<section class="dsec" id="practicas"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Que te salga bien</div>
+<h2 class="gv-h2">Buenas prácticas</h2>
+<div class="gv-tips">
+<div class="gv-tip"><h3>Prefiere pasar el chat a inventar</h3><p>Un agente que dice "déjame pasarte con alguien" no te hace perder una venta. Uno que inventa una fecha de entrega sí te hace perder al cliente.</p></div>
+<div class="gv-tip"><h3>Ponle tope al gasto</h3><p>Ponle a la llave de IA un límite al mes. Si algo se sale de control, se frena solo en vez de llegarte una factura sorpresa.</p></div>
+<div class="gv-tip"><h3>Que tú puedas tomar el chat</h3><p>Cuando escribes tú en una conversación, el agente se calla ahí. Si no, los dos le contestan al mismo cliente y se nota.</p></div>
+<div class="gv-tip"><h3>No le des permisos de más</h3><p>Solo lectura en Shopify. Si algún día quieres que cree pedidos o haga reembolsos, eso se agrega aparte y con cuidado.</p></div>
+<div class="gv-tip"><h3>Lee sus conversaciones la primera semana</h3><p>Todos los días, 10 minutos. Cada respuesta rara es una regla que le falta en las instrucciones.</p></div>
+<div class="gv-tip"><h3>Mide dos números</h3><p>Cuántas conversaciones resuelve sin el equipo y en cuánto tiempo responde. Si los dos mejoran mes a mes, el agente está funcionando.</p></div>
+</div>
+</div></section>
+
+<section class="dsec"><div class="rd" style="max-width:1080px">
+<div class="gv-end">
+<div class="gv-step mono">Tu siguiente paso</div>
+<h2 class="gv-h2">Si prefieres no pelear con llaves y webhooks</h2>
+<p class="dp">Todo esto lo puedes hacer tú con la guía. Si prefieres que te lo dejemos funcionando en tu tienda, con WhatsApp, Instagram y Shopify conectados y las instrucciones armadas con tus chats reales, escríbeme.</p>
+<div class="ccta"><a class="btn btnP" href="https://ig.me/m/agustinp.ia" target="_blank" rel="noopener">Escríbeme por Instagram</a><a class="btn btnO" href="/guia-ventas">Mira también cuánta plata se te queda en el camino</a></div>
+</div>
+</div></section>
+
+<footer class="footer"><div class="wrap footIn">
+<span>Diseñado y desarrollado por Agustin Peralta</span>
+<span class="y">© 2026 · <span class="acc">Bogotá</span></span>
+</div></footer>
+</div>
+<script>
+(function(){
+  var site=document.querySelector(".site");
+  try{if(localStorage.getItem("ap-theme")==="dark")site.classList.remove("light");}catch(e){}
+  var tgl=document.getElementById("tgl");
+  function icon(){tgl.textContent=site.classList.contains("light")?"☾":"☀";}
+  icon();
+  tgl.addEventListener("click",function(){
+    site.classList.toggle("light");
+    try{localStorage.setItem("ap-theme",site.classList.contains("light")?"light":"dark");}catch(e){}
+    icon();
+  });
+  document.getElementById("burger").addEventListener("click",function(){
+    document.getElementById("nav").classList.toggle("open");
+  });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.gv-flip').forEach(function(b){b.addEventListener('click',function(){b.classList.toggle('on');});});
+  document.querySelectorAll('.gv-copy').forEach(function(b){b.addEventListener('click',function(){
+    var t=b.closest('.gv-msg').querySelector('p').innerText;
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar';},1500);}).catch(function(){});});});
+  var CK='ap-guia-agente-checks', est={};
+  try{est=JSON.parse(localStorage.getItem(CK)||'{}')||{};}catch(e){}
+  var cajas=document.querySelectorAll('#gvChecks input');
+  function prog(){var n=0;cajas.forEach(function(c){if(c.checked)n++;});
+    document.getElementById('gvProg').textContent=n+' de '+cajas.length+' listos';
+    document.getElementById('gvBar').style.width=(100*n/cajas.length)+'%';}
+  cajas.forEach(function(c){c.checked=!!est[c.dataset.k];c.addEventListener('change',function(){est[c.dataset.k]=c.checked;try{localStorage.setItem(CK,JSON.stringify(est));}catch(e){}prog();});});
+  prog();
+})();
+</script>
+
+<script>
+(function(){
+  var KEY='ap-guia-agente-tienda-acceso', API='https://clientes.agustinynatalia.site/api/publico/leads';
+  var gate=document.getElementById('gvGate'), form=document.getElementById('gvForm'), err=document.getElementById('gvErr');
+  function abrir(){gate.hidden=true;document.body.classList.remove('gv-locked');}
+  var ya=false;try{ya=localStorage.getItem(KEY)==='1';}catch(e){}
+  if(ya){abrir();return;}
+  document.body.classList.add('gv-locked');
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); err.textContent='';
+    var d={nombre:form.nombre.value.trim(),correo:form.correo.value.trim(),sitio:form.sitio.value.trim(),empresa:form.empresa.value,fuente:'guia-agente-tienda'};
+    if(d.nombre.length<2){err.textContent='Escribe tu nombre.';form.nombre.focus();return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.correo)){err.textContent='Revisa tu correo, parece que le falta algo.';form.correo.focus();return;}
+    var b=form.querySelector('button'); b.disabled=true; b.textContent='Entrando…';
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,status:r.status,j:j};});})
+      .then(function(r){
+        if(r.ok||r.status>=500||r.status===429){try{localStorage.setItem(KEY,'1');}catch(e){} abrir(); if(window.umami)umami.track('guia-agente-tienda-acceso');}
+        else{err.textContent=(r.j&&r.j.error)?('No pudimos registrarte: '+r.j.error+'.'):'No pudimos registrarte, intenta de nuevo.'; b.disabled=false; b.textContent='Entrar a la guía';}
+      })
+      .catch(function(){try{localStorage.setItem(KEY,'1');}catch(e){} abrir();});
+  });
+})();
+</script>
+
+</body>
+</html>
