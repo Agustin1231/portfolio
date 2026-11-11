@@ -75,6 +75,11 @@
 .gv-msg{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:1rem 0;overflow:hidden}
 .gv-mh{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);padding:.6rem 1rem;border-bottom:1px solid var(--line2)}
 .gv-msg p{padding:1rem;line-height:1.6;background:color-mix(in srgb,#25d366 7%,transparent)}
+.gv-dl{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.9rem}
+.gv-dl .btn{font-family:ui-monospace,Menlo,monospace;font-size:.9rem}
+.gv-uso{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin:1rem 0 .2rem;font-size:.95rem}
+.gv-cmd{background:var(--accent);color:#fff;border-radius:8px;padding:.25rem .65rem;font-size:.95rem}
+.gv-uso a{font-size:.85rem;color:var(--accent)}
 .gv-msg p.gv-prompt{white-space:pre-wrap;font-size:.9rem;background:color-mix(in srgb,var(--accent) 5%,transparent);max-height:26rem;overflow:auto}
 .gv-copy{font:inherit;font-size:.72rem;border:1px solid var(--line);background:none;color:var(--fg);border-radius:6px;padding:.25rem .6rem;cursor:pointer}
 .gv-copy:hover{border-color:var(--accent);color:var(--accent)}
@@ -271,31 +276,55 @@ a{color:inherit;text-decoration:none}
 <header class="dhero gv-hero"><div class="rd" style="max-width:1080px">
 <div class="dcat mono">Guía gratuita · Tiendas Shopify</div>
 <h1 class="dtitle">Los 5 comandos de Claude Fable 5.2 para vender más en tu tienda</h1>
-<p class="dsub">Cinco instrucciones listas para copiar y pegar. La primera te entrevista y te dice qué arreglar primero. Las otras cuatro te arman fichas de producto, respuestas rápidas, mensajes de carrito abandonado y combos con tus datos reales.</p>
+<p class="dsub">Cinco comandos para instalar en tu Claude y llamar con una barra, como /entrevista. El primero te entrevista y te dice qué arreglar primero. Los otros cuatro te arman fichas de producto, respuestas rápidas, mensajes de carrito abandonado y combos con tus datos reales.</p>
 <div class="gv-chips"><span>Claude Fable 5.2</span><span>Shopify</span><span>WhatsApp Business</span><span>Copiar y pegar</span></div>
-<a class="btn btnP" href="#antes">Empezar la guía ↓</a>
+<a class="btn btnP" href="#antes">Instalar los comandos ↓</a>
 </div></header>
 
 <nav class="gv-index"><div class="rd" style="max-width:1080px">
-<a href="#antes">Antes de empezar</a><a href="#c1">1 · Entrevista</a><a href="#c2">2 · Fichas</a><a href="#c3">3 · Respuestas</a><a href="#c4">4 · Carritos</a><a href="#c5">5 · Combos</a><a href="#practicas">Buenas prácticas</a>
+<a href="#antes">Instalar</a><a href="#c1">1 · Entrevista</a><a href="#c2">2 · Fichas</a><a href="#c3">3 · Respuestas</a><a href="#c4">4 · Carritos</a><a href="#c5">5 · Combos</a><a href="#practicas">Buenas prácticas</a>
 </div></nav>
 
 <section class="dsec" id="antes"><div class="rd" style="max-width:1080px">
 <div class="gv-step mono">Antes de empezar</div>
-<h2 class="gv-h2">Cómo usar los comandos</h2>
-<p class="dlead">Un comando es una instrucción completa que le pegas a la IA. Lo que está entre corchetes, como [tu precio promedio], lo cambias por tus datos. Entre más reales sean los datos, mejor sale el resultado.</p>
-<div class="gv-flips">
-<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">01</span><h3>Abre Claude</h3><p>En claude.ai o en la app.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b"><p>En el selector de modelo elige Claude Fable 5.2. Si tu plan no lo tiene, los comandos también funcionan con otros modelos de Claude o con ChatGPT.</p></div></div></button>
-<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">02</span><h3>Crea un proyecto</h3><p>Uno solo para tu tienda.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b"><p>Llámalo con el nombre de tu tienda y haz ahí los cinco comandos. Así la IA recuerda lo que le contaste en la entrevista y no le tienes que repetir todo.</p></div></div></button>
-<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">03</span><h3>Empieza por el 1</h3><p>Los demás salen mejor después.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b"><p>La entrevista le da el contexto de tu negocio. Con eso, las fichas, las respuestas y los combos se escriben para tu cliente y no para una tienda cualquiera.</p></div></div></button>
+<h2 class="gv-h2">Instala los comandos en tu Claude</h2>
+<p class="dlead">Cada comando es una skill de Claude: lo instalas una vez y después lo llamas escribiendo una barra y su nombre, por ejemplo <b>/entrevista</b>. Son cinco minutos.</p>
+<div class="gv-fix">
+<div class="gv-fixn mono">01</div>
+<div><h3>Descarga los cinco comandos</h3>
+<p class="dp">Cada uno viene en su propio archivo ZIP. No lo descomprimas, Claude lo recibe así.</p>
+<div class="gv-dl">
+<a class="btn btnO" href="/descargas/comandos/entrevista.zip" download>/entrevista</a>
+<a class="btn btnO" href="/descargas/comandos/fichas.zip" download>/fichas</a>
+<a class="btn btnO" href="/descargas/comandos/respuestas.zip" download>/respuestas</a>
+<a class="btn btnO" href="/descargas/comandos/carritos.zip" download>/carritos</a>
+<a class="btn btnO" href="/descargas/comandos/combos.zip" download>/combos</a>
 </div>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">02</div>
+<div><h3>Prende la ejecución de código</h3>
+<p class="dp">En Claude (claude.ai o la app de escritorio) entra a Configuración, luego Capacidades, y prende la ejecución de código y creación de archivos. Las skills funcionan dentro de esa opción.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">03</div>
+<div><h3>Súbelos uno por uno</h3>
+<p class="dp">Ve a Personalizar, luego Skills. Toca el botón +, elige Crear skill y después Subir una skill. Sube el ZIP de un comando y repite con los otros cuatro. Revisa que cada uno quede prendido.</p>
+</div></div>
+<div class="gv-fix">
+<div class="gv-fixn mono">04</div>
+<div><h3>Llámalo con la barra</h3>
+<p class="dp">Abre un chat nuevo, idealmente dentro de un proyecto con el nombre de tu tienda, y escribe <b>/entrevista</b>. Si tu versión de Claude no muestra el menú al escribir la barra, escribe "usa la skill entrevista" y la carga igual.</p>
+</div></div>
+<p class="dp">Empieza siempre por /entrevista. Le da a Claude el contexto de tu negocio, y con eso las fichas, las respuestas y los combos se escriben para tu cliente y no para una tienda cualquiera. Cada comando trae también el texto completo, por si prefieres copiarlo y pegarlo sin instalar nada.</p>
 </div></section>
 
 <section class="dsec" id="c1"><div class="rd" style="max-width:1080px">
 <div class="gv-step mono">Comando 1 · La entrevista</div>
 <h2 class="gv-h2">Que te entreviste antes de darte consejos</h2>
 <p class="dp">Lo primero es tener claro qué estás vendiendo y dónde se te caen las ventas. En vez de pedirle ideas sueltas, este comando hace que la IA te pregunte una cosa a la vez y al final te dé los pasos en orden: primero lo que más vende con menos trabajo.</p>
-<div class="gv-msg"><div class="gv-mh mono">Comando 1 · Entrevista<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Actúa como consultor de e-commerce que trabaja con tiendas Shopify en Latinoamérica. Antes de darme cualquier consejo, entrevístame sobre mi tienda.
+<p class="gv-uso">Escríbelo así en Claude <span class="gv-cmd mono">/entrevista</span> <a href="/descargas/comandos/entrevista.zip" download>Descargar el comando</a></p>
+<div class="gv-msg"><div class="gv-mh mono">Sin instalar nada, copia este texto<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Actúa como consultor de e-commerce que trabaja con tiendas Shopify en Latinoamérica. Antes de darme cualquier consejo, entrevístame sobre mi tienda.
 
 Reglas de la entrevista:
 - Hazme una sola pregunta a la vez y espera mi respuesta.
@@ -315,7 +344,8 @@ Empieza con la primera pregunta.</p></div>
 <div class="gv-step mono">Comando 2 · Fichas de producto</div>
 <h2 class="gv-h2">Fichas que responden antes de que pregunten</h2>
 <p class="dp">Cada pregunta que te llega por WhatsApp es una duda que la ficha no resolvió. Este comando junta esas preguntas, encuentra los patrones que comparten tus clientes y reescribe la ficha para venderles con sus propias palabras.</p>
-<div class="gv-msg"><div class="gv-mh mono">Comando 2 · Fichas de producto<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Eres redactor de fichas de producto para tiendas online. Te voy a pasar la descripción actual de un producto y los mensajes que más me mandan los clientes por WhatsApp sobre él.
+<p class="gv-uso">Escríbelo así en Claude <span class="gv-cmd mono">/fichas</span> <a href="/descargas/comandos/fichas.zip" download>Descargar el comando</a></p>
+<div class="gv-msg"><div class="gv-mh mono">Sin instalar nada, copia este texto<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Eres redactor de fichas de producto para tiendas online. Te voy a pasar la descripción actual de un producto y los mensajes que más me mandan los clientes por WhatsApp sobre él.
 
 Producto: [nombre del producto]
 Descripción actual: [pega la descripción de Shopify]
@@ -335,7 +365,8 @@ Dame la ficha lista para pegar en Shopify.</p></div>
 <div class="gv-step mono">Comando 3 · Respuestas rápidas</div>
 <h2 class="gv-h2">Las 10 preguntas que más te hacen, contestadas una vez</h2>
 <p class="dp">El envío, las tallas, cuándo llega. Este comando encuentra las diez preguntas que más se repiten en tu tienda y te deja cada respuesta con un atajo, para usarla en las respuestas rápidas de tu WhatsApp Business.</p>
-<div class="gv-msg"><div class="gv-mh mono">Comando 3 · Respuestas rápidas<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Te voy a pegar conversaciones de WhatsApp de mi tienda, sin nombres ni teléfonos.
+<p class="gv-uso">Escríbelo así en Claude <span class="gv-cmd mono">/respuestas</span> <a href="/descargas/comandos/respuestas.zip" download>Descargar el comando</a></p>
+<div class="gv-msg"><div class="gv-mh mono">Sin instalar nada, copia este texto<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Te voy a pegar conversaciones de WhatsApp de mi tienda, sin nombres ni teléfonos.
 
 [pega las conversaciones o la lista de preguntas que más te hacen]
 
@@ -359,7 +390,8 @@ Entrégalo en una tabla con tres columnas: atajo, pregunta y respuesta.</p></div
 <div class="gv-step mono">Comando 4 · Carritos abandonados</div>
 <h2 class="gv-h2">Tres mensajes para que vuelvan a pagar</h2>
 <p class="dp">Quien dejó el carrito a medias ya quería comprar. Muchas veces no vuelve solo porque nadie le escribió. Este comando arma tres mensajes, cada uno con una razón distinta para volver, pensados para lo que de verdad frena a tus clientes.</p>
-<div class="gv-msg"><div class="gv-mh mono">Comando 4 · Carritos abandonados<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Escribe la secuencia de 3 mensajes de WhatsApp para recuperar un carrito abandonado en mi tienda.
+<p class="gv-uso">Escríbelo así en Claude <span class="gv-cmd mono">/carritos</span> <a href="/descargas/comandos/carritos.zip" download>Descargar el comando</a></p>
+<div class="gv-msg"><div class="gv-mh mono">Sin instalar nada, copia este texto<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Escribe la secuencia de 3 mensajes de WhatsApp para recuperar un carrito abandonado en mi tienda.
 
 Mi tienda: [qué vendes y a quién]
 Valor promedio de un pedido: [valor]
@@ -381,7 +413,8 @@ Dame además 2 versiones del mensaje 1 para probar cuál funciona mejor.</p></di
 <div class="gv-step mono">Comando 5 · Combos</div>
 <h2 class="gv-h2">Lo que tus clientes ya compran juntos, convertido en oferta</h2>
 <p class="dp">Es el que más plata deja. Lee tus pedidos, encuentra qué productos se compran juntos y te propone combos para vender más en cada pedido, con un plan para probarlos y promocionarlos.</p>
-<div class="gv-msg"><div class="gv-mh mono">Comando 5 · Combos<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Te voy a pasar mis pedidos de los últimos 3 meses exportados de Shopify.
+<p class="gv-uso">Escríbelo así en Claude <span class="gv-cmd mono">/combos</span> <a href="/descargas/comandos/combos.zip" download>Descargar el comando</a></p>
+<div class="gv-msg"><div class="gv-mh mono">Sin instalar nada, copia este texto<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Te voy a pasar mis pedidos de los últimos 3 meses exportados de Shopify.
 
 [adjunta el archivo CSV de pedidos]
 
