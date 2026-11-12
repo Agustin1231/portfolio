@@ -318,6 +318,7 @@ const staticUrls = [
   { loc: BASE + "guia-ventas", changefreq: "monthly", priority: "0.7" },
   { loc: BASE + "guia-agente-tienda", changefreq: "monthly", priority: "0.7" },
   { loc: BASE + "guia-comandos", changefreq: "monthly", priority: "0.7" },
+  { loc: BASE + "checklist-tienda", changefreq: "monthly", priority: "0.7" },
   { loc: BASE + "guias/", changefreq: "weekly", priority: "0.9" }
 ];
 const guideUrls = guides.map(g => ({
