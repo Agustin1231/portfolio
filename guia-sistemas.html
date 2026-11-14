@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo armar tu primer sistema y dejar de cavar con cuchara | Agustin Peralta</title>
+<meta name="description" content="Guía gratuita para dueños de negocio: encuentra las tareas que se repiten cada semana, entiende las 4 piezas de un sistema y arma el primero sin saber programar.">
+<meta name="keywords" content="sistemas para negocios, automatizar tareas repetitivas, productividad, procesos, Excel, WhatsApp, n8n">
+<meta name="author" content="Agustin Peralta">
+<link rel="canonical" href="https://agustin.agustinynatalia.site/guia-sistemas">
+<link rel="alternate" hreflang="es" href="https://agustin.agustinynatalia.site/guia-sistemas">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cómo armar tu primer sistema y dejar de cavar con cuchara">
+<meta property="og:description" content="Guía gratuita para dueños de negocio: encuentra las tareas que se repiten cada semana, entiende las 4 piezas de un sistema y arma el primero sin saber programar.">
+<meta property="og:url" content="https://agustin.agustinynatalia.site/guia-sistemas">
+<meta property="og:image" content="https://agustin.agustinynatalia.site/og-image.png?v=350-360000-34000">
+<meta property="og:site_name" content="Agustin Peralta">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cómo armar tu primer sistema y dejar de cavar con cuchara">
+<meta name="twitter:description" content="Guía gratuita para dueños de negocio: encuentra las tareas que se repiten cada semana, entiende las 4 piezas de un sistema y arma el primero sin saber programar.">
+<meta name="twitter:image" content="https://agustin.agustinynatalia.site/og-image.png?v=350-360000-34000">
+<meta name="theme-color" content="#f1efe9">
+<script>try{if(localStorage.getItem("ap-theme")==="dark")document.documentElement.style.background="#0b0b0d"}catch(e){}</script>
+<link rel="preload" href="/fonts/montserrat-normal-300-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-garamond-normal-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500 700;font-display:swap;src:url(/fonts/cormorant-garamond-normal-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500 700;font-display:swap;src:url(/fonts/cormorant-garamond-normal-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Great Vibes';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/great-vibes-normal-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Great Vibes';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/great-vibes-normal-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/montserrat-normal-300-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/montserrat-normal-300-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}.site h1,.site h2,.site h3,.site .heroName,.site .sectitle,.site .lead,.site .metnum,.site .vt-big,.site .brand{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:-.01em;font-variant-numeric:lining-nums}.site .brand{font-size:1.3rem;letter-spacing:0}.site .heroName{line-height:.98;letter-spacing:-.015em}.site .heroHi,.site .heroHi.mono{font-family:'Great Vibes',cursive;font-size:2.3rem;letter-spacing:0;text-transform:none;margin-bottom:.3rem}.gv-f h3,.gv-fix h3,.gv-tip h3{font-family:'Montserrat',system-ui,sans-serif;font-weight:650;letter-spacing:-.01em}
+.gv-f h3{font-size:1.15rem}.gv-fix h3{font-size:1.25rem}.gv-tip h3{font-size:1rem}
+.gv-hero .btn{margin-top:1.6rem}
+.gv-chips{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+.gv-chips span{border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.85rem}
+.gv-index{position:sticky;top:64px;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line2)}
+.gv-index .rd{display:flex;gap:1.2rem;overflow-x:auto;padding-top:.8rem;padding-bottom:.8rem;white-space:nowrap;scrollbar-width:none}
+.gv-index a{font-size:.82rem;color:var(--dim);text-decoration:none}
+.gv-index a:hover{color:var(--accent)}
+.gv-step{font-size:.78rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.gv-h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.9rem,4vw,2.7rem);font-weight:600;line-height:1.15;margin-bottom:1rem}
+.gv-flips{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.4rem}
+.gv-flip{all:unset;cursor:pointer;perspective:1000px;min-height:240px;display:block}
+.gv-in{position:relative;width:100%;height:100%;min-height:240px;transition:transform .6s;transform-style:preserve-3d}
+.gv-flip:hover .gv-in,.gv-flip.on .gv-in{transform:rotateY(180deg)}
+.gv-f,.gv-b{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:14px;padding:1.4rem;background:var(--panel);display:flex;flex-direction:column;gap:.5rem}
+.gv-b{transform:rotateY(180deg);background:var(--accent);color:#fff;border-color:var(--accent);justify-content:center;line-height:1.55}
+.gv-n{color:var(--accent);font-size:.85rem}
+.gv-f h3{font-size:1.2rem}
+.gv-f p{color:var(--dim);line-height:1.5}
+.gv-tap{margin-top:auto;font-size:.72rem;color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
+.gv-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.4rem 0 1rem}
+.gv-tab{font:inherit;font-size:.88rem;padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line);background:none;color:var(--fg);cursor:pointer}
+.gv-tab.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.gv-panel{display:none;border:1px solid var(--line);border-radius:14px;padding:1.5rem;background:var(--panel)}
+.gv-panel.on{display:block}
+.gv-k{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.3rem}
+.gv-where p,.gv-metric p{line-height:1.6}
+.gv-ol{margin:1.1rem 0 1.1rem 1.3rem;display:grid;gap:.6rem;line-height:1.55}
+.gv-metric{border-left:3px solid var(--accent);padding:.8rem 1rem;background:color-mix(in srgb,var(--accent) 8%,transparent);border-radius:0 8px 8px 0}
+.gvc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem;margin-bottom:.6rem}
+.gvc-row{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:.8rem;align-items:end;padding:.9rem 0;border-top:1px solid var(--line2)}
+.gvc-name{font-weight:600;display:flex;gap:.6rem;align-items:center;align-self:center}
+.calc{border:1px solid var(--line);border-radius:14px;padding:1.4rem;background:var(--panel)}
+.calc .cf{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.calc .cl{font-size:.74rem;color:var(--dim);line-height:1.3}
+.calc input,.calc select{font:inherit;font-size:.95rem;padding:.6rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);width:100%;box-sizing:border-box}
+.calc input:focus,.calc select:focus{outline:none;border-color:var(--accent)}
+.cnum{display:inline-flex;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--accent);color:#fff;align-items:center;justify-content:center;font-size:.8rem;flex:none}
+.calcOut{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.2rem}
+.cbig{border:1px solid var(--line);border-radius:10px;padding:1rem}
+.cbig .k{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
+.cbig .v{font-size:1.45rem;font-weight:700;margin-top:.3rem;color:var(--accent);word-break:break-word}
+.cfirst{margin-top:1rem;padding:.9rem 1rem;border-left:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent);border-radius:0 8px 8px 0;line-height:1.5}
+.cfirst:empty{display:none}
+.gv-fix{display:grid;grid-template-columns:70px 1fr;gap:1rem;padding:1.6rem 0;border-top:1px solid var(--line2)}
+.gv-fixn{font-size:2.2rem;color:var(--accent);line-height:1}
+.gv-fix h3{font-size:1.3rem;margin-bottom:.6rem}
+.gv-msg{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:1rem 0;overflow:hidden}
+.gv-mh{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);padding:.6rem 1rem;border-bottom:1px solid var(--line2)}
+.gv-msg p{padding:1rem;line-height:1.6;background:color-mix(in srgb,#25d366 7%,transparent)}
+.gv-copy{font:inherit;font-size:.72rem;border:1px solid var(--line);background:none;color:var(--fg);border-radius:6px;padding:.25rem .6rem;cursor:pointer}
+.gv-copy:hover{border-color:var(--accent);color:var(--accent)}
+.gv-case{margin-top:.8rem;font-size:.92rem;line-height:1.5}
+.gv-case span{color:var(--accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;margin-right:.5rem}
+.gv-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.4rem}
+.gv-stat{border:1px solid var(--line);border-radius:14px;padding:1.3rem;background:var(--panel)}
+.gv-sv{font-size:2rem;font-weight:700;color:var(--accent);line-height:1.1}
+.gv-sl{color:var(--dim);margin-top:.4rem;line-height:1.45;font-size:.92rem}
+.gv-tips{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
+.gv-tip{border:1px solid var(--line);border-radius:14px;padding:1.3rem;background:var(--panel)}
+.gv-tip h3{font-size:1.05rem;margin-bottom:.5rem}
+.gv-tip p{color:var(--dim);line-height:1.55;font-size:.93rem}
+.gv-end{border:1px solid var(--accent);border-radius:18px;padding:2rem;background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.ccta{margin-top:1.4rem;display:flex;gap:1rem;flex-wrap:wrap}
+@media(max-width:820px){.gv-flips,.gv-tips{grid-template-columns:1fr}.gv-stats{grid-template-columns:1fr 1fr}.gvc-row{grid-template-columns:1fr}.calcOut{grid-template-columns:1fr}.gv-fix{grid-template-columns:1fr}.gv-fixn{font-size:1.6rem}}
+
+.gv-gate{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:1.2rem;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.gv-gate[hidden]{display:none}
+body.gv-locked{overflow:hidden}
+.gv-gcard{width:100%;max-width:470px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:2rem;box-shadow:0 30px 80px rgba(0,0,0,.18);display:grid;gap:.9rem;max-height:94vh;overflow:auto}
+.gv-gcard .gv-h2{font-size:clamp(1.6rem,5vw,2.1rem);margin-bottom:0}
+.gv-gsub{color:var(--dim);line-height:1.5}
+.gv-gcard .cf{display:flex;flex-direction:column;gap:.35rem}
+.gv-gcard .cl{font-size:.74rem;color:var(--dim)}
+.gv-gcard input{font:inherit;font-size:1rem;padding:.75rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);width:100%;box-sizing:border-box}
+.gv-gcard input:focus{outline:none;border-color:var(--accent)}
+.gv-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.gv-gbtn{justify-content:center;font-size:.95rem;padding:.95rem 1.2rem;margin-top:.2rem}
+.gv-gbtn[disabled]{opacity:.6;cursor:wait}
+.gv-gerr{color:#c5280c;font-size:.88rem;min-height:0}
+.gv-gerr:empty{display:none}
+.gv-glegal{font-size:.75rem;color:var(--faint);line-height:1.5}
+.gv-glegal a{color:var(--dim)}
+.gv-flips.c4{grid-template-columns:repeat(4,1fr)}
+.gv-checks{display:grid;gap:.7rem;margin-top:1.2rem}
+.gv-ck{display:flex;gap:.9rem;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;background:var(--panel);cursor:pointer;line-height:1.55}
+.gv-ck input{width:1.2rem;height:1.2rem;margin-top:.2rem;accent-color:var(--accent);flex:none}
+.gv-ck:has(input:checked){border-color:var(--accent)}
+.gv-ck:has(input:checked) span{color:var(--dim)}
+.gv-prog{display:flex;align-items:center;gap:1rem;margin-top:1rem;font-size:.85rem;color:var(--dim)}
+.gv-bar{flex:1;height:8px;border-radius:999px;background:var(--line2);overflow:hidden}
+.gv-bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.gv-tests{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
+.gv-test{border:1px solid var(--line);border-radius:14px;padding:1.2rem;background:var(--panel);display:flex;flex-direction:column;gap:.5rem}
+.gv-test p{font-size:1.02rem;line-height:1.45;background:color-mix(in srgb,#25d366 9%,transparent);border-radius:10px;padding:.6rem .8rem}
+.gv-test small{color:var(--dim);line-height:1.5;font-size:.88rem}
+@media(max-width:820px){.gv-flips.c4,.gv-tests{grid-template-columns:1fr}}
+</style>
+<script defer src="https://umami.agustinynatalia.site/script.js" data-website-id="1edc5673-c0ea-4380-9e9a-1c5dce95f938"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:#0b0b0d}
+html{overflow-x:hidden}
+.site{--bg:#0b0b0d;--bg2:#131316;--panel:#141417;--line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.055);--fg:#eceae4;--dim:#9b9a91;--faint:#585851;--btnfg:#0b0b0d;font-family:'Montserrat',system-ui,sans-serif;background-color:var(--bg);color:var(--fg);min-height:100vh}
+.site.light{--bg:#f1efe9;--bg2:#ffffff;--panel:#ffffff;--line:rgba(20,18,15,.15);--line2:rgba(20,18,15,.07);--fg:#191712;--dim:#6b675e;--faint:#a7a397;--btnfg:#ffffff}
+.mono{font-family:'Montserrat',sans-serif}
+.wrap{max-width:1220px;margin:0 auto;padding:0 2.2rem}
+.rd{max-width:820px;margin:0 auto;padding:0 2.2rem}
+a{color:inherit;text-decoration:none}
+.acc{color:var(--accent)}
+::selection{background:var(--accent);color:var(--btnfg)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.98rem;letter-spacing:-.3px;display:flex;align-items:center}
+.curs{color:var(--accent);animation:bl 1.1s steps(1) infinite;margin-left:1px}
+@keyframes bl{50%{opacity:0}}
+.navlinks{display:flex;gap:2rem;list-style:none}
+.navlinks a{font-family:'Montserrat',sans-serif;font-size:.82rem;color:var(--dim);letter-spacing:.2px;transition:color .25s;position:relative}
+.navlinks a:hover,.navlinks a.on{color:var(--fg)}
+.navlinks a::before{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--accent);transition:right .3s}
+.navlinks a:hover::before,.navlinks a.on::before{right:0}
+.navtools{display:flex;align-items:center;gap:.5rem}
+.lang{display:flex;font-family:'Montserrat',sans-serif;font-size:.78rem;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.lang button{font:inherit;background:none;border:none;color:var(--dim);padding:.42rem .6rem;cursor:pointer;transition:all .2s}
+.lang button.on{background:var(--accent);color:var(--btnfg)}
+.tgl{width:38px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:none;color:var(--fg);cursor:pointer;font-size:1rem;transition:all .2s}
+.tgl:hover{border-color:var(--accent);color:var(--accent)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:34px;align-items:center;justify-content:center}
+.burger span{width:20px;height:2px;background:var(--fg);transition:.3s}
+.bg3d{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:.6}
+.btn{font-family:'Montserrat',sans-serif;font-size:.85rem;padding:.85rem 1.5rem;border-radius:8px;border:1px solid var(--line);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.2px;color:var(--fg);background:none}
+.btnP{background:var(--accent);color:var(--btnfg);border-color:var(--accent);font-weight:500}
+.btnP:hover{transform:translateY(-2px);box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 35%,transparent)}
+.btnO:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.stackTags{display:flex;flex-wrap:wrap;gap:.55rem}
+.refList{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+.refList a{display:flex;flex-direction:column;gap:.2rem;padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:10px;color:var(--fg);text-decoration:none;transition:border-color .2s}
+.refList a:hover{border-color:var(--accent)}
+.refT{font-size:.98rem;line-height:1.4}
+.refS{font-size:.74rem;color:var(--dim)}
+.tag{font-family:'Montserrat',sans-serif;font-size:.82rem;padding:.42rem .8rem;border:1px solid var(--line);border-radius:7px;color:var(--fg);transition:all .22s}
+.tag:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.footer{border-top:1px solid var(--line);padding:2.6rem 0;position:relative;z-index:1;background-color:var(--bg)}
+.footIn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'Montserrat',sans-serif;font-size:.82rem;color:var(--dim)}
+.footIn .y{color:var(--faint)}
+.dhero{padding:8.5rem 0 2.5rem;position:relative;z-index:1}
+.back{display:inline-flex;align-items:center;gap:.5rem;font-family:'Montserrat',sans-serif;font-size:.8rem;color:var(--dim);margin-bottom:2.2rem;transition:color .2s}
+.back:hover{color:var(--accent)}
+.dcat{font-family:'Montserrat',sans-serif;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.dtitle{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:600;letter-spacing:-.035em;line-height:1.06;margin-bottom:1.2rem}
+.dsub{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--dim);line-height:1.5;margin-bottom:2rem}
+.dmeta{display:flex;flex-wrap:wrap;gap:2.6rem;padding:1.4rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dmeta .k{font-family:'Montserrat',sans-serif;font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.4rem}
+.dmeta .v{font-size:1rem;color:var(--fg)}
+.dllink{margin-top:1.8rem}
+.dsec{padding:2.6rem 0;position:relative;z-index:1}
+.dsech{font-family:'Montserrat',sans-serif;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem}
+.dsech::before{content:'';width:24px;height:1px;background:var(--accent)}
+.dlead{font-size:1.4rem;font-weight:500;line-height:1.45;letter-spacing:-.01em;margin-bottom:1.3rem;color:var(--fg)}
+.dp{color:var(--dim);line-height:1.8;font-size:1.06rem;margin-bottom:1.2rem}
+.reqlist{list-style:none;display:grid;gap:.85rem}
+.reqlist li{display:flex;gap:.85rem;color:var(--dim);line-height:1.6;font-size:1.02rem}
+.reqlist li::before{content:'→';color:var(--accent);font-family:'Montserrat',sans-serif;flex-shrink:0}
+.pcgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.pccard{border:1px solid var(--line);border-radius:14px;padding:1.7rem;background:color-mix(in srgb,var(--panel) 65%,transparent)}
+.pccard h4{font-family:'Montserrat',sans-serif;font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:1.2rem;color:var(--fg)}
+.pclist{list-style:none;display:grid;gap:.8rem}
+.pclist li{display:flex;gap:.7rem;color:var(--dim);line-height:1.55;font-size:.96rem}
+.pclist li .mk{flex-shrink:0;font-family:'Montserrat',sans-serif;font-weight:600}
+.pros h4{color:var(--accent)}
+.pros .mk{color:var(--accent)}
+.cons .mk{color:var(--faint)}
+.dcta{border:1px solid var(--line);border-radius:20px;padding:3.2rem 2rem;text-align:center;background:color-mix(in srgb,var(--panel) 65%,transparent);position:relative;z-index:1}
+.dcta h3{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.6rem}
+.dctaRow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.dctaP{color:var(--dim);max-width:560px;margin:-.6rem auto 1.6rem;line-height:1.6}
+.upSvcs{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:0 auto 1.8rem;max-width:860px;text-align:left}
+.upSvc{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg);transition:border-color .2s,transform .2s}
+.upSvc:hover{border-color:var(--accent);transform:translateY(-2px)}
+.upSvc b{font-family:'Montserrat',sans-serif;color:var(--accent);font-size:.8rem;font-weight:500}
+@media(max-width:720px){.upSvcs{grid-template-columns:1fr}}
+.notfound{padding:11rem 0 8rem;text-align:center;position:relative;z-index:1}
+@media(max-width:920px){
+.navlinks{position:fixed;top:0;right:0;width:270px;height:100vh;flex-direction:column;background:var(--bg2);border-left:1px solid var(--line);padding:5.5rem 2rem;gap:1.4rem;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.navlinks.open{transform:none}
+.burger{display:flex}
+.wrap,.rd{padding:0 1.4rem}
+.pcgrid{grid-template-columns:1fr}
+}
+
+.relList{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.7rem}
+.relList a{display:flex;flex-direction:column;gap:.25rem;padding:1rem 1.1rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:10px;text-decoration:none;color:inherit;transition:border-color .2s}
+.relList a:hover{border-color:var(--accent)}
+.relCat{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+.relT{font-weight:600;line-height:1.35}
+.hubList{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+.hubList a{display:block;padding:1.2rem 1.3rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:12px;text-decoration:none;color:inherit;transition:border-color .2s}
+.hubList a:hover{border-color:var(--accent)}
+.hubList h2{font-size:1.15rem;margin:.35rem 0 .45rem;line-height:1.3}
+.hubList p{margin:0;opacity:.8;line-height:1.5}
+.hubMeta{font-size:.72rem;opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+
+
+.gv-sec-n{font-family:'Montserrat',sans-serif;font-size:.8rem;color:var(--dim);margin-top:.8rem}
+.gv-res{border:1px solid var(--accent);border-radius:16px;padding:1.6rem 1.7rem;background:var(--panel);margin-top:1.2rem}
+.gv-res h3{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:650;margin-bottom:.6rem}
+.gv-res p{color:var(--dim);line-height:1.65}
+.gv-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1.2rem}
+.gv-sum div{border:1px solid var(--line);border-radius:12px;padding:1rem;background:var(--panel)}
+.gv-sum b{display:block;font-family:'Montserrat',sans-serif;font-size:1.5rem;color:var(--accent)}
+.gv-sum span{font-size:.85rem;color:var(--dim)}
+@media(max-width:820px){.gv-sum{grid-template-columns:1fr 1fr}}
+.gv-msg p.gv-prompt{white-space:pre-wrap;font-size:.9rem;background:color-mix(in srgb,var(--accent) 5%,transparent);max-height:26rem;overflow:auto}
+.gs-row{padding:1rem 0;border-top:1px solid var(--line2)}
+.gs-row:first-child{border-top:none;padding-top:0}
+.gs-top{display:grid;grid-template-columns:auto 2fr 1fr 1fr;gap:.8rem;align-items:end}
+.gs-top .cnum{align-self:center;margin-top:1.1rem}
+.gs-q{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin-top:.7rem;font-size:.86rem;color:var(--dim);align-items:center}
+.gs-q label{display:flex;gap:.45rem;align-items:center;cursor:pointer}
+.gs-q input{accent-color:var(--accent);width:1rem;height:1rem}
+.gs-del{margin-left:auto}
+@media(max-width:820px){.gs-top{grid-template-columns:1fr 1fr}.gs-top .cnum{display:none}.gs-name{grid-column:1/-1}}
+</style>
+<link rel="stylesheet" href="/motion.css?v=20261014"><script src="/motion.js?v=20261014"></script>
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<div class="site light" id="top" style="--accent:#ff5c35">
+<nav class="nav"><div class="wrap navbar">
+<a class="brand" href="/">agustin.peralta<span class="curs">▮</span></a>
+<ul class="navlinks" id="nav">
+<li><a href="/#sobre">sobre-mí</a></li>
+<li><a href="/#experiencia">experiencia</a></li>
+<li><a href="/#proyectos">proyectos</a></li>
+<li><a href="/guias/">guías</a></li>
+<li><a href="/metricas">métricas</a></li>
+<li><a href="/#contacto">contacto</a></li>
+</ul>
+<div class="navtools">
+<button class="tgl" id="tgl" aria-label="Cambiar tema">☾</button>
+<button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+</div>
+</div></nav>
+
+<div class="gv-gate" id="gvGate" role="dialog" aria-modal="true" aria-labelledby="gvGateT">
+<form class="gv-gcard" id="gvForm" novalidate>
+<div class="gv-step mono">Guía gratuita · Agustin Peralta</div>
+<h2 class="gv-h2" id="gvGateT">Cómo armar tu primer sistema</h2>
+<p class="gv-gsub">Déjame tu nombre y tu correo y entras de una a la guía.</p>
+<label class="cf"><span class="cl mono">Nombre</span><input name="nombre" autocomplete="name" required maxlength="120"></label>
+<label class="cf"><span class="cl mono">Correo</span><input name="correo" type="email" autocomplete="email" required maxlength="200"></label>
+<label class="cf"><span class="cl mono">Tu Instagram o tu negocio (opcional)</span><input name="sitio" maxlength="200" placeholder="@tumarca o tumarca.com"></label>
+<input class="gv-hp" name="empresa" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="gv-gerr" id="gvErr" role="alert"></p>
+<button class="btn btnP gv-gbtn" type="submit">Entrar a la guía</button>
+<p class="gv-glegal">Guardo tu nombre y tu correo para mandarte contenido como este. Puedes pedir que los borre cuando quieras. <a href="/aviso-privacidad.html" target="_blank" rel="noopener">Aviso de privacidad</a>.</p>
+</form>
+</div>
+
+<header class="dhero gv-hero"><div class="rd" style="max-width:1080px">
+<div class="dcat mono">Guía gratuita · Negocios</div>
+<h1 class="dtitle">Cómo armar tu primer sistema y dejar de cavar con cuchara</h1>
+<p class="dsub">Estar ocupado no es lo mismo que avanzar. Aquí encuentras cuáles de tus tareas le tocan a un sistema, de qué está hecho un sistema y cómo armar el primero sin saber programar.</p>
+<div class="gv-chips"><span>Tareas repetidas</span><span>Excel</span><span>WhatsApp</span><span>Reportes</span></div>
+<a class="btn btnP" href="#cucharas">Encontrar mis tareas de cuchara ↓</a>
+</div></header>
+
+<nav class="gv-index"><div class="rd" style="max-width:1080px">
+<a href="#cucharas">1 · Tus cucharas</a><a href="#piezas">2 · Las 4 piezas</a><a href="#pasos">3 · Arma el primero</a><a href="#ejemplos">4 · Ejemplos</a><a href="#ficha">5 · La ficha</a><a href="#practicas">Buenas prácticas</a>
+</div></nav>
+
+<section class="dsec" id="cucharas"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 1 · Encuentra tus cucharas</div>
+<h2 class="gv-h2">¿Qué tareas te dejan ocupado sin devolverte nada?</h2>
+<p class="dp">La prueba es la del video: si una tarea se repite cada semana y siempre la haces igual, es trabajo de cuchara y le toca a un sistema. Anota hasta cinco tareas de tu semana, cuántas veces las haces y cuánto te demoras, y responde las tres preguntas de cada una. Al final te digo por cuál empezar.</p>
+<div class="calc" id="gsCalc">
+<div id="gsFilas"></div>
+<button class="btn btnO" type="button" id="gsMas" style="margin-top:1rem">+ Agregar otra tarea</button>
+<div class="calcOut">
+<div class="cbig"><div class="k">Horas al mes en estas tareas</div><div class="v" id="gsHoras">0</div></div>
+<div class="cbig"><div class="k">Tareas de cuchara</div><div class="v" id="gsCuch">0</div></div>
+<div class="cbig"><div class="k">Empieza por</div><div class="v" id="gsPrim" style="font-size:1.1rem">Anota una tarea</div></div>
+</div>
+<p class="cfirst" id="gsMsg"></p>
+</div>
+</div></section>
+
+<section class="dsec" id="piezas"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 2 · De qué está hecho un sistema</div>
+<h2 class="gv-h2">Todo sistema tiene las mismas 4 piezas</h2>
+<p class="dp">Da igual si es un Excel que se llena solo, un mensaje que sale a la hora o un agente que contesta WhatsApp. Si le sabes poner nombre a estas cuatro piezas, ya tienes el sistema diseñado. Toca cada tarjeta.</p>
+<div class="gv-flips c4">
+<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">01</span><h3>Disparador</h3><p>Lo que hace que arranque.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b">Una hora fija (todos los viernes a las 8 a. m.), algo que pasa (entra un pedido, llega un mensaje) o un botón que alguien toca. Si no sabes cuándo arranca, todavía no es un sistema.</div></div></button>
+<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">02</span><h3>Datos</h3><p>De dónde saca la información.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b">El Excel de ventas, los pedidos de Shopify, los chats de WhatsApp, un formulario. Si hoy los copias a mano de un lado a otro, el sistema los lee directo de la fuente.</div></div></button>
+<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">03</span><h3>Reglas</h3><p>Lo que decide en el camino.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b">"Si el pedido pasa de 300 mil, avísale a Laura". "Si preguntan por envíos, contesta esto". Las reglas son lo que hoy está en tu cabeza: escribirlas es la mitad del trabajo.</div></div></button>
+<button class="gv-flip" type="button"><div class="gv-in"><div class="gv-f"><span class="gv-n mono">04</span><h3>Salida</h3><p>Lo que entrega y a quién.</p><span class="gv-tap mono">Toca para ver</span></div><div class="gv-b">Un reporte en tu correo, un mensaje al cliente, una fila nueva en el Excel, un aviso a tu celular. Que diga a quién le llega, porque una salida que nadie ve no sirve.</div></div></button>
+</div>
+</div></section>
+
+<section class="dsec" id="pasos"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 3 · Arma el primero</div>
+<h2 class="gv-h2">Cinco pasos, de la cuchara a la retroexcavadora</h2>
+<div class="gv-fix"><div class="gv-fixn mono">01</div><div><h3>Escribe la tarea como la haces hoy</h3><p class="dp">Paso por paso, con los clics y las ventanas que abres. "Abro el Excel de ventas, filtro la semana, copio el total, lo pego en el informe, se lo mando a mi socio". Si no la puedes escribir, todavía no la puedes delegar, ni a una persona ni a un sistema.</p></div></div>
+<div class="gv-fix"><div class="gv-fixn mono">02</div><div><h3>Marca qué tipo de paso es cada uno</h3><p class="dp">Hay cuatro: copiar o mover datos, buscar algo, decidir con una regla fija y decidir con criterio. Los tres primeros los hace un sistema sin problema. El último, el que necesita tu criterio, es el que te quedas tú, o se lo pasas a un agente de IA con instrucciones claras.</p></div></div>
+<div class="gv-fix"><div class="gv-fixn mono">03</div><div><h3>Ponle nombre a las 4 piezas</h3><p class="dp">Con lo que escribiste, llena la ficha del paso 5: cuándo arranca, de dónde lee, qué reglas sigue y qué entrega. Ese papel es el plano, y con él cualquiera lo puede construir, en n8n, en Make, en las automatizaciones de Shopify o con un agente.</p></div></div>
+<div class="gv-fix"><div class="gv-fixn mono">04</div><div><h3>Arranca con la versión que te avisa</h3><p class="dp">La primera semana, que el sistema haga todo pero te deje el resultado para revisar antes de que salga: el borrador del reporte, el mensaje listo para enviar. Cuando veas que no se equivoca, le quitas la revisión.</p></div></div>
+<div class="gv-fix"><div class="gv-fixn mono">05</div><div><h3>Mide lo que te devolvió</h3><p class="dp">Anota cuánto te demorabas antes y cuánto te demoras ahora, y cuántas veces tuviste que corregirlo. Ese número es el que te dice si vale la pena armar el siguiente.</p></div></div>
+</div></section>
+
+<section class="dsec" id="ejemplos"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 4 · Ejemplos</div>
+<h2 class="gv-h2">Las tres cucharas del video, convertidas en sistema</h2>
+<div class="gv-tabs" role="tablist">
+<button class="gv-tab on" type="button" data-p="e1">El reporte del viernes</button>
+<button class="gv-tab" type="button" data-p="e2">Excel a Excel</button>
+<button class="gv-tab" type="button" data-p="e3">La misma pregunta 25 veces</button>
+</div>
+<div class="gv-panel on" id="e1">
+<div class="gv-k mono">La cuchara</div><p class="dp">Cada viernes abres tres archivos, copias totales, armas una tabla y la mandas por correo. Te toma la mañana.</p>
+<div class="gv-k mono">El sistema</div>
+<ol class="gv-ol"><li><b>Disparador:</b> todos los viernes a las 7 a. m.</li><li><b>Datos:</b> las ventas de la semana, directo de la tienda o de la hoja donde ya se registran.</li><li><b>Reglas:</b> comparar con la semana anterior y marcar lo que bajó más de 10 %.</li><li><b>Salida:</b> el reporte en tu correo antes de que llegues, con lo que bajó arriba.</li></ol>
+</div>
+<div class="gv-panel" id="e2">
+<div class="gv-k mono">La cuchara</div><p class="dp">Los pedidos llegan a un lado y tú los pasas a mano a la hoja de despachos, a la de inventario y a la de contabilidad.</p>
+<div class="gv-k mono">El sistema</div>
+<ol class="gv-ol"><li><b>Disparador:</b> entra un pedido nuevo.</li><li><b>Datos:</b> el pedido completo, con cliente, productos y dirección.</li><li><b>Reglas:</b> si es para otra ciudad, va a la transportadora; si se acabó un producto, aviso.</li><li><b>Salida:</b> una fila en cada hoja, sin copiar nada, y un aviso cuando algo falta.</li></ol>
+</div>
+<div class="gv-panel" id="e3">
+<div class="gv-k mono">La cuchara</div><p class="dp">"¿Hacen envíos?", "¿cuánto vale?", "¿tienen talla M?". La misma respuesta, escrita a mano, todo el día.</p>
+<div class="gv-k mono">El sistema</div>
+<ol class="gv-ol"><li><b>Disparador:</b> llega un mensaje por WhatsApp o Instagram.</li><li><b>Datos:</b> el catálogo, los precios y las existencias reales, más tus 10 respuestas de siempre.</li><li><b>Reglas:</b> si es un reclamo o algo que no sabe, se lo pasa a una persona con el motivo.</li><li><b>Salida:</b> la respuesta al cliente en segundos, a cualquier hora, y a ti solo lo que necesita de ti.</li></ol>
+</div>
+</div></section>
+
+<section class="dsec" id="ficha"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Paso 5 · La ficha del sistema</div>
+<h2 class="gv-h2">El plano, listo para copiar</h2>
+<p class="dp">Cópiala, llénala con tu tarea de cuchara y guárdala. Si la vas a armar tú, es tu lista de pendientes; si se la pasas a alguien, es todo lo que necesita saber.</p>
+<div class="gv-msg"><div class="gv-mh mono">Ficha del sistema<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">FICHA DEL SISTEMA
+
+Tarea que reemplaza:
+Cada cuánto la hago hoy:
+Cuánto me demoro cada vez:
+
+1. Disparador (cuándo arranca):
+2. Datos (de dónde lee y en qué archivo o app están):
+3. Reglas (qué decide en el camino, una por línea):
+   - Si ___, entonces ___
+   - Si ___, entonces ___
+4. Salida (qué entrega y a quién le llega):
+
+Lo que me sigo quedando yo (lo que necesita criterio):
+Quién revisa la primera semana:
+Cómo sé que funcionó (tiempo antes, tiempo después, errores):</p></div>
+<div class="gv-msg"><div class="gv-mh mono">Si usas ChatGPT o Claude, pégale esto<button class="gv-copy" type="button">Copiar</button></div><p class="gv-prompt">Te voy a describir una tarea que hago todas las semanas en mi negocio, paso por paso, como la hago hoy. Con eso:
+
+1. Sepárala en pasos y dime de cada uno si es copiar o mover datos, buscar algo, decidir con una regla fija o decidir con criterio.
+2. Llena esta ficha: disparador, datos, reglas y salida.
+3. Dime qué parte me tengo que seguir quedando yo y por qué.
+4. Propón la versión más sencilla para arrancar esta semana, una que me deje el resultado para revisar antes de que salga.
+
+No me recomiendes herramientas todavía. Pregúntame lo que te falte antes de responder.
+
+La tarea:</p></div>
+</div></section>
+
+<section class="dsec" id="practicas"><div class="rd" style="max-width:1080px">
+<div class="gv-step mono">Buenas prácticas</div>
+<h2 class="gv-h2">Para que el sistema no se caiga a la semana</h2>
+<div class="gv-tips">
+<div class="gv-tip"><h3>Empieza por la más aburrida</h3><p>No la más difícil ni la más vistosa. La que más odias hacer y más se repite es la que más tiempo te devuelve y la más fácil de armar.</p></div>
+<div class="gv-tip"><h3>Una sola fuente de datos</h3><p>Si el mismo dato vive en tres archivos, el sistema se confunde igual que tú. Decide cuál es el bueno y que todo lea de ahí.</p></div>
+<div class="gv-tip"><h3>Que te avise si falla</h3><p>Un sistema que falla en silencio es peor que la cuchara. Toda salida tiene que tener un aviso cuando algo no salió.</p></div>
+<div class="gv-tip"><h3>Uno a la vez</h3><p>Arma uno, mídelo dos semanas y sigue con el siguiente. Si montas cinco al tiempo, no sabes cuál te está ayudando.</p></div>
+<div class="gv-tip"><h3>Escribe las reglas, no las memorices</h3><p>Lo que está solo en tu cabeza se va contigo. Las reglas escritas sirven para el sistema, para tu equipo y para cuando vuelvas de vacaciones.</p></div>
+<div class="gv-tip"><h3>Lo que necesita criterio, déjalo visible</h3><p>Un reclamo, una excepción, un cliente molesto. El sistema no lo esconde, te lo pone enfrente con el contexto para que decidas rápido.</p></div>
+</div>
+</div></section>
+
+<section class="dsec"><div class="rd" style="max-width:1080px">
+<div class="gv-end">
+<div class="gv-step mono">Tu siguiente paso</div>
+<h2 class="gv-h2">Si quieres que lo armemos juntos</h2>
+<p class="dp">Si ya tienes tu ficha llena y quieres que la revisemos, o prefieres que lo dejemos funcionando por ti, escríbeme. También puedes calcular cuánto te cuestan al año las tareas repetidas de tu equipo.</p>
+<div class="ccta"><a class="btn btnP" href="https://ig.me/m/agustinp.ia" target="_blank" rel="noopener">Escríbeme por Instagram</a><a class="btn btnO" href="/calculadora-tareas">Calcula cuánto te cuestan las tareas repetidas</a></div>
+</div>
+</div></section>
+
+<footer class="footer"><div class="wrap footIn">
+<span>Diseñado y desarrollado por Agustin Peralta</span>
+<span class="y">© 2026 · <span class="acc">Bogotá</span></span>
+</div></footer>
+</div>
+<script>
+(function(){
+  var site=document.querySelector(".site");
+  try{if(localStorage.getItem("ap-theme")==="dark")site.classList.remove("light");}catch(e){}
+  var tgl=document.getElementById("tgl");
+  function icon(){tgl.textContent=site.classList.contains("light")?"☾":"☀";}
+  icon();
+  tgl.addEventListener("click",function(){
+    site.classList.toggle("light");
+    try{localStorage.setItem("ap-theme",site.classList.contains("light")?"light":"dark");}catch(e){}
+    icon();
+  });
+  document.getElementById("burger").addEventListener("click",function(){
+    document.getElementById("nav").classList.toggle("open");
+  });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.gv-flip').forEach(function(b){b.addEventListener('click',function(){b.classList.toggle('on');});});
+  document.querySelectorAll('.gv-tab').forEach(function(t){t.addEventListener('click',function(){
+    document.querySelectorAll('.gv-tab').forEach(function(x){x.classList.toggle('on',x===t);});
+    document.querySelectorAll('.gv-panel').forEach(function(p){p.classList.toggle('on',p.id===t.dataset.p);});});});
+  document.querySelectorAll('.gv-copy').forEach(function(b){b.addEventListener('click',function(){
+    var t=b.closest('.gv-msg').querySelector('p').innerText;
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar';},1500);}).catch(function(){});});});
+})();
+</script>
+<script>
+(function(){
+  var CK='ap-guia-sistemas-tareas', MAX=5;
+  var EJ=['Armar el reporte de ventas del viernes','Pasar pedidos del correo al Excel','Contestar "¿hacen envíos?"'];
+  var filas=[];
+  try{filas=JSON.parse(localStorage.getItem(CK)||'[]')||[];}catch(e){}
+  if(!filas.length)filas=[{}];
+  var cont=document.getElementById('gsFilas'), mas=document.getElementById('gsMas');
+  function guardar(){try{localStorage.setItem(CK,JSON.stringify(filas));}catch(e){}}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function dibujar(){
+    cont.innerHTML='';
+    filas.forEach(function(f,i){
+      var d=document.createElement('div'); d.className='gs-row';
+      d.innerHTML='<div class="gs-top"><span class="cnum">'+(i+1)+'</span>'
+        +'<label class="cf gs-name"><span class="cl">Tarea</span><input data-c="nombre" maxlength="90" placeholder="'+esc(EJ[i%EJ.length])+'" value="'+esc(f.nombre)+'"></label>'
+        +'<label class="cf"><span class="cl">Veces por semana</span><input data-c="veces" type="number" min="0" max="200" inputmode="numeric" value="'+esc(f.veces)+'"></label>'
+        +'<label class="cf"><span class="cl">Minutos cada vez</span><input data-c="min" type="number" min="0" max="600" inputmode="numeric" value="'+esc(f.min)+'"></label></div>'
+        +'<div class="gs-q">'
+        +'<label><input type="checkbox" data-c="igual"'+(f.igual?' checked':'')+'> Siempre la hago igual</label>'
+        +'<label><input type="checkbox" data-c="datos"'+(f.datos?' checked':'')+'> Los datos ya están en un archivo o una app</label>'
+        +'<label><input type="checkbox" data-c="regla"'+(f.regla?' checked':'')+'> Lo que decido sigue una regla, no mi criterio</label>'
+        +(filas.length>1?'<button type="button" class="gv-copy gs-del" aria-label="Quitar tarea">Quitar</button>':'')
+        +'</div>';
+      d.querySelectorAll('[data-c]').forEach(function(inp){
+        inp.addEventListener(inp.type==='checkbox'?'change':'input',function(){
+          f[inp.dataset.c]=inp.type==='checkbox'?inp.checked:inp.value; guardar(); calcular();
+        });
+      });
+      var del=d.querySelector('.gs-del'); if(del)del.addEventListener('click',function(){filas.splice(i,1);guardar();dibujar();});
+      cont.appendChild(d);
+    });
+    mas.hidden=filas.length>=MAX;
+    calcular();
+  }
+  function horas(f){var v=parseFloat(f.veces)||0,m=parseFloat(f.min)||0;return v*m*52/12/60;}
+  function fmt(n){return n>=10?Math.round(n).toString():(Math.round(n*10)/10).toString().replace('.',',');}
+  function calcular(){
+    var tot=0,cuch=0,mejor=null,pm=-1;
+    filas.forEach(function(f){
+      var h=horas(f); tot+=h;
+      var es=(parseFloat(f.veces)||0)>=1&&f.igual;
+      if(es)cuch++;
+      var p=h*(1+(f.igual?1:0)+(f.datos?1:0)+(f.regla?1:0));
+      if(h>0&&p>pm){pm=p;mejor=f;}
+    });
+    document.getElementById('gsHoras').textContent=fmt(tot);
+    document.getElementById('gsCuch').textContent=cuch+' de '+filas.length;
+    var P=document.getElementById('gsPrim'), M=document.getElementById('gsMsg');
+    if(!mejor){P.textContent='Anota una tarea';M.textContent='';return;}
+    var nom=(mejor.nombre||'').trim()||'la tarea '+(filas.indexOf(mejor)+1);
+    P.textContent=nom;
+    var h=fmt(horas(mejor)), falta=[];
+    if(!mejor.igual)falta.push('hoy no la haces siempre igual, así que primero escribe los pasos para que sí lo sea');
+    if(!mejor.datos)falta.push('los datos no están en un archivo o una app, así que el primer paso es que queden registrados en un solo lugar');
+    if(!mejor.regla)falta.push('lo que decides depende de tu criterio, así que el sistema te deja el borrador y tú decides');
+    M.textContent='Empieza por "'+nom+'": te quita unas '+h+' horas al mes. '+(falta.length?'Ojo: '+falta.join('; ')+'.':'Cumple las tres condiciones, así que es la candidata perfecta para tu primer sistema. Llena la ficha del paso 5 con ella.');
+  }
+  mas.addEventListener('click',function(){if(filas.length<MAX){filas.push({});guardar();dibujar();if(window.umami)umami.track('guia-sistemas-tarea');}});
+  dibujar();
+})();
+</script>
+
+<script>
+(function(){
+  var KEY='ap-guia-sistemas-acceso', API='https://clientes.agustinynatalia.site/api/publico/leads';
+  var gate=document.getElementById('gvGate'), form=document.getElementById('gvForm'), err=document.getElementById('gvErr');
+  function abrir(){gate.hidden=true;document.body.classList.remove('gv-locked');}
+  var ya=false;try{ya=localStorage.getItem(KEY)==='1';}catch(e){}
+  if(ya){abrir();return;}
+  document.body.classList.add('gv-locked');
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); err.textContent='';
+    var d={nombre:form.nombre.value.trim(),correo:form.correo.value.trim(),sitio:form.sitio.value.trim(),empresa:form.empresa.value,fuente:'guia-sistemas'};
+    if(d.nombre.length<2){err.textContent='Escribe tu nombre.';form.nombre.focus();return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.correo)){err.textContent='Revisa tu correo, parece que le falta algo.';form.correo.focus();return;}
+    var b=form.querySelector('button'); b.disabled=true; b.textContent='Entrando…';
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,status:r.status,j:j};});})
+      .then(function(r){
+        if(r.ok||r.status>=500||r.status===429){try{localStorage.setItem(KEY,'1');}catch(e){} abrir(); if(window.umami)umami.track('guia-sistemas-acceso');}
+        else{err.textContent=(r.j&&r.j.error)?('No pudimos registrarte: '+r.j.error+'.'):'No pudimos registrarte, intenta de nuevo.'; b.disabled=false; b.textContent='Entrar a la guía';}
+      })
+      .catch(function(){try{localStorage.setItem(KEY,'1');}catch(e){} abrir();});
+  });
+})();
+</script>
+
+</body>
+</html>
